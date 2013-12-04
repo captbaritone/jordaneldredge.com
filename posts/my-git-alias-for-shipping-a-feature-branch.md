@@ -1,11 +1,11 @@
 /*
-Title: My Git alais for shipping a feature branch
+Title: My Git alias for shipping a feature branch
 Description: 
 Author: Jordan Eldredge
 Date: 2013/12/04
 */
 
-I use [feature branching][1] as part of my Git workflow. Once a feature is implented, I need to merge it's branch into master and push it to the Git server. That used to look like this:
+I use [feature branching][1] as part of my Git workflow. Once a feature is implemented, I need to merge it's branch into master and push it to the Git server. That used to look like this:
 
     git checkout master
     git merge feature-415 # Having to remember the branch name
