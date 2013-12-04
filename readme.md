@@ -1,1 +1,1 @@
-# Content of my tech blog
+# Content of my programming blog
