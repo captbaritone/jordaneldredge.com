@@ -26,3 +26,7 @@ Ultimately, I decided that I shouldn't be depending on how Laravel handles
 ambiguous routes, so I changed the mp3 route to `file/mp3/{file}.mp3` which
 behaves correctly independent of the order.
 
+**Update:** (Dec 5th, 2013) I sent a [tweet][1] to @laravelphp asking if this was
+a known change. It was a bug, and has been fixed in the most recent version.
+
+[1]: https://twitter.com/captbaritone/status/408755958446174210
