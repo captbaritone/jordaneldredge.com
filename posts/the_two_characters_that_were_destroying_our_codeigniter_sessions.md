@@ -5,7 +5,7 @@ Author: Jordan Eldredge
 Date: 2013/12/10
 */
 
-In a [CodeIgniter] project I was working on for work had a strange bug where
+A [CodeIgniter] project I was working on for work had a strange bug where
 users were getting mysteriously logged out. After hours of debugging I was able
 to narrow it down to it's minimal reproduceable form:
 
