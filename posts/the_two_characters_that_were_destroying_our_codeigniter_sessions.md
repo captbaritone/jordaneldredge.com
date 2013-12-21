@@ -20,5 +20,15 @@ While I don't exactly understand why it breaks, it has something to do with the
 escaping CodeIgniter does before it serializes the session array to store it in
 the database.
 
-[CodeIgniter]: http://ellislab.com/codeigniter
+**Update:** (Dec 21st, 2013) After considerable digging my [brother] and
+I found the root of the problem. In the days of [Magic Quotes]
+a `strip_slashes()` was needed to strip cookie escapement. It has been
+[removed] in development branch of CodeIgniter but still persists in the most
+recent stable release. We have written up a possible history explaining how
+this issue persists as part of a [related pull request].
 
+[CodeIgniter]: http://ellislab.com/codeigniter
+[brother]: http://thatsmathematics.com
+[Magic Quotes]: http://www.php.net/magic_quotes
+[removed]: https://github.com/EllisLab/CodeIgniter/commit/ca20d8
+[related pull request]: https://github.com/EllisLab/CodeIgniter/pull/2784
