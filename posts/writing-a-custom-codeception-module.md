@@ -135,6 +135,6 @@ Helpers] section of the documentation:
 If you want to see another example, check out my [Codeception MailCatcher Module].
 
 [Codeception]: http://codeception.com/
-[helper file]: https://github.com/captbaritone/codeception-mailcatcher-module
+[helper file]: https://github.com/captbaritone/mailcatcher-codeception-helper
 [Modules and Helpers]: http://codeception.com/docs/03-ModulesAndHelpers
 [Codeception MailCatcher Module]: https://github.com/captbaritone/codeception-mailcatcher-module
