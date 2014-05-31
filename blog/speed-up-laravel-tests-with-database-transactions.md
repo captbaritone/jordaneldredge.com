@@ -1,5 +1,5 @@
 /*
-Title: Speeding up Laravel tests with database transations
+Title: Speeding up Laravel tests with database transactions
 Description:
 Author: Jordan Eldredge
 Date: 2014/05/30
