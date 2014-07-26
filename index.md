@@ -6,9 +6,7 @@ Author: Jordan Eldredge
 
 Hello! My name is Jordan Eldredge. I am a programmer and classical singer
 living in San Francisco with my wife, and fellow singer, [Chelsea
-Hollow](http://chelseahollow.com). If you wish to contact me directly, try
-[email](mailto:jordan@jordaneldrede.com) or
-[Twitter](http://twitter.com/captbaritone).
+Hollow](http://chelseahollow.com).
 
 ## Programming
 
