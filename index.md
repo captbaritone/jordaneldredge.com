@@ -37,6 +37,8 @@ performances, at my [singer website](singer).
 ## Projects
 
 I am perpetually involved in various personal projects, usually involving
-music, software or both. I generally post these to my [blog](blog).
+music, software or both. You can find a list of some of my more interesting
+project on my [porjects](projects) page. For a complete list, see my [old
+blog](http://classicalcode.com).
 
 
