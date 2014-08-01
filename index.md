@@ -10,12 +10,12 @@ Hollow](http://chelseahollow.com).
 
 ## Programming
 
-I've been writing software as a hobby since I was in High School. After
+I've been writing web software as a hobby since I was in High School. After
 college, it evolved naturally into a career. Since about 2009 I have been
 a full-time freelance web developer.
 
-If you are looking for help with your website, you may be interested in my
-[programming resume](programmer).
+If you are looking for a backend engineer for your business, you may be
+interested in my [programming resume](programmer).
 
 If you are a programmer yourself, I keep a [blog](blog) where I document
 interesting programing discoveries, among other things. You can also find me on
@@ -38,7 +38,7 @@ performances, at my [singer website](singer).
 
 I am perpetually involved in various personal projects, usually involving
 music, software or both. You can find a list of some of my more interesting
-project on my [porjects](projects) page. For a complete list, see my [old
+project on my [projects](projects) page. For a complete list, see my [old
 blog](http://classicalcode.com).
 
 
