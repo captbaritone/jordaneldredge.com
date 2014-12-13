@@ -4,6 +4,10 @@ Description:
 Author: Jordan Eldredge
 */
 
+### Javascript
+
+**[Winamp2-js](http://jordaneldredge.com/projects/winamp2-js/)** -  A reimplementation of Winamp 2.9 in HTML5 and Javascript.
+
 ### Comedy Generators
 
 **[WhatTheFuckShouldIBeForHalloween.com](http://WhatTheFuckShouldIBeForHalloween.com)** - Generate random sexy Halloween costume ideas.
