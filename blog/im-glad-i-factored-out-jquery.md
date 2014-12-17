@@ -21,7 +21,7 @@ To my surprise, the process was painless. Selecting DOM elements with
 modifying element's classes via `element.classList` felt logical and clean.
 
 The resulting code not only loaded faster, since it didn't need to load jQuery,
-but it was more explicate and was simpler to work on. By removing a layer of
+but it was more explicit and was simpler to work on. By removing a layer of
 abstraction, I was able to make my code feel more taut. I trusted it better,
 because I could see everything it was doing.
 
@@ -30,3 +30,5 @@ developer. By giving raw javascript a chance, I not only gained a better
 understanding of the functionality jQuery actually provides, but I learned that
 javascript's interface is not nearly as problematic as I had convinced myself
 it was during all those years of blind rejection.
+
+*Next: [Surviving Hacker News traffic with the help of free CDNs](http://jordaneldredge.com/blog/surviving-hacker-news-traffic-with-the-help-of-free-cdns)*
