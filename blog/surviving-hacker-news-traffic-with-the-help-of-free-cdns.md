@@ -42,7 +42,7 @@ I tweeted.
 I SSHed into my server, issued a quick find and replace, and suddenly instead
 of serving ~25 files with each page load, I was serving one small `index.html`
 file and everything else was served by rawgit.com. Now, I figured, my server
-could pretty much any amount of traffic. So, I went to bed.
+could handle pretty much any amount of traffic. So I went to bed.
 
 When I woke up in the morning, I checked Google Analytics again, and
 [Reddit](http://www.reddit.com/r/InternetIsBeautiful/comments/2lh3ob/winamp_2_preserved_in_html5/)
@@ -62,7 +62,7 @@ With the site now functioning properly, I mounted my bike and headed to work.
 
 Once there, I realized I had been overly optimistic about my VPN's abilities.
 The page was retuning very slowly, and my attempts to SSH into the machine were
-failing. It was out of memory. With no other options, I logged into my
+failing. The server was out of memory. With no other options, I logged into my
 DigitalOcean control panel, and reset the machine.
 
 Once the machine was back up, I SSHed in and pointed the demo track URL back
