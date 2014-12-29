@@ -13,8 +13,10 @@ In my <a href="http://blog.classicalcode.com/?p=100">last project</a>, I learned
 
 Give it a try:
 
-<form style="text-align: left;" action="http://jordaneldredge.com/projects/mandala/index.php" method="get" target="_blank"><label for="size">Size in pixels (1-1024):</label><input id="size" style="display: inline;" type="text" name="size" /><br /><label for="points">Number of points (1-100):</label><input id="points" style="display: inline;" type="text" name="points" />
-
-<input type="submit" value="Generate Mandala" />
+<form style="text-align: left;" action="http://jordaneldredge.com/projects/mandala/index.php" method="get" target="_blank">
+    <label for="size">Size in pixels (1-1024):</label> <input id="size" style="display: inline;" type="text" name="size" /><br />
+    <label for="points">Number of points (1-100):</label><input id="points" style="display: inline;" type="text" name="points" />
+    <input type="submit" value="Generate Mandala" />
+</form>
 
 <a href="https://gist.github.com/4093015" target="_blank">Source code</a>
