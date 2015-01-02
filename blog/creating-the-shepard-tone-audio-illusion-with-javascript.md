@@ -59,5 +59,5 @@ Volume: <input type='range' min='0' max='100' value='0' oninput="javascript: set
 
 Check out the ~35 lines of code on
 [JSFiddle](http://jsfiddle.net/captbaritone/x893Lqk5) or
-[GitHub](https://github.com/captbaritone/programming-blog-content/edit/master/blog/creating-the-shepard-tone-audio-illusion-with-javascript.md)
+[GitHub](https://raw.githubusercontent.com/captbaritone/programming-blog-content/master/blog/creating-the-shepard-tone-audio-illusion-with-javascript.md)
 

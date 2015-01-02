@@ -60,5 +60,5 @@ document.getElementById('points').oninput = draw;
 
 Check out the ~30 lines of code on
 [JSFiddle](http://jsfiddle.net/captbaritone/8vwjn4cx/34/) or
-[GitHub](https://github.com/captbaritone/programming-blog-content/blob/master/blog/drawing-mandalas-with-javascript-and-canvas.md)
+[GitHub](https://raw.githubusercontent.com/captbaritone/programming-blog-content/master/blog/drawing-mandalas-with-javascript-and-canvas.md)
 
