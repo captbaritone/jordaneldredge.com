@@ -6,6 +6,7 @@ Date: 2011/07/18
 */
 
 <a href="http://blog.classicalcode.com/wp-content/uploads/2011/07/photo.jpeg"><img class="alignnone size-large wp-image-946" title="Wanda and Geroge's Garden" src="http://blog.classicalcode.com/wp-content/uploads/2011/07/photo-500x375.jpg" alt="" width="500" height="375" /></a>
+
 Wanda and George's Garden. Photo Credit: <a href="http://www.chelseahollow.com">Chelsea Hollow</a>
 
 Years after my grandfather died, my grandmother reconnected with an old friend from Ohio. George was an old family friend and a widower. A youthful romance followed. I will always remember George's kindness, good humor and most of all the spry young love he had for my grandmother Wanda.
@@ -14,7 +15,7 @@ I arranged this mostly as a way to spend some time alone with my memories of Geo
 
 This video was recorded in my backyard here in San Francisco.
 
-<object width="500" height="350" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0"><param name="allowFullScreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="src" value="http://www.youtube.com/v/FDB0LMrDdEs?version=3&amp;hl=en_US" /><param name="allowfullscreen" value="true" /><embed width="500" height="350" type="application/x-shockwave-flash" src="http://www.youtube.com/v/FDB0LMrDdEs?version=3&amp;hl=en_US" allowFullScreen="true" allowscriptaccess="always" allowfullscreen="true" /></object>
+<div class='youtube'><iframe width="100%" height="100%" src="http://www.youtube.com/embed/FDB0LMrDdEs" frameborder="0" allowfullscreen></iframe></div>
 
 <audio id="wp_mep_11" src="http://blog.classicalcode.com/wp-content/uploads/2011/07/I-Walk-Through-The-Garden-Alone-Ukulele-For-George.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
 

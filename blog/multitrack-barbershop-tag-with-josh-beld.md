@@ -5,7 +5,9 @@ Author: Jordan Eldredge
 Date: 2009/11/20
 */
 
-<a href="http://blog.classicalcode.com/wp-content/uploads/2009/11/Josh_Beld_and_Jordan_Eldredge.jpg"><img class="size-full wp-image-676 alignright" style="margin-left: 15px; margin-right: 15px;" title="Josh_Beld_and_Jordan_Eldredge" src="http://blog.classicalcode.com/wp-content/uploads/2009/11/Josh_Beld_and_Jordan_Eldredge.jpg" alt="Josh_Beld_and_Jordan_Eldredge" width="214" height="305" /></a>Tonight my friend and fellow baritone Josh Beld came over and naturally, things eventually devolved to multitracking babershop tags. After attempting three different tags, only the first and simplest ended up being suitable for sharing. This was Josh's first attempt at multitrack recording and he is already better than me. Hopefully this will be the first of many.
+<a href="http://blog.classicalcode.com/wp-content/uploads/2009/11/Josh_Beld_and_Jordan_Eldredge.jpg"><img class="size-full wp-image-676 alignright" style="margin-left: 15px; margin-right: 15px;" title="Josh_Beld_and_Jordan_Eldredge" src="http://blog.classicalcode.com/wp-content/uploads/2009/11/Josh_Beld_and_Jordan_Eldredge.jpg" alt="Josh_Beld_and_Jordan_Eldredge" width="214" height="305" /></a>
+
+Tonight my friend and fellow baritone Josh Beld came over and naturally, things eventually devolved to multitracking babershop tags. After attempting three different tags, only the first and simplest ended up being suitable for sharing. This was Josh's first attempt at multitrack recording and he is already better than me. Hopefully this will be the first of many.
 
 When It's Sleepy Time Down South:
 <ul>

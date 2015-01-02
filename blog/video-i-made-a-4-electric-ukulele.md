@@ -7,7 +7,7 @@ Date: 2009/12/30
 
 While I was home for Christmas, I was watching lots of ukulele videos on Youtube. Somewhere in my wanderings I came across the <a href="http://www.youtube.com/watch?v=NuqQWon71do">Risa Uke Solid</a> and my mind was blown. It's a small electric ukulele made out of a single solid piece of wood and some hardware. The simplicity of the design made me think: "Hey, I could do that" and so I began thinking about how I could make a simple electric ukulele myself. Two days later, with lots of help from my dad and his tools, I have a working electric ukulele made from stuff I found around my parent's house and a set of $4 ukulele strings. It's currently fret-less and the pickup leaves a lot to be desired but my goal was really to create a mock-up so that I would know what I was doing when I built the actual thing.
 
-<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="500" height="400" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0"><param name="allowFullScreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="src" value="http://www.youtube.com/v/K236WImqlxU&amp;hl=en_US&amp;fs=1&amp;" /><param name="allowfullscreen" value="true" /><embed type="application/x-shockwave-flash" width="500" height="400" src="http://www.youtube.com/v/K236WImqlxU&amp;hl=en_US&amp;fs=1&amp;" allowscriptaccess="always" allowfullscreen="true"></embed></object>
+<div class='youtube'><iframe width="100%" height="100%" src="http://www.youtube.com/embed/K236WImqlxU" frameborder="0" allowfullscreen></iframe></div>
 
 <span id="more-746"></span>
 

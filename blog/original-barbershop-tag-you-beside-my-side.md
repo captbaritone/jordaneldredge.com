@@ -21,4 +21,5 @@ The sheet music: <a href="http://blog.classicalcode.com/wp-content/uploads/2009/
 <strong>Update:</strong>
 
 I made a little video that teaches you all the parts by ear:
-<object width="500" height="400" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0"><param name="allowFullScreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="src" value="http://www.youtube.com/v/vsXkce3LgDM&amp;hl=en&amp;fs=1" /><param name="allowfullscreen" value="true" /><embed width="500" height="400" type="application/x-shockwave-flash" src="http://www.youtube.com/v/vsXkce3LgDM&amp;hl=en&amp;fs=1" allowFullScreen="true" allowscriptaccess="always" allowfullscreen="true" /></object>
+
+<div class='youtube'><iframe width="100%" height="100%" src="http://www.youtube.com/embed/vsXkce3LgDM" frameborder="0" allowfullscreen></iframe></div>

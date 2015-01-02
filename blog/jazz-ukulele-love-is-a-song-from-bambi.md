@@ -9,13 +9,13 @@ I head an old <a href="http://www.npr.org/templates/story/story.php?storyId=1185
 
 <strong>"Love Is a Song" from: Walt Disney's <em>Bambi</em>:</strong>
 
-<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="500" height="400" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0"><param name="allowFullScreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="src" value="http://www.youtube.com/v/Mf4x2K5oBMQ&amp;hl=en_US&amp;fs=1&amp;" /><param name="allowfullscreen" value="true" /><embed type="application/x-shockwave-flash" width="500" height="400" src="http://www.youtube.com/v/Mf4x2K5oBMQ&amp;hl=en_US&amp;fs=1&amp;" allowscriptaccess="always" allowfullscreen="true"></embed></object>
+<div class='youtube'><iframe width="100%" height="100%" src="http://www.youtube.com/embed/Mf4x2K5oBMQ" frameborder="0" allowfullscreen></iframe></div>
 
-<strong>Words by:</strong> Larry Morey
-<strong>Music by:</strong> Frank Churchill
-<strong>Ukulele:</strong> Kala Curly Mango Soprano (Christmas present)
-<strong>Drum loop:</strong> Garage Band
-<strong>Bass:</strong> Recorded in Garage Band using a midi keyboard
+- <strong>Words by:</strong> Larry Morey
+- <strong>Music by:</strong> Frank Churchill
+- <strong>Ukulele:</strong> Kala Curly Mango Soprano (Christmas present)
+- <strong>Drum loop:</strong> Garage Band
+- <strong>Bass:</strong> Recorded in Garage Band using a midi keyboard
 
 Audio only mp3:
 

@@ -3,6 +3,7 @@ Title: I've started a tech blog
 Description:
 Author: Jordan Eldredge
 Date: 2014/01/21
+archived: true
 */
 
 <p style="text-align: center;"><a href="http://jordaneldredge.com/programmer/blog"><img class="aligncenter size-large wp-image-1554" alt="Screen Shot 2014-01-21 at 10.11.06 AM" src="http://blog.classicalcode.com/wp-content/uploads/2014/01/Screen-Shot-2014-01-21-at-10.11.06-AM-500x418.png" width="500" height="418" /></a></p>
