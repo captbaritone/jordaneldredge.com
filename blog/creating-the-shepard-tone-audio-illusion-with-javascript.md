@@ -1,0 +1,63 @@
+/*
+Title: Creating the Shepard Tone audio illusion with JavaScript
+Description:
+Author: Jordan Eldredge
+testDate: 2009/03/25
+*/
+
+The [Shepard Tone](http://en.wikipedia.org/wiki/Shepard_tone) is an audio
+illusion that creates the impression of an enlessly rising or falling tone.
+
+Back in 2009 I rendered an [example of it using
+Lilypond](http://jordaneldredge.com/projects/winamp2-js/), which was pretty
+hacky.
+
+Having recently played with the Web Audio API for my [Winamp2-js
+project](http://jordaneldredge.com/projects/winamp2-js/) I realized it
+would be easy to create this effect using Javascript.
+
+You can hear for yourself, just turn up the volume:
+
+<script>
+var min_freq = 10;
+var max_freq = 40000;
+var steps_per_loop = 12;
+var seconds_per_loop = 5;
+
+var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+var gainNode = audioCtx.createGain();
+gainNode.gain.value = 0;
+gainNode.connect(audioCtx.destination);
+
+var step_speed = 1000 * seconds_per_loop / steps_per_loop;
+var multiplier = Math.pow(2, 1/steps_per_loop)
+var current_step = 0;
+var oscillators = [];
+
+(function shepardLoop () {
+    base_freq = min_freq;
+    for(i = 0; base_freq < max_freq; i++) {
+        if(oscillators[i]) oscillators[i].stop(0);
+        freq = base_freq * Math.pow(multiplier, current_step);
+        oscillator = audioCtx.createOscillator();
+        oscillator.frequency.value = freq; // value in hertz
+        oscillator.connect(gainNode);
+        oscillator.start(0);
+        oscillators[i] = oscillator;
+        base_freq = base_freq * 2;
+    }
+    current_step = (current_step + 1) % steps_per_loop;
+    setTimeout(shepardLoop, step_speed);
+})();
+
+function setVolume(volume) {
+    gainNode.gain.value = volume / 100 / oscillators.length;
+}
+</script>
+
+Volume: <input type='range' min='0' max='100' value='0' oninput="javascript: setVolume(this.value)">
+
+Check out the ~35 lines of code on
+[JSFiddle](http://jsfiddle.net/captbaritone/x893Lqk5) or
+[GitHub](https://github.com/captbaritone/programming-blog-content/edit/master/blog/creating-the-shepard-tone-audio-illusion-with-javascript.md)
+
