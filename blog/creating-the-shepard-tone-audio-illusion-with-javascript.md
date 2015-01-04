@@ -2,11 +2,11 @@
 Title: Creating the Shepard Tone audio illusion with JavaScript
 Description:
 Author: Jordan Eldredge
-testDate: 2009/03/25
+Date: 2015/01/04
 */
 
 The [Shepard Tone](http://en.wikipedia.org/wiki/Shepard_tone) is an audio
-illusion that creates the impression of an enlessly rising or falling tone.
+illusion that creates the impression of an endlessly rising or falling tone.
 
 Back in 2009 I rendered an [example of it using
 Lilypond](http://jordaneldredge.com/projects/winamp2-js/), which was pretty
@@ -26,15 +26,17 @@ var seconds_per_loop = 5;
 
 var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 var gainNode = audioCtx.createGain();
-gainNode.gain.value = 0;
 gainNode.connect(audioCtx.destination);
+
+setVolume(0); // Initialize volume to match range input
+var playing = false;
 
 var step_speed = 1000 * seconds_per_loop / steps_per_loop;
 var multiplier = Math.pow(2, 1/steps_per_loop)
 var current_step = 0;
 var oscillators = [];
 
-(function shepardLoop () {
+function shepardLoop () {
     base_freq = min_freq;
     for(i = 0; base_freq < max_freq; i++) {
         if(oscillators[i]) oscillators[i].stop(0);
@@ -48,16 +50,22 @@ var oscillators = [];
     }
     current_step = (current_step + 1) % steps_per_loop;
     setTimeout(shepardLoop, step_speed);
-})();
+}
 
+function start() {
+    if(!playing) {
+        playing = true;
+        shepardLoop();
+    }
+}
 function setVolume(volume) {
-    gainNode.gain.value = volume / 100 / oscillators.length;
+    gainNode.gain.value = volume / 100 / 12;
 }
 </script>
 
-Volume: <input type='range' min='0' max='100' value='0' oninput="javascript: setVolume(this.value)">
+Volume: <input type='range' min='0' max='100' value='0' oninput="setVolume(this.value)" ontouchstart="start();" onmousedown="start();">
 
-Check out the ~35 lines of code on
+Check out the ~40 lines of code on
 [JSFiddle](http://jsfiddle.net/captbaritone/x893Lqk5) or
 [GitHub](https://raw.githubusercontent.com/captbaritone/programming-blog-content/master/blog/creating-the-shepard-tone-audio-illusion-with-javascript.md)
 
