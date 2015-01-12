@@ -27,27 +27,31 @@ select how many points you want:
 var canv = document.getElementById('canvas');
 var contx = canv.getContext('2d');
 
-
 function drawShape(ctx, point_count, radius) {
-    var points = []
-    for (var i = 0; i <= point_count; i++) {
-        angle = i * 2 * Math.PI / point_count - Math.PI / 2;
-        points.push({
-            'x': radius + radius * Math.cos(angle),
-            'y': radius + radius * Math.sin(angle)
-        });
-    }
+    var points = new Array(point_count * 2);
+    var x = 0;
+    var y = 0;
+    var angle = 0;
+
     ctx.clearRect(0, 0, canv.width, canv.height);
     ctx.beginPath();
     ctx.lineWidth = 1;
-    for(var i = 0; i < points.length; i++) {
-        for(var j = 0; j < points.length; j++) {
-            ctx.moveTo(points[i].x, points[i].y);
-            ctx.lineTo(points[j].x, points[j].y);
+    ctx.strokeStyle = "rgba(0,0,0,0.7)";
+
+    for (var i = 0; i <= point_count - 1; i++) {
+        angle = i * 2 * Math.PI / point_count - Math.PI / 2;
+        x = radius + radius * Math.cos(angle);
+        y = radius + radius * Math.sin(angle);
+        for (var z = 0, zEnd = (i * 2) + 2; z < zEnd; z += 2) {
+            ctx.moveTo(x, y);
+            ctx.lineTo(points[z], points[z + 1]);
         }
+        points[z] = x;
+        points[z + 1] = y;
     }
     ctx.stroke();
 }
+
 function draw() {
     drawShape(
         contx, document.getElementById('points').value,
@@ -59,6 +63,6 @@ document.getElementById('points').oninput = draw;
 </script>
 
 Check out the ~30 lines of code on
-[JSFiddle](http://jsfiddle.net/captbaritone/8vwjn4cx/34/) or
+[JSFiddle](http://jsfiddle.net/captbaritone/8vwjn4cx/42/) or
 [GitHub](https://raw.githubusercontent.com/captbaritone/programming-blog-content/master/blog/drawing-mandalas-with-javascript-and-canvas.md)
 
