@@ -27,10 +27,6 @@ To be fair, you could probably implement a similar thing with Vundle.
 Running lots of plugins can drastically slow down Vim's startup time. Plug gets
 around this by allowing you to put off the loading of some plugins.
 
-I only need this syntax plugin when I start editing a markdown file:
-
-    Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-
 For example, I only need this syntax plugin when I'm editing markdown files:
 
     Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }

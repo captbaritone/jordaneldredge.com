@@ -56,7 +56,7 @@ were set in such a way that the javascript I had wasn't able to asses the
 length of the track.
 
 Even though this was my largest asset file by an order of magnitude, I figured
-it was worth whatever cost I might accrue to have the project looking it's best
+it was worth whatever cost I might accrue to have the project looking its best
 during this time of peak exposure, so I pointed that URL back to my server.
 With the site now functioning properly, I mounted my bike and headed to work.
 
