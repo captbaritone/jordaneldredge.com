@@ -4,17 +4,18 @@ Description:
 Author: Jordan Eldredge
 DraftDate: 2015/01/04
 */
-*dec*
+
 <script>
 var audioContext = new (window.AudioContext || window.webkitAudioContext)();
 var isPlaying = false;
 var register = [];
-var flipflop = true;
-var pointer = 1;
-
 for (var i = 0; i < 2048; i++) {
     register[i] = true;
 }
+var flipflop = true;
+var pointer = 1;
+var gainNode = audioContext.createGain();
+gainNode.connect(audioContext.destination);
 
 function onProcess(e) {
     var output = e.outputBuffer.getChannelData(0);
@@ -30,14 +31,12 @@ function onProcess(e) {
     }
 };
 
-var gainNode = audioContext.createGain();
-gainNode.connect(audioContext.destination);
-
 function setVolume(value) {
     gainNode.gain.value = value / 100;
 }
 
 setVolume(0); // Initialize volume to match range input
+
 function start() {
     if(!isPlaying) {
         var node = audioContext.createScriptProcessor(1024, 1, 1);
@@ -61,3 +60,6 @@ function start() {
 </script>
 
 Volume: <input type='range' min='0' max='100' value='0' oninput="setVolume(this.value)" ontouchstart="start();" onmousedown="start();">
+
+See the code on
+[GitHub](https://raw.githubusercontent.com/captbaritone/programming-blog-content/master/blog/bingy-bongy-music-in-javascript.md)
