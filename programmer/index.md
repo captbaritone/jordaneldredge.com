@@ -5,15 +5,25 @@ Author: Jordan Eldredge
 */
 
 I've been writing software as a hobby since I was in High School. After
-college, it evolved naturally into a career. Since about 2009 I have been
-a full-time freelance web developer.
+college, it evolved naturally into a career.
 
-## Expertise
+## 2014 - present
 
-- PHP
+Generalist engineer at [Hearsay Social](http://hearsaysocial.com/)
+
+## 2009 - 2014
+
+Full time freelance PHP developer.
+
+## Backend Technologies
+
+- Python/PHP/Javascript
+- Django/Laravel
 - MYSQL
-- Laravel
-- CodeIgniter
+- Linux (Ubuntu/CentOS)
+- Apache
+- Light system administration
+
 
 ## Frontend Technologies
 
@@ -22,17 +32,11 @@ a full-time freelance web developer.
 - AJAX
 - jQuery
 - AngularJS
-
-## Backend Technologies
-
-- Linux (Ubuntu/CentOS)
-- Apache
-- Light system administration
+- Backbone
 
 ## Work
 
-Take a look at my [GitHub](https://github.com/captbaritone) for a sample of
-some of my work.
+Take a look at my [GitHub](https://github.com/captbaritone) for a sample of my work.
 
 ## Contact
 
