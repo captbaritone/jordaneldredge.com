@@ -3,6 +3,7 @@ Title: You might be a nerd if: You write a perl script to count sheep for you...
 Description:
 Author: Jordan Eldredge
 Date: 2008/01/28
+Archived: true
 */
 
 ... in binary.

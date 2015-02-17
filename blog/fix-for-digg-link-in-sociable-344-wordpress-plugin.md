@@ -3,6 +3,7 @@ Title: Fix For Digg Link in Sociable 3.4.4 Wordpress Plugin
 Description:
 Author: Jordan Eldredge
 Date: 2009/08/29
+Archived: true
 */
 
 As you can probably see I <span style="text-decoration: line-through;">use</span> used to use the Sociable plugin on this blog. I recently realized that the Digg link was broken. Here is the fix:

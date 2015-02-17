@@ -3,6 +3,7 @@ Title: Winterreise Blog
 Description:
 Author: Jordan Eldredge
 Date: 2009/04/27
+Archived: true
 */
 
 <strong>Edit (May 18, 2012): This project is no-longer online</strong>

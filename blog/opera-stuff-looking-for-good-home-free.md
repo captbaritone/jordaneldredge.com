@@ -3,6 +3,7 @@ Title: Opera stuff looking for good home (free)
 Description:
 Author: Jordan Eldredge
 Date: 2008/04/01
+Archived: true
 */
 
 <img class="alignright" style="float: right; margin-left: 5px; margin-right: 5px;" src="http://www.tias.com/stores/yesterdaysjewels/pictures/t2-3002a.jpg" alt="Opera Libretto" width="300" height="226" />The other day I responded to an ad for free opera libretti and magazines on Craigslist. The woman was trying to find a good home for about eight boxes of what turned out to be her deceased friend's libretti, Opera News, and San Francisco Opera programs.

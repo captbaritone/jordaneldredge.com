@@ -3,6 +3,7 @@ Title: Tag: Sleepy Time Down South
 Description:
 Author: Jordan Eldredge
 Date: 2008/12/05
+Archived: true
 */
 
 I multitracked a new tag from the <a href="http://www.stampedecitychorus.com/classic_tags_men2.pdf">ubiquitous book o' tags</a>. This is "Sleepy Time Down South" number 33.

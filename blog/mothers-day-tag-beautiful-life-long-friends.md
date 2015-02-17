@@ -3,6 +3,7 @@ Title: Mother's Day Tag: Beautiful Life Long Friends
 Description:
 Author: Jordan Eldredge
 Date: 2009/05/13
+Archived: true
 */
 
 Last Mother's Day I recorded my mom a <a href="http://blog.classicalcode.com/?p=86">barbershop tag</a>. This Mother's Day caught me at a bad time, and I was gift-less when I saw her. So today, with my <a href="http://blog.classicalcode.com/?p=497">new recording equipment</a>, I recorded a belated Mother's Day barbershop tag. I have always thought this tag was particularly beautiful and have attempted it a few times before with little success. This time I feel like I have finally been able to do it some measure of justice.

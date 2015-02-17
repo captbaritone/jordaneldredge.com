@@ -3,6 +3,7 @@ Title: Music nerd limericks
 Description:
 Author: Jordan Eldredge
 Date: 2008/02/07
+Archived: true
 */
 
 With the advent of <a href="http://www.limerickdb.com">limerickdb.com</a>, which is full of nerdy limericks because it was started by the author of xkcd, I was inspired to author some nerdy limericks within my field of nerd-dom.

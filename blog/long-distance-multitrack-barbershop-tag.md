@@ -3,6 +3,7 @@ Title: Long Distance Multitrack Barbershop Tag
 Description:
 Author: Jordan Eldredge
 Date: 2009/04/17
+Archived: true
 */
 
 Several months ago, inspired by <a href="http://www.youtube.com/watch?v=L8CwvvDzLC4">this youtube video</a>, my friends Jared Emerson-Johnson, Joachim Luis and I collaborated on a multitracked barbershop tag. Jared and I live about an hour away from each other and Joachim lives all the way in Chicago, so this was a great way for the four of us to do some harmony singing with far away friends.

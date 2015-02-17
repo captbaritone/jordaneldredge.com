@@ -3,6 +3,7 @@ Title: FMyLife.com + SadTrombone.com Mashup
 Description:
 Author: Jordan Eldredge
 Date: 2009/02/28
+Archived: true
 */
 
 <strong>EDIT (May 18, 2012): FML has changed their API to require a key, I have written them asking for such a key.</strong>

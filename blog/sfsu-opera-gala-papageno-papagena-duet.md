@@ -3,6 +3,7 @@ Title: SFSU Opera Gala: Papageno Papagena Duet
 Description:
 Author: Jordan Eldredge
 Date: 2008/10/22
+Archived: true
 */
 
 Last Friday I performed the Papageno Papagena Duet in San Francisco State's Opera Gala. Papagena is sung by my friend Sanja Wetzel and the whole ordeal was staged by Alissa Deeter. Video:

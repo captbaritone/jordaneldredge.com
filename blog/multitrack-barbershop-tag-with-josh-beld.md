@@ -3,6 +3,7 @@ Title: Multitrack Barbershop Tag With Josh Beld
 Description:
 Author: Jordan Eldredge
 Date: 2009/11/20
+Archived: true
 */
 
 <a href="http://blog.classicalcode.com/wp-content/uploads/2009/11/Josh_Beld_and_Jordan_Eldredge.jpg"><img class="size-full wp-image-676 alignright" style="margin-left: 15px; margin-right: 15px;" title="Josh_Beld_and_Jordan_Eldredge" src="http://blog.classicalcode.com/wp-content/uploads/2009/11/Josh_Beld_and_Jordan_Eldredge.jpg" alt="Josh_Beld_and_Jordan_Eldredge" width="214" height="305" /></a>
