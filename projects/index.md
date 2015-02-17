@@ -8,6 +8,8 @@ Author: Jordan Eldredge
 
 **[Winamp2-js](http://jordaneldredge.com/projects/winamp2-js/)** -  A reimplementation of Winamp 2.9 in HTML5 and Javascript.
 
+**[UriBin](https://github.com/captbaritone/uribin)** - A self-replicating paste bin that lives in URL shorteners
+
 ### Comedy Generators
 
 **[WhatTheFuckShouldIBeForHalloween.com](http://WhatTheFuckShouldIBeForHalloween.com)** - Generate random sexy Halloween costume ideas.
