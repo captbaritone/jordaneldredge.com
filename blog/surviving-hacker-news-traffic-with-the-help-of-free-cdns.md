@@ -79,3 +79,5 @@ I have no idea how these sites are sustainable, and if I needed to support
 a high bandwidth site, I would pay for my own CDN. But, to absorb a single
 spike in traffic for a pet project on a moment's notice, these two sites were
 a godsend. Thank you!
+
+*Next: [How Winamp2-js loads native skins in your browser](http://jordaneldredge.com/blog/how-winamp2-js-loads-native-skins-in-your-browser)*
