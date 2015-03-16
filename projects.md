@@ -38,5 +38,5 @@ game in a png image
 ### For Ukulele Players
 
 **[UkeChord](http://jordaneldredge.com/projects/ukulele-chords)** Generate ukulele
-chord fingerings programmaticly
+chord fingerings programmatically
 
