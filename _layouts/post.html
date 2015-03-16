@@ -3,7 +3,7 @@ layout: default
 ---
 <div class="post">
     <h2>{{ page.title }}</h2>
-    <p class="meta">Published {{ post.date | ordinal }}</p>
+    <p class="meta">Published {{ page.date | date: "%B %-d" }}{{ page.date | ordinal }} {{ page.date | date: "%Y" }}</p>
     {{ content }}
     <p class='sig'>{{ page.author }} (<a href="http://twitter.com/{{ site.twitter_username }}">@{{ site.twitter_username }}</a>)</p>
 </div>

@@ -13,9 +13,6 @@
 module Jekyll
 	module Ordinal
 		def ordinal(date)
-			unless date.is_a?(DateTime)
-				return ""
-			end
 			day = date.strftime("%-d");
 			case day
 			when "1", "21", "31";
