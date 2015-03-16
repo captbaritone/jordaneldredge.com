@@ -1,0 +1,17 @@
+<div class="sidebar pure-u">
+    <a href="{{ site.baseurl }}/">
+        <img src="{{ "/images/logo.png" | prepend: site.baseurl }}" alt="{{ site_title }}" />
+    </a>
+    <div class="pure-menu pure-menu-open pure-menu-custom header">
+        <input type="checkbox" id="toggle" />
+        <label for="toggle" class="toggle" data-open="Main Menu" data-close="Close Menu" onclick></label>
+        <ul class="menu">
+            {% for page in site.pages %}
+                {% if page.title %}
+                    <a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+                {% endif %}
+            {% endfor %}
+            <a href="/singer">Singer</a>
+        </ul>
+    </div>
+</div>

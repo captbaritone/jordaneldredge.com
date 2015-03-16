@@ -1,0 +1,30 @@
+# Site settings
+title: Jordan Eldredge
+email: jordan@jordaneldredge.com
+description: > # this means to ignore newlines until "baseurl:"
+    Hello! My name is Jordan Eldredge. I am a programmer and classical singer
+    living in San Francisco with my wife, and fellow singer, Chelsea Hollow.
+url: "http://jordaneldredge.com" # the base hostname & protocol for your site
+twitter_username: captbaritone
+github_username:  captbaritone
+timezone: America/Los_Angeles
+
+# Where things are
+destination: ./public_html
+keep_files:
+    - singer
+    - projects
+
+# Outputting
+permalink: /blog/:title
+
+# Build settings
+markdown: kramdown
+highlight: false
+defaults:
+  -
+    scope:
+      path: "" # an empty string here means all files in the project
+      type: "posts"
+    values:
+      layout: "default"
