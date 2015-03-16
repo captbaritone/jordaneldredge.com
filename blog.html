@@ -9,7 +9,7 @@ layout: default
     {% if post.archive != true %}
         <div class="post-index">
             <h2><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h2>
-            <p class="meta">Published {{ post.date | pretty }}</p>
+            <p class="meta">Published {{ page.date | ordinal }}</p>
         </div>
     {% endif %}
 {% endfor %}

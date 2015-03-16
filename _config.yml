@@ -14,6 +14,9 @@ destination: ./public_html
 keep_files:
     - singer
     - projects
+    - share_until
+    - .htaccess
+    - talks
 
 # Outputting
 permalink: /blog/:title
