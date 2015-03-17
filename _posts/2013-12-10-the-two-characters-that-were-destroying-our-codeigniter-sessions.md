@@ -1,6 +1,7 @@
 ---
 title: "The two characters that were destroying our CodeIgniter sessions"
 layout: post
+alis: /blog/the_two_characters_that_were_destroying_our_codeigniter_sessions
 ---
 
 A [CodeIgniter] project I was working on for work had a strange bug where
