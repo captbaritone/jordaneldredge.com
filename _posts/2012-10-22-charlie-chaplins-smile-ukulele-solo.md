@@ -34,20 +34,20 @@ href='http://blog.classicalcode.com/wp-content/uploads/2012/10/Charlie_Chaplin_S
 The lyrics to the song are not used in this recording but are none-the-less
 an important part of this song:
 
-> Smile, though your heart is aching  
-> Smile, even though it’s breaking  
-> When there are clouds in the sky  
-> you’ll get by  
-> If you smile through your fear and sorrow  
-> Smile and maybe tomorrow  
-> You’ll see the sun come shining through  
-> for you  
+> Smile, though your heart is aching
+> Smile, even though it’s breaking
+> When there are clouds in the sky
+> you’ll get by
+> If you smile through your fear and sorrow
+> Smile and maybe tomorrow
+> You’ll see the sun come shining through
+> for you
 
-> Light up your face with gladness  
-> Hide every trace of sadness  
-> Although a tear may be ever so near  
-> That’s the time you must keep on trying  
-> Smile what’s the use of crying  
-> You’ll find that life is still worthwhile  
-> If you’ll just  
+> Light up your face with gladness
+> Hide every trace of sadness
+> Although a tear may be ever so near
+> That’s the time you must keep on trying
+> Smile what’s the use of crying
+> You’ll find that life is still worthwhile
+> If you’ll just
 > Smile

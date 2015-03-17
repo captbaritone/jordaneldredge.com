@@ -51,7 +51,7 @@ As of now, 24 hours later, the project has received:
 
 * 1,200 Facebook likes surpassing the 1,000 like milestone which <a
 href="http://fachme.com/">fachme.com</a>, my previously most popular project,
-recently reached after <em>two and a half years</em>.
+recently reached after *two and a half years*.
 * 44 Twitter mentions, including several media personalities with 10s of
 thousands of followers
 * 34,000 page views from 4,100 unique visitors

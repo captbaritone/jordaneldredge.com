@@ -3,8 +3,7 @@ title: "One way \"curl pipe sh\" install scripts can be dangerous [proof of conc
 layout: post
 ---
 
-I have seen [several](http://pow.cx/)<!-- Markdown conversion ignores a space
-between links -->&nbsp;[sites](http://getcomposer.org/download/) recently that
+I have seen [several](http://pow.cx/) [sites](http://getcomposer.org/download/) recently that
 offer a one-line installation that looks something like this:
 
     curl -s example.com/install | sh
