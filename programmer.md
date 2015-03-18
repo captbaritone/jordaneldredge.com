@@ -9,7 +9,7 @@ college, it evolved naturally into a career.
 
 ## 2014 - present
 
-Generalist engineer at [Hearsay Social](http://hearsaysocial.com/)
+Software engineer at [Hearsay Social](http://hearsaysocial.com/)
 
 ## 2009 - 2014
 
@@ -17,7 +17,7 @@ Full time freelance PHP developer.
 
 ## Backend Technologies
 
-- Python/PHP/Javascript
+- Python/PHP
 - Django/Laravel
 - MYSQL
 - Linux (Ubuntu/CentOS)
@@ -27,12 +27,9 @@ Full time freelance PHP developer.
 
 ## Frontend Technologies
 
-- HTML5/CSS3
 - Javascript
-- AJAX
+- Backbone/AngularJS
 - jQuery
-- AngularJS
-- Backbone
 
 ## Work
 
