@@ -12,10 +12,10 @@ Hollow](http://chelseahollow.com).
 
 I've been writing web software as a hobby since I was in High School. After
 college, it evolved naturally into a career. Since about 2009 I have been
-a full-time web developer.
+a full-time engineer.
 
 If you are looking for a software engineer, you may be interested in my
-[programming resume](programmer).
+[programming page](programmer).
 
 If you are a programmer yourself, I keep a [blog](blog) where I document
 interesting programing discoveries, among other things. You can also find me on

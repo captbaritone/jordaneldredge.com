@@ -10,29 +10,8 @@ Despite <a href="http://en.wikipedia.org/wiki/Consecutive_fifths">everything I w
 You can hear the original four part arrangement <a href="http://blog.classicalcode.com/2009/05/in-dixie-land-where-i-was-born/">here</a>.
 
 I present to you "In Dixie Land Where I Was Born" from David Wright's collection: <em><a href="http://www.stampedecitychorus.com/classic_tags_men2.pdf">Classic Tags for Men's Voices</a></em> in parallel fifths:
-	<audio id="wp_mep_20" src="http://blog.classicalcode.com/wp-content/uploads/2009/11/Eight-Part-Parallel-Fifths-In-Dixie-Land-Where-I-Was-Born.mp3" type="audio/mp3"    controls="controls" preload="none"  >
-		
-		
-		
-		
-		
-		
-		
-		<object width="500" height="30" type="application/x-shockwave-flash" data="http://blog.classicalcode.com/wp-content/plugins/media-element-html5-video-and-audio-player/mediaelement/flashmediaelement.swf">
-			<param name="movie" value="http://blog.classicalcode.com/wp-content/plugins/media-element-html5-video-and-audio-player/mediaelement/flashmediaelement.swf" />
-			<param name="flashvars" value="controls=true&amp;file=http://blog.classicalcode.com/wp-content/uploads/2009/11/Eight-Part-Parallel-Fifths-In-Dixie-Land-Where-I-Was-Born.mp3" />			
-		</object>		
-	</audio>
-<script type="text/javascript">
-jQuery(document).ready(function($) {
-	$('#wp_mep_20').mediaelementplayer({
-		m:1
-		
-		,features: ['playpause','current','progress','duration','volume','tracks','fullscreen']
-		,audioWidth:500,audioHeight:30
-	});
-});
-</script>
+
+<audio id="wp_mep_20" src="http://blog.classicalcode.com/wp-content/uploads/2009/11/Eight-Part-Parallel-Fifths-In-Dixie-Land-Where-I-Was-Born.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
 
 <a href="http://blog.classicalcode.com/wp-content/uploads/2009/11/Eight-Part-Parallel-Fifths-In-Dixie-Land-Where-I-Was-Born.mp3">Download</a>
 

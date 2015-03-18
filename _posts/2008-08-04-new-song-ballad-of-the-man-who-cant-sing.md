@@ -6,29 +6,8 @@ layout: post
 I was listening to NPR today, and there was a program of some song writer who was wining an award. He sang a few of his songs and they were terrible. I decided that even I could do better than that.
 
 So I went home and wrote and recorded a song: 
-	<audio id="wp_mep_44" src="http://blog.classicalcode.com/wp-content/uploads/2008/08/ballad-of-the-man-who-cant-sing.mp3" type="audio/mp3"    controls="controls" preload="none"  >
-		
-		
-		
-		
-		
-		
-		
-		<object width="500" height="30" type="application/x-shockwave-flash" data="http://blog.classicalcode.com/wp-content/plugins/media-element-html5-video-and-audio-player/mediaelement/flashmediaelement.swf">
-			<param name="movie" value="http://blog.classicalcode.com/wp-content/plugins/media-element-html5-video-and-audio-player/mediaelement/flashmediaelement.swf" />
-			<param name="flashvars" value="controls=true&amp;file=http://blog.classicalcode.com/wp-content/uploads/2008/08/ballad-of-the-man-who-cant-sing.mp3" />			
-		</object>		
-	</audio>
-<script type="text/javascript">
-jQuery(document).ready(function($) {
-	$('#wp_mep_44').mediaelementplayer({
-		m:1
-		
-		,features: ['playpause','current','progress','duration','volume','tracks','fullscreen']
-		,audioWidth:500,audioHeight:30
-	});
-});
-</script>
+
+<audio id="wp_mep_44" src="http://blog.classicalcode.com/wp-content/uploads/2008/08/ballad-of-the-man-who-cant-sing.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
 
 <a href="http://blog.classicalcode.com/wp-content/uploads/2008/08/ballad-of-the-man-who-cant-sing.mp3">Download</a>
 

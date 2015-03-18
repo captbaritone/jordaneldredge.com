@@ -27,9 +27,10 @@ type="audio/mp3"    controls="controls" preload="none"  > </audio>
 
 <a
 href="http://blog.classicalcode.com/wp-content/uploads/2012/10/Smile-Ukulele.mp3">Download
-as .mp3</a></p>
-<p>Tablature of the melody and chord voicings, but not the finger picking: <a
-href='http://blog.classicalcode.com/wp-content/uploads/2012/10/Charlie_Chaplin_Smile_Ukulele.pdf'>Charlie_Chaplin_Smile_Ukulele.pdf</a></p>
+as .mp3</a>
+
+Tablature of the melody and chord voicings, but not the finger picking: <a
+href='http://blog.classicalcode.com/wp-content/uploads/2012/10/Charlie_Chaplin_Smile_Ukulele.pdf'>Charlie_Chaplin_Smile_Ukulele.pdf</a>
 
 The lyrics to the song are not used in this recording but are none-the-less
 an important part of this song:

@@ -13,30 +13,8 @@ Still to work on:
 Again, this tag is from <a href="http://www.stampedecitychorus.com/classic_tags_men2.pdf">this</a> (No. 19) collection of barbershop tags. The arranger is not cited, but the .pdf says the tag was sung by the Dealer's Choice in 1973.
 
 The tag: 
-	<audio id="wp_mep_52" src="http://blog.classicalcode.com/wp-content/uploads/2008/03/wholl-take-my-place-when-im-gone-mp3.mp3" type="audio/mp3"    controls="controls" preload="none"  >
-		
-		
-		
-		
-		
-		
-		
-		<object width="500" height="30" type="application/x-shockwave-flash" data="http://blog.classicalcode.com/wp-content/plugins/media-element-html5-video-and-audio-player/mediaelement/flashmediaelement.swf">
-			<param name="movie" value="http://blog.classicalcode.com/wp-content/plugins/media-element-html5-video-and-audio-player/mediaelement/flashmediaelement.swf" />
-			<param name="flashvars" value="controls=true&amp;file=http://blog.classicalcode.com/wp-content/uploads/2008/03/wholl-take-my-place-when-im-gone-mp3.mp3" />			
-		</object>		
-	</audio>
-<script type="text/javascript">
-jQuery(document).ready(function($) {
-	$('#wp_mep_52').mediaelementplayer({
-		m:1
-		
-		,features: ['playpause','current','progress','duration','volume','tracks','fullscreen']
-		,audioWidth:500,audioHeight:30
-	});
-});
-</script>
 
+<audio id="wp_mep_52" src="http://blog.classicalcode.com/wp-content/uploads/2008/03/wholl-take-my-place-when-im-gone-mp3.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
 
 <a title="Who’ll Take My Place When I’m Gone?" href="http://blog.classicalcode.com/wp-content/uploads/2008/03/wholl-take-my-place-when-im-gone-mp3.mp3">Download</a>
 

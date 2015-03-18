@@ -9,29 +9,8 @@ Several months ago, inspired by <a href="http://www.youtube.com/watch?v=L8CwvvDz
 Joachim recorded the lead part and emailed it to the group, and then Jared added the baritone part. Finally I added the bass and tenor parts. For now we are calling ourselves "Removable Do."
 
 The tag is The Shadow of Your Smile from the <a href="http://www.stampedecitychorus.com/classic_tags_men2.pdf">Classic Tags book</a>.
-	<audio id="wp_mep_31" src="http://blog.classicalcode.com/wp-content/uploads/2009/04/the-shadow-of-your-smile-rough-draft.mp3" type="audio/mp3"    controls="controls" preload="none"  >
-		
-		
-		
-		
-		
-		
-		
-		<object width="500" height="30" type="application/x-shockwave-flash" data="http://blog.classicalcode.com/wp-content/plugins/media-element-html5-video-and-audio-player/mediaelement/flashmediaelement.swf">
-			<param name="movie" value="http://blog.classicalcode.com/wp-content/plugins/media-element-html5-video-and-audio-player/mediaelement/flashmediaelement.swf" />
-			<param name="flashvars" value="controls=true&amp;file=http://blog.classicalcode.com/wp-content/uploads/2009/04/the-shadow-of-your-smile-rough-draft.mp3" />			
-		</object>		
-	</audio>
-<script type="text/javascript">
-jQuery(document).ready(function($) {
-	$('#wp_mep_31').mediaelementplayer({
-		m:1
-		
-		,features: ['playpause','current','progress','duration','volume','tracks','fullscreen']
-		,audioWidth:500,audioHeight:30
-	});
-});
-</script>
+
+<audio id="wp_mep_31" src="http://blog.classicalcode.com/wp-content/uploads/2009/04/the-shadow-of-your-smile-rough-draft.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
 
 <a href="http://blog.classicalcode.com/wp-content/uploads/2009/04/the-shadow-of-your-smile-rough-draft.mp3">Download</a>
 

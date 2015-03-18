@@ -6,30 +6,8 @@ layout: post
 My girlfriend is sick, so I arranged and recorded her a song. I hope this helps you feel better Chelsea.
 
 For <a href="http://www.chelseahollow.com">Chelsea</a>:
-	<audio id="wp_mep_36" src="http://blog.classicalcode.com/wp-content/uploads/2009/01/earth-angel.mp3" type="audio/mp3"    controls="controls" preload="none"  >
-		
-		
-		
-		
-		
-		
-		
-		<object width="500" height="30" type="application/x-shockwave-flash" data="http://blog.classicalcode.com/wp-content/plugins/media-element-html5-video-and-audio-player/mediaelement/flashmediaelement.swf">
-			<param name="movie" value="http://blog.classicalcode.com/wp-content/plugins/media-element-html5-video-and-audio-player/mediaelement/flashmediaelement.swf" />
-			<param name="flashvars" value="controls=true&amp;file=http://blog.classicalcode.com/wp-content/uploads/2009/01/earth-angel.mp3" />			
-		</object>		
-	</audio>
-<script type="text/javascript">
-jQuery(document).ready(function($) {
-	$('#wp_mep_36').mediaelementplayer({
-		m:1
-		
-		,features: ['playpause','current','progress','duration','volume','tracks','fullscreen']
-		,audioWidth:500,audioHeight:30
-	});
-});
-</script>
 
+<audio id="wp_mep_36" src="http://blog.classicalcode.com/wp-content/uploads/2009/01/earth-angel.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
 
 <a href="http://blog.classicalcode.com/wp-content/uploads/2009/01/earth-angel.mp3">Download</a>
 

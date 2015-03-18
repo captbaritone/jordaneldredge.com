@@ -6,56 +6,14 @@ layout: post
 My friend Joachim Luis came over tonight and started reading though the beginning piano book that was resting on my keyboard. Being the jock party animals that we are, we decided to try to sing a few of them as two part vocal pieces.
 
 First we sight-read "Rondino" by Jean Philippe Rameau on movable "doo" with Joachim on bass and me on treble (this one is for my dad):
-	<audio id="wp_mep_37" src="http://blog.classicalcode.com/wp-content/uploads/2009/01/rondino.mp3" type="audio/mp3"    controls="controls" preload="none"  >
-		
-		
-		
-		
-		
-		
-		
-		<object width="500" height="30" type="application/x-shockwave-flash" data="http://blog.classicalcode.com/wp-content/plugins/media-element-html5-video-and-audio-player/mediaelement/flashmediaelement.swf">
-			<param name="movie" value="http://blog.classicalcode.com/wp-content/plugins/media-element-html5-video-and-audio-player/mediaelement/flashmediaelement.swf" />
-			<param name="flashvars" value="controls=true&amp;file=http://blog.classicalcode.com/wp-content/uploads/2009/01/rondino.mp3" />			
-		</object>		
-	</audio>
-<script type="text/javascript">
-jQuery(document).ready(function($) {
-	$('#wp_mep_37').mediaelementplayer({
-		m:1
-		
-		,features: ['playpause','current','progress','duration','volume','tracks','fullscreen']
-		,audioWidth:500,audioHeight:30
-	});
-});
-</script>
+
+<audio id="wp_mep_37" src="http://blog.classicalcode.com/wp-content/uploads/2009/01/rondino.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
 
 <a href="http://blog.classicalcode.com/wp-content/uploads/2009/01/rondino.mp3">Download</a>
 
 Then out came the solfeggio. "A Farewell" by Henry Purcell with Joachim on treble and me on bass:
-	<audio id="wp_mep_38" src="http://blog.classicalcode.com/wp-content/uploads/2009/01/a-farewell-purcell1.mp3" type="audio/mp3"    controls="controls" preload="none"  >
-		
-		
-		
-		
-		
-		
-		
-		<object width="500" height="30" type="application/x-shockwave-flash" data="http://blog.classicalcode.com/wp-content/plugins/media-element-html5-video-and-audio-player/mediaelement/flashmediaelement.swf">
-			<param name="movie" value="http://blog.classicalcode.com/wp-content/plugins/media-element-html5-video-and-audio-player/mediaelement/flashmediaelement.swf" />
-			<param name="flashvars" value="controls=true&amp;file=http://blog.classicalcode.com/wp-content/uploads/2009/01/a-farewell-purcell1.mp3" />			
-		</object>		
-	</audio>
-<script type="text/javascript">
-jQuery(document).ready(function($) {
-	$('#wp_mep_38').mediaelementplayer({
-		m:1
-		
-		,features: ['playpause','current','progress','duration','volume','tracks','fullscreen']
-		,audioWidth:500,audioHeight:30
-	});
-});
-</script>
+
+<audio id="wp_mep_38" src="http://blog.classicalcode.com/wp-content/uploads/2009/01/a-farewell-purcell1.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
 
 <a href="http://blog.classicalcode.com/wp-content/uploads/2009/01/a-farewell-purcell1.mp3">Download</a>
 

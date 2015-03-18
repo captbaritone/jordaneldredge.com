@@ -8,29 +8,8 @@ layout: post
 Yesterday, I was at <a href="http://maps.google.com/maps?oe=utf-8&amp;rls=org.mozilla:en-US:official&amp;client=firefox-a&amp;um=1&amp;ie=UTF-8&amp;q=donut+world+sf&amp;fb=1&amp;split=1&amp;gl=us&amp;view=text&amp;latlng=13147797873413706925">Donut World</a> drinking a coffee, eating a buttermilk-bar and missing my <a href="http://www.chelseahollow.com">girlfriend</a>, when this little love song popped into my head. I quickly scrawled it on the back of a piece of paper I found in my pocket, went home and recorded it.
 
 For Chelsea: "Our Love Will Last As Long"
-	<audio id="wp_mep_25" src="http://blog.classicalcode.com/wp-content/uploads/2009/07/Our-Love-Will-Last-As-Long.mp3" type="audio/mp3"    controls="controls" preload="none"  >
-		
-		
-		
-		
-		
-		
-		
-		<object width="500" height="30" type="application/x-shockwave-flash" data="http://blog.classicalcode.com/wp-content/plugins/media-element-html5-video-and-audio-player/mediaelement/flashmediaelement.swf">
-			<param name="movie" value="http://blog.classicalcode.com/wp-content/plugins/media-element-html5-video-and-audio-player/mediaelement/flashmediaelement.swf" />
-			<param name="flashvars" value="controls=true&amp;file=http://blog.classicalcode.com/wp-content/uploads/2009/07/Our-Love-Will-Last-As-Long.mp3" />			
-		</object>		
-	</audio>
-<script type="text/javascript">
-jQuery(document).ready(function($) {
-	$('#wp_mep_25').mediaelementplayer({
-		m:1
-		
-		,features: ['playpause','current','progress','duration','volume','tracks','fullscreen']
-		,audioWidth:500,audioHeight:30
-	});
-});
-</script>
+
+<audio id="wp_mep_25" src="http://blog.classicalcode.com/wp-content/uploads/2009/07/Our-Love-Will-Last-As-Long.mp3" type="audio/mp3"    controls="controls" preload="none"  > </audio>
 
 <a href="http://blog.classicalcode.com/wp-content/uploads/2009/07/Our-Love-Will-Last-As-Long.mp3">Download</a>
 

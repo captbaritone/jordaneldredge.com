@@ -10,28 +10,7 @@ The song I was translating is the first in this set:
 <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="500" height="400" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0"><param name="wmode" value="transparent" /><param name="src" value="http://www.youtube.com/v/3hFL3QlvN7U&amp;hl=en&amp;rel=0&amp;border=1" /><embed type="application/x-shockwave-flash" width="500" height="400" src="http://www.youtube.com/v/3hFL3QlvN7U&amp;hl=en&amp;rel=0&amp;border=1" wmode="transparent"></embed></object>
 
 'Vita de la vita mia' translation as read by a robot: 
-	<audio id="wp_mep_48" src="http://blog.classicalcode.com/wp-content/uploads/2008/05/vita-de-la-mia-vita-translation-spoken-by-robot-mp3.mp3" type="audio/mp3"    controls="controls" preload="none"  >
-		
-		
-		
-		
-		
-		
-		
-		<object width="500" height="30" type="application/x-shockwave-flash" data="http://blog.classicalcode.com/wp-content/plugins/media-element-html5-video-and-audio-player/mediaelement/flashmediaelement.swf">
-			<param name="movie" value="http://blog.classicalcode.com/wp-content/plugins/media-element-html5-video-and-audio-player/mediaelement/flashmediaelement.swf" />
-			<param name="flashvars" value="controls=true&amp;file=http://blog.classicalcode.com/wp-content/uploads/2008/05/vita-de-la-mia-vita-translation-spoken-by-robot-mp3.mp3" />			
-		</object>		
-	</audio>
-<script type="text/javascript">
-jQuery(document).ready(function($) {
-	$('#wp_mep_48').mediaelementplayer({
-		m:1
-		
-		,features: ['playpause','current','progress','duration','volume','tracks','fullscreen']
-		,audioWidth:500,audioHeight:30
-	});
-});
-</script>
+
+<audio id="wp_mep_48" src="http://blog.classicalcode.com/wp-content/uploads/2008/05/vita-de-la-mia-vita-translation-spoken-by-robot-mp3.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
 
 <a href='http://blog.classicalcode.com/wp-content/uploads/2008/05/vita-de-la-mia-vita-translation-spoken-by-robot-mp3.mp3'>Download</a>
