@@ -1,6 +1,7 @@
 ---
 title: "I think my new paste bin should be immune to takedown notices"
 layout: post
+summary: I recently released a new website called HashBin which avoids being able to see the content the pastes it helps create.
 ---
 
 I recently released a new website called [HashBin](http://hashb.in). It takes

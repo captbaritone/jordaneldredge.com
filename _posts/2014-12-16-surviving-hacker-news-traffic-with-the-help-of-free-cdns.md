@@ -1,6 +1,7 @@
 ---
 title: "Surviving Hacker News traffic with the help of free CDNs"
 layout: post
+summary: Free CDNs are a thing, and they can be put to use almost instantaneously during an unexpected traffic spike.
 ---
 
 *This post is the second in an ongoing series about things I learned from my
@@ -21,8 +22,8 @@ the front page. I was thrilled, but also nervous.
 
 My project was on a cheap $10/month VPS hosted by
 [DigitalOcean](http://digitalocean.com/) and I had no idea what to expect. How
-much traffic can this server handle? How much traffic
-does Hacker News actually drive?
+much traffic can this server handle? How much traffic does Hacker News actually
+drive?
 
 I had the advantage that my project was completely static, so I decided to see
 if it was possible to move some of the asset files off of my server and onto

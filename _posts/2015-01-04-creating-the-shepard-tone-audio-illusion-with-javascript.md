@@ -1,6 +1,7 @@
 ---
 title: "Creating the Shepard Tone audio illusion with JavaScript"
 layout: post
+summary: The Shepard Tone is an audio illusion that creates the impression of an endlessly rising or falling tone.
 ---
 
 The [Shepard Tone](http://en.wikipedia.org/wiki/Shepard_tone) is an audio

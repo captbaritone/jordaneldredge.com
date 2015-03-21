@@ -1,0 +1,16 @@
+---
+title: Blog
+permalink: /blog/
+layout: default
+---
+
+<!--<p class='pagination'></p>-->
+{% for post in site.posts %}
+    {% if post.archive != true %}
+        <div class="post-index">
+            <h2><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h2>
+            <p class="meta">Published {{ post.date | date: "%B %-d" }}{{ post.date | ordinal }} {{ post.date | date: "%Y" }}</p>
+        </div>
+    {% endif %}
+{% endfor %}
+<!-- <p class='pagination'></p>-->

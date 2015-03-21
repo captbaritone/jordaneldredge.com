@@ -1,6 +1,7 @@
 ---
 title: "How Winamp2-js loads native skins in your browser"
 layout: post
+summary: How we get from a binary Winamp skin file to seeing Winamp2-js take on the look of your favorite skin, all within the limitations of your browser.
 ---
 
 *This post is the third in an ongoing series about things I learned from my
