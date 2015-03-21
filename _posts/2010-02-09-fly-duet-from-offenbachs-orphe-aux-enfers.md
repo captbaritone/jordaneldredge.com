@@ -8,4 +8,4 @@ To raise money for her graduate school audition tour, my girlfriend <a href="htt
 <strong>
 Fly Duet from Offenbach's <em>Orphée aux enfers</em>:</strong>
 
-<div class='youtube'><iframe width="100%" height="100%" src="http://www.youtube.com/embed/6HXCSosh_9w" frameborder="0" allowfullscreen></iframe></div>
+{% youtube 6HXCSosh_9w %}

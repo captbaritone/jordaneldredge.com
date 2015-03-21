@@ -10,4 +10,4 @@ Things I learned:
 	<li> Higher notes work better for me.</li>
 	<li> The more closed my mouth is the clearer the overtones are heard</li>
 </ul>
-<object width="500" height="400"><param name="movie" value="http://www.youtube.com/v/d8hnK5_5wL8&hl=en&fs=1&rel=0"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/d8hnK5_5wL8&hl=en&fs=1&rel=0" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="500" height="400"></embed></object>
+{% youtube d8hnK5_5wL8 %}

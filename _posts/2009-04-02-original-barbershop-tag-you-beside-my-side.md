@@ -20,4 +20,4 @@ The sheet music: <a href="http://jordaneldredge.com/uploads/2009/04/beside_my_si
 
 I made a little video that teaches you all the parts by ear:
 
-<div class='youtube'><iframe width="100%" height="100%" src="http://www.youtube.com/embed/vsXkce3LgDM" frameborder="0" allowfullscreen></iframe></div>
+{% youtube vsXkce3LgDM %}
