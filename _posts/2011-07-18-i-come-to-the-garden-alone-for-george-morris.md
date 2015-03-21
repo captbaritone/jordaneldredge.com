@@ -3,7 +3,7 @@ title: "I Come To the Garden Alone (For George Morris)"
 layout: post
 ---
 
-<a href="http://blog.classicalcode.com/wp-content/uploads/2011/07/photo.jpeg"><img class="alignnone size-large wp-image-946" title="Wanda and Geroge's Garden" src="http://blog.classicalcode.com/wp-content/uploads/2011/07/photo-500x375.jpg" alt="" width="500" height="375" /></a>
+<a href="http://jordaneldredge.com/uploads/2011/07/photo.jpeg"><img class="alignnone size-large wp-image-946" title="Wanda and Geroge's Garden" src="http://jordaneldredge.com/uploads/2011/07/photo-500x375.jpg" alt="" width="500" height="375" /></a>
 
 Wanda and George's Garden. Photo Credit: <a href="http://www.chelseahollow.com">Chelsea Hollow</a>
 
@@ -15,10 +15,10 @@ This video was recorded in my backyard here in San Francisco.
 
 <div class='youtube'><iframe width="100%" height="100%" src="http://www.youtube.com/embed/FDB0LMrDdEs" frameborder="0" allowfullscreen></iframe></div>
 
-<audio id="wp_mep_11" src="http://blog.classicalcode.com/wp-content/uploads/2011/07/I-Walk-Through-The-Garden-Alone-Ukulele-For-George.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
+<audio id="wp_mep_11" src="http://jordaneldredge.com/uploads/2011/07/I-Walk-Through-The-Garden-Alone-Ukulele-For-George.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
 
-<a href="http://blog.classicalcode.com/wp-content/uploads/2011/07/I-Walk-Through-The-Garden-Alone-Ukulele-For-George.mp3">Mp3 Download
-</a><a href="http://blog.classicalcode.com/wp-content/uploads/2011/07/I-Come-To-the-Garden-Alone.pdf">Tablature Pdf file</a><a href="http://blog.classicalcode.com/wp-content/uploads/2011/07/I-Walk-Through-The-Garden-Alone-Ukulele-For-George.mp3">
+<a href="http://jordaneldredge.com/uploads/2011/07/I-Walk-Through-The-Garden-Alone-Ukulele-For-George.mp3">Mp3 Download
+</a><a href="http://jordaneldredge.com/uploads/2011/07/I-Come-To-the-Garden-Alone.pdf">Tablature Pdf file</a><a href="http://jordaneldredge.com/uploads/2011/07/I-Walk-Through-The-Garden-Alone-Ukulele-For-George.mp3">
 </a>
 
 Hymn: "In The Garden"

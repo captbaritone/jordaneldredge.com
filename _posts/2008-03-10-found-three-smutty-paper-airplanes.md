@@ -7,8 +7,8 @@ My all-time favorite finds are these three, which I found <a href="http://maps.g
 
 The following links are most likely "Not Safe For Work".
 
-<a href="http://blog.classicalcode.com/wp-content/uploads/2008/02/photo-0018.jpg" title="Paper airplane 1">Paper airplane 1</a>
+<a href="http://jordaneldredge.com/uploads/2008/02/photo-0018.jpg" title="Paper airplane 1">Paper airplane 1</a>
 
-<a href="http://blog.classicalcode.com/wp-content/uploads/2008/02/photo-0019.jpg" title="Paper airplane 2">Paper airplane 2</a>
+<a href="http://jordaneldredge.com/uploads/2008/02/photo-0019.jpg" title="Paper airplane 2">Paper airplane 2</a>
 
-<a href="http://blog.classicalcode.com/wp-content/uploads/2008/02/photo-0046.jpg" title="Paper airplane 3">Paper airplane 3</a>
+<a href="http://jordaneldredge.com/uploads/2008/02/photo-0046.jpg" title="Paper airplane 3">Paper airplane 3</a>

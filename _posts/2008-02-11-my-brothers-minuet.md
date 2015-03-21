@@ -7,6 +7,6 @@ My <a href="http://www.math.ucsd.edu/~neldredg/">brother</a> took a music course
 
 (Please excuse my pedantic playing, and the added <strike>upper</strike> lower neighbor tone "embellishment" near the end of the first repetition of the "B" section.)
 
-<audio id="wp_mep_55" src="http://blog.classicalcode.com/wp-content/uploads/2008/02/minuet.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
+<audio id="wp_mep_55" src="http://jordaneldredge.com/uploads/2008/02/minuet.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
 
-<a href="http://blog.classicalcode.com/wp-content/uploads/2008/02/minuet.mp3">Download</a>
+<a href="http://jordaneldredge.com/uploads/2008/02/minuet.mp3">Download</a>

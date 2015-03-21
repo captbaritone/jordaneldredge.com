@@ -12,6 +12,6 @@ Want to Hold Your Hand" by The Beatles.
 
 Listen to the result:
 
-<audio id="wp_mep_28" src="http://blog.classicalcode.com/wp-content/uploads/2009/05/i-wanna-hold-your-hand.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
+<audio id="wp_mep_28" src="http://jordaneldredge.com/uploads/2009/05/i-wanna-hold-your-hand.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
 
-<a href="http://blog.classicalcode.com/wp-content/uploads/2009/05/i-wanna-hold-your-hand.mp3">Download</a>
+<a href="http://jordaneldredge.com/uploads/2009/05/i-wanna-hold-your-hand.mp3">Download</a>

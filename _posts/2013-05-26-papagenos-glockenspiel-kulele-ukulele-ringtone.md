@@ -3,7 +3,7 @@ title: "Papageno's Glockenspiel-kulele [Ukulele Ringtone]"
 layout: post
 ---
 
-<a href="http://blog.classicalcode.com/wp-content/uploads/2013/05/237_519706926108_6153_n.jpg"><img class="size-large wp-image-1377" alt="Jordan Eldredge as Papageno in SFSU's 2005 Magic Flute - Photo credit Isaac Benelli" src="http://blog.classicalcode.com/wp-content/uploads/2013/05/237_519706926108_6153_n-500x334.jpg" width="500" height="334" /></a>
+<a href="http://jordaneldredge.com/uploads/2013/05/237_519706926108_6153_n.jpg"><img class="size-large wp-image-1377" alt="Jordan Eldredge as Papageno in SFSU's 2005 Magic Flute - Photo credit Isaac Benelli" src="http://jordaneldredge.com/uploads/2013/05/237_519706926108_6153_n-500x334.jpg" width="500" height="334" /></a>
 
 Jordan Eldredge as Papageno in SFSU's 2005 Magic Flute - Photo credit Isaac Benelli
 
@@ -18,20 +18,20 @@ The recording consists of four tracks with the melody trading off between the fi
 
 Take a listen, and download the mp3 or iPhone ringtone:
 
-<audio id="wp_mep_2" src="http://blog.classicalcode.com/wp-content/uploads/2013/05/Papagenos-Glockenspiel-kulele.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
+<audio id="wp_mep_2" src="http://jordaneldredge.com/uploads/2013/05/Papagenos-Glockenspiel-kulele.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
 
-<a href="http://blog.classicalcode.com/wp-content/uploads/2013/05/Papagenos-Glockenspiel-kulele.mp3">Download as .mp3</a>
-<a href="http://blog.classicalcode.com/wp-content/uploads/2013/05/Papagenos-Glockenspiel-kulele.m4r">Download as .m4r</a> (iPhone ring tone)
+<a href="http://jordaneldredge.com/uploads/2013/05/Papagenos-Glockenspiel-kulele.mp3">Download as .mp3</a>
+<a href="http://jordaneldredge.com/uploads/2013/05/Papagenos-Glockenspiel-kulele.m4r">Download as .m4r</a> (iPhone ring tone)
 
 <h2><strong>Bonus:</strong></h2>
 <strong> </strong>Two text-tones on the same theme
 
 <strong>Papageno's Ton</strong>
-<audio id="wp_mep_3" src="http://blog.classicalcode.com/wp-content/uploads/2013/05/Papagenos-Ton.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
+<audio id="wp_mep_3" src="http://jordaneldredge.com/uploads/2013/05/Papagenos-Ton.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
 
-<a href="http://blog.classicalcode.com/wp-content/uploads/2013/05/Papagenos-Ton.mp3">Download as .mp3</a>/<a href="http://blog.classicalcode.com/wp-content/uploads/2013/05/Papagenos-Ton.m4r">Download as .m4r</a> (iPhone ring tone)
+<a href="http://jordaneldredge.com/uploads/2013/05/Papagenos-Ton.mp3">Download as .mp3</a>/<a href="http://jordaneldredge.com/uploads/2013/05/Papagenos-Ton.m4r">Download as .m4r</a> (iPhone ring tone)
 
 <strong>Papageno's Tritone</strong>
-<audio id="wp_mep_4" src="http://blog.classicalcode.com/wp-content/uploads/2013/05/Papagenos-Tritone.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
+<audio id="wp_mep_4" src="http://jordaneldredge.com/uploads/2013/05/Papagenos-Tritone.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
 
-<a href="http://blog.classicalcode.com/wp-content/uploads/2013/05/Papagenos-Tritone.mp3">Download as .mp3</a>/<a href="http://blog.classicalcode.com/wp-content/uploads/2013/05/Papagenos-Tritone.m4r">Download as .m4r</a> (iPhone ring tone)
+<a href="http://jordaneldredge.com/uploads/2013/05/Papagenos-Tritone.mp3">Download as .mp3</a>/<a href="http://jordaneldredge.com/uploads/2013/05/Papagenos-Tritone.m4r">Download as .m4r</a> (iPhone ring tone)

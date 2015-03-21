@@ -9,9 +9,9 @@ The results:
 <div class='youtube'><iframe width="100%" height="100%" src="http://www.youtube.com/embed/vdLnQ5T0VaU" frameborder="0" allowfullscreen></iframe></div>
 
 Also available as a free mp3:
-<audio id="wp_mep_16" src="http://blog.classicalcode.com/wp-content/uploads/2010/01/In-My-Room.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
+<audio id="wp_mep_16" src="http://jordaneldredge.com/uploads/2010/01/In-My-Room.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
 
-<a href="http://blog.classicalcode.com/wp-content/uploads/2010/01/In-My-Room.mp3">Download</a>
+<a href="http://jordaneldredge.com/uploads/2010/01/In-My-Room.mp3">Download</a>
 
 <strong>Cast:</strong>
 <ul>

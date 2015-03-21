@@ -14,9 +14,9 @@ Again, this tag is from <a href="http://www.stampedecitychorus.com/classic_tags_
 
 The tag: 
 
-<audio id="wp_mep_52" src="http://blog.classicalcode.com/wp-content/uploads/2008/03/wholl-take-my-place-when-im-gone-mp3.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
+<audio id="wp_mep_52" src="http://jordaneldredge.com/uploads/2008/03/wholl-take-my-place-when-im-gone-mp3.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
 
-<a title="Who’ll Take My Place When I’m Gone?" href="http://blog.classicalcode.com/wp-content/uploads/2008/03/wholl-take-my-place-when-im-gone-mp3.mp3">Download</a>
+<a title="Who’ll Take My Place When I’m Gone?" href="http://jordaneldredge.com/uploads/2008/03/wholl-take-my-place-when-im-gone-mp3.mp3">Download</a>
 
 Previously:
 <ul>

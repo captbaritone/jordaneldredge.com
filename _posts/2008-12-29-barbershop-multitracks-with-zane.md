@@ -7,12 +7,12 @@ My friend <a href="http://www.zaynardstudios.com/Welcome.html">Zane Fiala</a> an
 
 We Love to Sing Those Close Harmony Songs:
 
-<audio id="wp_mep_39" src="http://blog.classicalcode.com/wp-content/uploads/2008/12/welovetosing.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
+<audio id="wp_mep_39" src="http://jordaneldredge.com/uploads/2008/12/welovetosing.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
 
-<a href="http://blog.classicalcode.com/wp-content/uploads/2008/12/welovetosing.mp3">Download</a>
+<a href="http://jordaneldredge.com/uploads/2008/12/welovetosing.mp3">Download</a>
 
 Somewhere (from West Side Story):
 
-<audio id="wp_mep_40" src="http://blog.classicalcode.com/wp-content/uploads/2008/12/somewhere.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
+<audio id="wp_mep_40" src="http://jordaneldredge.com/uploads/2008/12/somewhere.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
 
-<a href="http://blog.classicalcode.com/wp-content/uploads/2008/12/somewhere.mp3">Download</a>
+<a href="http://jordaneldredge.com/uploads/2008/12/somewhere.mp3">Download</a>

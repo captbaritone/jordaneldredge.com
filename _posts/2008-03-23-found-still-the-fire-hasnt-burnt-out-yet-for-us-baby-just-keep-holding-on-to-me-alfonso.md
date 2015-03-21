@@ -3,7 +3,7 @@ title: "Found: \"still, the fire hasn't burnt out yet for us Baby, just keep hol
 layout: post
 ---
 
-<a title="Love Letter - front page" href="http://blog.classicalcode.com/wp-content/uploads/2008/03/photo-0034.jpg"><img src="http://blog.classicalcode.com/wp-content/uploads/2008/03/photo-0034.thumbnail.jpg" alt="Love Letter - front page" hspace="5" align="left" /></a>I don't remember exactly where this came from, but I have a vague recollection of someone (other then myself) finding it at a beach, and giving it to me. <span style="text-decoration: line-through;">Possibly when I was at <a href="http://www.operaworks.com/">OperaWorks</a>. If anyone remembers, let me know.</span>
+<a title="Love Letter - front page" href="http://jordaneldredge.com/uploads/2008/03/photo-0034.jpg"><img src="http://jordaneldredge.com/uploads/2008/03/photo-0034.thumbnail.jpg" alt="Love Letter - front page" hspace="5" align="left" /></a>I don't remember exactly where this came from, but I have a vague recollection of someone (other then myself) finding it at a beach, and giving it to me. <span style="text-decoration: line-through;">Possibly when I was at <a href="http://www.operaworks.com/">OperaWorks</a>. If anyone remembers, let me know.</span>
 
 *Edit: Chelsea reminded me that she found it in the water on the beach when we were in Aruba last year*
 
@@ -11,8 +11,8 @@ This is an intense love letter to Alfonso. From the letter: "still, the fire has
 
 The scans:
 
-* [Love Letter - front page](http://blog.classicalcode.com/wp-content/uploads/2008/03/photo-0034.jpg)
-* [Love Letter - back page](http://blog.classicalcode.com/wp-content/uploads/2008/03/photo-0035.jpg)
+* [Love Letter - front page](http://jordaneldredge.com/uploads/2008/03/photo-0034.jpg)
+* [Love Letter - back page](http://jordaneldredge.com/uploads/2008/03/photo-0035.jpg)
 
 Because the photo I took is such poor quality, I have transcribed it here below:<span id="more-68"></span>
 > Dear my sweet sexy little Baby =), 7-5-07

@@ -11,9 +11,9 @@ You can hear the original four part arrangement <a href="http://blog.classicalco
 
 I present to you "In Dixie Land Where I Was Born" from David Wright's collection: <em><a href="http://www.stampedecitychorus.com/classic_tags_men2.pdf">Classic Tags for Men's Voices</a></em> in parallel fifths:
 
-<audio id="wp_mep_20" src="http://blog.classicalcode.com/wp-content/uploads/2009/11/Eight-Part-Parallel-Fifths-In-Dixie-Land-Where-I-Was-Born.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
+<audio id="wp_mep_20" src="http://jordaneldredge.com/uploads/2009/11/Eight-Part-Parallel-Fifths-In-Dixie-Land-Where-I-Was-Born.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
 
-<a href="http://blog.classicalcode.com/wp-content/uploads/2009/11/Eight-Part-Parallel-Fifths-In-Dixie-Land-Where-I-Was-Born.mp3">Download</a>
+<a href="http://jordaneldredge.com/uploads/2009/11/Eight-Part-Parallel-Fifths-In-Dixie-Land-Where-I-Was-Born.mp3">Download</a>
 
-<strong>Update:</strong> I have typeset the complete octet in the key of "C" as a <a href="http://blog.classicalcode.com/wp-content/uploads/2009/11/eight-part-dixie-land-tag.pdf">pdf file</a> and also generated a <a href='http://blog.classicalcode.com/wp-content/uploads/2009/11/eight-part-dixie-land-tag.midi'>midi file</a>.
+<strong>Update:</strong> I have typeset the complete octet in the key of "C" as a <a href="http://jordaneldredge.com/uploads/2009/11/eight-part-dixie-land-tag.pdf">pdf file</a> and also generated a <a href='http://jordaneldredge.com/uploads/2009/11/eight-part-dixie-land-tag.midi'>midi file</a>.
 <a href="https://github.com/captbaritone/eldredge-dixie_land_parallel_fifths">Lilypond source file on GitHub</a>

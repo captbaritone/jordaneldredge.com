@@ -9,8 +9,8 @@ The text:
 <blockquote>Hello, hello hello hello! Hello, you phone is ringin'. Hello, that's why I'm singin': "Hello." (Pick up your, cell, phone!)</blockquote>
 The tag: 
 
-<audio id="wp_mep_51" src="http://blog.classicalcode.com/wp-content/uploads/2008/03/hello-mp3.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
+<audio id="wp_mep_51" src="http://jordaneldredge.com/uploads/2008/03/hello-mp3.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
 
-<a href="http://blog.classicalcode.com/wp-content/uploads/2008/03/hello-mp3.mp3" title="“Hello” Cell phone barbershop ring tone">Download</a>
+<a href="http://jordaneldredge.com/uploads/2008/03/hello-mp3.mp3" title="“Hello” Cell phone barbershop ring tone">Download</a>
 
 For more multi-track barbershop fun, check out the "<a href="http://blog.classicalcode.com/?cat=61">barbershop</a>" category of this blog.

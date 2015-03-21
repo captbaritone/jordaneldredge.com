@@ -20,6 +20,6 @@ Areas that I still wish to improve are:
 </ul>
 As before the music is from <a href="http://www.stampedecitychorus.com/classic_tags_men2.pdf">this</a> (No. 98) great collection of barbershop tags. However this time, neither the arranger nor the quartet are cited.
 
-<audio id="wp_mep_53" src="http://blog.classicalcode.com/wp-content/uploads/2008/03/lord-you-made-the-night-too-long.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
+<audio id="wp_mep_53" src="http://jordaneldredge.com/uploads/2008/03/lord-you-made-the-night-too-long.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
 
-<a href="http://blog.classicalcode.com/wp-content/uploads/2008/03/lord-you-made-the-night-too-long.mp3" title="Multi-track tag: Lord You Made the Night Too Long">Download</a>
+<a href="http://jordaneldredge.com/uploads/2008/03/lord-you-made-the-night-too-long.mp3" title="Multi-track tag: Lord You Made the Night Too Long">Download</a>

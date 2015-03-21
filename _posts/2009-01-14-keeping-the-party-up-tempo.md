@@ -7,15 +7,15 @@ My friend Joachim Luis came over tonight and started reading though the beginnin
 
 First we sight-read "Rondino" by Jean Philippe Rameau on movable "doo" with Joachim on bass and me on treble (this one is for my dad):
 
-<audio id="wp_mep_37" src="http://blog.classicalcode.com/wp-content/uploads/2009/01/rondino.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
+<audio id="wp_mep_37" src="http://jordaneldredge.com/uploads/2009/01/rondino.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
 
-<a href="http://blog.classicalcode.com/wp-content/uploads/2009/01/rondino.mp3">Download</a>
+<a href="http://jordaneldredge.com/uploads/2009/01/rondino.mp3">Download</a>
 
 Then out came the solfeggio. "A Farewell" by Henry Purcell with Joachim on treble and me on bass:
 
-<audio id="wp_mep_38" src="http://blog.classicalcode.com/wp-content/uploads/2009/01/a-farewell-purcell1.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
+<audio id="wp_mep_38" src="http://jordaneldredge.com/uploads/2009/01/a-farewell-purcell1.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
 
-<a href="http://blog.classicalcode.com/wp-content/uploads/2009/01/a-farewell-purcell1.mp3">Download</a>
+<a href="http://jordaneldredge.com/uploads/2009/01/a-farewell-purcell1.mp3">Download</a>
 
 And then out came the video camera. "Sarabande" by Arcangelo Corelli:
 <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="500" height="400" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0"><param name="allowFullScreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="src" value="http://www.youtube.com/v/fvWXrld200E&amp;hl=en&amp;fs=1&amp;rel=0" /><param name="allowfullscreen" value="true" /><embed type="application/x-shockwave-flash" width="500" height="400" src="http://www.youtube.com/v/fvWXrld200E&amp;hl=en&amp;fs=1&amp;rel=0" allowscriptaccess="always" allowfullscreen="true"></embed></object>
