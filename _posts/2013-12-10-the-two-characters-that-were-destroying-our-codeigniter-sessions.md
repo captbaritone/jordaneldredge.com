@@ -8,9 +8,9 @@ A [CodeIgniter] project I was working on for work had a strange bug where
 users were getting mysteriously logged out. After hours of debugging I was able
 to narrow it down to it's minimal reproduceable form:
 
-```php
+~~~php
 $this->session->set_userdata('example_session_value', array('\/'));
-```
+~~~
 
 Running that line of code will render the current session irretrievable. We
 were running version 2.1.3. I also tried the most recent stable version (2.1.4)

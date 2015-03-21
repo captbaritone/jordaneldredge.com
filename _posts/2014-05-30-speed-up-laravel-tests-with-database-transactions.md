@@ -25,31 +25,31 @@ This actually proved harder than I thought. My current solution, which is
 a total hack, is to create a custom boostrap file which shells out to run the
 artisan seed command before beginning any testing:
 
-```php
+~~~php
 <?php
 
 // bootstrap/testingAutoload.php
 
 passthru("php artisan --env='testing' migrate --seed");
 require __DIR__ . '/autoload.php';
-```
+~~~
 
 Then I change my `phpunit.xml` to use that boostrap file instead:
 
-```xml
+~~~xml
 <phpunit
 ...
-		bootstrap="bootstrap/testingAutoload.php"
+    bootstrap="bootstrap/testingAutoload.php"
 ...
 >
-```
+~~~
 
 ## 2. Encapsulate each test in a transaction
 
 I then add these `setUp()` and `tearDown()` methods to the `TestCase` class
 which Laravel gives us:
 
-```php
+~~~php
 public function setUp()
 {
 	parent::setUp();
@@ -60,7 +60,7 @@ public function tearDown()
 	parent::tearDown();
 	DB::rollBack();
 }
-```
+~~~
 
 ## Further considerations
 

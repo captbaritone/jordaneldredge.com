@@ -10,9 +10,9 @@ being able to see the content the pastes it helps create.
 What is the "hash" of a URL, and why is it special? The hash is the portion of
 the URL that follows the `#` symbol. For example:
 
-```python
+~~~python
 http://example.com#the-hash
-```
+~~~
 
 Here's what makes it special:
 

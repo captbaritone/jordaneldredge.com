@@ -12,7 +12,7 @@ Here is the jQuery solution I came up with that allows the user to cycle
 through as many suggestions as they want without having to ever wait for an
 http request:
 
-```javascript
+~~~javascript
 // Start with an empty array of suggestions
 var suggestions = [];
 
@@ -42,7 +42,7 @@ function refresh() {
     // If we have fewer than five suggestions left, fetch some more
     if(suggestions.length < 5) getSuggestions();
 }
-```
+~~~
 
 Check out the actual code on [GitHub].
 
