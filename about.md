@@ -3,6 +3,10 @@ layout: page
 title: About
 permalink: /
 ---
+<div class='headshot'>
+<img src="{{ "/images/jordan_eldredge.jpg" | prepend: site.baseurl }}"
+alt='Jordan Eldredge playing Ukulele'>
+</div>
 
 Hello! My name is Jordan Eldredge. I am a programmer and classical singer
 living in San Francisco with my wife, and fellow singer, [Chelsea

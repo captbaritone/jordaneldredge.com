@@ -7,3 +7,12 @@
 @import "basscss";
 @import "main";
 // @import "solarized-dark";
+
+@media screen and (min-width: 37em) {
+    .headshot {
+        max-width: 360px;
+        float: right;
+        margin-left: 2em;
+        margin-bottom: 1em;
+    }
+}
