@@ -8,11 +8,17 @@
 @import "main";
 // @import "solarized-dark";
 
+.headshot {
+    margin-bottom: 1em;
+    .attribution {
+        font-size: .5em;
+        font-style: italic;
+    }
+}
 @media screen and (min-width: 37em) {
     .headshot {
         max-width: 360px;
         float: right;
         margin-left: 2em;
-        margin-bottom: 1em;
     }
 }

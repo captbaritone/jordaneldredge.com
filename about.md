@@ -6,6 +6,7 @@ permalink: /
 <div class='headshot'>
 <img src="{{ "/images/jordan_eldredge.jpg" | prepend: site.baseurl }}"
 alt='Jordan Eldredge playing Ukulele'>
+<span class='attribution'>Photo by Alex C. Telander</span>
 </div>
 
 Hello! My name is Jordan Eldredge. I am a programmer and classical singer
