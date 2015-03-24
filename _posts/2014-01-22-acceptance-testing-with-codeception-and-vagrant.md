@@ -56,7 +56,7 @@ My `acceptance.suite.yml` looks like this:
 
 [Codeception]: http://codeception.com/
 [Selenium]: http://docs.seleniumhq.org/
-[Vagrant]: vagrantup.com
+[Vagrant]: http://vagrantup.com
 [PhantomJS]: http://phantomjs.org/
 [WebDriver]: http://codeception.com/docs/modules/WebDriver
 [Db module]: http://codeception.com/docs/modules/Db
