@@ -1,5 +1,5 @@
 ---
-title: "Speeding up Laravel tests with database transactions"
+title: "Speed up Laravel tests with database transactions"
 layout: post
 ---
 
