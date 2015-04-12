@@ -19,6 +19,7 @@ keep_files:
     - share_until
     - .htaccess
     - talks
+    - winamp2-js.js
 
 #Pixyll features
 show_related_posts: false
