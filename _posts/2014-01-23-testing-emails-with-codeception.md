@@ -28,4 +28,4 @@ module which can be installed as a simple Composer requirement. You can find it
 [MailCatcher Codeception Helper]: https://github.com/captbaritone/mailcatcher-codeception-helper
 [MailCatcher Codeception Module]: https://github.com/captbaritone/codeception-mailcatcher-module
 [MailCatcher]: http://mailcatcher.me/
-[screenshot]: %base_url%/content/images/mailcatcher.png
+[screenshot]: {{ "/content/images/mailcatcher.png" | prepend: site.baseulr }}
