@@ -8,11 +8,11 @@ The [Shepard Tone](http://en.wikipedia.org/wiki/Shepard_tone) is an audio
 illusion that creates the impression of an endlessly rising or falling tone.
 
 Back in 2009 I rendered an [example of it using
-Lilypond](http://jordaneldredge.com/projects/winamp2-js/), which was pretty
+Lilypond]({{ site.url }}/projects/winamp2-js/), which was pretty
 hacky.
 
 Having recently played with the Web Audio API for my [Winamp2-js
-project](http://jordaneldredge.com/projects/winamp2-js/) I realized it
+project]({{ site.url }}/projects/winamp2-js/) I realized it
 would be easy to create this effect using Javascript.
 
 You can hear for yourself, just turn up the volume:

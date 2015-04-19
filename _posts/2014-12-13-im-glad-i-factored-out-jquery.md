@@ -4,7 +4,7 @@ layout: post
 ---
 
 *This post is the first in an ongoing series about things I learned from my
-recent [Winamp2-js](http://jordaneldredge.com/projects/winamp2-js/) project.*
+recent [Winamp2-js]({{ site.url }}/projects/winamp2-js/) project.*
 
 Like many of us, I rejected javascript as a dark art until jQuery arrived and
 finally made it usable. At that point I started writing javascript exclusively
@@ -29,4 +29,4 @@ understanding of the functionality jQuery actually provides, but I learned that
 javascript's interface is not nearly as problematic as I had convinced myself
 it was during all those years of blind rejection.
 
-*Next: [Surviving Hacker News traffic with the help of free CDNs](http://jordaneldredge.com/blog/surviving-hacker-news-traffic-with-the-help-of-free-cdns)*
+*Next: [Surviving Hacker News traffic with the help of free CDNs]({{ site.url }}/blog/surviving-hacker-news-traffic-with-the-help-of-free-cdns)*

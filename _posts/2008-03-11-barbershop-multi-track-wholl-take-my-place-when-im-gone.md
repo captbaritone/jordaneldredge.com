@@ -12,14 +12,15 @@ Still to work on:
 </ul>
 Again, this tag is from <a href="http://www.stampedecitychorus.com/classic_tags_men2.pdf">this</a> (No. 19) collection of barbershop tags. The arranger is not cited, but the .pdf says the tag was sung by the Dealer's Choice in 1973.
 
-The tag: 
+The tag:
 
-<audio id="wp_mep_52" src="http://jordaneldredge.com/uploads/2008/03/wholl-take-my-place-when-im-gone-mp3.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
+<audio id="wp_mep_52" src="{{ site.url }}/uploads/2008/03/wholl-take-my-place-when-im-gone-mp3.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
 
-<a title="Who’ll Take My Place When I’m Gone?" href="http://jordaneldredge.com/uploads/2008/03/wholl-take-my-place-when-im-gone-mp3.mp3">Download</a>
+<a title="Who’ll Take My Place When I’m Gone?" href="{{ site.url }}/uploads/2008/03/wholl-take-my-place-when-im-gone-mp3.mp3">Download</a>
 
 Previously:
 <ul>
-	<li><a href="http://blog.classicalcode.com/?p=57">Love Letter's Straight from the Heart</a></li>
+	<li><a href="{{ site.url }}/blog/my-first-barbershop-multi-track-love-letters/ ">Love Letter's Straight from the Heart</a></li>
 	<li><a href="http://blog.classicalcode.com/?p=59">Lord, You Made the Night Too Long</a></li>
+
 </ul>

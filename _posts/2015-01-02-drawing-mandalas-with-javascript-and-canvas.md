@@ -6,10 +6,10 @@ summary: Rewriting a PHP script from 2008 in JavaScript.
 
 I was looking through my old blog posts when I came across [Drawing mandalas
 with PHP for my
-Papa](http://jordaneldredge.com/blog/drawing-mandalas-with-php-for-my-papa)
+Papa]({{ site.url }}/blog/drawing-mandalas-with-php-for-my-papa)
 from back in 2008.
 Having just played with the HTML5 canvas tag as part of my
-[Winamp2-js project](http://jordaneldredge.com/projects/winamp2-js/),
+[Winamp2-js project]({{ site.url }}/projects/winamp2-js/),
 I immediatly thought: "This would be easy to do using Javascript and
 Canvas".
 

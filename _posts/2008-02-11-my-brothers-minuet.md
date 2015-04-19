@@ -3,10 +3,10 @@ title: "My brother's minuet"
 layout: post
 ---
 
-My <a href="http://thatsmathematics.com/">brother</a> took a music course in his undergrad and as part of his coursework wrote a minuet. Its been sitting on the piano at home for some time, and a few days ago my parents, on the advice of my aunt, suggested that I record it for my grandparents. So, without further ado, here is "Minuet" by Nate Eldredge.
+My <a href="http://thatsmathematics.com//">brother</a> took a music course in his undergrad and as part of his coursework wrote a minuet. Its been sitting on the piano at home for some time, and a few days ago my parents, on the advice of my aunt, suggested that I record it for my grandparents. So, without further ado, here is "Minuet" by Nate Eldredge.
 
 (Please excuse my pedantic playing, and the added <strike>upper</strike> lower neighbor tone "embellishment" near the end of the first repetition of the "B" section.)
 
-<audio id="wp_mep_55" src="http://jordaneldredge.com/uploads/2008/02/minuet.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
+<audio id="wp_mep_55" src="{{ site.url }}/uploads/2008/02/minuet.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
 
-<a href="http://jordaneldredge.com/uploads/2008/02/minuet.mp3">Download</a>
+<a href="{{ site.url }}/uploads/2008/02/minuet.mp3">Download</a>

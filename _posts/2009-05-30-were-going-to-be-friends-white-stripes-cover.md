@@ -7,6 +7,6 @@ Inspired by the <a href="http://blog.classicalcode.com/?p=521">recording I made 
 
 Have a listen to this cover of the White Stripe's "Were Going To Be Friends":
 
-<audio id="wp_mep_27" src="http://jordaneldredge.com/uploads/2009/05/were-going-to-be-friends-white-stripes-cover.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
+<audio id="wp_mep_27" src="{{ site.url }}/uploads/2009/05/were-going-to-be-friends-white-stripes-cover.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
 
-<a href='http://jordaneldredge.com/uploads/2009/05/were-going-to-be-friends-white-stripes-cover.mp3'>Download</a>
+<a href='{{ site.url }}/uploads/2009/05/were-going-to-be-friends-white-stripes-cover.mp3'>Download</a>

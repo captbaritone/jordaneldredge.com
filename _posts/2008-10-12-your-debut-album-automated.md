@@ -15,6 +15,6 @@ The internet has spawned a hilarious method for determining Your Debut Album and
 >
 > Put it all together, that's your debut album.
 
-I found this very funny, so I wrote a quick and dirty script to automate the process, and I must say, seeing an actual image of the album only makes it funnier. <a href="http://jordaneldredge.com/projects/album-cover-generator/">Have your debut album automatically generated here</a>. Be patient though, it takes a second to get all the data and put it together. The images are fully bookmarkable/shareable and you can simply hit refresh to get a new one!
+I found this very funny, so I wrote a quick and dirty script to automate the process, and I must say, seeing an actual image of the album only makes it funnier. <a href="{{ site.url }}/projects/album-cover-generator/">Have your debut album automatically generated here</a>. Be patient though, it takes a second to get all the data and put it together. The images are fully bookmarkable/shareable and you can simply hit refresh to get a new one!
 
 You can find the source code on [GitHub](https://github.com/captbaritone/album-cover-generator)

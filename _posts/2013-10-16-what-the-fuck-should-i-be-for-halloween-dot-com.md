@@ -12,7 +12,7 @@ href="http://WhatTheFuckShouldIBeForHalloween.com">WhatTheFuckShouldIBeForHallow
 <a href="http://whatthefuckshouldibeforhalloween.com"><img
 class="size-full wp-image-1525 " alt="You'd better fucking go as a...
 flirtatious Winnebago"
-src="http://jordaneldredge.com/uploads/2013/10/Screen-Shot-2013-10-16-at-2.05.44-PM.png"
+src="{{ site.url }}/uploads/2013/10/Screen-Shot-2013-10-16-at-2.05.44-PM.png"
 width="500" height="446" /></a>
 
 

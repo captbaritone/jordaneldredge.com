@@ -9,4 +9,4 @@ permalink: /contact/
 * Github:  [captbaritone](https://github.com/captbaritone)
 * Youtube: [captbaritone](https://www.youtube.com/user/captbaritone)
 
-[My PGP key](http://jordaneldredge.com/contact/jordaneldredge.asc) ([What is this?](http://en.wikipedia.org/wiki/Pretty_Good_Privacy))
+[My PGP key]({{ site.url }}/jordaneldredge.asc) ([What is this?](http://en.wikipedia.org/wiki/Pretty_Good_Privacy))

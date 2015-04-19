@@ -7,6 +7,6 @@ When I was taking Vocal Literature from <a href="http://www.sfsu.edu/~music/patt
 
 Here, it is for your enjoyment: 
 
-<audio id="wp_mep_49" src="http://jordaneldredge.com/uploads/2008/05/alvin-sings-widmung.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
+<audio id="wp_mep_49" src="{{ site.url }}/uploads/2008/05/alvin-sings-widmung.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
 
-<a href="http://jordaneldredge.com/uploads/2008/05/alvin-sings-widmung.mp3">Download</a>
+<a href="{{ site.url }}/uploads/2008/05/alvin-sings-widmung.mp3">Download</a>

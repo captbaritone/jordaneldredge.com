@@ -22,12 +22,12 @@ I am not sure how I feel about reverb on mult-track recordings of this sort. On 
 
 The tag <em>without</em> reverb:
 
-<audio id="wp_mep_52" src="http://jordaneldredge.com/uploads/2008/04/i-love-to-sing-em.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
+<audio id="wp_mep_52" src="{{ site.url }}/uploads/2008/04/i-love-to-sing-em.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
 
-<a href="http://jordaneldredge.com/uploads/2008/04/i-love-to-sing-em.mp3">Download</a>
+<a href="{{ site.url }}/uploads/2008/04/i-love-to-sing-em.mp3">Download</a>
 
 The tag <em>with</em> reverb:
 
-<audio id="wp_mep_53" src="http://jordaneldredge.com/uploads/2008/04/i-love-to-sing-em-reverb.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
+<audio id="wp_mep_53" src="{{ site.url }}/uploads/2008/04/i-love-to-sing-em-reverb.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
 
-<a href="http://jordaneldredge.com/uploads/2008/04/i-love-to-sing-em-reverb.mp3">Download</a>
+<a href="{{ site.url }}/uploads/2008/04/i-love-to-sing-em-reverb.mp3">Download</a>

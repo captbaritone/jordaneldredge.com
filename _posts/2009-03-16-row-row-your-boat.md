@@ -11,5 +11,5 @@ I decided to take this idea to it's logical extreme and found a short enough son
 {% youtube _YWitlb7BUc %}
 
 In order to actually sing this, I had to create sheet music for it.
-Here it is: <a href="http://jordaneldredge.com/uploads/2009/03/row_row.pdf">row_row.pdf</a>
+Here it is: <a href="{{ site.url }}/uploads/2009/03/row_row.pdf">row_row.pdf</a>
 <a href="https://github.com/captbaritone/eldredge-our_love_will_last_as_long">Lilypond source file on GitHub</a>

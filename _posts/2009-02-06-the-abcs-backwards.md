@@ -9,6 +9,6 @@ Inspired to further acts of nerdome by the encouraging comments on my <a href="h
 
 Due to a <a href="http://forums.macrumors.com/showthread.php?t=223370">bug</a> in iMovieHD I was unable to reverse the video so you could here the original melody, but here is the audio reversed:
 
-<audio id="wp_mep_35" src="http://jordaneldredge.com/uploads/2009/02/abcs.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
+<audio id="wp_mep_35" src="{{ site.url }}/uploads/2009/02/abcs.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
 
-<a href='http://jordaneldredge.com/uploads/2009/02/abcs.mp3'>Download</a>
+<a href='{{ site.url }}/uploads/2009/02/abcs.mp3'>Download</a>

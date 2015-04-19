@@ -8,6 +8,6 @@ Due to a rehearsal, I am not going to be able to see my Mama on Mother's Day, so
 
 Happy Mother's Day Lisa:
 
-<audio id="wp_mep_47" src="http://jordaneldredge.com/uploads/2008/05/mama.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
+<audio id="wp_mep_47" src="{{ site.url }}/uploads/2008/05/mama.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
 
-<a href="http://jordaneldredge.com/uploads/2008/05/mama.mp3">Download</a>
+<a href="{{ site.url }}/uploads/2008/05/mama.mp3">Download</a>

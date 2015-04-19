@@ -10,6 +10,6 @@ Please excuse the synthesized drum and bass, they are the best I can do. For now
 {% youtube eJoKuzVGyFY %}
 
 Here is an audio only mp3 for you to listen to or download:
-<audio id="wp_mep_14" src="http://jordaneldredge.com/uploads/2010/04/Whats-New.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
+<audio id="wp_mep_14" src="{{ site.url }}/uploads/2010/04/Whats-New.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
 
-<a href='http://jordaneldredge.com/uploads/2010/04/Whats-New.mp3'>Download</a>
+<a href='{{ site.url }}/uploads/2010/04/Whats-New.mp3'>Download</a>

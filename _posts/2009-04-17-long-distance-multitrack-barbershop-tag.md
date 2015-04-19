@@ -10,8 +10,8 @@ Joachim recorded the lead part and emailed it to the group, and then Jared added
 
 The tag is The Shadow of Your Smile from the <a href="http://www.stampedecitychorus.com/classic_tags_men2.pdf">Classic Tags book</a>.
 
-<audio id="wp_mep_31" src="http://jordaneldredge.com/uploads/2009/04/the-shadow-of-your-smile-rough-draft.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
+<audio id="wp_mep_31" src="{{ site.url }}/uploads/2009/04/the-shadow-of-your-smile-rough-draft.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
 
-<a href="http://jordaneldredge.com/uploads/2009/04/the-shadow-of-your-smile-rough-draft.mp3">Download</a>
+<a href="{{ site.url }}/uploads/2009/04/the-shadow-of-your-smile-rough-draft.mp3">Download</a>
 
-<img class="size-thumbnail wp-image-428" title="Jared Emerson-Johnson" src="http://jordaneldredge.com/uploads/2009/04/3232_78443295876_634005876_2167803_6547970_n-150x150.jpg" alt="Jared Emerson-Johnson" width="150" height="150" /><img class="size-thumbnail wp-image-426" title="Jordan Eldredge" src="http://jordaneldredge.com/uploads/2009/04/n11701795_33756279_8252-150x150.jpg" alt="n11701795_33756279_8252" width="150" height="150" /><img class="size-thumbnail wp-image-427" title="Joachim Luis" src="http://jordaneldredge.com/uploads/2009/04/n11709059_32663676_4702-150x150.jpg" alt="n11709059_32663676_4702" width="150" height="150" />
+<img class="size-thumbnail wp-image-428" title="Jared Emerson-Johnson" src="{{ site.url }}/uploads/2009/04/3232_78443295876_634005876_2167803_6547970_n-150x150.jpg" alt="Jared Emerson-Johnson" width="150" height="150" /><img class="size-thumbnail wp-image-426" title="Jordan Eldredge" src="{{ site.url }}/uploads/2009/04/n11701795_33756279_8252-150x150.jpg" alt="n11701795_33756279_8252" width="150" height="150" /><img class="size-thumbnail wp-image-427" title="Joachim Luis" src="{{ site.url }}/uploads/2009/04/n11709059_32663676_4702-150x150.jpg" alt="n11709059_32663676_4702" width="150" height="150" />
