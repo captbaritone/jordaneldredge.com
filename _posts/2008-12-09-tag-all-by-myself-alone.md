@@ -8,10 +8,9 @@ This tag from the seminal <a href="http://www.stampedecitychorus.com/classic_tag
 
 <audio id="wp_mep_41" src="{{ site.url }}/uploads/2008/12/all-by-myself-alone-2nd-try.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
 
-<a href="{{ site.url }}/uploads/2008/12/all-by-myself-alone-2nd-try.mp3">Download</a>
+[Download]({{ site.url }}/uploads/2008/12/all-by-myself-alone-2nd-try.mp3)
 
 Biggest challenges:
-<ul>
-	<li>Fan noise from my server and laptop</li>
-	<li>Giving the music emotion without going out of tune</li>
-</ul>
+
+* Fan noise from my server and laptop
+* Giving the music emotion without going out of tune
