@@ -4,9 +4,12 @@ title: Projects
 permalink: /projects/
 ---
 
+
 ### Javascript
 
-**[Winamp2-js](http://jordaneldredge.com/projects/winamp2-js/)** -  A reimplementation of Winamp 2.9 in HTML5 and Javascript.
+<div class='headshot'><script async src='https://jordaneldredge.com/winamp2-js.js' async></script></div>
+
+**[Winamp2-js](winamp2-js/)** -  A reimplementation of Winamp 2.9 in HTML5 and Javascript.
 
 **[HashBin](http://hashb.in)** - A paste bin that never sees the contents of its pastes
 
