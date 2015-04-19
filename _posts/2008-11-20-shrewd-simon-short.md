@@ -11,4 +11,4 @@ Searching for a transcript of this segment I came across <a href="http://www.dav
 
 <a href="{{ site.url }}/uploads/2008/11/sam.mp3">Download</a>
 
-Share your favorite tongue twiseter is in the <a href="http://blog.classicalcode.com/?p=176#respond">comments below</a>.
+Share your favorite tongue twiseter is in the <a href="{{ site.url }}/blog/shrewd-simon-short/">comments below</a>.

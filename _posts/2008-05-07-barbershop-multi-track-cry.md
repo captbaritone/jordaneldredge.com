@@ -9,4 +9,4 @@ Inspired by <a href="http://www.youtube.com/watch?v=imHoaelEzOc&amp;feature=rela
 
 <a href="{{ site.url }}/uploads/2008/05/cry.mp3">Download</a>
 
-Previously: <a href="http://blog.classicalcode.com/?cat=61">Other barbershop posts</a>
+Previously: <a href="http://blog.classicalcode.com/category/music/barbershop/">Other barbershop posts</a>

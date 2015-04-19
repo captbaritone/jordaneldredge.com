@@ -3,7 +3,7 @@ title: "I Love You Truly [Ukulele Mp3]"
 layout: post
 ---
 
-With <a href="http://chelseahollow.com">Chelsea</a> traveling all over the country on her graduate school auditions I had both the time and motivation to record her a little song. Although this one is not original, it is the same style as the <a href="http://blog.classicalcode.com/2010/09/electric-ukulele-ring-tone-for-chelsea/">two</a> <a href="http://blog.classicalcode.com/2011/05/the-surprise-slide-ukulele-micro-song/">previous</a> ring tones I made for her. The song has four electric ukulele tracks and one electric bass track.
+With <a href="http://chelseahollow.com">Chelsea</a> traveling all over the country on her graduate school auditions I had both the time and motivation to record her a little song. Although this one is not original, it is the same style as the <a href="{{ site.url }}/blog/electric-ukulele-ring-tone-for-chelsea/">two</a> <a href="{{ site.url }}/blog/the-surprise-slide-ukulele-micro-song/">previous</a> ring tones I made for her. The song has four electric ukulele tracks and one electric bass track.
 
 <div id="attachment_993" style="width: 510px" class="wp-caption alignnone"><a href="{{ site.url }}/uploads/2012/02/305303_10150758097545034_695475033_20230725_3825594_n.jpeg"><img class="size-large wp-image-993 " title="Jordan and Chelsea on the futon" src="{{ site.url }}/uploads/2012/02/305303_10150758097545034_695475033_20230725_3825594_n-500x373.jpg" alt="" width="500" height="373" /></a><p class="wp-caption-text">Playing electric ukulele on the couch with Chelsea</p></div>
 

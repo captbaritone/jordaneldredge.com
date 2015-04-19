@@ -13,4 +13,4 @@ The tag: 
 
 <a href="{{ site.url }}/uploads/2008/03/hello-mp3.mp3" title="“Hello” Cell phone barbershop ring tone">Download</a>
 
-For more multi-track barbershop fun, check out the "<a href="http://blog.classicalcode.com/?cat=61">barbershop</a>" category of this blog.
+For more multi-track barbershop fun, check out the "<a href="http://blog.classicalcode.com/category/music/barbershop/">barbershop</a>" category of this blog.

@@ -21,6 +21,6 @@ The tag:
 Previously:
 <ul>
 	<li><a href="{{ site.url }}/blog/my-first-barbershop-multi-track-love-letters/ ">Love Letter's Straight from the Heart</a></li>
-	<li><a href="http://blog.classicalcode.com/?p=59">Lord, You Made the Night Too Long</a></li>
+	<li><a href="{{ site.url }}/blog/barbershop-multi-track-lord-you-made-the-night-too-long/">Lord, You Made the Night Too Long</a></li>
 
 </ul>

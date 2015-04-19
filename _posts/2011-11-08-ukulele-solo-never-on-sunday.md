@@ -3,7 +3,7 @@ title: "[Ukulele Solo] Never On Sunday"
 layout: post
 ---
 
-As part of the "<a href="http://blog.classicalcode.com/2011/11/backyard-ukulele-session-ukulele-videos-with-chelsea/">Backyard Sessions</a>" which I posted about earlier, we also recorded this take of my solo ukulele version of Never on Sunday. 
+As part of the "<a href="{{ site.url }}/blog/backyard-ukulele-session-ukulele-videos-with-chelsea/">Backyard Sessions</a>" which I posted about earlier, we also recorded this take of my solo ukulele version of Never on Sunday.
 
 I take my ukulele with me everywhere I go. One day when I was sitting in the back of a bus on Height street I struck up a conversation with a guy who apparently also played. I let him take my instrument for a spin and he played this tune (which I new from the Chordettes recording). I loved the way it sounded on ukulele so I went home and figured it out for myself.
 

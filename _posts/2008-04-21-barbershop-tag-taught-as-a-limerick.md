@@ -4,7 +4,7 @@ layout: post
 archive: true
 ---
 
-Combining my <a href="http://blog.classicalcode.com/?p=32">love of nerdy limericks</a> and my <a href="http://blog.classicalcode.com/?cat=61">love of barbershop tags</a>, I have endeavored to create a limerick which teaches a barbershop tag. This tag was taught to me as Lilly Marlane, although I had to omit the words and a lead pickup note to fit it in the poetic format.
+Combining my <a href="{{ site.url }}/blog/music-nerd-limericks/">love of nerdy limericks</a> and my <a href="http://blog.classicalcode.com/category/music/barbershop/">love of barbershop tags</a>, I have endeavored to create a limerick which teaches a barbershop tag. This tag was taught to me as Lilly Marlane, although I had to omit the words and a lead pickup note to fit it in the poetic format.
 
 > First the lead posts the tonic, a C.  
 > Then the others, homophonically:  

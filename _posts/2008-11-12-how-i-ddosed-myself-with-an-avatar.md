@@ -3,7 +3,7 @@ title: "How I DDOSed myself with an avatar"
 layout: post
 ---
 
-Building on my <a href="http://blog.classicalcode.com/?p=105">previous avatar hack</a>, I set out to design an avatar that was also an interactive game. The game I eventually settled on was one where you compete with the other users to see who can load the avatar the most times. The image you are served shows your ranking as compared to the other users. It looked like this:
+Building on my <a href="{{ site.url }}/blog/php-avatar-hack/">previous avatar hack</a>, I set out to design an avatar that was also an interactive game. The game I eventually settled on was one where you compete with the other users to see who can load the avatar the most times. The image you are served shows your ranking as compared to the other users. It looked like this:
 <p style="text-align: center;"><a href="{{ site.url }}/uploads/2008/11/off.png"><img class="size-full wp-image-133 aligncenter" title="Avatar Game Example" src="{{ site.url }}/uploads/2008/11/off.png" alt="" width="150" height="200" /></a></p>
 And true to its word, every time you refreshed it, your number went up, and you could climb to the top. I thought it would be fun, and a person or two might even refresh it a few times to get to the top. So, before I went to bed, I set it as my avatar on a forum I frequent. When I woke up the next morning<span id="more-132"></span> I checked to see if anyone had taken an interest. It turns out that there was so much interest that a thread I had started about Facebook ads had been renamed by the mods to "The refresh game" where people could discuss techniques for getting high scores. I had already recieved 100,000 requests for the image by this time.
 
