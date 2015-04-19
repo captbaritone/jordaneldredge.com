@@ -8,6 +8,6 @@ archive: true
 
 The current setup:
 <ul>
-	<li> <a href="http://music.classicalcode.com">http://music.classicalcode.com</a> points to my opera database</li>
-	<li><a href="http://blog.classicalcode.com">http://blog.classicalcode.com</a> points to this blog</li>
+	<li><s><a href="http://music.classicalcode.com">http://music.classicalcode.com</a> points to my opera database</s></li>
+	<li><s><a href="http://blog.classicalcode.com">http://blog.classicalcode.com</a> points to this blog</s></li>
 </ul>
