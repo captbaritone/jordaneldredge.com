@@ -28,7 +28,7 @@ Things I still don't understand:
 	<li>What are odd harmonics and even harmonics?</li>
 	<li>Which octave is the sum tone actually in?</li>
 </ul>
-Things I would like to create to illistrate this phenomon:
+Things I would like to create to illustrate this phenomenon:
 <ul>
 	<li>A stereo audio file with the unaltered tag in one channel and just the frequency of the sum tone (extracted from the actual audio of the tag) in the other.</li>
 	<li>The overtone content of each note in the chord written out in staff notation showing which notes contain the sum tone.</li>
