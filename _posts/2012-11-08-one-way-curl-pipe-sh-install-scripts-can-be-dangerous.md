@@ -31,10 +31,10 @@ I'll wait while you paste the script URL into your browser and make sure it's
 not going to do anything naughty&#8230;
 
 Now that you're **sure** the line is safe to run, paste it into your shell (I
-dare ya!). Or, if you are a big wimp, pipe the output to `cat` instead of `sh`
-like so:
+dare ya!). Or, if you are a big wimp, have it output to the console instead of
+`sh` like so:
 
-    curl -s jordaneldredge.com/projects/curl-proof/install|cat
+    curl -s jordaneldredge.com/projects/curl-proof/install
 
 As you can see Curl returned a different script than the one you saw in your
 browser. This is achieved by checking for Curl's user-agent and, when found,
