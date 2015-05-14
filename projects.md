@@ -7,7 +7,7 @@ permalink: /projects/
 
 ### Javascript
 
-<div class='headshot'><script async src='https://jordaneldredge.com/winamp2-js.js' async></script></div>
+<div class='headshot'><script async src='https://jordaneldredge.com/winamp2-js.js'></script></div>
 
 **[Winamp2-js](winamp2-js/)** -  A reimplementation of Winamp 2.9 in HTML5 and Javascript.
 
