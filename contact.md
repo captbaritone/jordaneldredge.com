@@ -4,9 +4,9 @@ layout: page
 permalink: /contact/
 ---
 
-* Email: [jordan@jordaneldredge.com](mailto:jordan@jordaneldredge.com)
-* Twitter: [@captbaritone](https://twitter.com/captbaritone)
-* Github:  [captbaritone](https://github.com/captbaritone)
+* Email: [{{ site.email }}](mailto:{{ site.email }})
+* Twitter: [@{{ site.twitter_username }}](https://twitter.com/{{ site.twitter_username }})
+* Github:  [{{ site.github_username }}](https://github.com/{{ site.github_username }})
 * Youtube: [captbaritone](https://www.youtube.com/user/captbaritone)
 
-[My PGP key]({{ site.url }}/jordaneldredge.asc) ([What is this?](http://en.wikipedia.org/wiki/Pretty_Good_Privacy))
+[My PGP key]({{ site.url }}/contact/jordaneldredge.asc) ([What is this?](http://en.wikipedia.org/wiki/Pretty_Good_Privacy))

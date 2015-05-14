@@ -8,6 +8,7 @@ description: > # this means to ignore newlines until "baseurl:"
 url: "https://jordaneldredge.com" # the base hostname & protocol for your site
 twitter_username: captbaritone
 github_username:  captbaritone
+youtube_username:  captbaritone
 timezone: America/Los_Angeles
 google_analytics: UA-96948-15
 
