@@ -3,10 +3,12 @@ title: "Writing a custom Codeception module"
 layout: post
 ---
 
-I enjoy using [Codeception] to write my acceptance tests. In January I wrote
-a [helper file] to help people test emails sent by the server during acceptance
-tests. However, it turns out there is a far better way to package and distribute
-custom Codeception actions: as a Module.
+I enjoy using [Codeception](http://codeception.com/) to write my acceptance
+tests. In January I wrote a [helper
+file](https://github.com/captbaritone/mailcatcher-codeception-helper) to help
+people test emails sent by the server during acceptance tests. However, it
+turns out there is a far better way to package and distribute custom
+Codeception actions: as a Module.
 
 While I appreciate Codeception's documentation, it wasn't really clear how to
 build your own module for distribution, so I thought I would give some
@@ -85,14 +87,11 @@ Now you can use your new test method from within your acceptance tests:
 
 Modules have some magic methods and attributes for things like configuration
 values and hooks. Here is a list I have extracted from the [Modules and
-Helpers] section of the documentation:
+Helpers](http://codeception.com/docs/03-ModulesAndHelpers) section of the
+documentation:
 
     class Sample extends Module
     {
-
-        protected $requiredFields = array('browser', 'url');
-        protected $config = array('host' => '127.0.0.1', 'port' => '4444');
-
         // HOOK: used after configuration is loaded
         public function _initialize() {
         }
@@ -130,9 +129,5 @@ Helpers] section of the documentation:
         }
     }
 
-If you want to see another example, check out my [Codeception MailCatcher Module].
-
-[Codeception]: http://codeception.com/
-[helper file]: https://github.com/captbaritone/mailcatcher-codeception-helper
-[Modules and Helpers]: http://codeception.com/docs/03-ModulesAndHelpers
-[Codeception MailCatcher Module]: https://github.com/captbaritone/codeception-mailcatcher-module
+If you want to see another example, check out my [Codeception MailCatcher
+Module](https://github.com/captbaritone/codeception-mailcatcher-module).

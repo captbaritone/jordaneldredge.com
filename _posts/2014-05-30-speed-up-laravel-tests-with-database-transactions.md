@@ -1,6 +1,7 @@
 ---
 title: "Speed up Laravel tests with database transactions"
 layout: post
+summary: How I used transactions to make my tests run eight times faster.
 ---
 
 I shamelessly test my controllers by writing functional tests which depend on

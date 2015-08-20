@@ -17,27 +17,17 @@ Hollow](http://chelseahollow.com).
 
 I've been writing web software as a hobby since I was in High School. After
 college, it evolved naturally into a career. Since about 2009 I have been
-a full-time engineer.
+a full-time engineer. I currently work at [Hearsay
+Social](http://hearsaysocial.com/).
 
-If you are looking for a software engineer, you may be interested in my
-[programming page](programmer).
-
-If you are a programmer yourself, I keep a [blog](blog) where I document
-interesting programing discoveries, among other things. You can also find me on
-[GitHub](https://github.com/captbaritone).
+Check out my [projects](projects) page,  [GitHub](https://github.com/captbaritone),
+or [programmer resume](programmer).
 
 ## Singing
 
-I have been an active classical singer in the Bay Area since I was a teenager.
+I have been an active opera singer in the Bay Area since I was a teenager.
 I graduated from San Francisco State University with a Bachelors in Music and
-have enjoyed a busy schedule singing various opera roles with local companies
-ever since.
+have enjoyed a busy singing schedule ever since.
 
 You can see more about my singing, including photos and my schedule of upcoming
 performances, at my [singer website](singer).
-
-## Projects
-
-I am perpetually involved in various personal projects, usually involving
-music, software or both. You can find a list of some of my more interesting
-project on my [projects](projects) page.
