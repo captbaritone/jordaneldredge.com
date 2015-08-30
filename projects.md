@@ -13,7 +13,7 @@ permalink: /projects/
 
 **[HashBin](http://hashb.in)** - A paste bin that never sees the contents of its pastes
 
-**[Jerkll](https://github.com/captbaritone/jerkll)** - An 18 line JavaScript clone of Jekyll inspired by RequireJS
+**[Jerkll](https://github.com/captbaritone/jerkll)** - A fourteen line static site generator that runs in your browser
 
 ### Comedy Generators
 
