@@ -8,6 +8,10 @@
 @import "main";
 @import "tomorrow"; // Color Scheme
 
+h1, h2, h3, h4 {
+    word-wrap:break-word;
+}
+
 pre {
     border: 1px solid #ddc;
     box-shadow: 1px 1px 6px #ccc;
