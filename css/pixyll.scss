@@ -6,7 +6,29 @@
 
 @import "basscss";
 @import "main";
-// @import "solarized-dark";
+@import "tomorrow"; // Color Scheme
+
+pre {
+    border: 1px solid #ddc;
+    box-shadow: 1px 1px 6px #ccc;
+    font-size: 0.75em;
+    font-size: .9rem;
+    line-height: 1.5em;
+    margin: 1em 0 1.5em;
+    padding: 0.5em 1em;
+}
+
+
+p code {
+    background-color: rgba(0, 0, 0, 0.04);
+    border-radius: 3px;
+    font-size: 85%;
+    margin: 0;
+    padding: 0.2em 0.2em;
+    color: #333;
+    font-family: Menlo, Monaco, "Courier New", monospace;
+}
+
 
 .headshot {
     margin-bottom: 1em;
