@@ -28,7 +28,7 @@ show_post_footers: true
 read_time: false
 
 sass:
-  compressed: true
+  style: compressed
 
 # Outputting
 permalink: /blog/:title
