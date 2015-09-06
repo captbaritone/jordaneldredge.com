@@ -74,14 +74,18 @@ to run `php codecept.phar build`)
 Then, as with any module, you just need to tell Codeception to use it for your
 tests. For example, you could add it to your `acceptance.suite.yml`.
 
-    class_name: WebGuy
-    modules:
-        enabled:
-            - Hello
+~~~txt
+class_name: WebGuy
+modules:
+    enabled:
+        - Hello
+~~~
 
 Now you can use your new test method from within your acceptance tests:
 
-    $I->greet('Jordan'); \\ Prints: "Hello Jordan!"
+~~~php
+$I->greet('Jordan'); // Prints: "Hello Jordan!"
+~~~
 
 ## Getting fancy
 
