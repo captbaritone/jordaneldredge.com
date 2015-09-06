@@ -13,4 +13,5 @@ Features:
 	<li>Deck state stored in database between refreshes</li>
 	<li>Special WIN/LOSE screens</li>
 </ul>
-<strong>You may want to try <a href="{{ site.url }}/projects/war/index.php" target="_blank">opening the image in it's own window</a>.</strong>
+
+**You may want to try <a href="{{ site.url }}/projects/war/index.php" target="_blank">opening the image in its own window</a>.**

@@ -11,7 +11,7 @@ recent [Winamp2-js]({{ site.url }}/projects/winamp2-js/) project.*
 
 A remarkable confluence of lucky breaks and clever hacks combine to allow
 [Winamp2-js]({{ site.url }}/projects/winamp2-js/) to do what,
-I think, is it's most impressive feat: load any native Winamp 2 skin ever made,
+I think, is its most impressive feat: load any native Winamp 2 skin ever made,
 all within the limitations of your browser.
 
 This is the story of how we get from dragging in a binary .wsz skin file to

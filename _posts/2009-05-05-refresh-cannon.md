@@ -15,4 +15,4 @@ Avatar Cannon is the basic trajectory game of angle and velocity. The amount of 
 
 Finally, if you would prefer to have your score listed next to your nick name, instead of your IP address, you can <a href="http://blog.classicalcode.com/projects/shoot/register.php">register here</a>. 
 
-<strong>If you plan to play, you will get a better response time if you <a href='{{ site.url }}/projects/refresh-cannon/index.php' target="_blank">open the image in it's own window</a>.</strong>
+<strong>If you plan to play, you will get a better response time if you <a href='{{ site.url }}/projects/refresh-cannon/index.php' target="_blank">open the image in its own window</a>.</strong>

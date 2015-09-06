@@ -24,6 +24,6 @@ And then the "Only funny to a small group of specific nerds" type:
 
 I have submitted them both, but have yet to see them appear on the site.
 
-*For more info on "Der Erlkönig" check out it's <a href="http://en.wikipedia.org/wiki/Der_Erlk%C3%B6nig">Wikipedia</a> article, and Fischer-Dieskau/Moore's performance of the <a href="http://www.youtube.com/watch?v=P5B6nysheec">Schubert song</a>. Creepy.*
+*For more info on "Der Erlkönig" check out its <a href="http://en.wikipedia.org/wiki/Der_Erlk%C3%B6nig">Wikipedia</a> article, and Fischer-Dieskau/Moore's performance of the <a href="http://www.youtube.com/watch?v=P5B6nysheec">Schubert song</a>. Creepy.*
 
 <strong>Update:</strong> I looks like my submissions to the database have been denied. Not up to snuff?

@@ -6,7 +6,7 @@ alis: /blog/the_two_characters_that_were_destroying_our_codeigniter_sessions
 
 A [CodeIgniter] project I was working on for work had a strange bug where
 users were getting mysteriously logged out. After hours of debugging I was able
-to narrow it down to it's minimal reproduceable form:
+to narrow it down to its minimal reproduceable form:
 
 ~~~php
 $this->session->set_userdata('example_session_value', array('\/'));

@@ -26,13 +26,13 @@ problem:
 ### Getting the database into a known state
 
 Acceptance tests aren't much use if you don't know the state of the database.
-Codeception addresses this problem with it's [Db module] which can, among other
+Codeception addresses this problem with its [Db module] which can, among other
 things, read in a database dump before each test.
 
 However, to do that Codeception needs direct access to the database. Luckily,
 Vagrant makes this possible. **Simply setup your virtual machine's mysql server
 to accept non-localhost connections.** Then, configure Codeception to make
-it's database connection using the your virtual machine's host name.
+its database connection using the your virtual machine's host name.
 
 My `acceptance.suite.yml` looks like this:
 

@@ -11,7 +11,7 @@ when you would prefer to issue `phpunit`. Also, it's annoying to have to
 manually add PHPUnit to every project you work on. Here is a better solution:
 
 1. Create a dummy Composer project within your home directory
-2. Add it's `vendor/bin` directory to your path
+2. Add its `vendor/bin` directory to your path
 
 ## How-To
 

@@ -8,7 +8,7 @@ At a recent [Vim meetup] I learned about [Plug], from [Keith Smiley] which is
 a plugin manager for Vim that improves upon [Vundle]. Below are the reasons
 I switched from Vundle to Plug:
 
-## Vundle is not being actively maintained by it's creator
+## Vundle is not being actively maintained by its creator
 
 Gmarik, the creator of Vundle is [no longer able to maintain the
 project](https://github.com/gmarik/Vundle.vim/issues/608). Somebody may pick up

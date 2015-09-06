@@ -15,4 +15,4 @@ So go ahead, refresh the page and clime the high score list!
 
 <strong>Edit:</strong> I have added a <a href="http://classicalcode.com/projects/hero/high_score.php">top 50 high score list</a>.
 
-<strong>If you plan to play, you will get a better response time if you <a href='http://classicalcode.com/projects/hero.png' target="_blank">open the image in it's own window</a>.</strong>
+<strong>If you plan to play, you will get a better response time if you <a href='http://classicalcode.com/projects/hero.png' target="_blank">open the image in its own window</a>.</strong>
