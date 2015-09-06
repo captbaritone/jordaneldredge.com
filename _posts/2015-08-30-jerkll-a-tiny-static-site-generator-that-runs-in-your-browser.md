@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Jerkll: A tiny static site generator that runs in your browser"
-date: "2015-08-03 23:27:25 -0700"
+date: 2015-08-30
 summary: Replacing Jekyll with 14 lines of run-anywhere JavaScript.
 ---
 
@@ -18,8 +18,6 @@ golfed](https://en.wikipedia.org/wiki/Code_golf) it and reduced it to the
 following 14 lines:
 
     {% raw %}
-    <script src="marked.js"></script>
-    <script>
     (onhashchange = function(e, d) {
         var p = location.hash ? location.hash.slice(1) : 'index';
         d = d || {'template': 'pages/' + p + ".md"};
@@ -35,7 +33,6 @@ following 14 lines:
         r.open("get", d.template);
         r.send();
     })();
-    </script>
     {% endraw %}
 
 This code, together with the [marked.js](https://github.com/chjj/marked)

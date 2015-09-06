@@ -1,6 +1,5 @@
 ---
 layout: page
-title: About
 permalink: /
 ---
 <div class='headshot'>
