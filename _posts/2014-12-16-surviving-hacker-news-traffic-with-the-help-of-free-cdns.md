@@ -79,4 +79,4 @@ a high bandwidth site, I would pay for my own CDN. But, to absorb a single
 spike in traffic for a pet project on a moment's notice, these two sites were
 a godsend. Thank you!
 
-*Next: [How Winamp2-js loads native skins in your browser]({{ site.url }}/blog/how-winamp2-js-loads-native-skins-in-your-browser)*
+*Next: [How Winamp2-js loads native skins in your browser]({{ site.url }}/blog/how-winamp2-js-loads-native-skins-in-your-browser/)*
