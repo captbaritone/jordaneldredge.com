@@ -3,7 +3,7 @@ layout: page
 title: Software Engineering Fireside Chat Podcast
 ---
 
-_This podcast is now defunct, but remains online in archival form_
+_This podcast is now defunct, but remains online in archival form._
 
 ## Description
 
