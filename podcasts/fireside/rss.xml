@@ -1,0 +1,124 @@
+---
+layout: null
+path: 'podcasts/fireside'
+media: 'podcasts/fireside/media'
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:cc="http://web.resource.org/cc/" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:media="http://search.yahoo.com/mrss/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+	<channel>
+        <atom:link href="{{ site.url }}/{{ page.path }}/rss.xml" rel="self" type="application/rss+xml"/>
+		<title>Software Engineering Fireside Chat Podcast</title>
+		<pubDate>Fri, 17 Apr 2015 16:00:00 +0000</pubDate>
+		<lastBuildDate>Wed, 16 Dec 2015 22:13:38 +0000</lastBuildDate>
+		<generator>Libsyn WebEngine 2.0</generator>
+		<link>{{ site.url }}/{{ page.path }}/</link>
+		<language>en</language>
+		<copyright><![CDATA[2015]]></copyright>
+		<docs>{{ site.url }}/{{ page.path }}/</docs>
+		<managingEditor>jordan@jordaneldredge.com (jordan@jordaneldredge.com)</managingEditor>
+		<itunes:summary><![CDATA[Join us as we discuss the weird, wild world of Software Engineering and Bay Area Startups.  This is a technical podcast that touches on development, design, and business as seen in Silicon Valley.]]></itunes:summary>
+		<image>
+			<url>{{ site.url }}/{{ page.media }}/logo.png</url>
+			<title>Software Engineering Fireside Chat Podcast</title>
+			<link><![CDATA[{{ site.url }}/{{ page.path }}/]]></link>
+		</image>
+		<itunes:author>Chase Seibert, Jordan Eldredge, Scott Lobdell</itunes:author>
+		<itunes:keywords>bayarea,sanfrancisco,startup,tech</itunes:keywords>
+	<itunes:category text="Technology"/>
+		<itunes:image href="{{ site.url }}/{{ page.media }}/logo.png" />
+		<itunes:explicit>clean</itunes:explicit>
+		<description><![CDATA[Join us as we discuss the weird, wild world of Software Engineering and Bay Area Startups.  This is a technical podcast that touches on development, design, and business as seen in Silicon Valley.]]></description>
+		<itunes:subtitle><![CDATA[]]></itunes:subtitle>
+				<item>
+			<title>Sam Vilain</title>
+			<pubDate>Fri, 17 Apr 2015 16:00:00 +0000</pubDate>
+			<guid isPermaLink="false"><![CDATA[88e083674bbcfb808abf2046c5409e08]]></guid>
+			<link><![CDATA[{{ site.url }}/{{ page.media }}/SEFCP_Episode_5_-_Sam_Vilain.mp3]]></link>
+			<itunes:image href="{{ site.url }}/{{ page.media }}/logo.png" />
+			<description><![CDATA[]]></description>
+			<enclosure length="43668466" type="audio/mpeg" url="{{ site.url }}/{{ page.media }}/SEFCP_Episode_5_-_Sam_Vilain.mp3" />
+			<itunes:duration>45:29</itunes:duration>
+			<itunes:explicit>no</itunes:explicit>
+			<itunes:keywords />
+			<itunes:subtitle><![CDATA[]]></itunes:subtitle>
+					</item>
+		<item>
+			<title>Megan Anctil</title>
+			<pubDate>Fri, 10 Apr 2015 16:00:00 +0000</pubDate>
+			<guid isPermaLink="false"><![CDATA[b5e3aa475d6cee46d744ec7c6c45916e]]></guid>
+			<link><![CDATA[{{ site.url }}/{{ page.media }}/SEFCP_Episode_5_-_Megan_Anctil.mp3]]></link>
+			<itunes:image href="{{ site.url }}/{{ page.media }}/logo.png" />
+			<description><![CDATA[]]></description>
+			<enclosure length="23412185" type="audio/mpeg" url="{{ site.url }}/{{ page.media }}/SEFCP_Episode_5_-_Megan_Anctil.mp3" />
+			<itunes:duration>24:15</itunes:duration>
+			<itunes:explicit>no</itunes:explicit>
+			<itunes:keywords />
+			<itunes:subtitle><![CDATA[]]></itunes:subtitle>
+					</item>
+		<item>
+			<title>Matt Makai</title>
+			<pubDate>Fri, 03 Apr 2015 16:00:00 +0000</pubDate>
+			<guid isPermaLink="false"><![CDATA[eab887ac03d8c204781e076248b559f9]]></guid>
+			<link><![CDATA[{{ site.url }}/{{ page.media }}/SEFCP_Episode_4_-_Matt_Makai.mp3]]></link>
+			<itunes:image href="{{ site.url }}/{{ page.media }}/logo.png" />
+			<description><![CDATA[]]></description>
+			<enclosure length="41206525" type="audio/mpeg" url="{{ site.url }}/{{ page.media }}/SEFCP_Episode_4_-_Matt_Makai.mp3" />
+			<itunes:duration>42:47</itunes:duration>
+			<itunes:explicit>no</itunes:explicit>
+			<itunes:keywords />
+			<itunes:subtitle><![CDATA[]]></itunes:subtitle>
+					</item>
+		<item>
+			<title>Jeremiah Lee</title>
+			<pubDate>Fri, 27 Mar 2015 16:00:00 +0000</pubDate>
+			<guid isPermaLink="false"><![CDATA[97ee4fce8a87da0db4a6c4bc38b2d817]]></guid>
+			<link><![CDATA[{{ site.url }}/{{ page.media }}/SEFCP_Episode_3_-_Jeremiah_Lee.mp3]]></link>
+			<itunes:image href="{{ site.url }}/{{ page.media }}/logo.png" />
+			<description><![CDATA[]]></description>
+			<enclosure length="49070042" type="audio/mpeg" url="{{ site.url }}/{{ page.media }}/SEFCP_Episode_3_-_Jeremiah_Lee.mp3" />
+			<itunes:duration>50:59</itunes:duration>
+			<itunes:explicit>no</itunes:explicit>
+			<itunes:keywords />
+			<itunes:subtitle><![CDATA[]]></itunes:subtitle>
+					</item>
+		<item>
+			<title>Ben Henry</title>
+			<pubDate>Fri, 20 Mar 2015 23:23:31 +0000</pubDate>
+			<guid isPermaLink="false"><![CDATA[da544d5495c2ff049805e66414adf807]]></guid>
+			<link><![CDATA[{{ site.url }}/{{ page.media }}/SEFCP_Episode_2_-_Ben_Henry.mp3]]></link>
+			<itunes:image href="{{ site.url }}/{{ page.media }}/logo.png" />
+			<description><![CDATA[]]></description>
+			<enclosure length="49739080" type="audio/mpeg" url="{{ site.url }}/{{ page.media }}/SEFCP_Episode_2_-_Ben_Henry.mp3" />
+			<itunes:duration>51:41</itunes:duration>
+			<itunes:explicit>no</itunes:explicit>
+			<itunes:keywords />
+			<itunes:subtitle><![CDATA[]]></itunes:subtitle>
+					</item>
+		<item>
+			<title>Debbie Sterling</title>
+			<pubDate>Fri, 20 Mar 2015 23:22:17 +0000</pubDate>
+			<guid isPermaLink="false"><![CDATA[573bdd52750d334a505f6c98e897dba1]]></guid>
+			<link><![CDATA[{{ site.url }}/{{ page.media }}/SEFCP_Episode_1_-_Debbie_Sterling.mp3]]></link>
+			<itunes:image href="{{ site.url }}/{{ page.media }}/logo.png" />
+			<description><![CDATA[]]></description>
+			<enclosure length="36222377" type="audio/mpeg" url="{{ site.url }}/{{ page.media }}/SEFCP_Episode_1_-_Debbie_Sterling.mp3" />
+			<itunes:duration>37:36</itunes:duration>
+			<itunes:explicit>no</itunes:explicit>
+			<itunes:keywords />
+			<itunes:subtitle><![CDATA[]]></itunes:subtitle>
+					</item>
+		<item>
+			<title>Introduction</title>
+			<pubDate>Fri, 20 Mar 2015 23:20:35 +0000</pubDate>
+			<guid isPermaLink="false"><![CDATA[cb129754dea0e68d7d87447ecdedbf64]]></guid>
+			<link><![CDATA[{{ site.url }}/{{ page.media }}/SEFCP_Episode_0_-_Introduction.mp3]]></link>
+			<itunes:image href="{{ site.url }}/{{ page.media }}/logo.png" />
+			<description><![CDATA[]]></description>
+			<enclosure length="34384903" type="audio/mpeg" url="{{ site.url }}/{{ page.media }}/SEFCP_Episode_0_-_Introduction.mp3" />
+			<itunes:duration>35:41</itunes:duration>
+			<itunes:explicit>no</itunes:explicit>
+			<itunes:keywords />
+			<itunes:subtitle><![CDATA[]]></itunes:subtitle>
+					</item>
+	</channel>
+</rss>
