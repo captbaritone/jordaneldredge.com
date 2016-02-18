@@ -176,7 +176,7 @@ a collection, instead use `_.invoke`:
     });
 
     // BETTER!
-    var upperCase = _.invoike(names, 'toUpperCase');
+    var upperCase = _.invoke(names, 'toUpperCase');
 
 Rule: [prefer-invoke](https://github.com/captbaritone/eslint-plugin-underscore/blob/master/docs/rules/prefer-invoke.md)
 
