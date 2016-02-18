@@ -1,7 +1,7 @@
 ---
 title: "You're underusing Underscore"
 layout: post
-summary: "Ten common miskates people make when using Underscore, and a linting tool to detect them."
+summary: "Ten common mistakes people make when using Underscore, and a linting tool to detect them."
 ---
 
 For the last four months I've been reviewing every JavaScript pull request at
