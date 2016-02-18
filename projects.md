@@ -11,6 +11,8 @@ permalink: /projects/
 
 **[Winamp2-js](winamp2-js/)** -  A reimplementation of Winamp 2.9 in HTML5 and Javascript.
 
+**[Eslint-plugin-underscore](https://github.com/captbaritone/eslint-plugin-underscore)** - ESLint rules for Underscore
+
 **[HashBin](http://hashb.in)** - A paste bin that never sees the contents of its pastes
 
 **[Jerkll](https://github.com/captbaritone/jerkll)** - A fourteen line static site generator that runs in your browser
