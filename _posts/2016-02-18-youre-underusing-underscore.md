@@ -1,17 +1,23 @@
 ---
-title: "You're under-using Underscore"
+title: "You're underusing Underscore"
 layout: post
+summary: "Ten common miskates people make when using Underscore, and a linting tool to detect them."
 ---
 
 For the last four months I've been reviewing every JavaScript pull request at
 work and simultaneously contributing to [Underscore](http://underscorejs.org/).
-Not surprisingly, I found my most common comments were regarding under-usage of
-Underscore's functionality.
+Not surprisingly, I found my most common review comments were pointing out ways
+in which my colleagues could be making better use of Underscore's
+functionality.
 
-Of course I'm a programmer, so I want to automate everything, including my code
-reviews. To that end, I've written an [ESLint
-plugin](https://github.com/captbaritone/eslint-plugin-underscore) which
-catches most of these common errors.
+Most of these comments were pointing out ways in which Underscore's API could
+help the developer write the same code in a simpler, more readable, less
+error-prone way.
+
+As a programmer I love automating things, including my code reviews. To that
+end, I've written an [ESLint](http://eslint.org/) plugin,
+[eslint-plugin-underscore](https://github.com/captbaritone/eslint-plugin-underscore),
+which aims to help you spot most of these common errors.
 
 This blog post explains the most common mistakes I found. Each mistake links
 to the corresponding linting rule, so you can automatically find all the
@@ -22,14 +28,9 @@ instances of this mistake in your code, and (hopefully) fix them.
 Many Underscore collection functions accept an "iteratee" argument that gets
 called on each element. To facilitate some common use cases, Underscore
 passes the argument through [`_.iteratee`](http://underscorejs.org/#iteratee),
-which esnentially overloads this argument. If, instead of a function, you pass
-a string, and object or nothing, you get a special kind of function. This is
-achieved by
-
-This is a somewhat recent addition to Underscore, and it's not very well
-documented. Not taking advantage of these shorthand syntaxes, and instead
-writing out an anonymous function by hand, is the most common group of
-mis-uses.
+which essentially overloads this argument. If instead of a function, you pass
+a string, object, or nothing; you get a special kind of function. Here are the
+three types of shorthand:
 
 ### Identity shorthand
 
@@ -46,7 +47,7 @@ omit the function argument all-together:
 
 Rule: [identity-shorthand](https://github.com/captbaritone/eslint-plugin-underscore/blob/master/docs/rules/identity-shorthand.md)
 
-### Property acessor
+### Property shorthand
 
 Instead of passing a function which returns a single property for each item,
 pass the key name:
@@ -141,8 +142,9 @@ Rule: [prefer-compact](https://github.com/captbaritone/eslint-plugin-underscore/
 
 ## Manual methods
 
-In many cases, people simply don't know that an "Underscore already has
-a function to do that!".
+In many cases, people simply don't know that "Underscore already has a function
+to do that!". Here are a few examples of functions people frequently forget
+about, and when to use them:
 
 ### Map
 
@@ -196,6 +198,19 @@ Rule: [prefer-reject](https://github.com/captbaritone/eslint-plugin-underscore/b
 
 ## Conclusion
 
-Underscore is a powerful and expressive library. It's easy to overlook lesser
-known functions or syntaxes. However, using the most idiomatic function makes
-your code easier to understand.
+When using any library, the more idiomatically you can use it the better. When
+you can take advantage of higher-order concepts, it simplifies your code, and
+makes it simpler to reason about.
+
+While I hope this article has expanded your knowledge of Underscore's API,
+nobody can remember everything! For those times when you forget, I hope you
+can incorporate
+[eslint-plugin-underscore](https://github.com/captbaritone/eslint-plugin-underscore)
+into your work-flow. That way I can be perpetually (and automatically!) nagging
+you about your underuse of Underscore.
+
+### Thanks
+
+Many thanks to the engineers at [Wix](http://www.wix.com/) for
+[eslint-plugin-lodash](https://github.com/wix/eslint-plugin-lodash). My plugin
+began as a fork of theirs, and it gave me a great head-start.
