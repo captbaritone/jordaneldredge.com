@@ -31,7 +31,7 @@ sass:
   compressed: true
 
 # Outputting
-permalink: /blog/:title
+permalink: /blog/:title/
 
 # Build settings
 markdown: kramdown
