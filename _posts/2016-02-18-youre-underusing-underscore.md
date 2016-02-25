@@ -1,14 +1,14 @@
 ---
 title: "You're underusing Underscore"
 layout: post
-summary: "Ten common miskates people make when using Underscore, and a linting tool to detect them."
+summary: "Ten common mistakes people make when using Underscore, and a linting tool to detect them."
 ---
 
 For the last four months I've been reviewing every JavaScript pull request at
-work and simultaneously contributing to [Underscore](http://underscorejs.org/).
-Not surprisingly, I found my most common review comments were pointing out ways
-in which my colleagues could be making better use of Underscore's
-functionality.
+[work](http://hearsaysocial.com/) and simultaneously contributing to
+[Underscore](http://underscorejs.org/). Not surprisingly, I found my most
+common review comments were pointing out ways in which my colleagues could be
+making better use of Underscore's functionality.
 
 Most of these comments were pointing out ways in which Underscore's API could
 help the developer write the same code in a simpler, more readable, less
@@ -21,16 +21,17 @@ which aims to help you spot most of these common errors.
 
 This blog post explains the most common mistakes I found. Each mistake links
 to the corresponding linting rule, so you can automatically find all the
-instances of this mistake in your code, and (hopefully) fix them.
+instances of the mistake in your code and, hopefully, fix them.
 
 ## Iteratee shorthand syntax
 
 Many Underscore collection functions accept an "iteratee" argument that gets
-called on each element. To facilitate some common use cases, Underscore
-passes the argument through [`_.iteratee`](http://underscorejs.org/#iteratee),
-which essentially overloads this argument. If instead of a function, you pass
-a string, object, or nothing; you get a special kind of function. Here are the
-three types of shorthand:
+called on each item. To facilitate some common use cases, Underscore passes the
+argument through [`_.iteratee`](http://underscorejs.org/#iteratee), which
+essentially means this argument is
+[overloaded](https://en.wikipedia.org/wiki/Function_overloading). If instead of
+a function, you pass a string, object, or nothing; you get a special kind of
+function. Here are the three types of shorthand:
 
 ### Identity shorthand
 
@@ -175,7 +176,7 @@ a collection, instead use `_.invoke`:
     });
 
     // BETTER!
-    var upperCase = _.invoike(names, 'toUpperCase');
+    var upperCase = _.invoke(names, 'toUpperCase');
 
 Rule: [prefer-invoke](https://github.com/captbaritone/eslint-plugin-underscore/blob/master/docs/rules/prefer-invoke.md)
 
@@ -206,8 +207,8 @@ While I hope this article has expanded your knowledge of Underscore's API,
 nobody can remember everything! For those times when you forget, I hope you
 can incorporate
 [eslint-plugin-underscore](https://github.com/captbaritone/eslint-plugin-underscore)
-into your work-flow. That way I can be perpetually (and automatically!) nagging
-you about your underuse of Underscore.
+into your work-flow. That way I can perpetually (and automatically!) nag you
+about your underuse of Underscore.
 
 ### Thanks
 
