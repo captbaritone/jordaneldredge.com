@@ -7,8 +7,6 @@ permalink: /projects/
 
 ### Javascript
 
-<div class='headshot'><script async src='https://jordaneldredge.com/winamp2-js.js'></script></div>
-
 **[Winamp2-js](winamp2-js/)** -  A reimplementation of Winamp 2.9 in HTML5 and Javascript.
 
 **[Eslint-plugin-underscore](https://github.com/captbaritone/eslint-plugin-underscore)** - ESLint rules for Underscore
