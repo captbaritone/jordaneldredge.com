@@ -6,7 +6,7 @@ summary: Video of a talk I gave introducing and explaining Vim Awesome
 
 I gave a talk today at the [San Francisco Vim
 Meetup](http://www.meetup.com/vim-sf/) about [Vim Awesome](vimawesome.com):
-its creating, struggles and new momentum.
+its creation, struggles and new momentum.
 
 {% youtube sOuloaGug6I %}
 
