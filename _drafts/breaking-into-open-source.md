@@ -70,7 +70,7 @@ build and run the project locally. Download the project and learn about it's
 build process:
 
 * Build the project
-* Run the tests
+* Run the tests and any linters
 * Run any other continuous integration tests: linting, code coverage, etc.
 
 ## Finding your first issue
@@ -143,7 +143,7 @@ You only get one chance at a first impression. Expect the standards to be very
 high. Expect to get critical feedback or even an outright rejection. Think
 about opening your pull request as starting a conversation with a proposal.
 Expect your choices to be challenged. Be ready to defend them, but be equally
-ready to adapt to feedback. If you put significant effort into your pull
+ready to incorporate feedback. If you put significant effort into your pull
 request, you will most likely at least receive some kind of critical feedback.
 Even if your pull request is rejected this is not failure! In fact, critical
 feedback is an opportunity to learn, and grow as a developer. Take it
