@@ -40,16 +40,12 @@ What are their goals and norms?). Here are some ways you could go about that:
 
 * Does the project have any documentation about how to contribute? Read it!
 * Follow ("watch") the project on GitHub. Read _all_ the incoming issues and
-  pull request. I recommend getting a mobile app like
-  [iOctocat](https://ioctocat.com/) so that you can follow the discussion in
-  near real time.
-* Do they have a [Gitter](https://gitter.im/) or
-  [IRC](https://en.wikipedia.org/wiki/Internet_Relay_Chat) channel? If so, idle
-  in that channel and listen to the conversations. I've found the [Gitter iOS
-  app](https://search.itunes.apple.com/WebObjects/MZContentLink.woa/wa/link?mt=8&path=apps%2fgitter)
-  very useful.
+  pull request. I recommend getting a mobile app like [iOctocat] so that you
+  can follow the discussion in near real time.
+* Do they have a [Gitter] or [IRC] channel? If so, idle in that channel and
+  listen to the conversations. I've found the [Gitter iOS app] very useful.
 * If they have a mailing list, subscribe to it.
-* Follow the main contributors on [Twitter](https://twitter.com).
+* Follow the main contributors on [Twitter].
 
 ### Technical context
 
@@ -166,3 +162,9 @@ that you could do. If not, you are now deeply familiar with one part of the
 code base. Keep your eyes open for related issues, and pretty soon _you'll_ be
 the expert jumping in to fix things before the other newbies have a chance to
 dig in and figure out what's causing the bug.
+
+[iOctocat]: https://ioctocat.com/
+[Gitter]: https://gitter.im/
+[IRC]: https://en.wikipedia.org/wiki/Internet_Relay_Chat
+[Gitter iOS App]: https://search.itunes.apple.com/WebObjects/MZContentLink.woa/wa/link?mt=8&path=apps%2fgitter
+[Twitter]: https://twitter.com
