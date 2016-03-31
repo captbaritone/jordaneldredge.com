@@ -117,6 +117,48 @@ have other tools at your disposal:
   things that appear "wrong" to a newbie but are actually intentional will have
   multiple closed issues which contain defenses of the current approach.
 
+## Writing your patch
+
+All this work, and you're finally ready to actually write your code! Take this
+opportunity to slow down and write your most elegant code. The distributed
+(across time and geography) nature of open source software development, means
+that projects must lean more heavily on the code for communication. There is
+a quote, for which I cannot find an attribution:
+
+> Write programs for people first, computers second
+
+This is never more true than in open source. Your code _must_ be able to speak
+for itself. You won't get the opportunity to explain or defend it to the person
+reviewing your change. They must be able to read the code and intuitively
+understand your intentions.
+
+### Conform to the project's code style
+
+Some projects document their code style as part of their contribution
+guidelines. Others have linting tasks you can run to check your code. Either
+way, make sure that your code blends in with its surroundings. The entire
+project should appear as if it were written by a single individual. Pay special
+attention to:
+
+* Naming conventions
+* Spacing, layout
+* Code organization
+
+### Prioritize testing
+
+If you are fixing a bug, be sure to include a regression test that ensures the
+bug is not reintroduced. If you are adding functionality, write tests for as
+many edge cases as you can think of. This will be a benefit to the project as
+a whole, but it will also greatly increase the likely hood of your patch
+getting merged.
+
+The person reviewing your patch will probably not manually test your code.
+Instead they will rely on existing tests to assure themselves you didn't break
+anything. Similarly, they will not give you the benefit of the doubt that _you_
+manually tested anything. Instead they will look for tests. Again, your code
+must speak for itself. Don't _tell_ the reviewer that you tested something,
+_show_ them, by including an automated test.
+
 ## Your commit/pull request message
 
 As I said before, the nature of open source is such that you do not have direct
