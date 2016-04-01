@@ -57,16 +57,16 @@ What are their goals and norms?). Here are some ways you could go about that:
 * Read the documentation. Does it accurately reflect the code you read? Is it
   consistent?
 
-This step can serve multiple purposes. It will give you context but it might
-also help you identify possible improvements. Read linearly, but keep notes of
-things to look into more deeply. Does a function look strangely constructed?
-Make a note and look into it later. Maybe there's a subtle reason it ended up
-that way, or maybe you could be the one to clean it up!
+This step can serve multiple purposes. It will give you context but it may also
+help you identify possible improvements. Read linearly but keep notes of things
+to look into more deeply. Does a function look strangely constructed?  Make
+a note and look into it later. Maybe there's a subtle reason it ended up that
+way, or maybe you could be the one to clean it up!
 
 ## Run the project locally
 
 Before you can start proposing changes to the projects, you need to be able to
-build and run the project locally. Download the project and learn about it's
+build and run the project locally. Download the project and learn about its
 build process:
 
 * Build the project
@@ -78,13 +78,14 @@ build process:
 Your main goal for your first pull request should be to find something that is
 as small and inconsequential as possible. The likelihood that you are going to
 find and correctly fix a major flaw in a core code-path on your first try is
-low. Instead focus on doing something small and doing it well. Larger tasks
+low. Instead, focus on doing something small and doing it well. Larger tasks
 can come later. In the process of fixing a small bug or cleaning up a test or
 documentation, you'll quickly gain the context needed to to take on and
 discover larger tasks.
 
 If you found something that was inconsistent or wrong while you were gaining
-context, or setting up the project, that could be a great first pull request. 
+context, or setting up the project, correcting that could be a great first pull
+request.
 
 If you didn't see anything wrong, it's time to check out the issue tracker.
 Some projects on GitHub use tags to notify potential contributors (you!) where
@@ -110,7 +111,7 @@ have other tools at your disposal:
   introduced it. You may need to go several commits deep before you find the
   actual commit that introduced the thing you are investigating.
 * Pull Request history. If the commit message does not answer your question,
-  you can use the commit sha hash to track down the GitHub pull request that
+  you can use the commit SHA hash to track down the GitHub pull request that
   included that commit. This will give you additional information like feedback
   that the committer was responding to which lead to her final commit.
 * The issue tracker. Get good at searching the project's issue tracker. Often
