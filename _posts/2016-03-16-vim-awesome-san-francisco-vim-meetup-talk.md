@@ -10,4 +10,5 @@ its creation, struggles and new momentum.
 
 {% youtube sOuloaGug6I %}
 
-You can find the slides [here](https://jordaneldredge.com/talks/vim-awesome/#/)
+You can find the slides
+[here](https://jordaneldredge.com/talks/vim-awesome/).
