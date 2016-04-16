@@ -18,7 +18,7 @@ __Play the game a try [here](https://rawgit.com/captbaritone/snake.js/master/ind
 
 Read the code:
 
-<script src="http://gist-it.appspot.com/https://github.com/captbaritone/snake.js/raw/master/snake.js?footer=0"></script>
+<script src="https://gist-it.appspot.com/https://github.com/captbaritone/snake.js/raw/master/snake.js?footer=0"></script>
 
 You can find the code [on GitHub](https://github.com/captbaritone/snake.js)
 
