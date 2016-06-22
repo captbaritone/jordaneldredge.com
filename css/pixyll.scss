@@ -65,3 +65,9 @@ p code {
         height: 100%;
     }
 }
+
+/* Style image captions */
+img + em {
+    font-size: 70%;
+    font-style: italic;
+}
