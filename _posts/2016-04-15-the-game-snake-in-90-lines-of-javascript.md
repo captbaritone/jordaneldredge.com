@@ -16,10 +16,6 @@ experience could read thought the code and understand everything.
 
 __Play the game a try [here](https://rawgit.com/captbaritone/snake.js/master/index.html)__
 
-Read the code:
-
 <script src="https://gist-it.appspot.com/https://github.com/captbaritone/snake.js/raw/master/snake.js?footer=0"></script>
 
-You can find the code [on GitHub](https://github.com/captbaritone/snake.js)
-
-
+You can contribute to the code [on GitHub](https://github.com/captbaritone/snake.js)
