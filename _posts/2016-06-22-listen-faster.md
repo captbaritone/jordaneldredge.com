@@ -46,7 +46,7 @@ speed of the average visual reader.
 Using these three apps, I’ve been able to easily add the equivalent of 30 hours
 to my week, all dedicated to reading and listening.
 
-_Thanks to [Akshay Shah] who introduced me to Overcast’s speed featurel and
+_Thanks to [Akshay Shah] who introduced me to Overcast’s speed feature and
 [Brandon Keith Biggs] who showed me the power of reading with your ears._
 
 
