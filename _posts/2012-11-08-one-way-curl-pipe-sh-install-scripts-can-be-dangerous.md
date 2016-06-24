@@ -41,7 +41,7 @@ browser. This is achieved by checking for Curl's user-agent and, when found,
 serving a different file.
 
 Of course, the whole point is pretty much moot because the install script is
-probably installing lots of other code that you haven't reviewed, so you are
+probably installing lots of other code that you haven't reviewed, so you
 wouldn't be running this code unless you already trusted the author.  However,
 be aware that you may be lulling yourself into a false sense of security
 because you **appear** to have the code right in front of you.
