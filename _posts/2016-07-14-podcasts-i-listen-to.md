@@ -8,22 +8,22 @@ summary: A summary of the podcasts to which I subscribe.
 These are the podcasts to which I subscribe. They are listed in the order that
 I would listen to them if I had an unlistened to episode of each:
 
-* [Idle Thumbs]: Smart, funny, media-savy people talk about video games and
+* [Idle Thumbs] - Smart, funny, media-savy people talk about video games and
   other media in general.
-* [Dan Carlin's Hardcore History]: _Long_ in-depth podcasts exploring
+* [Dan Carlin's Hardcore History] - _Long_ in-depth podcasts exploring
   historical wars with amazing context, detail and compassion.
-* [Common Sense with Dan Carlin]: Current events podcast hosted by a hugely
+* [Common Sense with Dan Carlin] - Current events podcast hosted by a hugely
   insightful historian/journalist.
-* [Security Now]: Excellently explained in-depth news and deep-dives into
+* [Security Now] - Excellently explained in-depth news and deep-dives into
   computer security topics. The hosts are unfortuenatly slimely and you will
   want to be able to skip the _very_ long ad reads.
-* [Talk Python to Me]: Beautifully produced, compasionate and insightful
+* [Talk Python to Me] - Beautifully produced, compasionate and insightful
   inverviews with facinating people in the Python community.
-* [JavaScript Air]: Excellent interviews with people in the JavaScript
+* [JavaScript Air] - Excellent interviews with people in the JavaScript
   community. Great way to stay up on JavaScript news.
-* [JavaScript Jabber]: Panel interviews with people in the JavaScript
+* [JavaScript Jabber] - Panel interviews with people in the JavaScript
   community.
-* [Song Exploder]: Interviews with musicians in which they disect a song and
+* [Song Exploder] - Interviews with musicians in which they disect a song and
   explain how it came to be the way it is.
 
 [Idle Thumbs]: https://www.idlethumbs.net/idlethumbs/
