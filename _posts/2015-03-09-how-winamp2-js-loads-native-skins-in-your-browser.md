@@ -97,9 +97,9 @@ Winamp skins take. Lucky for us, sprites are a common technique in CSS as well.
 An example from Facebook's home page:
 
 ![Facebook's sprite
-sheet](https://www.facebook.com//rsrc.php/v2/y3/r/LUUpSAFvDIn.png)
+sheet](https://www.facebook.com/rsrc.php/v2/yc/r/J_2KFGBpaBp.png)
 
-An example Winamp's default skin:
+An example of Winamp's default skin:
 
 ![Winamp's sprite sheet]({{ site.url }}/content/images/TITLEBAR.BMP)
 
