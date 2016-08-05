@@ -180,4 +180,4 @@ Whew! In summation here are the hoops we had to jump through:
 5. Inject that CSS into the document's `<head>` tag
 
 If you want to see the code, you can find it
-[here](https://github.com/captbaritone/winamp2-js/blob/master/js/skin.js)
+[here](https://github.com/captbaritone/winamp2-js/blob/master/js/skinParser.js)
