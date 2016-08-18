@@ -123,8 +123,8 @@ have other tools at your disposal:
 All this work, and you're finally ready to actually write your code! Take this
 opportunity to slow down and write your most elegant code. The distributed
 (across time and geography) nature of open source software development, means
-that projects must lean more heavily on the code for communication. There is
-a quote, for which I cannot find an attribution:
+that projects must lean more heavily on the code for communication. As Steve
+Mcconnell says in his book _[Code Complete]_:
 
 > Write programs for people first, computers second
 
@@ -211,3 +211,4 @@ dig in and figure out what's causing the bug.
 [IRC]: https://en.wikipedia.org/wiki/Internet_Relay_Chat
 [Gitter iOS App]: https://search.itunes.apple.com/WebObjects/MZContentLink.woa/wa/link?mt=8&path=apps%2fgitter
 [Twitter]: https://twitter.com
+[Code Complete]: http://cc2e.com/
