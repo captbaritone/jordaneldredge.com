@@ -2,4 +2,4 @@ RewriteEngine On
 RewriteRule ^programmer/blog(.*)$ /blog$1 [L,R=301]
 RewriteCond %{HTTPS} !=on
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-DirectoryIndex index.html index.xml
+DirectoryIndex index.html index.xml index.php
