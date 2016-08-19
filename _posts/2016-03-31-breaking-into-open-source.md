@@ -124,7 +124,7 @@ All this work, and you're finally ready to actually write your code! Take this
 opportunity to slow down and write your most elegant code. The distributed
 (across time and geography) nature of open source software development, means
 that projects must lean more heavily on the code for communication. As Steve
-Mcconnell says in his book _[Code Complete]_:
+McConnell says in his book _[Code Complete]_:
 
 > Write programs for people first, computers second
 
