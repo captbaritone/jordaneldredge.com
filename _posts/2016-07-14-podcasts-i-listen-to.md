@@ -33,7 +33,7 @@ _Last updated 2016-09-09._
 [Dan Carlin's Hardcore History]: http://www.dancarlin.com/hardcore-history-57-kings-kings-ii/
 [Common Sense with Dan Carlin]: http://www.dancarlin.com/common-sense-home-landing-page/
 [Security Now]: https://twit.tv/shows/security-now
-[Risky Buisiness]: http://risky.biz
+[Risky Business]: http://risky.biz
 [Talk Python to Me]: https://talkpython.fm/
 [JavaScript Jabber]: https://devchat.tv/js-jabber
 [JavaScript Air]: https://javascriptair.com/
