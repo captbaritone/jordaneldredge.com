@@ -9,8 +9,8 @@ alt='Jordan Eldredge playing Ukulele'>
 </div>
 
 Hello! My name is Jordan Eldredge. I am a programmer and classical singer
-living in San Francisco with my wife, and fellow singer, [Chelsea
-Hollow](http://chelseahollow.com).
+living in the San Francisco Bay Area with my wife [Chelsea
+Hollow](http://chelseahollow.com) and awesome daughter.
 
 ## Programming
 
@@ -19,8 +19,7 @@ college, it evolved naturally into a career. Since about 2009 I have been
 a full-time engineer. I currently work at [Hearsay
 Social](http://hearsaysocial.com/).
 
-Check out my [projects](projects) page,  [GitHub](https://github.com/captbaritone),
-or [programmer resume](programmer).
+Check out my [projects](projects) page or [GitHub profile](https://github.com/captbaritone).
 
 ## Singing
 
