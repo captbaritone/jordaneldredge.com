@@ -4,16 +4,18 @@ layout: post
 summary: Making the case against allowing linting errors in master.
 ---
 
+_TLDR: If you strictly enforce linting rules, code reviews will be easier,
+whole classes of bugs will dissapear, and your developers will be inspired
+to persue a greater degree of overall code quality._
+
+---
+
 I recently had a discussion with a colleague who argued that:
 
 > Linting errors should not block a pull request from being merged.
 
 I found myself disagreeing vehemently but unable to clearly state why. I've
 written this post to help clarify my thoughts on the position.
-
-In this post I will attempt to convince you that a linting error should be
-treated as equivalent to test failure, and should not be permitted in your
-production branch.
 
 ## Some specifics
 
@@ -46,11 +48,10 @@ I disagree that removing linting from our test suite is the best way to address
 this concern.
 
 I would argue that in the case of a site-down hotfix, you should have
-a mechanism for bypassing tests all together. There are many types of  of ways
-in which tests test failures which should not be a blocker to shipping
-a hotfix. For example:
+a mechanism for bypassing tests all together. There are many types of test
+failures which should not be a blocker to shipping a hotfix. For example:
 
-* Transient test failures cause by not properly mocking out the system clock
+* Transient test failures caused by not properly mocking out the system clock
 * Test failures introduced by your package repository being down.
 
 I don't think anyone would suggest disabling tests all together just to avoid
@@ -83,9 +84,8 @@ that variable. Without the linter's assurance, the reviewer would need to
 manually check the entire file for other usages of that variable.
 
 This applies to less overt errors as well. Did the author use the right number
-of spaces when they indented? If tests were configured to fail on linting
-errors, the reviewer wouldn't even need to ask herself that question, freeing
-her mental bandwidth to focus on other, more substantial, questions.
+of spaces when they indented? If linting is automatic, I have to do less of it
+manually as a reviewer.
 
 ### During deploy
 
@@ -103,13 +103,13 @@ will never encounter that particular bug in production.
 
 When a developer starts a new feature branch, they start their branch off of
 master. This means they are starting their work on a branch that could already
-have linting errors. When it's time for her to ship her changes she is now
+have linting errors. When it's time for her to ship her changes, she is now
 forced to choose between cleaning up somebody else's mess, or leaving these
 linting errors in master.
 
 The presence of these errors also reinforces a mentality that such errors are
 acceptable in master. While a single linting failure may seem quite harmless,
-the precedence it sets can be terribly damaging.
+the precedent it sets can be terribly damaging.
 
 Addison Wesley Longman puts it best in his description of the [broken window
 theory](https://en.wikipedia.org/wiki/Broken_windows_theory) in his book [The
