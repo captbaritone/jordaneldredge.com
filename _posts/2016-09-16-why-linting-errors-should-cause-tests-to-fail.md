@@ -48,7 +48,7 @@ I disagree that removing linting from our test suite is the best way to address
 this concern.
 
 I would argue that in the case of a site-down hotfix, you should have
-a mechanism for bypassing tests all together. There are many types of test
+a mechanism for bypassing tests altogether. There are many types of test
 failures which should not be a blocker to shipping a hotfix. For example:
 
 * Transient test failures caused by not properly mocking out the system clock
@@ -58,7 +58,7 @@ I don't think anyone would suggest disabling tests all together just to avoid
 the possibility that one of these errors might block a hotfix.
 
 If you don't have a system that can work around those types of failures, you
-properly should. And if you _do_ have a system that can work around these
+probably should. And if you _do_ have a system that can work around these
 failures, it would be appropriate to use it to work around a hypothetical
 misaligned curly brace.
 
