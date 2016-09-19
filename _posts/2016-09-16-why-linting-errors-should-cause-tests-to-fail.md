@@ -54,7 +54,7 @@ failures which should not be a blocker to shipping a hotfix. For example:
 * Transient test failures caused by not properly mocking out the system clock
 * Test failures introduced by your package repository being down.
 
-I don't think anyone would suggest disabling tests all together just to avoid
+I don't think anyone would suggest disabling tests altogether just to avoid
 the possibility that one of these errors might block a hotfix.
 
 If you don't have a system that can work around those types of failures, you
