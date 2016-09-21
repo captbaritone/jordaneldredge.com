@@ -5,7 +5,7 @@ summary: Making the case against allowing linting errors in master.
 ---
 
 _TLDR: If you strictly enforce linting rules, code reviews will be easier,
-whole classes of bugs will dissapear, and your developers will be inspired
+whole classes of bugs will disappear, and your developers will be inspired
 to persue a greater degree of overall code quality._
 
 ---
@@ -30,17 +30,16 @@ are:
 * Passing Travis tests
 
 We recently configured our Travis tests to include running
-[ESLint](http://eslint.org/). This means that code that does not conform to our
-linting standards cannot be merged into master. While my colleague and I were
-both in agreement that linting is valuable, it was this change that sparked
-debate.
+[ESLint](http://eslint.org/). This means that JavaScript code that does not
+conform to our linting standards cannot be merged into master. While my
+colleague and I were both in agreement that linting is valuable, it was this
+change that sparked debate.
 
 ## The simplified argument
 
 My colleague's main point against including ESLint in Travis was that, in
-a case where the site is down and we need to ship a hotfix, it would be
-terrible for a misaligned curly brace to prevent merging the fix and thus
-prolong our down-time.
+a case where the site is down and we need to ship a hotfix, a misaligned curly
+brace should not prevent merging the fix.
 
 I must admit that I agree with his premise. It is far more important to bring
 the site back up than for master to be free of linting errors. However,
@@ -57,7 +56,7 @@ failures which should not be a blocker to shipping a hotfix. For example:
 I don't think anyone would suggest disabling tests altogether just to avoid
 the possibility that one of these errors might block a hotfix.
 
-If you don't have a system that can work around those types of failures, you
+If you don't have a system that can work around these types of failures, you
 probably should. And if you _do_ have a system that can work around these
 failures, it would be appropriate to use it to work around a hypothetical
 misaligned curly brace.
@@ -84,8 +83,8 @@ that variable. Without the linter's assurance, the reviewer would need to
 manually check the entire file for other usages of that variable.
 
 This applies to less overt errors as well. Did the author use the right number
-of spaces when they indented? If linting is automatic, I have to do less of it
-manually as a reviewer.
+of spaces when they indented? If linting is automatic, the reviewer has to do
+less of it manually.
 
 ### During deploy
 
@@ -93,19 +92,19 @@ In addition to testing for issues of style, linters check for code validity. We
 should not deploy code that is invalid.
 
 For example, calling `console.log` will cause your application to crash in
-Internet Explorer 9. Despite this dire consequences, developers frequently
-open pull requests with `console.log` statements leftover from debugging.
-A linting rule like [`no-console`](http://eslint.org/docs/rules/no-console), if
-enforced as part of your test suite, can give you complete confidence that you
-will never encounter that particular bug in production.
+Internet Explorer 9. Despite this dire consequence, developers frequently
+open pull requests that include `console.log` statements leftover from
+debugging.  A linting rule like [`no-console`](http://eslint.org/docs/rules/no-console),
+if enforced as part of your test suite, can give you complete confidence that
+you will never encounter that particular bug in production.
 
 ### On a new feature branch
 
 When a developer starts a new feature branch, they start their branch off of
 master. This means they are starting their work on a branch that could already
-have linting errors. When it's time for her to ship her changes, she is now
-forced to choose between cleaning up somebody else's mess, or leaving these
-linting errors in master.
+have linting errors. When it's time for the developer to ship her changes, she
+is now forced to choose between cleaning up somebody else's mess, or leaving
+these linting errors in master.
 
 The presence of these errors also reinforces a mentality that such errors are
 acceptable in master. While a single linting failure may seem quite harmless,
