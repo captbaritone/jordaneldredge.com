@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "\"Ah leave me not to pine\" ukulele solo"
-summary: Video and PDF tablature of a Gilbert and Sullivan aria arranged for ukulele
+summary: Video and PDF tablature of a Gilbert and Sullivan aria arranged for ukulele.
 ---
 
 I created this arrangement of "Ah, leave me not to pine" from Gilbert and
@@ -14,5 +14,5 @@ well enough to make a passable recording. I hope you enjoy:
 {% youtube DsJ6bkSjUDM %}
 
 If you would like to play the piece yourself, you can download the tablature
-here: [Ah_leave_me_not_to_pine_ukulele.pdf]({{ site.url }}/uploads/2016/09/20/ah-leave-me-not-to-pine-ukulele.pdf)
+here: [Ah_leave_me_not_to_pine_ukulele.pdf]({{ site.url }}/uploads/2016/09/20/Ah_leave_me_not_to_pine_ukulele.pdf)
 
