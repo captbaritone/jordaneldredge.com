@@ -1,5 +1,5 @@
 ---
-title: "Were Going To Be Friends (White Stripes Cover)"
+title: "We're Going To Be Friends (White Stripes Cover)"
 layout: post
 ---
 
