@@ -2,6 +2,7 @@
 layout: post
 title: "UrlMeme: Make memes anywhere you can type a URL"
 date: "2015-09-27 13:35:43 -0700"
+summary_image: /images/made_a_meme.jpg
 ---
 
 Online meme generators are annoyingly complex. What if instead of ever visiting

@@ -1,6 +1,7 @@
 ---
 title: "WhatTheFuckShouldIBeForHalloween.com"
 layout: post
+summary_image: /uploads/2013/10/Screen-Shot-2013-10-16-at-2.05.44-PM.png
 ---
 
 Yesterday I spent an hour building a website that suggests absurd sexy

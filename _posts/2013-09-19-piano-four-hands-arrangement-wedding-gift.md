@@ -1,6 +1,7 @@
 ---
 title: "Piano Four-Hands Arrangement (Wedding Gift)"
 layout: post
+summary_image: /uploads/2014/06/eldredge-nammies_four_hands.pdf
 ---
 
 <a href="{{ site.url }}/uploads/2013/09/wedding_dance_web.jpg"><img alt="Photo credit: Lynne Stevenson Hylton" src="{{ site.url }}/uploads/2013/09/wedding_dance_web.jpg" width="500" height="747" /></a>

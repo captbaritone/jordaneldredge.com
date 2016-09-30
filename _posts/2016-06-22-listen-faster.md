@@ -4,6 +4,7 @@ title: "Listen Faster: How I found 30 extra hours in my week "
 date: "2016-06-22 13:42:37 -0700"
 summary: "I’ve added the equivalent of 30 hours to my week, all dedicated to
 reading and listening"
+summary_image: /images/listen-faster.jpg
 ---
 
 ![Using Overcast, Pocket and Dream Reader to listen

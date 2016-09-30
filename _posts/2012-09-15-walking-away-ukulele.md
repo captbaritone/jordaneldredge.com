@@ -1,6 +1,7 @@
 ---
 title: "Walking Away [Ukulele]"
 layout: post
+summary_image: /uploads/2012/09/Walking-Away-mp3.mp3
 ---
 
 <div id="attachment_1191" style="width: 510px" class="wp-caption alignnone"><a href="{{ site.url }}/uploads/2012/09/4418315357_78878f2695_o.jpg"><img class="size-large wp-image-1191" title="4418315357_78878f2695_o" src="{{ site.url }}/uploads/2012/09/4418315357_78878f2695_o-500x500.jpg" alt="" width="500" height="500" /></a><p class="wp-caption-text">Photo credit: <a href="http://www.flickr.com/photos/realplastictrees/4418315357/">Neil Patel</a></p></div>
