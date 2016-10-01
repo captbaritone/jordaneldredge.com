@@ -38,9 +38,27 @@
         <meta property="og:image" content="{{ "/images/jordan_eldredge.jpg" | prepend: side.baseurl | prepend: site.url }}">
     {% endif %}
 
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="@{{ site.twitter_username }}">
-    <meta name="twitter:creator" content="@{{ site.twitter_username }}">
+    {% if page.youtube_slug %}
+        <meta name="twitter:card" content="player">
+        <meta name="twitter:image" content="https://i.ytimg.com/vi/{{ page.youtube_slug }}/maxresdefault.jpg">
+        <meta name="tiwtter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+        <meta name="twitter:app:name:iphone" content="YouTube">
+        <meta name="twitter:app:id:iphone" content="544007664">
+        <meta name="twitter:app:name:ipad" content="YouTube">
+        <meta name="twitter:app:id:ipad" content="544007664">
+        <meta name="twitter:app:url:iphone" content="vnd.youtube://www.youtube.com/watch?v={{ page.youtube_slug }}&amp;feature=applinks">
+        <meta name="twitter:app:url:ipad" content="vnd.youtube://www.youtube.com/watch?v={{ page.youtube_slug }}&amp;feature=applinks">
+        <meta name="twitter:app:name:googleplay" content="YouTube">
+        <meta name="twitter:app:id:googleplay" content="com.google.android.youtube">
+        <meta name="twitter:app:url:googleplay" content="https://www.youtube.com/watch?v={{ page.youtube_slug }}">
+        <meta name="twitter:player" content="https://www.youtube.com/embed/{{ page.youtube_slug }}">
+        <meta name="twitter:player:width" content="1280">
+        <meta name="twitter:player:height" content="720">
+    {% else %}
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="@{{ site.twitter_username }}">
+        <meta name="twitter:creator" content="@{{ site.twitter_username }}">
+    {% endif %}
 
     <!-- Icons -->
     <link rel="icon" href="{{ "/favicon.ico" | prepend: site.baseurl }}" type="image/x-icon">

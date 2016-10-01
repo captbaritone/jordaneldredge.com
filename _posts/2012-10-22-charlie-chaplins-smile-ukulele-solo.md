@@ -1,6 +1,7 @@
 ---
 title: "Charlie Chaplin's Smile [Ukulele Solo]"
 layout: post
+youtube_slug: Tw4L_Ys-14g
 ---
 
 Years ago I heard a beautiful arrangement of Charlie Chaplin's

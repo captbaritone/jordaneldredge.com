@@ -2,6 +2,7 @@
 title: "Row Row Your Boat"
 layout: post
 archive: true
+youtube_slug: _YWitlb7BUc
 ---
 
 I was at home with my parents and my girlfriend <a href="http://www.chelseahollow.com">Chelsea</a>, and my dad was singing <a href="{{ site.url }}/blog/new-video-camera-take-me-out-to-the-ball-game/">"Take Me Out To the Ball Game" off by one word</a>. He then proceed to sing it again off by TWO words. Eventually the evening was reduced to repeating the song over and over and trying to shift the words one note back each time. We soon realized that this was a sort of <a href="http://en.wikipedia.org/wiki/Phasing">phase music</a>. If the number of words is one fewer than the number of notes, the words shift father and farther from their original position in the melody creating various interesting word stresses and pairings.

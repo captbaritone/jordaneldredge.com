@@ -1,6 +1,7 @@
 ---
 title: "Backyard Ukulele Session [Ukulele Videos with Chelsea]"
 layout: post
+youtube_slug: ZIxgGRyTtKk
 ---
 
 Chelsea's videographer friend Beau Lambert was recently staying with us and graciously offered to record a few songs. Beau set up his camera in our backyard and Chelsea and I thought up a few songs that we could record. We only did one or two takes of each one, so the whole ordeal was really just informal and fun. Hopefully you will enjoy. Oh, make sure to pay attention to Chelsea's hand-drawn title cards!

@@ -1,6 +1,7 @@
 ---
 title: "[Ukulele Solo] Never On Sunday"
 layout: post
+youtube_slug: lPM9QRCEB60
 ---
 
 As part of the "<a href="{{ site.url }}/blog/backyard-ukulele-session-ukulele-videos-with-chelsea/">Backyard Sessions</a>" which I posted about earlier, we also recorded this take of my solo ukulele version of Never on Sunday.

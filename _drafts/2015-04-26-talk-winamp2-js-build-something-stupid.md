@@ -3,6 +3,7 @@ layout: post
 title: "I gave a talk: \"Winamp2-js: Build Something Stupid\""
 date: "2015-04-26 15:34:02 -0700"
 summary: Watch a short talk I gave at the SF JavaScript Meetup about my Winamp2-js project.
+youtube_slug: 3f7l-Z4NF70
 ---
 
 On April 21st, I gave a short talk at the [San Francisco JavaScript

@@ -1,6 +1,7 @@
 ---
 title: "Further Backwards ABCs Foolishness"
 layout: post
+youtube_slug: UQ31BkSpshY
 ---
 
 I know I am stretching this backwards-alphabet-songs thing, but I am at home in Petaluma and had time to kill.

@@ -1,6 +1,7 @@
 ---
 title: "I Come To the Garden Alone (For George Morris)"
 layout: post
+youtube_slug: FDB0LMrDdEs
 ---
 
 <a href="{{ site.url }}/uploads/2011/07/photo.jpeg"><img class="alignnone size-large wp-image-946" title="Wanda and Geroge's Garden" src="{{ site.url }}/uploads/2011/07/photo-500x375.jpg" alt="" width="500" height="375" /></a>
