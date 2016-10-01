@@ -1,10 +1,15 @@
 ---
-title: "Backyard Ukulele Session [Ukulele Videos with Chelsea]"
+title: "Backyard Ukulele Session: Ukulele Videos with Chelsea"
 layout: post
 youtube_slug: ZIxgGRyTtKk
 ---
 
-Chelsea's videographer friend Beau Lambert was recently staying with us and graciously offered to record a few songs. Beau set up his camera in our backyard and Chelsea and I thought up a few songs that we could record. We only did one or two takes of each one, so the whole ordeal was really just informal and fun. Hopefully you will enjoy. Oh, make sure to pay attention to Chelsea's hand-drawn title cards!
+Chelsea's videographer friend Beau Lambert was recently staying with us and
+graciously offered to record a few songs. Beau set up his camera in our
+backyard and Chelsea and I thought up a few songs that we could record. We only
+did one or two takes of each one, so the whole ordeal was really just informal
+and fun. Hopefully you will enjoy. Oh, make sure to pay attention to Chelsea's
+hand-drawn title cards!
 
 {% youtube ZIxgGRyTtKk %}
 
@@ -20,4 +25,6 @@ Chelsea's parents, Tom and Grace, wrote the "Nammies Song" to help their kids go
 
 {% youtube trikN01A5Dc %}
 
-"The Beard Song" was one of the first ukulele songs I fell in love with on Youtube. It was written by Rocky and Balls. <a href="http://www.youtube.com/watch?v=Xe3Vsbsb33Q">Check out the original</a>.
+"The Beard Song" was one of the first ukulele songs I fell in love with on
+Youtube. It was written by Rocky and Balls. <a
+href="http://www.youtube.com/watch?v=Xe3Vsbsb33Q">Check out the original</a>.
