@@ -4,7 +4,11 @@ layout: post
 youtube_slug: dO--mXsEyS0
 ---
 
-My (now ex) choir just toured to Anaheim, Souther California, to sing for a choral conductors' convention, <a href="http://www.acdaonline.org/">ACDA</a>. It is a huge honor for our choir to be invited to sing here. Here is a clip from a pre-convention concert we gave in <a href="http://www.rc.net/orange/stboniface/">St. Boniface</a>.
+My (now ex) choir just toured to Anaheim, Souther California, to sing for
+a choral conductors' convention, <a href="http://www.acdaonline.org/">ACDA</a>.
+It is a huge honor for our choir to be invited to sing here. Here is a clip
+from a pre-convention concert we gave in <a
+href="http://www.rc.net/orange/stboniface/">St. Boniface</a>.
 
 From Paul Kim's description of the video:
 

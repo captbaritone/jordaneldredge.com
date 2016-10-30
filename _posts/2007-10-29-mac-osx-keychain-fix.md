@@ -3,8 +3,7 @@ title: "Mac OS X keychain fix"
 layout: post
 ---
 
-![Keychain First
-Aid](%base_url%/content/images/osx-keychain-fix.png)
+![Keychain First Aid](%base_url%/content/images/osx-keychain-fix.png)
 
 It turns out there is a very simple fix for a corrupt keychain file. One of the
 symptoms of my MacBook battery dying is that it shuts off at unexpected times.
