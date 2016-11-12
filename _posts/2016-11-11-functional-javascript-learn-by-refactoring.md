@@ -178,10 +178,10 @@ Using implicit returns:
 
     var flow = (funcs) =>
       (initialValue) =>
-       funcs.reduce((value, func) =>
-         func(value),
-         initialValue
-       );
+        funcs.reduce((value, func) =>
+          func(value),
+          initialValue
+        );
 
 Let's try using flow in our `titleCase()` example:
 
