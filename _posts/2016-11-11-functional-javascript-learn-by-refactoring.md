@@ -167,7 +167,7 @@ purposes of this exercise, we can write our own flow function by using
 `Array.reduce()`:
 
     var flow = (funcs) => {
-      return (initialValue) {
+      return (initialValue) => {
         return funcs.reduce((value, func) => {
           return func(value);
         }, initialValue);
@@ -176,9 +176,9 @@ purposes of this exercise, we can write our own flow function by using
 
 Using implicit returns:
 
-    var flow = (funcs) => 
-      initialValue => 
-       funcs.reduce((value, func) => 
+    var flow = (funcs) =>
+      (initialValue) =>
+       funcs.reduce((value, func) =>
          func(value),
          initialValue
        );
