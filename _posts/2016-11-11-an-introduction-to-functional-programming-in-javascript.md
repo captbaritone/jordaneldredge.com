@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Intro to functional programming by refactoring imperative JavaScript
-summary: Learn the basics of functional programming by iteratively refactoring imperative code
+title: "Functional JavaScript: Learn by refactoring"
+summary: Learn the basics of functional programming by iteratively refactoring imperative code.
 ---
 
 In this blog post we'll learn some fundamentals of functional programing by
