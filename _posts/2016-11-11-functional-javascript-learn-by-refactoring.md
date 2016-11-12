@@ -225,6 +225,11 @@ Let's use our new `method()` function to simplify our `titleCase()` example:
 
     var titleCase = flow([words, capifyWords, join]);
 
+Notice how our `word()` and `join()` functions can now be defined without any
+variable names, which makes them even more generic and declarative. With
+functional programming we can focus on _what_ we're doing rather than _how_
+we're doing it.
+
 ## capifyWords is just a method call!
 
 Since `capifyWords` is really just calling `.map()`, which is a method, with
