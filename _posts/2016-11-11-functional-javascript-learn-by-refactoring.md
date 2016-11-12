@@ -1,19 +1,17 @@
 ---
 layout: post
-title: An introduction to functional programming in JavaScript
-summary: Learn the basics of functional programming by iteratively refactoring imperative code
-archive: true
+title: "Functional JavaScript: Learn by refactoring"
+summary: Learn the basics of functional programming by iteratively refactoring imperative code.
 ---
 
-In this blog post, we'll learn some fundamentals of functional programing by
-comparing it with imperative code. We'll start with an function in the
-imperative style, iteratively refactor it to a functional style, and compare
-the results.
+In this blog post we'll learn some fundamentals of functional programing by
+comparing it with imperative code. We'll write a function in the imperative
+style, iteratively refactor it to a functional style, and compare the results.
 
 ## Imperative style
 
-Imperative code starts with data, takes some number of steps that mutates that
-data, and then returns the mutated data.
+Imperative code starts with data, takes some number of steps that mutate that
+data, and finally returns the mutated data.
 
 Let's write a `titleCase()` function in the imperative style. Our function
 should take a string and return a new string with the first character of each
@@ -119,7 +117,7 @@ A higher order function does at least one of the following two things:
 
 You'll notice that many of the helper functions we've extracted are basically
 converting a method call to a function. Let's write a higher order function
-that converts `Array.map()` to a function. It will take a function (`func`),
+that converts `Array.map()` to a function. It will take a function, `func`,
 and return a new function. The new function will accept an array, and map
 `func` over that array:
 
@@ -134,7 +132,7 @@ this as:
 
     var map = (func) => (arr) => arr.map(func);
 
-Let's use our new `map()` function in our `titleCase()` example:
+Let's use our new `map()` function to clean up our `titleCase()` example:
 
     var map = (func) => (arr) => arr.map(func);
     var words = (str) => str.split(' ');
@@ -152,7 +150,7 @@ simply.
 ## Flow()
 
 Earlier, I promised that we would clean up the confusing set of nested
-functions that remain in our `titleCase()` function. Introducing `flow()`.
+functions that remain in our `titleCase()` function. Introducing: `flow()`.
 
 Flow is a higher order function which takes an array of functions and returns
 a new function which takes a single value and successively applies the given
@@ -227,35 +225,27 @@ Let's use our new `method()` function to simplify our `titleCase()` example:
 
     var titleCase = flow([words, capifyWords, join]);
 
-## Clean up
+## capifyWords is just a method call!
 
-Let's clean up our code a bit by deriving our `words` and `join` functions
-directly within our `flow()` function:
-
-    var method = (func, arg) => (obj) => obj[func](arg);
-    var map = (func) => (arr) => arr.map(func);
-    var capify = (word) => word[0].toUpperCase() + word.substring(1);
-
-    var titleCase = flow([method('split', ' '), map(capify), method('join', ' ')]);
-
-## Map is just a method!
-
-Actually, `map()` is just a specialized version of `method()`. We can define it
-in-line with our `flow()` call:
-
+Since `capifyWords` is really just calling `.map()`, which is a method, with
+a specific argument, we can create it using our higher order `method()`, and
+get rid of our `map()` function:
 
     var method = (func, arg) => (obj) => obj[func](arg);
+    var words = method('split', ' ');
+    var join = method('join', ' ');
     var capify = (word) => word[0].toUpperCase() + word.substring(1);
+    var capifyWords = method('map', capify);
 
-    var titleCase = flow([method('split', ' '), method('map', capify), method('join', ' ')]);
+    var titleCase = flow([words, capifyWords, join]);
 
 We can read the that last line as:
 
-> `titleCase` is a function which splits its value on `' '`, runs `capify` on
-> each word, and then joins them back together with `' '`.
+> `titleCase` is a function which splits its value into words, `capify`s those
+> words, and then joins them back together.
 
-That's pretty readable, and it reads in terms of the programs intent rather
-than in terms of implementation detail.
+That's pretty readable, and it clearly communicates the program's intent rather
+than its implementation details.
 
 ## Compare the two
 
@@ -276,27 +266,36 @@ than in terms of implementation detail.
 ### After
 
     var method = (func, arg) => (obj) => obj[func](arg);
+    var words = method('split', ' ');
+    var join = method('join', ' ');
     var capify = (word) => word[0].toUpperCase() + word.substring(1);
+    var capifyWords = method('map', capify);
 
-    var titleCase = flow([method('split', ' '), method('map', capify), method('join', ' ')]);
+    var titleCase = flow([words, capifyWords, join]);
 
-Our new code is three lines instead of eleven. It avoids having
+Our new code is six lines instead of eleven. It avoids having
 implementation-specific variable names, and reads in terms of the problem it's
 solving rather than in terms of implementation details. It's very declarative!
 
 ## Prologue: Reusability
 
 Another benefit of composing our business logic out of smaller, data-agnostic,
-functions, is that we can reuse those small functions. Let's see how difficult
-it would be to build some other similar functions:
+functions is that we can reuse those small functions. Let's see how difficult
+it would be to create five other similar functions:
 
-    var studlyCase = flow([method('split', ' '), method('map', capify), method('join', '')]);
-    var kebabCase = flow([method('split', ' '), method('map', capify), method('join', '-')]);
+    var lowerCase = method('toLowerCase');
     var upperCase = method('toUpperCase');
-    var snakeCase = flow([method('split', ' '), method('map', method('toLowerCase')), method('join', '_')]);
+    var studlyCase = flow([words, capifyWords, method('join', '')]);
+    var kebabCase = flow([lowerCase, words, method('join', '-')]);
+    var snakeCase = flow([lowerCase, words, method('join', '_')]);
 
-Imagine doing this in an imperative style! We would have ended up with four
-more eleven line functions instead of four one line functions!
+Take a second to read though these and figure out how they work. See how we are
+making novel use of our existing vocabulary of functions? Notice how we can
+even use our first new function, `lowerCase()` as a component of later
+functions like `kebabCase`!
+
+Imagine doing this in an imperative style! We would have ended up with five
+more eleven line functions instead of five one line functions!
 
 I hope this post as piqued your interest in functional programing in
 JavaScript!  If you want to learn more, check out these links:
