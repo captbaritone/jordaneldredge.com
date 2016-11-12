@@ -160,7 +160,7 @@ For example, the following two statements are equivalent:
 
     flow([a, b, c]);
 
-    (value) => a(b(c(value)));
+    (value) => c(b(a(value)));
 
 Flow [can be found in lodash](https://lodash.com/docs/4.16.6#flow), but for the
 purposes of this exercise, we can write our own flow function by using
