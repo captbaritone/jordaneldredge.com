@@ -280,8 +280,8 @@ solving rather than in terms of implementation details. It's very declarative!
 ## Prologue: Reusability
 
 Another benefit of composing our business logic out of smaller, data-agnostic,
-functions, is that we can reuse those small functions. Let's see how difficult
-it would be to five some other similar functions:
+functions is that we can reuse those small functions. Let's see how difficult
+it would be to create five other similar functions:
 
     var lowerCase = method('toLowerCase');
     var upperCase = method('toUpperCase');
@@ -289,9 +289,10 @@ it would be to five some other similar functions:
     var kebabCase = flow([lowerCase, words, method('join', '-')]);
     var snakeCase = flow([lowerCase, words, method('join', '_')]);
 
-Take a second to read though these. See how we are making novel use of our
-existing vocabulary of functions? Notice how we can even use our initial
-function, `lowerCase()` as a component of later functions like `kebabCase`!
+Take a second to read though these and figure out how they work. See how we are
+making novel use of our existing vocabulary of functions? Notice how we can
+even use our first new function, `lowerCase()` as a component of later
+functions like `kebabCase`!
 
 Imagine doing this in an imperative style! We would have ended up with five
 more eleven line functions instead of five one line functions!
