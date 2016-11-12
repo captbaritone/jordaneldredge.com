@@ -160,7 +160,7 @@ For example, the following two statements are equivalent:
 
     flow([a, b, c]);
 
-    (value) => a(b(c(value)));
+    (value) => c(b(a(value)));
 
 Flow [can be found in lodash](https://lodash.com/docs/4.16.6#flow), but for the
 purposes of this exercise, we can write our own flow function by using
@@ -178,10 +178,10 @@ Using implicit returns:
 
     var flow = (funcs) =>
       (initialValue) =>
-       funcs.reduce((value, func) =>
-         func(value),
-         initialValue
-       );
+        funcs.reduce((value, func) =>
+          func(value),
+          initialValue
+        );
 
 Let's try using flow in our `titleCase()` example:
 
@@ -224,6 +224,11 @@ Let's use our new `method()` function to simplify our `titleCase()` example:
     var capifyWords = map(capify);
 
     var titleCase = flow([words, capifyWords, join]);
+
+Notice how our `word()` and `join()` functions can now be defined without any
+variable names, which makes them even more generic and declarative. With
+functional programming we can focus on _what_ we're doing rather than _how_
+we're doing it.
 
 ## capifyWords is just a method call!
 
