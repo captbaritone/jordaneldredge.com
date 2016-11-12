@@ -34,7 +34,7 @@
 
     {% if page.summary_image %}
         <meta property="og:image" content="{{ page.summary_image | prepend: side.baseurl | prepend: site.url }}">
-    {% else if page.youtube_slug %}
+    {% elsif page.youtube_slug %}
         <meta property="og:image" content="https://i.ytimg.com/vi/{{ page.youtube_slug }}/maxresdefault.jpg">
         <meta name="twitter:image" content="https://i.ytimg.com/vi/{{ page.youtube_slug }}/maxresdefault.jpg">
     {% else %}
