@@ -227,9 +227,9 @@ Let's use our new `method()` function to simplify our `titleCase()` example:
 
 ## capifyWords is just a method call!
 
-Actually, `capifyWords()` is just a specialized version of `method()`. We can
-define it in-line with our `flow()` call:
-
+Since `capifyWords` is really just calling `.map()`, which is a method, with
+a specific argument, we can create it using our higher order `method()`, and
+get rid of our `map()` function:
 
     var method = (func, arg) => (obj) => obj[func](arg);
     var words = method('split', ' ');
@@ -244,8 +244,8 @@ We can read the that last line as:
 > `titleCase` is a function which splits its value into words, `capify`s those
 > words, and then joins them back together.
 
-That's pretty readable, and it reads in terms of the programs intent rather
-than in terms of implementation detail.
+That's pretty readable, and it clearly communicates the program's intent rather
+than its implementation details.
 
 ## Compare the two
 
@@ -281,15 +281,20 @@ solving rather than in terms of implementation details. It's very declarative!
 
 Another benefit of composing our business logic out of smaller, data-agnostic,
 functions, is that we can reuse those small functions. Let's see how difficult
-it would be to build some other similar functions:
+it would be to five some other similar functions:
 
-    var studlyCase = flow([words, capifyWords, method('join', '')]);
-    var kebabCase = flow([words, capifyWords, method('join', '-')]);
+    var lowerCase = method('toLowerCase');
     var upperCase = method('toUpperCase');
-    var snakeCase = flow([words, method('map', method('toLowerCase')), method('join', '_')]);
+    var studlyCase = flow([words, capifyWords, method('join', '')]);
+    var kebabCase = flow([lowerCase, words, method('join', '-')]);
+    var snakeCase = flow([lowerCase, words, method('join', '_')]);
 
-Imagine doing this in an imperative style! We would have ended up with four
-more eleven line functions instead of four one line functions!
+Take a second to read though these. See how we are making novel use of our
+existing vocabulary of functions? Notice how we can even use our initial
+function, `lowerCase()` as a component of later functions like `kebabCase`!
+
+Imagine doing this in an imperative style! We would have ended up with five
+more eleven line functions instead of five one line functions!
 
 I hope this post as piqued your interest in functional programing in
 JavaScript!  If you want to learn more, check out these links:
