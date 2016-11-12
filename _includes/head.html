@@ -34,14 +34,17 @@
 
     {% if page.summary_image %}
         <meta property="og:image" content="{{ page.summary_image | prepend: side.baseurl | prepend: site.url }}">
+    {% else if page.youtube_slug %}
+        <meta property="og:image" content="https://i.ytimg.com/vi/{{ page.youtube_slug }}/maxresdefault.jpg">
+        <meta name="twitter:image" content="https://i.ytimg.com/vi/{{ page.youtube_slug }}/maxresdefault.jpg">
     {% else %}
         <meta property="og:image" content="{{ "/images/jordan_eldredge.jpg" | prepend: side.baseurl | prepend: site.url }}">
     {% endif %}
 
     {% if page.youtube_slug %}
         <meta name="twitter:card" content="player">
-        <meta name="twitter:image" content="https://i.ytimg.com/vi/{{ page.youtube_slug }}/maxresdefault.jpg">
-        <meta name="tiwtter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+        <meta name="twitter:image" content="https://i.ytimg.com/vi/{{ page.youtube_slug }}/hqdefault.jpg">
+        <meta name="twitter:title" content="{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title }}{% endif %}">
         <meta name="twitter:app:name:iphone" content="YouTube">
         <meta name="twitter:app:id:iphone" content="544007664">
         <meta name="twitter:app:name:ipad" content="YouTube">
@@ -56,9 +59,10 @@
         <meta name="twitter:player:height" content="720">
     {% else %}
         <meta name="twitter:card" content="summary">
-        <meta name="twitter:site" content="@{{ site.twitter_username }}">
-        <meta name="twitter:creator" content="@{{ site.twitter_username }}">
     {% endif %}
+
+    <meta name="twitter:site" content="@{{ site.twitter_username }}">
+    <meta name="twitter:creator" content="@{{ site.twitter_username }}">
 
     <!-- Icons -->
     <link rel="icon" href="{{ "/favicon.ico" | prepend: site.baseurl }}" type="image/x-icon">
