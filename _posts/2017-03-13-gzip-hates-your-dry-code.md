@@ -18,7 +18,7 @@ Then it dawned on me. Gzip's entire job is to remove duplication, and it's reall
 
 None of this is to say that you shouldn't try to consolidate duplicate logic in your code. 99% of the time, DRY code is simpler to understand and easier to maintain. However, do keep in mind that when it comes to file size, gzip is probably better at removing duplicate content than you are.
 
-You can find my proposed change in this [pull request](https://github.com/jashkenas/underscore/pull/2383)
+You can find my proposed change in this [pull request](https://github.com/jashkenas/underscore/pull/2383).
 
 [Underscore.js]: http://underscorejs.org/
 [shave off some weight]: https://github.com/jashkenas/underscore/issues/2060
