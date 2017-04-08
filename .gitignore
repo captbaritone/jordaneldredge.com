@@ -3,3 +3,5 @@ public_html
 singer
 projects/
 uploads/
+_site/
+vendor/

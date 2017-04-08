@@ -11,6 +11,7 @@ github_username:  captbaritone
 youtube_username:  captbaritone
 timezone: America/Los_Angeles
 google_analytics: UA-96948-15
+exclude: [vendor]
 
 # Where things are
 destination: ./public_html
