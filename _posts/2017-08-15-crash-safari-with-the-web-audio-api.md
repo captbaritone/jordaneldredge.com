@@ -1,5 +1,6 @@
 ---
 title: "Crash Safari with the Web Audio API"
+summary: Discovering, reproducing, and working around a bug that crashes Safari hard.
 layout: post
 ---
 
