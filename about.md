@@ -16,8 +16,7 @@ Hollow](http://chelseahollow.com) and awesome daughter.
 
 I've been writing web software as a hobby since I was in High School. After
 college, it evolved naturally into a career. Since about 2009 I have been
-a full-time engineer. I currently work at [Hearsay
-Social](http://hearsaysocial.com/).
+a full-time engineer. I currently work at Facebook on the [Nuclide](https://nuclide.io/) team.
 
 Check out my [projects](projects) page or [GitHub profile](https://github.com/captbaritone).
 
