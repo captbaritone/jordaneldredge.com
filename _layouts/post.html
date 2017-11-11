@@ -27,7 +27,9 @@ layout: default
   {% include share_buttons.html %}
 {% endif %}
 
-{% if site.show_post_footers %}
+{% if page.github_comments_issue_id %}
+  {% include comments.html %}
+{% elsif site.show_post_footers %}
   {% include post_footer.html %}
 {% endif %}
 

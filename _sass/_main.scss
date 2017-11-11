@@ -576,3 +576,40 @@ Copyright (c) 2014 Daniel Eden
   -webkit-animation-name: fadeInDown;
           animation-name: fadeInDown;
 }
+
+#gh-comments-list {
+  .gh-comments-title {
+    text-align: center;
+    margin: 2em 0 1.5em 0;
+  }
+  .gh-comments-button {
+    text-align: center;
+    display: block;
+    margin-bottom: 3em;
+    font-weight: bold;
+  }
+
+  .gh-comment {
+    margin-left: 70px;
+    position: relative;
+    img.gh-comment-profile-pic {
+      position: absolute;
+      top: 0;
+      left: -70px;
+      width: 50px;
+      height: 50px;
+    }
+    .gh-comment-author {
+      padding-bottom: 1em;
+      //width: 100%;
+      //border-top: 1px solid black;
+      //height: 1px;
+    }
+    .gh-comment-hr {
+      margin: 2em 0;
+    }
+    .gh-comment-body {
+
+    }
+  }
+}
