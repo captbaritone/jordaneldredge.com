@@ -4,7 +4,7 @@ summary: "Why I'm perfectly happy to have built something that nobody really use
 layout: post
 ---
 
-Yesterday I answered some questions in an "Ask Me Anything" tread at work. One particular question was both challenging to answer, and got to the heart of how I think about side projects:
+Yesterday I answered some questions in an "Ask Me Anything" thread at work. One particular question was both challenging to answer, and got to the heart of how I think about side projects:
   
 > You've spent a ton of time on your Winamp project but outside of a lot of press, it didn't have a lot of impact in terms of people using it. How do you feel about that and would you do something different in the future?
 
@@ -18,7 +18,7 @@ In the same way that gardening or model trains are perfectly valid hobbies, it's
 
 ## It has provided me value personally
 
-When I started Winamp2-js, my JavaScript experience was limited to hacking JQuery plugins together without really understanding anything that I was doing. Winamp2-js was fun enough that I looked forward to coming home each night and working on it. In the process I taught myself "vanilla JavaScript", and eventually when that didn't scale, React, Redux and other tools. My experience gave me confidence to drive a migration toward these technologies at work, which ended up being good for my career there.
+When I started Winamp2-js, my JavaScript experience was limited to hacking JQuery plugins together without really understanding anything that I was doing. Winamp2-js was fun enough that I looked forward to coming home each night and working on it. In the process I taught myself "vanilla JavaScript", and eventually when that didn't scale, React, Redux, and other tools. My experience gave me confidence to drive a migration toward these technologies at work, which ended up being good for my career there.
 
 Many of the problems which this project forced me to solve were not problems I ever would have come across in my day job but were valuable in my day job once I learned them.
 
@@ -26,7 +26,7 @@ Many of the problems which this project forced me to solve were not problems I e
 
 The exposure this project has received has enabled me to connect with people that I never could have otherwise. Nullsoft's founders, former Winamp developers, notable Winamp skinners, people at the forefront of the Web Audio API and many more. Theses are all people from whom I have learned a great deal, and I wouldn't have had the opportunity to connect with otherwise.
 
-The exposure was also directly responsible for my current job. A recruiter noticed it on GitHub and in my interview loop, multiple people I interviewed with had heard of it. This gave me an opportunity to talk about something that I was passionate about, and had put a lot of thought into.
+Winamp2-js' exposure was also directly responsible for my current job. A recruiter noticed it on GitHub and in my interview loop, multiple people I interviewed with had heard of it. This gave me an opportunity to talk about something that I was passionate about, and had put a lot of thought into.
 
 ## I dunno
 
