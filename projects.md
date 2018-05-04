@@ -7,7 +7,7 @@ permalink: /projects/
 
 ### Javascript
 
-**[Winamp2-js](winamp2-js/)** -  A reimplementation of Winamp 2.9 in HTML5 and Javascript.
+**[Webamp](https://webamp.org)** -  A reimplementation of Winamp 2.9 in HTML5 and Javascript.
 
 **[Markdown Today](https://markdown.today)** -  A private, mobile-first web app that writes your journal directly to Dropbox.
 
