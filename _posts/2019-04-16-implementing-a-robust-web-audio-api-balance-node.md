@@ -7,7 +7,7 @@ summary: "After more than four years, I'm finally happy with how Webamp implemen
 ![Webamp's Balance Slider](/images/webamp-balance.png)
 
 
-As part of the [Webamp project](https://webamp.org/about) I needed the ability to adjust the balance of an audio source with the Web Audio API. We’ve gone though a number of implementations over the course of several years, and each implementation had non-obvious problems. I finally feel good about our current solution so I thought I would document it for others who might be trying to build something similar. Notably, it solves the following problems:
+As part of the [Webamp project](https://webamp.org/about) I needed the ability to adjust the balance of an audio source with the Web Audio API. We’ve gone through a number of implementations over the course of several years, and each implementation had non-obvious problems. I finally feel good about our current solution so I thought I would document it for others who might be trying to build something similar. Notably, it solves the following problems:
 
 
 - Mono audio sources are played in both channels
@@ -38,7 +38,7 @@ And here’s how to use it (adapted from the [MDN StereoPannerNode example code]
     // Event handler function to increase balance to the right and left
     // when the slider is moved
     
-    blannceControl.oninput = function() {
+    balanceControl.oninput = function() {
       balanceNode.balance.value = balanceControl.value;
       balanceValue.innerHTML = balanceControl.value;
     }
