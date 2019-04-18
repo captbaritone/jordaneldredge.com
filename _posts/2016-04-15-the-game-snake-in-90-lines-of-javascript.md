@@ -2,6 +2,7 @@
 layout: post
 title: "The game Snake in 90 lines of JavaScript"
 summary: I wrote a minimal implementation of the game Snake in JavaScript
+github_comments_issue_id: 12
 ---
 
 After watching [Coding an HTML5 Game in 5 min 30
