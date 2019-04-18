@@ -2,6 +2,7 @@
 layout: post
 title: Implementing a Robust Web Audio API Balance Node
 summary: "After more than four years, I'm finally happy with how Webamp implements balance"
+github_comments_issue_id: 13
 ---
 
 ![Webamp's Balance Slider](/images/webamp-balance.png)
