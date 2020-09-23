@@ -3,7 +3,7 @@ layout: post
 title: "Mainlining Nostalgia: Making the Winamp Skin Museum"
 summary: "Thoughts on what I think make the Winamp Skin Musuem successful"
 github_comments_issue_id: 14
-summary_image: /images/winamp-skin-museum.png
+summary_image: /images/winamp-skin-museum-small.png
 ---
 
 ![Screenshot of a website showing a large grid of Winamp skin screenshots](/images/winamp-skin-museum.png)
