@@ -8,7 +8,7 @@ github_comments_issue_id: 13
 ![Webamp's Balance Slider](/images/webamp-balance.png)
 
 
-As part of the [Webamp project](https://webamp.org/about) I needed the ability to adjust the balance of an audio source with the Web Audio API. We’ve gone through a number of implementations over the course of several years, and each implementation had non-obvious problems. I finally feel good about our current solution so I thought I would document it for others who might be trying to build something similar. Notably, it solves the following problems:
+As part of the [Webamp project](https://webamp.org/about) I needed the ability to adjust the balance of an audio source with the Web Audio API. We went through a number of implementations over the course of several years, and each implementation had non-obvious problems. I finally feel good about our current solution so I thought I would document it for others who might be trying to build something similar. Notably, it solves the following problems:
 
 
 - Mono audio sources are played in both channels
@@ -54,7 +54,7 @@ If you are interested in all the broken solutions that I built before finding th
 
 # Two Gain Nodes
 
-Our initial approach, built by [Joseph Portelli](http://lostsource.com/) ([pull request](https://github.com/captbaritone/webamp/pull/8)), was to use a [ChannelSplitterNode](https://developer.mozilla.org/en-US/docs/Web/API/ChannelSplitterNode) to divide the source node into two sources (left and right), attach a [GainNode](https://developer.mozilla.org/en-US/docs/Web/API/GainNode) to each of those and then merge them back together with a [ChannelMergerNode](https://developer.mozilla.org/en-US/docs/Web/API/ChannelMergerNode) node.
+Our initial approach, built by [Joseph Portelli](http://lostsource.com/) ([pull request](https://github.com/captbaritone/webamp/pull/8)), used a [ChannelSplitterNode](https://developer.mozilla.org/en-US/docs/Web/API/ChannelSplitterNode) to divide the source node into two sources (left and right), attach a [GainNode](https://developer.mozilla.org/en-US/docs/Web/API/GainNode) to each of those and then merge them back together with a [ChannelMergerNode](https://developer.mozilla.org/en-US/docs/Web/API/ChannelMergerNode) node.
 
 While this generally worked, it suffered from a flaw with mono audio files. The channel splitter node does not know anything about the number of channels in the source node so splitting a mono audio source results in a left source that contains all the mono signal, and a right source that is silent, rather than playing the same mono signal in both left and right channels.
 

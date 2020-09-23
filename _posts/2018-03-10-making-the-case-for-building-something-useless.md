@@ -18,18 +18,18 @@ In the same way that gardening or model trains are perfectly valid hobbies, it's
 
 ## It has provided me value personally
 
-When I started Winamp2-js, my JavaScript experience was limited to hacking JQuery plugins together without really understanding anything that I was doing. Winamp2-js was fun enough that I looked forward to coming home each night and working on it. In the process I taught myself "vanilla JavaScript", and eventually when that didn't scale, React, Redux, and other tools. My experience gave me confidence to drive a migration toward these technologies at work, which ended up being good for my career there.
+When I started Webamp, my JavaScript experience was limited to hacking JQuery plugins together without really understanding anything that I was doing. Webamp was fun enough that I looked forward to coming home each night to working on it. In the process I taught myself "vanilla JavaScript", and eventually when that didn't scale, React, Redux, and other tools. My experience gave me the confidence to drive a migration toward these technologies at work, which ended up being good for my career there.
 
 Many of the problems which this project forced me to solve were not problems I ever would have come across in my day job but were valuable in my day job once I learned them.
 
 ## Exposure has a value all its own
 
-The exposure this project has received has enabled me to connect with people that I never could have otherwise. Nullsoft's founders, former Winamp developers, notable Winamp skinners, people at the forefront of the Web Audio API and many more. Theses are all people from whom I have learned a great deal, and I wouldn't have had the opportunity to connect with otherwise.
+The exposure this project has received has enabled me to connect with people that I never could have otherwise. Nullsoft's founders, former Winamp developers, notable Winamp skinners, people at the forefront of the Web Audio API and many others. Theses are all people from whom I have learned a great deal, and I wouldn't have had the opportunity to connect with otherwise.
 
-Winamp2-js' exposure was also directly responsible for my current job. A recruiter noticed it on GitHub and in my interview loop, multiple people I interviewed with had heard of it. This gave me an opportunity to talk about something that I was passionate about, and had put a lot of thought into.
+Webamp's exposure was also directly responsible for my current job. A recruiter noticed it on GitHub and in my interview loop, multiple people had heard of it. This gave me an opportunity to talk about something that I was passionate about, and had put a lot of thought into.
 
 ## I dunno
 
 I'm sure there are potential projects which could have had all of these advantages: fun, educational, popular, __and__ provided real value too, but identifying such a project is not easy, especially when you are relatively inexperienced. In fact, I feel like I caught lightning in a bottle finding a project that had 4/5.
 
-Maybe with the insights and connections I've gained from this project and others, my next project will be more focused on providing real value, but I'm not making any promises.
+Maybe with the insights and connections I've gained from this project and others my next project will be more focused on providing real value, but I'm not making any promises.
