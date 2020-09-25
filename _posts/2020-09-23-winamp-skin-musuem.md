@@ -68,7 +68,7 @@ How can we engineer the site to deliver content as fast as possible while still 
 
 For hosting the HTML and JavaScript, I selected [Netlify](https://www.netlify.com/) which is a host optimized for static sites. They feature a GitHub integration which automatically builds and deploys a new version of the site every time you push to GitHub. Unlike traditional web hosts where your files live on one server, Netlify takes advantage of the fact that site is static and distributes the site across their Content Delivery Network (CDN). This means that when a user requests the content, it is returned from a server that is geographically nearby, which can dramatically improve page speed. Best of all, they offer a [free tier](https://www.netlify.com/pricing/) for side projects!
 
-The next challenge was to give the appearance of a single grid of skins without loading 65k images all at once. To do this I used a classic technique called “windowing” where we render a huge empty `<div />` as tall as the real grig would be, and then only populate it with  `<img />` tags in relatively small part of the grid that the user is currently scrolled to.
+The next challenge was to give the appearance of a single grid of skins without loading 65k images all at once. To do this I used a classic technique called “windowing” where we render a huge empty `<div />` as tall as the real grid would be, and then only populate it with  `<img />` tags in relatively small part of the grid that the user is currently scrolled to.
 
 That still leaves a lot of images to load. How can we make that fast?
 
