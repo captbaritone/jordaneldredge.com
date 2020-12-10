@@ -15,3 +15,4 @@ echo "Building Jekyll"
 bundle exec jekyll build
 
 echo "Done!"
+echo "Check out https://jordaneldredge.com"
