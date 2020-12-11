@@ -5,6 +5,25 @@ summary: "Technical breakdown of how the NPM module ani-cursor converts .ani fil
 github_comments_issue_id: 15
 summary_image: /images/ani-cursor.png
 ---
+
+<script src="{{ "/javascripts/ani-cursor.js" | prepend: site.baseurl }}"></script>
+<script>
+async function applyCursor(selector, aniUrl) {
+  const response = await fetch(aniUrl);
+  const data = new Uint8Array(await response.arrayBuffer());
+
+  const style = document.createElement("style");
+  style.innerText = aniCursor.convertAniBinaryToCSS(selector, data);
+
+  document.head.appendChild(style);
+}
+
+applyCursor(
+  "body",
+  "https://archive.org/cors/tucows_169750_Dove_Flying/dove.ani"
+);
+</script>
+
 *TL:DR: If you'd like to render `.ani` files in the browser, I've published [`ani-cursor`](https://www.npmjs.com/package/ani-cursor) on NPM which makes it possible.*
 
 Windows Animated Cursor files (`.ani`) are, as the name implies, animated cursor files used by Microsoft Windows. I recently had a reason to try to get them to render on the web and it was a fun experiment so I thought I'd share how I did it.
