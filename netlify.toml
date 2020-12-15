@@ -1,4 +1,4 @@
 [build]
-  base = "netxjs/"
+  base = "nextjs/"
   command = "yarn build && yarn export"
   publish = "out"
