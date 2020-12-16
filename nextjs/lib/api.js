@@ -4,13 +4,27 @@ import matter from "gray-matter";
 
 const postsDirectory = join(process.cwd(), "../_posts");
 
-export function getPostSlugs() {
-  return fs.readdirSync(postsDirectory);
+const FILE_NAME_PARSER = /^(\d{4}-\d{2}-\d{2})-([a-z0-9\_\.\-]+)\.md$/g;
+
+export function getSlugPostMap() {
+  const map = {};
+  for (const fileName of fs.readdirSync(postsDirectory)) {
+    const matches = [...fileName.matchAll(FILE_NAME_PARSER)][0];
+    if (matches == null) {
+      throw new Error(`Incorrect filename for post. Got "${fileName}".`);
+    }
+    const [_, date, slug] = matches;
+    map[slug] = { fileName, slug, data: new Date(date) };
+  }
+  return map;
 }
 
 export function getPostBySlug(slug, fields = []) {
-  const realSlug = slug.replace(/\.md$/, "");
-  const fullPath = join(postsDirectory, `${realSlug}.md`);
+  const postInfo = getSlugPostMap()[slug];
+  if (postInfo == null) {
+    throw new Error(`Could not find file for slug "${slug}".`);
+  }
+  const fullPath = join(postsDirectory, `${postInfo.fileName}`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
 
@@ -19,7 +33,10 @@ export function getPostBySlug(slug, fields = []) {
   // Ensure only the minimal needed data is exposed
   fields.forEach((field) => {
     if (field === "slug") {
-      items[field] = realSlug;
+      items[field] = slug;
+    }
+    if (field === "date") {
+      items[field] = postInfo.date;
     }
     if (field === "content") {
       items[field] = content;
@@ -34,9 +51,8 @@ export function getPostBySlug(slug, fields = []) {
 }
 
 export async function getAllPosts(fields = []) {
-  const slugs = getPostSlugs();
-  const posts = slugs
-    .map((slug) => getPostBySlug(slug, fields))
+  const posts = Object.values(getSlugPostMap())
+    .map(({ fileName, slug }) => getPostBySlug(slug, fields))
     // sort posts by date in descending order
     .sort((post1, post2) => (post1.date > post2.date ? "1" : "-1"));
   return posts;

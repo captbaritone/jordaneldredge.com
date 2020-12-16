@@ -1,5 +1,5 @@
 import Head from "next/head";
-import * as Api from "../lib/api";
+import * as Api from "../../lib/api";
 import Link from "next/link";
 
 export default function Home({ allPosts }) {
@@ -31,9 +31,14 @@ export default function Home({ allPosts }) {
 }
 
 export async function getStaticProps() {
-  const allPosts = await Api.getAllPosts(["title", "slug", "summary"]);
+  const allPosts = await Api.getAllPosts([
+    "title",
+    "slug",
+    "summary",
+    "archive",
+  ]);
 
   return {
-    props: { allPosts },
+    props: { allPosts: allPosts.filter((postInfo) => !postInfo.archive) },
   };
 }
