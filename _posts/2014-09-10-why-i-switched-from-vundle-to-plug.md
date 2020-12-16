@@ -5,7 +5,7 @@ summary: I've found Plug to be superior to Vundle in several regards.
 github_comments_issue_id: 8
 ---
 
-At a recent [Vim meetup] [Keith Smiley] introduced me to [Plug],
+At a recent [Vim meetup][Keith Smiley] introduced me to [Plug],
 a plugin manager for Vim that improves upon [Vundle]. Below are the reasons
 I switched from Vundle to Plug:
 

@@ -5,9 +5,9 @@ summary: My work interviewed me as part of their "employee spotlight" series.
 date: "2016-10-29 16:36:15 -0700"
 ---
 
-My work, [Hearsay Social] [1], runs a [podcast] [2] which occasionally features
+My work, [Hearsay Social][1], runs a [podcast][2] which occasionally features
 "employee spotlight" interviews. I was the subject of the most recent
-interview. [Victor Gaxiola] [3] and I discuss my musical background (both
+interview. [Victor Gaxiola][3] and I discuss my musical background (both
 singing and ukulele) and my progression to software engineer.
 
 I'm quite pleased with how it turned out:
