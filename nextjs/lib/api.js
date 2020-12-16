@@ -67,7 +67,10 @@ export async function getAllPosts(fields = []) {
 export function getAllPages(fields = []) {
   return fs
     .readdirSync(pagesDirectory)
-    .filter((fileName) => /\.md$/.test(fileName))
+    .filter((fileName) =>
+      // Ensure we skip non-md and 404.md
+      /\[a-z]+.md$/.test(fileName)
+    )
     .map((fileName) => {
       const slug = fileName.replace(/\.md$/, "");
       if (slug == null) {
