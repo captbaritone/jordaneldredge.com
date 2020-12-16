@@ -1,6 +1,7 @@
 import fs from "fs";
 import { join } from "path";
 import matter from "gray-matter";
+import yaml from "js-yaml";
 
 const postsDirectory = join(process.cwd(), "../_posts");
 
@@ -14,7 +15,7 @@ export function getSlugPostMap() {
       throw new Error(`Incorrect filename for post. Got "${fileName}".`);
     }
     const [_, date, slug] = matches;
-    map[slug] = { fileName, slug, data: new Date(date) };
+    map[slug] = { fileName, slug, date };
   }
   return map;
 }
@@ -26,7 +27,11 @@ export function getPostBySlug(slug, fields = []) {
   }
   const fullPath = join(postsDirectory, `${postInfo.fileName}`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
-  const { data, content } = matter(fileContents);
+  const { data, content } = matter(fileContents, {
+    engines: {
+      yaml: (s) => yaml.safeLoad(s, { schema: yaml.JSON_SCHEMA }),
+    },
+  });
 
   const items = {};
 
@@ -54,6 +59,6 @@ export async function getAllPosts(fields = []) {
   const posts = Object.values(getSlugPostMap())
     .map(({ fileName, slug }) => getPostBySlug(slug, fields))
     // sort posts by date in descending order
-    .sort((post1, post2) => (post1.date > post2.date ? "1" : "-1"));
+    .sort((post1, post2) => (post1.date < post2.date ? "1" : "-1"));
   return posts;
 }
