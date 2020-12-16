@@ -2,3 +2,5 @@
   base = "nextjs/"
   command = "yarn build && yarn export"
   publish = "out"
+[[plugins]]
+  package = "netlify-plugin-cache-nextjs"
