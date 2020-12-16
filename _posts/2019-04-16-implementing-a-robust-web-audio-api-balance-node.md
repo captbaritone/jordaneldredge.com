@@ -19,7 +19,7 @@ TL;DR: [Here’s the implementation](https://github.com/captbaritone/webamp/blob
 And here’s how to use it (adapted from the [MDN StereoPannerNode example code](https://developer.mozilla.org/en-US/docs/Web/API/StereoPannerNode)):
 
 
-    import StereoBalanceNode froem './somewhere/in/your/project/StereoBalanceNode';
+    import StereoBalanceNode from './somewhere/in/your/project/StereoBalanceNode';
     
     var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     var myAudio = document.querySelector('audio');
