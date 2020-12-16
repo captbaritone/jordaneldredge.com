@@ -1,15 +1,8 @@
 import { useRouter } from "next/router";
 import ErrorPage from "next/error";
-import { join } from "path";
 import * as Api from "../../lib/api";
 import markdownToHtml from "../../lib/markdownToHtml";
 import Head from "next/head";
-
-const postsDirectory = join(process.cwd(), "_posts");
-
-export function getPostSlugs() {
-  return fs.readdirSync(postsDirectory);
-}
 
 export default function Post({ slug, post, morePosts, preview }) {
   const router = useRouter();
