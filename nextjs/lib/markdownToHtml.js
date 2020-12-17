@@ -37,7 +37,7 @@ function preprocess(markdown) {
         throw new Error(`Unknown short code "${name}" with value "${token}"`);
       }
       return `<div class='video-container'>
-        <iframe src="https://www.youtube.com/embed/${token}" frameborder="0" allowfullscreen class='youtube-video'></iframe>
+        <iframe src="https://www.youtube.com/embed/${token}?modestbranding=1&rel=0" frameborder="0" allowfullscreen class='youtube-video'></iframe>
       </div>`;
     });
 }
