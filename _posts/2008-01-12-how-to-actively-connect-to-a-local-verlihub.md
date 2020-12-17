@@ -13,7 +13,9 @@ external ip.
 
 The command I issues was:
 
-    !regset captbaritone alternate_ip 67.188.34.158
+```
+!regset captbaritone alternate_ip 67.188.34.158
+```
 
 This allowed me to connect to the hub (from the local network) in active mode,
 without getting kicked for my reported ip (local ip) not matching my "real" ip

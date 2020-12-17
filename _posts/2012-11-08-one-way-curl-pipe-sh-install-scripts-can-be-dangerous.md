@@ -6,7 +6,9 @@ layout: post
 I have seen [several](http://pow.cx/) [sites](http://getcomposer.org/download/) recently that
 offer a one-line installation that looks something like this:
 
-    curl -s example.com/install | sh
+```bash
+curl -s example.com/install | sh
+```
 
 While I appreciated the elegance, it set off warning bells. Despite this
 initial reaction I couldn't come up with a reason **why** it was any less
@@ -25,7 +27,9 @@ src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 Today I realized at least once case that could validate those initial warning
 bells. Take a look at this proof of concept:
 
-    curl -s jordaneldredge.com/projects/curl-proof/install|sh
+```bash
+curl -s jordaneldredge.com/projects/curl-proof/install|sh
+```
 
 I'll wait while you paste the script URL into your browser and make sure it's
 not going to do anything naughty&#8230;
@@ -34,7 +38,9 @@ Now that you're **sure** the line is safe to run, paste it into your shell (I
 dare ya!). Or, if you are a big wimp, have it output to the console instead of
 `sh` like so:
 
-    curl -s jordaneldredge.com/projects/curl-proof/install
+```bash
+curl -s jordaneldredge.com/projects/curl-proof/install
+```
 
 As you can see Curl returned a different script than the one you saw in your
 browser. This is achieved by checking for Curl's user-agent and, when found,

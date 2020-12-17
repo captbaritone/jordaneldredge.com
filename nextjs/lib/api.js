@@ -3,7 +3,7 @@ import { join } from "path";
 import matter from "gray-matter";
 import yaml from "js-yaml";
 
-const postsDirectory = join(process.cwd(), "../_posts");
+const postsDirectory = join(process.cwd(), "./_posts");
 const pagesDirectory = join(process.cwd(), "../");
 
 const FILE_NAME_PARSER = /^(\d{4}-\d{2}-\d{2})-([a-z0-9\_\.\-]+)\.md$/g;

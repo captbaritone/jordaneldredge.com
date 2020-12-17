@@ -36,22 +36,24 @@ its database connection using the your virtual machine's host name.
 
 My `acceptance.suite.yml` looks like this:
 
-    class_name: WebGuy
-    modules:
-        enabled:
-            - WebDriver
-            - Db
-        config:
-            WebDriver:
-                url: 'http://local.dev/'
-                browser: firefox
-            Db:
-                dsn: 'mysql:host=local.dev;dbname=testdb'
-                user: 'root'
-                password: 'vagrant'
-                dump: 'tests/_data/dump.sql'
-                populate: true
-                cleanup: true
+```yml
+class_name: WebGuy
+modules:
+    enabled:
+        - WebDriver
+        - Db
+    config:
+        WebDriver:
+            url: 'http://local.dev/'
+            browser: firefox
+        Db:
+            dsn: 'mysql:host=local.dev;dbname=testdb'
+            user: 'root'
+            password: 'vagrant'
+            dump: 'tests/_data/dump.sql'
+            populate: true
+            cleanup: true
+```
 
 
 [Codeception]: http://codeception.com/

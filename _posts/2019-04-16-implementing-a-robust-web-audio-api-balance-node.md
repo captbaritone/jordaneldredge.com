@@ -19,36 +19,38 @@ TL;DR: [Here’s the implementation](https://github.com/captbaritone/webamp/blob
 And here’s how to use it (adapted from the [MDN StereoPannerNode example code](https://developer.mozilla.org/en-US/docs/Web/API/StereoPannerNode)):
 
 
-    import StereoBalanceNode from './somewhere/in/your/project/StereoBalanceNode';
-    
-    var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    var myAudio = document.querySelector('audio');
-    
-    var balanceControl = document.querySelector('.balance-control');
-    var balanceValue = document.querySelector('.balance-value');
-    
-    pre.innerHTML = myScript.innerHTML;
-    
-    // Create a MediaElementAudioSourceNode
-    // Feed the HTMLMediaElement into it
-    var source = audioCtx.createMediaElementSource(myAudio);
-    
-    // Create a stereo blance
-    var balanceNode = new StereoBalanceNode(audioCtx);
-    
-    // Event handler function to increase balance to the right and left
-    // when the slider is moved
-    
-    balanceControl.oninput = function() {
-      balanceNode.balance.value = balanceControl.value;
-      balanceValue.innerHTML = balanceControl.value;
-    }
-    
-    // connect the MediaElementAudioSourceNode to the balanceNode
-    // and the balanceNode to the destination, so we can play the
-    // music and adjust the panning using the controls
-    source.connect(balanceNode);
-    balanceNode.connect(audioCtx.destination);
+```javascript
+import StereoBalanceNode from './somewhere/in/your/project/StereoBalanceNode';
+
+var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+var myAudio = document.querySelector('audio');
+
+var balanceControl = document.querySelector('.balance-control');
+var balanceValue = document.querySelector('.balance-value');
+
+pre.innerHTML = myScript.innerHTML;
+
+// Create a MediaElementAudioSourceNode
+// Feed the HTMLMediaElement into it
+var source = audioCtx.createMediaElementSource(myAudio);
+
+// Create a stereo blance
+var balanceNode = new StereoBalanceNode(audioCtx);
+
+// Event handler function to increase balance to the right and left
+// when the slider is moved
+
+balanceControl.oninput = function() {
+  balanceNode.balance.value = balanceControl.value;
+  balanceValue.innerHTML = balanceControl.value;
+}
+
+// connect the MediaElementAudioSourceNode to the balanceNode
+// and the balanceNode to the destination, so we can play the
+// music and adjust the panning using the controls
+source.connect(balanceNode);
+balanceNode.connect(audioCtx.destination);
+```
 
 If you are interested in all the broken solutions that I built before finding this one, read on:
 

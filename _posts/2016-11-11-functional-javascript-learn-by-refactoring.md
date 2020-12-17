@@ -17,17 +17,19 @@ Let's write a `titleCase()` function in the imperative style. Our function
 should take a string and return a new string with the first character of each
 word capitalized:
 
-    function titleCase(headlineString) {
-      var headlineWords = headlineString.split(' ');
-      var titleWords = [];
-      for (var i = 0; i < headlineWords.length; i++) {
-        var headlineWord = headlineWords[i];
-        var titleWord = headlineWord[0].toUpperCase() + headlineWord.substring(1);
-        titleWords.push(titleWord);
-      }
-      var title = titleWords.join(' ');
-      return title;
-    }
+```javascript
+function titleCase(headlineString) {
+  var headlineWords = headlineString.split(' ');
+  var titleWords = [];
+  for (var i = 0; i < headlineWords.length; i++) {
+    var headlineWord = headlineWords[i];
+    var titleWord = headlineWord[0].toUpperCase() + headlineWord.substring(1);
+    titleWords.push(titleWord);
+  }
+  var title = titleWords.join(' ');
+  return title;
+}
+```
 
 Not bad! Pretty easy to understand, right?
 
@@ -44,48 +46,54 @@ that splits a string into words, and a `join()` function that joins an array of
 words into a string:
 
 
-    var words = (str) => str.split(' ');
-    var join = (arr) => arr.join(' ');
+```javascript
+var words = (str) => str.split(' ');
+var join = (arr) => arr.join(' ');
 
-    function titleCase(headlineString) {
-      var headlineWords = words(headlineString);
-      var titleWords = [];
-      for (var i = 0; i < headlineWords.length; i++) {
-        var headlineWord = headlineWords[i];
-        var titleWord = headlineWord[0].toUpperCase() + headlineWord.substring(1);
-        titleWords.push(titleWord);
-      }
-      var title = join(titleWords);
-      return title;
-    }
+function titleCase(headlineString) {
+  var headlineWords = words(headlineString);
+  var titleWords = [];
+  for (var i = 0; i < headlineWords.length; i++) {
+    var headlineWord = headlineWords[i];
+    var titleWord = headlineWord[0].toUpperCase() + headlineWord.substring(1);
+    titleWords.push(titleWord);
+  }
+  var title = join(titleWords);
+  return title;
+}
+```
 
 Now let's convert our for loop into a map:
 
-    var words = (str) => str.split(' ');
-    var join = (arr) => arr.join(' ');
+```javascript
+var words = (str) => str.split(' ');
+var join = (arr) => arr.join(' ');
 
-    function titleCase(headlineString) {
-      var headlineWords = words(headlineString);
-      var titleWords = headlineWords.map((headlineWord) => {
-        return headlineWord[0].toUpperCase() + headlineWord.substring(1);
-      });
-      var title = join(titleWords);
-      return title;
-    }
+function titleCase(headlineString) {
+  var headlineWords = words(headlineString);
+  var titleWords = headlineWords.map((headlineWord) => {
+    return headlineWord[0].toUpperCase() + headlineWord.substring(1);
+  });
+  var title = join(titleWords);
+  return title;
+}
+```
 
 Map takes a function as an argument. Let's give that function a name and
 extract it out to before our data is available:
 
-    var words = (str) => str.split(' ');
-    var join = (arr) => arr.join(' ');
-    var capify = (word) => word[0].toUpperCase() + word.substring(1);
+```javascript
+var words = (str) => str.split(' ');
+var join = (arr) => arr.join(' ');
+var capify = (word) => word[0].toUpperCase() + word.substring(1);
 
-    function titleCase(headlineString) {
-      var headlineWords = words(headlineString);
-      var titleWords = headlineWords.map(capify);
-      var title = join(titleWords);
-      return title;
-    }
+function titleCase(headlineString) {
+  var headlineWords = words(headlineString);
+  var titleWords = headlineWords.map(capify);
+  var title = join(titleWords);
+  return title;
+}
+```
 
 Notice how the functions that we've extracted have more generic variable names.
 Since these functions are decoupled from the data on which they operate, they
@@ -98,13 +106,15 @@ at a time. Let's try nesting our functions and see how that removes some of the
 code a little hard to read for now. Don't worry, we'll come back and clean it
 up later.
 
-    var words = (str) => str.split(' ');
-    var join = (arr) => arr.join(' ');
-    var capify = (word) => word[0].toUpperCase() + word.substring(1);
+```javascript
+var words = (str) => str.split(' ');
+var join = (arr) => arr.join(' ');
+var capify = (word) => word[0].toUpperCase() + word.substring(1);
 
-    function titleCase(headlineString) {
-      return join(words(headlineString).map(capify));
-    }
+function titleCase(headlineString) {
+  return join(words(headlineString).map(capify));
+}
+```
 
 This is already a lot less code than our original imperative attempt!
 
@@ -121,28 +131,34 @@ that converts `Array.map()` to a function. It will take a function, `func`,
 and return a new function. The new function will accept an array, and map
 `func` over that array:
 
-    var map = (func) => {
-      return (arr) => {
-        return arr.map(func);
-      }
-    }
+```javascript
+var map = (func) => {
+  return (arr) => {
+    return arr.map(func);
+  }
+}
+```
 
 Taking advantage of the implicit return of ES6 arrow functions, we can rewrite
 this as:
 
-    var map = (func) => (arr) => arr.map(func);
+```javascript
+var map = (func) => (arr) => arr.map(func);
+```
 
 Let's use our new `map()` function to clean up our `titleCase()` example:
 
-    var map = (func) => (arr) => arr.map(func);
-    var words = (str) => str.split(' ');
-    var join = (arr) => arr.join(' ');
-    var capify = (word) => word[0].toUpperCase() + word.substring(1);
-    var capifyWords = map(capify);
+```javascript
+var map = (func) => (arr) => arr.map(func);
+var words = (str) => str.split(' ');
+var join = (arr) => arr.join(' ');
+var capify = (word) => word[0].toUpperCase() + word.substring(1);
+var capifyWords = map(capify);
 
-    function titleCase(headlineString) {
-      return join(capifyWords(words(headlineString)));
-    }
+function titleCase(headlineString) {
+  return join(capifyWords(words(headlineString)));
+}
+```
 
 We still have a lump of nested functions, but now at least they are nested more
 simply.
@@ -158,40 +174,48 @@ functions to that value.
 
 For example, the following two statements are equivalent:
 
-    flow([a, b, c]);
+```javascript
+flow([a, b, c]);
 
-    (value) => c(b(a(value)));
+(value) => c(b(a(value)));
+```
 
 Flow [can be found in lodash](https://lodash.com/docs/4.16.6#flow), but for the
 purposes of this exercise, we can write our own flow function by using
 `Array.reduce()`:
 
-    var flow = (funcs) => {
-      return (initialValue) => {
-        return funcs.reduce((value, func) => {
-          return func(value);
-        }, initialValue);
-      }
-    }
+```javascript
+var flow = (funcs) => {
+  return (initialValue) => {
+    return funcs.reduce((value, func) => {
+      return func(value);
+    }, initialValue);
+  }
+}
+```
 
 Using implicit returns:
 
-    var flow = (funcs) =>
-      (initialValue) =>
-        funcs.reduce((value, func) =>
-          func(value),
-          initialValue
-        );
+```javascript
+var flow = (funcs) =>
+  (initialValue) =>
+    funcs.reduce((value, func) =>
+      func(value),
+      initialValue
+    );
+```
 
 Let's try using flow in our `titleCase()` example:
 
-    var map = (func) => (arr) => arr.map(func);
-    var words = (str) => str.split(' ');
-    var join = (arr) => arr.join(' ');
-    var capify = (word) => word[0].toUpperCase() + word.substring(1);
-    var capifyWords = map(capify);
+```javascript
+var map = (func) => (arr) => arr.map(func);
+var words = (str) => str.split(' ');
+var join = (arr) => arr.join(' ');
+var capify = (word) => word[0].toUpperCase() + word.substring(1);
+var capifyWords = map(capify);
 
-    var titleCase = flow([words, capifyWords, join]);
+var titleCase = flow([words, capifyWords, join]);
+```
 
 Much better! It has turned our nest of unreadable nested functions into
 a readable "flow" of logic.
@@ -204,26 +228,32 @@ abstract that pattern! We'll define a higher-order `method()` function which
 takes a method name and an argument. It will then return a function which takes
 an object and calls the given method on that object with the given argument:
 
-    var method = (func, arg) => {
-      return (obj) => {
-        return obj[func](arg);
-      }
-    }
+```javascript
+var method = (func, arg) => {
+  return (obj) => {
+    return obj[func](arg);
+  }
+}
+```
 
 Now that we see how it works, we can clean it up with implicit return:
 
-    var method = (func, arg) => (obj) => obj[func](arg);
+```javascript
+var method = (func, arg) => (obj) => obj[func](arg);
+```
 
 Let's use our new `method()` function to simplify our `titleCase()` example:
 
-    var method = (func, arg) => (obj) => obj[func](arg);
-    var map = (func) => (arr) => arr.map(func);
-    var words = method('split', ' ');
-    var join = method('join', ' ');
-    var capify = (word) => word[0].toUpperCase() + word.substring(1);
-    var capifyWords = map(capify);
+```javascript
+var method = (func, arg) => (obj) => obj[func](arg);
+var map = (func) => (arr) => arr.map(func);
+var words = method('split', ' ');
+var join = method('join', ' ');
+var capify = (word) => word[0].toUpperCase() + word.substring(1);
+var capifyWords = map(capify);
 
-    var titleCase = flow([words, capifyWords, join]);
+var titleCase = flow([words, capifyWords, join]);
+```
 
 Notice how our `word()` and `join()` functions can now be defined without any
 variable names, which makes them even more generic and declarative. With
@@ -236,13 +266,15 @@ Since `capifyWords` is really just calling `.map()`, which is a method, with
 a specific argument, we can create it using our higher order `method()`, and
 get rid of our `map()` function:
 
-    var method = (func, arg) => (obj) => obj[func](arg);
-    var words = method('split', ' ');
-    var join = method('join', ' ');
-    var capify = (word) => word[0].toUpperCase() + word.substring(1);
-    var capifyWords = method('map', capify);
+```javascript
+var method = (func, arg) => (obj) => obj[func](arg);
+var words = method('split', ' ');
+var join = method('join', ' ');
+var capify = (word) => word[0].toUpperCase() + word.substring(1);
+var capifyWords = method('map', capify);
 
-    var titleCase = flow([words, capifyWords, join]);
+var titleCase = flow([words, capifyWords, join]);
+```
 
 We can read the that last line as:
 
@@ -256,27 +288,31 @@ than its implementation details.
 
 ### Before
 
-    function titleCase(headlineString) {
-      var headlineWords = headlineString.split(' ');
-      var titleWords = [];
-      for (var i = 0; i < headlineWords.length; i++) {
-        var headlineWord = headlineWords[i];
-        var titleWord = headlineWord[0].toUpperCase() + headlineWord.substring(1);
-        titleWords.push(titleWord);
-      }
-      var title = titleWords.join(' ');
-      return title;
-    }
+```javascript
+function titleCase(headlineString) {
+  var headlineWords = headlineString.split(' ');
+  var titleWords = [];
+  for (var i = 0; i < headlineWords.length; i++) {
+    var headlineWord = headlineWords[i];
+    var titleWord = headlineWord[0].toUpperCase() + headlineWord.substring(1);
+    titleWords.push(titleWord);
+  }
+  var title = titleWords.join(' ');
+  return title;
+}
+```
 
 ### After
 
-    var method = (func, arg) => (obj) => obj[func](arg);
-    var words = method('split', ' ');
-    var join = method('join', ' ');
-    var capify = (word) => word[0].toUpperCase() + word.substring(1);
-    var capifyWords = method('map', capify);
+```javascript
+var method = (func, arg) => (obj) => obj[func](arg);
+var words = method('split', ' ');
+var join = method('join', ' ');
+var capify = (word) => word[0].toUpperCase() + word.substring(1);
+var capifyWords = method('map', capify);
 
-    var titleCase = flow([words, capifyWords, join]);
+var titleCase = flow([words, capifyWords, join]);
+```
 
 Our new code is six lines instead of eleven. It avoids having
 implementation-specific variable names, and reads in terms of the problem it's
@@ -288,11 +324,13 @@ Another benefit of composing our business logic out of smaller, data-agnostic,
 functions is that we can reuse those small functions. Let's see how difficult
 it would be to create five other similar functions:
 
-    var lowerCase = method('toLowerCase');
-    var upperCase = method('toUpperCase');
-    var studlyCase = flow([words, capifyWords, method('join', '')]);
-    var kebabCase = flow([lowerCase, words, method('join', '-')]);
-    var snakeCase = flow([lowerCase, words, method('join', '_')]);
+```javascript
+var lowerCase = method('toLowerCase');
+var upperCase = method('toUpperCase');
+var studlyCase = flow([words, capifyWords, method('join', '')]);
+var kebabCase = flow([lowerCase, words, method('join', '-')]);
+var snakeCase = flow([lowerCase, words, method('join', '_')]);
+```
 
 Take a second to read though these and figure out how they work. See how we are
 making novel use of our existing vocabulary of functions? Notice how we can

@@ -21,10 +21,12 @@ With Vundle, getting my plugins working on a new machine was always a pain.
 With Plug, I can use this snippet from Keith's dotfiles which will
 automatically install Plug if Vim starts without it:
 
-    " Load vim-plug
-    if empty(glob("~/.vim/autoload/plug.vim"))
-        execute '!curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
-    endif
+```vimscript
+" Load vim-plug
+if empty(glob("~/.vim/autoload/plug.vim"))
+    execute '!curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+endif
+```
 
 To be fair, you could probably implement a similar thing with Vundle.
 
@@ -35,11 +37,15 @@ around this by allowing you to put off the loading of some plugins.
 
 For example, I only need this syntax plugin when I'm editing markdown files:
 
-    Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+```vimscript
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+```
 
 And I only need this plugin when I issue the `Rename` command:
 
-    Plug 'AlexJF/rename.vim', { 'on': 'Rename' }
+```vimscript
+Plug 'AlexJF/rename.vim', { 'on': 'Rename' }
+```
 
 ## Faster installation of plugins (sometimes)
 

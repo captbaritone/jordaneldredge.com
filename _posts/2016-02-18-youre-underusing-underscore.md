@@ -38,13 +38,15 @@ function. Here are the three types of shorthand:
 Instead of passing a function that returns each value untransformed, you may
 omit the function argument all-together:
 
-    // BAD
-    _.max(scores, function(n){
-        return n;
-    });
+```javascript
+// BAD
+_.max(scores, function(n){
+    return n;
+});
 
-    // BETTER!
-    _.max(scores);
+// BETTER!
+_.max(scores);
+```
 
 Rule: [identity-shorthand](https://github.com/captbaritone/eslint-plugin-underscore/blob/master/docs/rules/identity-shorthand.md)
 
@@ -53,13 +55,15 @@ Rule: [identity-shorthand](https://github.com/captbaritone/eslint-plugin-undersc
 Instead of passing a function which returns a single property for each item,
 pass the key name:
 
-    // BAD
-    _.filter(users, function(user){
-        return user.isAdmin;
-    });
+```javascript
+// BAD
+_.filter(users, function(user){
+    return user.isAdmin;
+});
 
-    // BETTER!
-    _.filter(users, 'isAdmin');
+// BETTER!
+_.filter(users, 'isAdmin');
+```
 
 Rule: [prop-shorthand](https://github.com/captbaritone/eslint-plugin-underscore/blob/master/docs/rules/prop-shorthand.md)
 
@@ -69,13 +73,15 @@ Instead of passing a function which tests the value of one or more property of
 each item, pass a "matcher" object:
 
 
-    // BAD
-    _.filter(books, function(book){
-        return book.type === 'hardcover' && book.avaliable === true;
-    });
+```javascript
+// BAD
+_.filter(books, function(book){
+    return book.type === 'hardcover' && book.avaliable === true;
+});
 
-    // BETTER!
-    _.filter(books, {type: 'hardcover', avaliable: true});
+// BETTER!
+_.filter(books, {type: 'hardcover', avaliable: true});
+```
 
 Rule: [matches-shorthand](https://github.com/captbaritone/eslint-plugin-underscore/blob/master/docs/rules/matches-shorthand.md)
 
@@ -91,11 +97,13 @@ When you are using the property accessor syntax with `_.map`, instead call it
 `_.pluck()`:
 
 
-    // BAD
-    var ids = _.map(posts, 'id');
+```javascript
+// BAD
+var ids = _.map(posts, 'id');
 
-    // BETTER!
-    var ids = _.pluck(posts, 'id');
+// BETTER!
+var ids = _.pluck(posts, 'id');
+```
 
 Rule: [prefer-pluck](https://github.com/captbaritone/eslint-plugin-underscore/blob/master/docs/rules/prefer-pluck.md)
 
@@ -105,11 +113,13 @@ When you are using the matcher syntax with `_.filter`, instead call it
 `_.where()`:
 
 
-    // BAD
-    var admins = _.filter(users, {type: 'admin'});
+```javascript
+// BAD
+var admins = _.filter(users, {type: 'admin'});
 
-    // BETTER!
-    var admins = _.where(users, {type: 'admin'});
+// BETTER!
+var admins = _.where(users, {type: 'admin'});
+```
 
 Rule: [prefer-where](https://github.com/captbaritone/eslint-plugin-underscore/blob/master/docs/rules/prefer-where.md)
 
@@ -119,11 +129,13 @@ When you are using the matcher syntax with `_.find`, instead call it
 `_.findWhere()`:
 
 
-    // BAD
-    _.find(post, {id: 123});
+```javascript
+// BAD
+_.find(post, {id: 123});
 
-    // BETTER!
-    _.findWhere(post, {id: 123});
+// BETTER!
+_.findWhere(post, {id: 123});
+```
 
 Rule: [prefer-findwhere](https://github.com/captbaritone/eslint-plugin-underscore/blob/master/docs/rules/prefer-findwhere.md)
 
@@ -133,11 +145,13 @@ When you are using the "identity" syntax (passing nothing) with `_.filter`,
 instead call it `_.compact()`:
 
 
-    // BAD
-    _.filter(suggestions);
+```javascript
+// BAD
+_.filter(suggestions);
 
-    // BETTER!
-    _.compact(suggestions);
+// BETTER!
+_.compact(suggestions);
+```
 
 Rule: [prefer-compact](https://github.com/captbaritone/eslint-plugin-underscore/blob/master/docs/rules/prefer-compact.md)
 
@@ -152,16 +166,18 @@ about, and when to use them:
 If you find yourself writing an `_.each` that just calls `.push()` for each
 item in a collection, instead you should use `_.map`:
 
-    // BAD
-    var doubled = [];
-    _.each(numbers, function(n) {
-        doubled.push(n * 2);
-    });
+```javascript
+// BAD
+var doubled = [];
+_.each(numbers, function(n) {
+    doubled.push(n * 2);
+});
 
-    // BETTER!
-    var dubled = _.map(numbers, function(n) {
-        return n * 2;
-    });
+// BETTER!
+var dubled = _.map(numbers, function(n) {
+    return n * 2;
+});
+```
 
 Rule: [prefer-map](https://github.com/captbaritone/eslint-plugin-underscore/blob/master/docs/rules/prefer-map.md)
 
@@ -170,13 +186,15 @@ Rule: [prefer-map](https://github.com/captbaritone/eslint-plugin-underscore/blob
 If you find yourself writing a `_.map` that calls a method on each item in
 a collection, instead use `_.invoke`:
 
-    // BAD
-    var upperCase = _.map(names, function(name) {
-        return name.toUpperCase()
-    });
+```javascript
+// BAD
+var upperCase = _.map(names, function(name) {
+    return name.toUpperCase()
+});
 
-    // BETTER!
-    var upperCase = _.invoke(names, 'toUpperCase');
+// BETTER!
+var upperCase = _.invoke(names, 'toUpperCase');
+```
 
 Rule: [prefer-invoke](https://github.com/captbaritone/eslint-plugin-underscore/blob/master/docs/rules/prefer-invoke.md)
 
@@ -185,15 +203,17 @@ Rule: [prefer-invoke](https://github.com/captbaritone/eslint-plugin-underscore/b
 If you find yourself writing a `_.filter` that uses an `!` in its iteratee,
 instead use `_.reject`:
 
-    // BAD
-    var uncommented = _.filter(notes, function(note) {
-        return !note.hasComments();
-    });
+```javascript
+// BAD
+var uncommented = _.filter(notes, function(note) {
+    return !note.hasComments();
+});
 
-    // BETTER!
-    var uncommented = _.reject(notes, function(note) {
-        return note.hasComments();
-    });
+// BETTER!
+var uncommented = _.reject(notes, function(note) {
+    return note.hasComments();
+});
+```
 
 Rule: [prefer-reject](https://github.com/captbaritone/eslint-plugin-underscore/blob/master/docs/rules/prefer-reject.md)
 

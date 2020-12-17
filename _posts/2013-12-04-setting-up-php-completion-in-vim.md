@@ -5,14 +5,16 @@ layout: post
 
 Yesterday I setup PHP completion in Vim by adding the following to my `.vimrc`:
 
-    autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
+```vimscript
+autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
 
-    set completeopt=longest,menuone
+set completeopt=longest,menuone
 
-    Bundle 'ervandew/supertab'
-    let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+Bundle 'ervandew/supertab'
+let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 
-    Bundle 'shawncplus/phpcomplete.vim'
+Bundle 'shawncplus/phpcomplete.vim'
+```
 
 Here's a quick breakdown of what each line does:
 

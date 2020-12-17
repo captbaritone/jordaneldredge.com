@@ -80,7 +80,9 @@ a [`btoa()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowBase64.btoa)
 function which takes a string and base-64 encodes it. So our all we need a bit
 of code that looks something like:
 
-    var uri = "data:image/bmp;base64," + btoa(binaryData);
+```javascript
+var uri = "data:image/bmp;base64," + btoa(binaryData);
+```
 
 The variable `uri` can now be set as an `<img>`'s source and it will render in
 the browser!
@@ -105,10 +107,12 @@ An example of Winamp's default skin:
 
 Using the following CSS applied to a `<div>`...
 
-    background-image: url('{{ site.url }}/content/images/TITLEBAR.BMP');
-    width: 275px;
-    height: 14px;
-    background-position: -27px -15px;
+```css
+background-image: url('{{ site.url }}/content/images/TITLEBAR.BMP');
+width: 275px;
+height: 14px;
+background-position: -27px -15px;
+```
 
 We can use the same image as above to display only Winamp's title bar:
 
@@ -130,19 +134,21 @@ Turns out you can dynamically create CSS rules using JavaScript string
 manipulation and then inject those rules into a `<style>` DOM element's inner
 HTML. It looks something like this:
 
-    var cssRules = "#play:active { background-image: url(" + spriteSheetUri + "); }"
+```javascript
+var cssRules = "#play:active { background-image: url(" + spriteSheetUri + "); }"
 
-    // ...
-    // Append several more rules to cssRules
-    // ...
+// ...
+// Append several more rules to cssRules
+// ...
 
-    var textNode = document.createTextNode(cssRules);
+var textNode = document.createTextNode(cssRules);
 
-    var styleNode = document.createElement('style');
-    styleNode.appendChild(textNode);
+var styleNode = document.createElement('style');
+styleNode.appendChild(textNode);
 
-    // Inject the <style> node into the <head>
-    document.head.appendChild(styleNode);
+// Inject the <style> node into the <head>
+document.head.appendChild(styleNode);
+```
 
 
 ## But what about tiling sprites?

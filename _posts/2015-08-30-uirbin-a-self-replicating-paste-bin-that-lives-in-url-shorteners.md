@@ -21,7 +21,9 @@ A standard URL is a pointer to a website where your browser can find some data.
 A data URI acts like a URL, but contains the data encoded within it. Try
 pasting this in your URL bar:
 
-    data:text/html,<h1>Hello World</h1><p>Enjoy my website</p>
+```text
+data:text/html,<h1>Hello World</h1><p>Enjoy my website</p>
+```
 
 Unlike a standard URL, no HTTP request or server is required, the browser
 simply reads it out of the URI.

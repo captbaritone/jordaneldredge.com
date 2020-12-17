@@ -18,19 +18,23 @@ manually add PHPUnit to every project you work on. Here is a better solution:
 In your home directory create a directory called `composer-packages`
 which contains the following `composer.json` file:
 
-    {
-        "require": {
-            "phpunit/phpunit": "3.7.*",
-            "codeception/codeception": "*",
-            "robmorgan/phinx": "*"
-        }
+```json
+{
+    "require": {
+        "phpunit/phpunit": "3.7.*",
+        "codeception/codeception": "*",
+        "robmorgan/phinx": "*"
     }
+}
+```
 
 In that directory run `composer install`
 
 Then, add the following line to your `.bashrc`:
 
-    export PATH=~/composer-packages/vendor/bin:$PATH
+```bash
+export PATH=~/composer-packages/vendor/bin:$PATH
+```
 
 After restarting your terminal, you can issue `codecept`, `phpunit` or `phinx`
 from any directory on your computer. Cool!

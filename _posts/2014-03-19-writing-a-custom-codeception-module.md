@@ -25,44 +25,48 @@ Let's start with an empty directory for our package.
 Within your new package's directory create a file: `src/Hello.php` with
 the following content:
 
-    <?php
+```php
+<?php
 
-    namespace Codeception\Module;
+namespace Codeception\Module;
 
-    use Codeception\Module;
+use Codeception\Module;
 
-    class Hello extends Module
+class Hello extends Module
+{
+
+    public function greet($name)
     {
-
-        public function greet($name)
-        {
-            $this->debug("Hello {$name}!");
-        }
-
+        $this->debug("Hello {$name}!");
     }
+
+}
+```
 
 ## The composer.json
 
 In your package directory, create the following `compsoser.json` file:
 
-    {
-        "name": "namespace/hello",
-        "description": "Hello World Module",
-        "authors": [
-            {
-                "name": "John Doe",
-                "email": "johndoe@example.com"
-            }
-        ],
-        "require": {
+```json
+{
+    "name": "namespace/hello",
+    "description": "Hello World Module",
+    "authors": [
+        {
+            "name": "John Doe",
+            "email": "johndoe@example.com"
+        }
+    ],
+    "require": {
 
-        },
-        "autoload": {
-            "psr-4": {
-                "Codeception\\Module\\": "src"
-            }
+    },
+    "autoload": {
+        "psr-4": {
+            "Codeception\\Module\\": "src"
         }
     }
+}
+```
 
 ## Installation
 
@@ -74,18 +78,18 @@ to run `php codecept.phar build`)
 Then, as with any module, you just need to tell Codeception to use it for your
 tests. For example, you could add it to your `acceptance.suite.yml`.
 
-~~~txt
+```txt
 class_name: WebGuy
 modules:
     enabled:
         - Hello
-~~~
+```
 
 Now you can use your new test method from within your acceptance tests:
 
-~~~php
+```php
 $I->greet('Jordan'); // Prints: "Hello Jordan!"
-~~~
+```
 
 ## Getting fancy
 
@@ -94,44 +98,46 @@ values and hooks. Here is a list I have extracted from the [Modules and
 Helpers](http://codeception.com/docs/03-ModulesAndHelpers) section of the
 documentation:
 
-    class Sample extends Module
-    {
-        // HOOK: used after configuration is loaded
-        public function _initialize() {
-        }
-
-        // HOOK: on every Guy class initialization
-        public function _cleanup() {
-        }
-
-        // HOOK: before each suite
-        public function _beforeSuite($settings = array()) {
-        }
-
-        // HOOK: after suite
-        public function _afterSuite() {
-        }
-
-        // HOOK: before each step
-        public function _beforeStep(\Codeception\Step $step) {
-        }
-
-        // HOOK: after each  step
-        public function _afterStep(\Codeception\Step $step) {
-        }
-
-        // HOOK: before test
-        public function _before(\Codeception\TestCase $test) {
-        }
-
-        // HOOK: after test
-        public function _after(\Codeception\TestCase $test) {
-        }
-
-        // HOOK: on fail
-        public function _failed(\Codeception\TestCase $test, $fail) {
-        }
+```php
+class Sample extends Module
+{
+    // HOOK: used after configuration is loaded
+    public function _initialize() {
     }
+
+    // HOOK: on every Guy class initialization
+    public function _cleanup() {
+    }
+
+    // HOOK: before each suite
+    public function _beforeSuite($settings = array()) {
+    }
+
+    // HOOK: after suite
+    public function _afterSuite() {
+    }
+
+    // HOOK: before each step
+    public function _beforeStep(\Codeception\Step $step) {
+    }
+
+    // HOOK: after each  step
+    public function _afterStep(\Codeception\Step $step) {
+    }
+
+    // HOOK: before test
+    public function _before(\Codeception\TestCase $test) {
+    }
+
+    // HOOK: after test
+    public function _after(\Codeception\TestCase $test) {
+    }
+
+    // HOOK: on fail
+    public function _failed(\Codeception\TestCase $test, $fail) {
+    }
+}
+```
 
 If you want to see another example, check out my [Codeception MailCatcher
 Module](https://github.com/captbaritone/codeception-mailcatcher-module).
