@@ -22,22 +22,30 @@ export default function Layout({ children, title }) {
               <Link href="/">About</Link>
             </li>
             <li className="pr-5">
+              <Link href="/projects/">Projects</Link>
+            </li>
+            <li className="pr-5">
               <Link href="/blog/">Blog</Link>
             </li>
+            {/*
             <li className="pr-5">
               <Link href="/singer/">Singer</Link>
             </li>
-            <li className="pr-5">
-              <Link href="/contact/">Contact</Link>
-            </li>
+            */}
             <li>
-              <Link href="/projects/">Projects</Link>
+              <Link href="/contact/">Contact</Link>
             </li>
           </ul>
         </nav>
         <main>{children}</main>
+        <footer className="py-8 text-center block border-t-2 border-gray-200 border-solid">
+          <a href="https://twitter.com/captbaritone">Twitter</a>
+          {" • "}
+          <a href="https://github.com/captbaritone">GitHub</a>
+          {" • "}
+          <a href="mailto:jordan@jordaneldredge.com">Email</a>
+        </footer>
       </div>
-      <footer></footer>
     </>
   );
 }

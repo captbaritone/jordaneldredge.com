@@ -3,6 +3,7 @@ import ErrorPage from "next/error";
 import * as Api from "../../lib/api";
 import markdownToHtml from "../../lib/markdownToHtml";
 import Layout from "../../lib/components/Layout";
+import GitHubComments from "../../lib/components/GitHubComments";
 
 export default function Post({ post }) {
   const router = useRouter();
@@ -15,6 +16,9 @@ export default function Post({ post }) {
         <h1>{post.title}</h1>
         <div dangerouslySetInnerHTML={{ __html: post.content }} />
       </div>
+      {post.github_comments_issue_id && (
+        <GitHubComments issue={post.github_comments_issue_id} />
+      )}
     </Layout>
   );
 }
@@ -24,6 +28,7 @@ export async function getStaticProps({ params }) {
     "title",
     "slug",
     "content",
+    "github_comments_issue_id",
   ]);
   const content = await markdownToHtml(post.content || "");
 
