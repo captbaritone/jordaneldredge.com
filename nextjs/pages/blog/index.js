@@ -42,9 +42,14 @@ export async function getStaticProps() {
     "summary",
     "archive",
     "date",
+    "draft",
   ]);
 
   return {
-    props: { allPosts: allPosts.filter((postInfo) => !postInfo.archive) },
+    props: {
+      allPosts: allPosts.filter(
+        (postInfo) => !postInfo.archive && !postInfo.draft
+      ),
+    },
   };
 }
