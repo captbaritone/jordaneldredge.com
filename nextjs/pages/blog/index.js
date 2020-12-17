@@ -1,6 +1,6 @@
-import Head from "next/head";
 import * as Api from "../../lib/api";
 import Link from "next/link";
+import Layout from "../../lib/components/Layout";
 
 const dateFormater = new Intl.DateTimeFormat("en", {
   dateStyle: "medium",
@@ -8,30 +8,23 @@ const dateFormater = new Intl.DateTimeFormat("en", {
 
 export default function Home({ allPosts }) {
   return (
-    <div className="container">
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main>
-        {allPosts.map((post) => {
-          return (
-            <div key={post.slug}>
-              <span>{dateFormater.format(new Date(post.date))}</span>
-              <h2>
-                <Link as={`/blog/${post.slug}`} href="/blog/[slug]">
-                  {post.title}
-                </Link>
-                <p>{post.summary}</p>
-              </h2>
+    <Layout title="Blog">
+      {allPosts.map((post) => {
+        return (
+          <div key={post.slug} className="py-4">
+            <div className="italic text-sm text-gray-400">
+              {dateFormater.format(new Date(post.date))}
             </div>
-          );
-        })}
-      </main>
-
-      <footer></footer>
-    </div>
+            <h2 className="font-medium">
+              <Link as={`/blog/${post.slug}`} href="/blog/[slug]">
+                {post.title}
+              </Link>
+            </h2>
+            <p>{post.summary}</p>
+          </div>
+        );
+      })}
+    </Layout>
   );
 }
 

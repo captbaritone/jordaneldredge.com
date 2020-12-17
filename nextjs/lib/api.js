@@ -110,3 +110,9 @@ export function getPageBySlug(slug, fields = []) {
 
   return items;
 }
+
+export function getSingerResume() {
+  const resumePath = join(process.cwd(), "./performances.json");
+  const fileContents = fs.readFileSync(resumePath, "utf8");
+  return JSON.parse(fileContents);
+}

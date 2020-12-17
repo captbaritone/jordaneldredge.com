@@ -2,26 +2,20 @@ import { useRouter } from "next/router";
 import ErrorPage from "next/error";
 import * as Api from "../../lib/api";
 import markdownToHtml from "../../lib/markdownToHtml";
-import Head from "next/head";
+import Layout from "../../lib/components/Layout";
 
-export default function Post({ slug, post, morePosts, preview }) {
+export default function Post({ post }) {
   const router = useRouter();
   if (!router.isFallback && !post) {
     return <ErrorPage statusCode={404} />;
   }
   return (
-    <>
-      <Head>
-        <link
-          href="https://unpkg.com/prismjs@0.0.1/themes/prism-tomorrow.css"
-          rel="stylesheet"
-        />
-      </Head>
-      <div>
+    <Layout title={post.title}>
+      <div className="markdown">
         <h1>{post.title}</h1>
         <div dangerouslySetInnerHTML={{ __html: post.content }} />
       </div>
-    </>
+    </Layout>
   );
 }
 
