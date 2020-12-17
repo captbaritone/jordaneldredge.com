@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import ErrorPage from "next/error";
-import { getAllPages, getPageBySlug } from "../lib/api";
+import { getPageBySlug } from "../lib/api";
 import markdownToHtml from "../lib/markdownToHtml";
 
 export default function Page({ page }) {
@@ -19,7 +19,7 @@ export default function Page({ page }) {
 }
 
 export async function getStaticProps({ params }) {
-  const page = getPageBySlug(params.slug, ["title", "slug", "content"]);
+  const page = getPageBySlug("about", ["title", "slug", "content"]);
   const content = await markdownToHtml(page.content || "");
 
   return {
@@ -29,23 +29,5 @@ export async function getStaticProps({ params }) {
         content,
       },
     },
-  };
-}
-
-export async function getStaticPaths() {
-  const posts = getAllPages(["slug"]);
-
-  return {
-    paths: posts
-      // About is special and used as the root.
-      .filter((post) => post.slug != "about")
-      .map((post) => {
-        return {
-          params: {
-            slug: post.slug,
-          },
-        };
-      }),
-    fallback: false,
   };
 }
