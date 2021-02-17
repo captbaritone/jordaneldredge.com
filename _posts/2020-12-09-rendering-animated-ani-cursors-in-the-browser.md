@@ -91,7 +91,7 @@ The result looks something like this:
 
 Another option I [prototyped](https://codesandbox.io/s/ani-web-animation-lz46u?file=/src/parseAni.js) was to use the Web Animation API to create the animation. This is a lot cleaner since it does not require constructing a CSS string at runtime. However, the CSS approach is a bit nicer for Webamp since it doesn't require us to track the actual DOM nodes of each element that has an animated cursor. 
 
-**Note:** Safari [only recently](https://trac.webkit.org/changeset/269812/webkit) (Nov. 14th, 2020) merged support for animating the `cursor` property so this won't work in Safari until their next release.
+**Note:** Safari [only recently](https://trac.webkit.org/changeset/269812/webkit) (Nov. 14th, 2020) merged support for animating the `cursor` property so this won't work in Safari until their next release. **Update:** That fix did not work for `url()` cursor values. I've filed a [followup issue](https://bugs.webkit.org/show_bug.cgi?id=221589).
 
 ## Implementation
 
