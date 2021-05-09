@@ -15,7 +15,7 @@ Obviously this is highly subjective, but I think I found a balance where there
 is hardly any extraneous code, but anyone with a small amount of JavaScript
 experience could read thought the code and understand everything.
 
-__Play the game a try [here](https://rawgit.com/captbaritone/snake.js/master/index.html)__
+__Play the game [here](https://rawgit.com/captbaritone/snake.js/master/index.html)__
 
 <script src="https://gist-it.appspot.com/https://github.com/captbaritone/snake.js/raw/master/snake.js?footer=0"></script>
 
