@@ -19,7 +19,7 @@ Six skins generated using the model:
 
 Periodic screenshots of a single seed over the course of training the model:
 
-<video src="/videos/evolution-of-a-winamp-skin.mp4" controls style="image-rendering: pixelated; margin: 0 auto;"></video>
+<video src="/videos/evolution-of-a-winamp-skin.mp4" controls style="image-rendering: pixelated; display: block; margin: 0 auto; margin-bottom: 20px;"></video>
 
 For a narrative of my experience generating these, check out this [Twitter thread](https://twitter.com/captbaritone/status/1356836533882425347).
 
