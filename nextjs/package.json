@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "ln -s ../_posts . && ln -s ../images public && ln -s ../videos public &&next build",
+    "build": "ln -s -f ../_posts . && ln -s -f ../images public && ln -s -f ../videos public &&next build",
     "start": "next start",
     "export": "next export",
     "lint": "remark --quiet ."
