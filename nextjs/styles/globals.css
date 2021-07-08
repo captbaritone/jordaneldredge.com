@@ -131,7 +131,27 @@
 .markdown table {
   @apply mb-6;
 }
+.markdown pre[class*="language-"] {
+}
 
+.markdown pre[class*="language-"] {
+  @apply -mx-5; /* This matches the padding in Layout */
+  @apply px-5; /* This matches the padding in Layout */
+  @apply text-xs;
+  @apply mb-4;
+}
+
+@screen sm {
+  .markdown pre[class*="language-"] {
+    @apply rounded-md shadow text-sm;
+  }
+}
+
+@screen lg {
+  .markdown pre[class*="language-"] {
+    @apply text-base;
+  }
+}
 /* Wrap any inline highlights `that are really long`, but don't modify
      the setting for codeblocks (inside ```), which are rendered in as:
      <pre><code>...
