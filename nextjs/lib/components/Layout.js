@@ -36,10 +36,15 @@ export default function Layout({ children, title }) {
               <Link href="/">About</Link>
             </li>
             <li className="pr-5">
-              <Link href="/projects/">Projects</Link>
-            </li>
-            <li className="pr-5">
               <Link href="/blog/">Blog</Link>
+            </li>
+            {/*
+            <li className="pr-5">
+              <Link href="/talks/">Talks</Link>
+            </li>
+*/}
+            <li className="pr-5">
+              <Link href="/projects/">Projects</Link>
             </li>
             {/*
             <li className="pr-5">

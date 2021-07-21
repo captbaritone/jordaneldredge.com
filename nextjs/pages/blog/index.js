@@ -1,10 +1,7 @@
 import * as Api from "../../lib/api";
 import Link from "next/link";
 import Layout from "../../lib/components/Layout";
-
-const dateFormater = new Intl.DateTimeFormat("en", {
-  dateStyle: "medium",
-});
+import DateString from "../../lib/components/DateString";
 
 export default function Home({ allPosts }) {
   return (
@@ -13,7 +10,7 @@ export default function Home({ allPosts }) {
         return (
           <div key={post.slug} className="py-4">
             <div className="italic text-sm text-gray-400">
-              {dateFormater.format(new Date(post.date))}
+              <DateString date={new Date(post.date)} />
             </div>
             <h2 className="font-medium">
               <Link as={`/blog/${post.slug}`} href="/blog/[slug]">
@@ -36,6 +33,7 @@ export async function getStaticProps() {
     "archive",
     "date",
     "draft",
+    "summary_image",
   ]);
 
   return {

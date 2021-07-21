@@ -5,6 +5,7 @@ import markdownToHtml from "../../lib/markdownToHtml";
 import Layout from "../../lib/components/Layout";
 import GitHubComments from "../../lib/components/GitHubComments";
 import Head from "next/head";
+import DateString from "../../lib/components/DateString";
 
 /*
 {% if page.summary_image %}
@@ -51,6 +52,15 @@ export default function Post({ post }) {
       </Head>
       <div className="markdown">
         <h1>{post.title}</h1>
+        <div
+          className="italic text-sm text-gray-400"
+          style={{
+            marginTop: "-1.4rem",
+            marginBottom: "1rem",
+          }}
+        >
+          <DateString date={new Date(post.date)} />
+        </div>
         <div dangerouslySetInnerHTML={{ __html: post.content }} />
       </div>
       {post.github_comments_issue_id && (
@@ -61,7 +71,8 @@ export default function Post({ post }) {
 }
 
 export async function getStaticProps({ params }) {
-  const post = await Api.getPostBySlug(params.slug, [
+  const post = Api.getPostBySlug(params.slug, [
+    "date",
     "title",
     "slug",
     "content",
