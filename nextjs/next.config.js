@@ -7,7 +7,15 @@ module.exports = {
     return [
       {
         source: "/projects/:match*",
-        destination: "https://jordaneldredge.com/project/:match*",
+        destination: "https://jordaneldredge.com/projects/:match*",
+      },
+      {
+        source: "/ukulele-chords",
+        destination: "https://jordaneldredge.com/ukulele-chords",
+      },
+      {
+        source: "/fach-generator",
+        destination: "https://jordaneldredge.com/fach-generator",
       },
     ];
   },
