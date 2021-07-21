@@ -1,9 +1,14 @@
+/**
+ * @type {import('next').NextConfig}
+ */
 module.exports = {
   distDir: "build",
-  rewrites: [
-    {
-      source: "/projects/:match*",
-      destination: "https://jordaneldredge.com/project/:match*",
-    },
-  ],
+  async rewrites() {
+    return [
+      {
+        source: "/projects/:match*",
+        destination: "https://jordaneldredge.com/project/:match*",
+      },
+    ];
+  },
 };
