@@ -4,6 +4,7 @@ title: Projects
 permalink: /projects/
 ---
 
+Over the years I've built a number of software side projects. Below are a list of the more interesting ones. For a more exhaustive list see my [blog](/blog).
 
 ### Javascript
 
@@ -23,7 +24,9 @@ permalink: /projects/
 
 **[HashBin](http://hashb.in)** - A paste bin that never sees the contents of its pastes
 
-### Meme Generators
+### Server
+
+**[FachMe.com](https://fachme.com)** - Help opera singers find algorithmically-similar roles
 
 **[UrlMe.me](http://urlme.me)** - Make memes by typing a URL
 
@@ -43,7 +46,5 @@ permalink: /projects/
 
 -->
 
-### For Ukulele Players
-
-**[UkeChord](ukulele-chords/)** Generate ukulele chord fingerings programmatically
+**[UkeChord](ukulele-chords/)** - Generate ukulele chord fingerings programmatically
 
