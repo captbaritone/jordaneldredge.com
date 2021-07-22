@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "cp -r ../_posts . && mkdir public && cp -r ../images public/images && cp -r ../videos public/videos && next build --debug",
+    "build": "cp -r ../_posts . && mkdir public && cp -r ../images public/images && cp -r ../javascripts public/javascripts && cp -r ../videos public/videos && next build --debug",
     "clean": "rm -rf ./_posts ./public/",
     "start": "next start",
     "export": "next export",
