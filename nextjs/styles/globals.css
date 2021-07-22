@@ -30,10 +30,7 @@
 .headshot {
   margin-bottom: 1em;
 }
-.headshot .attribution {
-  font-size: 0.75em;
-  font-style: italic;
-}
+
 @media screen and (min-width: 37em) {
   .headshot {
     max-width: 360px;
