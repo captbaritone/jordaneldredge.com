@@ -3,9 +3,9 @@ layout: page
 permalink: /
 ---
 <div class='headshot'>
-<img src="{{ "/images/jordan_eldredge.jpg" | prepend: site.baseurl }}"
-alt='Jordan Eldredge playing Ukulele'>
-<span class='attribution'>Photo by Alex C. Telander</span>
+<img src="{{ "/images/avatar.jpg" | prepend: site.baseurl }}"
+class="shadow-xl rounded-xl"
+alt='Jordan Eldredge with his daughter'>
 </div>
 
 Hello! My name is Jordan Eldredge. I am a programmer and musician
