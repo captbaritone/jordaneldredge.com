@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import { useRouter } from "next/router";
 /* TODO
 <meta name="description" content="{% if page.summary %}{{ page.summary }}{% else %}{{ site.description }}{% endif %}">
 {% if page.categories %}<meta name="keywords" content="{{ page.categories | join: ', ' }}">{% endif %}
@@ -28,31 +29,31 @@ export default function Layout({ children, title }) {
       </Head>
       <div className="max-w-2xl mx-auto p-5">
         <nav className="flex justify-between flex-col sm:flex-row pb-5">
-          <div>
+          <div className="font-medium">
             <Link href="/">Jordan Eldredge</Link>
           </div>
           <ul className="flex">
             <li className="pr-5">
-              <Link href="/">About</Link>
+              <NavLink href="/">About</NavLink>
             </li>
             <li className="pr-5">
-              <Link href="/blog/">Blog</Link>
+              <NavLink href="/blog/">Blog</NavLink>
             </li>
             {/*
             <li className="pr-5">
-              <Link href="/talks/">Talks</Link>
+              <NavLink href="/talks/">Talks</NavLink>
             </li>
 */}
             <li className="pr-5">
-              <Link href="/projects/">Projects</Link>
+              <NavLink href="/projects/">Projects</NavLink>
             </li>
             {/*
             <li className="pr-5">
-              <Link href="/singer/">Singer</Link>
+              <NavLink href="/singer/">Singer</NavLink>
             </li>
             */}
             <li>
-              <Link href="/contact/">Contact</Link>
+              <NavLink href="/contact/">Contact</NavLink>
             </li>
           </ul>
         </nav>
@@ -66,5 +67,18 @@ export default function Layout({ children, title }) {
         </footer>
       </div>
     </>
+  );
+}
+
+function NavLink({ href, children }) {
+  const router = useRouter();
+  const pathname = router.asPath;
+
+  const active = pathname.replace(/\/$/, "") === href.replace(/\/$/, "");
+
+  return (
+    <span className={active ? "underline" : ""}>
+      <Link href={href}>{children}</Link>
+    </span>
   );
 }
