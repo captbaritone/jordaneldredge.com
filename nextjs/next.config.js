@@ -6,11 +6,11 @@ module.exports = {
   async rewrites() {
     return [
       {
-        source: "/projects/:match*",
-        destination: "https://jordaneldredge.com/projects/:match*",
+        source: "/projects/:match*{/}?",
+        destination: "https://jordaneldredge.com/projects/:match*/",
       },
       {
-        source: "/ukulele-chords",
+        source: "/ukulele-chords{/}?",
         destination: "https://jordaneldredge.com/ukulele-chords/",
       },
     ];
