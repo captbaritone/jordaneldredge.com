@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+ @apply break-normal break-words;
+}
+
 @layer base {
   h1 {
     @apply text-2xl;
@@ -43,7 +47,7 @@
 /* Markdown Styles */
 /* Global */
 .markdown {
-  @apply leading-relaxed text-sm break-normal break-words;
+  @apply leading-relaxed text-sm;
 }
 
 @screen sm {
