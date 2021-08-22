@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useState, useEffect } from "react";
 
 function useComments(issue) {
@@ -38,9 +39,10 @@ export default function GitHubComments({ issue }) {
             className="flex flex-col mx-auto container shadow mt-5 rounded-b-md"
           >
             <div className="flex bg-gray-600 bg-opacity-10 rounded-t-md p-3">
-              <img
+              <Image
                 src={comment.user.avatar_url}
                 className="w-12 h-12 rounded-full object-cover bg-gray-100"
+                alt=""
               />
               <div className="flex flex-row justify-between w-full px-3 items-center">
                 <div className="font-semibold hover:underline">
@@ -64,7 +66,7 @@ export default function GitHubComments({ issue }) {
         );
       })}
       <div className="text-lg text-center pt-4 underline">
-        <a href={url} target="_blank">
+        <a href={url} target="_blank" rel="noreferrer">
           Add a comment on GitHub
         </a>
       </div>
