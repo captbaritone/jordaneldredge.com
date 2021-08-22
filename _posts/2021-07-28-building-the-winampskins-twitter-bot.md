@@ -37,7 +37,7 @@ This seemed like an easy way to make a nice UI for myself. However, I soon reali
 
 Upon feedback from my Discord users, I eventually updated the bot to respond to 👍/👎 reactions rather than text responses. By seeding each message with both reactions, this made review on mobile super easy, since both reactions were already visible, you just tapped the one you wanted.
 
-![Reviewing a Winamp skin with the Discord bot](/images/discord-winamp-skin-review.png)
+![Reviewing a Winamp skin with the Discord bot](images/discord-winamp-skin-review.png)
 
 ## Increasing Tweet Frequency
 

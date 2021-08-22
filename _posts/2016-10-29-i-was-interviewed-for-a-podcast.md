@@ -2,7 +2,6 @@
 layout: post
 title: I was interviewed for a podcast
 summary: My work interviewed me as part of their "employee spotlight" series.
-date: "2016-10-29 16:36:15 -0700"
 ---
 
 My work, [Hearsay Social][1], runs a [podcast][2] which occasionally features

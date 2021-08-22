@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "UriBin: A self-replicating paste bin that lives in url shorteners"
-date: "2015-08-30 13:38:49 -0700"
 ---
 
 Back in February, I created a strange thing which I called

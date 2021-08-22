@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "I gave a talk: Finding Creativity Through Constraints"
-date: "2015-09-25 19:21:20 -0700"
 summary: In which I discuss how constraints have inspired my creative process as a musician and programmer.
 youtube_slug: Jic6lVGALj4
 ---

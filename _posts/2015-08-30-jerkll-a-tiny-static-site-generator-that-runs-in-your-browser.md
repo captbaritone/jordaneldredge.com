@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Jerkll: A tiny static site generator that runs in your browser"
-date: 2015-08-30
 summary: Replacing Jekyll with 14 lines of run-anywhere JavaScript.
 ---
 

@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Podcasts I like"
-date: "2016-07-14 15:36:46 -0700"
 summary: A summary of the podcasts to which I subscribe.
 ---
 
