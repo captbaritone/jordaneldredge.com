@@ -6,7 +6,3 @@ uploads/
 _site/
 vendor/
 nextjs/build/
-nextjs/_posts/
-nextjs/public/images/
-nextjs/public/videos/
-nextjs/public/javascripts/
