@@ -26,6 +26,19 @@ export default function Layout({ children, title }) {
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
         <meta name="twitter:site" content="@captbaritone" />
         <meta name="twitter:creator" content="@captbaritone" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+              })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+              
+              ga('create', '{{ site.google_analytics }}', 'auto');
+              ga('send', 'pageview')
+            `,
+          }}
+        />
       </Head>
       <div className="max-w-2xl mx-auto p-5">
         <nav className="flex justify-between flex-col sm:flex-row pb-5">
