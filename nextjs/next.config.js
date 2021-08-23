@@ -3,15 +3,12 @@
  */
 module.exports = {
   distDir: "build",
-  async rewrites() {
+  async redirects() {
     return [
       {
-        source: "/projects/:match*{/}?",
-        destination: "https://jordaneldredge.com/projects/:match*/",
-      },
-      {
-        source: "/ukulele-chords{/}?",
-        destination: "https://jordaneldredge.com/ukulele-chords/",
+        source: "/projects/winamp2-js{/}?",
+        destination: "https://webamp.org",
+        permanent: true,
       },
     ];
   },
