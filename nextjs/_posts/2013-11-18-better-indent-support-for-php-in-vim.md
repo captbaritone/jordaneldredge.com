@@ -18,6 +18,6 @@ plugin](https://github.com/captbaritone/better-indent-support-for-php-with-html)
 Now, if you use Vundle, you can simply install it by adding this line to your
 `.vimrc` and running `:BundleInstall`:
 
-```vimscript
+```vim
 Bundle 'captbaritone/better-indent-support-for-php-with-html'
 ```

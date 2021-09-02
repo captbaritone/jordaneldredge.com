@@ -5,7 +5,7 @@ layout: post
 
 Yesterday I setup PHP completion in Vim by adding the following to my `.vimrc`:
 
-```vimscript
+```vim
 autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
 
 set completeopt=longest,menuone

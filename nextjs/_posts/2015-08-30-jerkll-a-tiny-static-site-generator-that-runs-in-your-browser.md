@@ -17,7 +17,6 @@ golfed](https://en.wikipedia.org/wiki/Code_golf) it and reduced it to the
 following 14 lines:
 
 ```javascript
-{% raw %}
 (onhashchange = function(e, d) {
     var p = location.hash ? location.hash.slice(1) : 'index';
     d = d || {'template': 'pages/' + p + ".md"};
@@ -33,7 +32,6 @@ following 14 lines:
     r.open("get", d.template);
     r.send();
 })();
-{% endraw %}
 ```
 
 This code, together with the [marked.js](https://github.com/chjj/marked)

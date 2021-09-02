@@ -19,19 +19,6 @@ loadLanguages([
   "yml",
 ]);
 
-function mapLang(lang) {
-  switch (lang) {
-    case "vimscript":
-      return "vim";
-    case "text":
-    case "txt":
-    case null:
-      return "plainText";
-    default:
-      return lang;
-  }
-}
-
 Prism.languages["plainText"] = {};
 
 function applyHighlighting(tree) {
@@ -39,7 +26,7 @@ function applyHighlighting(tree) {
     if (node.type === "code") {
       const source = node.value;
 
-      let lang = mapLang(node.lang);
+      let lang = node.lang ?? "plainText";
       const grammar = Prism.languages[lang];
 
       if (grammar == null) {
@@ -48,8 +35,7 @@ function applyHighlighting(tree) {
         );
       }
 
-      const html =
-        grammar == null ? source : Prism.highlight(source, grammar, lang);
+      const html = Prism.highlight(source, grammar, lang);
       const replacement = {
         type: "html",
         value: `<pre class="language-${lang}"><code class="language-${lang}">${html}</code></pre>`,
@@ -58,36 +44,6 @@ function applyHighlighting(tree) {
       return [SKIP, index];
     }
   });
-}
-
-const CONSTANTS = {
-  "site.email": "jordan@jordaneldredge.com",
-  "site.twitter_username": "captbaritone",
-  "site.github_username": "captbaritone",
-  // TODO: Remove this. We try to avoid ever parsing this by using {% raw %}, but we don't support {% raw %}, so we hack here to ignore it.
-  // _posts/2015-08-30-jerkll-a-tiny-static-site-generator-that-runs-in-your-browser.md
-  "(\\S*)": "(\\S*)",
-};
-
-// These are all hacks to be able to process the wildcard stuff we do in Jekyll but don't work in nextjs
-function preprocess(markdown) {
-  return markdown
-    .replace("{% raw %}", "")
-    .replace("{% endraw %}", "")
-    .replace(/\{\{ "([^"]+)" \| prepend: ([^}]+) \}\}/g, (_, url, key) => {
-      const value = CONSTANTS[key];
-      if (value == null) {
-        throw new Error(`Could not find constant value for key "${key}"`);
-      }
-      return value + url;
-    })
-    .replace(/\{\{ ([^}]+) \}\}/g, (_, key) => {
-      const value = CONSTANTS[key];
-      if (value == null) {
-        throw new Error(`Could not find constant value for key "${key}"`);
-      }
-      return value;
-    });
 }
 
 async function imageDimensions(tree) {
@@ -139,12 +95,7 @@ function fixHtml(tree) {
 }
 
 export default async function markdownToHtml(markdown) {
-  const processedMarkdown = preprocess(markdown);
-
-  let ast = unified()
-    .use(remarkParse)
-    .use(remarkDirective)
-    .parse(processedMarkdown);
+  let ast = unified().use(remarkParse).use(remarkDirective).parse(markdown);
 
   // No idea why I can't use this via unified().use(remarkInlineLinks)
   const transform = remarkInlineLinks();
