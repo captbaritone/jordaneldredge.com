@@ -10,6 +10,5 @@ Since I <a href="/blog/my-first-barbershop-multi-track-love-letters/">began mult
 This thing is awesome. In one portable package its: a high quality USB microphone, a portable recorder, a four-track machine, an effects pedal, and much more. To take the new contraption for a spin, I recorded an old favorite tag. I did all the multitracking on the Zoom, and then transferred the individual tracks to my MacBook where I added reverb and adjusted some levels (which I could have done on board if I had wanted to).
 
 I have recorded this tag a <a href="/blog/barbershop-multi-track-mothers-day-gift/">few</a> <a href="/blog/barbershop-multitrack-tag-overtone-experiment-robot-quartet/">times</a> before on my MacBook microphone and the difference of sound quality is pretty noticeable. Have a listen to this new recording of "In Dixie Land Where I Was Born":
-<audio id="wp_mep_30" src="/uploads/2009/05/in-dixie-land.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
 
-<a href="/uploads/2009/05/in-dixie-land.mp3">Download</a>
+::audio{src=/uploads/2009/05/in-dixie-land.mp3}

@@ -12,6 +12,6 @@ Last Mother's Day I recorded my mom a <a href="/blog/barbershop-multi-track-moth
 
 Listen to the tag "To My Beautiful Life Long Friends" from the <a href="http://illinistatesmen.org/files/classic_tags.pdf">Classic Tags Collection</a>:
 
-<audio id="wp_mep_29" src="/uploads/2009/05/to-my-beautiful-life-long-friends.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
+::audio{src=/uploads/2009/05/to-my-beautiful-life-long-friends.mp3}
 
 <a href="/uploads/2009/05/to-my-beautiful-life-long-friends.mp3">Download</a>

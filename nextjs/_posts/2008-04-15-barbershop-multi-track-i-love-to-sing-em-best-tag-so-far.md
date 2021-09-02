@@ -22,12 +22,8 @@ I am not sure how I feel about reverb on mult-track recordings of this sort. On 
 
 The tag <em>without</em> reverb:
 
-<audio id="wp_mep_52" src="/uploads/2008/04/i-love-to-sing-em.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
-
-<a href="/uploads/2008/04/i-love-to-sing-em.mp3">Download</a>
+::audio{src=/uploads/2008/04/i-love-to-sing-em.mp3}
 
 The tag <em>with</em> reverb:
 
-<audio id="wp_mep_53" src="/uploads/2008/04/i-love-to-sing-em-reverb.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
-
-<a href="/uploads/2008/04/i-love-to-sing-em-reverb.mp3">Download</a>
+::audio{src=/uploads/2008/04/i-love-to-sing-em-reverb.mp3}

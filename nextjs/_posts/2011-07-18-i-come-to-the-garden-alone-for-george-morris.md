@@ -16,10 +16,9 @@ This video was recorded in my backyard here in San Francisco.
 
 ::youtube{token=FDB0LMrDdEs}
 
-<audio id="wp_mep_11" src="/uploads/2011/07/I-Walk-Through-The-Garden-Alone-Ukulele-For-George.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
+::audio{src=/uploads/2011/07/I-Walk-Through-The-Garden-Alone-Ukulele-For-George.mp3}
 
-<a href="/uploads/2011/07/I-Walk-Through-The-Garden-Alone-Ukulele-For-George.mp3">Mp3 Download
-</a><a href="/uploads/2011/07/I-Come-To-the-Garden-Alone.pdf">Tablature Pdf file</a><a href="/uploads/2011/07/I-Walk-Through-The-Garden-Alone-Ukulele-For-George.mp3">
+<a href="/uploads/2011/07/I-Come-To-the-Garden-Alone.pdf">Tablature Pdf file</a><a href="/uploads/2011/07/I-Walk-Through-The-Garden-Alone-Ukulele-For-George.mp3">
 </a>
 
 Hymn: "In The Garden"

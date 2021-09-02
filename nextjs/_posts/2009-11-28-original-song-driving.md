@@ -9,9 +9,7 @@ As of this week, <a href="http://www.chelseahollow.com">Chelsea</a> and I have b
 
 For Chelsea, after three years: "Driving"
 
-<audio id="wp_mep_17" src="/uploads/2009/11/Driving.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
-
-<a href="/uploads/2009/11/Driving.mp3">Download</a>
+::audio{src=/uploads/2009/11/Driving.mp3}
 
 Lyrics:
 

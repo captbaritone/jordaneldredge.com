@@ -14,9 +14,7 @@ In the following recording, on the last half of the last chord, if you listen on
 
 The tag:
 
-<audio id="wp_mep_46" src="/uploads/2008/05/robots-sing-in-dixie-land-where-i-was-born.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
-
-<a href="/uploads/2008/05/robots-sing-in-dixie-land-where-i-was-born.mp3">Download</a>
+::audio{src=/uploads/2008/05/robots-sing-in-dixie-land-where-i-was-born.mp3}
 
 This tag was recorded with no post processing - equalization, reverb, special effects - at 4am (I am sure my neighbors think I am very weird) and is from <a href="http://www.stampedecitychorus.com/classic_tags_men2.pdf">this</a> collection. I have changed the word "born" to "made" for both a brighter vowel, and because its being sung by robots. It is also the tag I changed the words to for my mom's <a href="/blog/barbershop-multi-track-mothers-day-gift/">mother's-day gift</a>.
 

@@ -8,8 +8,6 @@ summary_image: /uploads/2012/08/561217_10150915093251302_1710160913_n-500x375.jp
 
 On July 14th I had the honor of being asked to sing Tom Waits' "Ol' 55" at the wedding of my dear friends Jared and Kathleen. To help commemorate that special day, I have made this simple documentation recording of the arrangment I sang. Thank you both for letting me be a part of your beautiful ceremony, and thank you to Mr. Waits' for writing this jewel.
 
-<audio id="wp_mep_7" src="/uploads/2012/08/Ol-55.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
-
-<a class="wpaudio" href="/uploads/2012/08/Ol-55.mp3">Download as .mp3</a>
+::audio{src=/uploads/2012/08/Ol-55.mp3}
 
 <div id="attachment_1118" style="width: 510px" class="wp-caption alignnone"><a href="/uploads/2012/08/561217_10150915093251302_1710160913_n.jpg"><img class="size-large wp-image-1118" title="561217_10150915093251302_1710160913_n" src="/uploads/2012/08/561217_10150915093251302_1710160913_n-500x375.jpg" alt="" width="500" height="375" /></a><p class="wp-caption-text">Photo credit: Alex Telander</p></div>

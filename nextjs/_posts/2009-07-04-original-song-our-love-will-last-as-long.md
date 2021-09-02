@@ -9,9 +9,7 @@ Yesterday, I was at <a href="http://maps.google.com/maps?oe=utf-8&amp;rls=org.mo
 
 For Chelsea: "Our Love Will Last As Long"
 
-<audio id="wp_mep_25" src="/uploads/2009/07/Our-Love-Will-Last-As-Long.mp3" type="audio/mp3"    controls="controls" preload="none"  > </audio>
-
-<a href="/uploads/2009/07/Our-Love-Will-Last-As-Long.mp3">Download</a>
+::audio{src=/uploads/2009/07/Our-Love-Will-Last-As-Long.mp3}
 
 <strong>Update (7/14/2013)</strong>: I have uploaded the <a href="/uploads/2009/07/eldredge-our_love_will_last_as_long.pdf">typeset sheetmusic</a>.
 <a href="https://github.com/captbaritone/eldredge-our_love_will_last_as_long">Lilypond source file on GitHub</a>

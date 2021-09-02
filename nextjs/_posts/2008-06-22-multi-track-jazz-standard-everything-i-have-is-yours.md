@@ -11,6 +11,4 @@ Apparently my ear harmonies are possessed by Lord Satan.
 
 The aftermath:
 
-<audio id="wp_mep_45" src="/uploads/2008/06/everything-i-have-is-yours.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
-
-<a href="/uploads/2008/06/everything-i-have-is-yours.mp3">Download</a>
+::audio{src=/uploads/2008/06/everything-i-have-is-yours.mp3}

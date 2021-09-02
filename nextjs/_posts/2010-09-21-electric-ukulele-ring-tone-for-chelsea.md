@@ -9,7 +9,7 @@ While visiting my parents at their cabin just North of <a href="http://en.wikipe
 
 Photo credit: Lisa Eldredge
 
-Have a listen: <audio id="wp_mep_13" src="/uploads/2010/09/Forest-Dreams-of-Chelsea.mp3" type="audio/mp3"    controls="controls" preload="none"  > </audio>
+Have a listen: ::audio{src=/uploads/2010/09/Forest-Dreams-of-Chelsea.mp3}
 
 - <a href='/uploads/2010/09/Forest-Dreams-of-Chelsea.mp3'>Download .mp3</a>
 - <a href='/uploads/2010/09/Forest-Dreams-of-Chelsea.m4r'>Download .m4r (iPhone ring tone)</a>

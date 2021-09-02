@@ -7,9 +7,8 @@ layout: post
 <a href="/uploads/2009/06/n695475033_6330053_5271599.jpg"><img class="size-large wp-image-554 aligncenter" title="n695475033_6330053_5271599" src="/uploads/2009/06/n695475033_6330053_5271599-500x375.jpg" alt="Chelsea Hollow in a bed of flowers" width="500" height="375" /></a>
 
 "Lazy Afternoon" for Chelsea:
- <audio id="wp_mep_26" src="/uploads/2009/06/Lazy-Afternoon.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
+ ::audio{src=/uploads/2009/06/Lazy-Afternoon.mp3}
 
-<a href="/uploads/2009/06/Lazy-Afternoon.mp3">Download</a>
 <p style="text-align: left;">For those who are interested, I have typeset the sheet music to this tag using Lilypond:<a href="/uploads/2009/06/Lazy_Afternoon.pdf"></a></p>
 
 - <a href="/uploads/2009/06/Lazy_Afternoon.pdf">Lazy_Afternoon.pdf</a> (Printable sheet music)

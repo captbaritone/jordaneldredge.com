@@ -7,12 +7,8 @@ My friend <a href="http://www.zaynardstudios.com/Welcome.html">Zane Fiala</a> an
 
 We Love to Sing Those Close Harmony Songs:
 
-<audio id="wp_mep_39" src="/uploads/2008/12/welovetosing.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
-
-<a href="/uploads/2008/12/welovetosing.mp3">Download</a>
+::audio{src=/uploads/2008/12/welovetosing.mp3}
 
 Somewhere (from West Side Story):
 
-<audio id="wp_mep_40" src="/uploads/2008/12/somewhere.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
-
-<a href="/uploads/2008/12/somewhere.mp3">Download</a>
+::audio{src=/uploads/2008/12/somewhere.mp3}

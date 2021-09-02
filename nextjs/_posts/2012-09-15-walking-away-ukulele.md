@@ -15,8 +15,6 @@ Lyrics:
 > There were tears that time round, and the time after that, and walking away never helped.  
 > So I pace every night to try to forget. But it always just brings me back home.  
 
-<audio id="wp_mep_6" src="/uploads/2012/09/Walking-Away-mp3.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
-
-<a href="/uploads/2012/09/Walking-Away-mp3.mp3">Download as .mp3</a>
+::audio{src=/uploads/2012/09/Walking-Away-mp3.mp3}
 
 Recorded on my first ukulele into my first (MacBook) laptop.

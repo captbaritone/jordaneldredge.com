@@ -25,6 +25,4 @@ href="http://www.stampedecitychorus.com/classic_tags_men2.pdf">this</a> (No.
 98) great collection of barbershop tags. However this time, neither the
 arranger nor the quartet are cited.
 
-<audio id="wp_mep_53" src="/uploads/2008/03/lord-you-made-the-night-too-long.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
-
-<a href="/uploads/2008/03/lord-you-made-the-night-too-long.mp3" title="Multi-track tag: Lord You Made the Night Too Long">Download</a>
+::audio{src=/uploads/2008/03/lord-you-made-the-night-too-long.mp3}

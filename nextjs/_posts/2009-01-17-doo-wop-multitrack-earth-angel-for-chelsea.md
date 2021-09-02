@@ -7,9 +7,7 @@ My girlfriend is sick, so I arranged and recorded her a song. I hope this helps 
 
 For <a href="http://www.chelseahollow.com">Chelsea</a>:
 
-<audio id="wp_mep_36" src="/uploads/2009/01/earth-angel.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
-
-<a href="/uploads/2009/01/earth-angel.mp3">Download</a>
+::audio{src=/uploads/2009/01/earth-angel.mp3}
 
 <a href="/uploads/2009/01/n641786668_907689_2852.jpg"><img class="size-large wp-image-303" title="beach_chelea" src="/uploads/2009/01/n641786668_907689_2852-500x375.jpg" alt="Chelsea at the Beach" width="500" height="375" /></a>
 

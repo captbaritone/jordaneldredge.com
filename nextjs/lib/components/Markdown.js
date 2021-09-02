@@ -55,6 +55,15 @@ function MarkdownAst({ node }) {
               selector={node.attributes.selector}
             />
           );
+        case "audio":
+          return (
+            <audio
+              src={node.attributes.src}
+              type="audio/mp3"
+              controls="controls"
+              preload="none"
+            />
+          );
 
         default:
           throw new Error(`Unknown directive: ${node.name}`);

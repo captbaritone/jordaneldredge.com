@@ -7,6 +7,4 @@ Inspired by the <a href="/blog/alice-n-the-irving-street-kidz/">recording I made
 
 Have a listen to this cover of the White Stripe's "Were Going To Be Friends":
 
-<audio id="wp_mep_27" src="/uploads/2009/05/were-going-to-be-friends-white-stripes-cover.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
-
-<a href='/uploads/2009/05/were-going-to-be-friends-white-stripes-cover.mp3'>Download</a>
+::audio{src=/uploads/2009/05/were-going-to-be-friends-white-stripes-cover.mp3}

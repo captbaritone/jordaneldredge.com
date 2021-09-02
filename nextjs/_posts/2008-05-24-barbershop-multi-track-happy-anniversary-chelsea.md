@@ -9,6 +9,4 @@ I love you Chelsea. Thanks for putting up with me and my nerdy ways for a whole 
 
 Written and recorded for Chelsea:
 
-<audio id="wp_mep_46" src="/uploads/2008/05/i-love-you-the-stars-tonight.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
-
-<a href="/uploads/2008/05/i-love-you-the-stars-tonight.mp3">Download</a>
+::audio{src=/uploads/2008/05/i-love-you-the-stars-tonight.mp3}

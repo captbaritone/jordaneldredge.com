@@ -11,6 +11,4 @@ layout: post
 - Ukulele, chimes, backup vocals, egg shaker - Jordan
 - Epic Howl - Noah
 
-<audio id="wp_mep_18" src="/uploads/2009/11/Colors-of-the-wind.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
-
-<a href="/uploads/2009/11/Colors-of-the-wind.mp3">Download</a>
+::audio{src=/uploads/2009/11/Colors-of-the-wind.mp3}

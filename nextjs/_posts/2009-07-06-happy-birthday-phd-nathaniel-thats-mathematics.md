@@ -9,9 +9,8 @@ Happy birthday and congratulation Nathaniel. You are the best source of pride an
 
 Tom Lehrer's "That's Mathematics" for Nathaniel:
 
-<audio id="wp_mep_23" src="/uploads/2009/06/Thats-Mathematics.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
+::audio{src=/uploads/2009/06/Thats-Mathematics.mp3}
 
-<a href="/uploads/2009/06/Thats-Mathematics.mp3">Download</a>
 <ul>
 	<li>Ukulele - Jordan</li>
 	<li>Vocals - Jordan, Lisa, Chelsea, Gilbert</li>

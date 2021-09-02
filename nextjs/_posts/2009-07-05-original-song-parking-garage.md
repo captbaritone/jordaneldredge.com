@@ -7,6 +7,4 @@ With <a href="http://www.chelseahollow.com">Chelsea</a> (my girlfriend) out of t
 
 For Chelsea: "Parking Garage"
 
-<audio id="wp_mep_24" src="/uploads/2009/07/Parking-Garage.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
-
-<a href="/uploads/2009/07/Parking-Garage.mp3">Download</a>
+::audio{src=/uploads/2009/07/Parking-Garage.mp3}

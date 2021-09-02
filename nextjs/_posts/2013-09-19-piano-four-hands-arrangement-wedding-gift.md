@@ -12,9 +12,7 @@ On September 14th, Chelsea and I were married in her parent's backyard in Southe
 
 You can hear a crude midi rendering of it here:
 
-<audio src="/uploads/2013/09/Nammies-Four-Hands.mp3" type="audio/mp3"    controls="controls" preload="none"></audio>
-
-[Download as .mp3](/uploads/2013/09/Nammies-Four-Hands.mp3)
+::audio{src=/uploads/2013/09/Nammies-Four-Hands.mp3}
 
 <a href="/uploads/2014/06/eldredge-nammies_four_hands.pdf" target="_blank"><img class="aligncenter size-full wp-image-1484" alt="Thumbnail: Nammies Four Hands pdf" src="/uploads/2013/09/eldredge-nammies_four_hands.png" width="496" height="702" /></a>
 

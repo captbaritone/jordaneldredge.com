@@ -10,8 +10,7 @@ I recorded this song as a surprise for my wonderful girlfriend <a href="http://w
 As far as I can tell, this song is originally by one of my very favorite musical groups: <a href="http://en.wikipedia.org/wiki/The_Flamingos">The Flamingos</a>. I heard it on their album <a href="http://www.amazon.com/I-Only-Have-Eyes-You/dp/B000005MWW"><em>I Only Have Eyes For You</em></a> and thought it would be the perfect one to try to record. After hours and hours of transcription, recording, rerecording and level-twiddling, it's finally presentable.
 
 For Chelsea: An a cappella version of "That's Why I Love You" by the Flamingos:
-<audio id="wp_mep_21" src="/uploads/2009/08/Thats-Why-I-Love-You.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
 
-<a href="/uploads/2009/08/Thats-Why-I-Love-You.mp3">Download</a>
+::audio{src=/uploads/2009/08/Thats-Why-I-Love-You.mp3}
 
 <a href="https://github.com/captbaritone/eldredge-thats_why_i_love_you">Lilypond source of my rough transcription on GitHub</a>

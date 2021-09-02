@@ -7,9 +7,7 @@ I was listening to NPR today, and there was a program of some song writer who wa
 
 So I went home and wrote and recorded a song: 
 
-<audio id="wp_mep_44" src="/uploads/2008/08/ballad-of-the-man-who-cant-sing.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
-
-<a href="/uploads/2008/08/ballad-of-the-man-who-cant-sing.mp3">Download</a>
+::audio{src=/uploads/2008/08/ballad-of-the-man-who-cant-sing.mp3}
 
 Not being a song writer, I wrote the song about not being able to write.
 

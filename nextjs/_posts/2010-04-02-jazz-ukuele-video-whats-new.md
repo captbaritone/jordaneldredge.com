@@ -11,6 +11,5 @@ Please excuse the synthesized drum and bass, they are the best I can do. For now
 ::youtube{token=eJoKuzVGyFY}
 
 Here is an audio only mp3 for you to listen to or download:
-<audio id="wp_mep_14" src="/uploads/2010/04/Whats-New.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
 
-<a href='/uploads/2010/04/Whats-New.mp3'>Download</a>
+::audio{src=/uploads/2010/04/Whats-New.mp3}

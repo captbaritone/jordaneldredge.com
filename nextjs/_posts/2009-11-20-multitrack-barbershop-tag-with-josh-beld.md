@@ -14,6 +14,4 @@ When It's Sleepy Time Down South:
 	<li>Bass and Tenor: Josh Beld</li>
 </ul>
 
-<audio id="wp_mep_19" src="/uploads/2009/11/When-Its-Sleepytime-Down-South-Feat.-Josh-Beld.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
-
-<a href="/uploads/2009/11/When-Its-Sleepytime-Down-South-Feat.-Josh-Beld.mp3">Download</a>
+::audio{src=/uploads/2009/11/When-Its-Sleepytime-Down-South-Feat.-Josh-Beld.mp3}

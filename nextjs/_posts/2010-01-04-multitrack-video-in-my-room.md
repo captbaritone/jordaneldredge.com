@@ -10,9 +10,7 @@ The results:
 ::youtube{token=vdLnQ5T0VaU}
 
 Also available as a free mp3:
-<audio id="wp_mep_16" src="/uploads/2010/01/In-My-Room.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
-
-<a href="/uploads/2010/01/In-My-Room.mp3">Download</a>
+::audio{src=/uploads/2010/01/In-My-Room.mp3}
 
 <strong>Cast:</strong>
 <ul>

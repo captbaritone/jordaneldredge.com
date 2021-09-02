@@ -19,6 +19,4 @@ The song is "<a href="http://en.wikipedia.org/wiki/I_Love_You_Truly">I Love You 
 > Gone is the sorrow, gone doubt and fear,  
 > For you love me truly, truly dear.  
 
-<audio id="wp_mep_10" src="/uploads/2012/02/I-Love-You-Truly.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
-
-<a href="/uploads/2012/02/I-Love-You-Truly.mp3">Download as .mp3</a>
+::audio{src=/uploads/2012/02/I-Love-You-Truly.mp3}

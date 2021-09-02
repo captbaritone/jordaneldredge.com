@@ -18,7 +18,7 @@ It consists of the following tracks:
 </ul>
 Have a listen! (Or download the first bit of it as an iPhone ring tone)
 
-<audio id="wp_mep_12" src="/uploads/2011/05/The-Surprise-Slide.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
+::audio{src=/uploads/2011/05/The-Surprise-Slide.mp3}
 
 <a href="/uploads/2011/05/The-Surprise-Slide.mp3">Download .mp3</a>
 

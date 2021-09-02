@@ -18,7 +18,7 @@ The recording consists of four tracks with the melody trading off between the fi
 
 Take a listen, and download the mp3 or iPhone ringtone:
 
-<audio id="wp_mep_2" src="/uploads/2013/05/Papagenos-Glockenspiel-kulele.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
+::audio{src=/uploads/2013/05/Papagenos-Glockenspiel-kulele.mp3}
 
 <a href="/uploads/2013/05/Papagenos-Glockenspiel-kulele.mp3">Download as .mp3</a>
 <a href="/uploads/2013/05/Papagenos-Glockenspiel-kulele.m4r">Download as .m4r</a> (iPhone ring tone)
@@ -27,11 +27,11 @@ Take a listen, and download the mp3 or iPhone ringtone:
 <strong> </strong>Two text-tones on the same theme
 
 <strong>Papageno's Ton</strong>
-<audio id="wp_mep_3" src="/uploads/2013/05/Papagenos-Ton.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
+::audio{src=/uploads/2013/05/Papagenos-Ton.mp3}
 
 <a href="/uploads/2013/05/Papagenos-Ton.mp3">Download as .mp3</a>/<a href="/uploads/2013/05/Papagenos-Ton.m4r">Download as .m4r</a> (iPhone ring tone)
 
 <strong>Papageno's Tritone</strong>
-<audio id="wp_mep_4" src="/uploads/2013/05/Papagenos-Tritone.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
+::audio{src=/uploads/2013/05/Papagenos-Tritone.mp3}
 
 <a href="/uploads/2013/05/Papagenos-Tritone.mp3">Download as .mp3</a>/<a href="/uploads/2013/05/Papagenos-Tritone.m4r">Download as .m4r</a> (iPhone ring tone)

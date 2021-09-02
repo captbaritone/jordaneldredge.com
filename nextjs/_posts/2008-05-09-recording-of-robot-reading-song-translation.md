@@ -17,6 +17,4 @@ The song I was translating is the first in this set:
 
 'Vita de la vita mia' translation as read by a robot: 
 
-<audio id="wp_mep_48" src="/uploads/2008/05/vita-de-la-mia-vita-translation-spoken-by-robot-mp3.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
-
-<a href='/uploads/2008/05/vita-de-la-mia-vita-translation-spoken-by-robot-mp3.mp3'>Download</a>
+::audio{src=/uploads/2008/05/vita-de-la-mia-vita-translation-spoken-by-robot-mp3.mp3}

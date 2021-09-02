@@ -8,6 +8,4 @@ summary_image: /uploads/2012/08/I-Wish-I-Had-The-Time-1.mp3
 
 Another one from the archives. Here is a tiny song I sent Chelsea on March 14th, 2010. In keeping with my previous creations, its diminutive and bemoans my <a href="/blog/new-song-ballad-of-the-man-who-cant-sing/">in-ability to create</a>. Thank you Chelsea for being my muse.
 
-<audio id="wp_mep_8" src="/uploads/2012/08/I-Wish-I-Had-The-Time-1.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
-
-<a title="Download as .mp3" href="/uploads/2012/08/I-Wish-I-Had-The-Time-1.mp3">Download as .mp3</a>
+::audio{src=/uploads/2012/08/I-Wish-I-Had-The-Time-1.mp3}

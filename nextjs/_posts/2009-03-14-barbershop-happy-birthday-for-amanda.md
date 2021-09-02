@@ -9,9 +9,7 @@ Today is my friend Amanda Ortmayer's birthday and I wanted to give her something
 
 Happy birthday Amanda, thanks for being such a constant, caring friend.
 
-<audio id="wp_mep_34" src="/uploads/2009/03/happy-birthday.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
-
-<a href='/uploads/2009/03/happy-birthday.mp3'>Download</a>
+::audio{src=/uploads/2009/03/happy-birthday.mp3}
 
 The arrangement as a printable pdf: <a href='/uploads/2009/03/birthday.pdf'>birthday.pdf</a>
 
