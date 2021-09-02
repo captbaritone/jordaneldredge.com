@@ -3,6 +3,7 @@ import ErrorPage from "next/error";
 import { getAllPages, getPageBySlug } from "../lib/api";
 import markdownToHtml from "../lib/markdownToHtml";
 import Layout from "../lib/components/Layout";
+import Markdown from "../lib/components/Markdown";
 
 export default function Page({ page }) {
   const router = useRouter();
@@ -13,7 +14,7 @@ export default function Page({ page }) {
     <Layout title={page.title}>
       <div className="markdown">
         <h1>{page.title}</h1>
-        <div dangerouslySetInnerHTML={{ __html: page.content }} />
+        <Markdown {...page.content} />
       </div>
     </Layout>
   );

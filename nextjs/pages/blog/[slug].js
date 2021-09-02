@@ -6,6 +6,7 @@ import Layout from "../../lib/components/Layout";
 import GitHubComments from "../../lib/components/GitHubComments";
 import Head from "next/head";
 import DateString from "../../lib/components/DateString";
+import Markdown from "../../lib/components/Markdown";
 
 /*
 {% if page.summary_image %}
@@ -61,7 +62,7 @@ export default function Post({ post }) {
         >
           <DateString date={new Date(post.date)} />
         </div>
-        <div dangerouslySetInnerHTML={{ __html: post.content }} />
+        <Markdown {...post.content} />
       </div>
       {post.github_comments_issue_id && (
         <GitHubComments issue={post.github_comments_issue_id} />

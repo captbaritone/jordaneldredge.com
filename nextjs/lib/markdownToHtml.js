@@ -1,6 +1,61 @@
-import remark from "remark";
-import html from "remark-html";
-import prism from "remark-prism";
+import { unified } from "unified";
+import remarkParse from "remark-parse";
+import remarkInlineLinks from "remark-inline-links";
+import visit, { SKIP } from "unist-util-visit";
+import Prism from "prismjs";
+import loadLanguages from "prismjs/components/index";
+
+loadLanguages([
+  "php",
+  "json",
+  "jsx",
+  "vim",
+  "bash",
+  "python",
+  "markdown",
+  "yml",
+]);
+
+function mapLang(lang) {
+  switch (lang) {
+    case "vimscript":
+      return "vim";
+    case "text":
+    case "txt":
+    case null:
+      return "plainText";
+    default:
+      return lang;
+  }
+}
+
+Prism.languages["plainText"] = {};
+
+function applyHighlighting(tree) {
+  visit(tree, (node, index, parent) => {
+    if (node.type === "code") {
+      const source = node.value;
+
+      let lang = mapLang(node.lang);
+      const grammar = Prism.languages[lang];
+
+      if (grammar == null) {
+        throw new Error(
+          `No Prism highlighting for language: ${node.lang} (normalized to: ${lang})`
+        );
+      }
+
+      const html =
+        grammar == null ? source : Prism.highlight(source, grammar, lang);
+      const replacement = {
+        type: "html",
+        value: `<pre class="language-${lang}"><code class="language-${lang}">${html}</code></pre>`,
+      };
+      parent.children[index] = replacement;
+      return [SKIP, index];
+    }
+  });
+}
 
 const CONSTANTS = {
   "site.email": "jordan@jordaneldredge.com",
@@ -45,6 +100,15 @@ function preprocess(markdown) {
 export default async function markdownToHtml(markdown) {
   const processedMarkdown = preprocess(markdown);
 
-  const result = await remark().use(html).use(prism).process(processedMarkdown);
-  return result.toString();
+  let ast = unified().use(remarkParse).parse(processedMarkdown);
+
+  // No idea why I can't use this via unified().use(remarkInlineLinks)
+  const transform = remarkInlineLinks();
+  transform(ast);
+  applyHighlighting(ast);
+
+  // TODO: Why can't position be serialized?
+  ast = JSON.parse(JSON.stringify(ast));
+
+  return { ast };
 }

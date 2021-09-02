@@ -1,7 +1,8 @@
+const withTM = require("next-transpile-modules")(["unified"]);
 /**
  * @type {import('next').NextConfig}
  */
-module.exports = {
+module.exports = withTM({
   distDir: "build",
   async redirects() {
     return [
@@ -13,4 +14,4 @@ module.exports = {
     ];
   },
   trailingSlash: true,
-};
+});
