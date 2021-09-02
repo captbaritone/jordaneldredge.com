@@ -10,7 +10,7 @@ export default function Page({ page }) {
   }
   return (
     <Layout title="Singer">
-      <h1>Resume</h1>
+      <h1>Singer Resume</h1>
       <table className="table-auto text-sm">
         <thead>
           <tr className="border-b-2 border-grey-darkest border-solid">
