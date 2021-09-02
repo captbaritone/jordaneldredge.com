@@ -22,7 +22,7 @@ edition into the Creative Commons.
  <a
 href="https://github.com/captbaritone/gounod-le_crucifix/releases"><img
 class="size-full wp-image-1510 " alt="Sample first page of the edition"
-src="{{ site.url }}/uploads/2013/09/score-page1.png"
+src="/uploads/2013/09/score-page1.png"
 width="496" height="702" /></a>
 
 You can find the most recent .pdf versions on <a href="https://github.com/captbaritone/gounod-le_crucifix/releases">GitHub

@@ -20,5 +20,5 @@ here](https://jordaneldredge.com/talks/finding-creativity-through-constraints/).
 If you would like to read more about the two projects referenced in the talk
 see the related blog posts:
 
-1. [Charlie Chaplin's Smile]({{ site.url }}/blog/charlie-chaplins-smile-ukulele-solo/)
-2. [I Made a $4 Electric Ukulele]({{ site.url }}/blog/video-i-made-a-4-electric-ukulele/)
+1. [Charlie Chaplin's Smile](/blog/charlie-chaplins-smile-ukulele-solo/)
+2. [I Made a $4 Electric Ukulele](/blog/video-i-made-a-4-electric-ukulele/)

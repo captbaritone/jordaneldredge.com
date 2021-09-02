@@ -9,11 +9,11 @@ Today is my friend Amanda Ortmayer's birthday and I wanted to give her something
 
 Happy birthday Amanda, thanks for being such a constant, caring friend.
 
-<audio id="wp_mep_34" src="{{ site.url }}/uploads/2009/03/happy-birthday.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
+<audio id="wp_mep_34" src="/uploads/2009/03/happy-birthday.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
 
-<a href='{{ site.url }}/uploads/2009/03/happy-birthday.mp3'>Download</a>
+<a href='/uploads/2009/03/happy-birthday.mp3'>Download</a>
 
-The arrangement as a printable pdf: <a href='{{ site.url }}/uploads/2009/03/birthday.pdf'>birthday.pdf</a>
+The arrangement as a printable pdf: <a href='/uploads/2009/03/birthday.pdf'>birthday.pdf</a>
 
 <strong>Update:</strong>
-The <a href="http://lilypond.org/web/">Lilypond</a> file used to render the above engraving: <a href='{{ site.url }}/uploads/2009/03/birthday.ly'>birthday.ly</a>
+The <a href="http://lilypond.org/web/">Lilypond</a> file used to render the above engraving: <a href='/uploads/2009/03/birthday.ly'>birthday.ly</a>

@@ -16,5 +16,5 @@ well enough to make a passable recording. I hope you enjoy:
 ::youtube{token=DsJ6bkSjUDM}
 
 If you would like to play the piece yourself, you can download the tablature
-here: [Ah_leave_me_not_to_pine_ukulele.pdf]({{ site.url }}/uploads/2016/09/20/Ah_leave_me_not_to_pine_ukulele.pdf)
+here: [Ah_leave_me_not_to_pine_ukulele.pdf](/uploads/2016/09/20/Ah_leave_me_not_to_pine_ukulele.pdf)
 

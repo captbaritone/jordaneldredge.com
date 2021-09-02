@@ -8,15 +8,15 @@ My friend Joachim Luis came over tonight and started reading though the beginnin
 
 First we sight-read "Rondino" by Jean Philippe Rameau on movable "doo" with Joachim on bass and me on treble (this one is for my dad):
 
-<audio id="wp_mep_37" src="{{ site.url }}/uploads/2009/01/rondino.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
+<audio id="wp_mep_37" src="/uploads/2009/01/rondino.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
 
-<a href="{{ site.url }}/uploads/2009/01/rondino.mp3">Download</a>
+<a href="/uploads/2009/01/rondino.mp3">Download</a>
 
 Then out came the solfeggio. "A Farewell" by Henry Purcell with Joachim on treble and me on bass:
 
-<audio id="wp_mep_38" src="{{ site.url }}/uploads/2009/01/a-farewell-purcell1.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
+<audio id="wp_mep_38" src="/uploads/2009/01/a-farewell-purcell1.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
 
-<a href="{{ site.url }}/uploads/2009/01/a-farewell-purcell1.mp3">Download</a>
+<a href="/uploads/2009/01/a-farewell-purcell1.mp3">Download</a>
 
 And then out came the video camera. "Sarabande" by Arcangelo Corelli:
 ::youtube{token=fvWXrld200E}

@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 <!-- Open Graph -->
 <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
 <meta property="og:description" content="{% if page.summary %}{{ page.summary }}{% else %}{{ site.description }}{% endif %}">
-<meta property="og:url" content="{{ site.url }}{{ page.url }}">
+<meta property="og:url" content="{{ page.url }}">
 
 */
 

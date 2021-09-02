@@ -42,7 +42,7 @@ The result:
 [2]: https://github.com/gmarik/vundle
 [3]: https://github.com/SirVer/ultisnips
 [4]: https://github.com/shawncplus/phpcomplete.vim
-[screenshot]: {{ site.url }}/content/images/php-vim-completion-screenshot.png
+[screenshot]: /content/images/php-vim-completion-screenshot.png
 
 
 

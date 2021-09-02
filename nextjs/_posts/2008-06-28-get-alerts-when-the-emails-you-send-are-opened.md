@@ -11,6 +11,6 @@ It works by generating an image which you embed in your email. Then when your re
 
 In order to make the image look less suspicious I implemented a feature where the image is a string of text of the senders choosing. Example:
 
-<a href="{{ site.url }}/uploads/2008/06/t1.png"><img class="alignnone size-full wp-image-102" title="Tracker Image" src="{{ site.url }}/uploads/2008/06/t1.png" alt="An Example of a tracker image from my email tracking project" width="324" height="13" /></a>
+<a href="/uploads/2008/06/t1.png"><img class="alignnone size-full wp-image-102" title="Tracker Image" src="/uploads/2008/06/t1.png" alt="An Example of a tracker image from my email tracking project" width="324" height="13" /></a>
 
 Give it a try!

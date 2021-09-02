@@ -7,13 +7,13 @@ I have recently observed, <a href="http://www.youtube.com/watch?v=8TbBZkh9PIs">o
 
 Despite <a href="http://en.wikipedia.org/wiki/Consecutive_fifths">everything I was taught in college</a>, I have been curious to try this myself. However, due to sound bleed-through from my upstairs neighbors, I can't really record in my apartment these days. So I multitracked this one tonight in my car on my <a href="http://www.amazon.com/gp/product/B000LGA2K6?ie=UTF8&amp;tag=winterjourna-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=B000LGA2K6">Zoom H4</a><img style="border:none !important; margin:0px !important;" src="http://www.assoc-amazon.com/e/ir?t=winterjourna-20&amp;l=as2&amp;o=1&amp;a=B000LGA2K6" border="0" alt="" width="1" height="1" />. Although I am sure I looked quite suspicious, I think it was worth it.
 
-You can hear the original four part arrangement <a href="{{ site.url }}/blog/in-dixie-land-where-i-was-born/">here</a>.
+You can hear the original four part arrangement <a href="/blog/in-dixie-land-where-i-was-born/">here</a>.
 
 I present to you "In Dixie Land Where I Was Born" from David Wright's collection: <em><a href="http://www.stampedecitychorus.com/classic_tags_men2.pdf">Classic Tags for Men's Voices</a></em> in parallel fifths:
 
-<audio id="wp_mep_20" src="{{ site.url }}/uploads/2009/11/Eight-Part-Parallel-Fifths-In-Dixie-Land-Where-I-Was-Born.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
+<audio id="wp_mep_20" src="/uploads/2009/11/Eight-Part-Parallel-Fifths-In-Dixie-Land-Where-I-Was-Born.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
 
-<a href="{{ site.url }}/uploads/2009/11/Eight-Part-Parallel-Fifths-In-Dixie-Land-Where-I-Was-Born.mp3">Download</a>
+<a href="/uploads/2009/11/Eight-Part-Parallel-Fifths-In-Dixie-Land-Where-I-Was-Born.mp3">Download</a>
 
-<strong>Update:</strong> I have typeset the complete octet in the key of "C" as a <a href="{{ site.url }}/uploads/2009/11/eight-part-dixie-land-tag.pdf">pdf file</a> and also generated a <a href='{{ site.url }}/uploads/2009/11/eight-part-dixie-land-tag.midi'>midi file</a>.
+<strong>Update:</strong> I have typeset the complete octet in the key of "C" as a <a href="/uploads/2009/11/eight-part-dixie-land-tag.pdf">pdf file</a> and also generated a <a href='/uploads/2009/11/eight-part-dixie-land-tag.midi'>midi file</a>.
 <a href="https://github.com/captbaritone/eldredge-dixie_land_parallel_fifths">Lilypond source file on GitHub</a>

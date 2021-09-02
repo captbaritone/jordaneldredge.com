@@ -4,12 +4,12 @@ layout: post
 youtube_slug: WmelrI2ArLs
 ---
 
-Inspired to further acts of nerdome by the encouraging comments on my <a href="{{ site.url }}/blog/new-video-camera-take-me-out-to-the-ball-game/">last post</a>, I decided to learn to do something I have been thinking of doing ever since I saw <a href="http://www.youtube.com/user/VideoBuck">Paul Kim</a> do it at a party. Sing the alphabet song backwards. Not just sing the letters backwards, but the notes as well. So last night I sat down, figured out how it would go, and started memorizing it. This morning, to nerd it up just a little bit more, I leaned to sing it while showing the solfege using <a href="http://www.classicsforkids.com/teachers/training/handsigns.asp">hand signs</a>. I then took my new camcorder into Golden Gate Park and recorded myself doing it. The park has the advantage of having actual sunlight while still having some privacy and quiet. Also, it's pretty. Here are the results:
+Inspired to further acts of nerdome by the encouraging comments on my <a href="/blog/new-video-camera-take-me-out-to-the-ball-game/">last post</a>, I decided to learn to do something I have been thinking of doing ever since I saw <a href="http://www.youtube.com/user/VideoBuck">Paul Kim</a> do it at a party. Sing the alphabet song backwards. Not just sing the letters backwards, but the notes as well. So last night I sat down, figured out how it would go, and started memorizing it. This morning, to nerd it up just a little bit more, I leaned to sing it while showing the solfege using <a href="http://www.classicsforkids.com/teachers/training/handsigns.asp">hand signs</a>. I then took my new camcorder into Golden Gate Park and recorded myself doing it. The park has the advantage of having actual sunlight while still having some privacy and quiet. Also, it's pretty. Here are the results:
 
 ::youtube{token=WmelrI2ArLs}
 
 Due to a <a href="http://forums.macrumors.com/showthread.php?t=223370">bug</a> in iMovieHD I was unable to reverse the video so you could here the original melody, but here is the audio reversed:
 
-<audio id="wp_mep_35" src="{{ site.url }}/uploads/2009/02/abcs.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
+<audio id="wp_mep_35" src="/uploads/2009/02/abcs.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
 
-<a href='{{ site.url }}/uploads/2009/02/abcs.mp3'>Download</a>
+<a href='/uploads/2009/02/abcs.mp3'>Download</a>

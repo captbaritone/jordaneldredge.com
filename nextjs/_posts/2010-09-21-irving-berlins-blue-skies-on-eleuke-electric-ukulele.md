@@ -4,8 +4,7 @@ layout: post
 youtube_slug: MUcnYnjIk88
 ---
 
-I have been dreaming about <a href="{{ site.url
-}}/blog/video-i-made-a-4-electric-ukulele/">electric ukuleles</a> for years
+I have been dreaming about <a href="/blog/video-i-made-a-4-electric-ukulele/">electric ukuleles</a> for years
 now, and have been dreaming with a passion ever since I found the <a
 href="http://www.eleukeusa.com/">Eleuke</a> on Youtube. Well, I finally decided
 to buy one and could not be happier. Here is my first video on my new tenor

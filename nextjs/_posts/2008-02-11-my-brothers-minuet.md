@@ -13,6 +13,6 @@ ado, here is "Minuet" by Nate Eldredge.
 neighbor tone "embellishment" near the end of the first repetition of the "B"
 section.)
 
-<audio src="{{ site.url }}/uploads/2008/02/minuet.mp3" type="audio/mp3" controls="controls" preload="none"></audio>
+<audio src="/uploads/2008/02/minuet.mp3" type="audio/mp3" controls="controls" preload="none"></audio>
 
-[Download]({{ site.url }}/uploads/2008/02/minuet.mp3)
+[Download](/uploads/2008/02/minuet.mp3)

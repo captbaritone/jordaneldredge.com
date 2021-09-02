@@ -18,7 +18,7 @@ I head an old <a href="http://www.npr.org/templates/story/story.php?storyId=1185
 
 Audio only mp3:
 
-<audio id="wp_mep_15" src="{{ site.url }}/uploads/2010/02/Love-Is-A-Song.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
+<audio id="wp_mep_15" src="/uploads/2010/02/Love-Is-A-Song.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
 
 
-<a href="{{ site.url }}/uploads/2010/02/Love-Is-A-Song.mp3">Download</a>
+<a href="/uploads/2010/02/Love-Is-A-Song.mp3">Download</a>

@@ -3,7 +3,7 @@ title: "Found: \"Update on Money Unpaid to Me and Evil Needed to be Stopped\""
 layout: post
 ---
 
-<a href="{{ site.url }}/uploads/2008/02/photo-0010.jpg" title="Found: Evile needed to be stopped"><img src="{{ site.url }}/uploads/2008/02/photo-0010.thumbnail.jpg" alt="Found: Evile needed to be stopped" align="left" hspace="5" /></a>When walking down Market Street on my way to visit Chelsea at work, I found this taped to the side of a newspaper vending box. Quotes: "There will be no more possible options of prostitution..." and "The Sex Bumpmobile 'Last Option' on Girls Lives was shut down by me weeks ago".
+<a href="/uploads/2008/02/photo-0010.jpg" title="Found: Evile needed to be stopped"><img src="/uploads/2008/02/photo-0010.thumbnail.jpg" alt="Found: Evile needed to be stopped" align="left" hspace="5" /></a>When walking down Market Street on my way to visit Chelsea at work, I found this taped to the side of a newspaper vending box. Quotes: "There will be no more possible options of prostitution..." and "The Sex Bumpmobile 'Last Option' on Girls Lives was shut down by me weeks ago".
 
 Transcription:
 

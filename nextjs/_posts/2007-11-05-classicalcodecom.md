@@ -4,7 +4,7 @@ layout: post
 archive: true
 ---
 
-![ddclient]({{ site.url }}/uploads/2007/11/servidores2_ddclient_07112006.jpg)
+![ddclient](/uploads/2007/11/servidores2_ddclient_07112006.jpg)
 
 I have been growing weary of captbaritone.no-ip.info for some time (its very
 hard to explain to people) I finally broke down a bought a domain name. 

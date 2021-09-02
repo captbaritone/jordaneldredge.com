@@ -7,10 +7,10 @@ summary_image: /images/mandala.png
 
 I was looking through my old blog posts when I came across [Drawing mandalas
 with PHP for my
-Papa]({{ site.url }}/blog/drawing-mandalas-with-php-for-my-papa)
+Papa](/blog/drawing-mandalas-with-php-for-my-papa)
 from back in 2008.
 Having just played with the HTML5 canvas tag as part of my
-[Winamp2-js project]({{ site.url }}/projects/winamp2-js/),
+[Winamp2-js project](/projects/winamp2-js/),
 I immediatly thought: "This would be easy to do using Javascript and
 Canvas".
 

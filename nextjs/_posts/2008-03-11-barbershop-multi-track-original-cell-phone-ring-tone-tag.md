@@ -12,8 +12,8 @@ The text:
 
 The tag: 
 
-<audio id="wp_mep_51" src="{{ site.url }}/uploads/2008/03/hello-mp3.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
+<audio id="wp_mep_51" src="/uploads/2008/03/hello-mp3.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
 
-<a href="{{ site.url }}/uploads/2008/03/hello-mp3.mp3" title='“Hello” Cell phone barbershop ring tone'>Download</a>
+<a href="/uploads/2008/03/hello-mp3.mp3" title='“Hello” Cell phone barbershop ring tone'>Download</a>
 
 For more multi-track barbershop fun, check out the "<a href="http://blog.classicalcode.com/category/music/barbershop/">barbershop</a>" category of this blog.

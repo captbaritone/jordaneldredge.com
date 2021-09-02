@@ -22,15 +22,15 @@ enjoy playing it for the last several years:
 ::youtube{token=Tw4L_Ys-14g}
 
 Audio only: <audio id="wp_mep_1"
-src="{{ site.url }}/uploads/2012/10/Smile-Ukulele.mp3"
+src="/uploads/2012/10/Smile-Ukulele.mp3"
 type="audio/mp3"    controls="controls" preload="none"  > </audio>
 
 <a
-href="{{ site.url }}/uploads/2012/10/Smile-Ukulele.mp3">Download
+href="/uploads/2012/10/Smile-Ukulele.mp3">Download
 as .mp3</a>
 
 Tablature of the melody and chord voicings, but not the finger picking: <a
-href='{{ site.url }}/uploads/2012/10/Charlie_Chaplin_Smile_Ukulele.pdf'>Charlie_Chaplin_Smile_Ukulele.pdf</a>
+href='/uploads/2012/10/Charlie_Chaplin_Smile_Ukulele.pdf'>Charlie_Chaplin_Smile_Ukulele.pdf</a>
 
 The lyrics to the song are not used in this recording but are none-the-less
 an important part of this song:

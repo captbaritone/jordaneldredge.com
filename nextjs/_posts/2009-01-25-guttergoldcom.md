@@ -17,4 +17,4 @@ href="http://www.guttergold.com">GutterGold.com</a>. Feel free to peruse, rate
 and comment upon my finds, subscribe to the RSS feed, or post some of your own
 finds. Also: tell your friends!
 
-From the site, "<a href="http://www.guttergold.com/find.php?f=46">Training to Be a Spy</a>":<a href="http://www.guttergold.com/find.php?f=46"><img class="aligncenter size-full wp-image-322" title="Trainging to be a spy" src="{{ site.url }}/uploads/2009/01/46_med.jpg" alt="Trainging to be a spy" width="500" height="384" /></a>
+From the site, "<a href="http://www.guttergold.com/find.php?f=46">Training to Be a Spy</a>":<a href="http://www.guttergold.com/find.php?f=46"><img class="aligncenter size-full wp-image-322" title="Trainging to be a spy" src="/uploads/2009/01/46_med.jpg" alt="Trainging to be a spy" width="500" height="384" /></a>

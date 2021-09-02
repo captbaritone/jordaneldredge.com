@@ -13,5 +13,5 @@ give a 20 minute "beginners" talk where I addressed two core concepts of Vim:
 Feel free to check out the [slides]. Their source is also on [GitHub].
 
 [San Francisco Vim Enthusiasts]: https://groups.google.com/forum/#!forum/vimsf
-[slides]: {{ site.url }}/talks/intro-to-vim
+[slides]: /talks/intro-to-vim
 [GitHub]: https://github.com/captbaritone/intro-to-vim

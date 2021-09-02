@@ -5,12 +5,12 @@ summary: How we get from a binary Winamp skin file to seeing Winamp2-js take on 
 ---
 
 *This post is the third in an ongoing series about things I learned from my
-recent [Winamp2-js]({{ site.url }}/projects/winamp2-js/) project.*
+recent [Winamp2-js](/projects/winamp2-js/) project.*
 
-*Previously: [Surviving Hacker News traffic with the help of free CDNs]({{ site.url }}/blog/surviving-hacker-news-traffic-with-the-help-of-free-cdns)*
+*Previously: [Surviving Hacker News traffic with the help of free CDNs](/blog/surviving-hacker-news-traffic-with-the-help-of-free-cdns)*
 
 A remarkable confluence of lucky breaks and clever hacks combine to allow
-[Winamp2-js]({{ site.url }}/projects/winamp2-js/) to do what,
+[Winamp2-js](/projects/winamp2-js/) to do what,
 I think, is its most impressive feat: load any native Winamp 2 skin ever made,
 all within the limitations of your browser.
 
@@ -103,12 +103,12 @@ sheet](https://www.facebook.com/rsrc.php/v2/yc/r/J_2KFGBpaBp.png)
 
 An example of Winamp's default skin:
 
-![Winamp's sprite sheet]({{ site.url }}/content/images/TITLEBAR.BMP)
+![Winamp's sprite sheet](/content/images/TITLEBAR.BMP)
 
 Using the following CSS applied to a `<div>`...
 
 ```css
-background-image: url('{{ site.url }}/content/images/TITLEBAR.BMP');
+background-image: url('/content/images/TITLEBAR.BMP');
 width: 275px;
 height: 14px;
 background-position: -27px -15px;
@@ -116,7 +116,7 @@ background-position: -27px -15px;
 
 We can use the same image as above to display only Winamp's title bar:
 
-<div style="background-image: url('{{ site.url }}/content/images/TITLEBAR.BMP'); width: 275px; height: 14px; background-position: -27px -15px;"></div>
+<div style="background-image: url('/content/images/TITLEBAR.BMP'); width: 275px; height: 14px; background-position: -27px -15px;"></div>
 
 All of these properties can be set via JavaScript, so you might think we now
 have everything we need. However I ran into a few gotchas:

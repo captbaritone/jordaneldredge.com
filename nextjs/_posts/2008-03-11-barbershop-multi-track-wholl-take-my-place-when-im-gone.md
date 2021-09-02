@@ -14,13 +14,13 @@ Again, this tag is from <a href="http://www.stampedecitychorus.com/classic_tags_
 
 The tag:
 
-<audio id="wp_mep_52" src="{{ site.url }}/uploads/2008/03/wholl-take-my-place-when-im-gone-mp3.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
+<audio id="wp_mep_52" src="/uploads/2008/03/wholl-take-my-place-when-im-gone-mp3.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
 
-<a title="Who’ll Take My Place When I’m Gone?" href="{{ site.url }}/uploads/2008/03/wholl-take-my-place-when-im-gone-mp3.mp3">Download</a>
+<a title="Who’ll Take My Place When I’m Gone?" href="/uploads/2008/03/wholl-take-my-place-when-im-gone-mp3.mp3">Download</a>
 
 Previously:
 <ul>
-	<li><a href="{{ site.url }}/blog/my-first-barbershop-multi-track-love-letters/ ">Love Letter's Straight from the Heart</a></li>
-	<li><a href="{{ site.url }}/blog/barbershop-multi-track-lord-you-made-the-night-too-long/">Lord, You Made the Night Too Long</a></li>
+	<li><a href="/blog/my-first-barbershop-multi-track-love-letters/ ">Love Letter's Straight from the Heart</a></li>
+	<li><a href="/blog/barbershop-multi-track-lord-you-made-the-night-too-long/">Lord, You Made the Night Too Long</a></li>
 
 </ul>

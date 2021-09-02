@@ -5,9 +5,9 @@ summary: Free CDNs are a thing, and they can be put to use almost instantaneousl
 ---
 
 *This post is the second in an ongoing series about things I learned from my
-recent [Winamp2-js]({{ site.url }}/projects/winamp2-js/) project.*
+recent [Winamp2-js](/projects/winamp2-js/) project.*
 
-*Previously: [I'm glad I factored out jQuery]({{ site.url }}/blog/im-glad-i-factored-out-jquery)*
+*Previously: [I'm glad I factored out jQuery](/blog/im-glad-i-factored-out-jquery)*
 
 It was just before midnight on November 6th. My
 [tweet](https://twitter.com/captbaritone/status/530030571141873664) from
@@ -79,4 +79,4 @@ a high bandwidth site, I would pay for my own CDN. But, to absorb a single
 spike in traffic for a pet project on a moment's notice, these two sites were
 a godsend. Thank you!
 
-*Next: [How Winamp2-js loads native skins in your browser]({{ site.url }}/blog/how-winamp2-js-loads-native-skins-in-your-browser/)*
+*Next: [How Winamp2-js loads native skins in your browser](/blog/how-winamp2-js-loads-native-skins-in-your-browser/)*

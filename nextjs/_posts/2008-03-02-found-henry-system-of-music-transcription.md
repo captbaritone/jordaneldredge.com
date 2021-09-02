@@ -9,5 +9,5 @@ identical copies of this document. Does anybody know what the "Henry system of
 music transcription" is? Or how it reduces the need for page turns? Or why
 someone has been pamphlet-bombing my neighborhood with propaganda against it?
 
-!["Found: Henry system of music transcription]({{ site.url }}/uploads/2008/02/photo-0012.jpg)
+!["Found: Henry system of music transcription](/uploads/2008/02/photo-0012.jpg)
 

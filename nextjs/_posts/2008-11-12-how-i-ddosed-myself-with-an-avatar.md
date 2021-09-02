@@ -3,13 +3,13 @@ title: "How I DDOSed myself with an avatar"
 layout: post
 ---
 
-Building on my [previous avatar hack]({{ site.url }}/blog/php-avatar-hack/),
+Building on my [previous avatar hack](/blog/php-avatar-hack/),
 I set out to design an avatar that was also an interactive game. The game
 I eventually settled on was one where you compete with the other users to see
 who can load the avatar the most times. The image you are served shows your
 ranking as compared to the other users. It looked like this:
 
-![Avatar Game Example]({{ site.url }}/uploads/2008/11/off.png)
+![Avatar Game Example](/uploads/2008/11/off.png)
 
 And true to its word, every time you refreshed it, your number went up, and you
 could climb to the top. I thought it would be fun, and a person or two might
@@ -38,7 +38,7 @@ save it as your avatar:
 
 > I have a new avatar so i'm done :)
 >
-> ![Static Avatar to stay in the lead]({{ site.url }}/uploads/2008/11/gamekz8.png)
+> ![Static Avatar to stay in the lead](/uploads/2008/11/gamekz8.png)
 
 However the most amusing method was this:
 
@@ -48,7 +48,7 @@ However the most amusing method was this:
 >
 > The screwdriver was faster!
 >
-> ![Screwdriver refreshes avatar]({{ site.url }}/uploads/2008/11/2gsnxg4-225x300.jpg)
+> ![Screwdriver refreshes avatar](/uploads/2008/11/2gsnxg4-225x300.jpg)
 
 By that evening, our internet had slowed to a stop (due to our router not being
 able to deal with large numbers of connections) and I was forced to remove the
