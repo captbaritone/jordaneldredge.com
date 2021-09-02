@@ -36,7 +36,7 @@ export default function Layout({ children, title, typoLink }) {
               m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
               })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
               
-              ga('create', '{{ site.google_analytics }}', 'auto');
+              ga('create', 'UA-96948-15', 'auto');
               ga('send', 'pageview')
             `,
           }}
