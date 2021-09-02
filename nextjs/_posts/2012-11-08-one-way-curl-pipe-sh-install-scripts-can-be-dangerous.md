@@ -16,13 +16,7 @@ secure than other installation methods. In fact, I read a very logical argument
 that this method was actually **more** secure from the highly respected [Paul
 Irish](http://paulirish.com/):
 
-<blockquote class="twitter-tweet" width="500"><p><a
-href="https://twitter.com/igrigorik">@igrigorik</a> compared to .pkg, npm
-preinstall, I&#39;d say curl _ | sh is the closest to view-source we have for
-installers. for devs, it&#39;s ideal.</p> <p>&mdash; Paul Irish (@paul_irish)
-<a href="https://twitter.com/paul_irish/statuses/242665829659979776">September
-3, 2012</a></p></blockquote> <script async
-src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+::tweet{status=242665829659979776}
 
 Today I realized at least once case that could validate those initial warning
 bells. Take a look at this proof of concept:
