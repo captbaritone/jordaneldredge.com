@@ -62,7 +62,7 @@ To get around this, we use JavaScript to parse the `.ani` file and extract the f
 3. A "seq" array, showing in which order the frames should be rendered (optional)
 4. An array of frames containing the raw image data for each frame
 
-`riff-file` only gives us the byte range of each of these sections within the `.ani` file. We then use the `[byte-data](https://github.com/rochars/byte-data)` library to parse the first three sections into JavaScript numbers.
+`riff-file` only gives us the byte range of each of these sections within the `.ani` file. We then use the [`byte-data`](https://github.com/rochars/byte-data) library to parse the first three sections into JavaScript numbers.
 
 We now have enough information to construct the animation ourselves!
 
