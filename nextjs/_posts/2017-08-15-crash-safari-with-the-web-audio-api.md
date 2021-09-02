@@ -10,7 +10,7 @@ Back in the fall of 2016, I was working on adding the equalizer window to [Winam
 
 The most interesting part of the crash report was:
 
-```txt
+```
 Thread 11 Crashed:: com.apple.audio.IOThread.client
 0   com.apple.WebCore             	0x00007fff9f9dbb35 WTF::CrashOnOverflow::crash() + 5
 1   com.apple.WebCore             	0x00007fff9f9dbb29 WTF::CrashOnOverflow::overflowed() + 9

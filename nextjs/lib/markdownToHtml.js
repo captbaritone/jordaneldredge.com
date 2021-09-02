@@ -29,9 +29,7 @@ function applyHighlighting(tree) {
       const grammar = Prism.languages[lang];
 
       if (grammar == null) {
-        throw new Error(
-          `No Prism highlighting for language: ${node.lang} (normalized to: ${lang})`
-        );
+        throw new Error(`No Prism highlighting for language: ${node.lang}`);
       }
 
       const html = Prism.highlight(source, grammar, lang);
