@@ -114,6 +114,31 @@ async function imageDimensions(tree) {
   );
 }
 
+// Markdown parsing is not aware of HTML syntax. Because of this, html markdown
+// AST nodes are not necessarily balanced. For example: `<b>sometext</b>` will create:
+// 1. HTML: <b>
+// 2. TEXT: sometext
+// 3. HTML: </b>
+//
+// This fixes that specific case, but there are potentially other more complex cases.
+function fixHtml(tree) {
+  visit(tree, (node, index, parent) => {
+    if (node.type === "html") {
+      const next = parent.children[index + 1];
+      const nextButOne = parent.children[index + 2];
+      if (
+        next != null &&
+        nextButOne != null &&
+        next.type === "text" &&
+        nextButOne.type === "html"
+      ) {
+        node.value += next.value + nextButOne.value;
+        parent.children.splice(index + 1, 2);
+      }
+    }
+  });
+}
+
 export default async function markdownToHtml(markdown) {
   const processedMarkdown = preprocess(markdown);
 
@@ -125,6 +150,7 @@ export default async function markdownToHtml(markdown) {
   // No idea why I can't use this via unified().use(remarkInlineLinks)
   const transform = remarkInlineLinks();
   transform(ast);
+  fixHtml(ast);
   applyHighlighting(ast);
   await imageDimensions(ast);
 
