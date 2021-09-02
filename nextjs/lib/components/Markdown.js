@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Tweet } from "react-twitter-widgets";
 import { useEffect, useState } from "react";
 
@@ -81,6 +82,20 @@ function MarkdownAst({ node }) {
     case "text":
       return node.value;
     case "link":
+      if (node.url.startsWith("/")) {
+        return (
+          <Link href={node.url} as="a">
+            <MarkdownChildren>{node.children}</MarkdownChildren>
+          </Link>
+        );
+        return (
+          <Link href={node.url} as="a">
+            <a>
+              <MarkdownChildren>{node.children}</MarkdownChildren>
+            </a>
+          </Link>
+        );
+      }
       return (
         <a href={node.url}>
           <MarkdownChildren>{node.children}</MarkdownChildren>
