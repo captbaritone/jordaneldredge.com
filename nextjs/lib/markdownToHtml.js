@@ -1,4 +1,3 @@
-import path from "path";
 import { unified } from "unified";
 import remarkParse from "remark-parse";
 import remarkInlineLinks from "remark-inline-links";
