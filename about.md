@@ -3,7 +3,7 @@ layout: page
 permalink: /
 ---
 <div class='headshot'>
-<img src="{{ "/images/avatar.jpg" | prepend: site.baseurl }}"
+<img src="/images/avatar.jpg"
 class="shadow-xl rounded-xl"
 alt='Jordan Eldredge with his daughter'>
 </div>

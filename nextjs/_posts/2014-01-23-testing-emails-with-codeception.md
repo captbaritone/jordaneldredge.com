@@ -28,4 +28,4 @@ adding a few lines to your configuration.
 [MailCatcher Codeception Helper]: https://github.com/captbaritone/mailcatcher-codeception-helper
 [MailCatcher Codeception Module]: https://github.com/captbaritone/codeception-mailcatcher-module
 [MailCatcher]: http://mailcatcher.me/
-[screenshot]: {{ "/content/images/mailcatcher.png" | prepend: site.baseurl }}
+[screenshot]: /content/images/mailcatcher.png

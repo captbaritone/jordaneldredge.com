@@ -6,7 +6,7 @@ github_comments_issue_id: 15
 summary_image: /images/ani-cursor.png
 ---
 
-<script src="{{ "/javascripts/ani-cursor.js" | prepend: site.baseurl }}"></script>
+<script src="/javascripts/ani-cursor.js"></script>
 <script>
 async function applyCursor(selector, aniUrl) {
   const response = await fetch(aniUrl);

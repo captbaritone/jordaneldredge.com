@@ -64,7 +64,6 @@ const CONSTANTS = {
   "site.email": "jordan@jordaneldredge.com",
   "site.twitter_username": "captbaritone",
   "site.github_username": "captbaritone",
-  "site.baseurl": "", // Is this right?
   // TODO: Remove this. We try to avoid ever parsing this by using {% raw %}, but we don't support {% raw %}, so we hack here to ignore it.
   // _posts/2015-08-30-jerkll-a-tiny-static-site-generator-that-runs-in-your-browser.md
   "(\\S*)": "(\\S*)",
