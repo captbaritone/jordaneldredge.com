@@ -1,3 +1,4 @@
+import { Tweet } from "react-twitter-widgets";
 export default function Markdown({ ast }) {
   return <MarkdownAst node={ast} />;
 }
@@ -5,6 +6,24 @@ export default function Markdown({ ast }) {
 // TODO: Syntax highlighting
 function MarkdownAst({ node }) {
   switch (node.type) {
+    case "leafDirective":
+      switch (node.name) {
+        case "tweet":
+          return <Tweet tweetId={node.attributes.status} />;
+        case "youtube":
+          return (
+            <div className="video-container">
+              <iframe
+                src={`https://www.youtube.com/embed/${node.attributes.token}?modestbranding=1&rel=0`}
+                frameBorder="0"
+                allowFullScreen
+                className="youtube-video"
+              ></iframe>
+            </div>
+          );
+        default:
+          throw new Error(`Unknown directive: ${node.name}`);
+      }
     case "root": {
       return <MarkdownChildren>{node.children}</MarkdownChildren>;
     }

@@ -11,4 +11,4 @@ Things I learned:
 * Higher notes work better for me.
 * The more closed my mouth is the clearer the overtones are heard
 
-{% youtube d8hnK5_5wL8 %}
+::youtube{token=d8hnK5_5wL8}

@@ -14,7 +14,7 @@ I arranged this mostly as a way to spend some time alone with my memories of Geo
 
 This video was recorded in my backyard here in San Francisco.
 
-{% youtube FDB0LMrDdEs %}
+::youtube{token=FDB0LMrDdEs}
 
 <audio id="wp_mep_11" src="{{ site.url }}/uploads/2011/07/I-Walk-Through-The-Garden-Alone-Ukulele-For-George.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>
 

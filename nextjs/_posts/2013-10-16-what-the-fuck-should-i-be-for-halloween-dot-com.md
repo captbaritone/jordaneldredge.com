@@ -39,14 +39,7 @@ href="http://www.whatthefuckshouldimakefordinner.com/">whatTheFuckShouldIMakeFor
 
 A few hours later I had the domain name pointed to my server. I wrote <a href="https://twitter.com/captbaritone/status/390245191472279552">a tweet about it</a>, posted a similar message on Facebook and went to dinner.
 
-<blockquote class="twitter-tweet" width="500"><p>I had this idea last year.
-Finally took an hour today to build it: <a
-href="http://t.co/hlc4vVYp3h">http://t.co/hlc4vVYp3h</a></p>
-<p>&mdash; Jordan Eldredge (@captbaritone) <a
-href="https://twitter.com/captbaritone/statuses/390245191472279552">October 15,
-2013</a></p></blockquote>
-<p><script async src="//platform.twitter.com/widgets.js"
-charset="utf-8"></script></p>
+::tweet{status=390245191472279552}
 
 As of now, 24 hours later, the project has received:
 

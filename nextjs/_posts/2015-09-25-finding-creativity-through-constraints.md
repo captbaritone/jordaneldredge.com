@@ -12,7 +12,7 @@ within the company and I was asked to give the inaugural talk.
 The talk I gave is entitled "Finding Creativity Through Constraints", and you
 can watch it below:
 
-{% youtube Jic6lVGALj4 %}
+::youtube{token=Jic6lVGALj4}
 
 If you are interested, you can [find the slides
 here](https://jordaneldredge.com/talks/finding-creativity-through-constraints/).

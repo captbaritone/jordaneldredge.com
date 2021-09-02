@@ -7,7 +7,7 @@ layout: post
 
 The internet has spawned a hilarious method for determining Your Debut Album and the results are surprisingly hilarious. It works like this:
 
-> 1. Go to <a href="http://en.wikipedia.org/wiki/Special:Random">http://en.wikipedia.org/wiki/Special:Random</a> The first random Wikipedia article you get is the name of your band.
+> 1. Go to <a href="http://en.wikipedia.org/wiki/Special:Random">http://en.wikipedia.org/wiki/Special\:Random</a> The first random Wikipedia article you get is the name of your band.
 >
 > 2. Go to Random quotations: <a href="http://www.quotationspage.com/random.php3">http://www.quotationspage.com/random.php3</a> The last four words of the very last quote of the page is the title of your first album.  If you want to do this again, you'll hit refresh to generate new quotes, because clicking the quotes link again will just give you the same quotes over and over again.
 >

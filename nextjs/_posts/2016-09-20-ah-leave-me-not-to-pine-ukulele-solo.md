@@ -13,7 +13,7 @@ ago. Since then I've played it quite a bit, but never practiced it with enough
 rigour to record it. Over the last few days I finally sat down and learned it
 well enough to make a passable recording. I hope you enjoy:
 
-{% youtube DsJ6bkSjUDM %}
+::youtube{token=DsJ6bkSjUDM}
 
 If you would like to play the piece yourself, you can download the tablature
 here: [Ah_leave_me_not_to_pine_ukulele.pdf]({{ site.url }}/uploads/2016/09/20/Ah_leave_me_not_to_pine_ukulele.pdf)

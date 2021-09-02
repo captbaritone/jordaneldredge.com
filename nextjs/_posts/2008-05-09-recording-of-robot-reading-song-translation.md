@@ -13,7 +13,7 @@ assaulted our conductor Josh Habermann with on the bus. It was not recorded, so
 today I sat down and multi-tracked a recreation of that fine moment.
 
 The song I was translating is the first in this set:
-{% youtube 3hFL3QlvN7U %}
+::youtube{token=3hFL3QlvN7U}
 
 'Vita de la vita mia' translation as read by a robot: 
 

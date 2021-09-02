@@ -14,4 +14,4 @@ From Paul's Youtube description:
 
 Thanks Paul!
 
-{% youtube 0usF9fycCSE %}
+::youtube{token=0usF9fycCSE}

@@ -4,6 +4,7 @@ import remarkInlineLinks from "remark-inline-links";
 import visit, { SKIP } from "unist-util-visit";
 import Prism from "prismjs";
 import loadLanguages from "prismjs/components/index";
+import remarkDirective from "remark-directive";
 
 loadLanguages([
   "php",
@@ -86,21 +87,16 @@ function preprocess(markdown) {
         throw new Error(`Could not find constant value for key "${key}"`);
       }
       return value;
-    })
-    .replace(/\{% ([^ ]+) ([^ ]+) %\}/g, (_, name, token) => {
-      if (name !== "youtube") {
-        throw new Error(`Unknown short code "${name}" with value "${token}"`);
-      }
-      return `<div class='video-container'>
-        <iframe src="https://www.youtube.com/embed/${token}?modestbranding=1&rel=0" frameborder="0" allowfullscreen class='youtube-video'></iframe>
-      </div>`;
     });
 }
 
 export default async function markdownToHtml(markdown) {
   const processedMarkdown = preprocess(markdown);
 
-  let ast = unified().use(remarkParse).parse(processedMarkdown);
+  let ast = unified()
+    .use(remarkParse)
+    .use(remarkDirective)
+    .parse(processedMarkdown);
 
   // No idea why I can't use this via unified().use(remarkInlineLinks)
   const transform = remarkInlineLinks();

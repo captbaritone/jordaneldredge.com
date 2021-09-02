@@ -19,7 +19,7 @@ several years (4-5?) of idle practice to get this piece to a place where it was
 fit to record. I hope you enjoy listening to this recording as much as I have
 enjoy playing it for the last several years:
 
-{% youtube Tw4L_Ys-14g %}
+::youtube{token=Tw4L_Ys-14g}
 
 Audio only: <audio id="wp_mep_1"
 src="{{ site.url }}/uploads/2012/10/Smile-Ukulele.mp3"

@@ -17,6 +17,6 @@ From Paul Kim's description of the video:
 > by George Hernandez, performed at St Boniface Church in Anaheim on Feb 26,
 > 2008. Sung in Visayan about the beautiful maiden Rosas Pandan.
 
-{% youtube dO--mXsEyS0 %}
+::youtube{token=dO--mXsEyS0}
 
 More video's can be found on Paul Kim's <a href="http://www.youtube.com/user/VideoBuck">YouTube account</a>.

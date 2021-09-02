@@ -8,4 +8,4 @@ I know I am stretching this backwards-alphabet-songs thing, but I am at home in 
 
 Here I sing the alphabet song with the melody backwards, the words backwards while showing solfegge hand signs and conducting.
 
-{% youtube UQ31BkSpshY %}
+::youtube{token=UQ31BkSpshY}

@@ -19,5 +19,5 @@ Then out came the solfeggio. "A Farewell" by Henry Purcell with Joachim on trebl
 <a href="{{ site.url }}/uploads/2009/01/a-farewell-purcell1.mp3">Download</a>
 
 And then out came the video camera. "Sarabande" by Arcangelo Corelli:
-{% youtube fvWXrld200E %}
+::youtube{token=fvWXrld200E}
 Apologies and thanks to <a href="http://musicdance.sfsu.edu/faculty/84/david-xiques">David Xiques</a>.

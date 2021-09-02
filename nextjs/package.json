@@ -20,6 +20,7 @@
     "react-dom": "^17.0.2",
     "react-twitter-widgets": "^1.10.0",
     "remark-cli": "^9.0.0",
+    "remark-directive": "^2.0.0",
     "remark-inline-links": "^6.0.0",
     "remark-lint": "^8.0.0",
     "remark-lint-code-block-style": "^2.0.1",

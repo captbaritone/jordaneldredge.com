@@ -30,7 +30,7 @@ Windows Animated Cursor files (`.ani`) are, as the name implies, animated cursor
 
 But first, here's what the result looks like:
 
-{% youtube TjaWYAq72Is %}
+::youtube{token=TjaWYAq72Is}
 
 _.ani cursors, from Super_Mario_Amp_2.wsz by [LuigiHann](https://twitter.com/luigihann), animating in the browser_
 

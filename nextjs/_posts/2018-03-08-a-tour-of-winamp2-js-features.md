@@ -19,13 +19,13 @@ To celebrate this milestone, I thought I'd share a few of the more interesteing 
 
 Winamp skins are, under the hood, `.zip` files that contained some `.bmp` sprite sheets and a few config files. Thanks to [Stuart Knightley]'s library [JSZip], we can actually extract/parse real Winamp skins in your browser. Just drop the skin file into the main window. Check out [How Winamp2-js loads native skins in your browser](https://jordaneldredge.com/blog/how-winamp2-js-loads-native-skins-in-your-browser/) for a detailed explanation of how this is achieved.
 
-{% youtube NpPu48NFOWY %}
+::youtube{token=NpPu48NFOWY}
 
 ## Queue up local files
 
 Adding the playlist window involved refactoring my entire approach to playing audio, since I had to be able to manage multiple audio tracks at a time. Now you can open multiple files at the same time, via the Eject button, or drag in multiple files. We even respect where in the playlist you drop them!
 
-{% youtube NrL2JYZ5Z4E %}
+::youtube{token=NrL2JYZ5Z4E}
 
 ## Visualize your music
 
@@ -35,7 +35,7 @@ Eventually I would love to support some of the more advanced visualization plugi
 
 Additionally there are two different efforts to bring AVS presets to the browser. Both are being discussed in [https://gitter.im/visbot/AVS](https://gitter.im/visbot/AVS).
 
-{% youtube pxEbu4iLVMw %}
+::youtube{token=pxEbu4iLVMw}
 
 ## Fully functional equalizer
 
@@ -47,13 +47,13 @@ Secondly, this curved line is not just a single color, it's a gradient. And more
 
 As luck would have it, the Canvas API lets you draw lines with a `strokeStyle` of a [CanvasPattern](https://developer.mozilla.org/en-US/docs/Web/API/CanvasPattern) which can just be an image! Since we already have the ability to slice individual sprites out of a skin file, this was trivial.
 
-{% youtube 6nyACdAxoTc %}
+::youtube{token=6nyACdAxoTc}
 
 ## Import/export Winamp's own binary EQ settings files
 
 Winamp defined a propritary `.eqf` binary file format for exporting your EQ presets. Having never delt with binary formats before this was a steep learning curve for me. Luckly the format is very simple, just a name and eleven values. I wrote a little parser/generator as an NPM package [winamp-eqf](https://github.com/captbaritone/winamp-eqf) in case anyone else ever wants to deal with these files. Now you can save your presets locally and load any presets that you happen to have kept around for the last twenty years.
 
-{% youtube 6nyACdAxoTc %}
+::youtube{token=6nyACdAxoTc}
 
 ## Export your playlist as an .html file
 
@@ -69,11 +69,11 @@ Here is another feature hidden away among Winamp 2's many menus. You can export 
 
 Easy.
 
-{% youtube ovyleQQgL7M %}
+::youtube{token=ovyleQQgL7M}
 
 ## Shade mode
 
-Each window can exist in two different modes. Regular and "shade" in which the main functionlity is compressed into the size of the title bar. Nothing special here technically, we just had to implement twice as many windows. :P
+Each window can exist in two different modes. Regular and "shade" in which the main functionlity is compressed into the size of the title bar. Nothing special here technically, we just had to implement twice as many windows. \:P
 
 ![Winamp2-js showing all three windows in "shade" mode](/images/winamp/shade-mode.png)
 
@@ -81,7 +81,7 @@ Each window can exist in two different modes. Regular and "shade" in which the m
 
 A few months after starting my job at Facebook, I was talking to a collegue about Winamp2-js. I mentioned that I eventually wanted to support ID3 tags. I had looked around for JavaScript libraries that could do this a few years ago, but I hadn't had time to evaluate them since. Amazingly he said: "Oh, I wrote one of those libraries!". A few days later I integrated [jsmediatags] into Winamp2-js. Now we can read the metadata from MP3s, FLACs and more. Small world! Thanks [@aadsm]!
 
-{% youtube WPnRKrcndzE %}
+::youtube{token=WPnRKrcndzE}
 
 ## Window transparency
 
@@ -93,25 +93,25 @@ One of those config files that make up a Winamp skin is `region.txt` which provi
 
 Easy!
 
-{% youtube WjyYieYbnSg %}
+::youtube{token=WjyYieYbnSg}
 
 ## Window snapping
 
 Winamp is split into three main windows, but usually you don't want them just spread randomly arround your desktop; you want them arranged in some neat and tidy configuration. To help you achieve this, Winamp windows "snap" or "dock" if you get them close to one another. I reimplemented this detail as well. Truth be told though, this code is very ugly and probably 10x more complicated than it needs to be. Hopefully one day I'll come back and clean this up.
 
-{% youtube S54UH1CmzLA %}
+::youtube{token=S54UH1CmzLA}
 
 ## Hotkeys
 
 Hotkeys for all the major pieces of functionality are supported. With the [Redux] architecture I'm using these global hotkeys were super easy to add. There's even a Winamp easter egg, triggered from the keyboard, that I've reimplemented. See if you can find it!
 
-{% youtube H8fRTYr_Jl8 %}
+::youtube{token=H8fRTYr_Jl8}
 
 ## Drag tracks to reorder them
 
 This feature was a nice remider as to why you never want to have to reimplement things like multi-select from scratch. When the user clicks on a selected track, we add a `mousemove` event listener. On every event, we decide how far we've moved in the `Y` axis, and move the selected tracks based upon this data. It's made more complicated by the fact that the selected tracks may not be entirely sequential, so we need to have a special algorithm to merge them.
 
-{% youtube -VJOLXpFPRc %}
+::youtube{token=-VJOLXpFPRc}
 
 ## Double mode
 

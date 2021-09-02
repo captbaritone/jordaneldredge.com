@@ -8,7 +8,7 @@ As I have been <a href="{{ site.url }}/blog/jazz-ukulele-love-is-a-song-from-bam
 
 Please excuse the synthesized drum and bass, they are the best I can do. For now...
 
-{% youtube eJoKuzVGyFY %}
+::youtube{token=eJoKuzVGyFY}
 
 Here is an audio only mp3 for you to listen to or download:
 <audio id="wp_mep_14" src="{{ site.url }}/uploads/2010/04/Whats-New.mp3" type="audio/mp3"    controls="controls" preload="none"  ></audio>

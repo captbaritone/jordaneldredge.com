@@ -9,7 +9,7 @@ In November 2017 I started a Twitter bot called [@winampskins](https://twitter.c
 
 The idea is simple: Several times a day the bot tweets an image of a classic Winamp skin with a link to try out that skin in the browser. Today it has ~6.5k followers (+200/month recently), garners around 700k impressions/month, and has tweeted ~6k skins.
 
-<blockquote class="twitter-tweet"><p lang="pl" dir="ltr">Groove_Robber.wsz<a href="https://t.co/nByBuZCPQR">https://t.co/nByBuZCPQR</a> <a href="https://t.co/bQzxHA8X2G">pic.twitter.com/bQzxHA8X2G</a></p>&mdash; Winamp ⚡️ Skin Bot (@winampskins) <a href="https://twitter.com/winampskins/status/1420368489106182152?ref_src=twsrc%5Etfw">July 28, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+::tweet{status=1420368489106182152}
 
 ## MVP
 
@@ -49,7 +49,7 @@ Now that the bot was tweeting twelve times a day, keeping up with reviews was on
 
 It turns out the keyboard controls were so fast that they rendered the novel Tinder UI unnecessary. One of our Discord users got into a flow state and ended up reviewing 4-5 thousand skins over the course of a few evenings!
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">My Twitter bot <a href="https://twitter.com/winampskins?ref_src=twsrc%5Etfw">@winampskins</a> is so over-engineered that it has a Tinder-style UI for approving/rejecting skins. <a href="https://t.co/D1K1eGg4a1">pic.twitter.com/D1K1eGg4a1</a></p>&mdash; Jordan Eldredge (@captbaritone) <a href="https://twitter.com/captbaritone/status/1420393398121291790?ref_src=twsrc%5Etfw">July 28, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+::tweet{status=1420393398121291790}
 
 ## The Great Uncropping
 

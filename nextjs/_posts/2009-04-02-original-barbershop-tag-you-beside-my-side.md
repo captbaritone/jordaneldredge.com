@@ -20,4 +20,4 @@ The sheet music: <a href="{{ site.url }}/uploads/2009/04/beside_my_side.pdf">bes
 
 I made a little video that teaches you all the parts by ear:
 
-{% youtube vsXkce3LgDM %}
+::youtube{token=vsXkce3LgDM}

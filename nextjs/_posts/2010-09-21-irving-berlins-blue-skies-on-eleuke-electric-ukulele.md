@@ -12,4 +12,4 @@ to buy one and could not be happier. Here is my first video on my new tenor
 Eleuke. The arrangement is based on (stolen from) a beautiful version I heard
 on <a href="http://www.youtube.com/watch?v=1HeSS7-jW-E">Youtube</a>.
 
-{% youtube MUcnYnjIk88 %}
+::youtube{token=MUcnYnjIk88}

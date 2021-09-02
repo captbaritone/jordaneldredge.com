@@ -9,7 +9,7 @@ I was at home with my parents and my girlfriend <a href="http://www.chelseahollo
 
 I decided to take this idea to its logical extreme and found a short enough song that, within a reasonable period of time, it can be repeated enough times that the words eventually make the full journey back to their original position. Here is a video of me singing "Row Row Your Boat":
 
-{% youtube _YWitlb7BUc %}
+::youtube{token=_YWitlb7BUc}
 
 In order to actually sing this, I had to create sheet music for it.
 Here it is: <a href="{{ site.url }}/uploads/2009/03/row_row.pdf">row_row.pdf</a>

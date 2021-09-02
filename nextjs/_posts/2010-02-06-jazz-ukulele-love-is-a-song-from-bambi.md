@@ -8,7 +8,7 @@ I head an old <a href="http://www.npr.org/templates/story/story.php?storyId=1185
 
 <strong>"Love Is a Song" from: Walt Disney's <em>Bambi</em>:</strong>
 
-{% youtube Mf4x2K5oBMQ %}
+::youtube{token=Mf4x2K5oBMQ}
 
 - <strong>Words by:</strong> Larry Morey
 - <strong>Music by:</strong> Frank Churchill
