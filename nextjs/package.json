@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@plaiceholder/next": "^2.1.0",
+    "ani-cursor": "^0.0.5",
     "autoprefixer": "^10.1.0",
     "gray-matter": "^4.0.2",
     "next": "^11.1.1-canary.13",

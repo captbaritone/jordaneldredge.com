@@ -1,10 +1,36 @@
 import Image from "next/image";
 import { Tweet } from "react-twitter-widgets";
+import { useEffect, useState } from "react";
+
+function AniCursor({ url, selector }) {
+  const [css, setCss] = useState(null);
+  useEffect(() => {
+    const binaryPromise = fetch(url).then((response) => response.arrayBuffer());
+    const aniCursorPromise = import("ani-cursor");
+    Promise.all([binaryPromise, aniCursorPromise]).then(
+      ([binary, aniCursor]) => {
+        const data = new Uint8Array(binary);
+
+        setCss(aniCursor.convertAniBinaryToCSS(selector, data));
+      }
+    );
+  }, [url, selector]);
+
+  useEffect(() => {
+    const style = document.createElement("style");
+    style.innerText = css;
+    document.head.appendChild(style);
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, [css]);
+  return null;
+}
+
 export default function Markdown({ ast }) {
   return <MarkdownAst node={ast} />;
 }
 
-// TODO: Syntax highlighting
 function MarkdownAst({ node }) {
   switch (node.type) {
     case "leafDirective":
@@ -22,6 +48,14 @@ function MarkdownAst({ node }) {
               ></iframe>
             </div>
           );
+        case "animatedCursor":
+          return (
+            <AniCursor
+              url={node.attributes.url}
+              selector={node.attributes.selector}
+            />
+          );
+
         default:
           throw new Error(`Unknown directive: ${node.name}`);
       }

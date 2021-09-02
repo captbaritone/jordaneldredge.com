@@ -6,23 +6,7 @@ github_comments_issue_id: 15
 summary_image: /images/ani-cursor.png
 ---
 
-<script src="/javascripts/ani-cursor.js"></script>
-<script>
-async function applyCursor(selector, aniUrl) {
-  const response = await fetch(aniUrl);
-  const data = new Uint8Array(await response.arrayBuffer());
-
-  const style = document.createElement("style");
-  style.innerText = aniCursor.convertAniBinaryToCSS(selector, data);
-
-  document.head.appendChild(style);
-}
-
-applyCursor(
-  "body",
-  "https://archive.org/cors/tucows_169750_Dove_Flying/dove.ani"
-);
-</script>
+::animatedCursor{url="https://archive.org/cors/tucows_169750_Dove_Flying/dove.ani" selector="body"}
 
 *TL:DR: If you'd like to render `.ani` files in the browser, I've published [`ani-cursor`](https://www.npmjs.com/package/ani-cursor) on NPM which makes it possible.*
 
