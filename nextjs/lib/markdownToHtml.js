@@ -1,3 +1,4 @@
+import path from "path";
 import { unified } from "unified";
 import remarkParse from "remark-parse";
 import remarkInlineLinks from "remark-inline-links";
@@ -5,6 +6,7 @@ import visit, { SKIP } from "unist-util-visit";
 import Prism from "prismjs";
 import loadLanguages from "prismjs/components/index";
 import remarkDirective from "remark-directive";
+import { getPlaiceholder } from "plaiceholder";
 
 loadLanguages([
   "php",
@@ -89,6 +91,29 @@ function preprocess(markdown) {
     });
 }
 
+async function imageDimensions(tree) {
+  const images = [];
+  visit(tree, (node, index, parent) => {
+    if (node.type === "image") {
+      images.push(node);
+    }
+  });
+
+  return Promise.all(
+    images.map(async (node) => {
+      // Not all images are in the repo. How do we handle the others?
+      if (node.url.startsWith("/images")) {
+        const { base64, img } = await getPlaiceholder(node.url);
+
+        node.imageProps = {
+          ...img,
+          blurDataURL: base64,
+        };
+      }
+    })
+  );
+}
+
 export default async function markdownToHtml(markdown) {
   const processedMarkdown = preprocess(markdown);
 
@@ -101,6 +126,7 @@ export default async function markdownToHtml(markdown) {
   const transform = remarkInlineLinks();
   transform(ast);
   applyHighlighting(ast);
+  await imageDimensions(ast);
 
   // TODO: Why can't position be serialized?
   ast = JSON.parse(JSON.stringify(ast));

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Tweet } from "react-twitter-widgets";
 export default function Markdown({ ast }) {
   return <MarkdownAst node={ast} />;
@@ -50,6 +51,10 @@ function MarkdownAst({ node }) {
         `${node.type} nodes should be removed by remark-inline-links`
       );
     case "image":
+      if (node.imageProps) {
+        return <Image {...node.imageProps} placeholder="blur" alt={node.alt} />;
+      }
+
       return <img src={node.url} alt={node.alt} />;
     case "thematicBreak":
       return <hr />;

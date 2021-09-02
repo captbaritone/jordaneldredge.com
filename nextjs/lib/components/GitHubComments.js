@@ -38,8 +38,13 @@ export default function GitHubComments({ issue }) {
             key={comment.id}
             className="flex flex-col mx-auto container shadow mt-5 rounded-b-md"
           >
-            <div className="flex bg-gray-600 bg-opacity-10 rounded-t-md p-3">
+            <div
+              className="flex bg-gray-600 bg-opacity-10 rounded-t-md p-3"
+              style={{ position: "relative" }}
+            >
               <Image
+                width={48}
+                height={48}
                 src={comment.user.avatar_url}
                 className="w-12 h-12 rounded-full object-cover bg-gray-100"
                 alt=""
