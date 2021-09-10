@@ -21,11 +21,13 @@ export default function Layout({ children, title, typoLink }) {
         <meta property="og:locale" content="en_US" />
         <title>{fullTitle}</title>
         <meta property="og:title" content={fullTitle} />
+        <meta name="twitter:title" content={fullTitle} />
         <meta name="author" content="Jordan Eldredge" />
         <meta property="og:site_name" content="Jordan Eldredge" />
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
         <meta name="twitter:site" content="@captbaritone" />
         <meta name="twitter:creator" content="@captbaritone" />
+
         <script
           dangerouslySetInnerHTML={{
             __html: `

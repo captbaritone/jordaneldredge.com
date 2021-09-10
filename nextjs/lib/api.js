@@ -48,7 +48,6 @@ export function getPostBySlug(slug, fields = []) {
       items[field] = content;
     }
     if (field == "filename") {
-      console.log(postInfo);
       items[field] = postInfo.fileName;
     }
 

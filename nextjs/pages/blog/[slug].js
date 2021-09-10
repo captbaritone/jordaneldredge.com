@@ -48,8 +48,17 @@ export default function Post({ post }) {
     <Layout title={post.title} typoLink={typeoLink}>
       <Head>
         <meta property="og:type" content="article" />
+        <meta
+          name="twitter:title"
+          content="Parade of Fans for Houston’s Funeral"
+        />
+        <meta name="twitter:description" content={post.summary || post.title} />
         {post.summary_image && (
-          <meta property="og:image" content={post.summary_image} />
+          <>
+            <meta property="og:image" content={post.summary_image} />
+            <meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:image" content={post.summary_image} />
+          </>
         )}
       </Head>
       <div className="markdown">
@@ -79,6 +88,7 @@ export async function getStaticProps({ params }) {
     "slug",
     "content",
     "github_comments_issue_id",
+    "summary",
     "summary_image",
     "filename",
   ]);
