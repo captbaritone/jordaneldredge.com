@@ -49,6 +49,11 @@ export default function Post({ post }) {
       <Head>
         <meta property="og:type" content="article" />
         <meta name="twitter:title" content={post.title} />
+        <meta
+          name="og:url"
+          content={"https://jordaneldredge.com/blog/" + post.slug}
+        />
+        <meta name="og:description" content={post.summary || post.title} />
         <meta name="twitter:description" content={post.summary || post.title} />
         {post.summary_image && (
           <>
