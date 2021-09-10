@@ -52,9 +52,15 @@ export default function Post({ post }) {
         <meta name="twitter:description" content={post.summary || post.title} />
         {post.summary_image && (
           <>
-            <meta property="og:image" content={post.summary_image} />
+            <meta
+              property="og:image"
+              content={"https://jordaneldredge.com" + post.summary_image}
+            />
             <meta name="twitter:card" content="summary_large_image" />
-            <meta name="twitter:image" content={post.summary_image} />
+            <meta
+              name="twitter:image"
+              content={"https://jordaneldredge.com" + post.summary_image}
+            />
           </>
         )}
       </Head>
