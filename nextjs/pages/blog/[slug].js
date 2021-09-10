@@ -48,10 +48,7 @@ export default function Post({ post }) {
     <Layout title={post.title} typoLink={typeoLink}>
       <Head>
         <meta property="og:type" content="article" />
-        <meta
-          name="twitter:title"
-          content="Parade of Fans for Houston’s Funeral"
-        />
+        <meta name="twitter:title" content={post.title} />
         <meta name="twitter:description" content={post.summary || post.title} />
         {post.summary_image && (
           <>
