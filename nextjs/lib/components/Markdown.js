@@ -37,7 +37,12 @@ function MarkdownAst({ node }) {
     case "leafDirective":
       switch (node.name) {
         case "tweet":
-          return <Tweet tweetId={node.attributes.status} />;
+          return (
+            <Tweet
+              tweetId={node.attributes.status}
+              options={{ align: "center", theme: "light" }}
+            />
+          );
         case "youtube":
           return (
             <div className="video-container">
