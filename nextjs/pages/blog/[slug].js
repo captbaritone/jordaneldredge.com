@@ -43,8 +43,9 @@ export default function Post({ post }) {
   if (!router.isFallback && !post) {
     return <ErrorPage statusCode={404} />;
   }
+  const typeoLink = `https://github.com/captbaritone/jordaneldredge.com/blob/master/nextjs/_posts/${post.filename}`;
   return (
-    <Layout title={post.title}>
+    <Layout title={post.title} typoLink={typeoLink}>
       <Head>
         <meta property="og:type" content="article" />
         {post.summary_image && (
@@ -79,7 +80,9 @@ export async function getStaticProps({ params }) {
     "content",
     "github_comments_issue_id",
     "summary_image",
+    "filename",
   ]);
+
   const content = await markdownToHtml(post.content || "");
 
   return {

@@ -13,7 +13,7 @@ import { useRouter } from "next/router";
 
 */
 
-export default function Layout({ children, title }) {
+export default function Layout({ children, title, typoLink }) {
   const fullTitle = (title ? `${title} / ` : "") + "Jordan Eldredge";
   return (
     <>
@@ -77,6 +77,12 @@ export default function Layout({ children, title }) {
           <a href="https://github.com/captbaritone">GitHub</a>
           {" • "}
           <a href="mailto:jordan@jordaneldredge.com">Email</a>
+          {typoLink != null && (
+            <>
+              {" • "}
+              <a href={typoLink}>Fix Typo</a>
+            </>
+          )}
         </footer>
       </div>
     </>

@@ -1,7 +1,7 @@
 import { unified } from "unified";
 import remarkParse from "remark-parse";
 import remarkInlineLinks from "remark-inline-links";
-import visit, { SKIP } from "unist-util-visit";
+import { SKIP, visit } from "unist-util-visit";
 import Prism from "prismjs";
 import loadLanguages from "prismjs/components/index";
 import remarkDirective from "remark-directive";

@@ -1,4 +1,8 @@
-const withTM = require("next-transpile-modules")(["unified", "plaiceholder"]);
+const withTM = require("next-transpile-modules")([
+  "unified",
+  "plaiceholder",
+  "unist-util-visit",
+]);
 const { withPlaiceholder } = require("@plaiceholder/next");
 
 /**
