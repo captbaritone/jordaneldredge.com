@@ -3,7 +3,7 @@ title: "Barbershop multi-track: I Love To Sing 'Em (Best tag so far!)"
 layout: post
 ---
 
-Continuing in my <a href="http://blog.classicalcode.com/category/music/barbershop/">attempts to improve</a> my barbershop skillz, I sat down today and recorded my first up-tempo multi-track barbershop tag. Despite my fears, my voice is in much better shape in this one even though it required many more takes. To be honest, I was beginning to doubt weather my voice would ever be able to sing barbershop convincingly. Especially up-tempo numbers.
+Continuing in my [attempts to improve](http://blog.classicalcode.com/category/music/barbershop/) my barbershop skillz, I sat down today and recorded my first up-tempo multi-track barbershop tag. Despite my fears, my voice is in much better shape in this one even though it required many more takes. To be honest, I was beginning to doubt weather my voice would ever be able to sing barbershop convincingly. Especially up-tempo numbers.
 
 <strong>Improvements:</strong>
 <ul>
@@ -16,7 +16,7 @@ Continuing in my <a href="http://blog.classicalcode.com/category/music/barbersho
 	<li>Rather lifeless interpretation</li>
 	<li>Perhaps a better microphone to catch more upper partials. I am currently using the built-in microphone on my MacBook</li>
 </ul>
-The tag is, once again, from <a href="http://www.stampedecitychorus.com/classic_tags_men2.pdf">this</a> online book of tags which says it was arranged by Mac Huff.
+The tag is, once again, from [this](http://www.stampedecitychorus.com/classic_tags_men2.pdf) online book of tags which says it was arranged by Mac Huff.
 
 I am not sure how I feel about reverb on mult-track recordings of this sort. On one had it artificially enhances the singing, but on the other hand performance halls always have acoustics which round out the sound giving the same effect. Because I can't decide, I have uploaded both and would like to hear which <em>you</em> prefer.
 

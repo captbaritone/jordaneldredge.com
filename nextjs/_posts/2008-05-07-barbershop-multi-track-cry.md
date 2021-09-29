@@ -3,8 +3,8 @@ title: "Barbershop multi-track: Cry"
 layout: post
 ---
 
-Inspired by <a href="http://www.youtube.com/watch?v=imHoaelEzOc&amp;feature=related">these</a> <a href="http://www.youtube.com/watch?v=DUkWlxyV4Zw">Youtube</a> <a href="http://www.youtube.com/watch?v=4mk-AtNLfrM">videos</a>, I taught my friends the Cry tag, by Brian Beck, from the <a href="http://www.stampedecitychorus.com/classic_tags_men2.pdf">ubiquitous tag book</a> (number 14). This tag is especially fun because it works in almost any key, high or low. Here is my multi-track version in G#-ish. I am thinking of calling my multi-track quartet "Jortet"!
+Inspired by [these](http://www.youtube.com/watch?v=imHoaelEzOc&amp;feature=related) [Youtube](http://www.youtube.com/watch?v=DUkWlxyV4Zw) [videos](http://www.youtube.com/watch?v=4mk-AtNLfrM), I taught my friends the Cry tag, by Brian Beck, from the [ubiquitous tag book](http://www.stampedecitychorus.com/classic_tags_men2.pdf) (number 14). This tag is especially fun because it works in almost any key, high or low. Here is my multi-track version in G#-ish. I am thinking of calling my multi-track quartet "Jortet"!
 
 ::audio{src=/uploads/2008/05/cry.mp3}
 
-Previously: <a href="http://blog.classicalcode.com/category/music/barbershop/">Other barbershop posts</a>
+Previously: [Other barbershop posts](http://blog.classicalcode.com/category/music/barbershop/)

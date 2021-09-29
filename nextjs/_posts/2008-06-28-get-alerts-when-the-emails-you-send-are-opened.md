@@ -3,9 +3,9 @@ title: "Get alerts when the emails you send are opened"
 layout: post
 ---
 
-Inspired by <a href="http://www.spypig.com/">spypig.com</a>, a site that helps you track when your emails are opened, I decided to see if I could write a script with the same functionality. It tuned out to be a rather interesting project.
+Inspired by [spypig.com](http://www.spypig.com/), a site that helps you track when your emails are opened, I decided to see if I could write a script with the same functionality. It tuned out to be a rather interesting project.
 
-Here it is: <a href="http://www.classicalcode.com/t.php">http://www.classicalcode.com/t.php</a>
+Here it is: [http://www.classicalcode.com/t.php](http://www.classicalcode.com/t.php)
 
 It works by generating an image which you embed in your email. Then when your recipeint reads their email, their email client downloads that image. Downloading that image triggers a script on my server which then sends you an email.
 

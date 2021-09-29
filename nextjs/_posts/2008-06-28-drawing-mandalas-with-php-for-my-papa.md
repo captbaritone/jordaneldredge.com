@@ -11,7 +11,7 @@ layout: post
 
 The earliest memories I have of computers is a contraption my dad rigged up that would draw mandalas on a screen. Later in my life he wrote software that would plot large mandalas on his huge plotters.
 
-In my <a href="/blog/get-alerts-when-the-emails-you-send-are-opened/">last project</a>, I learned about image generation using PHP and realized that it might be possible to use PHP functions to draw mandalas. After a couple hours of relearning trig, I was able to create a script that outputs a .png image of a mandala based on the size and number of points that you give it.
+In my [last project](/blog/get-alerts-when-the-emails-you-send-are-opened/), I learned about image generation using PHP and realized that it might be possible to use PHP functions to draw mandalas. After a couple hours of relearning trig, I was able to create a script that outputs a .png image of a mandala based on the size and number of points that you give it.
 
 Give it a try:
 

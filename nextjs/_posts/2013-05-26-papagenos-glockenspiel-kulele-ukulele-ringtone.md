@@ -7,7 +7,7 @@ layout: post
 
 Jordan Eldredge as Papageno in SFSU's 2005 Magic Flute - Photo credit Isaac Benelli
 
-Chelsea is out of town again, and the <a href="/blog/the-surprise-slide-ukulele-micro-song/">previous</a> <a href="/blog/electric-ukulele-ring-tone-for-chelsea/">ringtones</a> I recorded for her are probably starting to get on her nerves, so I spent yesterday and today recording her a new one. This one is an electric ukulele/bass arrangement of the glockenspiel music Papageno plays to protect himself, and Pamina, from Monostatos in Mozart's <em><a href="http://en.wikipedia.org/wiki/The_Magic_Flute">Die Zauberflöte</a> </em>(<em>The Magic Flute</em>).
+Chelsea is out of town again, and the [previous](/blog/the-surprise-slide-ukulele-micro-song/) [ringtones](/blog/electric-ukulele-ring-tone-for-chelsea/) I recorded for her are probably starting to get on her nerves, so I spent yesterday and today recording her a new one. This one is an electric ukulele/bass arrangement of the glockenspiel music Papageno plays to protect himself, and Pamina, from Monostatos in Mozart's <em>[Die Zauberflöte](http://en.wikipedia.org/wiki/The_Magic_Flute) </em>(<em>The Magic Flute</em>).
 
 The recording consists of four tracks with the melody trading off between the first two. The harmonics proved too hard for me to play in real time, so I recorded only a few measures at a time, and pasted them together in post production:
 
@@ -20,8 +20,8 @@ Take a listen, and download the mp3 or iPhone ringtone:
 
 ::audio{src=/uploads/2013/05/Papagenos-Glockenspiel-kulele.mp3}
 
-<a href="/uploads/2013/05/Papagenos-Glockenspiel-kulele.mp3">Download as .mp3</a>
-<a href="/uploads/2013/05/Papagenos-Glockenspiel-kulele.m4r">Download as .m4r</a> (iPhone ring tone)
+[Download as .mp3](/uploads/2013/05/Papagenos-Glockenspiel-kulele.mp3)
+[Download as .m4r](/uploads/2013/05/Papagenos-Glockenspiel-kulele.m4r) (iPhone ring tone)
 
 <h2><strong>Bonus:</strong></h2>
 <strong> </strong>Two text-tones on the same theme
@@ -29,9 +29,9 @@ Take a listen, and download the mp3 or iPhone ringtone:
 <strong>Papageno's Ton</strong>
 ::audio{src=/uploads/2013/05/Papagenos-Ton.mp3}
 
-<a href="/uploads/2013/05/Papagenos-Ton.mp3">Download as .mp3</a>/<a href="/uploads/2013/05/Papagenos-Ton.m4r">Download as .m4r</a> (iPhone ring tone)
+[Download as .mp3](/uploads/2013/05/Papagenos-Ton.mp3)/[Download as .m4r](/uploads/2013/05/Papagenos-Ton.m4r) (iPhone ring tone)
 
 <strong>Papageno's Tritone</strong>
 ::audio{src=/uploads/2013/05/Papagenos-Tritone.mp3}
 
-<a href="/uploads/2013/05/Papagenos-Tritone.mp3">Download as .mp3</a>/<a href="/uploads/2013/05/Papagenos-Tritone.m4r">Download as .m4r</a> (iPhone ring tone)
+[Download as .mp3](/uploads/2013/05/Papagenos-Tritone.mp3)/[Download as .m4r](/uploads/2013/05/Papagenos-Tritone.m4r) (iPhone ring tone)

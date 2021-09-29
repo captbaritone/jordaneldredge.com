@@ -35,9 +35,9 @@ href="http://www.whatthefuckshouldimakefordinner.com/">whatTheFuckShouldIMakeFor
      href="http://www.amazon.com/gp/product/0762441771/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0762441771&amp;linkCode=as2&amp;tag=wtfsibfc-20">fucking
      cookbook</a>) so I chose:
 
-<a href="http://WhatTheFuckShouldIBeForHalloween.com">WhatTheFuckShouldIBeForHalloween.com</a>.
+[WhatTheFuckShouldIBeForHalloween.com](http://WhatTheFuckShouldIBeForHalloween.com).
 
-A few hours later I had the domain name pointed to my server. I wrote <a href="https://twitter.com/captbaritone/status/390245191472279552">a tweet about it</a>, posted a similar message on Facebook and went to dinner.
+A few hours later I had the domain name pointed to my server. I wrote [a tweet about it](https://twitter.com/captbaritone/status/390245191472279552), posted a similar message on Facebook and went to dinner.
 
 ::tweet{status=390245191472279552}
 

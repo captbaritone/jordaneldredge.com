@@ -15,4 +15,4 @@ Replace it with this:
 <pre lang='PHP' line='0'>'url' =&gt; 'http://digg.com/submit?url=PERMALINK&amp;amp;title=TITLE&amp;amp;bodytext=EXCERPT',</pre>
 
 Or use this diff file on wp-content/plugins/sociable/sociable.php
-<a href="/uploads/2009/08/sociable.php.diggFix.diff">sociable.php.diggFix</a>
+[sociable.php.diggFix](/uploads/2009/08/sociable.php.diggFix.diff)

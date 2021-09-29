@@ -3,7 +3,7 @@ title: "Found: \"still, the fire hasn't burnt out yet for us Baby, just keep hol
 layout: post
 ---
 
-<a title="Love Letter - front page" href="/uploads/2008/03/photo-0034.jpg"><img src="/uploads/2008/03/photo-0034.thumbnail.jpg" alt="Love Letter - front page" hspace="5" align="left" /></a>I don't remember exactly where this came from, but I have a vague recollection of someone (other then myself) finding it at a beach, and giving it to me. <span style="text-decoration: line-through;">Possibly when I was at <a href="http://www.operaworks.com/">OperaWorks</a>. If anyone remembers, let me know.</span>
+<a title="Love Letter - front page" href="/uploads/2008/03/photo-0034.jpg"><img src="/uploads/2008/03/photo-0034.thumbnail.jpg" alt="Love Letter - front page" hspace="5" align="left" /></a>I don't remember exactly where this came from, but I have a vague recollection of someone (other then myself) finding it at a beach, and giving it to me. <span style="text-decoration: line-through;">Possibly when I was at [OperaWorks](http://www.operaworks.com/). If anyone remembers, let me know.</span>
 
 *Edit: Chelsea reminded me that she found it in the water on the beach when we were in Aruba last year*
 

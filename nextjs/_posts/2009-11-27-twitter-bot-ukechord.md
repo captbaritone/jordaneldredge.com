@@ -5,14 +5,14 @@ layout: post
 
 <strong>Edit (May 18, 2012): This bot is now defunct.</strong>
 
-I would like to introduce you all to my new creation <a href="http://twitter.com/ukechord">UkeChord</a>. UkeChord is an automated Twitter robot who will send you ukulele fingerings for any chord you request. Please share your thoughts or improvements in the comments below.
+I would like to introduce you all to my new creation [UkeChord](http://twitter.com/ukechord). UkeChord is an automated Twitter robot who will send you ukulele fingerings for any chord you request. Please share your thoughts or improvements in the comments below.
 
 <strong>Goal:</strong> To offer Ukulele chord fingerings via text message.
 
 <strong>Preparation:</strong>
 <ol>
-	<li>Follow Twitter user "<a href="http://twitter.com/ukechord">ukechord</a>"</li>
-	<li><a href="http://help.twitter.com/forums/59008/entries/14014">Configure Twitter</a> to forward direct messages to your phone.</li>
+	<li>Follow Twitter user "[ukechord](http://twitter.com/ukechord)"</li>
+	<li>[Configure Twitter](http://help.twitter.com/forums/59008/entries/14014) to forward direct messages to your phone.</li>
 </ol>
 <strong>Getting a chord fingering:</strong>
 <ol>

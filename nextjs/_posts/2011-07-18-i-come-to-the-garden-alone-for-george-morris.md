@@ -6,7 +6,7 @@ youtube_slug: FDB0LMrDdEs
 
 <a href="/uploads/2011/07/photo.jpeg"><img class="alignnone size-large wp-image-946" title="Wanda and Geroge's Garden" src="/uploads/2011/07/photo-500x375.jpg" alt="" width="500" height="375" /></a>
 
-Wanda and George's Garden. Photo Credit: <a href="http://www.chelseahollow.com">Chelsea Hollow</a>
+Wanda and George's Garden. Photo Credit: [Chelsea Hollow](http://www.chelseahollow.com)
 
 Years after my grandfather died, my grandmother reconnected with an old friend from Ohio. George was an old family friend and a widower. A youthful romance followed. I will always remember George's kindness, good humor and most of all the spry young love he had for my grandmother Wanda.
 
@@ -18,7 +18,7 @@ This video was recorded in my backyard here in San Francisco.
 
 ::audio{src=/uploads/2011/07/I-Walk-Through-The-Garden-Alone-Ukulele-For-George.mp3}
 
-<a href="/uploads/2011/07/I-Come-To-the-Garden-Alone.pdf">Tablature Pdf file</a><a href="/uploads/2011/07/I-Walk-Through-The-Garden-Alone-Ukulele-For-George.mp3">
+[Tablature Pdf file](/uploads/2011/07/I-Come-To-the-Garden-Alone.pdf)<a href="/uploads/2011/07/I-Walk-Through-The-Garden-Alone-Ukulele-For-George.mp3">
 </a>
 
 Hymn: "In The Garden"

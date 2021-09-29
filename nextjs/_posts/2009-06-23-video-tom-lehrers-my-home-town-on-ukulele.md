@@ -5,6 +5,6 @@ archive: true
 youtube_slug: JQkEWCYo9LU
 ---
 
-It was a beautiful day out today, so I headed out to golden <a href="http://en.wikipedia.org/wiki/Golden_Gate_Park">Golden Gate Park</a> and recorded <a href="http://en.wikipedia.org/wiki/Tom_Lehrer">Tom Lehrer's</a> "My Home Town" on my cheap $35 Ukulele.
+It was a beautiful day out today, so I headed out to golden [Golden Gate Park](http://en.wikipedia.org/wiki/Golden_Gate_Park) and recorded [Tom Lehrer's](http://en.wikipedia.org/wiki/Tom_Lehrer) "My Home Town" on my cheap $35 Ukulele.
 
 ::youtube{token=JQkEWCYo9LU}

@@ -5,7 +5,7 @@ layout: post
 
 My girlfriend is sick, so I arranged and recorded her a song. I hope this helps you feel better Chelsea.
 
-For <a href="http://www.chelseahollow.com">Chelsea</a>:
+For [Chelsea](http://www.chelseahollow.com):
 
 ::audio{src=/uploads/2009/01/earth-angel.mp3}
 
@@ -15,8 +15,8 @@ This is my first doo-wop arrangement, and the first full song that I have multit
 
 <strong>Update:</strong>
 
-I typeset the arrangement using <a href="http://lilypond.org/web/">Lilypond</a>, a wonderful open source program for engraving music. Here are the results:
+I typeset the arrangement using [Lilypond](http://lilypond.org/web/), a wonderful open source program for engraving music. Here are the results:
 
-The arrangement as a printable pdf: <a href="/uploads/2009/01/earth_angel.pdf">earth_angel.pdf</a>
+The arrangement as a printable pdf: [earth_angel.pdf](/uploads/2009/01/earth_angel.pdf)
 
-The Lilypond code: <a href="/uploads/2009/01/earth_angel.ly">earth_angel.ly</a>
+The Lilypond code: [earth_angel.ly](/uploads/2009/01/earth_angel.ly)

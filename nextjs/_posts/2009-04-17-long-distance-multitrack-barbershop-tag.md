@@ -4,11 +4,11 @@ layout: post
 archive: true
 ---
 
-Several months ago, inspired by <a href="http://www.youtube.com/watch?v=L8CwvvDzLC4">this youtube video</a>, my friends Jared Emerson-Johnson, Joachim Luis and I collaborated on a multitracked barbershop tag. Jared and I live about an hour away from each other and Joachim lives all the way in Chicago, so this was a great way for the four of us to do some harmony singing with far away friends.
+Several months ago, inspired by [this youtube video](http://www.youtube.com/watch?v=L8CwvvDzLC4), my friends Jared Emerson-Johnson, Joachim Luis and I collaborated on a multitracked barbershop tag. Jared and I live about an hour away from each other and Joachim lives all the way in Chicago, so this was a great way for the four of us to do some harmony singing with far away friends.
 
 Joachim recorded the lead part and emailed it to the group, and then Jared added the baritone part. Finally I added the bass and tenor parts. For now we are calling ourselves "Removable Do."
 
-The tag is The Shadow of Your Smile from the <a href="http://www.stampedecitychorus.com/classic_tags_men2.pdf">Classic Tags book</a>.
+The tag is The Shadow of Your Smile from the [Classic Tags book](http://www.stampedecitychorus.com/classic_tags_men2.pdf).
 
 ::audio{src=/uploads/2009/04/the-shadow-of-your-smile-rough-draft.mp3}
 

@@ -5,7 +5,7 @@ layout: post
 
 <img class="size-large wp-image-716 alignright" style="margin-left: 15px; margin-right: 15px;" title="9622_166802582176_739287176_4016994_1081156_n" src="/uploads/2009/11/9622_166802582176_739287176_4016994_1081156_n-500x375.jpg" alt="9622_166802582176_739287176_4016994_1081156_n" width="243" height="183" />
 
-As of this week, <a href="http://www.chelseahollow.com">Chelsea</a> and I have been going out for three years and after countless <a href="/blog/barbershop-multi-track-happy-anniversary-chelsea/">barbershop tags</a>, <a href="/blog/multitrack-thats-why-i-love-you/">covers</a> and <a href="/blog/original-song-our-love-will-last-as-long/">miniature songs</a> I have finally been able to write her an honest-to-goodness <em>song</em> song. I'll admit it's cheesy and trite and doesn't properly rhyme, but it's a song. A real song. Finally.
+As of this week, [Chelsea](http://www.chelseahollow.com) and I have been going out for three years and after countless [barbershop tags](/blog/barbershop-multi-track-happy-anniversary-chelsea/), [covers](/blog/multitrack-thats-why-i-love-you/) and [miniature songs](/blog/original-song-our-love-will-last-as-long/) I have finally been able to write her an honest-to-goodness <em>song</em> song. I'll admit it's cheesy and trite and doesn't properly rhyme, but it's a song. A real song. Finally.
 
 For Chelsea, after three years: "Driving"
 

@@ -3,7 +3,7 @@ title: "Play the card game \"War\" in my avatar"
 layout: post
 ---
 
-Since my previous avatar <a href="/blog/how-i-ddosed-myself-with-an-avatar/">DDOSed my router</a>, today I wrote a less popular avatar game. The only game I could think of that has no need for actual user input was the <a href="http://en.wikipedia.org/wiki/War_(card_game)">card game war</a>. So I implemented it in my avatar. You can play too, by simply refreshing this image:
+Since my previous avatar [DDOSed my router](/blog/how-i-ddosed-myself-with-an-avatar/), today I wrote a less popular avatar game. The only game I could think of that has no need for actual user input was the [card game war](http://en.wikipedia.org/wiki/War_(card_game)). So I implemented it in my avatar. You can play too, by simply refreshing this image:
 <p style="text-align: center;"><img class="aligncenter" src="/projects/war/index.php" alt="" width="150" height="132" /></p>
 Features:
 <ul>

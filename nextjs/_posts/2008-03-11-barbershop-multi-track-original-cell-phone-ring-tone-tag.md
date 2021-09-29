@@ -14,4 +14,4 @@ The tag: 
 
 ::audio{src=/uploads/2008/03/hello-mp3.mp3}
 
-For more multi-track barbershop fun, check out the "<a href="http://blog.classicalcode.com/category/music/barbershop/">barbershop</a>" category of this blog.
+For more multi-track barbershop fun, check out the "[barbershop](http://blog.classicalcode.com/category/music/barbershop/)" category of this blog.
