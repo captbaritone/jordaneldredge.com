@@ -121,6 +121,10 @@
 .markdown blockquote > p {
   @apply mb-0;
 }
+
+.markdown hr {
+  @apply py-2 text-center block border-t-2 border-gray-200 border-solid;
+}
 /* Tables */
 .markdown td,
 .markdown th {
