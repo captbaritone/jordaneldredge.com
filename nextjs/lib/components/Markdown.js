@@ -49,9 +49,9 @@ function MarkdownAst({ node }) {
               <iframe
                 src={`https://www.youtube.com/embed/${node.attributes.token}`}
                 title="YouTube video player"
-                frameborder="0"
+                frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
+                allowFullScreen
                 className="youtube-video"
               ></iframe>
             </div>
