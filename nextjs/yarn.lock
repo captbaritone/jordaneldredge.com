@@ -2756,6 +2756,13 @@ mdast-util-from-markdown@^1.0.0:
     parse-entities "^3.0.0"
     unist-util-stringify-position "^3.0.0"
 
+mdast-util-frontmatter@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/mdast-util-frontmatter/-/mdast-util-frontmatter-1.0.0.tgz#ef12469379782e4a0fd995fed60cc3b871e6c819"
+  integrity sha512-7itKvp0arEVNpCktOET/eLFAYaZ+0cNjVtFtIPxgQ5tV+3i+D4SDDTjTzPWl44LT59PC+xdx+glNTawBdF98Mw==
+  dependencies:
+    micromark-extension-frontmatter "^1.0.0"
+
 mdast-util-heading-style@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/mdast-util-heading-style/-/mdast-util-heading-style-2.0.0.tgz#19bcc14d96b4a6f24efbe1318409bd34af64bb7f"
@@ -2775,6 +2782,11 @@ mdast-util-to-markdown@^1.0.0:
     parse-entities "^3.0.0"
     unist-util-visit "^4.0.0"
     zwitch "^2.0.0"
+
+mdast-util-to-string@^1.0.2:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/mdast-util-to-string/-/mdast-util-to-string-1.1.0.tgz#27055500103f51637bd07d01da01eb1967a43527"
+  integrity sha512-jVU0Nr2B9X3MU4tSK7JP1CMkSvOj7X5l/GboG1tKRw52lLF1x2Ju92Ms9tNetCcbfX3hzlM73zYo2NKkWSfF/A==
 
 mdast-util-to-string@^3.0.0:
   version "3.1.0"
@@ -2823,6 +2835,15 @@ micromark-extension-directive@^2.0.0:
     micromark-util-symbol "^1.0.0"
     micromark-util-types "^1.0.0"
     parse-entities "^3.0.0"
+
+micromark-extension-frontmatter@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/micromark-extension-frontmatter/-/micromark-extension-frontmatter-1.0.0.tgz#612498e6dad87c132c95e25f0918e7cc0cd535f6"
+  integrity sha512-EXjmRnupoX6yYuUJSQhrQ9ggK0iQtQlpi6xeJzVD5xscyAI+giqco5fdymayZhJMbIFecjnE2yz85S9NzIgQpg==
+  dependencies:
+    fault "^2.0.0"
+    micromark-util-character "^1.0.0"
+    micromark-util-symbol "^1.0.0"
 
 micromark-factory-destination@^1.0.0:
   version "1.0.0"
@@ -3975,6 +3996,16 @@ remark-directive@^2.0.0:
     micromark-extension-directive "^2.0.0"
     unified "^10.0.0"
 
+remark-frontmatter@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/remark-frontmatter/-/remark-frontmatter-4.0.0.tgz#3730cf165f49f77d2aebfe5df1eb03e80860fc25"
+  integrity sha512-0J+2czWAS9sz9baJJel4tTUnNhMI7wYgih99Hxhdeq2GpdI1Ctu0iol6zAsWw5xa+jLsZXNiwEnnJAJo3XX3hw==
+  dependencies:
+    "@types/mdast" "^3.0.0"
+    mdast-util-frontmatter "^1.0.0"
+    micromark-extension-frontmatter "^1.0.0"
+    unified "^10.0.0"
+
 remark-inline-links@^6.0.0:
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/remark-inline-links/-/remark-inline-links-6.0.0.tgz#c90c6a87b0afdf708c63ceb1ee303e3e0966f279"
@@ -4039,6 +4070,16 @@ remark-lint-list-item-indent@^3.0.0:
     unist-util-generated "^2.0.0"
     unist-util-position "^4.0.0"
     unist-util-visit "^4.0.0"
+
+remark-lint-mdash-style@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/remark-lint-mdash-style/-/remark-lint-mdash-style-1.1.1.tgz#321086c6dd03dc9a52b997b8716d9cce1af3ab9f"
+  integrity sha512-L22cHflyyhbzcmaLyQsq6P0a5iE6yIS7DdCAiqrrKSTy4hSec9z7u01y3e2j8cSumHaUmVq9ytqXroAHCgELVw==
+  dependencies:
+    mdast-util-to-string "^1.0.2"
+    unified-lint-rule "^1.0.0"
+    unist-util-generated "^1.1.0"
+    unist-util-visit "^2.0.0"
 
 remark-lint-no-auto-link-without-protocol@^3.0.0:
   version "3.0.1"

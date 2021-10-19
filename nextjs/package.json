@@ -24,6 +24,7 @@
     "react-twitter-widgets": "^1.10.0",
     "remark-cli": "^10.0.0",
     "remark-directive": "^2.0.0",
+    "remark-frontmatter": "^4.0.0",
     "remark-inline-links": "^6.0.0",
     "remark-lint": "^8.0.0",
     "remark-lint-code-block-style": "^2.0.1",
@@ -47,6 +48,7 @@
   "prettier": {},
   "devDependencies": {
     "eslint": "^7.32.0",
-    "eslint-config-next": "^11.1.0"
+    "eslint-config-next": "^11.1.0",
+    "remark-lint-mdash-style": "^1.1.1"
   }
 }
