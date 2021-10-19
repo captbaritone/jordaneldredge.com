@@ -2,7 +2,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 
 function useComments(issue) {
-  const [response, setResponse] = useState();
+  const [response, setResponse] = useState(null);
   useEffect(() => {
     const apiUrl = `https://api.github.com/repos/captbaritone/jordaneldredge.com/issues/${issue}/comments`;
     fetch(apiUrl, {
@@ -13,6 +13,9 @@ function useComments(issue) {
       })
       .then((body) => {
         setResponse(body);
+      })
+      .catch((e) => {
+        setResponse(null);
       });
   }, [issue]);
 

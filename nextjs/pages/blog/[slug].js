@@ -6,6 +6,7 @@ import Layout from "../../lib/components/Layout";
 import GitHubComments from "../../lib/components/GitHubComments";
 import Head from "next/head";
 import DateString from "../../lib/components/DateString";
+import ErrorBoundary from "../../lib/components/ErrorrBoundary";
 import Markdown from "../../lib/components/Markdown";
 
 /*
@@ -82,8 +83,10 @@ export default function Post({ post }) {
         </div>
         <Markdown {...post.content} />
       </div>
-      {false && post.github_comments_issue_id && (
-        <GitHubComments issue={post.github_comments_issue_id} />
+      {post.github_comments_issue_id && (
+        <ErrorBoundary fallback={null}>
+          <GitHubComments issue={post.github_comments_issue_id} />
+        </ErrorBoundary>
       )}
     </Layout>
   );

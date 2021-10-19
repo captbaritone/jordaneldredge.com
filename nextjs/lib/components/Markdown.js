@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Tweet } from "react-twitter-widgets";
 import { useEffect, useState } from "react";
+import ErrorBoundary from "./ErrorrBoundary";
 
 function AniCursor({ url, selector }) {
   const [css, setCss] = useState(null);
@@ -37,11 +38,19 @@ function MarkdownAst({ node }) {
     case "leafDirective":
       switch (node.name) {
         case "tweet":
+          const fallback = (
+            <p>
+              <a href={`${node.attributes.status}`}>Tweet</a>
+            </p>
+          );
+
           return (
-            <Tweet
-              tweetId={node.attributes.status}
-              options={{ align: "center", theme: "light" }}
-            />
+            <ErrorBoundary fallback={fallback}>
+              <Tweet
+                tweetId={node.attributes.status}
+                options={{ align: "center", theme: "light" }}
+              />
+            </ErrorBoundary>
           );
         case "youtube":
           return (
@@ -58,10 +67,12 @@ function MarkdownAst({ node }) {
           );
         case "animatedCursor":
           return (
-            <AniCursor
-              url={node.attributes.url}
-              selector={node.attributes.selector}
-            />
+            <ErrorBoundary fallback={null}>
+              <AniCursor
+                url={node.attributes.url}
+                selector={node.attributes.selector}
+              />
+            </ErrorBoundary>
           );
         case "audio":
           return (
@@ -184,7 +195,6 @@ function MarkdownAst({ node }) {
       }
     }
     default:
-      console.log(node);
       throw new Error(`Unhandled AST node type: ${node.type}`);
   }
 }
