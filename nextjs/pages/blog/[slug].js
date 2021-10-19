@@ -82,7 +82,7 @@ export default function Post({ post }) {
         </div>
         <Markdown {...post.content} />
       </div>
-      {post.github_comments_issue_id && (
+      {false && post.github_comments_issue_id && (
         <GitHubComments issue={post.github_comments_issue_id} />
       )}
     </Layout>
