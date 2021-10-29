@@ -10,13 +10,13 @@
     "lint": "remark --quiet ."
   },
   "dependencies": {
-    "@plaiceholder/next": "^2.1.0",
+    "@plaiceholder/next": "2.2.0",
     "ani-cursor": "^0.0.5",
     "autoprefixer": "^10.1.0",
     "gray-matter": "^4.0.2",
-    "next": "^11.1.1-canary.13",
-    "next-transpile-modules": "^8.0.0",
-    "plaiceholder": "^2.0.1",
+    "next": "^12.0.1",
+    "next-transpile-modules": "^9.0.0",
+    "plaiceholder": "2.2.0",
     "postcss": "^8.2.1",
     "prismjs": "^1.24.1",
     "react": "^17.0.2",

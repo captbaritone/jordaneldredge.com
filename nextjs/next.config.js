@@ -28,5 +28,6 @@ module.exports = withPlaiceholder(
       ],
     },
     trailingSlash: true,
+    swcMinify: true,
   })
 );
