@@ -85,3 +85,7 @@ With the adoption of `eel-wasm` we can still support rendering arbitrary presets
 ## Thanks
 
 I want to give a huge thanks to Jordan Berg, the author of Butterchurn, for answering my endless questions about the Eel language and how Milkdrop uses it and for doing the hard work of integrating `eel-wasm` into Butterchurn.
+
+---
+
+If you'd like to hear more, I gave a talk entitled [*Faster, Safer: Compiling Untrusted Code to WebAssembly in the Browser*](/blog/faster-safer-compiling-untrusted-code-to-web-assembly-in-the-browser) in which I expanded upon some of the ideas in this post.
