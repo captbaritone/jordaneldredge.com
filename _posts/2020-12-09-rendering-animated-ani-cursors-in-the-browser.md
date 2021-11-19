@@ -164,6 +164,6 @@ If you want to see some animated cursors rendering in your browser, check out th
 
 Someone could create (or [find](https://archive.org/details/TOPCUR95_ZIP)) a collection of `.ani` files on the Internet Archive and then build a simple web app which pulls files directly from the Internet Archive's servers and renders them in an interesting way.
 
-This is the approach I propose in my previous blog post [Mainlining Nostalgia: Making the Winamp Skin Museum](https://jordaneldredge.com/blog/winamp-skin-musuem/).
+This is the approach I propose in my previous blog post [Mainlining Nostalgia: Making the Winamp Skin Museum](/blog/winamp-skin-musuem/).
 
-If you end up taking inspiration from this post, please [get in touch](https://jordaneldredge.com/contact/)!
+If you end up taking inspiration from this post, please [get in touch](/contact/)!

@@ -5,7 +5,7 @@ summary: "I used thousands of screenshots of Winamp skins and StyleGAN2 to train
 summary_image: /images/six-machine-learning-generated-winamp-skins.png
 ---
 
-A while ago I used the large collection of Winamp skin screenshots I created as part of the [Winamp Skin Museum](https://jordaneldredge.com/blog/winamp-skin-musuem/) to train a [StyleGAN2](https://github.com/NVlabs/stylegan2-ada) machine learning model to generate Winamp skin screenshots.
+A while ago I used the large collection of Winamp skin screenshots I created as part of the [Winamp Skin Museum](/blog/winamp-skin-musuem/) to train a [StyleGAN2](https://github.com/NVlabs/stylegan2-ada) machine learning model to generate Winamp skin screenshots.
 
 I don't have a computer that has a serious GPU so I wasn't able to do the training locally. Instead, I followed [this helpful tutorial](https://towardsdatascience.com/run-stylegan2-ada-on-an-aws-spot-instance-in-no-time-d2022fc1e119) which gave clear instructions on how to do StyleGAN training on AWS "spot instances". These are surplus EC2 instances where you get a cheaper price in exchange for the possibility that your instance will get reclaimed arbitrarily.
 
@@ -23,6 +23,6 @@ Periodic screenshots of a single seed over the course of training the model:
 
 For a narrative of my experience generating these, check out this [Twitter thread](https://twitter.com/captbaritone/status/1356836533882425347).
 
-If anyone is interested in picking up where this work left off, or would like access to the model, [please reach out](https://jordaneldredge.com/contact/) or come drop by the [Webamp Discord server](https://webamp.org/chat).
+If anyone is interested in picking up where this work left off, or would like access to the model, [please reach out](/contact/) or come drop by the [Webamp Discord server](https://webamp.org/chat).
 
 Special thanks to [Jonathan Fly](https://iforcedabot.com/) for many tips and encouragements.

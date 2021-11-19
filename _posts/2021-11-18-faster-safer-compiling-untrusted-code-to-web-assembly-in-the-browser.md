@@ -5,7 +5,7 @@ summary: "Video of my TSConf 2021 talk entitled \"Faster, Safer: Compiling Untru
 youtube_slug: hZzjrgZb-mw
 ---
 
-After recieving postive feedback an my post [Speeding Up Webamp's Music Visualizer with WebAssembly](https://jordaneldredge.com/blog/speeding-up-winamps-music-visualizer-with-webassembly), I was encouraged by [Colin Eberhardt](https://blog.scottlogic.com/ceberhardt/), author of [WebAssembly Weekly](https://wasmweekly.news/), to give a talk on the topic. I submitted a proposal to [TSConf](https://tsconf.io/) and, to my surprise, it was accepted!
+After recieving postive feedback an my post [Speeding Up Webamp's Music Visualizer with WebAssembly](/blog/speeding-up-winamps-music-visualizer-with-webassembly), I was encouraged by [Colin Eberhardt](https://blog.scottlogic.com/ceberhardt/), author of [WebAssembly Weekly](https://wasmweekly.news/), to give a talk on the topic. I submitted a proposal to [TSConf](https://tsconf.io/) and, to my surprise, it was accepted!
 
 The talk covers:
 

@@ -44,7 +44,7 @@ replaces the DOM with the generated HTML.
 
 ## In Action
 
-You can see a demo [here](https://jordaneldredge.com/projects/jerkll/) or find
+You can see a demo [here](/projects/jerkll/) or find
 the code on [GitHub](https://github.com/captbaritone/jerkll).
 
 ## Why?

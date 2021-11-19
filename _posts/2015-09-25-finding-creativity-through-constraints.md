@@ -15,7 +15,7 @@ can watch it below:
 ::youtube{token=Jic6lVGALj4}
 
 If you are interested, you can [find the slides
-here](https://jordaneldredge.com/talks/finding-creativity-through-constraints/).
+here](/talks/finding-creativity-through-constraints/).
 
 If you would like to read more about the two projects referenced in the talk
 see the related blog posts:

@@ -12,4 +12,4 @@ its creation, struggles and new momentum.
 ::youtube{token=sOuloaGug6I}
 
 You can find the slides
-[here](https://jordaneldredge.com/talks/vim-awesome/).
+[here](/talks/vim-awesome/).

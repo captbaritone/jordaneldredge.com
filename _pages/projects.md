@@ -12,9 +12,9 @@ Over the years I've built a number of software side projects. Below are a list o
 
 **[Winamp Skin Museum](https://skins.webamp.org)** -  Infinite scroll through 65k Winamp skins with instant search and in-browser interactive preview. As seen on [The Verge](https://www.theverge.com/tldr/21430347/winamp-skin-museum-nostalgia-90s-00s-internet-art-history-ui), [PC Gamer](https://www.pcgamer.com/heres-an-interactive-archive-of-65000-winamp-skins-for-you-to-browse-forever/), [AV Club](https://news.avclub.com/attention-digital-anthropologists-you-can-now-visit-an-1844954715), [Gizmodo](https://gizmodo.com/the-winamp-skin-museum-is-x-tremely-gnarly-1844958728), [CSS-Tricks](https://css-tricks.com/winamp-skin-museum/), and [Hacker News](https://news.ycombinator.com/item?id=24373699).
 
-**[Eel-Wasm](https://jordaneldredge.com/blog/speeding-up-winamps-music-visualizer-with-webassembly/)** - An in-browser compiler which speeds up in-browser rendering of user-defined music visualizations.
+**[Eel-Wasm](/blog/speeding-up-winamps-music-visualizer-with-webassembly/)** - An in-browser compiler which speeds up in-browser rendering of user-defined music visualizations.
 
-**[Ani-Cursor](https://jordaneldredge.com/blog/rendering-animated-ani-cursors-in-the-browser/)** - Compile Windows animated cursors (`.ani` files) into CSS animations in the browser.
+**[Ani-Cursor](/blog/rendering-animated-ani-cursors-in-the-browser/)** - Compile Windows animated cursors (`.ani` files) into CSS animations in the browser.
 
 **[Markdown Today](https://markdown.today)** -  A private, mobile-first web app that writes your journal directly to Dropbox.
 

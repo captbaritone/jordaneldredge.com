@@ -8,7 +8,7 @@ youtube_slug: 3f7l-Z4NF70
 
 On April 21st, I gave a short talk at the [San Francisco JavaScript
 Meetup](http://www.meetup.com/jsmeetup/). It was ostensibly about my
-[Winamp2-js](https://jordaneldredge.com/projects/winamp2-js/) project, but my
+[Winamp2-js](/projects/winamp2-js/) project, but my
 real goal was to help encourage people to build "stupid" projects.
 
 To highlight the interesting kinds of problems you can encounter when you

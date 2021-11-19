@@ -11,13 +11,13 @@ summary_image: /images/winamp/three-windows-screenshot.png
 
 Sitting on my bed one evening in October of 2014 I had an idea: I could use [CSS sprites] to render original Winamp skin files in the browser. I got so exicted about the idea that I worked on it late into the night. For the next three years I continued, off and on, to hack on this silly, yet entrancing project.
 
-As of last month, all three main windows are complete ([Give it a try!](https://jordaneldredge.com/projects/winamp2-js/)) and it finally feels like an actual media player.
+As of last month, all three main windows are complete ([Give it a try!](/projects/winamp2-js/)) and it finally feels like an actual media player.
 
 To celebrate this milestone, I thought I'd share a few of the more interesteing features that Winamp2-js has successfully reimplemented and a few technical details behinnd how they were implemented.
 
 ## Load any classic Winamp skin
 
-Winamp skins are, under the hood, `.zip` files that contained some `.bmp` sprite sheets and a few config files. Thanks to [Stuart Knightley]'s library [JSZip], we can actually extract/parse real Winamp skins in your browser. Just drop the skin file into the main window. Check out [How Winamp2-js loads native skins in your browser](https://jordaneldredge.com/blog/how-winamp2-js-loads-native-skins-in-your-browser/) for a detailed explanation of how this is achieved.
+Winamp skins are, under the hood, `.zip` files that contained some `.bmp` sprite sheets and a few config files. Thanks to [Stuart Knightley]'s library [JSZip], we can actually extract/parse real Winamp skins in your browser. Just drop the skin file into the main window. Check out [How Winamp2-js loads native skins in your browser](/blog/how-winamp2-js-loads-native-skins-in-your-browser/) for a detailed explanation of how this is achieved.
 
 ::youtube{token=NpPu48NFOWY}
 

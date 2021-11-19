@@ -4,7 +4,7 @@ summary: Discovering, reproducing, and working around a bug that crashes Safari 
 layout: post
 ---
 
-Back in the fall of 2016, I was working on adding the equalizer window to [Winamp2-js](https://jordaneldredge.com/projects/winamp2-js/). Unfortuneatly, wireing up the [`BiquadFilterNode`](https://developer.mozilla.org/en-US/docs/Web/API/BiquadFilterNode)s nessesary to get the correct behavior triggered a bug in Safari, both desktop and mobile, causing Safari to crash hard.
+Back in the fall of 2016, I was working on adding the equalizer window to [Winamp2-js](/projects/winamp2-js/). Unfortuneatly, wireing up the [`BiquadFilterNode`](https://developer.mozilla.org/en-US/docs/Web/API/BiquadFilterNode)s nessesary to get the correct behavior triggered a bug in Safari, both desktop and mobile, causing Safari to crash hard.
 
 ![Screenshot of Safari crashing](/images/crash-safari.png)
 
