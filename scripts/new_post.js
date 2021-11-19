@@ -7,23 +7,24 @@ const readline = require("readline").createInterface({
   output: process.stdout,
 });
 
-function prompt() {
+function prompt(question) {
   return new Promise((resolve) => {
-    readline.question("What is the title of the post? ", (name) => {
+    readline.question(`${question} `, (name) => {
       resolve(name);
-      readline.close();
     });
   });
 }
 
 async function main() {
-  const title = await prompt();
+  const title = await prompt("What is the title of the post?");
+  const summary = await prompt("What is the summary of the post?");
+  readline.close();
 
   const template = `---
 layout: post
 title: "${title}"
-summary: "Making a video that smoothly scrolls through 70k Winamp skins over the course of 12 hours"
-summary_image: /images/scrolling-through-70k-winamp-skins-youtube-thumbnail.png
+summary: "${summary}"
+summary_image: <FIXME>
 ---`;
 
   // https://stackoverflow.com/a/29774197/1263117
