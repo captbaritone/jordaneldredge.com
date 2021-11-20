@@ -9,7 +9,7 @@ summary_image: /images/open-ani-online.png
 
 ---
 
-Previously, as [part of another project](https://jordaneldredge.com/blog/rendering-animated-ani-cursors-in-the-browser/), I wrote an [NPM module](https://www.npmjs.com/package/ani-cursor) that can convert Windows animated cursor files (`.ani`) into CSS animations so that they can be used in the browser.
+A year ago, as [part of another project](https://jordaneldredge.com/blog/rendering-animated-ani-cursors-in-the-browser/), I wrote an [NPM module](https://www.npmjs.com/package/ani-cursor) that can convert Windows animated cursor files (`.ani`) into CSS animations so that they can be used in the browser.
 
 Recently it occurred to me that I could use that module to build a tiny website that would let people open/view their `.ani` files online. Given that `.ani` is a relatively obscure file format, this seemed like a potentially useful tool. I can imagine that people occasionally come across an `.ani` file and would like to view it, but don't have any software installed which can do that.
 
@@ -37,6 +37,6 @@ This site is at least a bit better. You can drag in the `.ani` file to view it. 
 
 [https://capt.dev/open-ani-online/](https://capt.dev/open-ani-online/)
 
-My simple solution allows you to drag in, or select, any local `.ani` file and instantly view it as an actual animated cursor inside the drop area. No ads, no waiting. In fact, the file never leaves your browser. One caveat: my site does not work on Safari due to a [bug](https://bugs.webkit.org/show_bug.cgi?id=221589) in their browser.
+My simple solution allows you to drag in, or select, any local `.ani` file and instantly view it as an actual animated cursor inside the drop area. No ads, no waiting. In fact, the file never leaves your browser.
 
 <video src="/videos/open-ani-online.mov" controls muted style="image-rendering: pixelated; display: block; margin: 0 auto; margin-bottom: 20px; max-width: 100%;"></video>
