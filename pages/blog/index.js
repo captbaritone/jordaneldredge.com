@@ -56,9 +56,14 @@ export async function getStaticProps() {
     (postInfo) => !postInfo.archive && !postInfo.draft
   );
 
-  const feedXML = buildRSSFeed(publicPosts);
+  const feed = buildRSSFeed(publicPosts);
   // Stole this hack from https://ashleemboyer.com/how-i-added-an-rss-feed-to-my-nextjs-site
-  fs.writeFileSync("public/rss-test.xml", feedXML);
+  if (!fs.existsSync("public/feed")) {
+    fs.mkdirSync("public/feed");
+  }
+  fs.writeFileSync("public/feed/rss.xml", feed.rss2);
+  fs.writeFileSync("public/feed/rss.json", feed.json);
+  fs.writeFileSync("public/feed/atom.xml", feed.atom);
 
   return { props: { allPosts: publicPosts } };
 }
