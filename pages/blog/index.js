@@ -2,6 +2,8 @@ import * as Api from "../../lib/api";
 import Link from "next/link";
 import Layout from "../../lib/components/Layout";
 import DateString from "../../lib/components/DateString";
+import buildRSSFeed from "../../lib/rss";
+import fs from "fs";
 
 const SHOW_IMAGES = false;
 
@@ -50,11 +52,13 @@ export async function getStaticProps() {
     "summary_image",
   ]);
 
-  return {
-    props: {
-      allPosts: allPosts.filter(
-        (postInfo) => !postInfo.archive && !postInfo.draft
-      ),
-    },
-  };
+  const publicPosts = allPosts.filter(
+    (postInfo) => !postInfo.archive && !postInfo.draft
+  );
+
+  const feedXML = buildRSSFeed(publicPosts);
+  // Stole this hack from https://ashleemboyer.com/how-i-added-an-rss-feed-to-my-nextjs-site
+  fs.writeFileSync("public/rss-test.xml", feedXML);
+
+  return { props: { allPosts: publicPosts } };
 }
