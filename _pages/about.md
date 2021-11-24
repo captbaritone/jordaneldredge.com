@@ -16,7 +16,7 @@ Hollow](http://chelseahollow.com) and awesome daughter.
 
 I've been writing software as a hobby since I was in High School. After
 college, it evolved naturally into a career. Since about 2009 I have been
-a full-time engineer. I currently work at Facebook on the [Relay](https://relay.dev/) team.
+a full-time engineer. I currently work at Meta on the [Relay](https://relay.dev/) team.
 
 Check out my [projects](projects) page or [GitHub profile](https://github.com/captbaritone).
 
