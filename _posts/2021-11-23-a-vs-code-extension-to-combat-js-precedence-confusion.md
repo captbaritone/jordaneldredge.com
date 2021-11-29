@@ -28,7 +28,7 @@ conditionA ? a : null || conditonB ? b : null
 
 Especially in complex nested expressions these are easy mistakes to make. I started thinking about how I could address this issue more fundamentally. How could we make it easier to understand operator precedence?
 
-I realized that when I have a question about operator precedence, I add parentheses where I *think *****they are implicitly present and then save my file. If I was right, [Prettier](https://prettier.io/) will remove them since they are redundant. If I was wrong, the parentheses stay. Either way, my code now behaves as I expect. But this process requires that I first think to double check. *What about the cases where I don't think to double check?*
+I realized that when I have a question about operator precedence, I add parentheses where I *think* they are implicitly present and then save my file. If I was right, [Prettier](https://prettier.io/) will remove them since they are redundant. If I was wrong, the parentheses stay. Either way, my code now behaves as I expect. But this process requires that I first think to double check. *What about the cases where I don't think to double check?*
 
 ## What if Implicit Parentheses Were Always Visible?
 
