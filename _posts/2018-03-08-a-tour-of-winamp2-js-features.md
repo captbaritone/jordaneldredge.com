@@ -164,8 +164,8 @@ And of course, thanks to [Justin Frankel](https://www.1014.org/).
 [css sprites]: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Images/Implementing_image_sprites_in_CSS
 [stuart knightley]: http://stuartk.com/
 [jszip]: http://stuartk.com/
-[web audio api]: (https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API)
-[analysernode]: (https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode)
+[web audio api]: https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API
+[analysernode]: https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode
 [fast fourier transform]: https://en.wikipedia.org/wiki/Fast_Fourier_transform
 [canvas api]: https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API
 [avs]: https://en.wikipedia.org/wiki/Advanced_Visualization_Studio

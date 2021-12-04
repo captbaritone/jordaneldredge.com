@@ -6,7 +6,7 @@ youtube_slug: sOuloaGug6I
 ---
 
 I gave a talk today at the [San Francisco Vim
-Meetup](http://www.meetup.com/vim-sf/) about [Vim Awesome](vimawesome.com):
+Meetup](http://www.meetup.com/vim-sf/) about [Vim Awesome](https://vimawesome.com):
 its creation, struggles and new momentum.
 
 ::youtube{token=sOuloaGug6I}
