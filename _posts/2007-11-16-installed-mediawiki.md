@@ -3,7 +3,7 @@ title: "Installed MediaWiki"
 archive: true
 ---
 
-![White and Nerdy wikipedia screenshot](/uploads/2007/11/white_nerdy_you_suck_cropped.jpg")
+![White and Nerdy wikipedia screenshot](/uploads/2007/11/white_nerdy_you_suck_cropped.jpg)
 
 In a fit of curiosity, I installed
 [MediaWiki](http://www.mediawiki.org/wiki/MediaWiki) on my server. Its
