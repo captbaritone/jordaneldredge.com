@@ -1,6 +1,6 @@
 ---
 title: "Rendering Animated .ani Cursors in the Browser"
-summary: "Technical breakdown of how the NPM module ani-cursor converts .ani files into CSS animations in the browser"
+summary: "Technical breakdown of how the NPM module ani-cursor converts .ani files into CSS animations in the browser."
 github_comments_issue_id: 15
 summary_image: /images/ani-cursor.png
 ---

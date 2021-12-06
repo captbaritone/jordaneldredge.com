@@ -1,6 +1,6 @@
 ---
 title: "Vim Awesome: Talk at the San Francisco Vim meetup"
-summary: Video of a talk I gave introducing and explaining Vim Awesome
+summary: Video of a talk I gave introducing and explaining Vim Awesome.
 youtube_slug: sOuloaGug6I
 ---
 

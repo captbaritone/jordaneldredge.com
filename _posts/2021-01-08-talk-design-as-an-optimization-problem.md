@@ -1,6 +1,6 @@
 ---
 title: "Talk: Design as an Optimization Problem"
-summary: "Video of a talk I gave at Speakeasy JS about the engineering and design philosophy behind the Winamp Skin Museum"
+summary: "Video of a talk I gave at Speakeasy JS about the engineering and design philosophy behind the Winamp Skin Museum."
 youtube_slug: jEUr_NzP6xg
 ---
 

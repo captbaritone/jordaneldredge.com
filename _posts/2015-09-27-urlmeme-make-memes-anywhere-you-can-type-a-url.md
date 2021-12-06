@@ -1,6 +1,6 @@
 ---
 title: "UrlMeme: Make memes anywhere you can type a URL"
-summary: "I made a meme generator where the URL is the user interface"
+summary: "I made a meme generator where the URL is the user interface."
 summary_image: /images/made_a_meme.jpg
 ---
 

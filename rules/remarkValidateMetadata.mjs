@@ -45,6 +45,14 @@ const validateMetadata = lintRule(
             }
             break;
           case "summary":
+            if (!value.match(/\.$/)) {
+              const excerpt = value.substring(value.length - 30);
+              file.message(
+                `Expected summary to end with a "." but it ends "...${excerpt}".`,
+                node
+              );
+            }
+            break;
           case "title":
           case "youtube_slug":
           case "alias":

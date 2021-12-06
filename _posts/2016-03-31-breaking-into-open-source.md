@@ -1,6 +1,6 @@
 ---
 title: Breaking into open source
-summary: "A detailed guide for those who are struggling to find a way to contribute to open source"
+summary: "A detailed guide for those who are struggling to find a way to contribute to open source."
 ---
 
 For many years I put open source software on a pedestal. I wanted very badly to

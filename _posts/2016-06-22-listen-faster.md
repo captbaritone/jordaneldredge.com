@@ -1,7 +1,7 @@
 ---
 title: "Listen Faster: How I found 30 extra hours in my week "
 summary: "I’ve added the equivalent of 30 hours to my week, all dedicated to
-reading and listening"
+reading and listening."
 summary_image: /images/listen-faster.jpg
 ---
 

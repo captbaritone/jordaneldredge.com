@@ -1,6 +1,6 @@
 ---
 title: Making the case for building something useless
-summary: "Why I'm perfectly happy to have built something that nobody really uses"
+summary: "Why I'm perfectly happy to have built something that nobody really uses."
 ---
 
 Yesterday I answered some questions in an "Ask Me Anything" thread at work. One particular question was both challenging to answer, and got to the heart of how I think about side projects:

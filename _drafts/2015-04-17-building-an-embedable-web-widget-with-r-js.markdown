@@ -1,6 +1,6 @@
 ---
 title: "Building an embedable web widget with r.js"
-summary: Build a single JavaScript file, embeddable widget with r.js
+summary: Build a single JavaScript file, embeddable widget with r.js.
 ---
 
 As part of my Winamp2-js project, I wanted to allow people to embed my

@@ -1,6 +1,6 @@
 ---
 title: "I gave a talk about compiling to WebAssembly in the browser"
-summary: "Video of my TSConf 2021 talk entitled \"Faster, Safer: Compiling Untrusted Code to WebAssembly in the Browser\""
+summary: "Video of my TSConf 2021 talk entitled \"Faster, Safer: Compiling Untrusted Code to WebAssembly in the Browser\"."
 youtube_slug: hZzjrgZb-mw
 ---
 

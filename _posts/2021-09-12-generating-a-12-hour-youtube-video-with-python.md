@@ -1,6 +1,6 @@
 ---
 title: "Generating a 12 Hour Youtube Video With Python"
-summary: "Making a video that smoothly scrolls through 70k Winamp skins over the course of 12 hours"
+summary: "Making a video that smoothly scrolls through 70k Winamp skins over the course of 12 hours."
 summary_image: /images/scrolling-through-70k-winamp-skins-youtube-thumbnail.png
 ---
 
