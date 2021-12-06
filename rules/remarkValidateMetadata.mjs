@@ -11,6 +11,14 @@ import yaml from "js-yaml";
 const validateMetadata = lintRule(
   "remark-lint:validate-metadata",
   async (tree, file, options) => {
+    const filePath = file.history[0];
+    if (filePath.startsWith("_posts")) {
+      const slug = path.parse(filePath).name;
+      // TODO: Dissallow _
+      if (!slug.match(/^[a-z0-9]([a-z0-9]|-|_|\.)*[a-z0-9]$/)) {
+        file.message(`Invalid post filename: "${slug}"`, tree);
+      }
+    }
     visit(tree, "yaml", (node) => {
       const frontmatter = yaml.safeLoad(node.value, {
         schema: yaml.JSON_SCHEMA,
