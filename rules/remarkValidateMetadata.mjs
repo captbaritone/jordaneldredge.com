@@ -4,6 +4,7 @@ import path from "path";
 import fs from "fs";
 import http from "http";
 import { parse } from "url";
+import { recordImage } from "./ruleUtils.mjs";
 
 const __dirname = path.resolve();
 import yaml from "js-yaml";
@@ -33,6 +34,7 @@ const validateMetadata = lintRule(
                 file.message(`Local image does not exist: "${value}"`, node);
               }
             } else {
+              recordImage(value);
               // TODO: Move these home
             }
             break;

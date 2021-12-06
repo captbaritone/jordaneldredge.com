@@ -4,6 +4,7 @@ import path from "path";
 import fs from "fs";
 import http from "http";
 import { parse } from "url";
+import { recordImage, recordLink } from "./ruleUtils.mjs";
 
 const __dirname = path.resolve();
 
@@ -29,7 +30,9 @@ const validateUrls = lintRule(
         file.message(`Invalid non-https jordaneldredge.com link`, node);
         return;
       }
-      if (
+      if (url.startsWith("mailto:")) {
+        // Okay
+      } else if (
         url.startsWith("/") ||
         url.startsWith("https?://jordaneldredge.com")
       ) {
@@ -46,13 +49,15 @@ const validateUrls = lintRule(
             file.message(`Local post does not exist: "${trimmed}"`, node);
           }
         } else if (url.startsWith("/content") || url.startsWith("/uploads")) {
+          recordImage(url);
           const fullUrl = `https://jordaneldredge.com${url}`;
-          const promise = urlExists(fullUrl).then((ok) => {
+          /*const promise = urlExists(fullUrl).then((ok) => {
             if (!ok) {
               file.message(`Expected 200 for ${fullUrl}`, node);
             }
           });
           promises.push(promise);
+          */
         } else if (/^\/[^/]+\/?$/.test(url)) {
           // Single word link
           const trimmed = url.replace(/\//g, "");
@@ -70,28 +75,13 @@ const validateUrls = lintRule(
         } else {
           // console.log(url);
         }
+      } else {
+        recordLink(url);
       }
     });
     // TODO: Unclear if these are actually checked
     await Promise.all(promises);
   }
 );
-
-function urlExists(url) {
-  return new Promise((resolve) => {
-    const options = {
-      method: "HEAD",
-      host: parse(url).host,
-      path: parse(url).pathname,
-      port: 80,
-    };
-
-    const req = http.request(options, (res) => {
-      resolve(res.statusCode < 400 || res.statusCode >= 500);
-    });
-
-    req.end();
-  });
-}
 
 export default validateUrls;
