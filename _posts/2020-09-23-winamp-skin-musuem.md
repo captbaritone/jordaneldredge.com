@@ -91,4 +91,4 @@ Thanks to [António Afonso](https://twitter.com/aadsm) for suggesting I write th
 
 ---
 
-If you'd like to hear more, I gave a talk entitled [*Design as an Optimization Problem*](/blog/design-as-an-optimization-problem) in which I expanded upon some of the ideas in this post.
+If you'd like to hear more, I gave a talk entitled [*Design as an Optimization Problem*](/blog/talk-design-as-an-optimization-problem) in which I expanded upon some of the ideas in this post.

@@ -46,5 +46,5 @@ Over the years I've built a number of software side projects. Below are a list o
 
 -->
 
-**[UkeChord](ukulele-chords/)** - Generate ukulele chord fingerings programmatically
+**[UkeChord](/projects/ukulele-chords/)** - Generate ukulele chord fingerings programmatically
 
