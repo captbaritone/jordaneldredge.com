@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "UriBin: A self-replicating paste bin that lives in url shorteners"
 ---
 

@@ -1,6 +1,5 @@
 ---
 title: "Installed MediaWiki"
-layout: post
 archive: true
 ---
 

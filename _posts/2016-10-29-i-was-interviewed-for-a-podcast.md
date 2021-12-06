@@ -1,5 +1,4 @@
 ---
-layout: post
 title: I was interviewed for a podcast
 summary: My work interviewed me as part of their "employee spotlight" series.
 ---

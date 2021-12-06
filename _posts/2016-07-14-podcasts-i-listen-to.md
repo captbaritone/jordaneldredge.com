@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Podcasts I like"
 summary: A summary of the podcasts to which I subscribe.
 ---

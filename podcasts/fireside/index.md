@@ -1,5 +1,4 @@
 ---
-layout: page
 title: Software Engineering Fireside Chat Podcast
 ---
 

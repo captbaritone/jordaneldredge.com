@@ -1,6 +1,5 @@
 ---
 title: "\"The Surprise Slide\" Ukulele Micro Song"
-layout: post
 ---
 
 It has been over half a year since my [last post](/blog/electric-ukulele-ring-tone-for-chelsea/), and I'm back with something very similar. Chelsea was in San Diego, and while she was gone I finally was able to get something recorded for her. The number of ideas, over the past <em>months</em>, that never made it is staggering, but this one made it, thanks in no small part to its brevity and lack of lyrics. Despite its diminutive length, it still took me nearly an entire day to write, learn and record. Oy!

@@ -1,6 +1,5 @@
 ---
 title: "Walking Away [Ukulele]"
-layout: post
 summary_image: /uploads/2012/09/4418315357_78878f2695_o-500x500.jpg
 ---
 

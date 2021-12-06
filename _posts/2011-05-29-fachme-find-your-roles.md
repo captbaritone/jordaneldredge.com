@@ -1,6 +1,5 @@
 ---
 title: "FachMe: Find your roles"
-layout: post
 ---
 
 I built a data-driven website to help opera singers find roles which are likely to suit their voice. The name is a questionable pun based on the German [fach system](http://en.wikipedia.org/wiki/Fach) for classifying voices. I present to you [FachMe](http://fachme.com):

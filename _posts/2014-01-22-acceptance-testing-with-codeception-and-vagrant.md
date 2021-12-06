@@ -1,6 +1,5 @@
 ---
 title: "Acceptance testing with Codeception and Vagrant"
-layout: post
 ---
 
 [Codeception] makes [Selenium] acceptance testing very easy, but getting it

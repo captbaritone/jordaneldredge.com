@@ -1,6 +1,5 @@
 ---
 title: "Video: Barbershop tag taught with hand signs"
-layout: post
 youtube_slug: EVnBvM6W4so
 ---
 

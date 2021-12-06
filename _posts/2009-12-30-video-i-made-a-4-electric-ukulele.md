@@ -1,6 +1,5 @@
 ---
 title: "Video: I Made a $4 Electric Ukulele"
-layout: post
 youtube_slug: K236WImqlxU
 ---
 

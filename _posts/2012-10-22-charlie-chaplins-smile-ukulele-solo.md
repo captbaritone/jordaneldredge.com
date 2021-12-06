@@ -1,6 +1,5 @@
 ---
 title: "Charlie Chaplin's Smile: Ukulele Solo"
-layout: post
 youtube_slug: Tw4L_Ys-14g
 ---
 

@@ -1,6 +1,5 @@
 ---
 title: "Jazz Ukulele \"Love Is a Song\" from Bambi"
-layout: post
 youtube_slug: Mf4x2K5oBMQ
 ---
 

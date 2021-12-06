@@ -1,6 +1,5 @@
 ---
 title: "Barbershop multi-track: Original cell phone ring tone tag"
-layout: post
 ---
 
 Here is a tag I wrote, and multi-tracked, as a custom ring tone for my cell phone.

@@ -1,6 +1,5 @@
 ---
 title: "Recording of robot reading song translation"
-layout: post
 archive: true
 ---
 

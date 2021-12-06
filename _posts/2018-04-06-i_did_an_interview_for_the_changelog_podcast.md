@@ -1,5 +1,4 @@
 ---
-layout: post
 title: I did an interview for the Changelog Podcast
 summary: "I talked about Winamp2-js on the Changelog Podcast."
 ---

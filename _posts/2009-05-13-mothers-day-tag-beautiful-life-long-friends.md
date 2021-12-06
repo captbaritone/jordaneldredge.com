@@ -1,6 +1,5 @@
 ---
 title: "Mother's Day Tag: Beautiful Life Long Friends"
-layout: post
 archive: true
 ---
 

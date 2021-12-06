@@ -1,6 +1,5 @@
 ---
 title: "Barbershop multi-track: Who'll Take My Place When I'm Gone"
-layout: post
 ---
 
 Another attempt at barbershop multi-tracking:

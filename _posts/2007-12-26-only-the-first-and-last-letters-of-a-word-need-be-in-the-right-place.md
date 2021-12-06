@@ -1,6 +1,5 @@
 ---
 title: "Only the first and last letters of a word need be in the right place"
-layout: post
 ---
 
 After my dad showed me an article in the [Funny

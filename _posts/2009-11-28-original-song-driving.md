@@ -1,6 +1,5 @@
 ---
 title: "Original Song: \"Driving\""
-layout: post
 ---
 
 <img class="size-large wp-image-716 alignright" style="margin-left: 15px; margin-right: 15px;" title="9622_166802582176_739287176_4016994_1081156_n" src="/uploads/2009/11/9622_166802582176_739287176_4016994_1081156_n-500x375.jpg" alt="9622_166802582176_739287176_4016994_1081156_n" width="243" height="183" />

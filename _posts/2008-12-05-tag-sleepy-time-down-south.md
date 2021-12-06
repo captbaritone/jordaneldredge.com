@@ -1,6 +1,5 @@
 ---
 title: "Tag: Sleepy Time Down South"
-layout: post
 archive: true
 ---
 

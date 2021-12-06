@@ -1,6 +1,5 @@
 ---
 title: "Fixed the two major problems with the MAME cabinet"
-layout: post
 ---
 
 Finally I fixed the last two major flaws with the MAME cabinet!

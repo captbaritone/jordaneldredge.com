@@ -1,6 +1,5 @@
 ---
 title: "classicalcode.com"
-layout: post
 archive: true
 ---
 

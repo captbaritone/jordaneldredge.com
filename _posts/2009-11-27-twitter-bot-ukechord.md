@@ -1,6 +1,5 @@
 ---
 title: "Twitter Bot: UkeChord"
-layout: post
 ---
 
 <strong>Edit (May 18, 2012): This bot is now defunct.</strong>

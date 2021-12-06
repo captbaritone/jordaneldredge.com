@@ -1,6 +1,5 @@
 ---
 title: "Free Edition of Charles Gounod’s Le Crucifix"
-layout: post
 summary_image: /uploads/2013/09/score-page1.png
 ---
 

@@ -1,6 +1,5 @@
 ---
 title: "The ABCs Backwards"
-layout: post
 youtube_slug: WmelrI2ArLs
 ---
 

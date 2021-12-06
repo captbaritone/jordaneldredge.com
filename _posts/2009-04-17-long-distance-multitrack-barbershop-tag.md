@@ -1,6 +1,5 @@
 ---
 title: "Long Distance Multitrack Barbershop Tag"
-layout: post
 archive: true
 ---
 

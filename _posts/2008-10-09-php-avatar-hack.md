@@ -1,6 +1,5 @@
 ---
 title: "PHP: Avatar Hack"
-layout: post
 ---
 
 <img class="size-full wp-image-144 alignleft" style="margin: 5px; float: left;" title="avatar Hack" src="/uploads/2008/11/avatar.jpg" alt="" width="150" height="232" />I am a member of a web forum which allows you to use an Avatar image of your choice. You simply give them the url of the image. The ability of php to generate images lead me to try to come up with ways to take advantage of this system.

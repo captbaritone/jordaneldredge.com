@@ -1,6 +1,5 @@
 ---
 title: "Barbershop tag taught as a limerick"
-layout: post
 archive: true
 ---
 

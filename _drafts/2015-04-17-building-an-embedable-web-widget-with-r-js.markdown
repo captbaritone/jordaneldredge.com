@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Building an embedable web widget with r.js"
 date: "2015-04-17 20:01:15 -0700"
 summary: Build a single JavaScript file, embeddable widget with r.js

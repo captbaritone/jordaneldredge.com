@@ -1,6 +1,5 @@
 ---
 title: "Wordpress running"
-layout: post
 archive: true
 ---
 

@@ -1,6 +1,5 @@
 ---
 title: "Tag: All By Myself Alone"
-layout: post
 archive: true
 ---
 

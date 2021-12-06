@@ -1,6 +1,5 @@
 ---
 title: "Tweeting the various things the SF City College hill says"
-layout: post
 archive: true
 ---
 

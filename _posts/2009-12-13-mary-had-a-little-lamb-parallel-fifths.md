@@ -1,6 +1,5 @@
 ---
 title: "Mary Had a Little Lamb - Parallel Fifths"
-layout: post
 youtube_slug: PETo9TT-qP8
 ---
 

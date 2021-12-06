@@ -1,6 +1,5 @@
 ---
 title: "Endlessly rising Shepard Tone"
-layout: post
 ---
 
 After talking about the [Shepard Tone](http://en.wikipedia.org/wiki/Shepard_tone), an audio illusion that can create an endlessly rising or falling scale, with my friend [Ben Pender](http://www.benjaminpender.com/), I decided to try to create one using [Lilypond](http://lilypond.org/web/). The result is quite interesting.

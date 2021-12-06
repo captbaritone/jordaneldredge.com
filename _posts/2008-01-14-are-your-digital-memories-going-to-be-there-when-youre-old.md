@@ -1,6 +1,5 @@
 ---
 title: "Are your digital memories going to be there when you're old?"
-layout: post
 archive: true
 ---
 

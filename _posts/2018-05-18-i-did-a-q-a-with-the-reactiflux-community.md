@@ -1,5 +1,4 @@
 ---
-layout: post
 title: I did a Q/A with the Reactiflux community
 summary: "Read the transcript of a live Q/A I did about Webamp and Nuclide."
 ---

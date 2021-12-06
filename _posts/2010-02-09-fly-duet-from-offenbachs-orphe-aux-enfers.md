@@ -1,6 +1,5 @@
 ---
 title: "Fly Duet from Offenbach's Orphée aux enfers"
-layout: post
 archive: true
 youtube_slug: 6HXCSosh_9w
 ---

@@ -1,6 +1,5 @@
 ---
 title: "Writing a custom Codeception module"
-layout: post
 ---
 
 I enjoy using [Codeception](http://codeception.com/) to write my acceptance

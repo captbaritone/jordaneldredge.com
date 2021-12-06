@@ -1,6 +1,5 @@
 ---
 title: "I Come To the Garden Alone (For George Morris)"
-layout: post
 youtube_slug: FDB0LMrDdEs
 ---
 

@@ -1,6 +1,5 @@
 ---
 title: "SFSU Chamber Singers sing for ACDA"
-layout: post
 youtube_slug: dO--mXsEyS0
 ---
 

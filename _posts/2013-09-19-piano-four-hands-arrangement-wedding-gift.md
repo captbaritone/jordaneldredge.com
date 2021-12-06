@@ -1,6 +1,5 @@
 ---
 title: "Piano Four-Hands Arrangement (Wedding Gift)"
-layout: post
 summary_image: /uploads/2014/06/eldredge-nammies_four_hands.pdf
 ---
 

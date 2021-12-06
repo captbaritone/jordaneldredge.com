@@ -21,7 +21,6 @@ async function main() {
   readline.close();
 
   const template = `---
-layout: post
 title: "${title}"
 summary: "${summary}"
 summary_image: <FIXME>

@@ -1,6 +1,5 @@
 ---
 title: "Barbershop multi-track: Lord, You Made the Night Too Long"
-layout: post
 ---
 
 I learned a good deal from the "imperfections" of [my first barbershop

@@ -1,6 +1,5 @@
 ---
 title: "How I DDOSed myself with an avatar"
-layout: post
 ---
 
 Building on my [previous avatar hack](/blog/php-avatar-hack/),

@@ -1,6 +1,5 @@
 ---
 title: "Silly fach generator"
-layout: post
 ---
 
 Inspired by the silly over the top descriptions people give their own voices,

@@ -1,6 +1,5 @@
 ---
 title: "Further Backwards ABCs Foolishness"
-layout: post
 youtube_slug: UQ31BkSpshY
 ---
 

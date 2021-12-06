@@ -1,6 +1,5 @@
 ---
 title: "Video: Overtone singing"
-layout: post
 youtube_slug: d8hnK5_5wL8
 ---
 

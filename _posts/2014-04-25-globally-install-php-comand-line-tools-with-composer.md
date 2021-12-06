@@ -1,6 +1,5 @@
 ---
 title: "Globally install PHP command-line tools with Composer"
-layout: post
 ---
 
 We are spoiled with all the great PHP command-line tools available these days.

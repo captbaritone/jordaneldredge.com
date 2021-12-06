@@ -1,6 +1,5 @@
 ---
 title: "Refresh Cannon"
-layout: post
 ---
 
 EDIT: *Due to an excess of traffic, I have had to take Refresh Cannon off of this page. Please try again later. I am so sorry folks. Feel free to subscribe to the RSS feed. I will post it again when things cool down.*

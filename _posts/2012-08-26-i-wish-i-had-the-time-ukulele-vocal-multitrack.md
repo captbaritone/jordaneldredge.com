@@ -1,6 +1,5 @@
 ---
 title: "I Wish I Had The Time [Ukulele/Vocal Multitrack]"
-layout: post
 summary_image: /uploads/2012/08/vintage2-500x332.jpg
 ---
 

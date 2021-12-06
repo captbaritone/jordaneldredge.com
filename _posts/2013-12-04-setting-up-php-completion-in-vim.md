@@ -1,6 +1,5 @@
 ---
 title: "Setting up PHP completion in Vim"
-layout: post
 ---
 
 Yesterday I setup PHP completion in Vim by adding the following to my `.vimrc`:

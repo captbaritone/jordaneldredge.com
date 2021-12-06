@@ -1,6 +1,5 @@
 ---
 title: "[Original Song] \"Our Love Will Last As Long\""
-layout: post
 ---
 
 <div id="attachment_1169" style="width: 510px" class="wp-caption alignnone"><a href="/uploads/2009/07/3358509685_bcaf1f0c57_b.jpg"><img class="size-large wp-image-1169" title="3358509685_bcaf1f0c57_b" alt="" src="/uploads/2009/07/3358509685_bcaf1f0c57_b-500x333.jpg" width="500" height="333" /></a><p class="wp-caption-text">Photo credit: [Noel Cornell](http://www.flickr.com/photos/noelcornell/3358509685) via [Flickr](http://www.flickr.com/)</p></div>

@@ -1,7 +1,5 @@
 ---
 title: Contact
-layout: page
-permalink: /contact/
 ---
 
 I'd love to hear from you! Try any of these methods:

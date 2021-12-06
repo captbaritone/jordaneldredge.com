@@ -1,6 +1,5 @@
 ---
 title: "GutterGold.com"
-layout: post
 ---
 
 __Edit (May 18, 2012): This project is no-longer online.__

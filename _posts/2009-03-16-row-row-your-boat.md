@@ -1,6 +1,5 @@
 ---
 title: "Row Row Your Boat"
-layout: post
 archive: true
 youtube_slug: _YWitlb7BUc
 ---

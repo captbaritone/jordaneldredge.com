@@ -1,6 +1,5 @@
 ---
 title: "\"Lazy Afternoon\" Barbershop Tag"
-layout: post
 ---
 
 <p style="text-align: left;">The other day I was sitting on the couch with [my girlfriend](http://www.chelseahollow.com), and for a moment I felt completely at peace. I wrote and recorded this tag for that simple moment, and the the company in which I spent it.</p>

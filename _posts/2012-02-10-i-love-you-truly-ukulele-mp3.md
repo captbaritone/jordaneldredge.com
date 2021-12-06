@@ -1,6 +1,5 @@
 ---
 title: "I Love You Truly [Ukulele Mp3]"
-layout: post
 ---
 
 With [Chelsea](http://chelseahollow.com) traveling all over the country on her graduate school auditions I had both the time and motivation to record her a little song. Although this one is not original, it is the same style as the [two](/blog/electric-ukulele-ring-tone-for-chelsea/) [previous](/blog/the-surprise-slide-ukulele-micro-song/) ring tones I made for her. The song has four electric ukulele tracks and one electric bass track.

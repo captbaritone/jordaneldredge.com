@@ -1,6 +1,5 @@
 ---
 title: "Doo-Wop Multitrack: \"Earth Angel\" (for Chelsea)"
-layout: post
 ---
 
 My girlfriend is sick, so I arranged and recorded her a song. I hope this helps you feel better Chelsea.

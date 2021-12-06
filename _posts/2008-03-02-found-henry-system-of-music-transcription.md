@@ -1,6 +1,5 @@
 ---
 title: "Found: Henry system of music transcription"
-layout: post
 ---
 
 As some of you may know, I collect items that I find on the ground. Over the

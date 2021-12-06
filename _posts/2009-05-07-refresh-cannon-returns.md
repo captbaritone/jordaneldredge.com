@@ -1,6 +1,5 @@
 ---
 title: "Refresh Cannon Returns"
-layout: post
 archive: true
 ---
 

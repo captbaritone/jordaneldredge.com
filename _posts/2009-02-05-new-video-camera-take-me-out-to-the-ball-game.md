@@ -1,6 +1,5 @@
 ---
 title: "New Video Camera: Take Me Out to the Ball Game"
-layout: post
 archive: true
 youtube_slug: RYjIj23-7D4
 ---

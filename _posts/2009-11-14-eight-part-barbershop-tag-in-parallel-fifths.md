@@ -1,6 +1,5 @@
 ---
 title: "Eight-Part Barbershop Tag In Parallel Fifths"
-layout: post
 ---
 
 I have recently observed, [on Youtube](http://www.youtube.com/watch?v=8TbBZkh9PIs), a very interesting method of turning any barbershop tag into a jazzy eight part tag: simply double each part a perfect fifth higher. Or, said another way, have a second quartet simultaneously sing the same tag a fifth above.

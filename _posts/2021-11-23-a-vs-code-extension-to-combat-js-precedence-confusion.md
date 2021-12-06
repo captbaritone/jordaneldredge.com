@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "A VSCode Extension to Clarify Operator Precedence in JS"
 summary: "I wrote a VS Code extension which shows subscript parentheses in your JS code to help clarify operator precedence."
 ---

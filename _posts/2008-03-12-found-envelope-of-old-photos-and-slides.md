@@ -1,6 +1,5 @@
 ---
 title: "Found: Envelope of old photos and slides"
-layout: post
 ---
 
 <a href="/uploads/2008/02/photo-0039.jpg" title="Envelope of old photos and slides 4"><img src="/uploads/2008/02/photo-0039.thumbnail.jpg" alt="Envelope of old photos and slides 4" align="left" hspace="5" /></a>I can't recall where or when, but I found these seven photos and slides in a PG&amp;E bill return envelope.

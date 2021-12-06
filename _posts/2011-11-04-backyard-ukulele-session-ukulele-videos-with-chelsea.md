@@ -1,6 +1,5 @@
 ---
 title: "Backyard Ukulele Session: Ukulele Videos with Chelsea"
-layout: post
 youtube_slug: ZIxgGRyTtKk
 ---
 

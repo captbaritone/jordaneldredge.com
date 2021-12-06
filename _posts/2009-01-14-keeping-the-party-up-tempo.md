@@ -1,6 +1,5 @@
 ---
 title: "Keeping the Party \"Up-Tempo\""
-layout: post
 youtube_slug: fvWXrld200E
 ---
 

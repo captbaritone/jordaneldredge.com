@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Building the @WinampSkins Twitter Bot"
 summary: "How my Twitter bot @winampskins works under the hood, how it has evolved over time, and what I've learned from the project."
 summary_image: /images/winamp-skins-twitter-bot-bio.png

@@ -1,6 +1,5 @@
 ---
 title: "New Song: Ballad of the man who can't sing"
-layout: post
 ---
 
 I was listening to NPR today, and there was a program of some song writer who was wining an award. He sang a few of his songs and they were terrible. I decided that even I could do better than that.

@@ -1,6 +1,5 @@
 ---
 title: "[Ukulele Solo] Never On Sunday"
-layout: post
 youtube_slug: lPM9QRCEB60
 ---
 

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Speeding Up Webamp's Music Visualizer with WebAssembly"
 summary: "Writing an in-browser compiler to compile untrusted user-supplied code to fast and secure Wasm at runtime."
 github_comments_issue_id: 16

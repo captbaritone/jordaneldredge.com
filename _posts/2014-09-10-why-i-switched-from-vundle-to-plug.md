@@ -1,6 +1,5 @@
 ---
 title: "Why I switched from Vundle to Plug"
-layout: post
 summary: I've found Plug to be superior to Vundle in several regards.
 github_comments_issue_id: 8
 ---

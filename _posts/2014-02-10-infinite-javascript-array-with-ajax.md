@@ -1,6 +1,5 @@
 ---
 title: "Infinite javascript array using AJAX"
-layout: post
 ---
 
 Last Halloween I made a [simple website] that combines nouns with sexy

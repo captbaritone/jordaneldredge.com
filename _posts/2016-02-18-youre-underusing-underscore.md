@@ -1,6 +1,5 @@
 ---
 title: "You're underusing Underscore"
-layout: post
 summary: "Ten common mistakes people make when using Underscore, and a linting tool to detect them."
 ---
 

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Implementing Python's Context Manager Pattern in JavaScript"
 summary: "Python Context Managers are a great way to model resources with setup and teardown. Here's how to implement that pattern in JavaScript."
 ---

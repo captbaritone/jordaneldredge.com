@@ -1,7 +1,6 @@
 ---
 title: "Chelsea's Text Tone [Ukulele]"
 
-layout: post
 ---
 
 <a href="/uploads/2012/08/531292_3691278771372_40740060_n.jpg"><img class="size-large wp-image-1145  " title="531292_3691278771372_40740060_n" src="/uploads/2012/08/531292_3691278771372_40740060_n-500x375.jpg" alt="" width="500" height="375" /></a>

@@ -1,6 +1,5 @@
 ---
 title: "[Video] Tom Lehrer's \"My Home Town\" on Ukulele"
-layout: post
 archive: true
 youtube_slug: JQkEWCYo9LU
 ---

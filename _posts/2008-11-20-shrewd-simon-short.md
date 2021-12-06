@@ -1,6 +1,5 @@
 ---
 title: "Shrewd Simon Short"
-layout: post
 ---
 
 My mom recently sent me a link to a Youtube video of a great tongue twister segment from Pinkey and the Brain:

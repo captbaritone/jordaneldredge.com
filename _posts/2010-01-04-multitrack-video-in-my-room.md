@@ -1,6 +1,5 @@
 ---
 title: "Multitrack Video: \"In My Room\""
-layout: post
 youtube_slug: vdLnQ5T0VaU
 ---
 

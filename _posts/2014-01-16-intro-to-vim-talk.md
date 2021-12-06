@@ -1,6 +1,5 @@
 ---
 title: "Intro to Vim Talk"
-layout: post
 ---
 
 On Tuesday I gave my very first talk. I've been attending the [San Francisco Vim

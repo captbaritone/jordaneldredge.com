@@ -1,7 +1,3 @@
----
-layout: page
-permalink: /
----
 <div class='headshot'>
 <img src="/images/avatar.jpg"
 class="shadow-xl rounded-xl"

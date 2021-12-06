@@ -1,6 +1,5 @@
 ---
 title: "My brother's minuet"
-layout: post
 ---
 
 My [brother](http://thatsmathematics.com/) took a music course in his undergrad

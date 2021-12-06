@@ -1,6 +1,5 @@
 ---
 title: "Youtube finally caught me"
-layout: post
 archive: true
 youtube_slug: MGtwpWbRWxw
 ---

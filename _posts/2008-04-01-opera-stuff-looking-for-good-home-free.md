@@ -1,6 +1,5 @@
 ---
 title: "Opera stuff looking for good home (free)"
-layout: post
 archive: true
 ---
 

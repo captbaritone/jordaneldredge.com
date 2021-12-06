@@ -1,6 +1,5 @@
 ---
 title: "I'm glad I factored out jQuery"
-layout: post
 summary: I refactored Winamp2-js to not depend on jQuery, and learned native JavaScript is not so bad.
 ---
 

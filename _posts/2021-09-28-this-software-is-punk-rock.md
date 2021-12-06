@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "This Software is Punk Rock"
 summary: "A reprint of an interview I did with the Italian design magazine Progetto Grafico about Winamp's significance in our digital culture"
 summary_image: /images/progetto-grafico-37-cover.jpg

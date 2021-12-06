@@ -1,6 +1,5 @@
 ---
 title: "Backwards ABCs One Step Nerdier"
-layout: post
 youtube_slug: EA-f_rx95WY
 ---
 

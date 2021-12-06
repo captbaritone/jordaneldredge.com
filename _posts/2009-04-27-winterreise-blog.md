@@ -1,6 +1,5 @@
 ---
 title: "Winterreise Blog"
-layout: post
 archive: true
 ---
 

@@ -1,6 +1,5 @@
 ---
 title: "Testing emails with Codeception"
-layout: post
 ---
 
 **Update:** *(Mar 19, 2014) I have converted the helper file into a Codeception

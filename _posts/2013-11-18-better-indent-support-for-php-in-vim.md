@@ -1,6 +1,5 @@
 ---
 title: "Better indent support for PHP in Vim"
-layout: post
 ---
 
 If you use PHP for templating, chances are you have trouble getting Vim to

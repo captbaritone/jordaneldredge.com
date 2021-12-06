@@ -1,6 +1,5 @@
 ---
 title: "Mac OS X keychain fix"
-layout: post
 ---
 
 ![Keychain First Aid](/content/images/osx-keychain-fix.png)

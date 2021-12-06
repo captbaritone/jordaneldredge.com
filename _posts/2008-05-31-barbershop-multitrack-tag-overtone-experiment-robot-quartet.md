@@ -1,6 +1,5 @@
 ---
 title: "Barbershop Multitrack Tag: Overtone experiment / robot quartet"
-layout: post
 ---
 
 <strong>Edit: Most of the explanation I came up with for this turns out to be wrong. I will update when I understand more thoroughly.

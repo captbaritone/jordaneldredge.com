@@ -1,6 +1,5 @@
 ---
 title: "Tom Waits' \"Ol' 55\" for Jared and Kathleen [Ukulele]"
-layout: post
 summary_image: /uploads/2012/08/561217_10150915093251302_1710160913_n-500x375.jpg
 ---
 

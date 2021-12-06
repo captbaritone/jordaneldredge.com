@@ -1,6 +1,5 @@
 ---
 title: "Jazz Ukuele Video: What's New?"
-layout: post
 youtube_slug: eJoKuzVGyFY
 ---
 

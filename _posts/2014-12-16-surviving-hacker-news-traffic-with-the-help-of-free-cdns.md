@@ -1,6 +1,5 @@
 ---
 title: "Surviving Hacker News traffic with the help of free CDNs"
-layout: post
 summary: Free CDNs are a thing, and they can be put to use almost instantaneously during an unexpected traffic spike.
 ---
 

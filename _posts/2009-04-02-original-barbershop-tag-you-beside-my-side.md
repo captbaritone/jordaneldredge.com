@@ -1,6 +1,5 @@
 ---
 title: "Original Barbershop Tag: You Beside My Side"
-layout: post
 ---
 
 A few days ago, I wrote a barbershop tag for my girlfriend [Chelsea](http://www.chelseahollow.com).

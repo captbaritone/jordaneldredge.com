@@ -1,5 +1,4 @@
 ---
-layout: post
 title: I talked about Winamp2-js on the Zeal Interestings Podcast
 summary_image: /images/coding-zeal-podcast.jpg
 ---

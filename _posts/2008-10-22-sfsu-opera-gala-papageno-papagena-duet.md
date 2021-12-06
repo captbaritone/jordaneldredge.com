@@ -1,6 +1,5 @@
 ---
 title: "SFSU Opera Gala: Papageno Papagena Duet"
-layout: post
 archive: true
 ---
 

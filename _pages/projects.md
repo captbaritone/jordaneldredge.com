@@ -1,7 +1,5 @@
 ---
-layout: page
 title: Projects
-permalink: /projects/
 ---
 
 Over the years I've built a number of software side projects. Below are a list of the more interesting ones. For a more exhaustive list see my [blog](/blog).

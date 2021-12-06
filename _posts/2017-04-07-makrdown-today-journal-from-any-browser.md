@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Markdown Today: Journal from any browser"
 summary: A private, mobile-first web app that writes your journal directly to Dropbox.
 ---

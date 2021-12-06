@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Open .ani Animated Cursors Online"
 summary: "I made a simple website where you can instantly open and view any .ani file for free"
 summary_image: /images/open-ani-online.png

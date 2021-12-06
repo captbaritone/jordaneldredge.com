@@ -1,6 +1,5 @@
 ---
 title: "Drawing mandalas with PHP for my Papa"
-layout: post
 ---
 
 *Update, Jan 2015: I've rewritten this in JavaScript:

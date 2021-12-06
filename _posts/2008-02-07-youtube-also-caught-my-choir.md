@@ -1,6 +1,5 @@
 ---
 title: "Youtube also caught my choir"
-layout: post
 youtube_slug: 0usF9fycCSE
 ---
 

@@ -1,6 +1,5 @@
 ---
 title: "I've started a tech blog"
-layout: post
 archive: true
 ---
 

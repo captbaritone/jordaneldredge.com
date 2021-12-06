@@ -1,6 +1,5 @@
 ---
 title: "Fix For Digg Link in Sociable 3.4.4 Wordpress Plugin "
-layout: post
 archive: true
 ---
 

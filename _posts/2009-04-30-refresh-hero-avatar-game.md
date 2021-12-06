@@ -1,6 +1,5 @@
 ---
 title: "Refresh Hero Avatar Game"
-layout: post
 ---
 
 <img class="alignright" style="border: 2px solid black; margin: 5px; margin-left: 20px;" title="Refresh Hero" src="http://classicalcode.com/projects/hero.png" alt="" width="150" height="355" />

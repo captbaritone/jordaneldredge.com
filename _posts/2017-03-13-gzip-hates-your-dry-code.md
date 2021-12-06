@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Gzip hates your DRY code
 summary: How to remove code and still increase your library weight.
 ---

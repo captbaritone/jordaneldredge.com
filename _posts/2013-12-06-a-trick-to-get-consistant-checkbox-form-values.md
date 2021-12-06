@@ -1,6 +1,5 @@
 ---
 title: "A trick to get consistent checkbox form values"
-layout: post
 alias: /blog/a_trick_to_get_consistant_checkbox_form_values
 ---
 

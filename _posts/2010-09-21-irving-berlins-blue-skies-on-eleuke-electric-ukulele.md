@@ -1,6 +1,5 @@
 ---
 title: "Irving Berlin's \"Blue Skies\" on Eleuke electric ukulele"
-layout: post
 youtube_slug: MUcnYnjIk88
 ---
 

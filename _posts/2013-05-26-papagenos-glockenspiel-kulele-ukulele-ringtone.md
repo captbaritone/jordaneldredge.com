@@ -1,6 +1,5 @@
 ---
 title: "Papageno's Glockenspiel-kulele [Ukulele Ringtone]"
-layout: post
 ---
 
 <a href="/uploads/2013/05/237_519706926108_6153_n.jpg"><img class="size-large wp-image-1377" alt="Jordan Eldredge as Papageno in SFSU's 2005 Magic Flute - Photo credit Isaac Benelli" src="/uploads/2013/05/237_519706926108_6153_n-500x334.jpg" width="500" height="334" /></a>

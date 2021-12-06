@@ -1,6 +1,5 @@
 ---
 title: Breaking into open source
-layout: post
 summary: "A detailed guide for those who are struggling to find a way to contribute to open source"
 ---
 

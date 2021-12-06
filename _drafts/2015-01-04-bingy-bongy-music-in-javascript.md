@@ -1,7 +1,5 @@
 ---
 title: "Generative \"Bingy Bongy music\" in JavaScript"
-draftDate: 2015-01-04
-layout: post
 ---
 
 > My friend Peter Wallace had the original idea. He made one using +5/-12 volt

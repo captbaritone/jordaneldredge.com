@@ -1,6 +1,5 @@
 ---
 title: Why linting errors should cause tests to fail
-layout: post
 summary: Making the case against allowing linting errors in master.
 ---
 

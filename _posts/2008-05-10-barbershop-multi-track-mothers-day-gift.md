@@ -1,6 +1,5 @@
 ---
 title: "Barbershop multi-track: Mother's Day gift"
-layout: post
 archive: true
 ---
 

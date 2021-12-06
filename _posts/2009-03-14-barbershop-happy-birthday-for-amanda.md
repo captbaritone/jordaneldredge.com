@@ -1,6 +1,5 @@
 ---
 title: "Barbershop Happy Birthday For Amanda"
-layout: post
 ---
 
 My birthday was a few days ago, and two different people, knowing my love of barbershop, sent me a [Youtube video](http://www.youtube.com/watch?v=Q1ljOdTM9l4) of a quartet singing "Happy Birthday". This got me thinking about barbershop arrangments of the song. 

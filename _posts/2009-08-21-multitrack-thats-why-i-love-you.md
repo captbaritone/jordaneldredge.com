@@ -1,6 +1,5 @@
 ---
 title: "[Multitrack] \"That's Why I Love You\""
-layout: post
 ---
 
 <a href="http://www.amazon.com/I-Only-Have-Eyes-You/dp/B000005MWW"><img class="alignright size-full wp-image-607" style="margin-left: 10px;" title="The Flamingos: &quot;I Only Have Eyes For You&quot;" src="/uploads/2009/08/1996-cd-coverbig-310.jpg" alt="The Flamingos: &quot;I Only Have Eyes For You&quot;" width="248" height="248" /></a>

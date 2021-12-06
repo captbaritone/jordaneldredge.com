@@ -1,6 +1,5 @@
 ---
 title: "Music nerd limericks"
-layout: post
 archive: true
 ---
 

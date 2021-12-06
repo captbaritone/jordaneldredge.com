@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Mainlining Nostalgia: Making the Winamp Skin Museum"
 summary: "Thoughts on what I think made the Winamp Skin Musuem successful"
 github_comments_issue_id: 14

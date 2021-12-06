@@ -1,6 +1,5 @@
 ---
 title: "Alice 'n The Irving Street Kidz"
-layout: post
 ---
 
 Today my friend Alison, my room mate Noah and myself recorded a rendition of "I

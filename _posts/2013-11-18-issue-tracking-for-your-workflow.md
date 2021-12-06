@@ -1,6 +1,5 @@
 ---
 title: "Issue tracking for your workflow"
-layout: post
 ---
 
 As software developers our profession is automating systems. The moment

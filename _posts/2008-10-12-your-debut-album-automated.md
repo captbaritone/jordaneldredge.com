@@ -1,6 +1,5 @@
 ---
 title: "Your Debut Album (Automated)"
-layout: post
 ---
 
 ![Album Cover Example](/uploads/album-cover-example.jpg)

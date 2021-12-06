@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Functional JavaScript: Learn by refactoring"
 summary: Learn the basics of functional programming by iteratively refactoring imperative code.
 ---

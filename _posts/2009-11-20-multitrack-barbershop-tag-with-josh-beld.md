@@ -1,6 +1,5 @@
 ---
 title: "Multitrack Barbershop Tag With Josh Beld"
-layout: post
 archive: true
 ---
 

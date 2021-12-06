@@ -1,6 +1,5 @@
 ---
 title: "Drawing mandalas with JavaScript and canvas"
-layout: post
 summary: Rewriting a PHP script from 2008 in JavaScript.
 summary_image: /images/mandala.png
 ---

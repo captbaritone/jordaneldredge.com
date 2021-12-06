@@ -1,6 +1,5 @@
 ---
 title: "Server back up (or so it seems)"
-layout: post
 archive: true
 ---
 

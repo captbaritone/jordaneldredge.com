@@ -1,6 +1,5 @@
 ---
 title: "FMyLife.com + SadTrombone.com Mashup"
-layout: post
 archive: true
 ---
 
