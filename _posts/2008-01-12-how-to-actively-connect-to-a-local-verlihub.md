@@ -5,7 +5,7 @@ title: "How to actively connect to a local Verlihub"
 Ever since I moved my DC hub to my apartment, I have been unable to connect to
 the hub in active mode from a client on the local intranet.
 
-__The solution:__
+**The solution:**
 
 Set the Verlihub database's alternate_ip variable for your user to your
 external ip.

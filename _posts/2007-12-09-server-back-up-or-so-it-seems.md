@@ -10,4 +10,3 @@ actual problem was, my [brother](https://thatsmathematics.com/blog/about-me/) an
 I were able to solve the problem by downgrading to the previous version of the
 Linux kernel. It now has uptime of over three days, which seems to indicate
 that the problem has been fixed.
-
