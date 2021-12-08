@@ -50,14 +50,6 @@ const validateUrls = lintRule(
           }
         } else if (url.startsWith("/content") || url.startsWith("/uploads")) {
           recordImage(url);
-          const fullUrl = `https://jordaneldredge.com${url}`;
-          /*const promise = urlExists(fullUrl).then((ok) => {
-            if (!ok) {
-              file.message(`Expected 200 for ${fullUrl}`, node);
-            }
-          });
-          promises.push(promise);
-          */
         } else if (/^\/[^/]+\/?$/.test(url)) {
           // Single word link
           const trimmed = url.replace(/\//g, "");

@@ -4,7 +4,7 @@ title: "GutterGold.com"
 
 __Edit (May 18, 2012): This project is no-longer online.__
 
-Since [my brother](http://www.math.ucsd.edu/~neldredg/) introduced
+Since [my brother](https://thatsmathematics.com/blog/about-me/) introduced
 me to [Found Magazine](http://foundmagazine.com/) several years ago,
 watching the gutter and sidewalk for interesting things has become a hobby of
 mine. Unfortunately I was never able to find a good website on which to post

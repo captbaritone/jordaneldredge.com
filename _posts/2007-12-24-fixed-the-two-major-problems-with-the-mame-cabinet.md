@@ -8,7 +8,7 @@ __Problem:__ The device that connects the arcade buttons to the keyboard port
 was not recognized as keyboard, and therefore the computer was not listening
 for input.
 
-__Solution:__ My [brother](http://www.math.ucsd.edu/~neldredg/) hacked the
+__Solution:__ My [brother](https://thatsmathematics.com/blog/about-me/) hacked the
 kernel so that no matter if the keyboard is recognized or not, the computer
 listens on that port.
 
