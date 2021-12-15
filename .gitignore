@@ -29,8 +29,5 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 
-# Large files
-public/uploads
-
 # RSS
 public/feed

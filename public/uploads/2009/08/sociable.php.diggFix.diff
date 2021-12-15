@@ -1,0 +1,4 @@
+134c134
+< 		'url' => 'http://digg.com/submit?url=PERMALINK&amp;title=TITLE&amp;bodytext=EXCERPT',
+---
+> 		'url' => 'http://digg.com/submit?phase=2&amp;url=PERMALINK&amp;title=TITLE&amp;bodytext=EXCERPT',

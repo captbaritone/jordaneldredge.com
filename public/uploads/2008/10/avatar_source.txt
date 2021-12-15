@@ -1,0 +1,134 @@
+<?php
+/*-------------------------
+|
+|   Instructions
+|
+\-------------------------*/
+
+// Name this file index.php and place it in a folder named avatar.jpg on your server
+// Then, when asked for your avatar url, give the location of the folder "avatar.jpg"
+
+/*-------------------------
+|
+|   Set some variables
+|
+\-------------------------*/
+
+// If you don't want to use the database, set this to "false" and ignore the next three constants
+define("USE_DATABASE", true);
+define("MYSQL_USERNAME", "yourMysqlUsername");
+define("MYSQL_PASSWORD", "yourMysqlUserPassword");
+define("MYSQL_DATABASE", "yourMysqlDatabaseName");
+
+// If we are not using database we need to have something to display at the bottom of the image
+// If we are using the database we can ignore this
+$noDatabaseString = "No database here!";
+
+
+// Set some variables about the avatar. 
+$fontSize = 2;
+$width = 150;
+$margin = 2;
+$search = "Your Search Queary";
+
+// RGB values for the text and background colors
+$textColor->red = 255;
+$textColor->green = 255;
+$textColor->blue = 255;
+
+$backgroundColor->red = 0;
+$backgroundColor->green = 0;
+$backgroundColor->blue = 0;
+
+
+/*--------------------------------------------------------
+|
+|   You should not need to change anything after this
+|
+\--------------------------------------------------------*/
+
+
+
+
+// Connects to a mysql database
+function connect($username, $password, $database)
+{
+	mysql_connect(localhost,$username,$password);
+	@mysql_select_db($database) or die( "Unable to select database");
+}
+
+// Takes a search string and returns a random image url
+function get_image_url($q){
+	$q = urlencode($q);
+	// The page of google images to look at. Use 0 for the first page
+	$start = "0";
+	$htmlString = file_get_contents("http://images.google.com/images?safe=off&q=$q&start=$start");
+	$htmlArray = preg_match_all("-http[^\"]*jpg-", $htmlString, $imageUrls);
+	return $imageUrls[0][array_rand($imageUrls[0])];
+}
+
+
+
+//Get the client's ip
+$ip 		= $_SERVER['REMOTE_ADDR'];
+// Get the client's browser
+$browser 	= $_SERVER['HTTP_USER_AGENT'];
+
+if(USE_DATABASE){
+	// Connect to the sql server
+	
+	connect(MYSQL_USERNAME, MYSQL_PASSWORD, MYSQL_DATABASE);
+	
+	// Record this hit to the database
+	mysql_query("INSERT INTO hits (ip, browser) VALUES (INET_ATON('$ip'), '$browser');");
+	
+	
+	// Get the total number of hits out of the database
+	$hits = number_format(mysql_num_rows(mysql_query("SELECT hit_id FROM hits;")));
+	
+	$bottomString = "Avatar Hits: $hits";
+}else{
+	$bottomString = $noDatabaseString;
+}
+
+$topString = "Your IP: $ip";
+
+// Send the image header
+header ("Content-type: image/jpg");
+
+// Get the height of this font size
+$fontHeight = imagefontheight($fontSize);
+
+// Get the image url from google
+$source = get_image_url($search);
+
+// Find the dimensions of the source image
+list($width_orig, $height_orig) = getimagesize($source);
+// width/hight ratio of original image
+$ratio_orig = $width_orig/$height_orig;
+// Calculate the image height
+$imageHeight = $width/$ratio_orig;
+// Calculate the avatar height
+$height = $imageHeight + (2 * $fontHeight) + (4 * $margin);
+// Create the image
+$im = imagecreatetruecolor($width, $height);
+// Set a color for the text
+$textColor = imagecolorallocate($im, $textColor->red, $textColor->green, $textColor->blue);
+// Set a color for the background
+$background = imagecolorallocate($im, $backgroundColor->red, $backgroundColor->green, $backgroundColor->blue);
+// Fill the image with the background color
+imagefill($im, 0, 0, $background);
+
+
+// Get the source image
+$srcImage = imagecreatefromjpeg($source);
+
+// Insert the source image
+imagecopyresampled($im, $srcImage, 0, ($margin + $margin + $fontHeight), 0, 0, ($width),  ($imageHeight), $width_orig, $height_orig);
+
+// Print the strings to the image
+imagestring ($im, $fontSize, $margin, $margin, $topString, $textColor);
+imagestring ($im, $fontSize, $margin, ($height - ($fontHeight + $margin)), $bottomString, $textColor);
+imagejpeg($im);
+imagedestroy($im);
+?>
