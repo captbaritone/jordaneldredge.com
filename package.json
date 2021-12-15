@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "export": "next export",
-    "lint": "remark --quiet ."
+    "lint": "remark --quiet . && next lint"
   },
   "dependencies": {
     "@plaiceholder/next": "2.2.0",

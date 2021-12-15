@@ -35,29 +35,6 @@ async function withJson(filePath, cb) {
   fs.writeFileSync(filePath, newFileContent);
 }
 
-test("Validate image URLs", async () => {
-  const imagesPath = path.join(__dirname, "..", "images.json");
-  await withJson(imagesPath, async (existing) => {
-    const todo = Object.entries(existing).filter(
-      ([key, value]) => value === "unverified"
-    );
-
-    const jobs = todo.map(async ([key, value]) => {
-      const url = "https://jordaneldredge.com" + key;
-      const exists = await urlExists(url, 1000);
-      existing[key] = exists ? "exists" : "notfound";
-    });
-
-    await Promise.all(jobs);
-    return existing;
-  });
-
-  const existing = readJson(imagesPath);
-  const values = Object.values(existing);
-  const all = values.every((v) => v === "exists");
-  expect(all).toBe(true);
-});
-
 test("Validate link URLs", async () => {
   const linksPath = path.join(__dirname, "..", "links.json");
   await withJson(linksPath, async (existing) => {

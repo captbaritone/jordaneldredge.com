@@ -2,9 +2,6 @@ import { lintRule } from "unified-lint-rule";
 import { visit } from "unist-util-visit";
 import path from "path";
 import fs from "fs";
-import http from "http";
-import { parse } from "url";
-import { recordImage } from "./ruleUtils.mjs";
 
 const __dirname = path.resolve();
 import yaml from "js-yaml";
@@ -27,15 +24,17 @@ const validateMetadata = lintRule(
       for (const [key, value] of Object.entries(frontmatter)) {
         switch (key) {
           case "summary_image":
-            if (value.startsWith("/images/")) {
+            if (value.startsWith("/")) {
               const imagePath = path.join(__dirname, "public", value);
               const exists = fs.existsSync(imagePath);
               if (!exists) {
                 file.message(`Local image does not exist: "${value}"`, node);
               }
             } else {
-              recordImage(value);
-              // TODO: Move these home
+              file.message(
+                `Expected summary_image to be a local file. Got: "${value}"`,
+                node
+              );
             }
             break;
           case "github_comments_issue_id":
