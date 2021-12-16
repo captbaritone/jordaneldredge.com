@@ -2,7 +2,7 @@ const path = require("path");
 const fs = require("fs");
 const fetch = require("node-fetch");
 
-async function urlExists(url, timeoutms) {
+async function urlStatus(url, timeoutms = 3000) {
   const controller = new AbortController();
   const timeout = setTimeout(() => {
     controller.abort();
@@ -12,12 +12,9 @@ async function urlExists(url, timeoutms) {
       signal: controller.signal,
       method: "HEAD",
     });
-    if (response.status !== 200) {
-      console.log(response.status, url);
-    }
-    return response.status === 200;
-  } catch {
-    return false;
+    return response.status;
+  } catch (e) {
+    return e.message;
   } finally {
     clearTimeout(timeout);
   }
@@ -43,8 +40,10 @@ test("Validate link URLs", async () => {
       .slice(0, 50);
 
     const jobs = todo.map(async ([key, value]) => {
-      const exists = await urlExists(key, 1000);
-      existing[key] = exists ? "exists" : "notfound";
+      const status = await urlStatus(key, 4000);
+      existing[key] = {
+        status,
+      };
     });
 
     await Promise.all(jobs);
@@ -54,7 +53,9 @@ test("Validate link URLs", async () => {
 
   const existing = readJson(linksPath);
   const invalidUrls = Object.entries(existing)
-    .filter(([key, value]) => value !== "exists")
+    .filter(([key, value]) => {
+      return value.status !== 200;
+    })
     .map(([key]) => key);
   invalidUrls.sort();
   expect(invalidUrls).toMatchSnapshot();

@@ -1,6 +1,7 @@
 import validateUrls from "./rules/remarkValidateUrls.mjs";
 import validateMetadata from "./rules/remarkValidateMetadata.mjs";
 import validateCodeBlocks from "./rules/remarkValidateCodeBlocks.mjs";
+import validateHtml from "./rules/remarkValidateHtml.mjs";
 
 const config = {
   settings: {
@@ -12,6 +13,7 @@ const config = {
     validateUrls,
     validateMetadata,
     validateCodeBlocks,
+    validateHtml,
   ],
 };
 

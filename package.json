@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "export": "next export",
+    "lint-md": "remark --quiet .",
     "lint": "remark --quiet . && next lint"
   },
   "dependencies": {
@@ -52,6 +53,7 @@
     "eslint-config-next": "^12.0.7",
     "jest": "^27.4.3",
     "node-fetch": "2",
+    "rehype-parse": "^8.0.3",
     "remark-lint-mdash-style": "^1.1.1"
   }
 }

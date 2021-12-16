@@ -12,7 +12,7 @@ const validPostNames = new Set(
   })
 );
 
-const validUrl = /^(\/.+)|(https?:\/\/.+)|(mailto:.+)$/;
+const validUrl = /^(\/.+)|(https?:\/\/.+)|(mailto:.+)|(data:.+)$/;
 
 const validateUrls = lintRule(
   "remark-lint:validate-urls",
