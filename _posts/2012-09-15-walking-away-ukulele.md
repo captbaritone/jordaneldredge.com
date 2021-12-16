@@ -3,7 +3,9 @@ title: "Walking Away [Ukulele]"
 summary_image: /uploads/2012/09/4418315357_78878f2695_o-500x500.jpg
 ---
 
-<div id="attachment_1191" style="width: 510px" class="wp-caption alignnone"><a href="/uploads/2012/09/4418315357_78878f2695_o.jpg"><img class="size-large wp-image-1191" title="4418315357_78878f2695_o" src="/uploads/2012/09/4418315357_78878f2695_o-500x500.jpg" alt="" width="500" height="500" /></a><p class="wp-caption-text">Photo credit: [Neil Patel](http://www.flickr.com/photos/realplastictrees/4418315357/)</p></div>
+[![](/uploads/2012/09/4418315357_78878f2695_o-500x500.jpg "4418315357_78878f2695_o")](/uploads/2012/09/4418315357_78878f2695_o.jpg)
+
+Photo credit: [Neil Patel](http://www.flickr.com/photos/realplastictrees/4418315357/)
 
 Yet another song from the vaults. This one from February 14th, 2006. One of only few serious original songs I have written.
 

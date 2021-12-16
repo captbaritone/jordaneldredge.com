@@ -3,7 +3,7 @@ title: "I Come To the Garden Alone (For George Morris)"
 youtube_slug: FDB0LMrDdEs
 ---
 
-<a href="/uploads/2011/07/photo.jpeg"><img class="alignnone size-large wp-image-946" title="Wanda and Geroge's Garden" src="/uploads/2011/07/photo-500x375.jpg" alt="" width="500" height="375" /></a>
+[![](/uploads/2011/07/photo-500x375.jpg "Wanda and Geroge's Garden")](/uploads/2011/07/photo.jpeg)
 
 Wanda and George's Garden. Photo Credit: [Chelsea Hollow](http://www.chelseahollow.com)
 
@@ -17,8 +17,7 @@ This video was recorded in my backyard here in San Francisco.
 
 ::audio{src=/uploads/2011/07/I-Walk-Through-The-Garden-Alone-Ukulele-For-George.mp3}
 
-[Tablature Pdf file](/uploads/2011/07/I-Come-To-the-Garden-Alone.pdf)<a href="/uploads/2011/07/I-Walk-Through-The-Garden-Alone-Ukulele-For-George.mp3">
-</a>
+[Tablature Pdf file](/uploads/2011/07/I-Come-To-the-Garden-Alone.pdf)
 
 Hymn: "In The Garden"
 

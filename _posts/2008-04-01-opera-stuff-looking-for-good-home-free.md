@@ -3,7 +3,9 @@ title: "Opera stuff looking for good home (free)"
 archive: true
 ---
 
-<img class="alignright" style="float: right; margin-left: 5px; margin-right: 5px;" src="http://www.tias.com/stores/yesterdaysjewels/pictures/t2-3002a.jpg" alt="Opera Libretto" width="300" height="226" />The other day I responded to an ad for free opera libretti and magazines on Craigslist. The woman was trying to find a good home for about eight boxes of what turned out to be her deceased friend's libretti, Opera News, and San Francisco Opera programs.
+![Opera Libretto](http://www.tias.com/stores/yesterdaysjewels/pictures/t2-3002a.jpg)
+
+The other day I responded to an ad for free opera libretti and magazines on Craigslist. The woman was trying to find a good home for about eight boxes of what turned out to be her deceased friend's libretti, Opera News, and San Francisco Opera programs.
 
 The libretti are going in to my library (more on that later) but the rest is of little interest to me, as I don't have the time to go through them. The woman who died was a life long opera fan so these items span a range of dates. I would imagine that the programs especially have some value as collectible items. Let me know if you are interested in rooting through them. They are yours if you want them.
 

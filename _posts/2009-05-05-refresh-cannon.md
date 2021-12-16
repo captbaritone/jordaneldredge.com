@@ -6,7 +6,7 @@ EDIT: *Due to an excess of traffic, I have had to take Refresh Cannon off of thi
 
 And... were back.
 
-<img class="alignright" style="border: 2px solid black; margin: 5px; margin-left: 20px;" title="Refresh Hero" src="/projects/refresh-cannon/index.php" alt="" width="150" />
+![](/projects/refresh-cannon/index.php "Refresh Hero")
 
 Inspired by the popularity of [Refresh Hero](/blog/refresh-hero-avatar-game/), I am continuing in my exploration of the limits of avatar images. Of course the main challenge is developing ways for the user to have meaningful interaction with only their refresh button. The [previous game](/blog/refresh-hero-avatar-game/) used the element of time in binary fashion: either you got it right, or not. This new game uses time to allow you to adjust two different variables. 
 
@@ -14,4 +14,4 @@ Avatar Cannon is the basic trajectory game of angle and velocity. The amount of 
 
 Finally, if you would prefer to have your score listed next to your nick name, instead of your IP address, you can [register here](http://blog.classicalcode.com/projects/shoot/register.php). 
 
-<strong>If you plan to play, you will get a better response time if you <a href='/projects/refresh-cannon/index.php' target="_blank">open the image in its own window</a>.</strong>
+**If you plan to play, you will get a better response time if you [open the image in its own window](/projects/refresh-cannon/index.php).**

@@ -2,22 +2,22 @@
 title: "Twitter Bot: UkeChord"
 ---
 
-<strong>Edit (May 18, 2012): This bot is now defunct.</strong>
+**Edit (May 18, 2012): This bot is now defunct.**
 
 I would like to introduce you all to my new creation [UkeChord](http://twitter.com/ukechord). UkeChord is an automated Twitter robot who will send you ukulele fingerings for any chord you request. Please share your thoughts or improvements in the comments below.
 
-<strong>Goal:</strong> To offer Ukulele chord fingerings via text message.
+**Goal:** To offer Ukulele chord fingerings via text message.
 
-<strong>Preparation:</strong>
-<ol>
-	<li>Follow Twitter user "[ukechord](http://twitter.com/ukechord)"</li>
-	<li>[Configure Twitter](http://help.twitter.com/forums/59008/entries/14014) to forward direct messages to your phone.</li>
-</ol>
-<strong>Getting a chord fingering:</strong>
-<ol>
-	<li>Text Twitter (40404) with: "@ukechord" followed by the chord name.</li>
-	<li>Receive chord fingering.</li>
-</ol>
+**Preparation:**
+
+1.  Follow Twitter user "[ukechord](http://twitter.com/ukechord)"
+2.  [Configure Twitter](http://help.twitter.com/forums/59008/entries/14014) to forward direct messages to your phone.
+
+**Getting a chord fingering:**
+
+1.  Text Twitter (40404) with: "@ukechord" followed by the chord name.
+2.  Receive chord fingering.
+
 Below are the chord names it understands. C can be replaced by any note sharp (#) or flat (b):
 <table border="0">
 <tbody>

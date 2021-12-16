@@ -11,4 +11,4 @@ The tag is The Shadow of Your Smile from the [Classic Tags book](http://www.stam
 
 ::audio{src=/uploads/2009/04/the-shadow-of-your-smile-rough-draft.mp3}
 
-<img class="size-thumbnail wp-image-428" title="Jared Emerson-Johnson" src="/uploads/2009/04/3232_78443295876_634005876_2167803_6547970_n-150x150.jpg" alt="Jared Emerson-Johnson" width="150" height="150" /><img class="size-thumbnail wp-image-426" title="Jordan Eldredge" src="/uploads/2009/04/n11701795_33756279_8252-150x150.jpg" alt="n11701795_33756279_8252" width="150" height="150" /><img class="size-thumbnail wp-image-427" title="Joachim Luis" src="/uploads/2009/04/n11709059_32663676_4702-150x150.jpg" alt="n11709059_32663676_4702" width="150" height="150" />
+![Jared Emerson-Johnson](/uploads/2009/04/3232_78443295876_634005876_2167803_6547970_n-150x150.jpg "Jared Emerson-Johnson")![n11701795_33756279_8252](/uploads/2009/04/n11701795_33756279_8252-150x150.jpg "Jordan Eldredge")![n11709059_32663676_4702](/uploads/2009/04/n11709059_32663676_4702-150x150.jpg "Joachim Luis")

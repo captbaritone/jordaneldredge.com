@@ -6,8 +6,8 @@ My all-time favorite finds are these three, which I found [here](http://maps.goo
 
 The following links are most likely "Not Safe For Work".
 
-<a href="/uploads/2008/02/photo-0018.jpg" title="Paper airplane 1">Paper airplane 1</a>
+[Paper airplane 1](/uploads/2008/02/photo-0018.jpg "Paper airplane 1")
 
-<a href="/uploads/2008/02/photo-0019.jpg" title="Paper airplane 2">Paper airplane 2</a>
+[Paper airplane 2](/uploads/2008/02/photo-0019.jpg "Paper airplane 2")
 
-<a href="/uploads/2008/02/photo-0046.jpg" title="Paper airplane 3">Paper airplane 3</a>
+[Paper airplane 3](/uploads/2008/02/photo-0046.jpg "Paper airplane 3")

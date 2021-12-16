@@ -10,8 +10,8 @@ The midi file created by Lilypond: [shepard_tone.midi](/uploads/2009/03/shepard_
 
 [The Lilypond source used to render the above .midi (on GitHub)](https://github.com/captbaritone/eldredge-shepard_tone)
 
-A wav file generated from the midi file above: <a title="Download as .wav" href="/uploads/2009/03/shepard_tone.wav">shepard_tone.wav</a> (43M)
-
-An mp3 file generated from the wav file above:<br />
+An mp3 file generated from the midi file above: 
 
 ::audio{src=/uploads/2009/03/shepard_tone.mp3}
+
+[Download](/uploads/2009/03/shepard_tone.mp3 "Download as .mp3")

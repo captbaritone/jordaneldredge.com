@@ -3,7 +3,7 @@ title: "Piano Four-Hands Arrangement (Wedding Gift)"
 summary_image: /uploads/2014/06/eldredge-nammies_four_hands.pdf
 ---
 
-<a href="/uploads/2013/09/wedding_dance_web.jpg"><img alt="Photo credit: Lynne Stevenson Hylton" src="/uploads/2013/09/wedding_dance_web.jpg" width="500" height="747" /></a>
+[![Photo credit: Lynne Stevenson Hylton](/uploads/2013/09/wedding_dance_web.jpg)](/uploads/2013/09/wedding_dance_web.jpg)
 
 *Photo credit: Lynne Stevenson Hylton*
 
@@ -13,8 +13,8 @@ You can hear a crude midi rendering of it here:
 
 ::audio{src=/uploads/2013/09/Nammies-Four-Hands.mp3}
 
-<a href="/uploads/2014/06/eldredge-nammies_four_hands.pdf" target="_blank"><img class="aligncenter size-full wp-image-1484" alt="Thumbnail: Nammies Four Hands pdf" src="/uploads/2013/09/eldredge-nammies_four_hands.png" width="496" height="702" /></a>
+[![Thumbnail: Nammies Four Hands pdf](/uploads/2013/09/eldredge-nammies_four_hands.png)](/uploads/2014/06/eldredge-nammies_four_hands.pdf)
 
-<a href="/uploads/2014/06/eldredge-nammies_four_hands.pdf" target="_blank">Download sheet music .pdf file</a>
+[Download sheet music .pdf file](/uploads/2014/06/eldredge-nammies_four_hands.pdf)
 
-You can fork the <a href="https://github.com/captbaritone/eldredge-nammies_four_hands" target="_blank">Lilypond engraving source file on GitHub</a>.
+You can fork the [Lilypond engraving source file on GitHub](https://github.com/captbaritone/eldredge-nammies_four_hands).

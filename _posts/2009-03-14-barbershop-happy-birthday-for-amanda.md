@@ -10,7 +10,7 @@ Happy birthday Amanda, thanks for being such a constant, caring friend.
 
 ::audio{src=/uploads/2009/03/happy-birthday.mp3}
 
-The arrangement as a printable pdf: <a href='/uploads/2009/03/birthday.pdf'>birthday.pdf</a>
+The arrangement as a printable pdf: [birthday.pdf](/uploads/2009/03/birthday.pdf)
 
-<strong>Update:</strong>
-The [Lilypond](http://lilypond.org/web/) file used to render the above engraving: <a href='/uploads/2009/03/birthday.ly'>birthday.ly</a>
+**Update:**
+The [Lilypond](http://lilypond.org/web/) file used to render the above engraving: [birthday.ly](/uploads/2009/03/birthday.ly)

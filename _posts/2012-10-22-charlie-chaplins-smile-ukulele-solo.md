@@ -4,10 +4,7 @@ youtube_slug: Tw4L_Ys-14g
 ---
 
 Years ago I heard a beautiful arrangement of Charlie Chaplin's
-"<a href="http://en.wikipedia.org/wiki/Smile_(Charlie_Chaplin_song)"
-target="_blank">Smile</a>" on <a
-href="http://www.youtube.com/user/MusicTeacher2010" target="_blank">Ukuele
-Mike&#8217;s Youtube channel</a>. Unfortunately the video is no-longer online.
+"[Smile](http://en.wikipedia.org/wiki/Smile_(Charlie_Chaplin_song))" on [Ukuele Mike’s Youtube channel](http://www.youtube.com/user/MusicTeacher2010). Unfortunately the video is no-longer online.
 However, his arrangement inspired me to create my own using his as a starting
 point.
 
@@ -23,8 +20,7 @@ enjoy playing it for the last several years:
 Audio only: 
 ::audio{src="/uploads/2012/10/Smile-Ukulele.mp3"}
 
-Tablature of the melody and chord voicings, but not the finger picking: <a
-href='/uploads/2012/10/Charlie_Chaplin_Smile_Ukulele.pdf'>Charlie_Chaplin_Smile_Ukulele.pdf</a>
+Tablature of the melody and chord voicings, but not the finger picking: [Charlie\_Chaplin\_Smile_Ukulele.pdf](/uploads/2012/10/Charlie_Chaplin_Smile_Ukulele.pdf)
 
 The lyrics to the song are not used in this recording but are none-the-less
 an important part of this song:

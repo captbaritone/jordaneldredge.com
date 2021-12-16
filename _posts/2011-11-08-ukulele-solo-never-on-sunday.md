@@ -11,6 +11,6 @@ I take my ukulele with me everywhere I go. One day when I was sitting in the bac
 
 Video credit: Beau Lambert
 
-<strong>Update (9/16/2012):</strong> When I first posted this recording, several people asked if there were tabs available. At the time I said I would write them up, but I never did. Shame on me for being a bad citizen of the internet. However, better late than never. Nearly a year later, I found the few hours to write it out. Thank you for your patience:
+**Update (9/16/2012):** When I first posted this recording, several people asked if there were tabs available. At the time I said I would write them up, but I never did. Shame on me for being a bad citizen of the internet. However, better late than never. Nearly a year later, I found the few hours to write it out. Thank you for your patience:
 
-<a href='/uploads/2011/11/Never_on_Sunday_Ukulele.pdf'>Never on Sunday ukulele tablature (pdf)</a>
+['/uploads/2011/11/Never_on_Sunday_Ukulele.pdf'](Never on Sunday ukulele tablature) (pdf)

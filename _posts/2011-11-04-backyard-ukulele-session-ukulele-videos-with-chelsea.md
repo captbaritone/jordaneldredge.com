@@ -25,5 +25,4 @@ Chelsea's parents, Tom and Grace, wrote the "Nammies Song" to help their kids go
 ::youtube{token=trikN01A5Dc}
 
 "The Beard Song" was one of the first ukulele songs I fell in love with on
-Youtube. It was written by Rocky and Balls. <a
-href="http://www.youtube.com/watch?v=Xe3Vsbsb33Q">Check out the original</a>.
+Youtube. It was written by Rocky and Balls. [Check out the original](http://www.youtube.com/watch?v=Xe3Vsbsb33Q).

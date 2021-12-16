@@ -2,9 +2,9 @@
 title: "Original Song: \"Driving\""
 ---
 
-<img class="size-large wp-image-716 alignright" style="margin-left: 15px; margin-right: 15px;" title="9622_166802582176_739287176_4016994_1081156_n" src="/uploads/2009/11/9622_166802582176_739287176_4016994_1081156_n-500x375.jpg" alt="9622_166802582176_739287176_4016994_1081156_n" width="243" height="183" />
+![9622_166802582176_739287176_4016994_1081156_n](/uploads/2009/11/9622_166802582176_739287176_4016994_1081156_n-500x375.jpg "9622_166802582176_739287176_4016994_1081156_n")
 
-As of this week, [Chelsea](http://www.chelseahollow.com) and I have been going out for three years and after countless [barbershop tags](/blog/barbershop-multi-track-happy-anniversary-chelsea/), [covers](/blog/multitrack-thats-why-i-love-you/) and [miniature songs](/blog/original-song-our-love-will-last-as-long/) I have finally been able to write her an honest-to-goodness <em>song</em> song. I'll admit it's cheesy and trite and doesn't properly rhyme, but it's a song. A real song. Finally.
+As of this week, [Chelsea](http://www.chelseahollow.com) and I have been going out for three years and after countless [barbershop tags](/blog/barbershop-multi-track-happy-anniversary-chelsea/), [covers](/blog/multitrack-thats-why-i-love-you/) and [miniature songs](/blog/original-song-our-love-will-last-as-long/) I have finally been able to write her an honest-to-goodness _song_ song. I'll admit it's cheesy and trite and doesn't properly rhyme, but it's a song. A real song. Finally.
 
 For Chelsea, after three years: "Driving"
 
@@ -22,7 +22,7 @@ Lyrics:
 > So we went driving in your car, underneath the stars.  
 > Then we went up the hill and watched the sunrise though the fog.  
 >   
-> Now you've sold your car and bought  a bike though the pedals made you sacred.  
+> Now you've sold your car and bought a bike though the pedals made you sacred.  
 > And my parents gave me their old car which I share with you.  
 > Now we go driving in my car, which we never could before.  
 > And it isn't much but it's an excuse to be close to you  

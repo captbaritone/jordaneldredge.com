@@ -19,8 +19,7 @@ Areas that I still wish to improve are:
 * Cleaner tuning of leaps
 * Cleaner cut offs for breaths (unashamed)
 
-As before the music is from <a
-href="http://www.stampedecitychorus.com/classic_tags_men2.pdf">this</a> (No.
+As before the music is from [this](http://www.stampedecitychorus.com/classic_tags_men2.pdf) (No.
 98) great collection of barbershop tags. However this time, neither the
 arranger nor the quartet are cited.
 

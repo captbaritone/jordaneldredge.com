@@ -3,14 +3,14 @@ title: "Play the card game \"War\" in my avatar"
 ---
 
 Since my previous avatar [DDOSed my router](/blog/how-i-ddosed-myself-with-an-avatar/), today I wrote a less popular avatar game. The only game I could think of that has no need for actual user input was the [card game war](http://en.wikipedia.org/wiki/War_(card_game)). So I implemented it in my avatar. You can play too, by simply refreshing this image:
-<p style="text-align: center;"><img class="aligncenter" src="/projects/war/index.php" alt="" width="150" height="132" /></p>
-Features:
-<ul>
-	<li>Proper handeling of running out of cards during a "war"</li>
-	<li>War cards are show (with appropriate cards face up or down)</li>
-	<li>Independent games for each ip address playing</li>
-	<li>Deck state stored in database between refreshes</li>
-	<li>Special WIN/LOSE screens</li>
-</ul>
 
-**You may want to try <a href="/projects/war/index.php" target="_blank">opening the image in its own window</a>.**
+![](/projects/war/index.php)
+
+Features:
+*   Proper handeling of running out of cards during a "war"
+*   War cards are show (with appropriate cards face up or down)
+*   Independent games for each ip address playing
+*   Deck state stored in database between refreshes
+*   Special WIN/LOSE screens
+
+**You may want to try [opening the image in its own window](/projects/war/index.php).**
