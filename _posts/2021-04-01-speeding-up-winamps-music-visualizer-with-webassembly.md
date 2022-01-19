@@ -40,7 +40,7 @@ These times includes evaluating Eel, as well as running the framework JavaScript
 
 ![frame timing improvements](/images/butterchurn-wasm/frame-timing.svg)
 
-To understand the overall speedup, we computed the percent speedup for each preset and averaged those value. By that metric rendering with the new **Wasm version is ~72.6 faster than the JavaScript approach.**
+To understand the overall speedup, we computed the percent speedup for each preset and averaged those value. By that metric rendering with the new **Wasm version is ~72.6% faster than the JavaScript approach.**
 
 ## Speed Bumps
 
