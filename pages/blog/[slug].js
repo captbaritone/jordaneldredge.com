@@ -44,7 +44,7 @@ export default function Post({ post }) {
   if (!router.isFallback && !post) {
     return <ErrorPage statusCode={404} />;
   }
-  const typeoLink = `https://github.com/captbaritone/jordaneldredge.com/blob/master/nextjs/_posts/${post.filename}`;
+  const typeoLink = `https://github.com/captbaritone/jordaneldredge.com/blob/master/_posts/${post.filename}`;
   return (
     <Layout title={post.title} typoLink={typeoLink}>
       <Head>
