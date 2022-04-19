@@ -10,6 +10,9 @@ const { withPlaiceholder } = require("@plaiceholder/next");
  */
 module.exports = withPlaiceholder(
   withTM({
+    experimental: {
+      scrollRestoration: true,
+    },
     distDir: "build",
     async redirects() {
       return [
