@@ -17,7 +17,7 @@ export default function Home({ allPosts }) {
               <div className="italic text-sm text-gray-400">
                 <DateString date={new Date(post.date)} />
               </div>
-              <h2 className="font-medium">
+              <h2 className="font-large font-semibold">
                 <Link as={`/blog/${post.slug}`} href="/blog/[slug]">
                   {post.title}
                 </Link>
