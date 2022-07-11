@@ -30,6 +30,14 @@ module.exports = withPlaiceholder(
         "avatars.githubusercontent.com",
       ],
     },
+    async rewrites() {
+      return [
+        {
+          source: "/projects/curl-proof/install/",
+          destination: "/api/curl-proof",
+        },
+      ];
+    },
     trailingSlash: true,
     swcMinify: true,
   })
