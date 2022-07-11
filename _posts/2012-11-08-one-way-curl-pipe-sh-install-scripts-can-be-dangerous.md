@@ -1,5 +1,5 @@
 ---
-title: "One way \"curl pipe sh\" install scripts can be dangerous [proof of concept]"
+title: 'One way "curl pipe sh" install scripts can be dangerous [proof of concept]'
 ---
 
 I have seen [several](http://pow.cx/) [sites](http://getcomposer.org/download/) recently that
@@ -21,7 +21,7 @@ Today I realized at least once case that could validate those initial warning
 bells. Take a look at this proof of concept:
 
 ```bash
-curl -s jordaneldredge.com/projects/curl-proof/install|sh
+curl -s https://jordaneldredge.com/projects/curl-proof/install/|sh
 ```
 
 I'll wait while you paste the script URL into your browser and make sure it's
@@ -32,7 +32,7 @@ dare ya!). Or, if you are a big wimp, have it output to the console instead of
 `sh` like so:
 
 ```bash
-curl -s jordaneldredge.com/projects/curl-proof/install
+curl -s https://jordaneldredge.com/projects/curl-proof/install/
 ```
 
 As you can see Curl returned a different script than the one you saw in your
@@ -41,7 +41,6 @@ serving a different file.
 
 Of course, the whole point is pretty much moot because the install script is
 probably installing lots of other code that you haven't reviewed, so you
-wouldn't be running this code unless you already trusted the author.  However,
+wouldn't be running this code unless you already trusted the author. However,
 be aware that you may be lulling yourself into a false sense of security
 because you **appear** to have the code right in front of you.
-
