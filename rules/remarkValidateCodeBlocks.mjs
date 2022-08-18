@@ -1,6 +1,5 @@
 import { lintRule } from "unified-lint-rule";
 import { visit } from "unist-util-visit";
-import Prism from "../lib/prism.mjs";
 
 const validateCodeBlocks = lintRule(
   "remark-lint:code-blocks",

@@ -1,5 +1,5 @@
 import "../styles/globals.css";
-import "../styles/prism-solarized.css";
+import "../styles/shiki-twoslash.css";
 
 function MyApp({ Component, pageProps }) {
   return <Component {...pageProps} />;

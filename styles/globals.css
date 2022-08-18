@@ -136,24 +136,31 @@
 .markdown table {
   @apply mb-6;
 }
-.markdown pre[class*="language-"] {
+.markdown pre.shiki {
 }
 
-.markdown pre[class*="language-"] {
-  @apply -mx-5; /* This matches the padding in Layout */
-  @apply px-5; /* This matches the padding in Layout */
+.markdown pre.shiki {
   @apply text-xs;
   @apply mb-4;
+
+  /* Give it some space to breathe */
+  padding: 12px;
+
+  /* All code samples get a grey border, twoslash ones get a different color */
+
+  /* Important to allow the code to move horizontally; */
+  overflow-x: auto;
+  position: relative;
 }
 
 @screen sm {
-  .markdown pre[class*="language-"] {
+  .markdown pre.shiki {
     @apply rounded-md shadow text-sm;
   }
 }
 
 @screen lg {
-  .markdown pre[class*="language-"] {
+  .markdown pre.shiki {
     @apply text-base;
   }
 }
