@@ -36,9 +36,9 @@ In this section I’ll share a number of types of bugs that this rule can catch.
 
 The most common class of bug the rule finds is places where developers misunderstood the precedence of operators, particularly unary operators like `!`, `+` and `typeof`.
 
-```javascript
+```javascript eslint {"no-constant-binary-expression": "error"}
 if (!whitelist.has(specifier.imported.name) == null) {
-  return;
+  // return;
 }
 ```
 
@@ -48,9 +48,12 @@ _From [Material UI](https://github.com/mui/material-ui/blob/60f02a7a6b48092eedd2
 
 When trying to define default values, people get confused with expressions like `a === b ?? c` and assume it will be parsed as `a === (b ?? c)`. When in actuality it will be parsed as `(a === b) ?? c`.
 
-```javascript
-shouldShowWelcome() {
-  return this.viewModel?.welcomeExperience === WelcomeExperience.ForWorkspace ?? true;
+```javascript eslint {"no-constant-binary-expression": "error"}
+function shouldShowWelcome() {
+  return (
+    this.viewModel?.welcomeExperience ===
+      WelcomeExperience.ForWorkspace ?? true
+  );
 }
 ```
 
@@ -64,7 +67,7 @@ Developers coming from other languages where structures are compared by value, r
 
 In this example, `hasData` will always be set to true because `data` can never be referentially equal to a newly created object.
 
-```javascript
+```javascript eslint {"no-constant-binary-expression": "error"}
 hasData = hasData || data !== {};
 ```
 
@@ -74,7 +77,7 @@ _From [Firefox](https://hg.mozilla.org/try/rev/0fe5678fb8b71f4eb26f0a153c52d0be4
 
 Another common categrory of JavaScript error is expecting empty objects to be nullish or falsy. This is likely an easy mistake to make for folks coming from a language like Python where empty lists and dictionaries are falsy.
 
-```javascript
+```javascript eslint {"no-constant-binary-expression": "error"}
 const newConfigValue = { ...configProfiles } ?? {};
 ```
 
@@ -86,7 +89,7 @@ I’ve only seen this particular typo once, but I wanted to include it because i
 
 Here, the developer meant to test if a value was greater than or equal to zero (`>= 0`), but accidentally reversed the order of the characters and created an arrow function that returned `0 && startWidth <= 1`!
 
-```javascript
+```javascript eslint {"no-constant-binary-expression": "error"}
 assert(startWidth => 0 && startWidth <= 1);
 ```
 
