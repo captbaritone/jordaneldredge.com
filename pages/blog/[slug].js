@@ -48,6 +48,9 @@ export default function Post({ post }) {
   return (
     <Layout title={post.title} typoLink={typeoLink}>
       <Head>
+        {post.canonical_url && (
+          <link rel="canonical" href={post.canonical_url} />
+        )}
         <meta property="og:type" content="article" />
         <meta name="twitter:title" content={post.title} />
         <meta
@@ -102,6 +105,7 @@ export async function getStaticProps({ params }) {
     "summary",
     "summary_image",
     "filename",
+    "canonical_url",
   ]);
 
   const content = await markdownToHtml(post.content || "");
