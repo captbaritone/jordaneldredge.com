@@ -12,3 +12,7 @@ Please excuse the synthesized drum and bass, they are the best I can do. For now
 Here is an audio only mp3 for you to listen to or download:
 
 ::audio{src=/uploads/2010/04/Whats-New.mp3}
+
+### Update Sept. 6th, 2022
+
+Over 12 years later, I finally got around to transcribing this arrangement. You can download the PDF here: [What's New?](/uploads/2022/whats_new_ukulele.pdf)
