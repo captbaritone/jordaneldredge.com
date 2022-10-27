@@ -18,7 +18,7 @@ const validateMetadata = lintRule(
       }
     }
     visit(tree, "yaml", (node) => {
-      const frontmatter = yaml.safeLoad(node.value, {
+      const frontmatter = yaml.load(node.value, {
         schema: yaml.JSON_SCHEMA,
       });
       for (const [key, value] of Object.entries(frontmatter)) {
