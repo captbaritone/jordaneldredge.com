@@ -1,15 +1,12 @@
-import { useRouter } from "next/router";
-import ErrorPage from "next/error";
-import { getSingerResume } from "../lib/api";
-import Layout from "../lib/components/Layout";
+import { getSingerResume } from "../../lib/api";
 
-export default function Page({ page }) {
-  const router = useRouter();
-  if (!router.isFallback && !page) {
-    return <ErrorPage statusCode={404} />;
-  }
+export default function Page() {
+  const resume = getSingerResume().sort((a, b) =>
+    a.start_date > b.start_date ? -1 : 1
+  );
+
   return (
-    <Layout title="Singer">
+    <>
       <h1>Singer Resume</h1>
       <table className="table-auto text-sm">
         <thead>
@@ -21,7 +18,7 @@ export default function Page({ page }) {
           </tr>
         </thead>
         <tbody>
-          {page.resume.map((show) => {
+          {resume.map((show) => {
             return (
               <tr key={show.id} className="border-b border-grey border-solid">
                 <td>{show.character}</td>
@@ -36,21 +33,7 @@ export default function Page({ page }) {
           })}
         </tbody>
       </table>
-      <div className="text-sm italic text-right">*Sung in transation</div>
-    </Layout>
+      <div className="text-sm italic text-right">*Sung in translation</div>
+    </>
   );
-}
-
-export async function getStaticProps() {
-  const resume = getSingerResume().sort((a, b) =>
-    a.start_date > b.start_date ? -1 : 1
-  );
-
-  return {
-    props: {
-      page: {
-        resume,
-      },
-    },
-  };
 }
