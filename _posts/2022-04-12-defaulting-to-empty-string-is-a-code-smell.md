@@ -6,7 +6,7 @@ github_comments_issue_id: 17
 
 In typed JavaScript codebases (TypeScript/Flow) I see this pattern a lot:
 
-```javascript
+```jsx
 <Component prop={someValue ?? ""} />
 ```
 

@@ -35,7 +35,7 @@ its database connection using the your virtual machine's host name.
 
 My `acceptance.suite.yml` looks like this:
 
-```yml
+```yaml
 class_name: WebGuy
 modules:
     enabled:
