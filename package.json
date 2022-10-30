@@ -11,12 +11,14 @@
     "lint": "remark --quiet . && next lint"
   },
   "dependencies": {
+    "@notionhq/client": "^2.2.1",
     "@plaiceholder/next": "2.2.0",
     "ani-cursor": "^0.0.5",
     "autoprefixer": "^10.1.0",
     "feed": "^4.2.2",
     "gray-matter": "^4.0.2",
     "next": "^13.0.0",
+    "notion-to-md": "^2.5.5",
     "plaiceholder": "2.2.0",
     "postcss": "^8.2.1",
     "react": "^18.2.0",
@@ -48,11 +50,13 @@
   },
   "prettier": {},
   "devDependencies": {
+    "@types/react": "18.0.24",
     "eslint": "^8.22.0",
     "eslint-config-next": "^13.0.0",
     "jest": "^27.4.3",
     "node-fetch": "2",
     "rehype-parse": "^8.0.3",
-    "remark-lint-mdash-style": "^1.1.1"
+    "remark-lint-mdash-style": "^1.1.1",
+    "typescript": "4.8.4"
   }
 }
