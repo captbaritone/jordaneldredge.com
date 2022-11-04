@@ -20,7 +20,7 @@ export default async function Note({ params }) {
       >
         <DateString date={new Date(page.created_time)} />
       </div>
-      <Markdown {...content} />
+      <Markdown {...content} options={{ expandYoutube: true }} />
     </div>
   );
 }
