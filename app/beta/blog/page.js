@@ -34,6 +34,10 @@ export default async function Home() {
 
   return (
     <>
+      <div className="markdown">
+        <h1>Blog</h1>
+        <hr />
+      </div>
       {publicPosts.map((post) => {
         return (
           <div key={post.slug} className="py-4 flex justify-between">

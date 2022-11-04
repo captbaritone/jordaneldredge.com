@@ -5,7 +5,6 @@ import DateString from "../../../lib/components/DateString";
 
 export default async function Note({ params }) {
   const page = await getTilPage(params.slug);
-  console.log(page);
 
   const content = await markdownToHtml(page.markdown, false);
 

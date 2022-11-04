@@ -8,10 +8,7 @@ export default async function Notes() {
     <>
       <div className="markdown">
         <h1>Notes</h1>
-        <p>
-          Quick notes sharing things I find interesting. For more formal posts,
-          see my <Link href={"/blog"}>blog</Link>.
-        </p>
+        <p>Quick thoughts, observations, and links.</p>
         <hr />
       </div>
       {childPages.map((post) => {

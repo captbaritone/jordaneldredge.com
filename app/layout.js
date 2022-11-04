@@ -33,6 +33,9 @@ export default function Layout({ children, title, typoLink, params }) {
               <li className="pr-5">
                 <NavLink href="/blog/">Blog</NavLink>
               </li>
+              <li className="pr-5">
+                <NavLink href="/notes/">Notes</NavLink>
+              </li>
               {/*
             <li className="pr-5">
               <NavLink href="/talks/">Talks</NavLink>

@@ -4,7 +4,7 @@ import { NotionToMarkdown } from "notion-to-md";
 // Initializing a client
 const notion = new Client({
   auth: process.env.NOTION_TOKEN,
-  logLevel: LogLevel.DEBUG,
+  // logLevel: LogLevel.DEBUG,
 });
 const n2m = new NotionToMarkdown({ notionClient: notion });
 

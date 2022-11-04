@@ -4,6 +4,8 @@ title: Projects
 
 Over the years I've built a number of software side projects. Below are a list of the more interesting ones. For a more exhaustive list see my [blog](/blog).
 
+---
+
 ### Javascript
 
 **[Webamp](https://webamp.org)** - A reimplementation of Winamp 2.9 in HTML5 and Javascript. As seen on [TechCrunch](https://techcrunch.com/2018/02/09/whip-the-llamas-ass-with-this-javascript-winamp-emulator/), [Motherboard](https://motherboard.vice.com/en_us/article/qvebbv/winamp-2-mp3-music-player-emulator), [Gizmodo](https://gizmodo.com/winamp-2-has-been-immortalized-in-html5-for-your-pleasu-1655373653), Hacker News ([1](https://news.ycombinator.com/item?id=8565665), [2](https://news.ycombinator.com/item?id=15314629), [3](https://news.ycombinator.com/item?id=16333550), [4](https://news.ycombinator.com/item?id=17583997)), and [elsewhere](https://github.com/captbaritone/webamp/blob/master/packages/webamp/docs/press.md).

@@ -12,4 +12,4 @@ I've been writing software as a hobby since I was in High School. After college,
 
 ## Singing
 
-I graduated from San Francisco State University with a Bachelors in Music and enjoyed a busy semi-professional singing schedule for many years. I've since chosen to focus more on software, but information about my singing, including photos and past performances, can still be found at my [singer website](/singer).
+I graduated from San Francisco State University with a Bachelors in Music and enjoyed a busy semi-professional singing schedule for many years. I've since chosen to focus more on software, but information about my singing can still be found on my [singer page](/singer).
