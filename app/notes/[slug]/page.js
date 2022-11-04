@@ -1,10 +1,12 @@
 import Markdown from "../../../lib/components/Markdown";
-import { getTilPage } from "../notion";
+import { getNotePage, TEN_MINUTES_IN_MS } from "../notion";
 import markdownToHtml from "../../../lib/markdownToHtml";
 import DateString from "../../../lib/components/DateString";
 
-export default async function Note({ params }) {
-  const page = await getTilPage(params.slug);
+export default async function Note({ params, searchParams }) {
+  const page = await getNotePage(searchParams.bust ? 0 : TEN_MINUTES_IN_MS)(
+    params.slug
+  );
 
   const content = await markdownToHtml(page.markdown, false);
 

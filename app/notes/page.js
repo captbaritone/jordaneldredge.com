@@ -1,9 +1,11 @@
-import { getTilPages } from "./notion";
+import { getNotes, TEN_MINUTES_IN_MS } from "./notion";
 import DateString from "../../lib/components/DateString";
 import Link from "next/link";
 
-export default async function Notes() {
-  const childPages = await getTilPages();
+export default async function Notes({ searchParams }) {
+  const childPages = await getNotes(
+    searchParams.bust ? 0 : TEN_MINUTES_IN_MS
+  )();
   return (
     <>
       <div className="markdown">
