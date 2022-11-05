@@ -13,6 +13,7 @@ export default function MyHead({ title }) {
   const fullTitle = (title ? `${title} / ` : "") + "Jordan Eldredge";
   return (
     <>
+      <meta name="viewport" content="width=device-width" />
       <meta property="og:locale" content="en_US" />
       <meta name="author" content="Jordan Eldredge" />
       <meta property="og:site_name" content="Jordan Eldredge" />
