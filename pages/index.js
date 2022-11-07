@@ -1,35 +1,15 @@
-import { useRouter } from "next/router";
-import ErrorPage from "next/error";
-import { getPageBySlug } from "../lib/api";
-import markdownToHtml from "../lib/markdownToHtml";
-import Layout from "../lib/components/Layout";
-import Markdown from "../lib/components/Markdown";
+import Link from "next/link";
 
-export default function Page({ page }) {
-  const router = useRouter();
-  if (!router.isFallback && !page) {
-    return <ErrorPage statusCode={404} />;
-  }
+export default function Page({}) {
   return (
-    <Layout>
-      <div className="markdown">
-        <h1>{page.title}</h1>
-        <Markdown {...page.content} />
-      </div>
-    </Layout>
+    <div>
+      <p>
+        Click this link: <Link href="/notes">Notes</Link>.
+      </p>
+      <p>
+        It should render `app/notes/page.js` but it doesn't. Instead it uses
+        `pages/[slug].js`.
+      </p>
+    </div>
   );
-}
-
-export async function getStaticProps({ params }) {
-  const page = getPageBySlug("about", ["title", "slug", "content"]);
-  const content = await markdownToHtml(page.content || "");
-
-  return {
-    props: {
-      page: {
-        ...page,
-        content,
-      },
-    },
-  };
 }
