@@ -56,9 +56,11 @@ export default function Layout({ children, title, typoLink, params }) {
           </nav>
           <main>{children}</main>
           <footer className="py-8 text-center block border-t-2 border-gray-200 border-solid">
-            <a href="https://twitter.com/captbaritone">Twitter</a>
+            <a rel="me" href="https://twitter.com/captbaritone">Twitter</a>
             {" • "}
-            <a href="https://github.com/captbaritone">GitHub</a>
+            <a rel="me" href="https://mastodon.social/@captbaritone">Mastodon</a>
+            {" • "}
+            <a rel="me" href="https://github.com/captbaritone">GitHub</a>
             {" • "}
             <a href="mailto:jordan@jordaneldredge.com">Email</a>
             {" • "}
