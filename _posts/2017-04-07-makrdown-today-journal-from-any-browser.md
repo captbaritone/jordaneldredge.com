@@ -15,4 +15,6 @@ It assumes the following:
 
 You can try it at <https://markdown.today>.
 
+Source code can be found on [GitHub](https://github.com/captbaritone/markdown.today).
+
 ![Screenshots of Markdown Today](https://markdown.today/images/screenshot.png)
