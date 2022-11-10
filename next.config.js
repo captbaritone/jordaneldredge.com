@@ -9,6 +9,9 @@ module.exports = withPlaiceholder({
     scrollRestoration: true,
     transpilePackages: ["unified", "plaiceholder", "unist-util-visit"],
   },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   distDir: "build",
   async redirects() {
     return [
