@@ -1,6 +1,39 @@
 import { Feed } from "feed";
+import * as Api from "../../../lib/api";
 
-export function buildRssFeedLazy(allPosts) {
+export default async function handler(req, res) {
+  const allPosts = await Api.getAllPosts([
+    "title",
+    "slug",
+    "summary",
+    "archive",
+    "date",
+    "draft",
+    "summary_image",
+  ]);
+
+  const publicPosts = allPosts.filter(
+    (postInfo) => !postInfo.archive && !postInfo.draft
+  );
+
+  const feed = buildRssFeedLazy(publicPosts);
+
+  switch (req.query.kind) {
+    case "rss.xml":
+      res.end(feed.rss2());
+      break;
+    case "rss.json":
+      res.end(feed.json1());
+      break;
+    case "atom.xml":
+      res.end(feed.atom1());
+      break;
+    default:
+      res.status(404).end();
+  }
+}
+
+function buildRssFeedLazy(allPosts) {
   const siteURL = "https://jordaneldredge.com";
   const author = {
     name: "Jordan Eldredge",

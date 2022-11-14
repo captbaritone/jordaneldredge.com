@@ -1,8 +1,6 @@
 import * as Api from "../../../lib/api";
 import Link from "next/link";
 import DateString from "../../../lib/components/DateString";
-//import buildRSSFeed from "../../../lib/rss";
-// import fs from "fs";
 
 const SHOW_IMAGES = false;
 
@@ -20,17 +18,6 @@ export default async function Home() {
   const publicPosts = allPosts.filter(
     (postInfo) => !postInfo.archive && !postInfo.draft
   );
-
-  /*
-  const feed = buildRSSFeed(publicPosts);
-  // Stole this hack from https://ashleemboyer.com/how-i-added-an-rss-feed-to-my-nextjs-site
-  if (!fs.existsSync("public/feed")) {
-    fs.mkdirSync("public/feed");
-  }
-  fs.writeFileSync("public/feed/rss.xml", feed.rss2);
-  fs.writeFileSync("public/feed/rss.json", feed.json);
-  fs.writeFileSync("public/feed/atom.xml", feed.atom);
-  */
 
   return (
     <>

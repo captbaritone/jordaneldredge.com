@@ -35,6 +35,10 @@ module.exports = withPlaiceholder({
         source: "/projects/curl-proof/install/",
         destination: "/api/curl-proof",
       },
+      {
+        source: "/feed/:path*",
+        destination: "/api/feed/:path*",
+      },
     ];
   },
   trailingSlash: true,
