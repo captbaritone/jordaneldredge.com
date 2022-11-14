@@ -1,0 +1,13 @@
+diff --git a/node_modules/shiki/dist/index.js b/node_modules/shiki/dist/index.js
+index 5b73412..a68cb3c 100644
+--- a/node_modules/shiki/dist/index.js
++++ b/node_modules/shiki/dist/index.js
+@@ -1676,7 +1676,7 @@ async function getOniguruma() {
+       }
+     } else {
+       const path = require("path");
+-      const wasmPath = path.join(require.resolve("vscode-oniguruma"), "../onig.wasm");
++      const wasmPath = path.join(process.cwd(), "node_modules", "vscode-oniguruma", "release", "onig.wasm");
+       const fs = require("fs");
+       const wasmBin = fs.readFileSync(wasmPath).buffer;
+       loader = vscodeOniguruma.loadWASM(wasmBin);
