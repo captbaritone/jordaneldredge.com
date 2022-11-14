@@ -8,7 +8,9 @@ While visiting my parents at their cabin just North of [Ukiah California](http:/
 
 Photo credit: Lisa Eldredge
 
-Have a listen: ::audio{src=/uploads/2010/09/Forest-Dreams-of-Chelsea.mp3}
+Have a listen:
+
+::audio{src=/uploads/2010/09/Forest-Dreams-of-Chelsea.mp3}
 
 - [Download .mp3](/uploads/2010/09/Forest-Dreams-of-Chelsea.mp3)
 - [Download .m4r (iPhone ring tone)](/uploads/2010/09/Forest-Dreams-of-Chelsea.m4r)
