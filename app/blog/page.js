@@ -1,6 +1,6 @@
-import * as Api from "../../../lib/api";
+import * as Api from "../../lib/api";
 import Link from "next/link";
-import DateString from "../../../lib/components/DateString";
+import DateString from "../../lib/components/DateString";
 
 const SHOW_IMAGES = false;
 

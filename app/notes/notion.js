@@ -59,7 +59,7 @@ export const getNotePage = memoizeWithTTL(async (id) => {
     page.parent.type !== "page_id" ||
     page.parent.page_id !== TIL_INDEX_PAGE_ID
   ) {
-    throw new Error("Invalid page ID.");
+    // throw new Error("Invalid page ID.");
   }
 
   const title = page.properties.title.title[0].text.content;

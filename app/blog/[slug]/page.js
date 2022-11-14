@@ -1,13 +1,12 @@
-import { useRouter } from "next/router";
-import ErrorPage from "next/error";
-import * as Api from "../../lib/api";
-import markdownToHtml from "../../lib/markdownToHtml";
-import Layout from "../../lib/components/Layout";
-import GitHubComments from "../../lib/components/GitHubComments";
-import Head from "next/head";
-import DateString from "../../lib/components/DateString";
-import ErrorBoundary from "../../lib/components/ErrorrBoundary";
-import Markdown from "../../lib/components/Markdown";
+import * as Api from "../../../lib/api";
+import markdownToHtml from "../../../lib/markdownToHtml";
+import GitHubComments from "../../../lib/components/GitHubComments";
+import DateString from "../../../lib/components/DateString";
+import Markdown from "../../../lib/components/Markdown";
+
+function ErrorBoundary({ children }) {
+  return children;
+}
 
 /*
 {% if page.summary_image %}
@@ -39,14 +38,7 @@ import Markdown from "../../lib/components/Markdown";
 {% endif %}
 */
 
-export default function Post({ post }) {
-  const router = useRouter();
-  if (!router.isFallback && !post) {
-    return <ErrorPage statusCode={404} />;
-  }
-  const typeoLink = `https://github.com/captbaritone/jordaneldredge.com/blob/master/_posts/${post.filename}`;
-  return (
-    <Layout title={post.title} typoLink={typeoLink}>
+/*
       <Head>
         {post.canonical_url && (
           <link rel="canonical" href={post.canonical_url} />
@@ -73,29 +65,9 @@ export default function Post({ post }) {
           </>
         )}
       </Head>
-      <div className="markdown">
-        <h1>{post.title}</h1>
-        <div
-          className="italic text-sm text-gray-400"
-          style={{
-            marginTop: "-1.4rem",
-            marginBottom: "1rem",
-          }}
-        >
-          <DateString date={new Date(post.date)} />
-        </div>
-        <Markdown {...post.content} />
-      </div>
-      {post.github_comments_issue_id && (
-        <ErrorBoundary fallback={null}>
-          <GitHubComments issue={post.github_comments_issue_id} />
-        </ErrorBoundary>
-      )}
-    </Layout>
-  );
-}
+      */
 
-export async function getStaticProps({ params }) {
+export default async function Post({ params }) {
   const post = Api.getPostBySlug(params.slug, [
     "date",
     "title",
@@ -108,18 +80,33 @@ export async function getStaticProps({ params }) {
     "canonical_url",
   ]);
 
-  const content = await markdownToHtml(post.content || "");
-
-  return {
-    props: {
-      post: {
-        ...post,
-        content,
-      },
-    },
-  };
+  const content = await markdownToHtml(post.content || "", true);
+  const typeoLink = `https://github.com/captbaritone/jordaneldredge.com/blob/master/_posts/${post.filename}`;
+  return (
+    <>
+      <div className="markdown">
+        <h1>{post.title}</h1>
+        <div
+          className="italic text-sm text-gray-400"
+          style={{
+            marginTop: "-1.4rem",
+            marginBottom: "1rem",
+          }}
+        >
+          <DateString date={new Date(post.date)} />
+        </div>
+        <Markdown {...content} />
+      </div>
+      {post.github_comments_issue_id && (
+        <ErrorBoundary fallback={null}>
+          <GitHubComments issue={post.github_comments_issue_id} />
+        </ErrorBoundary>
+      )}
+    </>
+  );
 }
 
+/*
 export async function getStaticPaths() {
   const posts = await Api.getAllPosts(["slug"]);
 
@@ -134,3 +121,5 @@ export async function getStaticPaths() {
     fallback: false,
   };
 }
+
+*/
