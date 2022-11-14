@@ -1,6 +1,6 @@
-import { getPageBySlug } from "../../lib/api";
-import markdownToHtml from "../../lib/markdownToHtml";
-import Markdown from "../../lib/components/Markdown";
+import { getPageBySlug } from "../lib/api";
+import markdownToHtml from "../lib/markdownToHtml";
+import Markdown from "../lib/components/Markdown";
 
 export default async function Page({ slug }) {
   const page = getPageBySlug(slug, ["title", "slug", "content"]);
