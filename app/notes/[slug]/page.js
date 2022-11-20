@@ -8,7 +8,7 @@ export default async function Note({ params, searchParams }) {
     params.slug
   );
 
-  const content = await markdownToHtml(page.markdown, false);
+  const content = await markdownToHtml(page.markdown, true);
 
   return (
     <div className="markdown">
