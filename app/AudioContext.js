@@ -4,7 +4,7 @@ import React from "react";
 
 class AudioState {
   constructor() {
-    this._audio = new Audio();
+    this._audio = typeof window !== "undefined" ? new window.Audio() : null;
   }
 
   pause() {
