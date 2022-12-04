@@ -1,11 +1,12 @@
-import { getNotes, TEN_MINUTES_IN_MS } from "./notion";
+import { getNotes } from "./notion";
 import DateString from "../../lib/components/DateString";
 import Link from "next/link";
 
+// https://beta.nextjs.org/docs/data-fetching/caching#segment-level-caching
+export const revalidate = 600;
+
 export default async function Notes({ searchParams }) {
-  const childPages = await getNotes(
-    searchParams.bust ? 0 : TEN_MINUTES_IN_MS
-  )();
+  const childPages = await getNotes();
   return (
     <>
       <div className="markdown">

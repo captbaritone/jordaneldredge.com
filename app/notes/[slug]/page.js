@@ -1,12 +1,13 @@
 import Markdown from "../../../lib/components/Markdown";
-import { getNotePage, TEN_MINUTES_IN_MS } from "../notion";
+import { getNotePage } from "../notion";
 import markdownToHtml from "../../../lib/markdownToHtml";
 import DateString from "../../../lib/components/DateString";
 
-export default async function Note({ params, searchParams }) {
-  const page = await getNotePage(searchParams.bust ? 0 : TEN_MINUTES_IN_MS)(
-    params.slug
-  );
+// https://beta.nextjs.org/docs/data-fetching/caching#segment-level-caching
+export const revalidate = 600;
+
+export default async function Note({ params }) {
+  const page = await getNotePage(params.slug);
 
   const content = await markdownToHtml(page.markdown, true);
 
