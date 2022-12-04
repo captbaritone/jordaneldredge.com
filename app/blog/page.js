@@ -33,9 +33,7 @@ export default async function Home() {
                 <DateString date={new Date(post.date)} />
               </div>
               <h2 className="font-large font-semibold">
-                <Link as={`/blog/${post.slug}`} href="/blog/[slug]">
-                  {post.title}
-                </Link>
+                <Link href={`/blog/${post.slug}`}>{post.title}</Link>
               </h2>
               <p>{post.summary}</p>
             </div>
