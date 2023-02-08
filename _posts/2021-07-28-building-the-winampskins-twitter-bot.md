@@ -4,6 +4,10 @@ summary: "How my Twitter bot @winampskins works under the hood, how it has evolv
 summary_image: /images/winamp-skins-twitter-bot-bio.png
 ---
 
+_Update, Nov 23, 2022: Out of a frustration with Twitter's new management, @winampskins Twitter Bot has [moved](https://twitter.com/winampskins/status/1595529030454763520) to Mastodon: [@botsin.space@winampskins](https://botsin.space/@winampskins)_
+
+---
+
 In November 2017 I started a Twitter bot called [@winampskins](https://twitter.com/winampskins) which periodically tweets images of [Winamp](https://en.wikipedia.org/wiki/Winamp) skins. It's been a really interesting project with a fun evolution, but I never sat down and wrote about it, so I wanted to rectify that situation.
 
 The idea is simple: Several times a day the bot tweets an image of a classic Winamp skin with a link to try out that skin in the browser. Today it has ~6.5k followers (+200/month recently), garners around 700k impressions/month, and has tweeted ~6k skins.
