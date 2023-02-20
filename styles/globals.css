@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 * {
- @apply break-normal break-words;
+  @apply break-normal break-words;
 }
 
 @layer base {
@@ -151,6 +151,14 @@
   /* Important to allow the code to move horizontally; */
   overflow-x: auto;
   position: relative;
+}
+
+.markdown code.inline {
+  @apply bg-gray-100;
+  @apply px-1;
+  @apply rounded;
+  padding: 0.1em 0.2em;
+  border: 1px solid #eaeaea;
 }
 
 @screen sm {
