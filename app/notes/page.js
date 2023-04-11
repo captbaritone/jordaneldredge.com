@@ -5,6 +5,13 @@ import Link from "next/link";
 // https://beta.nextjs.org/docs/data-fetching/caching#segment-level-caching
 export const revalidate = 600;
 
+export const metadata = {
+  title: "Notes",
+  twitter: {
+    title: "Notes",
+  },
+};
+
 export default async function Notes({ searchParams }) {
   const childPages = await getNotes();
   return (

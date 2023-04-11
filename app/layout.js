@@ -8,6 +8,12 @@ import NavLink from "./NavLink";
 import AudioPlayer from "./AudioPlayer";
 import AudioContextProvider from "./AudioContext";
 
+export const metadata = {
+  title: {
+    template: "%s / Jordan Eldredge",
+  },
+};
+
 export default function Layout({ children, title, typoLink, params }) {
   return (
     <html>

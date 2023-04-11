@@ -4,6 +4,13 @@ import DateString from "../../lib/components/DateString";
 
 const SHOW_IMAGES = false;
 
+export const metadata = {
+  title: "Blog",
+  twitter: {
+    title: "Blog",
+  },
+};
+
 export default async function Home() {
   const allPosts = await Api.getAllPosts([
     "title",

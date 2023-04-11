@@ -38,34 +38,34 @@ function ErrorBoundary({ children }) {
 {% endif %}
 */
 
-/*
-      <Head>
-        {post.canonical_url && (
-          <link rel="canonical" href={post.canonical_url} />
-        )}
-        <meta property="og:type" content="article" />
-        <meta name="twitter:title" content={post.title} />
-        <meta
-          name="og:url"
-          content={"https://jordaneldredge.com/blog/" + post.slug}
-        />
-        <meta name="og:description" content={post.summary || post.title} />
-        <meta name="twitter:description" content={post.summary || post.title} />
-        {post.summary_image && (
-          <>
-            <meta
-              property="og:image"
-              content={"https://jordaneldredge.com" + post.summary_image}
-            />
-            <meta name="twitter:card" content="summary_large_image" />
-            <meta
-              name="twitter:image"
-              content={"https://jordaneldredge.com" + post.summary_image}
-            />
-          </>
-        )}
-      </Head>
-      */
+export function generateMetadata({ params }) {
+  const post = Api.getPostBySlug(params.slug, [
+    "title",
+    "summary",
+    "summary_image",
+    "canonical_url",
+  ]);
+  return {
+    title: post.title,
+    description: post.summary || post.title,
+    twitter: {
+      title: post.title,
+      description: post.summary || post.title,
+    },
+    openGraph: {
+      image: post.summary_image || null,
+      type: "article",
+    },
+    twitter: {
+      image: post.summary_image || null,
+      type: "article",
+      description: post.summary || post.title,
+    },
+    alternates: {
+      canonical: post.canonical_url || null,
+    },
+  };
+}
 
 export default async function Post({ params }) {
   const post = Api.getPostBySlug(params.slug, [

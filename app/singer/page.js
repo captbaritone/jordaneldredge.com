@@ -1,5 +1,9 @@
 import { getSingerResume } from "../../lib/api";
 
+export const metadata = {
+  title: "Singer Resume",
+};
+
 export default function Page() {
   const resume = getSingerResume().sort((a, b) =>
     a.start_date > b.start_date ? -1 : 1

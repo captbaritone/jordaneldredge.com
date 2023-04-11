@@ -7,8 +7,8 @@ module.exports = withPlaiceholder({
   experimental: {
     appDir: true,
     scrollRestoration: true,
-    transpilePackages: ["unified", "plaiceholder", "unist-util-visit"],
   },
+  transpilePackages: ["unified", "plaiceholder", "unist-util-visit"],
   typescript: {
     ignoreBuildErrors: true,
   },

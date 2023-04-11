@@ -6,6 +6,18 @@ import DateString from "../../../lib/components/DateString";
 // https://beta.nextjs.org/docs/data-fetching/caching#segment-level-caching
 export const revalidate = 600;
 
+export async function generateMetadata({ params }) {
+  // TODO: Figure out how to read search params in head.js
+  const page = await getNotePage(params.slug);
+
+  return {
+    title: page.title,
+    twitter: {
+      title: page.title,
+    },
+  };
+}
+
 export default async function Note({ params }) {
   const page = await getNotePage(params.slug);
 
