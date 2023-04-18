@@ -53,7 +53,7 @@ Note how the API here looks very much like a [builder pattern](https://en.wikipe
 
 But not all code-first solutions ask you to explicitly define your schema. There are code-first GraphQL solutions which instead extract your SDL schema from the *implementation* itself. I believe this approach deserves a distinct label. I propose “implementation-first”.
 
-With an implementation-first approach, you write your resolver functions as vanilla typed code and your GraphQL library is able to *infer* the GraphQL schema from that code and its type annotations.
+Because GraphQL's type system is simple, most typed languages can natively express all the GraphQL shapes and primitve types. An implementation-first approach allows you write your resolver functions as vanilla typed code and your GraphQL library is able to *infer* the corresponding GraphQL schema from that code and its type annotations.
 
 The example from above might look something like this, using the Python implementation-first  library [Strawberry](https://strawberry.rocks/):
 
@@ -74,7 +74,9 @@ The main difference between implementation-first and non-implementation-first ap
 
 While some types languages can employ clever to types to catch these mismatches, nuisance of keeping them in sync is still present.
 
-Finally, implementation-first libraries just *feel* different. There’s a sense of light-ness and simplicity that comes from fact that you are *just writing code*. No need to remember your libraries special syntax for describing how to type a non-nullable string argument. Just add an argument, and type it! The existence of the SDL schema starts to fade away into an implementation detail you’re left with a simple sense of type safety. “I return a string here, and it comes out on my client as a string”.
+Finally, implementation-first libraries just *feel* different. There’s a sense of lightness and simplicity that comes from fact that you are *just writing code*. No need to remember your libraries special syntax for describing how to type a non-nullable string argument. Just add an argument, and type it! The existence of the SDL schema starts to fade away into an implementation detail and you’re left with a simple sense of type safety. “I return a string here, and it comes out on my client as a string”.
+
+Server code, with its databases, models, ORMs, etc. is already prone to repetative definitions of data shapes. Implementation-first GraphQL can help avoid piling on yet another redeclaration and make your GraphQL server feel like a natural extension of your existing codebase.
 
 ## Why _not_ choose implementation-first?
 
