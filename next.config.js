@@ -12,7 +12,6 @@ module.exports = withPlaiceholder({
   typescript: {
     ignoreBuildErrors: true,
   },
-  distDir: "build",
   async redirects() {
     return [
       {
