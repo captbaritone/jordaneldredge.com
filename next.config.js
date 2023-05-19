@@ -7,6 +7,8 @@ module.exports = withPlaiceholder({
   experimental: {
     appDir: true,
     scrollRestoration: true,
+    // https://github.com/shikijs/next-shiki
+    serverComponentsExternalPackages: ["shiki", "vscode-oniguruma"],
   },
   transpilePackages: ["unified", "plaiceholder", "unist-util-visit"],
   typescript: {
