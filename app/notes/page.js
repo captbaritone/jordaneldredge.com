@@ -29,9 +29,7 @@ export default async function Notes({ searchParams }) {
                 <DateString date={new Date(post.created_time)} />
               </div>
               <h2 className="font-large font-semibold">
-                <Link as={`/notes/${post.id}`} href="/notes/[slug]">
-                  {post.child_page.title}
-                </Link>
+                <Link href={`/notes/${post.id}`}>{post.child_page.title}</Link>
               </h2>
             </div>
           </div>
