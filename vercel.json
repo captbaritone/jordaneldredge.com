@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "projects/fach-generator/",
+      "destination": "https://jordaneldredge.com/projects/fach-generator/"
+    }
+  ]
+}
