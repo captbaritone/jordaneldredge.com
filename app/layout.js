@@ -70,10 +70,6 @@ export default function Layout({ children, title, typoLink, params }) {
                 Twitter
               </a>
               {" • "}
-              <a rel="me" href="https://mastodon.social/@captbaritone">
-                Mastodon
-              </a>
-              {" • "}
               <a rel="me" href="https://github.com/captbaritone">
                 GitHub
               </a>
