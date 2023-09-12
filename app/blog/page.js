@@ -30,6 +30,12 @@ export default async function Home() {
     <>
       <div className="markdown">
         <h1>Blog</h1>
+        <p>
+          Formal write-ups of projects and ideas.
+          <br />
+          For quick thoughts, observations, and links see{" "}
+          <Link href="/notes">Notes</Link>.
+        </p>
         <hr />
       </div>
       {publicPosts.map((post) => {
@@ -40,7 +46,16 @@ export default async function Home() {
                 <DateString date={new Date(post.date)} />
               </div>
               <h2 className="font-large font-semibold">
-                <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+                <Link
+                  href={`/blog/${post.slug}`}
+                  style={{
+                    wordBreak: "break-word",
+                    /* Adds a hyphen where the word breaks, if supported (No Blink) */
+                    hyphens: "auto",
+                  }}
+                >
+                  {post.title}
+                </Link>
               </h2>
               <p>{post.summary}</p>
             </div>

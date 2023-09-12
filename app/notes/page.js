@@ -18,7 +18,11 @@ export default async function Notes({ searchParams }) {
     <>
       <div className="markdown">
         <h1>Notes</h1>
-        <p>Quick thoughts, observations, and links.</p>
+        <p>
+          Quick thoughts, observations, and links.
+          <br />
+          For more formal writing see <Link href="/blog">Blog</Link>.{" "}
+        </p>
         <hr />
       </div>
       {childPages.map((post) => {
