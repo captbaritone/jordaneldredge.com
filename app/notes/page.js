@@ -1,4 +1,4 @@
-import { getNotes } from "./notion";
+import { getNotes, getMetadata } from "./notion";
 import DateString from "../../lib/components/DateString";
 import Link from "next/link";
 
@@ -13,7 +13,10 @@ export const metadata = {
 };
 
 export default async function Notes({ searchParams }) {
-  const childPages = await getNotes();
+  const [{ idToSlug }, childPages] = await Promise.all([
+    getMetadata(),
+    getNotes(),
+  ]);
   return (
     <>
       <div className="markdown">
@@ -26,14 +29,15 @@ export default async function Notes({ searchParams }) {
         <hr />
       </div>
       {childPages.map((post) => {
+        const slug = idToSlug[post.id] || post.id;
         return (
-          <div key={post.id} className="py-4 flex justify-between">
+          <div key={slug} className="py-4 flex justify-between">
             <div>
               <div className="italic text-sm text-gray-400">
                 <DateString date={new Date(post.created_time)} />
               </div>
               <h2 className="font-large font-semibold">
-                <Link href={`/notes/${post.id}`}>{post.child_page.title}</Link>
+                <Link href={`/notes/${slug}`}>{post.child_page.title}</Link>
               </h2>
             </div>
           </div>
