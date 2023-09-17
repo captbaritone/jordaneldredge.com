@@ -18,7 +18,7 @@
     "autoprefixer": "^10.1.0",
     "feed": "^4.2.2",
     "gray-matter": "^4.0.2",
-    "next": "^13.4.3",
+    "next": "^13.4.19",
     "notion-to-md": "^2.5.5",
     "plaiceholder": "2.2.0",
     "postcss": "^8.2.1",
