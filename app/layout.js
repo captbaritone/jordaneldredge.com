@@ -89,6 +89,8 @@ export default function Layout({ children, title, typoLink, params }) {
                   <a href={typoLink}>Fix Typo</a>
                 </>
               )}
+              {" • "}
+              <Link href={"/search"}>Search</Link>
             </footer>
           </div>
         </AudioContextProvider>
