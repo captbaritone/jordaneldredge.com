@@ -1,5 +1,5 @@
 import Markdown from "../../../lib/components/Markdown";
-import { getNotePage } from "../notion";
+import { getNotePage } from "../notion.mjs";
 import markdownToHtml from "../../../lib/markdownToHtml";
 import DateString from "../../../lib/components/DateString";
 

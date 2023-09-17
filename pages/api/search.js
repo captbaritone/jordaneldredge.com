@@ -1,4 +1,4 @@
-import * as Search from "../../lib/search";
+import * as Search from "../../lib/search.mjs";
 
 export default async function search(req, res) {
   const query = req.query.q;
@@ -26,6 +26,7 @@ export default async function search(req, res) {
     results.push({
       url: getUrl(m),
       title: m.title,
+      page_type: m.page_type,
     });
   }
 

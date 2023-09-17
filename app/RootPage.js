@@ -1,4 +1,4 @@
-import { getPageBySlug } from "../lib/api";
+import { getPageBySlug } from "../lib/api.mjs";
 import markdownToHtml from "../lib/markdownToHtml";
 import Markdown from "../lib/components/Markdown";
 

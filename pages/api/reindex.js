@@ -1,4 +1,4 @@
-import * as Search from "../../lib/search";
+import * as Search from "../../lib/search.mjs";
 
 export default async function reindex(req, res) {
   // open the database

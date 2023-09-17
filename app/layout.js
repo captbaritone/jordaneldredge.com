@@ -7,6 +7,7 @@ import Link from "next/link";
 import NavLink from "./NavLink";
 import AudioPlayer from "./AudioPlayer";
 import AudioContextProvider from "./AudioContext";
+import HotKeys from "./HotKeys";
 
 export const metadata = {
   title: {
@@ -31,6 +32,7 @@ export default function Layout({ children, title, typoLink, params }) {
         `}
           </Script>
           <AudioPlayer />
+          <HotKeys />
           <div className="max-w-2xl mx-auto p-5">
             <nav className="flex justify-between flex-col sm:flex-row pb-5">
               <div className="font-medium">

@@ -1,4 +1,4 @@
-import * as Api from "../../../lib/api";
+import * as Api from "../../../lib/api.mjs";
 import markdownToHtml from "../../../lib/markdownToHtml";
 import GitHubComments from "../../../lib/components/GitHubComments";
 import DateString from "../../../lib/components/DateString";

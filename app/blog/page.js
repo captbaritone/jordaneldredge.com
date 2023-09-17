@@ -1,4 +1,4 @@
-import * as Api from "../../lib/api";
+import * as Api from "../../lib/api.mjs";
 import Link from "next/link";
 import DateString from "../../lib/components/DateString";
 

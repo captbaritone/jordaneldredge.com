@@ -1,4 +1,4 @@
-import { getNotes, getMetadata } from "./notion";
+import { getNotes, getMetadata } from "./notion.mjs";
 import DateString from "../../lib/components/DateString";
 import Link from "next/link";
 

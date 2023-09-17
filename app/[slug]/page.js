@@ -1,4 +1,4 @@
-import { getPageBySlug } from "../../lib/api";
+import { getPageBySlug } from "../../lib/api.mjs";
 import RootPage from "../RootPage";
 
 export function generateMetadata({ params }) {
