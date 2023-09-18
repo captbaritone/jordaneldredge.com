@@ -1,5 +1,5 @@
 ---
-title: "Multitrack Video: \"In My Room\""
+title: 'Multitrack Video: "In My Room"'
 youtube_slug: vdLnQ5T0VaU
 ---
 
@@ -13,11 +13,11 @@ Also available as a free mp3:
 
 ## Cast:
 
-*   Ukulele - Jordan Eldredge
-*   "\[Fat Congas\](http://www.fatcongas.com/)" Cajón - \[Chelsea Hollow\](http://www.chelseahollow.com)
-*   Tenor - Chelsea Hollow
-*   Tenor II - Joel Klein
-*   Baritone - Jordan Eldredge
-*   Electric Bass Guitar - Nate Eldredge
-*   Videographer - Nate Eldredge
-*   Millinery Supplier - Alison Sheehan
+- Ukulele - Jordan Eldredge
+- "[Fat Congas](http://www.fatcongas.com/)" Cajón - [Chelsea Hollow](https://www.chelseahollow.com)
+- Tenor - Chelsea Hollow
+- Tenor II - Joel Klein
+- Baritone - Jordan Eldredge
+- Electric Bass Guitar - Nate Eldredge
+- Videographer - Nate Eldredge
+- Millinery Supplier - Alison Sheehan
