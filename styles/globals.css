@@ -172,6 +172,11 @@
     @apply text-base;
   }
 }
+
+.markdown audio {
+  margin-bottom: 1rem;
+}
+
 /* Wrap any inline highlights `that are really long`, but don't modify
      the setting for codeblocks (inside ```), which are rendered in as:
      <pre><code>...
