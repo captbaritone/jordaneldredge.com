@@ -3,6 +3,14 @@ title: "You're underusing Underscore"
 summary: "Ten common mistakes people make when using Underscore, and a linting tool to detect them."
 ---
 
+_Update 2023-09-17: I've come to regret this blog post a bit. Since ES6 the built in mechanism for these patters are good enough and generally preferable to Underscore or Lodash._
+
+_I think I was overly interested in policing easy-to-spot surface details during code review when I wrote this post and the corresponding lint rule. I highly recommend [Beyond Pep8](/notes/surface-nits/) which addresses this common disfunction._
+
+_That said, I learned a lot from writing these lint rules, so it wasn't a total loss._
+
+---
+
 For the last four months I've been reviewing every JavaScript pull request at
 [work](http://hearsaysocial.com/) and simultaneously contributing to
 [Underscore](http://underscorejs.org/). Not surprisingly, I found my most
@@ -39,8 +47,8 @@ omit the function argument all-together:
 
 ```javascript
 // BAD
-_.max(scores, function(n){
-    return n;
+_.max(scores, function (n) {
+  return n;
 });
 
 // BETTER!
@@ -56,12 +64,12 @@ pass the key name:
 
 ```javascript
 // BAD
-_.filter(users, function(user){
-    return user.isAdmin;
+_.filter(users, function (user) {
+  return user.isAdmin;
 });
 
 // BETTER!
-_.filter(users, 'isAdmin');
+_.filter(users, "isAdmin");
 ```
 
 Rule: [prop-shorthand](https://github.com/captbaritone/eslint-plugin-underscore/blob/master/docs/rules/prop-shorthand.md)
@@ -71,15 +79,14 @@ Rule: [prop-shorthand](https://github.com/captbaritone/eslint-plugin-underscore/
 Instead of passing a function which tests the value of one or more property of
 each item, pass a "matcher" object:
 
-
 ```javascript
 // BAD
-_.filter(books, function(book){
-    return book.type === 'hardcover' && book.avaliable === true;
+_.filter(books, function (book) {
+  return book.type === "hardcover" && book.avaliable === true;
 });
 
 // BETTER!
-_.filter(books, {type: 'hardcover', avaliable: true});
+_.filter(books, { type: "hardcover", avaliable: true });
 ```
 
 Rule: [matches-shorthand](https://github.com/captbaritone/eslint-plugin-underscore/blob/master/docs/rules/matches-shorthand.md)
@@ -95,13 +102,12 @@ descriptive:
 When you are using the property accessor syntax with `_.map`, instead call it
 `_.pluck()`:
 
-
 ```javascript
 // BAD
-var ids = _.map(posts, 'id');
+var ids = _.map(posts, "id");
 
 // BETTER!
-var ids = _.pluck(posts, 'id');
+var ids = _.pluck(posts, "id");
 ```
 
 Rule: [prefer-pluck](https://github.com/captbaritone/eslint-plugin-underscore/blob/master/docs/rules/prefer-pluck.md)
@@ -111,13 +117,12 @@ Rule: [prefer-pluck](https://github.com/captbaritone/eslint-plugin-underscore/bl
 When you are using the matcher syntax with `_.filter`, instead call it
 `_.where()`:
 
-
 ```javascript
 // BAD
-var admins = _.filter(users, {type: 'admin'});
+var admins = _.filter(users, { type: "admin" });
 
 // BETTER!
-var admins = _.where(users, {type: 'admin'});
+var admins = _.where(users, { type: "admin" });
 ```
 
 Rule: [prefer-where](https://github.com/captbaritone/eslint-plugin-underscore/blob/master/docs/rules/prefer-where.md)
@@ -127,13 +132,12 @@ Rule: [prefer-where](https://github.com/captbaritone/eslint-plugin-underscore/bl
 When you are using the matcher syntax with `_.find`, instead call it
 `_.findWhere()`:
 
-
 ```javascript
 // BAD
-_.find(post, {id: 123});
+_.find(post, { id: 123 });
 
 // BETTER!
-_.findWhere(post, {id: 123});
+_.findWhere(post, { id: 123 });
 ```
 
 Rule: [prefer-findwhere](https://github.com/captbaritone/eslint-plugin-underscore/blob/master/docs/rules/prefer-findwhere.md)
@@ -142,7 +146,6 @@ Rule: [prefer-findwhere](https://github.com/captbaritone/eslint-plugin-underscor
 
 When you are using the "identity" syntax (passing nothing) with `_.filter`,
 instead call it `_.compact()`:
-
 
 ```javascript
 // BAD
@@ -168,13 +171,13 @@ item in a collection, instead you should use `_.map`:
 ```javascript
 // BAD
 var doubled = [];
-_.each(numbers, function(n) {
-    doubled.push(n * 2);
+_.each(numbers, function (n) {
+  doubled.push(n * 2);
 });
 
 // BETTER!
-var dubled = _.map(numbers, function(n) {
-    return n * 2;
+var dubled = _.map(numbers, function (n) {
+  return n * 2;
 });
 ```
 
@@ -187,12 +190,12 @@ a collection, instead use `_.invoke`:
 
 ```javascript
 // BAD
-var upperCase = _.map(names, function(name) {
-    return name.toUpperCase()
+var upperCase = _.map(names, function (name) {
+  return name.toUpperCase();
 });
 
 // BETTER!
-var upperCase = _.invoke(names, 'toUpperCase');
+var upperCase = _.invoke(names, "toUpperCase");
 ```
 
 Rule: [prefer-invoke](https://github.com/captbaritone/eslint-plugin-underscore/blob/master/docs/rules/prefer-invoke.md)
@@ -204,13 +207,13 @@ instead use `_.reject`:
 
 ```javascript
 // BAD
-var uncommented = _.filter(notes, function(note) {
-    return !note.hasComments();
+var uncommented = _.filter(notes, function (note) {
+  return !note.hasComments();
 });
 
 // BETTER!
-var uncommented = _.reject(notes, function(note) {
-    return note.hasComments();
+var uncommented = _.reject(notes, function (note) {
+  return note.hasComments();
 });
 ```
 

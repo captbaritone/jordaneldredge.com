@@ -8,7 +8,7 @@ Have you ever interacted with, or designed, an API which gives the user some obj
 These APIs often put significant burden on the caller to ensure the resource gets cleaned up correctly even in the event of errors. An example of correct usage might look something like this:
 
 ```jsx
-const greeter = GreeterManager.getGreeter({for: 'Jordan'});
+const greeter = GreeterManager.getGreeter({ for: "Jordan" });
 
 let greeting;
 try {
@@ -19,7 +19,7 @@ try {
 console.log(greeting);
 ```
 
-This works, but it's quite brittle. There's not a good way for the library to communicate (much less *enforce*) that the greeter needs to get cleaned up, and that it must be cleaned up even if the code using it throws.
+This works, but it's quite brittle. There's not a good way for the library to communicate (much less _enforce_) that the greeter needs to get cleaned up, and that it must be cleaned up even if the code using it throws.
 
 Python has a great syntax for this type of thing. It's called a [Context Manager](https://docs.python.org/3/reference/datamodel.html#context-managers) and it allows you to define a class which models a context with setup and teardown. Code can then consume a context using the `with` keyword, and Python will ensure the resource is only accessible within the created context, and that it gets cleaned upon exiting the context.
 
@@ -46,9 +46,9 @@ function withGreeter(options, cb) {
 The consumer can now write code like this:
 
 ```javascript
-const options = { for: "Jordan"};
+const options = { for: "Jordan" };
 
-const greeting = withGreeter(options, greeter => {
+const greeting = withGreeter(options, (greeter) => {
   return greeter.greet();
 });
 
@@ -77,9 +77,9 @@ async function withGreeter(options, cb) {
 Which the consumer can call like this:
 
 ```javascript
-const options = { for: "Jordan"};
+const options = { for: "Jordan" };
 
-const greeting = await withGreeter(options, async greeter => {
+const greeting = await withGreeter(options, async (greeter) => {
   return greeter.greet();
 });
 
@@ -96,14 +96,14 @@ class Traversal {
 
   _withPath(name, cb) {
     this._path.node.push(name);
-    cb()
+    cb();
     this._path.node.pop();
   }
 
   traverse(node) {
     this._withPath(node.name, () => {
-      for(const child of node.children) {
-        this.traverse(child)
+      for (const child of node.children) {
+        this.traverse(child);
       }
     });
   }
@@ -120,15 +120,15 @@ Nested context managers can get very noisy. You can end up with very indented co
 function withXAndY(xArgs, yArgs, cb) {
   return withX(xArgs, (x) => {
     return withY(yArgs, (y) => {
-      return cb(x, y)
-    })
-  })
+      return cb(x, y);
+    });
+  });
 }
 
 // Which gets used like this:
 withXAndY(xArgs, yArgs, (x, y) => {
-  console.log("Got X and Y", x, y)
-})
+  console.log("Got X and Y", x, y);
+});
 ```
 
 Early returns are not possible. With a simple `try`/`finally` block, you can perform an early return from the parent function. However with this pattern, you can only early return from the callback. On multiple occasions I've opted to foregoe this pattern because it interfered with my ability to use early returns.
@@ -136,3 +136,7 @@ Early returns are not possible. With a simple `try`/`finally` block, you can per
 ## Conclusion
 
 While not perfect, I've found this pattern quite useful in my JavaScript applications, especially when writing server-side Node code. It can be useful both when defining new APIs, or as a helper wrapper around APIs that you don't control.
+
+---
+
+_Update 2023-09-17: I've learned that since 2018 there has been a TC39 proposal for [Explicit Resource Management](https://github.com/tc39/proposal-explicit-resource-management) that aims to provide syntax for this pattern._
