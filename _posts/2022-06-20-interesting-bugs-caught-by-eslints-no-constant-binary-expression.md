@@ -63,7 +63,7 @@ _Aside: Observing how frequently developers get confused by operator precedence 
 
 ### Expecting objects to be compared by value
 
-Developers coming from other languages where structures are compared by value, rather than by reference, can easily fall into the trap of thinking they can do things like test if an object is empty by comparing with a newly created empty object. Or course in JavaScript, objects are compared by reference, and no value can ever be equal to a newly constructed object literal.
+Developers coming from other languages where structures are compared by value, rather than by reference, can easily fall into the trap of thinking they can do things like test if an object is empty by comparing with a newly created empty object. Of course in JavaScript, objects are compared by reference, and no value can ever be equal to a newly constructed object literal.
 
 In this example, `hasData` will always be set to true because `data` can never be referentially equal to a newly created object.
 
