@@ -21,7 +21,7 @@ And an implementation like this:
 ```tsx
 class Query {
   hello(args) {
-    return `hello, ${name || 'World'}`
+    return `hello, ${name || "World"}`;
   }
 }
 ```
@@ -30,7 +30,7 @@ This approach comes with the responsibility of keeping the two in sync. In some 
 
 ## Code-first
 
-With a code-first approach, your *code* defines the schema. This means that you code implements your GraphQL server but is also capable of emitting an SDL file describing the schema it implements.
+With a code-first approach, your _code_ defines the schema. This means that you code implements your GraphQL server but is also capable of emitting an SDL file describing the schema it implements.
 
 There are several methods of achieving a code-first GraphQL implementation. In the JavaScript/TypeScript ecosystem, most look something like this example using [Pothos](https://pothos-graphql.dev/):
 
@@ -41,21 +41,21 @@ builder.queryType({
       args: {
         name: t.arg.string(),
       },
-      resolve: (parent, { name }) => `hello, ${name || 'World'}`,
+      resolve: (parent, { name }) => `hello, ${name || "World"}`,
     }),
   }),
 });
 ```
 
-Note how the API here looks very much like a [builder pattern](https://en.wikipedia.org/wiki/Builder_pattern) API for constructing SDL. While your schema definition now *lives* in your code, you are still writing explicit schema definitions. It’s just that now they written in an imperative code API instead of SDL.
+Note how the API here looks very much like a [builder pattern](https://en.wikipedia.org/wiki/Builder_pattern) API for constructing SDL. While your schema definition now _lives_ in your code, you are still writing explicit schema definitions. It’s just that now they written in an imperative code API instead of SDL.
 
 ## Implementation-first
 
-But not all code-first solutions ask you to explicitly define your schema. There are code-first GraphQL solutions which instead extract your SDL schema from the *implementation* itself. I believe this approach deserves a distinct label. I propose “implementation-first”.
+But not all code-first solutions ask you to explicitly define your schema. There are code-first GraphQL solutions which instead extract your SDL schema from the _implementation_ itself. I believe this approach deserves a distinct label. I propose “implementation-first”.
 
-Because GraphQL's type system is simple, most typed languages can natively express all the GraphQL shapes and primitve types. An implementation-first approach allows you write your resolver functions as vanilla typed code and your GraphQL library is able to *infer* the corresponding GraphQL schema from that code and its type annotations.
+Because GraphQL's type system is simple, most typed languages can natively express all the GraphQL shapes and primitve types. An implementation-first approach allows you write your resolver functions as vanilla typed code and your GraphQL library is able to _infer_ the corresponding GraphQL schema from that code and its type annotations.
 
-The example from above might look something like this, using the Python implementation-first  library [Strawberry](https://strawberry.rocks/):
+The example from above might look something like this, using the Python implementation-first library [Strawberry](https://strawberry.rocks/):
 
 ```python
 @strawberry.type
@@ -66,15 +66,15 @@ class Query:
         return f"Hello {name || 'World'}!"
 ```
 
-Note how the `@strawberry` decorators just tell the library *which* classes/properties/methods to expose in the graph, but the GraphLQ names and types of those things can be inferred from the implementation itself.
+Note how the `@strawberry` decorators just tell the library _which_ classes/properties/methods to expose in the graph, but the GraphLQ names and types of those things can be inferred from the implementation itself.
 
 ## What’s the difference?
 
-The main difference between implementation-first and non-implementation-first approaches is **duplication**, and duplication’s ever-present companion: (de)**synchronization**. When a solution is *not* implementation-first, you end up with duplication. You must declare the existence of your type/field/argument, and then you must, *additionally*, implement it! With that duplication comes repetition, but also the risk of mismatches!
+The main difference between implementation-first and non-implementation-first approaches is **duplication**, and duplication’s ever-present companion: (de)**synchronization**. When a solution is _not_ implementation-first, you end up with duplication. You must declare the existence of your type/field/argument, and then you must, _additionally_, implement it! With that duplication comes repetition, but also the risk of mismatches!
 
 While some types languages can employ clever to types to catch these mismatches, nuisance of keeping them in sync is still present.
 
-Finally, implementation-first libraries just *feel* different. There’s a sense of lightness and simplicity that comes from fact that you are *just writing code*. No need to remember your libraries special syntax for describing how to type a non-nullable string argument. Just add an argument, and type it! The existence of the SDL schema starts to fade away into an implementation detail and you’re left with a simple sense of type safety. “I return a string here, and it comes out on my client as a string”.
+Finally, implementation-first libraries just _feel_ different. There’s a sense of lightness and simplicity that comes from fact that you are _just writing code_. No need to remember your libraries special syntax for describing how to type a non-nullable string argument. Just add an argument, and type it! The existence of the SDL schema starts to fade away into an implementation detail and you’re left with a simple sense of type safety. “I return a string here, and it comes out on my client as a string”.
 
 Server code, with its databases, models, ORMs, etc. is already prone to repetative definitions of data shapes. Implementation-first GraphQL can help avoid piling on yet another redeclaration and make your GraphQL server feel like a natural extension of your existing codebase.
 
@@ -82,8 +82,8 @@ Server code, with its databases, models, ORMs, etc. is already prone to repetati
 
 While I personally believe that implementation-first is the platonic ideal of a GraphQL server implementation, it may not always be a viable choice.
 
-For example, untypes languages have no way to specify what GraphQL type a given resolver is expected to return. Further, some *typed* languages, like TypeScript, are expressive enough, but the types are not inspectable at runtime. This means that the only way build an implementation-first approach is by relying on a build step, and build steps can add friction to a development process.
+For example, untypes languages have no way to specify what GraphQL type a given resolver is expected to return. Further, some _typed_ languages, like TypeScript, are expressive enough, but the types are not inspectable at runtime. This means that the only way build an implementation-first approach is by relying on a build step, and build steps can add friction to a development process.
 
 ## Conclusion
 
-While the implementation-first approach to authoring a GraphQL server is not possible in all languages, when it *is* possible, I believe it has many advantages. It reduces duplication, mitigates the risk of desynchronization, and removes mental overhead. I hope that when you are evaluating the GraphQL server library options available to you, you will take a moment to consider which ones are implementation-first, and the benefits that may imply.
+While the implementation-first approach to authoring a GraphQL server is not possible in all languages, when it _is_ possible, I believe it has many advantages. It reduces duplication, mitigates the risk of desynchronization, and removes mental overhead. I hope that when you are evaluating the GraphQL server library options available to you, you will take a moment to consider which ones are implementation-first, and the benefits that may imply.
