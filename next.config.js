@@ -5,7 +5,6 @@ const { withPlaiceholder } = require("@plaiceholder/next");
  */
 module.exports = withPlaiceholder({
   experimental: {
-    appDir: true,
     scrollRestoration: true,
     // https://github.com/shikijs/next-shiki
     serverComponentsExternalPackages: ["shiki", "vscode-oniguruma"],
@@ -45,4 +44,8 @@ module.exports = withPlaiceholder({
   trailingSlash: true,
   swcMinify: true,
   distDir: "build",
+});
+
+process.on("unhandledRejection", (error) => {
+  console.log("unhandledRejection", error);
 });

@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import PageImpl from "./pageImpl";
 
 export async function generateMetadata({ params, searchParams }) {
@@ -6,5 +7,9 @@ export async function generateMetadata({ params, searchParams }) {
 }
 
 export default function Search() {
-  return <PageImpl />;
+  return (
+    <Suspense fallback={null}>
+      <PageImpl />
+    </Suspense>
+  );
 }
