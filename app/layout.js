@@ -10,6 +10,7 @@ import AudioContextProvider from "./AudioContext";
 import HotKeys from "./HotKeys";
 
 export const metadata = {
+  metadataBase: new URL("https://jordaneldredge.com"),
   title: {
     template: "%s / Jordan Eldredge",
   },

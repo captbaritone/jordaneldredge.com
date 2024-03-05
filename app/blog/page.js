@@ -1,6 +1,7 @@
 import * as Api from "../../lib/api.mjs";
 import Link from "next/link";
 import DateString from "../../lib/components/DateString";
+import Image from "next/image.js";
 
 const SHOW_IMAGES = false;
 
@@ -60,9 +61,10 @@ export default async function Home() {
               <p>{post.summary}</p>
             </div>
             {post.summary_image && SHOW_IMAGES ? (
-              <img
+              <Image
                 width={100}
                 height={100}
+                alt={`Header image for a post titled "${post.title}."`}
                 src={post.summary_image}
                 className="rounded h-20 ml-6 mt-6 ring-gray-400 shadow-inner-md"
               />
