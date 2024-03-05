@@ -130,11 +130,11 @@ Getting all of this to work entirely in the browser has been a great challenge, 
 
 I still have a list of UI details which are not quite right:
 
-* Visualizer in the "shade" version of the main window is not implemented
-* Windows do not reposition eachother when toggling shade or double modes
-* The visualizer and EQ canvases are rendering anti-aliased lines, which is not how Winamp actually works.
-* The bar graph visualizer is missing the white "peaks" which fall slowly
-* Many hotkeys and context menus are missing
+- Visualizer in the "shade" version of the main window is not implemented
+- Windows do not reposition eachother when toggling shade or double modes
+- The visualizer and EQ canvases are rendering anti-aliased lines, which is not how Winamp actually works.
+- The bar graph visualizer is missing the white "peaks" which fall slowly
+- Many hotkeys and context menus are missing
 
 Beyond those, I'm not entirely sure where this project will evolve. Here are some of the things I'm currently exploring to one degree or another:
 
