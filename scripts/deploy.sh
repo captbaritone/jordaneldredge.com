@@ -6,6 +6,7 @@ fi
 echo "Pushing to origin"
 git push origin
 echo "Building"
+nvm use 20
 pnpm build
 echo "Copying to server"
 scp -r build/* jordan:~/projects/jordaneldredge.com/build
