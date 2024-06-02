@@ -1,6 +1,7 @@
 ---
 title: "Tweeting the various things the SF City College hill says"
 archive: true
+tags: [twitter, defunct]
 ---
 
 [![Love is the Answer](/uploads/2008/05/picture-1-300x148.png "SF City College Hill")](/uploads/2008/05/picture-1.png)

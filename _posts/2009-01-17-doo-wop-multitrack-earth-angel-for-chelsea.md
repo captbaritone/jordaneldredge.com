@@ -1,5 +1,6 @@
 ---
-title: "Doo-Wop Multitrack: \"Earth Angel\" (for Chelsea)"
+title: 'Doo-Wop Multitrack: "Earth Angel" (for Chelsea)'
+tags: [multitrack, lilypond, mp3, chelsea]
 ---
 
 My girlfriend is sick, so I arranged and recorded her a song. I hope this helps you feel better Chelsea.

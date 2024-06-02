@@ -1,5 +1,7 @@
 ---
 title: "Refresh Hero Avatar Game"
+tags: [project, php, refresh, game, defunct]
+summary: "I turned my forum avatar image into an interactive rhythm streak game."
 ---
 
 ![](http://classicalcode.com/projects/hero.png "Refresh Hero")

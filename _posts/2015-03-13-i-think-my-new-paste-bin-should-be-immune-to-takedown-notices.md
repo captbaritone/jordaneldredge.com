@@ -2,6 +2,7 @@
 title: "I think my new paste bin should be immune to takedown notices"
 summary: I recently released a new website called HashBin which avoids being able to see the content the pastes it helps create.
 summary_image: /content/images/hashbin-sample.png
+tags: ["javascript", "project", "security"]
 ---
 
 I recently released a new website called [HashBin](http://hashb.in). It takes
@@ -11,9 +12,9 @@ being able to see the content the pastes it helps create.
 What is the "hash" of a URL, and why is it special? The hash is the portion of
 the URL that follows the `#` symbol. For example:
 
-~~~python
+```python
 http://example.com#the-hash
-~~~
+```
 
 Here's what makes it special:
 
@@ -37,12 +38,11 @@ This is exactly what I have built. When your browser requests `http://hashb.in`
 it retrieves a simple JavaScript web app that immediately takes the content of
 the hash, uncompresses it, and displays it as text on the page.
 
-*For example:*
+_For example:_
 
 ![A sample HashBin paste](/content/images/hashbin-sample.png)
 
-
-Since my server never sees, much less *provides*, the content being displayed
+Since my server never sees, much less _provides_, the content being displayed
 on the page, I posit that I should be immune to takedown notices. Even if
 I did receive one, what action could I take? I suppose I could stop hosting the
 app, but that hardly seems reasonable.

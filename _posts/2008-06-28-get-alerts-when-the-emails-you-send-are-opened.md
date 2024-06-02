@@ -1,5 +1,6 @@
 ---
 title: "Get alerts when the emails you send are opened"
+tags: [security, defunct, php]
 ---
 
 Inspired by [spypig.com](http://www.spypig.com/), a site that helps you track when your emails are opened, I decided to see if I could write a script with the same functionality. It tuned out to be a rather interesting project.

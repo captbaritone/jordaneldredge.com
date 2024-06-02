@@ -1,6 +1,7 @@
 ---
 title: "I Wish I Had The Time [Ukulele/Vocal Multitrack]"
 summary_image: /uploads/2012/08/vintage2-500x332.jpg
+tags: [music, multitrack, mp3, ukulele]
 ---
 
 [![](/uploads/2012/08/vintage2-500x332.jpg "vintage2")](/uploads/2012/08/vintage2.jpg)

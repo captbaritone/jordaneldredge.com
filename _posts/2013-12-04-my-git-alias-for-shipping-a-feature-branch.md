@@ -1,5 +1,6 @@
 ---
 title: "My Git alias for shipping a feature branch"
+tags: ["git"]
 ---
 
 I use [feature branching][1] as part of my Git workflow. Once a feature is

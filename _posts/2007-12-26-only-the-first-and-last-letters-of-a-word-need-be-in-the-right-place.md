@@ -1,5 +1,6 @@
 ---
 title: "Only the first and last letters of a word need be in the right place"
+tags: []
 ---
 
 After my dad showed me an article in the [Funny

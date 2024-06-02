@@ -1,5 +1,6 @@
 ---
 title: "Setting up PHP completion in Vim"
+tags: ["php", "vim"]
 ---
 
 Yesterday I setup PHP completion in Vim by adding the following to my `.vimrc`:
@@ -42,14 +43,3 @@ The result:
 [3]: https://github.com/SirVer/ultisnips
 [4]: https://github.com/shawncplus/phpcomplete.vim
 [screenshot]: /content/images/php-vim-completion-screenshot.png
-
-
-
-
-
-
-
-
-
-
-

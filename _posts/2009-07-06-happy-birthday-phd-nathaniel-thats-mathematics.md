@@ -1,5 +1,6 @@
 ---
-title: "Happy Birthday/PhD Nathaniel: \"That's Mathematics\""
+title: 'Happy Birthday/PhD Nathaniel: "That''s Mathematics"'
+tags: [multitrack, music, ukulele]
 ---
 
 As well as turning 28, last month my brother graduated from UCSD with is PhD(!) in mathematics. So, as a combined gift, I got the family and Chelsea together to record a math themed song for him. We recorded "That's Mathematics" by [Tom Lehrer](http://en.wikipedia.org/wiki/Tom_Lehrer).

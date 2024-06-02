@@ -1,11 +1,12 @@
 ---
 title: "Piano Four-Hands Arrangement (Wedding Gift)"
 summary_image: /uploads/2014/06/eldredge-nammies_four_hands.pdf
+tags: [lilypond, music, mp3, chelsea, piano]
 ---
 
 [![Photo credit: Lynne Stevenson Hylton](/uploads/2013/09/wedding_dance_web.jpg)](/uploads/2013/09/wedding_dance_web.jpg)
 
-*Photo credit: Lynne Stevenson Hylton*
+_Photo credit: Lynne Stevenson Hylton_
 
 On September 14th, Chelsea and I were married in her parent's backyard in Southern California. As a wedding gift I arranged a piano four-hands version of the song Chelsea's dad, Tom Hollow, wrote to sing Chelsea and her siblings to sleep: "Nammies".
 

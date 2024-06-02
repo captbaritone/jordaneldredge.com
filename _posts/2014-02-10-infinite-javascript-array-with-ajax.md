@@ -1,5 +1,6 @@
 ---
 title: "Infinite javascript array using AJAX"
+tags: ["javascript"]
 ---
 
 Last Halloween I made a [simple website] that combines nouns with sexy
@@ -11,15 +12,15 @@ Here is the jQuery solution I came up with that allows the user to cycle
 through as many suggestions as they want without having to ever wait for an
 http request:
 
-~~~javascript
+```javascript
 // Start with an empty array of suggestions
 var suggestions = [];
 
 // A function to append 10 suggestions to our array
 function getSuggestions() {
-    $.getJSON( "api.php?count=10", function( data ) {
-        suggestions = suggestions.concat( data );
-    });
+  $.getJSON("api.php?count=10", function (data) {
+    suggestions = suggestions.concat(data);
+  });
 }
 
 // Grab some suggestions right away
@@ -27,23 +28,22 @@ getSuggestions();
 
 // Function to show a new suggestion, triggered by an `onClick` attribute
 function refresh() {
-    // If we don't have any suggestions
-    if(suggestions.length == 0)
-    {
-        // Wait, then try again, we are waiting on the ajax call
-        setTimeout(refresh, 100);
-        return;
-    }
-    suggestion = suggestions.pop();
+  // If we don't have any suggestions
+  if (suggestions.length == 0) {
+    // Wait, then try again, we are waiting on the ajax call
+    setTimeout(refresh, 100);
+    return;
+  }
+  suggestion = suggestions.pop();
 
-    // CODE TO UPDATE THE PAGE
+  // CODE TO UPDATE THE PAGE
 
-    // If we have fewer than five suggestions left, fetch some more
-    if(suggestions.length < 5) getSuggestions();
+  // If we have fewer than five suggestions left, fetch some more
+  if (suggestions.length < 5) getSuggestions();
 }
-~~~
+```
 
 Check out the actual code on [GitHub].
 
 [simple website]: http://whatthefuckshouldibeforhalloween.com
-[GitHub]: https://github.com/captbaritone/whatthefuckshouldibeforhalloween/blob/master/index.php
+[github]: https://github.com/captbaritone/whatthefuckshouldibeforhalloween/blob/master/index.php

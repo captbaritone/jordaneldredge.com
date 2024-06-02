@@ -1,5 +1,6 @@
 ---
 title: "Intro to Vim Talk"
+tags: ["talk", "vim"]
 ---
 
 On Tuesday I gave my very first talk. I've been attending the [San Francisco Vim
@@ -11,6 +12,6 @@ give a 20 minute "beginners" talk where I addressed two core concepts of Vim:
 
 Feel free to check out the [slides]. Their source is also on [GitHub].
 
-[San Francisco Vim Enthusiasts]: https://groups.google.com/forum/#!forum/vimsf
+[san francisco vim enthusiasts]: https://groups.google.com/forum/#!forum/vimsf
 [slides]: /talks/intro-to-vim
-[GitHub]: https://github.com/captbaritone/intro-to-vim
+[github]: https://github.com/captbaritone/intro-to-vim

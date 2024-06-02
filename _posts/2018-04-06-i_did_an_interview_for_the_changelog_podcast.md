@@ -1,6 +1,7 @@
 ---
 title: I did an interview for the Changelog Podcast
 summary: "I talked about Winamp2-js on the Changelog Podcast."
+tags: ["winamp", "opinion", "podcast"]
 ---
 
 A few weeks ago I had the honor of being interviewed on one of my favorite podcasts: [Changelog](https://changelog.com/podcast). We talked [Winamp2-js](https://webamp.org), nostalgia, side projects, and so much more. The episode just dropped today. Have a listen:

@@ -1,6 +1,7 @@
 ---
 title: "Jazz Ukuele Video: What's New?"
 youtube_slug: eJoKuzVGyFY
+tags: [ukulele, multitrack, mp3, music, pdf]
 ---
 
 As I have been [exploring what can be done on the ukulele](/blog/jazz-ukulele-love-is-a-song-from-bambi/), I have become more and more enamored with the sound of jazz chords on the ukulele. Listening to Lyle Ritz' remarkable recordings with just ukulele and bass have inspired me. This is an arrangement of my own devising of a song that I have loved for a very long time.

@@ -3,6 +3,7 @@ title: "Interesting Bugs Caught by ESLint’s no-constant-binary-expression"
 summary: "I contributed a rule to ESLint that catches a surprisingly wide variety of logic bugs."
 github_comments_issue_id: 18
 canonical_url: https://eslint.org/blog/2022/07/interesting-bugs-caught-by-no-constant-binary-expression/
+tags: ["eslint", "javascript", "staticAnalysis"]
 ---
 
 _This post originally appeared as a guest post on [ESLint's blog](https://eslint.org/blog/2022/07/interesting-bugs-caught-by-no-constant-binary-expression/)._
@@ -51,8 +52,7 @@ When trying to define default values, people get confused with expressions like 
 ```javascript eslint {"no-constant-binary-expression": "error"}
 function shouldShowWelcome() {
   return (
-    this.viewModel?.welcomeExperience ===
-      WelcomeExperience.ForWorkspace ?? true
+    this.viewModel?.welcomeExperience === WelcomeExperience.ForWorkspace ?? true
   );
 }
 ```
@@ -90,7 +90,7 @@ I’ve only seen this particular typo once, but I wanted to include it because i
 Here, the developer meant to test if a value was greater than or equal to zero (`>= 0`), but accidentally reversed the order of the characters and created an arrow function that returned `0 && startWidth <= 1`!
 
 ```javascript eslint {"no-constant-binary-expression": "error"}
-assert(startWidth => 0 && startWidth <= 1);
+assert((startWidth) => 0 && startWidth <= 1);
 ```
 
 _From [Mozilla](https://phabricator.services.mozilla.com/rMOZILLACENTRAL925b8d1ad45f80faee052492b3b43f5120052405)_
@@ -116,12 +116,11 @@ If you’ve found these examples compelling, please consider enabling [no-consta
 module.exports = {
   rules: {
     // Requires eslint >= v8.14.0
-    "no-constant-binary-expression": "error"
-  }
-}
+    "no-constant-binary-expression": "error",
+  },
+};
 ```
 
 If you do, and it finds bugs, I’d love to [hear about them](https://twitter.com/captbaritone)!
 
-
-*Thanks to [Brad Zacher](https://twitter.com/bradzacher) for the original observation which inspired this work and the suggestion to propose it as a new core rule. And thanks to [Milos Djermanovic](https://github.com/mdjermanovic) for significant contributions during code review.*
+_Thanks to [Brad Zacher](https://twitter.com/bradzacher) for the original observation which inspired this work and the suggestion to propose it as a new core rule. And thanks to [Milos Djermanovic](https://github.com/mdjermanovic) for significant contributions during code review._

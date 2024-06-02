@@ -1,6 +1,7 @@
 ---
 title: "Winterreise Blog"
 archive: true
+tags: [project, music]
 ---
 
 **Edit (May 18, 2012): This project is no-longer online**

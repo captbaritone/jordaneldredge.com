@@ -1,6 +1,7 @@
 ---
 title: "You're underusing Underscore"
 summary: "Ten common mistakes people make when using Underscore, and a linting tool to detect them."
+tags: ["opinion", "javascript", "eslint"]
 ---
 
 _Update 2023-09-17: I've come to regret this blog post a bit. Since ES6 the built in mechanism for these patters are good enough and generally preferable to Underscore or Lodash._

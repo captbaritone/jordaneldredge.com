@@ -1,15 +1,18 @@
 ---
 title: "Video: I Made a $4 Electric Ukulele"
 youtube_slug: K236WImqlxU
+tags: [project, ukulele, music]
+summary: "I got bored over winter break and make an electric ukulele out of stuff I found in my parent's basement."
 ---
 
 While I was home for Christmas, I was watching lots of ukulele videos on Youtube. Somewhere in my wanderings I came across the [Risa Uke Solid](http://www.youtube.com/watch?v=NuqQWon71do) and my mind was blown. It's a small electric ukulele made out of a single solid piece of wood and some hardware. The simplicity of the design made me think: "Hey, I could do that" and so I began thinking about how I could make a simple electric ukulele myself. Two days later, with lots of help from my dad and his tools, I have a working electric ukulele made from stuff I found around my parent's house and a set of $4 ukulele strings. It's currently fret-less and the pickup leaves a lot to be desired but my goal was really to create a mock-up so that I would know what I was doing when I built the actual thing.
 
 ::youtube{token=K236WImqlxU}
 
-__Epilogue:__
+**Epilogue:**
 
 Possible improvements on this model:
+
 <ul>
 	<li>Frets</li>
 	<li>Deepen groove on back</li>

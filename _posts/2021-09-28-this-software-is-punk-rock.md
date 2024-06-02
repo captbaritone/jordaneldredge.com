@@ -2,6 +2,7 @@
 title: "This Software is Punk Rock"
 summary: "A reprint of an interview I did with the Italian design magazine Progetto Grafico about Winamp's significance in our digital culture."
 summary_image: /images/progetto-grafico-37-cover.jpg
+tags: ["opinion", "winamp", "design"]
 ---
 
 In October of 2020 I was interviewed by Silvio Lorusso for the Italian graphic design magazine [Progetto Grafico](http://www.progettograficomagazine.it/en/). In the intervew I got to share my thoughts on the cultural significance of Winamp and Winamp skins, as well as my experience building [Webamp](https://webamp.org).

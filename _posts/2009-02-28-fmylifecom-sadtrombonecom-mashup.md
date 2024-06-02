@@ -1,6 +1,7 @@
 ---
 title: "FMyLife.com + SadTrombone.com Mashup"
 archive: true
+tags: [defunct, project]
 ---
 
 **EDIT (May 18, 2012): FML has changed their API to require a key, I have written them asking for such a key. In the mean time, the project has been removed.**

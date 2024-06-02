@@ -1,6 +1,7 @@
 ---
 title: "Tag: Sleepy Time Down South"
 archive: true
+tags: [barbershop, multitrack, mp3, music]
 ---
 
 I multitracked a new tag from the [ubiquitous book o'
@@ -11,5 +12,5 @@ Time Down South" number 33.
 
 Biggest challenges:
 
-* Aligning diphthongs
-* Tenor part in a difficult range
+- Aligning diphthongs
+- Tenor part in a difficult range

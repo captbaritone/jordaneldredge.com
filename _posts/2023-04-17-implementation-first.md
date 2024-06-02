@@ -1,6 +1,7 @@
 ---
 title: "Implementation-First GraphQL"
 summary: "Defining a meaningful distinction within code-first GraphQL server libraries."
+tags: ["graphql", "implementationFirst"]
 # github_comments_issue_id: 18
 ---
 

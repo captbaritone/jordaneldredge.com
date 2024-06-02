@@ -1,6 +1,7 @@
 ---
 title: "Server back up (or so it seems)"
 archive: true
+tags: [meta]
 ---
 
 The server that hosts this blog (as well as all my other projects) has had

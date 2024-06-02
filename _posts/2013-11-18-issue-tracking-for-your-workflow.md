@@ -1,5 +1,6 @@
 ---
 title: "Issue tracking for your workflow"
+tags: []
 ---
 
 As software developers our profession is automating systems. The moment

@@ -1,5 +1,6 @@
 ---
 title: "PHP: Avatar Hack"
+tags: [security, php]
 ---
 
 ![](/uploads/2008/11/avatar.jpg "avatar Hack")I am a member of a web forum which allows you to use an Avatar image of your choice. You simply give them the url of the image. The ability of php to generate images lead me to try to come up with ways to take advantage of this system.

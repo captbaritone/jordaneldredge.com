@@ -1,8 +1,9 @@
 ---
 title: "[Multitrack] Gilbert + Lisa 30th Anniversary"
+tags: [multitrack, music]
 ---
 
-For my parents 30th wedding anniversary on Tuesday I recorded them a little audio drama featuring characters and musical excerpts from the hilarious musical [Forever Plaid](http://en.wikipedia.org/wiki/Forever_Plaid). 
+For my parents 30th wedding anniversary on Tuesday I recorded them a little audio drama featuring characters and musical excerpts from the hilarious musical [Forever Plaid](http://en.wikipedia.org/wiki/Forever_Plaid).
 
 Congratulations:
 

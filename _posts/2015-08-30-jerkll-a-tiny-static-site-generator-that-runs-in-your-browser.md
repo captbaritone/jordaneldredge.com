@@ -1,6 +1,8 @@
 ---
 title: "Jerkll: A tiny static site generator that runs in your browser"
 summary: Replacing Jekyll with 14 lines of run-anywhere JavaScript.
+archive: true
+tags: ["javascript", "project"]
 ---
 
 While playing with [RequireJS](http://requirejs.org) for another project,

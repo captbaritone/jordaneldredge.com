@@ -2,6 +2,7 @@
 title: '?? "" is a Code Smell'
 summary: "Defaulting to empty string is a lie we tell our type checker."
 github_comments_issue_id: 17
+tags: ["javascript", "opinion"]
 ---
 
 In typed JavaScript codebases (TypeScript/Flow) I see this pattern a lot:

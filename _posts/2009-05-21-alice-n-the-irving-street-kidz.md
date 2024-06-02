@@ -1,5 +1,6 @@
 ---
 title: "Alice 'n The Irving Street Kidz"
+tags: [mp3, music, ukulele, multitrack]
 ---
 
 Today my friend Alison, my room mate Noah and myself recorded a rendition of "I

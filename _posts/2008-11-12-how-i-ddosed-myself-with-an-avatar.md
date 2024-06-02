@@ -1,5 +1,7 @@
 ---
 title: "How I DDOSed myself with an avatar"
+tags: [refresh, game, security, project]
+summary: "An inventive trick with dynamically generated avatar images, or: How I learned the hard way just how motivated people are by leader boards."
 ---
 
 Building on my [previous avatar hack](/blog/php-avatar-hack/),
@@ -74,8 +76,9 @@ New quotes form in the forum in reference to the avatar that the other guy is ho
 > by managing 40 requests per scound.
 
 > aha I found out someone is using a java program with 1000 threads, no wonder
-> &lt;_&lt; [I showed this to other people on IRC as well - they're all
-> bragging ]
+> &lt;\_&lt; [I showed this to other people on IRC as well - they're all
+>
+> > bragging ]
 
 > Looks like the 1st place person is taking a break, time to catch up! I've
 > noticed that people's #s have been getting too big for the image, I made

@@ -1,6 +1,7 @@
 ---
-title: "Irving Berlin's \"Blue Skies\" on Eleuke electric ukulele"
+title: 'Irving Berlin''s "Blue Skies" on Eleuke electric ukulele'
 youtube_slug: MUcnYnjIk88
+tags: [youtube, ukulele, music]
 ---
 
 I have been dreaming about [electric ukuleles](/blog/video-i-made-a-4-electric-ukulele/) for years

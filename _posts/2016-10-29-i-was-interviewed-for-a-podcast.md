@@ -1,6 +1,7 @@
 ---
 title: I was interviewed for a podcast
 summary: My work interviewed me as part of their "employee spotlight" series.
+tags: ["podcast", "opinion"]
 ---
 
 My work, [Hearsay Social][1], runs a [podcast][2] which occasionally features
@@ -15,4 +16,3 @@ I'm quite pleased with how it turned out:
 [1]: https://hearsaysocial.com/
 [2]: https://hearsaysocial.com/category/podcast/
 [3]: https://twitter.com/victorgaxiola
-

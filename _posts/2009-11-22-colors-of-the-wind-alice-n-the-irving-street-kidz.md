@@ -1,5 +1,6 @@
 ---
 title: "Colors of The Wind (Alice n' The Irving Street Kidz)"
+tags: [ukulele, multitrack, music]
 ---
 
 [Alice n' The Irving Street Kidz](http://blog.classicalcode.com/tag/alice-n-the-irving-street-kidz/) are back with [another](/blog/alice-n-the-irving-street-kidz/) hit single. This time it's 'Colors of The Wind' from the major motion picture _Pocahontas_. We believe that our rendition is a vast improvement on the original.

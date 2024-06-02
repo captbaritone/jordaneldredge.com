@@ -1,5 +1,6 @@
 ---
 title: "Barbershop multi-track: Happy Anniversary Chelsea"
+tags: [barbershop, mp3, multitrack, chelsea]
 ---
 
 [![Chelsea and Jordan in Aruba](/uploads/2008/05/n695475033_824973_3928-225x300.jpg "Chelsea-Jordan")](/uploads/2008/05/n695475033_824973_3928.jpg)

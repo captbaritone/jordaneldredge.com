@@ -1,6 +1,7 @@
 ---
 title: "Opera stuff looking for good home (free)"
 archive: true
+tags: [opera]
 ---
 
 ![Opera Libretto](http://www.tias.com/stores/yesterdaysjewels/pictures/t2-3002a.jpg)
@@ -11,51 +12,51 @@ The libretti are going in to my library (more on that later) but the rest is of 
 
 As for the libretti, there were about 41 of them. I got them because, as a singer, they can be VERY helpful in translating arias and entire roles. If you are ever interested in borrowing any of them, I have listed my complete collection below:
 
-* Beethoven - Fidelio
-* Bellini - La Sonnambula
-* Britten - Billy Budd
-* Britten - Peter Grimes
-* Donizetti - La fille du régiment
-* Gounod - Faust
-* Handle - Orlando
-* Henze - Elegy for Young Lovers
-* Imbrie - Angle of Repose
-* Janáček - Jenůfa
-* Lehár - The Merry Widow
-* Leoncavallo - I Pagliacci
-* Mascangni - Cavalleria Rusticana
-* Massenet - Thaïs
-* Massenet - Cendrillon
-* Massenet - Esclarmonde
-* Massenet - Le Cid
-* Massenet - Werther
-* Meyerbeer - L'Africaine
-* Monteverdi - L'incoronazione di Poppea
-* Mozart - Così fan tutte
-* Mozart - Don Giovanni
-* Mozart - Idomeneo (2x)
-* Mozart - Le nozze di Figaro (2x)
-* Mozart - The Magic Flute (2x)
-* Puccini - Gianni Schicchi (x2)
-* Puccini - Il Tabarro
-* Puccini - La bohème
-* Puccini - Nabucco
-* Puccini - Turandot
-* Reimann - Lear
-* Rossini - Il Barbiere Di Siviglia
-* Rossini - La Cenerentola
-* Rossini - Maomentto Secondo
-* Rossini - Semiramide
-* Sallinen - Kuningas lähtee Ranskaan
-* Schostakovich - Lady Macbeth of Mtsensk
-* Strauss - Arabella
-* Strauss, R - Die ägyptische Helena
-* Struass, R - Die Frou ohne Schatten
-* Tippett - The Midsummer Marriage
-* Verdi - Don Carlos
-* Verdi - Falstaff
-* Wagner - Das Rheingold
-* Wagner - Der fliegende Holländer
-* Wagner - Götterdämmerung
-* Wagner - Siegfried (2x)
-* Wagner - Tristan und Isolde
+- Beethoven - Fidelio
+- Bellini - La Sonnambula
+- Britten - Billy Budd
+- Britten - Peter Grimes
+- Donizetti - La fille du régiment
+- Gounod - Faust
+- Handle - Orlando
+- Henze - Elegy for Young Lovers
+- Imbrie - Angle of Repose
+- Janáček - Jenůfa
+- Lehár - The Merry Widow
+- Leoncavallo - I Pagliacci
+- Mascangni - Cavalleria Rusticana
+- Massenet - Thaïs
+- Massenet - Cendrillon
+- Massenet - Esclarmonde
+- Massenet - Le Cid
+- Massenet - Werther
+- Meyerbeer - L'Africaine
+- Monteverdi - L'incoronazione di Poppea
+- Mozart - Così fan tutte
+- Mozart - Don Giovanni
+- Mozart - Idomeneo (2x)
+- Mozart - Le nozze di Figaro (2x)
+- Mozart - The Magic Flute (2x)
+- Puccini - Gianni Schicchi (x2)
+- Puccini - Il Tabarro
+- Puccini - La bohème
+- Puccini - Nabucco
+- Puccini - Turandot
+- Reimann - Lear
+- Rossini - Il Barbiere Di Siviglia
+- Rossini - La Cenerentola
+- Rossini - Maomentto Secondo
+- Rossini - Semiramide
+- Sallinen - Kuningas lähtee Ranskaan
+- Schostakovich - Lady Macbeth of Mtsensk
+- Strauss - Arabella
+- Strauss, R - Die ägyptische Helena
+- Struass, R - Die Frou ohne Schatten
+- Tippett - The Midsummer Marriage
+- Verdi - Don Carlos
+- Verdi - Falstaff
+- Wagner - Das Rheingold
+- Wagner - Der fliegende Holländer
+- Wagner - Götterdämmerung
+- Wagner - Siegfried (2x)
+- Wagner - Tristan und Isolde

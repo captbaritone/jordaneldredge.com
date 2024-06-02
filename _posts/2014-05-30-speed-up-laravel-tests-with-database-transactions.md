@@ -2,6 +2,7 @@
 title: "Speed up Laravel tests with database transactions"
 summary: How I used transactions to make my tests run eight times faster.
 github_comments_issue_id: 9
+tags: ["php", "laravel"]
 ---
 
 I shamelessly test my controllers by writing functional tests which depend on
@@ -26,31 +27,31 @@ This actually proved harder than I thought. My current solution, which is
 a total hack, is to create a custom boostrap file which shells out to run the
 artisan seed command before beginning any testing:
 
-~~~php
+```php
 <?php
 
 // bootstrap/testingAutoload.php
 
 passthru("php artisan --env='testing' migrate --seed");
 require __DIR__ . '/autoload.php';
-~~~
+```
 
 Then I change my `phpunit.xml` to use that boostrap file instead:
 
-~~~xml
+```xml
 <phpunit
 ...
     bootstrap="bootstrap/testingAutoload.php"
 ...
 >
-~~~
+```
 
 ## 2. Encapsulate each test in a transaction
 
 I then add these `setUp()` and `tearDown()` methods to the `TestCase` class
 which Laravel gives us:
 
-~~~php
+```php
 public function setUp()
 {
 	parent::setUp();
@@ -61,21 +62,21 @@ public function tearDown()
 	parent::tearDown();
 	DB::rollBack();
 }
-~~~
+```
 
 ## Further considerations
 
 1. Since the database seeding is done in the boostrap file, any time I want to run
-a test, I have to wait for the database to seed, even if it's just a tiny unit
-test which does not touch the database.
+   a test, I have to wait for the database to seed, even if it's just a tiny unit
+   test which does not touch the database.
 
 2. I'm not sure how well this approach works if you are already employing database
-transactions within in your app.
+   transactions within in your app.
 
 3. You could easily add the transaction setup/teardown methods to
-a `DatabaseTestCase` class which extends `TestCase` and then any tests which
-need the database could extend `DatabaseTestClass`. That way you won't be
-needlessly running the transactions for your unit tests.
+   a `DatabaseTestCase` class which extends `TestCase` and then any tests which
+   need the database could extend `DatabaseTestClass`. That way you won't be
+   needlessly running the transactions for your unit tests.
 
 ## Feedback
 

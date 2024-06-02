@@ -2,6 +2,7 @@
 title: "A Tour of Winamp2-js Features"
 summary: Demo videos of Winamp2-js' more interesting features with notes on how they are implemented.
 summary_image: /images/winamp/three-windows-screenshot.png
+tags: ["project", "winamp", "javascript"]
 ---
 
 > _This post is an expanded version of this [Twitter thread](https://twitter.com/captbaritone/status/961274714013319168)._

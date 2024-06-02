@@ -1,6 +1,7 @@
 ---
 title: Gzip hates your DRY code
 summary: How to remove code and still increase your library weight.
+tags: ["javascript", "opinion"]
 ---
 
 A little over a year ago, I was reading through the source code of [Underscore.js] and noticed two methods that looked awfully similar. Knowing that Underscore was actively trying to [shave off some weight], I thought I'd try to combine them.
@@ -19,6 +20,6 @@ None of this is to say that you shouldn't try to consolidate duplicate logic in 
 
 You can find my proposed change in this [pull request](https://github.com/jashkenas/underscore/pull/2383).
 
-[Underscore.js]: http://underscorejs.org/
+[underscore.js]: http://underscorejs.org/
 [shave off some weight]: https://github.com/jashkenas/underscore/issues/2060
-[DRYer]: https://en.wikipedia.org/wiki/Don't_repeat_yourself
+[dryer]: https://en.wikipedia.org/wiki/Don't_repeat_yourself

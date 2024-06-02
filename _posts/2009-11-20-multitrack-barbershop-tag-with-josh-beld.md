@@ -1,6 +1,7 @@
 ---
 title: "Multitrack Barbershop Tag With Josh Beld"
 archive: true
+tags: [barbaershop, multitrack, music]
 ---
 
 [![Josh_Beld_and_Jordan_Eldredge](/uploads/2009/11/Josh_Beld_and_Jordan_Eldredge.jpg "Josh_Beld_and_Jordan_Eldredge")](/uploads/2009/11/Josh_Beld_and_Jordan_Eldredge.jpg)
@@ -9,7 +10,7 @@ Tonight my friend and fellow baritone Josh Beld came over and naturally, things 
 
 When It's Sleepy Time Down South:
 
-*   Baritone and Lead: Jordan Eldredge
-*   Bass and Tenor: Josh Beld
+- Baritone and Lead: Jordan Eldredge
+- Bass and Tenor: Josh Beld
 
 ::audio{src=/uploads/2009/11/When-Its-Sleepytime-Down-South-Feat.-Josh-Beld.mp3}

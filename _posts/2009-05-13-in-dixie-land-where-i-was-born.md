@@ -1,5 +1,7 @@
 ---
 title: "In Dixie Land (Where I Was Born)"
+archive: true
+tags: [barbershop, multitrack, mp3, music]
 ---
 
 Since I [began multitracking](/blog/my-first-barbershop-multi-track-love-letters/), my recordings have suffered from "recorded-with-the-built-in-microphone-itis" which has greatly reduced the quality of my multitracks. Recently I got my hands on a [Zoom H4](http://www.amazon.com/Zoom-ZOO-H4-Handy-Recorder/dp/B000LGA2K6) "Handy Recorder".

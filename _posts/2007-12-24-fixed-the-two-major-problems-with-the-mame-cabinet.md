@@ -1,5 +1,6 @@
 ---
 title: "Fixed the two major problems with the MAME cabinet"
+tags: []
 ---
 
 Finally I fixed the last two major flaws with the MAME cabinet!

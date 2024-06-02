@@ -1,8 +1,9 @@
 ---
 title: "GutterGold.com"
+tags: [defunct, found]
 ---
 
-__Edit (May 18, 2012): This project is no-longer online.__
+**Edit (May 18, 2012): This project is no-longer online.**
 
 Since [my brother](https://thatsmathematics.com/blog/about-me/) introduced
 me to [Found Magazine](http://foundmagazine.com/) several years ago,

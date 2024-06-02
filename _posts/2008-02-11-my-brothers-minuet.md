@@ -1,5 +1,6 @@
 ---
 title: "My brother's minuet"
+tags: [music, mp3, piano]
 ---
 
 My [brother](http://thatsmathematics.com/) took a music course in his undergrad

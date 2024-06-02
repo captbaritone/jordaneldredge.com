@@ -1,5 +1,7 @@
 ---
 title: "UriBin: A self-replicating paste bin that lives in url shorteners"
+archive: true
+tags: ["project", "javascript"]
 ---
 
 Back in February, I created a strange thing which I called
@@ -57,10 +59,10 @@ a data URI. Then it submits that URI it to TinyURL.
 
 > But that's not crazy enough!
 
-Okay, it turns out we can make our tool so tiny, that we can encode *it* as
+Okay, it turns out we can make our tool so tiny, that we can encode _it_ as
 a data URI and host it in a URL shortener itself.
 
-> But even *that's* not crazy enough!
+> But even _that's_ not crazy enough!
 
 Fine! If we're generating a little HTML page to display our text, why not
 bundle in our JavaScript tool as well? That way people who are viewing our text

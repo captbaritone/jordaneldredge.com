@@ -1,5 +1,6 @@
 ---
 title: "Globally install PHP command-line tools with Composer"
+tags: ["php"]
 ---
 
 We are spoiled with all the great PHP command-line tools available these days.
@@ -19,11 +20,11 @@ which contains the following `composer.json` file:
 
 ```json
 {
-    "require": {
-        "phpunit/phpunit": "3.7.*",
-        "codeception/codeception": "*",
-        "robmorgan/phinx": "*"
-    }
+  "require": {
+    "phpunit/phpunit": "3.7.*",
+    "codeception/codeception": "*",
+    "robmorgan/phinx": "*"
+  }
 }
 ```
 
@@ -45,8 +46,8 @@ Since every machine I work on has a clone of my dotfiles, with just one
 `composer update` I can have all my PHP tools globally installed on any
 machine.
 
-[PHPUnit]: http://phpunit.de/
-[Codeception]: http://codeception.com/
-[Phinx]: http://phinx.org/
-[Composer]: https://getcomposer.org/
+[phpunit]: http://phpunit.de/
+[codeception]: http://codeception.com/
+[phinx]: http://phinx.org/
+[composer]: https://getcomposer.org/
 [dotfiles]: https://github.com/captbaritone/dotfiles/tree/master/composer-packages

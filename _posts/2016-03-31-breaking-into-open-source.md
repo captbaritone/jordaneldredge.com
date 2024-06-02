@@ -1,6 +1,7 @@
 ---
 title: Breaking into open source
 summary: "A detailed guide for those who are struggling to find a way to contribute to open source."
+tags: ["opinion", "openSource"]
 ---
 
 For many years I put open source software on a pedestal. I wanted very badly to
@@ -21,9 +22,9 @@ source, you are going to be relatively slow at gaining context. To that end,
 focus your energy on one project and try to select one that sets you up for
 success. Here are some criteria to consider:
 
-* How large is the codebase? The less code, the easier it is to have contextual
+- How large is the codebase? The less code, the easier it is to have contextual
   understanding of all of its pieces.
-* Do you use the project daily? A library that you depend upon at work or for
+- Do you use the project daily? A library that you depend upon at work or for
   a serious side project is a great starting place, since you will already have
   contextual awareness from the perspective of a user. Understanding the inner
   workings of the library will also pay dividends with your other work.
@@ -37,28 +38,28 @@ What are their goals and norms?). Here are some ways you could go about that:
 
 ### Social context
 
-* Does the project have any documentation about how to contribute? Read it!
-* Follow ("watch") the project on GitHub. Read _all_ the incoming issues and
+- Does the project have any documentation about how to contribute? Read it!
+- Follow ("watch") the project on GitHub. Read _all_ the incoming issues and
   pull request. I recommend getting a mobile app like [iOctocat] so that you
   can follow the discussion in near real time.
-* Do they have a [Gitter] or [IRC] channel? If so, idle in that channel and
+- Do they have a [Gitter] or [IRC] channel? If so, idle in that channel and
   listen to the conversations. I've found the [Gitter iOS app] very useful.
-* If they have a mailing list, subscribe to it.
-* Follow the main contributors on [Twitter].
+- If they have a mailing list, subscribe to it.
+- Follow the main contributors on [Twitter].
 
 ### Technical context
 
-* Read the source code. The smaller the project, the more of the code you will
+- Read the source code. The smaller the project, the more of the code you will
   be able to internalize.
-* Read the tests. Tests are often an under-loved part of the code base, and can
+- Read the tests. Tests are often an under-loved part of the code base, and can
   be a great place to jump in and help. They also help clarify, in detail, the
   expected behavior of the software.
-* Read the documentation. Does it accurately reflect the code you read? Is it
+- Read the documentation. Does it accurately reflect the code you read? Is it
   consistent?
 
 This step can serve multiple purposes. It will give you context but it may also
 help you identify possible improvements. Read linearly but keep notes of things
-to look into more deeply. Does a function look strangely constructed?  Make
+to look into more deeply. Does a function look strangely constructed? Make
 a note and look into it later. Maybe there's a subtle reason it ended up that
 way, or maybe you could be the one to clean it up!
 
@@ -68,9 +69,9 @@ Before you can start proposing changes to the projects, you need to be able to
 build and run the project locally. Download the project and learn about its
 build process:
 
-* Build the project
-* Run the tests and any linters
-* Run any other continuous integration tests: linting, code coverage, etc.
+- Build the project
+- Run the tests and any linters
+- Run any other continuous integration tests: linting, code coverage, etc.
 
 ## Finding your first issue
 
@@ -103,17 +104,17 @@ your disposal is quite limited. If you have a question about why something
 works the way it does, you cannot wander over to the author's desk. Instead you
 have other tools at your disposal:
 
-* `git blame`. There is a _vast_ quantity of context in the git history. Open
+- `git blame`. There is a _vast_ quantity of context in the git history. Open
   source projects usually have verbose commit messages which detail the
   intentions of the committer. If some code looks suspect, dig into the git
   history as deep as you need to in order to find the commit that first
   introduced it. You may need to go several commits deep before you find the
   actual commit that introduced the thing you are investigating.
-* Pull Request history. If the commit message does not answer your question,
+- Pull Request history. If the commit message does not answer your question,
   you can use the commit SHA hash to track down the GitHub pull request that
   included that commit. This will give you additional information like feedback
   that the committer was responding to which lead to her final commit.
-* The issue tracker. Get good at searching the project's issue tracker. Often
+- The issue tracker. Get good at searching the project's issue tracker. Often
   things that appear "wrong" to a newbie but are actually intentional will have
   multiple closed issues which contain defenses of the current approach.
 
@@ -140,9 +141,9 @@ way, make sure that your code blends in with its surroundings. The entire
 project should appear as if it were written by a single individual. Pay special
 attention to:
 
-* Naming conventions
-* Spacing, layout
-* Code organization
+- Naming conventions
+- Spacing, layout
+- Code organization
 
 ### Prioritize testing
 
@@ -168,12 +169,12 @@ messages are doubly important. Give as much detail as possible in your commit
 message. Put as much care into your commit message as you do into your code,
 _if not more_. You should include:
 
-* Your reasoning for why you chose the approach you did.
-* Other approaches you considered, and why you rejected them.
-* Results of any research you did.
-* Links to related issues, pull requests or discussion.
+- Your reasoning for why you chose the approach you did.
+- Other approaches you considered, and why you rejected them.
+- Results of any research you did.
+- Links to related issues, pull requests or discussion.
 
-__Bonus points:__ Construct a narrative of how the project ended up in its
+**Bonus points:** Construct a narrative of how the project ended up in its
 current situation. When was the bug/inconsistency introduced? Do you have
 a hypothesis as to what lead to the mistake?
 
@@ -205,9 +206,9 @@ code base. Keep your eyes open for related issues, and pretty soon _you'll_ be
 the expert jumping in to fix things before the other newbies have a chance to
 dig in and figure out what's causing the bug.
 
-[iOctocat]: https://ioctocat.com/
-[Gitter]: https://gitter.im/
-[IRC]: https://en.wikipedia.org/wiki/Internet_Relay_Chat
-[Gitter iOS App]: https://search.itunes.apple.com/WebObjects/MZContentLink.woa/wa/link?mt=8&path=apps%2fgitter
-[Twitter]: https://twitter.com
-[Code Complete]: http://cc2e.com/
+[ioctocat]: https://ioctocat.com/
+[gitter]: https://gitter.im/
+[irc]: https://en.wikipedia.org/wiki/Internet_Relay_Chat
+[gitter ios app]: https://search.itunes.apple.com/WebObjects/MZContentLink.woa/wa/link?mt=8&path=apps%2fgitter
+[twitter]: https://twitter.com
+[code complete]: http://cc2e.com/

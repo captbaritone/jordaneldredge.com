@@ -3,6 +3,8 @@ title: "Speeding Up Webamp's Music Visualizer with WebAssembly"
 summary: "Writing an in-browser compiler to compile untrusted user-supplied code to fast and secure Wasm at runtime."
 github_comments_issue_id: 16
 summary_image: /images/butterchurn-wasm/butterchurn.png
+tags:
+  ["winamp", "wasm", "typescript", "javascript", "compiler", "project", "music"]
 ---
 
 [Webamp.org](http://webamp.org)'s visualizer, [Butterchurn](https://github.com/jberg/butterchurn), now uses WebAssembly (Wasm) to achieve better performance and improved security. Whereas most projects use Wasm by compiling pre-existing native code to Wasm, Butterchurn uses an in-browser compiler to compile untrusted user-supplied code to fast and secure Wasm at runtime. This blog post details why we undertook this project, the challenges we faced, the solutions we found, and the performance and security wins they unlocked.
@@ -20,11 +22,11 @@ This worked fine for the shader code, and the fact that the JavaScript code was 
 
 However, the transpiled JavaScript code still represented a significant performance bottleneck. It worked, but running Butterchurn could easily consume a majority of available CPU, draining batteries and causing computer fans to go into overdrive.
 
-While JavaScript is *capable* of running complicated functions consisting mostly of math in a hot loop *inside* an animation loop, it's not the ideal tool for the job.
+While JavaScript is _capable_ of running complicated functions consisting mostly of math in a hot loop _inside_ an animation loop, it's not the ideal tool for the job.
 
 Enter WebAssembly!
 
-In late 2019 I set out to learn more about compilers, and for me that meant trying to implement one. While searching for a compiler project which would be achievable for a novice, I hit upon the idea of compiling Eel to Wasm. It ended up being a perfect fit. Eel is a very simple language with only one data type: floating point numbers (no strings, objects, or arrays). This made it a very nice fit for Wasm which only has numeric data types. 
+In late 2019 I set out to learn more about compilers, and for me that meant trying to implement one. While searching for a compiler project which would be achievable for a novice, I hit upon the idea of compiling Eel to Wasm. It ended up being a perfect fit. Eel is a very simple language with only one data type: floating point numbers (no strings, objects, or arrays). This made it a very nice fit for Wasm which only has numeric data types.
 
 So, in a bid to learn how compilers work, I built [`eel-wasm`](https://github.com/captbaritone/eel-wasm) — a compiler written in TypeScript (more on that later) which converts Eel source code into the binary representation of a Wasm module. If you're curious you can try it out in this playground I made: [https://eel.capt.dev/](https://eel.capt.dev/)
 
@@ -46,7 +48,7 @@ To understand the overall speedup, we computed the percent speedup for each pres
 
 While `eel-wasm` has provided significant performance wins for Butterchurn, the wins were not immediate. Jordan Berg, Butterchurn's author, made an initial attempt at adopting `eel-wasm` within Butterchurn, and it showed the Wasm version being more or less performance neutral. But why?
 
-Each preset consists of several Eel functions, some of which are run as many as a thousand times per animation frame. In between each call into Eel code, Butterchurn needs to read out the results of the previous call and reset some global values in anticipation of the next call. While the functions themselves were running *much* faster, getting values — even just numbers — into and out of Wasm ended up being surprisingly expensive and effectively canceled out our performance wins.
+Each preset consists of several Eel functions, some of which are run as many as a thousand times per animation frame. In between each call into Eel code, Butterchurn needs to read out the results of the previous call and reset some global values in anticipation of the next call. While the functions themselves were running _much_ faster, getting values — even just numbers — into and out of Wasm ended up being surprisingly expensive and effectively canceled out our performance wins.
 
 Jordan Berg and I went back and forth on how we might reduce the number of boundary crossings and we eventually found an interesting solution: Rewrite these hot loops in a separate Wasm module which can share [`WebAssembly.Global`](http://webassembly.Global) objects with our compiled Eel Wasm module. While boundary crossing between JavaScript and Wasm is expensive, multiple Wasm modules can share access to globals and seem to pay basically zero overhead.
 
@@ -54,7 +56,7 @@ The result is that Butterchurn now includes its own pre-compiled Wasm module (wr
 
 After moving the most obvious hot loops into AssemblyScript we were able achieve the 72.6% performance improvement mentioned above. Furthermore, there are still a few hot loops which contain boundary crossing. We estimate that once we convert those to AssemblyScript we will be able to achieve a full 100% performance improvement overall.
 
-I'm bullish on this multiple Wasm module approach since not only does it allow us avoid the cost of boundary crossings, but in the future it will allow us to iteratively convert *other* performance sensitive pieces of Butterchurn's JavaScript to Wasm.
+I'm bullish on this multiple Wasm module approach since not only does it allow us avoid the cost of boundary crossings, but in the future it will allow us to iteratively convert _other_ performance sensitive pieces of Butterchurn's JavaScript to Wasm.
 
 ## Running the Compiler in the Browser
 
@@ -87,4 +89,4 @@ I want to give a huge thanks to Jordan Berg, the author of Butterchurn, for answ
 
 ---
 
-If you'd like to hear more, I gave a talk entitled [*Faster, Safer: Compiling Untrusted Code to WebAssembly in the Browser*](/blog/faster-safer-compiling-untrusted-code-to-web-assembly-in-the-browser) in which I expanded upon some of the ideas in this post.
+If you'd like to hear more, I gave a talk entitled [_Faster, Safer: Compiling Untrusted Code to WebAssembly in the Browser_](/blog/faster-safer-compiling-untrusted-code-to-web-assembly-in-the-browser) in which I expanded upon some of the ideas in this post.

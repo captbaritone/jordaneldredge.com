@@ -1,5 +1,6 @@
 ---
 title: "Found: Henry system of music transcription"
+tags: [found, music]
 ---
 
 As some of you may know, I collect items that I find on the ground. Over the
@@ -9,4 +10,3 @@ music transcription" is? Or how it reduces the need for page turns? Or why
 someone has been pamphlet-bombing my neighborhood with propaganda against it?
 
 !["Found: Henry system of music transcription](/uploads/2008/02/photo-0012.jpg)
-

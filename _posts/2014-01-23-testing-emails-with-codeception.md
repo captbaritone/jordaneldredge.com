@@ -1,10 +1,11 @@
 ---
 title: "Testing emails with Codeception"
+tags: ["php"]
 ---
 
-**Update:** *(Mar 19, 2014) I have converted the helper file into a Codeception
+**Update:** _(Mar 19, 2014) I have converted the helper file into a Codeception
 module which can be installed as a simple Composer requirement. You can find it
-(and its installation instructions) here: [MailCatcher Codeception Module]*
+(and its installation instructions) here: [MailCatcher Codeception Module]_
 
 Acceptance testing, testing your site via an automated browser, is great way to
 ensure that the various pages on your site behave the way you expect them to.
@@ -23,8 +24,8 @@ Take a look at the project on GitHub: [MailCatcher Codeception Helper]. Once you
 have [MailCatcher] installed, its just a matter of downloading the file, and
 adding a few lines to your configuration.
 
-[MailCatcher's API to test sent emails]: http://codeception.com/12-15-2013/testing-emails-in-php
-[MailCatcher Codeception Helper]: https://github.com/captbaritone/mailcatcher-codeception-helper
-[MailCatcher Codeception Module]: https://github.com/captbaritone/codeception-mailcatcher-module
-[MailCatcher]: http://mailcatcher.me/
+[mailcatcher's api to test sent emails]: http://codeception.com/12-15-2013/testing-emails-in-php
+[mailcatcher codeception helper]: https://github.com/captbaritone/mailcatcher-codeception-helper
+[mailcatcher codeception module]: https://github.com/captbaritone/codeception-mailcatcher-module
+[mailcatcher]: http://mailcatcher.me/
 [screenshot]: /content/images/mailcatcher.png

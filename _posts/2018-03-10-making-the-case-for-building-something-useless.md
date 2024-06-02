@@ -1,10 +1,11 @@
 ---
 title: Making the case for building something useless
 summary: "Why I'm perfectly happy to have built something that nobody really uses."
+tags: ["opinion"]
 ---
 
 Yesterday I answered some questions in an "Ask Me Anything" thread at work. One particular question was both challenging to answer, and got to the heart of how I think about side projects:
-  
+
 > You've spent a ton of time on your Winamp project but outside of a lot of press, it didn't have a lot of impact in terms of people using it. How do you feel about that and would you do something different in the future?
 
 -- [Christopher Chedeau](http://blog.vjeux.com/)
@@ -29,6 +30,6 @@ Webamp's exposure was also directly responsible for my current job. A recruiter 
 
 ## I dunno
 
-I'm sure there are potential projects which could have had all of these advantages: fun, educational, popular, __and__ provided real value too, but identifying such a project is not easy, especially when you are relatively inexperienced. In fact, I feel like I caught lightning in a bottle finding a project that had 4/5.
+I'm sure there are potential projects which could have had all of these advantages: fun, educational, popular, **and** provided real value too, but identifying such a project is not easy, especially when you are relatively inexperienced. In fact, I feel like I caught lightning in a bottle finding a project that had 4/5.
 
 Maybe with the insights and connections I've gained from this project and others my next project will be more focused on providing real value, but I'm not making any promises.

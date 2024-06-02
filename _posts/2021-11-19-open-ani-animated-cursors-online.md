@@ -2,9 +2,10 @@
 title: "Open .ani Animated Cursors Online"
 summary: "I made a simple website where you can instantly open and view any .ani file for free."
 summary_image: /images/open-ani-online.png
+tags: ["javascript", "css", "parser"]
 ---
 
-*TL;DR: I made a simple website where you can instantly open and view any `.ani` file for free. You can find it here: [https://capt.dev/open-ani-online/](https://capt.dev/open-ani-online/)*
+_TL;DR: I made a simple website where you can instantly open and view any `.ani` file for free. You can find it here: [https://capt.dev/open-ani-online/](https://capt.dev/open-ani-online/)_
 
 ---
 
@@ -28,7 +29,7 @@ This site greets you with a full page takeover ad, plus a GDPR cookies notificat
 
 [https://filext.com/file-extension/ANI](https://filext.com/file-extension/ANI)
 
-This site is at least a bit better. You can drag in the `.ani` file to view it. However, the site is a bit slow. It took ~4 seconds on my very fast internet to open the file once I dropped it. Once it does open the file, it only shows you *one frame at a time* and takes another ~4 seconds (and a network round trip) to view each subsequent frame. **There's no way to view actual animation**.
+This site is at least a bit better. You can drag in the `.ani` file to view it. However, the site is a bit slow. It took ~4 seconds on my very fast internet to open the file once I dropped it. Once it does open the file, it only shows you _one frame at a time_ and takes another ~4 seconds (and a network round trip) to view each subsequent frame. **There's no way to view actual animation**.
 
 ![fileproinfo.com failing to show an .ani animated cursor. It's just the next "No preview avaliable" with two popups overlapping it](/images/fileproinfo-com-ani.png)
 

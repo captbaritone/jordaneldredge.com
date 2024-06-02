@@ -1,5 +1,7 @@
 ---
 title: "Twitter Bot: UkeChord"
+archive: true
+tags: [project, twitter, ukulele, music]
 ---
 
 **Edit (May 18, 2012): This bot is now defunct.**
@@ -19,6 +21,7 @@ I would like to introduce you all to my new creation [UkeChord](http://twitter.c
 2.  Receive chord fingering.
 
 Below are the chord names it understands. C can be replaced by any note sharp (#) or flat (b):
+
 <table border="0">
 <tbody>
 <tr>

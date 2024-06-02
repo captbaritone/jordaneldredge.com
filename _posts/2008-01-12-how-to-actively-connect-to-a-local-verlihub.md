@@ -1,5 +1,7 @@
 ---
 title: "How to actively connect to a local Verlihub"
+archive: true
+tags: []
 ---
 
 Ever since I moved my DC hub to my apartment, I have been unable to connect to

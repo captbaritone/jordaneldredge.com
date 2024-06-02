@@ -2,9 +2,10 @@
 title: "Why I switched from Vundle to Plug"
 summary: I've found Plug to be superior to Vundle in several regards.
 github_comments_issue_id: 8
+tags: ["vim", "opinion"]
 ---
 
-At a recent [Vim meetup][Keith Smiley] introduced me to [Plug],
+At a recent [Vim meetup][keith smiley] introduced me to [Plug],
 a plugin manager for Vim that improves upon [Vundle]. Below are the reasons
 I switched from Vundle to Plug:
 
@@ -55,8 +56,8 @@ to a native Vim approach.
 You can see my Plug configuration in this file which is sourced by my `.vimrc`:
 [Plug.vim]
 
-[Vim meetup]:https://groups.google.com/forum/#!forum/vimsf
-[Plug]:https://github.com/junegunn/vim-plug
-[Keith Smiley]:https://smileykeith.com/
-[vundle]:https://github.com/gmarik/Vundle.vim
-[Plug.vim]:https://github.com/captbaritone/dotfiles/blob/master/vim/plug.vim
+[vim meetup]: https://groups.google.com/forum/#!forum/vimsf
+[plug]: https://github.com/junegunn/vim-plug
+[keith smiley]: https://smileykeith.com/
+[vundle]: https://github.com/gmarik/Vundle.vim
+[plug.vim]: https://github.com/captbaritone/dotfiles/blob/master/vim/plug.vim

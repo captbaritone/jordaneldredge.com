@@ -1,5 +1,6 @@
 ---
 title: "Found: Envelope of old photos and slides"
+tags: [found]
 ---
 
 [![Envelope of old photos and slides 4](/uploads/2008/02/photo-0039.thumbnail.jpg)](/uploads/2008/02/photo-0039.jpg "Envelope of old photos and slides 4")I can't recall where or when, but I found these seven photos and slides in a PG&E bill return envelope.

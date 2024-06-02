@@ -1,5 +1,6 @@
 ---
 title: 'One way "curl pipe sh" install scripts can be dangerous [proof of concept]'
+tags: ["security"]
 ---
 
 I have seen [several](http://pow.cx/) [sites](http://getcomposer.org/download/) recently that

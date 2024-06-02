@@ -2,6 +2,7 @@
 title: "Drawing mandalas with JavaScript and canvas"
 summary: Rewriting a PHP script from 2008 in JavaScript.
 summary_image: /images/mandala.png
+tags: [javascript]
 ---
 
 I was looking through my old blog posts when I came across [Drawing mandalas

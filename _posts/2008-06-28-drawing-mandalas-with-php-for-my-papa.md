@@ -1,9 +1,10 @@
 ---
 title: "Drawing mandalas with PHP for my Papa"
+tags: [php]
 ---
 
-*Update, Jan 2015: I've rewritten this in JavaScript:
-[Drawing mandalas with JavaScript and canvas](/blog/drawing-mandalas-with-javascript-and-canvas)*
+_Update, Jan 2015: I've rewritten this in JavaScript:
+[Drawing mandalas with JavaScript and canvas](/blog/drawing-mandalas-with-javascript-and-canvas)_
 
 [![A sample mandala I have generated](/uploads/2008/06/trig.png "Mandala")](/uploads/2008/06/trig.png)
 
@@ -20,4 +21,3 @@ Give it a try:
 </form>
 
 [Source code](https://gist.github.com/4093015)
-

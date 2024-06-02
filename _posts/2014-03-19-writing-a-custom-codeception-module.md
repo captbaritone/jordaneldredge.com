@@ -1,5 +1,6 @@
 ---
 title: "Writing a custom Codeception module"
+tags: ["php"]
 ---
 
 I enjoy using [Codeception](http://codeception.com/) to write my acceptance
@@ -48,22 +49,20 @@ In your package directory, create the following `compsoser.json` file:
 
 ```json
 {
-    "name": "namespace/hello",
-    "description": "Hello World Module",
-    "authors": [
-        {
-            "name": "John Doe",
-            "email": "johndoe@example.com"
-        }
-    ],
-    "require": {
-
-    },
-    "autoload": {
-        "psr-4": {
-            "Codeception\\Module\\": "src"
-        }
+  "name": "namespace/hello",
+  "description": "Hello World Module",
+  "authors": [
+    {
+      "name": "John Doe",
+      "email": "johndoe@example.com"
     }
+  ],
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "Codeception\\Module\\": "src"
+    }
+  }
 }
 ```
 

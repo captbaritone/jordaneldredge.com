@@ -1,6 +1,7 @@
 ---
 title: "Backyard Ukulele Session: Ukulele Videos with Chelsea"
 youtube_slug: ZIxgGRyTtKk
+tags: [music, ukulele, chelsea, youtube]
 ---
 
 Chelsea's videographer friend Beau Lambert was recently staying with us and

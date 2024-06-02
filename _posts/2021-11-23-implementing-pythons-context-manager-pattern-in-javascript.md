@@ -1,6 +1,7 @@
 ---
 title: "Implementing Python's Context Manager Pattern in JavaScript"
 summary: "Python Context Managers are a great way to model resources with setup and teardown. Here's how to implement that pattern in JavaScript."
+tags: ["javascript", "python", "opinion"]
 ---
 
 Have you ever interacted with, or designed, an API which gives the user some object which requires setup and or teardown?

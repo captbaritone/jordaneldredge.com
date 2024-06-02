@@ -1,5 +1,6 @@
 ---
 title: "Acceptance testing with Codeception and Vagrant"
+tags: ["php"]
 ---
 
 [Codeception] makes [Selenium] acceptance testing very easy, but getting it
@@ -14,12 +15,12 @@ I've had success with the headless browser [PhantomJS], but using a "real"
 browser has one big selling point: You can get a screenshot of the website at
 the point where it failed the test.
 
-I've read that you *can* setup Firefox to run headlessly, but it was so complex
+I've read that you _can_ setup Firefox to run headlessly, but it was so complex
 I didn't think I'd be able to build it into my Vagrant provisioning script.
 
 So, I've opted to run my test suite on my host machine. With acceptance
 testing, that's easy enough. Just configure Codeception's [WebDriver] module to
-access the site via your virtual server's host name.  However, there is one
+access the site via your virtual server's host name. However, there is one
 problem:
 
 ### Getting the database into a known state
@@ -38,26 +39,25 @@ My `acceptance.suite.yml` looks like this:
 ```yaml
 class_name: WebGuy
 modules:
-    enabled:
-        - WebDriver
-        - Db
-    config:
-        WebDriver:
-            url: 'http://local.dev/'
-            browser: firefox
-        Db:
-            dsn: 'mysql:host=local.dev;dbname=testdb'
-            user: 'root'
-            password: 'vagrant'
-            dump: 'tests/_data/dump.sql'
-            populate: true
-            cleanup: true
+  enabled:
+    - WebDriver
+    - Db
+  config:
+    WebDriver:
+      url: "http://local.dev/"
+      browser: firefox
+    Db:
+      dsn: "mysql:host=local.dev;dbname=testdb"
+      user: "root"
+      password: "vagrant"
+      dump: "tests/_data/dump.sql"
+      populate: true
+      cleanup: true
 ```
 
-
-[Codeception]: http://codeception.com/
-[Selenium]: http://docs.seleniumhq.org/
-[Vagrant]: http://vagrantup.com
-[PhantomJS]: http://phantomjs.org/
-[WebDriver]: http://codeception.com/docs/modules/WebDriver
-[Db module]: http://codeception.com/docs/modules/Db
+[codeception]: http://codeception.com/
+[selenium]: http://docs.seleniumhq.org/
+[vagrant]: http://vagrantup.com
+[phantomjs]: http://phantomjs.org/
+[webdriver]: http://codeception.com/docs/modules/WebDriver
+[db module]: http://codeception.com/docs/modules/Db

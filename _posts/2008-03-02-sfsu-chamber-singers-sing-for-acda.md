@@ -1,6 +1,7 @@
 ---
 title: "SFSU Chamber Singers sing for ACDA"
 youtube_slug: dO--mXsEyS0
+tag: [music, youtube]
 ---
 
 My (now ex) choir just toured to Anaheim, Souther California, to sing for
@@ -12,8 +13,7 @@ From Paul Kim's description of the video:
 
 > San Francisco State University Chamber Singers under the direction of Dr.
 > Joshua Habermann sings Rosas Pandan, a traditional Filipino folksong arranged
-> by George Hernandez, performed at St Boniface Church in Anaheim on Feb 26,
-> 2008. Sung in Visayan about the beautiful maiden Rosas Pandan.
+> by George Hernandez, performed at St Boniface Church in Anaheim on Feb 26, 2008. Sung in Visayan about the beautiful maiden Rosas Pandan.
 
 ::youtube{token=dO--mXsEyS0}
 

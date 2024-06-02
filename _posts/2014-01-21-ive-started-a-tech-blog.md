@@ -1,6 +1,7 @@
 ---
 title: "I've started a tech blog"
 archive: true
+tags: ["meta"]
 ---
 
 ![Screen Shot 2014-01-21 at 10.11.06 AM](/uploads/2014/01/Screen-Shot-2014-01-21-at-10.11.06-AM-500x418.png)

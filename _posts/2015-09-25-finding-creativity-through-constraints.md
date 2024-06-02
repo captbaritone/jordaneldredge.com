@@ -2,6 +2,7 @@
 title: "I gave a talk: Finding Creativity Through Constraints"
 summary: In which I discuss how constraints have inspired my creative process as a musician and programmer.
 youtube_slug: Jic6lVGALj4
+tags: ["talk", "opinion"]
 ---
 
 [Hearsay Social](http://hearsaysocial.com/careers/), where I work, recently

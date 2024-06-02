@@ -1,6 +1,7 @@
 ---
 title: "I Come To the Garden Alone (For George Morris)"
 youtube_slug: FDB0LMrDdEs
+tags: [mp3, pdf, ukulele, music]
 ---
 
 [![](/uploads/2011/07/photo-500x375.jpg "Wanda and Geroge's Garden")](/uploads/2011/07/photo.jpeg)
@@ -30,14 +31,14 @@ Lyrics:
 > I come to the garden alone  
 > While the dew is still on the roses  
 > And the voice I hear falling on my ear  
-> The Son of God discloses.  
+> The Son of God discloses.
 
 > And He walks with me, and He talks with me,  
 > And He tells me I am His own;  
 > And the joy we share as we tarry there,  
-> None other has ever known.  
+> None other has ever known.
 
 > He speaks, and the sound of His voice,  
 > Is so sweet the birds hush their singing,  
 > And the melody that He gave to me  
-> Within my heart is ringing.  
+> Within my heart is ringing.

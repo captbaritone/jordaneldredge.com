@@ -1,5 +1,6 @@
 ---
 title: "PGP Desktop was causing OS X to run slowly"
+tags: []
 ---
 
 After months of my laptop running slower and slower, to the point where

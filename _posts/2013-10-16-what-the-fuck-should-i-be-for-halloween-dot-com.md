@@ -1,16 +1,17 @@
 ---
 title: "WhatTheFuckShouldIBeForHalloween.com"
 summary_image: /uploads/2013/10/Screen-Shot-2013-10-16-at-2.05.44-PM.png
+tags: [project, generator, fach, opera]
+summary: "Generate infinite sexy Halloween costume ideas."
 ---
 
 Yesterday I spent an hour building a website that suggests absurd sexy
 halloween costume ideas. Just 24 hours later, it has received a surprising
 amount of attention. You can find it at: [WhatTheFuckShouldIBeForHalloween.com](http://WhatTheFuckShouldIBeForHalloween.com)
 
-*An example of whatthefuckshouldibeforhalloween.com&#8217;s suggestions:*
+_An example of whatthefuckshouldibeforhalloween.com&#8217;s suggestions:_
 [![You'd better fucking go as a...
 flirtatious Winnebago](/uploads/2013/10/Screen-Shot-2013-10-16-at-2.05.44-PM.png)](http://whatthefuckshouldibeforhalloween.com)
-
 
 Last year around this time, I had an idea for a halloween costume idea
 generator that would play on the fact that halloween costumes have a reputation
@@ -33,11 +34,11 @@ A few hours later I had the domain name pointed to my server. I wrote [a tweet a
 
 As of now, 24 hours later, the project has received:
 
-* 1,200 Facebook likes surpassing the 1,000 like milestone which [fachme.com](http://fachme.com/), my previously most popular project,
-recently reached after *two and a half years*.
-* 44 Twitter mentions, including several media personalities with 10s of
-thousands of followers
-* 34,000 page views from 4,100 unique visitors
+- 1,200 Facebook likes surpassing the 1,000 like milestone which [fachme.com](http://fachme.com/), my previously most popular project,
+  recently reached after _two and a half years_.
+- 44 Twitter mentions, including several media personalities with 10s of
+  thousands of followers
+- 34,000 page views from 4,100 unique visitors
 
 It has been just incredible to watch it spread like this first-hand. My
 &#8220;publicity&#8221; consisted of 30 seconds of typing and the project has

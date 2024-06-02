@@ -3,11 +3,12 @@ title: "Listen Faster: How I found 30 extra hours in my week "
 summary: "I’ve added the equivalent of 30 hours to my week, all dedicated to
 reading and listening."
 summary_image: /images/listen-faster.jpg
+tags: ["opinion"]
 ---
 
 ![Using Overcast, Pocket and Dream Reader to listen
 faster](/images/listen-faster.jpg)
-*Using Overcast, Pocket and Dream Reader to listen faster*
+_Using Overcast, Pocket and Dream Reader to listen faster_
 
 Podcasts, long-form news articles, blog posts and books are all great ways to
 learn but it can be hard to carve out time in your day for all the information
@@ -48,9 +49,8 @@ to my week, all dedicated to reading and listening.
 _Thanks to [Akshay Shah] who introduced me to Overcast’s speed feature and
 [Brandon Keith Biggs] who showed me the power of reading with your ears._
 
-
-[Overcast]: https://overcast.fm/
-[Pocket]: https://getpocket.com/
-[Voice Dream]: http://www.voicedream.com/
-[Brandon Keith Biggs]: http://brandonkeithbiggs.com/
-[Akshay Shah]: http://www.akshayshah.org/
+[overcast]: https://overcast.fm/
+[pocket]: https://getpocket.com/
+[voice dream]: http://www.voicedream.com/
+[brandon keith biggs]: http://brandonkeithbiggs.com/
+[akshay shah]: http://www.akshayshah.org/

@@ -1,6 +1,7 @@
 ---
 title: "Youtube also caught my choir"
 youtube_slug: 0usF9fycCSE
+tags: [music, youtube]
 ---
 
 My idol, Paul Kim, put a few videos of my (our) choir on Youtube. He is the one singing the bass solo part in this one.

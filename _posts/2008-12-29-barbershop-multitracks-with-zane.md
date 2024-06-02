@@ -1,5 +1,6 @@
 ---
 title: "Barbershop Multitracks with Zane"
+tags: [mp3, youtube, multitrack, barbershop]
 ---
 
 My friend [Zane Fiala](http://www.zaynardstudios.com/Welcome.html) and I multitracked some barbershop tags today. He has a great home studio, that made recording much easeir than when I record directly into my laptop. After two hours, here is what we came up with:

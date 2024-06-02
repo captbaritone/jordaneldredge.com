@@ -1,10 +1,11 @@
 ---
 title: "I'm glad I factored out jQuery"
 summary: I refactored Winamp2-js to not depend on jQuery, and learned native JavaScript is not so bad.
+tags: ["javascript", "opinion"]
 ---
 
-*This post is the first in an ongoing series about things I learned from my
-recent [Winamp2-js](/projects/winamp2-js/) project.*
+_This post is the first in an ongoing series about things I learned from my
+recent [Winamp2-js](/projects/winamp2-js/) project._
 
 Like many of us, I rejected javascript as a dark art until jQuery arrived and
 finally made it usable. At that point I started writing javascript exclusively
@@ -29,4 +30,4 @@ understanding of the functionality jQuery actually provides, but I learned that
 javascript's interface is not nearly as problematic as I had convinced myself
 it was during all those years of blind rejection.
 
-*Next: [Surviving Hacker News traffic with the help of free CDNs](/blog/surviving-hacker-news-traffic-with-the-help-of-free-cdns)*
+_Next: [Surviving Hacker News traffic with the help of free CDNs](/blog/surviving-hacker-news-traffic-with-the-help-of-free-cdns)_

@@ -1,5 +1,6 @@
 ---
 title: "Better indent support for PHP in Vim"
+tags: ["vim", "php"]
 ---
 
 If you use PHP for templating, chances are you have trouble getting Vim to

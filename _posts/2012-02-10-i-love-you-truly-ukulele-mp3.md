@@ -1,5 +1,6 @@
 ---
 title: "I Love You Truly [Ukulele Mp3]"
+tags: [music, ukulele, chelsea, mp3]
 ---
 
 With [Chelsea](http://chelseahollow.com) traveling all over the country on her graduate school auditions I had both the time and motivation to record her a little song. Although this one is not original, it is the same style as the [two](/blog/electric-ukulele-ring-tone-for-chelsea/) [previous](/blog/the-surprise-slide-ukulele-micro-song/) ring tones I made for her. The song has four electric ukulele tracks and one electric bass track.
@@ -13,11 +14,11 @@ The song is "[I Love You Truly](http://en.wikipedia.org/wiki/I_Love_You_Truly)" 
 > I love you truly, truly dear,  
 > Life with its sorrow, life with its tears  
 > Fades into dreams when I feel you are near  
-> For I love you truly, truly dear.  
+> For I love you truly, truly dear.
 
 > Ah! Love, 'tis something to feel your kind hand  
 > Ah! Yes, 'tis something by your side to stand;  
 > Gone is the sorrow, gone doubt and fear,  
-> For you love me truly, truly dear.  
+> For you love me truly, truly dear.
 
 ::audio{src=/uploads/2012/02/I-Love-You-Truly.mp3}

@@ -2,14 +2,15 @@
 title: "UrlMeme: Make memes anywhere you can type a URL"
 summary: "I made a meme generator where the URL is the user interface."
 summary_image: /images/made_a_meme.jpg
+tags: ["project"]
 ---
 
 Online meme generators are annoyingly complex. What if instead of ever visiting
 one again, you just had to remember this pattern?
 
-~~~ markdown
+```markdown
 http://urlme.me/{meme_name}/{top_text}/{bottom_text}.jpg
-~~~
+```
 
 That's the idea behind my latest project: [urlme.me](http://urlme.me)
 
@@ -36,10 +37,9 @@ If you want to see more, check out the Python source code on
 Placeholder image generator websites like
 [PlaceKitten](https://placekitten.com/) were my direct inspiration, but after
 completing the first draft I found I'm not the only one to have come up with
-this solution. 
+this solution.
 
-See also: 
+See also:
 
-* [upboat.me](https://upboat.me/)
-* [iome.me](http://www.iome.me/)
-
+- [upboat.me](https://upboat.me/)
+- [iome.me](http://www.iome.me/)

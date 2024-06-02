@@ -1,6 +1,7 @@
 ---
 title: "Functional JavaScript: Learn by refactoring"
 summary: Learn the basics of functional programming by iteratively refactoring imperative code.
+tags: ["javascript"]
 ---
 
 In this blog post we'll learn some fundamentals of functional programing by
@@ -18,14 +19,14 @@ word capitalized:
 
 ```javascript
 function titleCase(headlineString) {
-  var headlineWords = headlineString.split(' ');
+  var headlineWords = headlineString.split(" ");
   var titleWords = [];
   for (var i = 0; i < headlineWords.length; i++) {
     var headlineWord = headlineWords[i];
     var titleWord = headlineWord[0].toUpperCase() + headlineWord.substring(1);
     titleWords.push(titleWord);
   }
-  var title = titleWords.join(' ');
+  var title = titleWords.join(" ");
   return title;
 }
 ```
@@ -44,10 +45,9 @@ before the actual data is available. First, let's extract a `words()` function
 that splits a string into words, and a `join()` function that joins an array of
 words into a string:
 
-
 ```javascript
-var words = (str) => str.split(' ');
-var join = (arr) => arr.join(' ');
+var words = (str) => str.split(" ");
+var join = (arr) => arr.join(" ");
 
 function titleCase(headlineString) {
   var headlineWords = words(headlineString);
@@ -65,8 +65,8 @@ function titleCase(headlineString) {
 Now let's convert our for loop into a map:
 
 ```javascript
-var words = (str) => str.split(' ');
-var join = (arr) => arr.join(' ');
+var words = (str) => str.split(" ");
+var join = (arr) => arr.join(" ");
 
 function titleCase(headlineString) {
   var headlineWords = words(headlineString);
@@ -82,8 +82,8 @@ Map takes a function as an argument. Let's give that function a name and
 extract it out to before our data is available:
 
 ```javascript
-var words = (str) => str.split(' ');
-var join = (arr) => arr.join(' ');
+var words = (str) => str.split(" ");
+var join = (arr) => arr.join(" ");
 var capify = (word) => word[0].toUpperCase() + word.substring(1);
 
 function titleCase(headlineString) {
@@ -101,13 +101,13 @@ are more reusable and easier to reason about.
 Now, even though we have most our our logic defined before we have our data,
 our `titleCase` function is still imperatively operating on our data one step
 at a time. Let's try nesting our functions and see how that removes some of the
-"statefullness" we associate with imperative programing.  This will make the
+"statefullness" we associate with imperative programing. This will make the
 code a little hard to read for now. Don't worry, we'll come back and clean it
 up later.
 
 ```javascript
-var words = (str) => str.split(' ');
-var join = (arr) => arr.join(' ');
+var words = (str) => str.split(" ");
+var join = (arr) => arr.join(" ");
 var capify = (word) => word[0].toUpperCase() + word.substring(1);
 
 function titleCase(headlineString) {
@@ -121,8 +121,8 @@ This is already a lot less code than our original imperative attempt!
 
 A higher order function does at least one of the following two things:
 
-* Takes one or more functions as arguments
-* Returns a function as its result
+- Takes one or more functions as arguments
+- Returns a function as its result
 
 You'll notice that many of the helper functions we've extracted are basically
 converting a method call to a function. Let's write a higher order function
@@ -134,8 +134,8 @@ and return a new function. The new function will accept an array, and map
 var map = (func) => {
   return (arr) => {
     return arr.map(func);
-  }
-}
+  };
+};
 ```
 
 Taking advantage of the implicit return of ES6 arrow functions, we can rewrite
@@ -149,8 +149,8 @@ Let's use our new `map()` function to clean up our `titleCase()` example:
 
 ```javascript
 var map = (func) => (arr) => arr.map(func);
-var words = (str) => str.split(' ');
-var join = (arr) => arr.join(' ');
+var words = (str) => str.split(" ");
+var join = (arr) => arr.join(" ");
 var capify = (word) => word[0].toUpperCase() + word.substring(1);
 var capifyWords = map(capify);
 
@@ -189,27 +189,23 @@ var flow = (funcs) => {
     return funcs.reduce((value, func) => {
       return func(value);
     }, initialValue);
-  }
-}
+  };
+};
 ```
 
 Using implicit returns:
 
 ```javascript
-var flow = (funcs) =>
-  (initialValue) =>
-    funcs.reduce((value, func) =>
-      func(value),
-      initialValue
-    );
+var flow = (funcs) => (initialValue) =>
+  funcs.reduce((value, func) => func(value), initialValue);
 ```
 
 Let's try using flow in our `titleCase()` example:
 
 ```javascript
 var map = (func) => (arr) => arr.map(func);
-var words = (str) => str.split(' ');
-var join = (arr) => arr.join(' ');
+var words = (str) => str.split(" ");
+var join = (arr) => arr.join(" ");
 var capify = (word) => word[0].toUpperCase() + word.substring(1);
 var capifyWords = map(capify);
 
@@ -231,8 +227,8 @@ an object and calls the given method on that object with the given argument:
 var method = (func, arg) => {
   return (obj) => {
     return obj[func](arg);
-  }
-}
+  };
+};
 ```
 
 Now that we see how it works, we can clean it up with implicit return:
@@ -246,8 +242,8 @@ Let's use our new `method()` function to simplify our `titleCase()` example:
 ```javascript
 var method = (func, arg) => (obj) => obj[func](arg);
 var map = (func) => (arr) => arr.map(func);
-var words = method('split', ' ');
-var join = method('join', ' ');
+var words = method("split", " ");
+var join = method("join", " ");
 var capify = (word) => word[0].toUpperCase() + word.substring(1);
 var capifyWords = map(capify);
 
@@ -267,10 +263,10 @@ get rid of our `map()` function:
 
 ```javascript
 var method = (func, arg) => (obj) => obj[func](arg);
-var words = method('split', ' ');
-var join = method('join', ' ');
+var words = method("split", " ");
+var join = method("join", " ");
 var capify = (word) => word[0].toUpperCase() + word.substring(1);
-var capifyWords = method('map', capify);
+var capifyWords = method("map", capify);
 
 var titleCase = flow([words, capifyWords, join]);
 ```
@@ -289,14 +285,14 @@ than its implementation details.
 
 ```javascript
 function titleCase(headlineString) {
-  var headlineWords = headlineString.split(' ');
+  var headlineWords = headlineString.split(" ");
   var titleWords = [];
   for (var i = 0; i < headlineWords.length; i++) {
     var headlineWord = headlineWords[i];
     var titleWord = headlineWord[0].toUpperCase() + headlineWord.substring(1);
     titleWords.push(titleWord);
   }
-  var title = titleWords.join(' ');
+  var title = titleWords.join(" ");
   return title;
 }
 ```
@@ -305,10 +301,10 @@ function titleCase(headlineString) {
 
 ```javascript
 var method = (func, arg) => (obj) => obj[func](arg);
-var words = method('split', ' ');
-var join = method('join', ' ');
+var words = method("split", " ");
+var join = method("join", " ");
 var capify = (word) => word[0].toUpperCase() + word.substring(1);
-var capifyWords = method('map', capify);
+var capifyWords = method("map", capify);
 
 var titleCase = flow([words, capifyWords, join]);
 ```
@@ -324,11 +320,11 @@ functions is that we can reuse those small functions. Let's see how difficult
 it would be to create five other similar functions:
 
 ```javascript
-var lowerCase = method('toLowerCase');
-var upperCase = method('toUpperCase');
-var studlyCase = flow([words, capifyWords, method('join', '')]);
-var kebabCase = flow([lowerCase, words, method('join', '-')]);
-var snakeCase = flow([lowerCase, words, method('join', '_')]);
+var lowerCase = method("toLowerCase");
+var upperCase = method("toUpperCase");
+var studlyCase = flow([words, capifyWords, method("join", "")]);
+var kebabCase = flow([lowerCase, words, method("join", "-")]);
+var snakeCase = flow([lowerCase, words, method("join", "_")]);
 ```
 
 Take a second to read though these and figure out how they work. See how we are
@@ -340,8 +336,8 @@ Imagine doing this in an imperative style! We would have ended up with five
 more eleven line functions instead of five one line functions!
 
 I hope this post as piqued your interest in functional programing in
-JavaScript!  If you want to learn more, check out these links:
+JavaScript! If you want to learn more, check out these links:
 
-* [Hey Underscore, You're Doing It Wrong!](https://www.youtube.com/watch?v=m3svKOdZijA)
-* [Ramda](http://ramdajs.com/)
-* [lodash-fp](https://github.com/lodash/lodash/wiki/FP-Guide)
+- [Hey Underscore, You're Doing It Wrong!](https://www.youtube.com/watch?v=m3svKOdZijA)
+- [Ramda](http://ramdajs.com/)
+- [lodash-fp](https://github.com/lodash/lodash/wiki/FP-Guide)

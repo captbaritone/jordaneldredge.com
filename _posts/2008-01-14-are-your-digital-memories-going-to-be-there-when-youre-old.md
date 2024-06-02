@@ -1,9 +1,10 @@
 ---
 title: "Are your digital memories going to be there when you're old?"
 archive: true
+tags: [opinion]
 ---
 
-I have recently been reading (auto)biographys of famous musicians. (Dietrich
+I have recently been reading (auto)biographies of famous musicians. (Dietrich
 Fischer-Dieskau and Gerald Moore) One of the things that makes these books so
 enjoyable to read is the quotes from letters that they wrote or received. This
 lead me to consider how the historians of tomorrow will chronicle our lives and
@@ -28,7 +29,7 @@ worse.
 What about your Myspace or Facebook account.
 [This](http://www.pcmag.com/article2/0,1759,2243715,00.asp) article brings up
 the very good point that for these type of services, its nearly
-impossible to get a backup copy of your interactions with others.  And as
+impossible to get a backup copy of your interactions with others. And as
 social networks are only as useful as they are popular, what happens when all
 your friends realize that Myspace is far inferior to Facebook and switch over?
 Will you abandon all those messages? What about when everyone leaves Facebook

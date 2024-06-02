@@ -2,6 +2,7 @@
 title: "Building the @WinampSkins Twitter Bot"
 summary: "How my Twitter bot @winampskins works under the hood, how it has evolved over time, and what I've learned from the project."
 summary_image: /images/winamp-skins-twitter-bot-bio.png
+tags: ["twitter", "winamp", "bot", "project"]
 ---
 
 _Update, Nov 23, 2022: Out of a frustration with Twitter's new management, @winampskins Twitter Bot has [moved](https://twitter.com/winampskins/status/1595529030454763520) to Mastodon: [@botsin.space@winampskins](https://botsin.space/@winampskins)_

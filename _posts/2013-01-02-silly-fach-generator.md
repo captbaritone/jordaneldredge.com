@@ -1,5 +1,6 @@
 ---
 title: "Silly fach generator"
+tags: [music, generator, fach, opera]
 ---
 
 Inspired by the silly over the top descriptions people give their own voices,

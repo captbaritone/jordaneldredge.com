@@ -2,6 +2,7 @@
 title: "Using Machine Learning to Generate Winamp Skins"
 summary: "I used thousands of screenshots of Winamp skins and StyleGAN2 to train an ML model generate more Winamp skins."
 summary_image: /images/six-machine-learning-generated-winamp-skins.png
+tags: ["winamp", "ai", "machineLearning", "project"]
 ---
 
 A while ago I used the large collection of Winamp skin screenshots I created as part of the [Winamp Skin Museum](/blog/winamp-skin-musuem/) to train a [StyleGAN2](https://github.com/NVlabs/stylegan2-ada) machine learning model to generate Winamp skin screenshots.

@@ -1,6 +1,7 @@
 ---
 title: "Free Edition of Charles Gounod’s Le Crucifix"
 summary_image: /uploads/2013/09/score-page1.png
+tags: ["music", "pdf", "lilypond"]
 ---
 
 About three months ago I began working on a [Creative Commons](http://creativecommons.org) edition of [Charles Gounod](http://en.wikipedia.org/wiki/Charles_Gounod)‘s
@@ -13,7 +14,7 @@ typeset Richard&#8217;s original English translation directly into the score
 and had the side benefit of allowing us to release a high quality French
 edition into the Creative Commons.
 
-*Sample first page of the edition:*
+_Sample first page of the edition:_
 
 [![Sample first page of the edition](/uploads/2013/09/score-page1.png)](https://github.com/captbaritone/gounod-le_crucifix/releases)
 

@@ -1,12 +1,13 @@
 ---
 title: "Surviving Hacker News traffic with the help of free CDNs"
 summary: Free CDNs are a thing, and they can be put to use almost instantaneously during an unexpected traffic spike.
+tags: ["opinion"]
 ---
 
-*This post is the second in an ongoing series about things I learned from my
-recent [Winamp2-js](/projects/winamp2-js/) project.*
+_This post is the second in an ongoing series about things I learned from my
+recent [Winamp2-js](/projects/winamp2-js/) project._
 
-*Previously: [I'm glad I factored out jQuery](/blog/im-glad-i-factored-out-jquery)*
+_Previously: [I'm glad I factored out jQuery](/blog/im-glad-i-factored-out-jquery)_
 
 It was just before midnight on November 6th. My
 [tweet](https://twitter.com/captbaritone/status/530030571141873664) from
@@ -78,4 +79,4 @@ a high bandwidth site, I would pay for my own CDN. But, to absorb a single
 spike in traffic for a pet project on a moment's notice, these two sites were
 a godsend. Thank you!
 
-*Next: [How Winamp2-js loads native skins in your browser](/blog/how-winamp2-js-loads-native-skins-in-your-browser/)*
+_Next: [How Winamp2-js loads native skins in your browser](/blog/how-winamp2-js-loads-native-skins-in-your-browser/)_

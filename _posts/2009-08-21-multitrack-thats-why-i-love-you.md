@@ -1,5 +1,6 @@
 ---
-title: "[Multitrack] \"That's Why I Love You\""
+title: '[Multitrack] "That''s Why I Love You"'
+tags: [multitrack, chelsea, mp3, music]
 ---
 
 [![The Flamingos: "I Only Have Eyes For You"](/uploads/2009/08/1996-cd-coverbig-310.jpg "The Flamingos: I Only Have Eyes For You")](http://www.amazon.com/I-Only-Have-Eyes-You/dp/B000005MWW)

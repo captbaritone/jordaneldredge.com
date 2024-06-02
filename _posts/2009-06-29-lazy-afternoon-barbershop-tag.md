@@ -1,5 +1,6 @@
 ---
 title: '"Lazy Afternoon" Barbershop Tag'
+tags: [barbershop, music, mp3, multitrack]
 ---
 
 The other day I was sitting on the couch with [my girlfriend](https://www.chelseahollow.com), and for a moment I felt completely at peace. I wrote and recorded this tag for that simple moment, and the the company in which I spent it.

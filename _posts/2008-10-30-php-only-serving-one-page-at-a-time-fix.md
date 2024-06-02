@@ -1,5 +1,6 @@
 ---
 title: "Php only serving one page at a time [fix!]"
+tags: [php]
 ---
 
 After years of confusion I finally found the solution to why php was only serving one page at a time.

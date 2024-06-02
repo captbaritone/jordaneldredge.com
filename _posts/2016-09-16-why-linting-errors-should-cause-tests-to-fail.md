@@ -1,6 +1,7 @@
 ---
 title: Why linting errors should cause tests to fail
 summary: Making the case against allowing linting errors in master.
+tags: ["opinion", "eslint"]
 ---
 
 _TLDR: If you strictly enforce linting rules, code reviews will be easier,
@@ -25,8 +26,8 @@ CI](https://travis-ci.org) picks it up, and runs our test suite. The two
 requirements for merging a pull request into master, our production branch,
 are:
 
-* Approval from one other engineer
-* Passing Travis tests
+- Approval from one other engineer
+- Passing Travis tests
 
 We recently configured our Travis tests to include running
 [ESLint](http://eslint.org/). This means that JavaScript code that does not
@@ -49,8 +50,8 @@ I would argue that in the case of a site-down hotfix, you should have
 a mechanism for bypassing tests altogether. There are many types of test
 failures which should not be a blocker to shipping a hotfix. For example:
 
-* Transient test failures caused by not properly mocking out the system clock
-* Test failures introduced by your package repository being down.
+- Transient test failures caused by not properly mocking out the system clock
+- Test failures introduced by your package repository being down.
 
 I don't think anyone would suggest disabling tests altogether just to avoid
 the possibility that one of these errors might block a hotfix.
@@ -93,7 +94,7 @@ should not deploy code that is invalid.
 For example, calling `console.log` will cause your application to crash in
 Internet Explorer 9. Despite this dire consequence, developers frequently
 open pull requests that include `console.log` statements leftover from
-debugging.  A linting rule like [`no-console`](http://eslint.org/docs/rules/no-console),
+debugging. A linting rule like [`no-console`](http://eslint.org/docs/rules/no-console),
 if enforced as part of your test suite, can give you complete confidence that
 you will never encounter that particular bug in production.
 

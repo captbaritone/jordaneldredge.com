@@ -1,6 +1,7 @@
 ---
 title: "Installed MediaWiki"
 archive: true
+tags: [meta]
 ---
 
 ![White and Nerdy wikipedia screenshot](/uploads/2007/11/white_nerdy_you_suck_cropped.jpg)

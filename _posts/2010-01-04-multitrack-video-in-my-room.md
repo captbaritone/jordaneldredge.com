@@ -1,6 +1,7 @@
 ---
 title: 'Multitrack Video: "In My Room"'
 youtube_slug: vdLnQ5T0VaU
+tags: [youtube, chelsea, ukulele, multitrack, mp3, music]
 ---
 
 On New Years Day my brother, Nate, and I spent the day relaxing with my girlfriend, Chelsea, and her room mate Joel. It was a lovely day and in the evening we decided to record a song. We decided to record (and film) The Beach Boys' song "In My Room" by [Brian Wilson](http://en.wikipedia.org/wiki/Brian_Wilson "Brian Wilson") and [Gary Usher](http://en.wikipedia.org/wiki/Gary_Usher "Gary Usher"). We were quite lucky to find a transcription of the voice parts [here](http://beach-boys.aure.com/).

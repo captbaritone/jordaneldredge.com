@@ -1,5 +1,6 @@
 ---
 title: "Your Debut Album (Automated)"
+tags: [music, generator]
 ---
 
 ![Album Cover Example](/uploads/album-cover-example.jpg)
@@ -8,7 +9,7 @@ The internet has spawned a hilarious method for determining Your Debut Album and
 
 > 1. Go to [http://en.wikipedia.org/wiki/Special\:Random](http://en.wikipedia.org/wiki/Special:Random) The first random Wikipedia article you get is the name of your band.
 >
-> 2. Go to Random quotations: [http://www.quotationspage.com/random.php3](http://www.quotationspage.com/random.php3) The last four words of the very last quote of the page is the title of your first album.  If you want to do this again, you'll hit refresh to generate new quotes, because clicking the quotes link again will just give you the same quotes over and over again.
+> 2. Go to Random quotations: [http://www.quotationspage.com/random.php3](http://www.quotationspage.com/random.php3) The last four words of the very last quote of the page is the title of your first album. If you want to do this again, you'll hit refresh to generate new quotes, because clicking the quotes link again will just give you the same quotes over and over again.
 >
 > 3. Go to flickr's "explore the last seven days" [http://www.flickr.com/explore/interesting/7days/](http://www.flickr.com/explore/interesting/7days/) Third picture, no matter what it is, will be your album cover.
 >

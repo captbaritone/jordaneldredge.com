@@ -1,5 +1,6 @@
 ---
-title: "Original Song: \"Driving\""
+title: 'Original Song: "Driving"'
+tags: [chelsea, multitrack, ukulele, mp3, music]
 ---
 
 ![9622_166802582176_739287176_4016994_1081156_n](/uploads/2009/11/9622_166802582176_739287176_4016994_1081156_n-500x375.jpg "9622_166802582176_739287176_4016994_1081156_n")
@@ -15,14 +16,14 @@ Lyrics:
 > I had to get to UPS to pick up a pair of boots.  
 > You offered to give me a lift if I'd buy you a beer.  
 > So we went driving in your car, though it wasn't very far,  
-> We got lost and laughed at all the things we would become.  
-> 
+> We got lost and laughed at all the things we would become.
+>
 > You had to wake up before dawn to help your friend catch a flight.  
 > I tagged along just to be with you in the early morning light.  
 > So we went driving in your car, underneath the stars.  
-> Then we went up the hill and watched the sunrise though the fog.  
->   
+> Then we went up the hill and watched the sunrise though the fog.
+>
 > Now you've sold your car and bought a bike though the pedals made you sacred.  
 > And my parents gave me their old car which I share with you.  
 > Now we go driving in my car, which we never could before.  
-> And it isn't much but it's an excuse to be close to you  
+> And it isn't much but it's an excuse to be close to you

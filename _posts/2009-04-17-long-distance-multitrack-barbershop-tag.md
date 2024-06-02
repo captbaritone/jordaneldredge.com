@@ -1,6 +1,7 @@
 ---
 title: "Long Distance Multitrack Barbershop Tag"
 archive: true
+tags: [barbership, multitrack, mp3, music]
 ---
 
 Several months ago, inspired by [this youtube video](http://www.youtube.com/watch?v=L8CwvvDzLC4), my friends Jared Emerson-Johnson, Joachim Luis and I collaborated on a multitracked barbershop tag. Jared and I live about an hour away from each other and Joachim lives all the way in Chicago, so this was a great way for the four of us to do some harmony singing with far away friends.

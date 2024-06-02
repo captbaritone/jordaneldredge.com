@@ -1,14 +1,15 @@
 ---
-title: "Found: \"Update on Money Unpaid to Me and Evil Needed to be Stopped\""
+title: 'Found: "Update on Money Unpaid to Me and Evil Needed to be Stopped"'
+tags: [found, nsfw]
 ---
 
 [![Found: Evile needed to be stopped](/uploads/2008/02/photo-0010.thumbnail.jpg)](/uploads/2008/02/photo-0010.jpg "Found: Evile needed to be stopped") When walking down Market Street on my way to visit Chelsea at work, I found this taped to the side of a newspaper vending box. Quotes: "There will be no more possible options of prostitution..." and "The Sex Bumpmobile 'Last Option' on Girls Lives was shut down by me weeks ago".
 
 Transcription:
 
-> \*Update On Money Unpaid To Me And Evil Needed To Be Stopped\*
-> \*Please Read\* \*by: Jennifer "Jenna" Pincetl\*
-> \*Very Important\* \*Febuary 7, 2008\*
+>\*Update On Money Unpaid To Me And Evil Needed To Be Stopped\*
+>\*Please Read\* \*by: Jennifer "Jenna" Pincetl\*
+>\*Very Important\* \*Febuary 7, 2008\*
 
 > * Any and all money owed to me has still not been paid to me and I continue to suffer from being broke on the streets
 > * Many people must be lying and saying they have paid me because this seems to be a surprise to many

@@ -3,11 +3,12 @@ title: "Rendering Animated .ani Cursors in the Browser"
 summary: "Technical breakdown of how the NPM module ani-cursor converts .ani files into CSS animations in the browser."
 github_comments_issue_id: 15
 summary_image: /images/ani-cursor.png
+tags: ["project", "ani", "javascript", "parser"]
 ---
 
 ::animatedCursor{url="https://archive.org/cors/tucows_169750_Dove_Flying/dove.ani" selector="body"}
 
-*TL:DR: If you'd like to render `.ani` files in the browser, I've published [`ani-cursor`](https://www.npmjs.com/package/ani-cursor) on NPM which makes it possible.*
+_TL:DR: If you'd like to render `.ani` files in the browser, I've published [`ani-cursor`](https://www.npmjs.com/package/ani-cursor) on NPM which makes it possible._
 
 Windows Animated Cursor files (`.ani`) are, as the name implies, animated cursor files used by Microsoft Windows. I recently had a reason to try to get them to render on the web and it was a fun experiment so I thought I'd share how I did it.
 
@@ -19,13 +20,13 @@ _.ani cursors, from Super_Mario_Amp_2.wsz by [LuigiHann](https://twitter.com/lui
 
 ## Why?
 
-My side project [Webamp](https://webamp.org) is an attempt to render classic Winamp [skins](https://en.wikipedia.org/wiki/Skin_(computing)) in the browser. One aspect of the UI that skins could customize, was the cursors when users hovered over elements. Skin authors did this by supplying a collection of cursor files in their skin. Winamp supported both `.cur` and `.ani` files for this purpose.
+My side project [Webamp](https://webamp.org) is an attempt to render classic Winamp [skins](<https://en.wikipedia.org/wiki/Skin_(computing)>) in the browser. One aspect of the UI that skins could customize, was the cursors when users hovered over elements. Skin authors did this by supplying a collection of cursor files in their skin. Winamp supported both `.cur` and `.ani` files for this purpose.
 
 Lucky for me, browsers already support the `.cur` file type, so supporting those in Webamp was as simple as getting the cursor file as a data URI and then injecting CSS like this into the DOM:
 
 ```css
 .someElement {
-  cursor: url(data:image/x-win-bitmap;base64,AAAAAAA[...], auto)
+  cursor: url(data:image/x-win-bitmap;base64,AAAAAAA[...], auto);
 }
 ```
 
@@ -34,7 +35,7 @@ However, up until recently, Webamp didn't support `.ani` files for two reasons:
 1. Modern browsers don't support `.ani` files natively
 2. Browsers don't support animated image formats (gif, apng) as cursors
 
-*Source: [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Basic_User_Interface/Using_URL_values_for_the_cursor_property)*
+_Source: [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Basic_User_Interface/Using_URL_values_for_the_cursor_property)_
 
 ## Browser don't support `.ani`
 
@@ -57,22 +58,46 @@ The result looks something like this:
 
 ```css
 @keyframes ani-cursor-27 {
-  0% { cursor: url(data:image/x-win-bitmap;base64,AAACAAEAIC[...]), auto; }
-  9.090909090909092% { cursor: url(data:image/x-win-bitmap;base64,AAACAAEAIC[...]), auto; }
-  18.181818181818183% { cursor: url(data:image/x-win-bitmap;base64,AAACAAEAI[...]), auto; }
-  27.27272727272727% { cursor: url(data:image/x-win-bitmap;base64,AAACAAEAIC[...]), auto; }
-  36.36363636363637% { cursor: url(data:image/x-win-bitmap;base64,AAACAAEAIC[...]), auto; }
-  45.45454545454545% { cursor: url(data:image/x-win-bitmap;base64,AAACAAEAIC[...]), auto; }
-  54.54545454545454% { cursor: url(data:image/x-win-bitmap;base64,AAACAAEAIC[...]), auto; }
-  63.63636363636363% { cursor: url(data:image/x-win-bitmap;base64,AAACAAEAIC[...]), auto; }
-  72.72727272727273% { cursor: url(data:image/x-win-bitmap;base64,AAACAAEAIC[...]), auto; }
-  81.81818181818183% { cursor: url(data:image/x-win-bitmap;base64,AAACAAEAIC[...]), auto; }
-  90.9090909090909% { cursor: url(data:image/x-win-bitmap;base64,AAACAAEAICA[...]), auto; }
+  0% {
+    cursor: url(data:image/x-win-bitmap;base64,AAACAAEAIC[...]), auto;
+  }
+  9.090909090909092% {
+    cursor: url(data:image/x-win-bitmap;base64,AAACAAEAIC[...]), auto;
+  }
+  18.181818181818183% {
+    cursor: url(data:image/x-win-bitmap;base64,AAACAAEAI[...]), auto;
+  }
+  27.27272727272727% {
+    cursor: url(data:image/x-win-bitmap;base64,AAACAAEAIC[...]), auto;
+  }
+  36.36363636363637% {
+    cursor: url(data:image/x-win-bitmap;base64,AAACAAEAIC[...]), auto;
+  }
+  45.45454545454545% {
+    cursor: url(data:image/x-win-bitmap;base64,AAACAAEAIC[...]), auto;
+  }
+  54.54545454545454% {
+    cursor: url(data:image/x-win-bitmap;base64,AAACAAEAIC[...]), auto;
+  }
+  63.63636363636363% {
+    cursor: url(data:image/x-win-bitmap;base64,AAACAAEAIC[...]), auto;
+  }
+  72.72727272727273% {
+    cursor: url(data:image/x-win-bitmap;base64,AAACAAEAIC[...]), auto;
+  }
+  81.81818181818183% {
+    cursor: url(data:image/x-win-bitmap;base64,AAACAAEAIC[...]), auto;
+  }
+  90.9090909090909% {
+    cursor: url(data:image/x-win-bitmap;base64,AAACAAEAICA[...]), auto;
+  }
 }
-#node-with-cursor:hover { animation: ani-cursor-27 1760ms step-end infinite; }
+#node-with-cursor:hover {
+  animation: ani-cursor-27 1760ms step-end infinite;
+}
 ```
 
-Another option I [prototyped](https://codesandbox.io/s/ani-web-animation-lz46u?file=/src/parseAni.js) was to use the Web Animation API to create the animation. This is a lot cleaner since it does not require constructing a CSS string at runtime. However, the CSS approach is a bit nicer for Webamp since it doesn't require us to track the actual DOM nodes of each element that has an animated cursor. 
+Another option I [prototyped](https://codesandbox.io/s/ani-web-animation-lz46u?file=/src/parseAni.js) was to use the Web Animation API to create the animation. This is a lot cleaner since it does not require constructing a CSS string at runtime. However, the CSS approach is a bit nicer for Webamp since it doesn't require us to track the actual DOM nodes of each element that has an animated cursor.
 
 **Note:** Safari [only recently](https://trac.webkit.org/changeset/269812/webkit) (Nov. 14th, 2020) merged support for animating the `cursor` property so this won't work in Safari until their next release. **Update:** That fix did not work for `url()` cursor values. I've filed a [followup issue](https://bugs.webkit.org/show_bug.cgi?id=221589).
 
@@ -84,12 +109,12 @@ Firstly, we need a way to serialize the individual frame to a data URI. This req
 
 ```jsx
 function cursorUrlFromByteArray(dataArray: Uint8Array) {
-  const base64 = window.btoa(String.fromCharCode(...dataArray));;
+  const base64 = window.btoa(String.fromCharCode(...dataArray));
   return `data:image/x-win-bitmap;base64,${base64}`;
 }
 ```
 
-Secondly, we have to take the data we parse from the `.ani` file and construct a list of keyframes and their associated percentages. If the animation includes a `seq` section, some frames may appear more than once in the animation.  
+Secondly, we have to take the data we parse from the `.ani` file and construct a list of keyframes and their associated percentages. If the animation includes a `seq` section, some frames may appear more than once in the animation.
 
 ```jsx
 const JIFFIES_PER_MS = 1000 / 60;
@@ -143,7 +168,7 @@ export function aniCss(selector: string, ani: AniCursorImage): string {
 
 There are two small details in the CSS that we generate which are worth calling out.
 
-Firstly, we use a `timing-function` of `step-end`. This is because discrete properties, like cursor, do not actually change at the time specified by the keyframe (10%), but rather when the animation progress has reached the midpoint *between* keyframes ([source](https://drafts.csswg.org/web-animations-1/#discrete)). Luckily the animation progress is computed using the `timing-function` so we can use `step-end` to ensure the cursor image updates immediately when each keyframe percentage is reached.
+Firstly, we use a `timing-function` of `step-end`. This is because discrete properties, like cursor, do not actually change at the time specified by the keyframe (10%), but rather when the animation progress has reached the midpoint _between_ keyframes ([source](https://drafts.csswg.org/web-animations-1/#discrete)). Luckily the animation progress is computed using the `timing-function` so we can use `step-end` to ensure the cursor image updates immediately when each keyframe percentage is reached.
 
 Secondly, we add a `:hover` pseudo selector so that the animation loop only runs when the cursor is visible. This helps us match Winamp's behavior where the animation always restarts when you hover over an element. It may also save some CPU cycles.
 

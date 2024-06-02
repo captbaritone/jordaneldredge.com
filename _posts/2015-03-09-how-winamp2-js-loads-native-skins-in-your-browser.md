@@ -1,12 +1,13 @@
 ---
 title: "How Winamp2-js loads native skins in your browser"
 summary: How we get from a binary Winamp skin file to seeing Winamp2-js take on the look of your favorite skin, all within the limitations of your browser.
+tags: [javascript, winamp]
 ---
 
-*This post is the third in an ongoing series about things I learned from my
-recent [Winamp2-js](/projects/winamp2-js/) project.*
+_This post is the third in an ongoing series about things I learned from my
+recent [Winamp2-js](/projects/winamp2-js/) project._
 
-*Previously: [Surviving Hacker News traffic with the help of free CDNs](/blog/surviving-hacker-news-traffic-with-the-help-of-free-cdns)*
+_Previously: [Surviving Hacker News traffic with the help of free CDNs](/blog/surviving-hacker-news-traffic-with-the-help-of-free-cdns)_
 
 A remarkable confluence of lucky breaks and clever hacks combine to allow
 [Winamp2-js](/projects/winamp2-js/) to do what,
@@ -16,9 +17,9 @@ all within the limitations of your browser.
 This is the story of how we get from dragging in a binary .wsz skin file to
 seeing Winamp2-js take on the look of your favorite skin.
 
-*TL;DR: We unzip the .wsz file, slice up the images it contains, encode those
+_TL;DR: We unzip the .wsz file, slice up the images it contains, encode those
 slices as data URIs, dynamically construct CSS rules containing those data
-URIs, and inject those CSS rules into the DOM.*
+URIs, and inject those CSS rules into the DOM._
 
 ## Getting access to the file
 
@@ -57,7 +58,7 @@ else has already done the hard work of writing [a JavaScript library that can
 extract zip files](http://stuk.github.io/jszip/)! So, now we can access the
 individual files within this skin archive as binary data blobs.
 
-## But what *are* those blobs?
+## But what _are_ those blobs?
 
 Our luck continues. It turns out the graphics files within the skin archive,
 are actually .bmp files. Simple, uncompressed image files which all major
@@ -66,7 +67,7 @@ browsers still support!
 ## Rendering binary data blobs as images
 
 Our next challenge is to get the browser to display this binary data as an
-image.  Here is where we have to start getting clever. The answer is: [data
+image. Here is where we have to start getting clever. The answer is: [data
 URIs](http://en.wikipedia.org/wiki/Data_URI_scheme). A data URI is like a URL,
 and can be used in place of a URL, except that instead of being a pointer to
 content, it contains the data.
@@ -88,7 +89,6 @@ the browser!
 
 This small image is encoded as a data URI: ![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABoklEQVR42p2TzUtUURjGJy7SBC0GB8PPmatDgjMhg6CtEskyRBLJghBkLi1cn0VQKMoJSSW1AQUz+rhBEKbCWbuISxpEFJ2d23Ht5v4Jv86V0WZGZxp74N2d33Oe9z3vCYUqyHEcggr9j/KgCqrExOmMR1RVMHkdmwxfD2n96R7y7hWqhnO5HGJiBPXsMuw/hletPOq29D9h3/fJLkrk2AXYa4efAlYamOixfHMmUhF2XRdxP4K/WQNfmuFgGl43I0cTnDGTv7DWGjGeRq9a8C0Fv/rhxy3YHcBXdxC9MYIzRSaFN0spTdQx2L4JH/vgcB1+O6CGYa4Nb7IFz/OKBnvaYKMD3sZN7Dn4moGZBKxfhXcxsiPhowRFBqUt2HYT+vs8vDHRn9smSTv+i1rEUBtKqdNw4RzS6RR6ZxIWOs3QzK3vY7iZOuRTcfQqZeFAjY21rl57CMsG3EyRm40iRrtOeq4I2/VhqT+bfj8kzRvGkYNhsi+XKFRZONCDG1GPrWvoqSh9Ccsrt8pl13cgeVE9uX0p2DBRxWc6U3a+zv2d/wCsTn3YI226kwAAAABJRU5ErkJggg==) Try inspecting the source!
 
-
 ## But wait, the images are actually sprite sheets!
 
 Image sprites are a technique first used by video games where you take several
@@ -107,7 +107,7 @@ An example of Winamp's default skin:
 Using the following CSS applied to a `<div>`...
 
 ```css
-background-image: url('/content/images/TITLEBAR.BMP');
+background-image: url("/content/images/TITLEBAR.BMP");
 width: 275px;
 height: 14px;
 background-position: -27px -15px;
@@ -134,7 +134,8 @@ manipulation and then inject those rules into a `<style>` DOM element's inner
 HTML. It looks something like this:
 
 ```javascript
-var cssRules = "#play:active { background-image: url(" + spriteSheetUri + "); }"
+var cssRules =
+  "#play:active { background-image: url(" + spriteSheetUri + "); }";
 
 // ...
 // Append several more rules to cssRules
@@ -142,13 +143,12 @@ var cssRules = "#play:active { background-image: url(" + spriteSheetUri + "); }"
 
 var textNode = document.createTextNode(cssRules);
 
-var styleNode = document.createElement('style');
+var styleNode = document.createElement("style");
 styleNode.appendChild(textNode);
 
 // Inject the <style> node into the <head>
 document.head.appendChild(styleNode);
 ```
-
 
 ## But what about tiling sprites?
 
