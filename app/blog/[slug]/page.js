@@ -3,6 +3,7 @@ import markdownToHtml from "../../../lib/markdownToHtml";
 import GitHubComments from "../../../lib/components/GitHubComments";
 import DateString from "../../../lib/components/DateString";
 import Markdown from "../../../lib/components/Markdown";
+import TagLink from "../../../lib/components/TagLink";
 
 function ErrorBoundary({ children }) {
   return children;
@@ -44,6 +45,7 @@ export function generateMetadata({ params }) {
     "summary",
     "summary_image",
     "canonical_url",
+    "tags",
   ]);
   return {
     title: post.title,
@@ -78,6 +80,7 @@ export default async function Post({ params }) {
     "summary_image",
     "filename",
     "canonical_url",
+    "tags",
   ]);
 
   const content = await markdownToHtml(post.content || "", true);
@@ -97,6 +100,16 @@ export default async function Post({ params }) {
         </div>
         <Markdown {...content} />
       </div>
+      {post.tags && post.tags.length ? (
+        <div className="text-sm text-gray-400 flex py-4 border-t-2 border-gray-200 border-solid">
+          <span className="">Tags:</span>{" "}
+          {post.tags.map((tag) => (
+            <span key={tag} className="pl-1 underline">
+              <TagLink tag={tag} />
+            </span>
+          ))}
+        </div>
+      ) : null}
       {post.github_comments_issue_id && (
         <ErrorBoundary fallback={null}>
           <GitHubComments issue={post.github_comments_issue_id} />

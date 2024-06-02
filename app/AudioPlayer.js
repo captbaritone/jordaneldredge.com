@@ -61,11 +61,12 @@ export default function AudioPlayer() {
             >
               {playing ? <FaPause /> : <FaPlay />}
             </button>
-            <div>{formatSeconds(currentTime)}</div>
+            <div style={{ whiteSpace: "nowrap" }}>
+              {formatSeconds(currentTime)} / {formatSeconds(duration)}
+            </div>
             <div className="px-2 w-full">
               <Progress />
             </div>
-            <div>{formatSeconds(duration)}</div>
             <VolumeIcon />
           </div>
           <div className="whitespace-nowrap pl-5">
@@ -100,7 +101,7 @@ function VolumeIcon() {
         width: 50,
         backgroundColor: "red",
       }
-    : {};
+    : { display: "flex" };
 
   return (
     <div
@@ -142,7 +143,7 @@ function Progress() {
 
   const handleClick = useCallback(
     (e) => {
-      if (audioSrc == null) {
+      if (audioState == null) {
         return;
       }
       const { width, left } = e.target.getBoundingClientRect();
