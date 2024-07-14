@@ -89,11 +89,11 @@ function Results({ results, loading, query }) {
     );
   }
   return (
-    <>
+    <div>
       {results.map((post) => {
         return <ListItem key={post.url} item={post} />;
       })}
-    </>
+    </div>
   );
 }
 
@@ -130,7 +130,7 @@ function useSearchQuery(): [string, (query: string) => void] {
 function ListItem({ item }) {
   const summary = item.summary == null ? undefined : item.summary();
   return (
-    <div className="py-4 flex justify-between">
+    <div className="pb-6 justify-between">
       <div>
         {/*<div className="italic text-sm text-gray-400 flex">
           <DateString date={new Date(item.date())} />
