@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState, useCallback, use } from "react";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
+import DateString from "../../lib/components/DateString";
 
 export default function Search() {
   const [query, setQuery] = useSearchQuery();
@@ -90,21 +91,13 @@ function Results({ results, loading, query }) {
   return (
     <>
       {results.map((post) => {
-        return (
-          <div key={post.url} className="py-4 flex justify-between">
-            <div>
-              <h3 className="font-large font-semibold">
-                <Link href={post.url}>{post.title}</Link>
-              </h3>
-            </div>
-          </div>
-        );
+        return <ListItem key={post.url} item={post} />;
       })}
     </>
   );
 }
 
-function useSearchQuery() {
+function useSearchQuery(): [string, (query: string) => void] {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -113,7 +106,7 @@ function useSearchQuery() {
   // searchParams with a provided key/value pair
   const createQueryString = useCallback(
     (name, value) => {
-      const params = new URLSearchParams(searchParams);
+      const params = new URLSearchParams(searchParams ?? []);
       if (!value) {
         params.delete(name);
       } else {
@@ -125,11 +118,36 @@ function useSearchQuery() {
     [searchParams]
   );
 
-  const [query, setQuery] = useState(searchParams.get("q") || "");
+  const [query, setQuery] = useState(searchParams?.get("q") || "");
 
   useEffect(() => {
     router.replace(pathname + "?" + createQueryString("q", query));
   }, [query, pathname, createQueryString, router]);
 
   return [query, setQuery];
+}
+
+function ListItem({ item }) {
+  const summary = item.summary == null ? undefined : item.summary();
+  return (
+    <div className="py-4 flex justify-between">
+      <div>
+        {/*<div className="italic text-sm text-gray-400 flex">
+          <DateString date={new Date(item.date())} />
+        </div>*/}
+        <h2 className="font-large font-semibold">
+          <Link
+            href={item.url}
+            style={{
+              wordBreak: "break-word",
+              /* Adds a hyphen where the word breaks, if supported (No Blink) */
+              hyphens: "auto",
+            }}
+          >
+            {item.title}
+          </Link>
+        </h2>
+      </div>
+    </div>
+  );
 }

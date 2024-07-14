@@ -1,4 +1,4 @@
-import { getSingerResume } from "../../lib/api.mjs";
+import { getSingerResume } from "../../lib/data/data";
 
 export const metadata = {
   title: "Singer Resume",

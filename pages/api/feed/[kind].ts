@@ -1,20 +1,10 @@
 import { Feed } from "feed";
-import * as Api from "../../../lib/api";
+import * as Data from "../../../lib/data/data";
 
 export default async function handler(req, res) {
-  const allPosts = await Api.getAllPosts([
-    "title",
-    "slug",
-    "summary",
-    "archive",
-    "date",
-    "draft",
-    "summary_image",
-  ]);
+  const allPosts = Data.getAllPosts();
 
-  const publicPosts = allPosts.filter(
-    (postInfo) => !postInfo.archive && !postInfo.draft
-  );
+  const publicPosts = allPosts.filter((post) => post.showInLists());
 
   const feed = buildRssFeedLazy(publicPosts);
 
@@ -33,7 +23,7 @@ export default async function handler(req, res) {
   }
 }
 
-function buildRssFeedLazy(allPosts) {
+function buildRssFeedLazy(allPosts: Data.Post[]) {
   const siteURL = "https://jordaneldredge.com";
   const author = {
     name: "Jordan Eldredge",
@@ -65,15 +55,17 @@ function buildRssFeedLazy(allPosts) {
   allPosts.forEach((post) => {
     const url = `${siteURL}/blog/${post.slug}`;
     feed.addItem({
-      title: post.title,
+      title: post.title(),
       id: url,
       link: url,
-      description: post.summary,
-      content: post.summary,
+      description: post.summary(),
+      content: post.summary(),
       author: [author],
       contributor: [],
-      date: new Date(post.date),
-      image: post.summary_image ? `${siteURL}${post.summary_image}` : undefined,
+      date: new Date(post.date()),
+      image: post.summaryImage()
+        ? `${siteURL}${post.summaryImage()}`
+        : undefined,
     });
   });
   return feed;

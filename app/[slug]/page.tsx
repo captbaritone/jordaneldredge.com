@@ -1,12 +1,12 @@
-import { getPageBySlug } from "../../lib/api.mjs";
+import { getPageBySlug } from "../../lib/data/data";
 import RootPage from "../RootPage";
 
 export function generateMetadata({ params }) {
-  const page = getPageBySlug(params.slug, ["title"]);
+  const page = getPageBySlug(params.slug);
   return {
-    title: page.title,
+    title: page.title(),
     twitter: {
-      title: page.title,
+      title: page.title(),
     },
     openGraph: {
       type: "article",

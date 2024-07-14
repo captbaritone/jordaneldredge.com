@@ -5,7 +5,12 @@ import Link from "next/link";
 export default function NavLink({ href, children }) {
   const pathname = usePathname();
 
-  const active = pathname.replace(/\/$/, "") === href.replace(/\/$/, "");
+  let active = false;
+  if (href === "/") {
+    active = pathname === "/";
+  } else {
+    active = pathname.startsWith(href);
+  }
 
   return (
     <span className={active ? "underline" : ""}>
