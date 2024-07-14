@@ -1,5 +1,5 @@
 import Markdown from "../../../lib/components/Markdown";
-import * as Data from "../../../lib/data/data";
+import * as Data from "../../../lib/data";
 import DateString from "../../../lib/components/DateString";
 import TagList from "../../../lib/components/TagList";
 

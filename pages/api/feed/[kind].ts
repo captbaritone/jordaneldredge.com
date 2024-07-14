@@ -1,5 +1,5 @@
 import { Feed } from "feed";
-import * as Data from "../../../lib/data/data";
+import * as Data from "../../../lib/data";
 
 export default async function handler(req, res) {
   const allPosts = Data.getAllPosts();
@@ -53,7 +53,7 @@ function buildRssFeedLazy(allPosts: Data.Post[]) {
   });
 
   allPosts.forEach((post) => {
-    const url = `${siteURL}/blog/${post.slug}`;
+    const url = post.url().fullyQualified();
     feed.addItem({
       title: post.title(),
       id: url,

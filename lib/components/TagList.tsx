@@ -15,7 +15,10 @@ export default function TagList({ tags }: Props) {
       {tags.map((tag) => (
         <>
           {" "}
-          <Link href={tag.url()} className="underline">{`${tag.name()}`}</Link>
+          <Link
+            href={tag.url().path()}
+            className="underline"
+          >{`${tag.name()}`}</Link>
         </>
       ))}
     </div>

@@ -16,7 +16,7 @@ export default function ListItem({ item }: Props) {
         </div>
         <h2 className="font-large font-semibold">
           <Link
-            href={item.url()}
+            href={item.url().path()}
             style={{
               wordBreak: "break-word",
               /* Adds a hyphen where the word breaks, if supported (No Blink) */

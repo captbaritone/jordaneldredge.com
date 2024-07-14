@@ -1,4 +1,4 @@
-import * as Data from "../../lib/data/data";
+import * as Data from "../../lib/data";
 import Link from "next/link";
 import ListItem from "../../lib/components/ListItem";
 

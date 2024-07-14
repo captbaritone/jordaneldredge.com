@@ -1,4 +1,4 @@
-import { getSingerResume } from "../../lib/data/data";
+import { getSingerResume } from "../../lib/data";
 
 export const metadata = {
   title: "Singer Resume",

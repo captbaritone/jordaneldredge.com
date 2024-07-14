@@ -1,4 +1,5 @@
-import { Markdown } from "./Markdown.js";
+import { Markdown } from "./Markdown";
+import { SiteUrl } from "./SiteUrl";
 
 type PageType = "post" | "page" | "note";
 
@@ -16,15 +17,19 @@ export interface Indexable {
  * An entity that has a canonical URL.
  */
 export interface Linkable {
-  url(): string;
+  url(): SiteUrl;
 }
 
 /**
  * An entity that can be rendered in a list of items.
+ * @gqlInterface
  */
 export interface Listable extends Linkable {
   slug(): string;
+  /** @gqlField */
   title(): string;
+  /** @gqlField */
   date(): string;
+  /** @gqlField */
   summary(): string | undefined;
 }

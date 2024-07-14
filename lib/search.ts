@@ -1,7 +1,7 @@
 import { Database } from "sqlite";
 import sqlite3 from "sqlite3";
 import { open } from "sqlite";
-import * as Data from "./data/data";
+import * as Data from "./data";
 
 export async function getDb(): Promise<Database> {
   const filename = process.env.SEARCH_INDEX_LOCATION;

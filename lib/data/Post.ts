@@ -5,11 +5,17 @@ import yaml from "js-yaml";
 import { Markdown } from "./Markdown";
 import { Indexable, Linkable, Listable } from "./interfaces";
 import { Tag } from "./Tag";
+import { SiteUrl } from "./SiteUrl";
+import { Query } from "./GraphQLRoots";
 
 const postsDirectory = join(process.cwd(), "./_posts");
 
 const FILE_NAME_PARSER = /^(\d{4}-\d{2}-\d{2})-([a-z0-9\_\.\-]+)\.md$/g;
 
+/**
+ * A formal blog post.
+ * @gqlType
+ */
 export class Post implements Indexable, Linkable, Listable {
   pageType = "post" as const;
   constructor(
@@ -18,30 +24,36 @@ export class Post implements Indexable, Linkable, Listable {
     private postInfo: PostInfo
   ) {}
 
+  /** @gqlField */
   content(): Markdown {
     return new Markdown(this._content);
   }
 
-  url(): string {
-    return `/blog/${this.slug()}`;
+  /** @gqlField */
+  url(): SiteUrl {
+    return new SiteUrl(`/blog/${this.slug()}`);
   }
 
+  /** @gqlField */
   title(): string {
     return this.metadata.title;
   }
-
+  /** A unique name for the Post. Used in the URL and for refetching. */
   slug(): string {
     return this.postInfo.slug;
   }
 
+  /** @gqlField */
   date(): string {
     return this.postInfo.date;
   }
 
+  /** @gqlField */
   summary(): string | undefined {
     return this.metadata.summary || null;
   }
 
+  /** @gqlField */
   summaryImage(): string | undefined {
     return this.metadata.summary_image || null;
   }
@@ -49,6 +61,8 @@ export class Post implements Indexable, Linkable, Listable {
   filename(): string {
     return this.postInfo.fileName;
   }
+
+  /** @gqlField */
   canonicalUrl(): string | undefined {
     return this.metadata.canonical_url;
   }
@@ -64,10 +78,21 @@ export class Post implements Indexable, Linkable, Listable {
   showInLists(): boolean {
     return !this.archive() && !this.draft();
   }
+  /** @gqlField */
   tags(): Tag[] {
     return this.metadata.tags != null
       ? this.metadata.tags.map((tag) => new Tag(tag))
       : [];
+  }
+
+  /** @gqlField */
+  static async getPostBySlug(_: Query, args: { slug: string }): Promise<Post> {
+    return getPostBySlug(args.slug);
+  }
+
+  /** @gqlField  */
+  static async getAllPosts(_: Query): Promise<Post[]> {
+    return getAllPosts();
   }
 }
 
@@ -99,6 +124,7 @@ export function getPostBySlug(slug: string): Post {
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents, {
     engines: {
+      // @ts-ignore
       yaml: (s) => yaml.load(s, { schema: yaml.JSON_SCHEMA }),
     },
   });

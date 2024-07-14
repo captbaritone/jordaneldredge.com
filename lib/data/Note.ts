@@ -3,6 +3,8 @@ import { NotionToMarkdown } from "notion-to-md";
 import { Markdown } from "./Markdown";
 import { Indexable, Linkable, Listable } from "./interfaces.js";
 import { Tag } from "./Tag";
+import { SiteUrl } from "./SiteUrl";
+import { Query } from "./GraphQLRoots";
 
 type NoteMetadata = {
   slugToId: { [slug: string]: string };
@@ -92,6 +94,10 @@ async function getMetadata(): Promise<NoteMetadata> {
   }
 }
 
+/**
+ * A less formal post. Usually a quite observation, shared link or anecdote.
+ * @gqlType
+ */
 export class Note implements Indexable, Linkable, Listable {
   pageType = "note" as const;
   constructor(
@@ -103,10 +109,12 @@ export class Note implements Indexable, Linkable, Listable {
     private _date: string
   ) {}
 
-  url(): string {
-    return `/notes/${this.slug()}`;
+  /** @gqlField */
+  url(): SiteUrl {
+    return new SiteUrl(`/notes/${this.slug()}`);
   }
 
+  /** @gqlField */
   tags(): Tag[] {
     if (this._tags != null) {
       return this._tags.map((tag) => new Tag(tag));
@@ -114,26 +122,41 @@ export class Note implements Indexable, Linkable, Listable {
     return [];
   }
 
+  /** A unique name for the Note. Used in the URL and for refetching. */
   slug(): string {
     return this._slug;
   }
 
+  /** @gqlField */
   title(): string {
     return this._title;
   }
 
+  /** @gqlField */
   date(): string {
     return this._date;
   }
 
+  /** @gqlField */
   summary(): string | undefined {
     return this._summary;
   }
 
+  /** @gqlField */
   async content(): Promise<Markdown> {
     const pageBlocks = await notion.blocks.children.list({ block_id: this.id });
     const mdblocks = await n2m.blocksToMarkdown(pageBlocks.results);
     return new Markdown(n2m.toMarkdownString(mdblocks));
+  }
+
+  /** @gqlField */
+  static async getNoteBySlug(_: Query, args: { slug: string }): Promise<Note> {
+    return getNoteBySlug(args.slug);
+  }
+
+  /** @gqlField  */
+  static async getAllNotes(_: Query): Promise<Note[]> {
+    return getAllNotes();
   }
 }
 

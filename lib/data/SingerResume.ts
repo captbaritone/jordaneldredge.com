@@ -1,12 +1,9 @@
 import fs from "fs";
 import { join } from "path";
 
-export { getAllPages, getPageBySlug, Page } from "./Page";
-export { getAllPosts, getPostBySlug, Post } from "./Post";
-export { getAllNotes, getNoteBySlug, Note } from "./Note";
-export type { Indexable } from "./interfaces";
+export type SingerResume = ResumeEntry[];
 
-type ResumeEntry = {
+export type ResumeEntry = {
   id: string;
   character: string;
   title: string;
@@ -17,7 +14,7 @@ type ResumeEntry = {
   company: string;
 };
 
-export function getSingerResume(): ResumeEntry[] {
+export function getSingerResume(): SingerResume {
   const resumePath = join(process.cwd(), "./performances.json");
   const fileContents = fs.readFileSync(resumePath, "utf8");
   return JSON.parse(fileContents);

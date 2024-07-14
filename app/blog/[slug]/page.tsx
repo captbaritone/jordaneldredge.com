@@ -1,4 +1,4 @@
-import * as Data from "../../../lib/data/data";
+import * as Data from "../../../lib/data";
 import GitHubComments from "../../../lib/components/GitHubComments";
 import DateString from "../../../lib/components/DateString";
 import Markdown from "../../../lib/components/Markdown";

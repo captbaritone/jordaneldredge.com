@@ -1,4 +1,4 @@
-import { getPageBySlug } from "../lib/data/data";
+import { getPageBySlug } from "../lib/data";
 import Markdown from "../lib/components/Markdown";
 
 export default async function Page({ slug }) {
