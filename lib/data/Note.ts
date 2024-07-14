@@ -143,8 +143,6 @@ export async function getAllNotes(): Promise<Note[]> {
     getMetadata(),
   ]);
 
-  console.log(metadata.idToSummary);
-
   return children.results
     .filter((block) => block.type === "child_page")
     .sort((a, b) => {
