@@ -14,6 +14,9 @@ importers:
       '@plaiceholder/next':
         specifier: 2.2.0
         version: 2.2.0(next@14.1.0(@babel/core@7.21.5)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(sharp@0.29.3)
+      '@types/js-yaml':
+        specifier: ^4.0.9
+        version: 4.0.9
       ani-cursor:
         specifier: ^0.0.5
         version: 0.0.5
@@ -26,6 +29,9 @@ importers:
       gray-matter:
         specifier: ^4.0.2
         version: 4.0.3
+      js-yaml:
+        specifier: ^4.1.0
+        version: 4.1.0
       next:
         specifier: ^14.1.0
         version: 14.1.0(@babel/core@7.21.5)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -1481,8 +1487,8 @@ packages:
   '@types/istanbul-reports@3.0.1':
     resolution: {integrity: sha512-c3mAZEuK0lvBp8tmuL74XRKn1+y2dcwOUpH7x4WrF6gk1GIgiluDRgMYQtw2OFcBvAJWlt6ASU3tSqxp0Uu0Aw==}
 
-  '@types/js-yaml@4.0.5':
-    resolution: {integrity: sha512-FhpRzf927MNQdRZP0J5DLIdTXhjLYzeUTmLAu69mnVksLH9CJY3IuSeEgbKUki7GQZm0WqDkGzyxju2EZGD2wA==}
+  '@types/js-yaml@4.0.9':
+    resolution: {integrity: sha512-k4MGaQl5TGo/iipqb2UDG2UwjXziSWkh0uysQelTlJpX1qGlpUZYm8PnO4DxG1qBomtJUdYJ6qR6xdIah10JLg==}
 
   '@types/json-schema@7.0.11':
     resolution: {integrity: sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==}
@@ -7413,7 +7419,7 @@ snapshots:
     dependencies:
       '@types/istanbul-lib-report': 3.0.0
 
-  '@types/js-yaml@4.0.5': {}
+  '@types/js-yaml@4.0.9': {}
 
   '@types/json-schema@7.0.11': {}
 
@@ -8889,7 +8895,7 @@ snapshots:
       eslint: 8.22.0
       eslint-import-resolver-node: 0.3.9
       eslint-import-resolver-typescript: 3.5.5(@typescript-eslint/parser@6.21.0(eslint@8.22.0)(typescript@5.5.3))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(eslint@8.22.0))(eslint@8.22.0)
-      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@6.21.0(eslint@8.22.0)(typescript@5.5.3))(eslint-import-resolver-typescript@3.5.5)(eslint@8.22.0)
+      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@6.21.0(eslint@8.22.0)(typescript@5.5.3))(eslint-import-resolver-typescript@3.5.5(@typescript-eslint/parser@6.21.0(eslint@8.22.0)(typescript@5.5.3))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(eslint@8.22.0))(eslint@8.22.0))(eslint@8.22.0)
       eslint-plugin-jsx-a11y: 6.8.0(eslint@8.22.0)
       eslint-plugin-react: 7.33.2(eslint@8.22.0)
       eslint-plugin-react-hooks: 4.6.0(eslint@8.22.0)
@@ -8913,7 +8919,7 @@ snapshots:
       enhanced-resolve: 5.14.0
       eslint: 8.22.0
       eslint-module-utils: 2.8.0(@typescript-eslint/parser@6.21.0(eslint@8.22.0)(typescript@5.5.3))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.5.5(@typescript-eslint/parser@6.21.0(eslint@8.22.0)(typescript@5.5.3))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(eslint@8.22.0))(eslint@8.22.0))(eslint@8.22.0)
-      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@6.21.0(eslint@8.22.0)(typescript@5.5.3))(eslint-import-resolver-typescript@3.5.5)(eslint@8.22.0)
+      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@6.21.0(eslint@8.22.0)(typescript@5.5.3))(eslint-import-resolver-typescript@3.5.5(@typescript-eslint/parser@6.21.0(eslint@8.22.0)(typescript@5.5.3))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(eslint@8.22.0))(eslint@8.22.0))(eslint@8.22.0)
       get-tsconfig: 4.5.0
       globby: 13.1.4
       is-core-module: 2.13.1
@@ -8936,7 +8942,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-import@2.29.1(@typescript-eslint/parser@6.21.0(eslint@8.22.0)(typescript@5.5.3))(eslint-import-resolver-typescript@3.5.5)(eslint@8.22.0):
+  eslint-plugin-import@2.29.1(@typescript-eslint/parser@6.21.0(eslint@8.22.0)(typescript@5.5.3))(eslint-import-resolver-typescript@3.5.5(@typescript-eslint/parser@6.21.0(eslint@8.22.0)(typescript@5.5.3))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(eslint@8.22.0))(eslint@8.22.0))(eslint@8.22.0):
     dependencies:
       array-includes: 3.1.7
       array.prototype.findlastindex: 1.2.4
@@ -12791,7 +12797,7 @@ snapshots:
       '@types/concat-stream': 1.6.1
       '@types/debug': 4.1.7
       '@types/is-empty': 1.2.1
-      '@types/js-yaml': 4.0.5
+      '@types/js-yaml': 4.0.9
       '@types/node': 17.0.6
       '@types/unist': 2.0.6
       concat-stream: 2.0.0

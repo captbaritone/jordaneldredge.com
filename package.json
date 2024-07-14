@@ -14,10 +14,12 @@
   "dependencies": {
     "@notionhq/client": "^2.2.1",
     "@plaiceholder/next": "2.2.0",
+    "@types/js-yaml": "^4.0.9",
     "ani-cursor": "^0.0.5",
     "autoprefixer": "^10.4.17",
     "feed": "^4.2.2",
     "gray-matter": "^4.0.2",
+    "js-yaml": "^4.1.0",
     "next": "^14.1.0",
     "notion-to-md": "^2.5.5",
     "plaiceholder": "2.2.0",

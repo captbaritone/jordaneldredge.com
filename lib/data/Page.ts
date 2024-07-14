@@ -46,6 +46,7 @@ export function getPageBySlug(slug: string): Page {
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents, {
     engines: {
+      // @ts-ignore
       yaml: (s) => yaml.load(s, { schema: yaml.JSON_SCHEMA }),
     },
   });

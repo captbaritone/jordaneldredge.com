@@ -49,13 +49,15 @@ export async function _getMetadata(): Promise<NoteMetadata> {
   const idToTags = {};
 
   result.results.forEach((page) => {
-    const tags = page.properties.Tags.multi_select.map((select) => {
+    // @ts-ignore
+    const properties = page.properties;
+    const tags = properties.Tags.multi_select.map((select) => {
       return select.name;
     });
 
-    const slug = page.properties.Slug.rich_text[0]?.text.content;
-    const summary = page.properties.Summary.rich_text[0]?.text.content;
-    const id = page.properties.Note.title[0]?.mention.page.id;
+    const slug = properties.Slug.rich_text[0]?.text.content;
+    const summary = properties.Summary.rich_text[0]?.text.content;
+    const id = properties.Note.title[0]?.mention.page.id;
     if (slug && id) {
       slugToId[slug] = id;
       idToSlug[id] = slug;
@@ -136,12 +138,14 @@ export class Note implements Indexable, Linkable, Listable {
 }
 
 export async function getAllNotes(): Promise<Note[]> {
-  const [children, metadata] = await Promise.all([
+  const [_children, metadata] = await Promise.all([
     notion.blocks.children.list({
       block_id: TIL_INDEX_PAGE_ID,
     }),
     getMetadata(),
   ]);
+
+  const children = _children as any;
 
   return children.results
     .filter((block) => block.type === "child_page")
@@ -174,9 +178,7 @@ export async function getNoteBySlug(slug: string): Promise<Note> {
   const pagePromise = notion.pages.retrieve({
     page_id: id,
   });
-  const blocksPromise = notion.blocks.children.list({ block_id: id });
-
-  const [page, pageBlocks] = await Promise.all([pagePromise, blocksPromise]);
+  const page: any = await notion.blocks.children.list({ block_id: id });
 
   if (
     page.parent.type !== "page_id" ||
