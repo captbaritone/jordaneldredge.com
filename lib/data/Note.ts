@@ -10,6 +10,7 @@ import {
   retrieveBlocks,
   retrievePage,
 } from "../services/notion";
+import { dump } from "js-yaml";
 
 /**
  * A less formal post. Usually a quite observation, shared link or anecdote.
@@ -64,6 +65,31 @@ export class Note implements Indexable, Linkable, Listable {
     const pageBlocks = await retrieveBlocks(this.id);
     const markdown = await blocksToMarkdownString(pageBlocks.results);
     return new Markdown(markdown);
+  }
+
+  /**
+   * Return as a Markdown file including a yaml header with metadata including
+   * tags and summary.
+   *
+   * See .serializedFilename() for the filename.
+   */
+  async serialize(): Promise<Markdown> {
+    const content = await this.content();
+    const metadata = dump({
+      title: this.title(),
+      tags: this.tags().map((tag) => tag.name()),
+      summary: this.summary(),
+    }).trim();
+    const markdownContent = content.markdownString().trim();
+
+    const markdown = `---\n${metadata}\n---\n${markdownContent}\n`;
+
+    return new Markdown(markdown);
+  }
+
+  async serializedFilename(): Promise<string> {
+    const date = new Date(this.date()).toISOString().substring(0, 10);
+    return `${date}-${this.slug()}.md`;
   }
 
   /** @gqlField */
