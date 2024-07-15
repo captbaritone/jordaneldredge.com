@@ -16,7 +16,7 @@ export const metadata = {
   },
 };
 
-export default function Layout({ children, title, typoLink, params }) {
+export default function Layout({ children }) {
   return (
     <html>
       <body>
@@ -35,7 +35,7 @@ export default function Layout({ children, title, typoLink, params }) {
           <AudioPlayer />
           <HotKeys />
           <div className="max-w-2xl mx-auto p-5">
-            <nav className="flex justify-between flex-col sm:flex-row pb-5">
+            <nav className="flex justify-between flex-col sm:flex-row pb-2">
               <div className="font-medium">
                 <Link href="/">Jordan Eldredge</Link>
               </div>
@@ -84,12 +84,6 @@ export default function Layout({ children, title, typoLink, params }) {
               <a href="mailto:jordan@jordaneldredge.com">Email</a>
               {" • "}
               <a href="/feed/rss.xml">RSS</a>
-              {typoLink != null && (
-                <>
-                  {" • "}
-                  <a href={typoLink}>Fix Typo</a>
-                </>
-              )}
               {" • "}
               <Link href={"/search"}>Search</Link>
             </footer>
