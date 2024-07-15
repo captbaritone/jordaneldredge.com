@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useEffect, useState, useCallback, use } from "react";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
-import DateString from "../../lib/components/DateString";
 
 export default function Search() {
   const [query, setQuery] = useSearchQuery();
@@ -128,7 +127,6 @@ function useSearchQuery(): [string, (query: string) => void] {
 }
 
 function ListItem({ item }) {
-  const summary = item.summary == null ? undefined : item.summary();
   return (
     <div className="pb-6 justify-between">
       <div>
@@ -147,6 +145,7 @@ function ListItem({ item }) {
             {item.title}
           </Link>
         </h2>
+        {item.summary ? <p>{item.summary}</p> : null}
       </div>
     </div>
   );

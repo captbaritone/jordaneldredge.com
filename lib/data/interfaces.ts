@@ -1,5 +1,6 @@
 import { Markdown } from "./Markdown";
 import { SiteUrl } from "./SiteUrl";
+import { Tag } from "./Tag";
 
 type PageType = "post" | "page" | "note";
 
@@ -10,6 +11,8 @@ export interface Indexable {
   pageType: PageType;
   content(): Promise<Markdown> | Markdown;
   title(): string;
+  summary?(): string | undefined;
+  tags?(): Tag[];
   slug(): string;
 }
 

@@ -27,6 +27,8 @@ export default async function search(req, res) {
       url: getUrl(m),
       title: m.title,
       page_type: m.page_type,
+      summary: m.summary,
+      tags: m.tags.split(","),
     });
   }
 
