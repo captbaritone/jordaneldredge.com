@@ -1,6 +1,8 @@
 import { Feed } from "feed";
 import * as Data from "../../../lib/data";
 
+export const revalidate = 600;
+
 export default async function handler(req, res) {
   const allPosts = Data.getAllPosts();
 

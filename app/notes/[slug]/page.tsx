@@ -2,11 +2,13 @@ import Markdown from "../../../lib/components/Markdown";
 import * as Data from "../../../lib/data";
 import DateString from "../../../lib/components/DateString";
 import TagList from "../../../lib/components/TagList";
+import { Metadata } from "next";
 
 // https://beta.nextjs.org/docs/data-fetching/caching#segment-level-caching
 export const revalidate = 600;
+export const dynamic = "force-static";
 
-export async function generateMetadata({ params }) {
+export async function generateMetadata({ params }): Promise<Metadata> {
   // TODO: Figure out how to read search params in head.js
   const note = await Data.getNoteBySlug(params.slug);
 

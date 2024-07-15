@@ -3,7 +3,6 @@ import GitHubComments from "../../../lib/components/GitHubComments";
 import DateString from "../../../lib/components/DateString";
 import Markdown from "../../../lib/components/Markdown";
 import TagList from "../../../lib/components/TagList";
-import ErrorBoundary from "../../../lib/components/ErrorBoundary";
 
 export function generateMetadata({ params }) {
   const post = Data.getPostBySlug(params.slug);
@@ -27,11 +26,23 @@ export function generateMetadata({ params }) {
   };
 }
 
+export async function generateStaticParams() {
+  const posts = Data.getAllPosts();
+  return posts.map((post) => {
+    return {
+      slug: post.slug(),
+    };
+  });
+}
+
+// Do not try to render arbitrary slugs
+export const dynamicParams = false;
+
 export default async function Post({ params }) {
   const post = Data.getPostBySlug(params.slug);
 
   const ast = await post.content().ast();
-  const typeoLink = `https://github.com/captbaritone/jordaneldredge.com/blob/master/_posts/${post.filename}`;
+  // const typoLink = `https://github.com/captbaritone/jordaneldredge.com/blob/master/_posts/${post.filename}`;
   const tags = post.tags();
   const issueId = post.githubCommentsIssueId();
   return (

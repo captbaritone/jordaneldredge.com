@@ -2,6 +2,9 @@ import * as Data from "../../lib/data";
 import Link from "next/link";
 import ListItem from "../../lib/components/ListItem";
 
+// Pages are static
+export const dynamic = "force-static";
+// But might change, so we'll revalidate every 10 minutes
 // https://beta.nextjs.org/docs/data-fetching/caching#segment-level-caching
 export const revalidate = 600;
 
@@ -12,7 +15,7 @@ export const metadata = {
   },
 };
 
-export default async function Notes({ searchParams }) {
+export default async function Notes() {
   const childPages = await Data.getAllNotes();
   return (
     <>
@@ -30,15 +33,3 @@ export default async function Notes({ searchParams }) {
     </>
   );
 }
-
-/*
-            <div>
-              <div className="italic text-sm text-gray-400">
-                <DateString date={new Date(post.date())} />
-              </div>
-              <h2 className="font-large font-semibold">
-                <Link href={post.url()}>{post.title()}</Link>
-              </h2>
-            </div>
-          </div>
-          */

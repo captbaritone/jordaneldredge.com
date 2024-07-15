@@ -6,8 +6,11 @@ import { Markdown } from "./Markdown";
 import { Indexable } from "./interfaces";
 import { SiteUrl } from "./SiteUrl";
 import { Query } from "./GraphQLRoots";
+import { makeLogger } from "../logger";
 
 const pagesDirectory = join(process.cwd(), "./_pages");
+
+const log = makeLogger("Page");
 
 /**
  * A static top-level content page.
@@ -15,7 +18,11 @@ const pagesDirectory = join(process.cwd(), "./_pages");
  */
 export class Page implements Indexable {
   pageType = "page" as const;
-  constructor(private _content: string, private metadata: any) {}
+  constructor(
+    private _slug: string,
+    private _content: string,
+    private metadata: any
+  ) {}
 
   /** @gqlField */
   url(): SiteUrl {
@@ -32,7 +39,7 @@ export class Page implements Indexable {
   }
   /** A unique name for the Page. Used in the URL and for refetching. */
   slug(): string {
-    return this.metadata.slug;
+    return this._slug;
   }
   /** @gqlField */
   date(): string {
@@ -49,6 +56,7 @@ export class Page implements Indexable {
 }
 
 export function getAllPages(): Page[] {
+  log("Listing pages off disk");
   return fs
     .readdirSync(pagesDirectory)
     .filter((fileName) => {
@@ -66,6 +74,7 @@ export function getAllPages(): Page[] {
 
 export function getPageBySlug(slug: string): Page {
   const fullPath = join(pagesDirectory, `${slug}.md`);
+  log("Reading page off disk", fullPath);
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents, {
     engines: {
@@ -74,5 +83,5 @@ export function getPageBySlug(slug: string): Page {
     },
   });
 
-  return new Page(content, data);
+  return new Page(slug, content, data);
 }
