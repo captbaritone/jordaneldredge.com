@@ -1,12 +1,15 @@
 ---
 title: "A VSCode Extension to Clarify Operator Precedence in JS"
 summary: "I wrote a VS Code extension which shows subscript parentheses in your JS code to help clarify operator precedence."
+summary_image: /uploads/2024/precedence.png
 tags: ["project", "javascript", "vscode"]
 ---
 
 _TL;DR: I wrote a [VS Code extension](https://marketplace.visualstudio.com/items?itemName=JordanEldredge.implicit-parentheses) which shows subscript parentheses in your JS code to help clarify operator precedence._
 
 ---
+
+![Screenshot of the extension in action](/uploads/2024/precedence.png)
 
 Last year I worked on [an ESLint rule](https://github.com/eslint/eslint/issues/13752) which tries to detect useless null checks. It did this by understanding some of the semantics of JavaScript syntax and warning when a null check is provably useless. When I ran the rule on a large codebase, it was very interesting to see what it caught. Surprisingly, many of the errors were real bugs that made it through code review.
 

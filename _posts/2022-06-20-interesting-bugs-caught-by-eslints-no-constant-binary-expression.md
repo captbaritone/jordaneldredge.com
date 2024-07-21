@@ -1,6 +1,7 @@
 ---
 title: "Interesting Bugs Caught by ESLint’s no-constant-binary-expression"
 summary: "I contributed a rule to ESLint that catches a surprisingly wide variety of logic bugs."
+summary_image: /uploads/2024/logic-bug.webp
 github_comments_issue_id: 18
 canonical_url: https://eslint.org/blog/2022/07/interesting-bugs-caught-by-no-constant-binary-expression/
 tags: ["eslint", "javascript", "staticAnalysis"]
