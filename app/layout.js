@@ -33,7 +33,6 @@ export default function Layout({ children }) {
               ga('send', 'pageview')
         `}
           </Script>
-          <AudioPlayer />
           <HotKeys />
           <div className="max-w-2xl mx-auto p-5">
             <nav className="flex justify-between flex-col sm:flex-row pb-2">
@@ -83,17 +82,10 @@ export default function Layout({ children }) {
                 Threads
               </a>
               {" • "}
-              <a rel="me" href="https://github.com/captbaritone">
-                GitHub
-              </a>
-              {" • "}
-              <a href="mailto:jordan@jordaneldredge.com">Email</a>
-              {" • "}
               <a href="/feed/rss.xml">RSS</a>
-              {" • "}
-              <Link href={"/search"}>Search</Link>
             </footer>
           </div>
+          <AudioPlayer />
         </AudioContextProvider>
       </body>
     </html>

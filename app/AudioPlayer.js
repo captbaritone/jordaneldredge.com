@@ -1,12 +1,12 @@
 "use client";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import {
   FaPlay,
   FaPause,
   FaVolumeUp,
   FaVolumeMute,
   FaVolumeDown,
-  // FaTimes,
+  FaTimes,
 } from "react-icons/fa";
 import {
   usePlaying,
@@ -33,7 +33,7 @@ export default function AudioPlayer() {
   const currentTime = useCurrentTime();
   const duration = useDuration();
   const currentTrack = useCurrentTrack();
-  if (currentTrack == null) {
+  if (currentTrack == null || duration === 0 || currentTrack === "") {
     return null;
   }
   return (
@@ -61,24 +61,26 @@ export default function AudioPlayer() {
             >
               {playing ? <FaPause title="Pause" /> : <FaPlay title="Play" />}
             </button>
-            <div style={{ whiteSpace: "nowrap" }}>
+            <div className="whitespace-nowrap font-mono">
               {formatSeconds(currentTime)}
             </div>
-            <div className="px-2 w-full">
+            <div className="px-2 w-full ">
               <Progress />
             </div>
 
-            <div style={{ whiteSpace: "nowrap" }}>
+            <div className="whitespace-nowrap font-mono">
               {formatSeconds(duration)}
             </div>
             {/* <VolumeIcon /> */}
           </div>
-          <div className="whitespace-nowrap pl-5">
+          <div className="whitespace-nowrap pl-5 overflow-hidden">
             {currentTrack && getFilenameFromUrl(currentTrack)}
           </div>
-          {/*<button className="pl-3" onClick={() => audioState.stop()}>
-            <FaTimes />
-          </button>*/}
+          {
+            <button className="pl-3" onClick={() => audioState.stop()}>
+              <FaTimes />
+            </button>
+          }
         </div>
       </div>
     </div>

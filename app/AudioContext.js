@@ -2,22 +2,36 @@
 import { useContext, useEffect, useState } from "react";
 import React from "react";
 
-class AudioState {
+class AudioState extends EventTarget {
+  _url = null;
   constructor() {
+    super();
     this._audio = typeof window !== "undefined" ? new window.Audio() : null;
+  }
+
+  url() {
+    return this._url;
   }
 
   pause() {
     this._audio.pause();
   }
 
-  resume(src) {
+  resume() {
     this._audio.play();
   }
 
   play(src) {
     this._audio.src = src;
+    this._url = src;
+    this.dispatchEvent(new CustomEvent("urlchange"));
     this._audio.play();
+  }
+
+  stop() {
+    this._audio.pause();
+    this._url = null;
+    this.dispatchEvent(new CustomEvent("urlchange"));
   }
 
   toggleMute() {
@@ -29,7 +43,7 @@ class AudioState {
   }
 
   setProgressPercent(percent) {
-    this._audio.currentTime = (this._audio.duration * percent) / 100;
+    this._audio.currentTime = this._audio.duration * percent;
   }
 }
 
@@ -88,17 +102,18 @@ export function usePlaying() {
 }
 
 export function useCurrentTrack() {
-  const audioSrc = useAudioSrc();
+  const audioContext = useContext(AudioContext);
+  const audioSrc = audioContext._audio;
   const [currentTrack, setCurrentTrack] = useState(null);
   useEffect(() => {
     function handlePlay() {
-      setCurrentTrack(audioSrc.src);
+      setCurrentTrack(audioContext.url());
     }
-    audioSrc.addEventListener("play", handlePlay);
+    audioContext.addEventListener("urlchange", handlePlay);
     return () => {
-      audioSrc.removeEventListener("play", handlePlay);
+      audioContext.removeEventListener("urlchange", handlePlay);
     };
-  }, [audioSrc]);
+  }, [audioSrc, audioContext]);
 
   return currentTrack;
 }
@@ -106,13 +121,17 @@ export function useCurrentTrack() {
 export function useDuration() {
   const audioSrc = useAudioSrc();
 
-  const [duration, setDuration] = useState(0);
+  const [duration, setDuration] = useState(() => {
+    const d = audioSrc.duration;
+    return Number.isNaN(d) ? 0 : d;
+  });
   useEffect(() => {
     if (audioSrc == null) {
       return;
     }
     function handler() {
-      setDuration(audioSrc.duration);
+      const d = audioSrc.duration;
+      setDuration(Number.isNaN(d) ? 0 : d);
     }
     audioSrc.addEventListener("durationchange", handler);
     return () => {
@@ -140,8 +159,8 @@ export function useCurrentTime() {
   return currentTime;
 }
 
-export function usePercentComplete(audioSrc) {
-  const duration = useDuration(audioSrc);
-  const currentTime = useCurrentTime(audioSrc);
+export function usePercentComplete() {
+  const duration = useDuration();
+  const currentTime = useCurrentTime();
   return currentTime / duration;
 }
