@@ -4,7 +4,6 @@ import matter from "gray-matter";
 import yaml from "js-yaml";
 import { Markdown } from "./Markdown";
 import { Indexable, Linkable, Listable } from "./interfaces";
-import { Tag } from "./Tag";
 import { TagSet } from "./TagSet";
 import { SiteUrl } from "./SiteUrl";
 import { Query } from "./GraphQLRoots";
@@ -59,7 +58,13 @@ export class Post implements Indexable, Linkable, Listable {
 
   /** @gqlField */
   summaryImage(): string | undefined {
-    return this.metadata.summary_image || null;
+    if (this.metadata.summary_image) {
+      return this.metadata.summary_image;
+    }
+    if (this.metadata.youtube_slug) {
+      return `https://img.youtube.com/vi/${this.metadata.youtube_slug}/hqdefault.jpg`;
+    }
+    return undefined;
   }
 
   filename(): string {
