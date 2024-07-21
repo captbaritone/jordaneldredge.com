@@ -2,6 +2,7 @@ import "../styles/globals.css";
 import "../styles/shiki-twoslash.css";
 
 // import Head from "next/head";
+import { FaSearch } from "react-icons/fa";
 import Script from "next/script";
 import Link from "next/link";
 import NavLink from "./NavLink";
@@ -62,13 +63,18 @@ export default function Layout({ children }) {
               <NavLink href="/singer/">Singer</NavLink>
             </li>
             */}
-                <li>
+                <li className="pr-4">
                   <NavLink href="/contact/">Contact</NavLink>
+                </li>
+                <li className="text-sm flex items-center pr-1">
+                  <Link href={"/search"}>
+                    <FaSearch title="Search" />
+                  </Link>
                 </li>
               </ul>
             </nav>
             <main>{children}</main>
-            <footer className="py-8 text-center block border-t-2 border-gray-200 border-solid">
+            <footer className="py-8 pb-12 text-center block border-t-2 border-gray-200 border-solid">
               <a rel="me" href="https://twitter.com/captbaritone">
                 Twitter
               </a>

@@ -6,9 +6,9 @@ import {
   FaVolumeUp,
   FaVolumeMute,
   FaVolumeDown,
+  // FaTimes,
 } from "react-icons/fa";
 import {
-  AudioContext,
   usePlaying,
   usePercentComplete,
   useCurrentTime,
@@ -59,19 +59,26 @@ export default function AudioPlayer() {
                 }
               }}
             >
-              {playing ? <FaPause /> : <FaPlay />}
+              {playing ? <FaPause title="Pause" /> : <FaPlay title="Play" />}
             </button>
             <div style={{ whiteSpace: "nowrap" }}>
-              {formatSeconds(currentTime)} / {formatSeconds(duration)}
+              {formatSeconds(currentTime)}
             </div>
             <div className="px-2 w-full">
               <Progress />
             </div>
-            <VolumeIcon />
+
+            <div style={{ whiteSpace: "nowrap" }}>
+              {formatSeconds(duration)}
+            </div>
+            {/* <VolumeIcon /> */}
           </div>
           <div className="whitespace-nowrap pl-5">
             {currentTrack && getFilenameFromUrl(currentTrack)}
           </div>
+          {/*<button className="pl-3" onClick={() => audioState.stop()}>
+            <FaTimes />
+          </button>*/}
         </div>
       </div>
     </div>
