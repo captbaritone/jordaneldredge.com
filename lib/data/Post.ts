@@ -5,6 +5,7 @@ import yaml from "js-yaml";
 import { Markdown } from "./Markdown";
 import { Indexable, Linkable, Listable } from "./interfaces";
 import { Tag } from "./Tag";
+import { TagSet } from "./TagSet";
 import { SiteUrl } from "./SiteUrl";
 import { Query } from "./GraphQLRoots";
 import { makeLogger } from "../logger";
@@ -82,10 +83,37 @@ export class Post implements Indexable, Linkable, Listable {
     return !this.archive() && !this.draft();
   }
   /** @gqlField */
-  tags(): Tag[] {
-    return this.metadata.tags != null
-      ? this.metadata.tags.map((tag) => new Tag(tag))
-      : [];
+  tagSet(): TagSet {
+    return TagSet.fromTagStrings(this.metadata.tags);
+  }
+
+  relatedPosts(first: number): Post[] {
+    const ownTags = this.tagSet()
+      .tags()
+      .map((tag) => tag.name());
+    const otherPosts = getAllPosts().filter(
+      (post) => post.showInLists() && post.slug() !== this.slug()
+    );
+    const postsWithOverlap = otherPosts
+      .map((post) => {
+        const otherTags = post
+          .tagSet()
+          .tags()
+          .map((tag) => tag.name());
+        const intersection = otherTags.filter((tag) =>
+          ownTags.includes(tag)
+        ).length;
+
+        const union = new Set([...ownTags, ...otherTags]).size;
+
+        return { overlap: intersection / union, post };
+      })
+      .filter((post) => post.overlap > 0);
+
+    return postsWithOverlap
+      .sort((a, b) => b.overlap - a.overlap)
+      .slice(0, first)
+      .map((post) => post.post);
   }
 
   /** @gqlField */

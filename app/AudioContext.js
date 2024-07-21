@@ -122,7 +122,9 @@ export function useDuration() {
   const audioSrc = useAudioSrc();
 
   const [duration, setDuration] = useState(() => {
-    const d = audioSrc.duration;
+    // Need to handle the case that the audioSrc is null
+    // during server rendering.
+    const d = audioSrc?.duration;
     return Number.isNaN(d) ? 0 : d;
   });
   useEffect(() => {

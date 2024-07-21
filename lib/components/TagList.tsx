@@ -1,26 +1,26 @@
 import Link from "next/link.js";
-import { Tag } from "../data/Tag";
+import { TagSet } from "../data/TagSet";
 
 type Props = {
-  tags: Tag[] | null;
+  tagSet: TagSet;
 };
 
-export default function TagList({ tags }: Props) {
-  if (!tags || tags.length === 0) {
-    return null;
-  }
+export default function TagList({ tagSet }: Props) {
+  const tags = tagSet.tags();
   return (
-    <div className="text-sm text-gray-400 py-4 border-t-2 border-gray-200 border-solid">
-      <span className="">Tags:</span>
-      {tags.map((tag) => (
-        <>
-          {" "}
-          <Link
-            href={tag.url().path()}
-            className="underline"
-          >{`${tag.name()}`}</Link>
-        </>
-      ))}
+    <div className="border-t-2 border-gray-200 border-solid">
+      <div className="text-sm text-gray-400 py-4">
+        <span className="">Tags:</span>
+        {tags.map((tag) => (
+          <>
+            {" "}
+            <Link
+              href={tag.url().path()}
+              className="underline"
+            >{`${tag.name()}`}</Link>
+          </>
+        ))}
+      </div>
     </div>
   );
 }

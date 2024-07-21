@@ -49,13 +49,11 @@ export async function indexEntry(db: Database, indexable: Data.Indexable) {
   const markdown = await indexable.content();
   const title = indexable.title();
   const summary = indexable.summary == null ? "" : indexable.summary() || "";
-  let tags = "";
-  if (indexable.tags != null) {
-    tags = indexable
-      .tags()
-      .map((t) => t.name)
-      .join(" ");
-  }
+  const tags = indexable
+    .tagSet()
+    .tags()
+    .map((t) => t.name)
+    .join(" ");
   const content = markdown.markdownString();
   await db.run(
     `

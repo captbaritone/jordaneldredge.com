@@ -1,8 +1,8 @@
 import Markdown from "../../../lib/components/Markdown";
 import * as Data from "../../../lib/data";
 import DateString from "../../../lib/components/DateString";
-import TagList from "../../../lib/components/TagList";
 import { Metadata } from "next";
+import RelatedContent from "../../../lib/components/RelatedContent";
 
 // https://beta.nextjs.org/docs/data-fetching/caching#segment-level-caching
 export const revalidate = 600;
@@ -28,16 +28,14 @@ export async function generateMetadata({ params }): Promise<Metadata> {
 }
 
 export default async function Note({ params }) {
-  const page = await Data.getNoteBySlug(params.slug);
-
-  const content = await page.content();
+  const note = await Data.getNoteBySlug(params.slug);
+  const content = await note.content();
   const ast = await content.ast();
-  const tags = page.tags();
 
   return (
-    <>
+    <article>
       <div className="markdown">
-        <h1>Note: {page.title()}</h1>
+        <h1>{note.title()}</h1>
         <div
           className="italic text-sm text-gray-400"
           style={{
@@ -45,11 +43,11 @@ export default async function Note({ params }) {
             marginBottom: "1rem",
           }}
         >
-          <DateString date={new Date(page.date())} />
+          <DateString date={new Date(note.date())} />
         </div>
         <Markdown ast={ast} options={{ expandYoutube: true }} />
       </div>
-      <TagList tags={tags} />
-    </>
+      <RelatedContent item={note} />
+    </article>
   );
 }

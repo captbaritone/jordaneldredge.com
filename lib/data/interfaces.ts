@@ -1,6 +1,6 @@
 import { Markdown } from "./Markdown";
 import { SiteUrl } from "./SiteUrl";
-import { Tag } from "./Tag";
+import { TagSet } from "./TagSet";
 
 type PageType = "post" | "page" | "note";
 
@@ -12,7 +12,7 @@ export interface Indexable {
   content(): Promise<Markdown> | Markdown;
   title(): string;
   summary?(): string | undefined;
-  tags?(): Tag[];
+  tagSet(): TagSet;
   slug(): string;
 }
 
@@ -35,4 +35,6 @@ export interface Listable extends Linkable {
   date(): string;
   /** @gqlField */
   summary(): string | undefined;
+  /** @gqlField */
+  tagSet(): TagSet;
 }

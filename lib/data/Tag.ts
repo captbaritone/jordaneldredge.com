@@ -28,15 +28,15 @@ export class Tag implements Linkable {
     const allPosts = getAllPosts();
     const allNotes = await getAllNotes();
 
-    const publicPosts = allPosts.filter(
-      (post) =>
-        post.showInLists() &&
-        post.tags().some((tag) => tag.name() === this._name)
-    );
+    const publicPosts = allPosts.filter((post) => {
+      const tagNames = post.tagSet().tagNames();
+      return tagNames.some((tag) => tag === this._name);
+    });
 
-    const publicNotes = allNotes.filter((note) =>
-      note.tags().some((tag) => tag.name() === this._name)
-    );
+    const publicNotes = allNotes.filter((note) => {
+      const tagNames = note.tagSet().tagNames();
+      return tagNames.some((tag) => tag === this._name);
+    });
 
     return [...publicPosts, ...publicNotes];
   }

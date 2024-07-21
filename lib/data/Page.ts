@@ -7,6 +7,7 @@ import { Indexable } from "./interfaces";
 import { SiteUrl } from "./SiteUrl";
 import { Query } from "./GraphQLRoots";
 import { makeLogger } from "../logger";
+import { TagSet } from "./TagSet";
 
 const pagesDirectory = join(process.cwd(), "./_pages");
 
@@ -44,6 +45,9 @@ export class Page implements Indexable {
   /** @gqlField */
   date(): string {
     return this.metadata.date;
+  }
+  tagSet(): TagSet {
+    return new TagSet([]);
   }
   /** @gqlField */
   static async getPageBySlug(_: Query, args: { slug: string }): Promise<Page> {

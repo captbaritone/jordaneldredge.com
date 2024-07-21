@@ -11,6 +11,7 @@ import {
   retrievePage,
 } from "../services/notion";
 import { dump } from "js-yaml";
+import { TagSet } from "./TagSet";
 
 /**
  * A less formal post. Usually a quite observation, shared link or anecdote.
@@ -33,11 +34,8 @@ export class Note implements Indexable, Linkable, Listable {
   }
 
   /** @gqlField */
-  tags(): Tag[] {
-    if (this._tags != null) {
-      return this._tags.map((tag) => new Tag(tag));
-    }
-    return [];
+  tagSet(): TagSet {
+    return TagSet.fromTagStrings(this._tags);
   }
 
   /** A unique name for the Note. Used in the URL and for refetching. */
@@ -77,7 +75,9 @@ export class Note implements Indexable, Linkable, Listable {
     const content = await this.content();
     const metadata = dump({
       title: this.title(),
-      tags: this.tags().map((tag) => tag.name()),
+      tags: this.tagSet()
+        .tags()
+        .map((tag) => tag.name()),
       summary: this.summary(),
     }).trim();
     const markdownContent = content.markdownString().trim();

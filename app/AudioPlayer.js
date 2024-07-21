@@ -73,7 +73,7 @@ export default function AudioPlayer() {
             </div>
             {/* <VolumeIcon /> */}
           </div>
-          <div className="whitespace-nowrap pl-5 overflow-hidden">
+          <div className="whitespace-nowrap pl-5">
             {currentTrack && getFilenameFromUrl(currentTrack)}
           </div>
           {
