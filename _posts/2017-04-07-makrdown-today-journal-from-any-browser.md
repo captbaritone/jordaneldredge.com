@@ -1,5 +1,6 @@
 ---
 title: "Markdown Today: Journal from any browser"
+summary_image: https://markdown.today/images/screenshot.png
 summary: A private, mobile-first web app that writes your journal directly to Dropbox.
 tags: ["javascript", "project", "localFirst"]
 ---

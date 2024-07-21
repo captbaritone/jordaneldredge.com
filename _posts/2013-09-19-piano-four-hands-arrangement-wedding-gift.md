@@ -1,6 +1,6 @@
 ---
 title: "Piano Four-Hands Arrangement (Wedding Gift)"
-summary_image: /uploads/2014/06/eldredge-nammies_four_hands.pdf
+summary_image: /uploads/2013/09/eldredge-nammies_four_hands.png
 tags: [lilypond, music, mp3, chelsea, piano]
 ---
 

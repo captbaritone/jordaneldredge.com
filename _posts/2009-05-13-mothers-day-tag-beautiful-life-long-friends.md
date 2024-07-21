@@ -1,5 +1,6 @@
 ---
 title: "Mother's Day Tag: Beautiful Life Long Friends"
+summary_image: /uploads/2009/05/1-500x375.jpg
 archive: true
 tags: [barbershop, multitrack, mp3, music, pdf]
 ---

@@ -1,5 +1,6 @@
 ---
 title: "Papageno's Glockenspiel-kulele [Ukulele Ringtone]"
+summary_image: /uploads/2013/05/237_519706926108_6153_n-500x334.jpg
 tags: ["chelsea", "mp3", "music", "ukulele"]
 ---
 

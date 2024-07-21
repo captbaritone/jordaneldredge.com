@@ -60,6 +60,9 @@ function start() {
 function setVolume(volume) {
     gainNode.gain.value = volume / 100 / 12;
 }
+window.navigation.addEventListener("navigate", (event) => {
+    setVolume(0);
+})
 </script>
 
 Volume: <input type='range' min='0' max='100' value='0' oninput="setVolume(this.value)" ontouchstart="start();" onmousedown="start();">

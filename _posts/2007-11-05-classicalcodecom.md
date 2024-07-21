@@ -1,5 +1,6 @@
 ---
 title: "classicalcode.com"
+summary_image: /uploads/2007/11/servidores2_ddclient_07112006.jpg
 archive: true
 tags: [meta]
 ---

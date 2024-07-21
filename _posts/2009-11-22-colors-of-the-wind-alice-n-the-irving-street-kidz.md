@@ -1,5 +1,6 @@
 ---
 title: "Colors of The Wind (Alice n' The Irving Street Kidz)"
+summary_image: /uploads/2009/11/alice_n_the_irving_street_kidz.jpg
 tags: [ukulele, multitrack, music]
 ---
 
