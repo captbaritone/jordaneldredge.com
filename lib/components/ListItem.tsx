@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import DateString from "./DateString.js";
 import { Listable } from "../data/interfaces.js";
@@ -32,10 +33,9 @@ export default function ListItem({ item }: Props) {
           {summary ? <p>{summary}</p> : null}
         </div>
         {summaryImage ? (
-          <img
-            src={summaryImage}
-            className="h-24 md:h-32 object-cover aspect-video"
-          />
+          <div className="h-24 md:h-32 aspect-video relative">
+            <Image alt="" fill src={summaryImage} className="object-cover" />
+          </div>
         ) : null}
       </div>
       <hr />

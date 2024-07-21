@@ -23,6 +23,18 @@ module.exports = withPlaiceholder({
     ];
   },
   images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "img.youtube.com",
+        pathname: "/vi/**",
+      },
+      {
+        protocol: "https",
+        hostname: "markdown.today",
+        pathname: "/images/**",
+      },
+    ],
     domains: [
       "jordaneldredge.com",
       // Avatars from GitHub comments
