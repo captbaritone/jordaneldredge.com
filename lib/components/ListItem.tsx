@@ -8,9 +8,9 @@ type Props = {
   item: Listable;
 };
 
-export default function ListItem({ item }: Props) {
+export default async function ListItem({ item }: Props) {
   const summary = item.summary == null ? undefined : item.summary();
-  const summaryImage = item instanceof Post ? item.summaryImage() : null;
+  const summaryImage = await item.summaryImage();
   return (
     <>
       <div className="my-4 flex justify-between gap-4">

@@ -37,4 +37,6 @@ export interface Listable extends Linkable {
   summary(): string | undefined;
   /** @gqlField */
   tagSet(): TagSet;
+  /** @gqlField */
+  summaryImage(): Promise<string | undefined>;
 }

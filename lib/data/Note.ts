@@ -3,7 +3,10 @@ import { Indexable, Linkable, Listable } from "./interfaces.js";
 import { Tag } from "./Tag";
 import { SiteUrl } from "./SiteUrl";
 import { Query } from "./GraphQLRoots";
-import { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
+import {
+  BlockObjectResponse,
+  PageObjectResponse,
+} from "@notionhq/client/build/src/api-endpoints";
 import {
   blocksToMarkdownString,
   getMetadata,
@@ -56,6 +59,19 @@ export class Note implements Indexable, Linkable, Listable {
   /** @gqlField */
   summary(): string | undefined {
     return this._summary;
+  }
+
+  /** @gqlField */
+  async summaryImage(): Promise<string | undefined> {
+    const pageBlocks = await retrieveBlocks(this.id);
+    for (const _block of pageBlocks.results) {
+      const block: BlockObjectResponse = _block as any;
+      if (block.type === "image") {
+        // @ts-ignore
+        return block.image.file.url;
+      }
+    }
+    return undefined;
   }
 
   /** @gqlField */

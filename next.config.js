@@ -26,6 +26,10 @@ module.exports = withPlaiceholder({
     remotePatterns: [
       {
         protocol: "https",
+        hostname: "**.amazonaws.com",
+      },
+      {
+        protocol: "https",
         hostname: "img.youtube.com",
         pathname: "/vi/**",
       },
