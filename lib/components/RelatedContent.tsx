@@ -19,13 +19,13 @@ export default async function RelatedContent({ item }: Props) {
         <div className="text-sm text-gray-400 py-4">
           <span className="">Tags:</span>
           {tags.map((tag) => (
-            <>
+            <React.Fragment key={tag.url().path()}>
               {" "}
               <Link
                 href={tag.url().path()}
                 className="underline"
               >{`${tag.name()}`}</Link>
-            </>
+            </React.Fragment>
           ))}
         </div>
       </div>
