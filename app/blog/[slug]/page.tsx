@@ -61,8 +61,8 @@ export default async function Post({ params }) {
           </div>
           <Markdown ast={ast} />
         </div>
-        <RelatedContent item={post} />
         {issueId && <GitHubComments issue={issueId} />}
+        <RelatedContent item={post} />
       </article>
     </div>
   );
