@@ -8,7 +8,7 @@ export default async function handler(req, res) {
 
   const publicPosts = allPosts.filter((post) => post.showInLists());
 
-  const feed = buildRssFeedLazy(publicPosts);
+  const feed = await buildRssFeedLazy(publicPosts);
 
   switch (req.query.kind) {
     case "rss.xml":
@@ -25,7 +25,7 @@ export default async function handler(req, res) {
   }
 }
 
-function buildRssFeedLazy(allPosts: Data.Post[]) {
+async function buildRssFeedLazy(allPosts: Data.Post[]) {
   const siteURL = "https://jordaneldredge.com";
   const author = {
     name: "Jordan Eldredge",
@@ -54,21 +54,28 @@ function buildRssFeedLazy(allPosts: Data.Post[]) {
     author,
   });
 
-  allPosts.forEach((post) => {
-    const url = post.url().fullyQualified();
-    feed.addItem({
-      title: post.title(),
-      id: url,
-      link: url,
-      description: post.summary(),
-      content: post.summary(),
-      author: [author],
-      contributor: [],
-      date: new Date(post.date()),
-      image: post.summaryImage()
-        ? `${siteURL}${post.summaryImage()}`
-        : undefined,
-    });
-  });
+  const items = await Promise.all(
+    allPosts.map(async (post) => {
+      const url = post.url().fullyQualified();
+      let summaryImage = await post.summaryImage();
+      if (summaryImage != null && !summaryImage.startsWith("http")) {
+        summaryImage = `${siteURL}${summaryImage}`;
+      }
+      return {
+        title: post.title(),
+        id: url,
+        link: url,
+        description: post.summary(),
+        content: post.summary(),
+        author: [author],
+        contributor: [],
+        date: new Date(post.date()),
+        image: summaryImage,
+      };
+    })
+  );
+  for (const item of items) {
+    feed.addItem(item);
+  }
   return feed;
 }

@@ -4,9 +4,9 @@ import DateString from "../../../lib/components/DateString";
 import Markdown from "../../../lib/components/Markdown";
 import RelatedContent from "../../../lib/components/RelatedContent";
 
-export function generateMetadata({ params }) {
+export async function generateMetadata({ params }) {
   const post = Data.getPostBySlug(params.slug);
-  const summaryImage = post.summaryImage();
+  const summaryImage = await post.summaryImage();
   return {
     title: post.title(),
     description: post.summary() || post.title(),

@@ -59,7 +59,7 @@ export class Post implements Indexable, Linkable, Listable {
   /** @gqlField */
   async summaryImage(): Promise<string | undefined> {
     if (this.metadata.summary_image) {
-      return this.metadata.summary_image;
+      return `${this.metadata.summary_image}`;
     }
     if (this.metadata.youtube_slug) {
       return `https://img.youtube.com/vi/${this.metadata.youtube_slug}/hqdefault.jpg`;
