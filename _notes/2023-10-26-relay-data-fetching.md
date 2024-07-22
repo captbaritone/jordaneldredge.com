@@ -1,0 +1,23 @@
+---
+title: How Relay Enables Optimal Data Fetching
+tags:
+  - graphql
+  - share
+  - react
+  - javascript
+summary: Sharing a blog post I wrote about what makes Relay so special
+---
+At my day job I work on an open-source GraphQL client called [Relay](https://relay.dev/). It encourages a unique approach to application development which allows you to achieve optimal outcomes across the number of dimensions which, in other architecture, are competing trade-offs.
+
+
+Unfortunately, people who are unfamiliar with the Relay have a hard time understanding these benefits. People who have used relay at Meta or elsewhere and understand the step-function value it can provide, often evangelize it when they join a new organization. But, it‘s hard to explain and those were unfamiliar with Relay often have a hard time understanding what makes it so special.
+
+
+So, I tried to clearly and tersely articulate the unique value that Relay provides in a blog post on our blog:
+
+
+[https://relay.dev/blog/2023/10/24/how-relay-enables-optimal-data-fetching/](https://relay.dev/blog/2023/10/24/how-relay-enables-optimal-data-fetching/)
+
+
+While I believe strongly in Relay as a library, my real hope is that core ideas of Relay could be understood more broadly and adopted by other libraries and frameworks.
+

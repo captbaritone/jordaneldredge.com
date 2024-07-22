@@ -32,6 +32,12 @@ export class Post implements Indexable, Linkable, Listable {
     return new Markdown(this._content);
   }
 
+  contentWithHeader(): Markdown {
+    const yamlMetadata = yaml.dump(this.metadata);
+    const markdown = `---\n${yamlMetadata}---${this._content}`;
+    return new Markdown(markdown);
+  }
+
   /** @gqlField */
   url(): SiteUrl {
     return new SiteUrl(`/blog/${this.slug()}`);

@@ -60,8 +60,17 @@ module.exports = withPlaiceholder({
         source: "/feed/:path*",
         destination: "/api/feed/:path*",
       },
+      {
+        source: "/blog/:slug(.+\\.md)",
+        destination: "/blog/:slug/md",
+      },
+      {
+        source: "/notes/:slug(.+\\.md)",
+        destination: "/notes/:slug/md",
+      },
     ];
   },
+  pageExtensions: ["js", "jsx", "ts", "tsx", "md"],
   trailingSlash: true,
   swcMinify: true,
   distDir: "build",

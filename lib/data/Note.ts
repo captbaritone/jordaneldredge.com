@@ -1,6 +1,6 @@
 import { Markdown } from "./Markdown";
 import { Indexable, Linkable, Listable } from "./interfaces.js";
-import { Tag } from "./Tag";
+import yaml from "js-yaml";
 import { SiteUrl } from "./SiteUrl";
 import { Query } from "./GraphQLRoots";
 import {
@@ -78,6 +78,29 @@ export class Note implements Indexable, Linkable, Listable {
   async content(): Promise<Markdown> {
     const pageBlocks = await retrieveBlocks(this.id);
     const markdown = await blocksToMarkdownString(pageBlocks.results);
+    return new Markdown(markdown);
+  }
+
+  async contentWithHeader(): Promise<Markdown> {
+    const pageBlocks = await retrieveBlocks(this.id);
+    const content = await blocksToMarkdownString(pageBlocks.results);
+    const metadata: {
+      title: string;
+      tags: string[];
+      summary: string | undefined;
+      summary_image?: string;
+    } = {
+      title: this.title(),
+      tags: this.tagSet().tagNames(),
+      summary: this.summary(),
+    };
+    const summaryImage = await this.summaryImage();
+
+    if (summaryImage) {
+      metadata.summary_image = summaryImage;
+    }
+    const yamlMetadata = yaml.dump(metadata);
+    const markdown = `---\n${yamlMetadata}---${content}`;
     return new Markdown(markdown);
   }
 
