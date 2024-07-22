@@ -38,11 +38,16 @@ module.exports = withPlaiceholder({
         hostname: "markdown.today",
         pathname: "/images/**",
       },
-    ],
-    domains: [
-      "jordaneldredge.com",
-      // Avatars from GitHub comments
-      "avatars.githubusercontent.com",
+      {
+        protocol: "https",
+        hostname: "jordaneldredge.com",
+        pathname: "**",
+      },
+      {
+        protocol: "https",
+        hostname: "avatars.githubusercontent.com",
+        pathname: "/**",
+      },
     ],
   },
   async rewrites() {
