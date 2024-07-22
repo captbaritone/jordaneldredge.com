@@ -1,4 +1,8 @@
 # Prompt if git is dirty
+
+# Exit if any command fails
+set -e
+
 if ! git diff-index --quiet HEAD --; then
   echo "Git is dirty. Commit your changes before deploying."
   exit 1
