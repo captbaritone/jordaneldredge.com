@@ -1,5 +1,7 @@
 ---
 title: '[Original Song] "Our Love Will Last As Long"'
+summary: "I wrote and recorded a novelty love song for Chelsea."
+summary_image: /uploads/2009/07/3358509685_bcaf1f0c57_b.jpg
 tags: [multitrack, chelsea, music, mp3]
 ---
 

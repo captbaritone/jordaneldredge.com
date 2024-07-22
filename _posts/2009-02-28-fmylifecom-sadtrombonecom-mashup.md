@@ -1,6 +1,7 @@
 ---
 title: "FMyLife.com + SadTrombone.com Mashup"
 archive: true
+summary: "I combined FMyLife.com and SadTrombone.com to create a mashup of schadenfreude and comedy brass."
 tags: [defunct, project]
 ---
 

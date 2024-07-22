@@ -1,6 +1,7 @@
 ---
 title: "Are your digital memories going to be there when you're old?"
 archive: true
+summary: "Thinking about the challenges of preserving digital memories"
 tags: [opinion]
 ---
 

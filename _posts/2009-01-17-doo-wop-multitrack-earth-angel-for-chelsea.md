@@ -1,5 +1,7 @@
 ---
 title: 'Doo-Wop Multitrack: "Earth Angel" (for Chelsea)'
+summary: "I recorded a doo-wop arrangement of 'Earth Angel' for my girlfriend Chelsea."
+summary_image: /uploads/2009/01/n641786668_907689_2852-500x375.jpg
 tags: [multitrack, lilypond, mp3, chelsea]
 ---
 

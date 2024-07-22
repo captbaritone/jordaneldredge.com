@@ -1,5 +1,6 @@
 ---
 title: "PHP: Avatar Hack"
+summary: "A php script that generates an image for use as an avatar."
 tags: [security, php]
 ---
 

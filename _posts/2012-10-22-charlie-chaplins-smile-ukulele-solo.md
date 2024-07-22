@@ -1,6 +1,7 @@
 ---
 title: "Charlie Chaplin's Smile: Ukulele Solo"
 youtube_slug: Tw4L_Ys-14g
+summary: "A solo ukulele arrangement of Charlie Chaplin's 'Smile'."
 tags: ["youtube", "md5", "music", "ukulele", "pdf"]
 ---
 

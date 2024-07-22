@@ -1,5 +1,6 @@
 ---
 title: "Issue tracking for your workflow"
+summary: "I've been using GitHub issues to track problems with my workflow."
 tags: []
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: 'Jazz Ukulele "Love Is a Song" from Bambi'
 youtube_slug: Mf4x2K5oBMQ
+summary: "I arranged and recorded 'Love Is a Song' from Walt Disney's Bambi on my new ukulele."
 tags: [mp3, youtube, ukulele, multitrack, music]
 ---
 

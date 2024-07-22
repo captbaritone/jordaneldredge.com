@@ -1,6 +1,7 @@
 ---
 title: "Long Distance Multitrack Barbershop Tag"
 archive: true
+summary: "I collaborated with friends on a multitracked barbershop tag."
 tags: [barbership, multitrack, mp3, music]
 ---
 

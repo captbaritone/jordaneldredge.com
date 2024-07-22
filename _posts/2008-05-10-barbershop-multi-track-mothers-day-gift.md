@@ -1,6 +1,7 @@
 ---
 title: "Barbershop multi-track: Mother's Day gift"
 archive: true
+summary: "I recorded a multi-track of a barbershop tag for my mom for Mother's Day."
 tags: [barbershop, mp3, multitrack]
 ---
 

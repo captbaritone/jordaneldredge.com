@@ -1,5 +1,6 @@
 ---
 title: "Better indent support for PHP in Vim"
+summary: "A .vimrc snippet for better indent support for PHP with HTML."
 tags: ["vim", "php"]
 ---
 

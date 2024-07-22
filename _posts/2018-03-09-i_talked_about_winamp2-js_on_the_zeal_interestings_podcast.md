@@ -1,6 +1,7 @@
 ---
 title: I talked about Winamp2-js on the Zeal Interestings Podcast
 summary_image: /images/coding-zeal-podcast.jpg
+summary: "I appeared on the Zeal Interestings Podcast to talk about Winamp2-js."
 tags: ["podcast", "winamp"]
 ---
 

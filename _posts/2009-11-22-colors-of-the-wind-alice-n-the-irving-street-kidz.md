@@ -1,6 +1,7 @@
 ---
 title: "Colors of The Wind (Alice n' The Irving Street Kidz)"
 summary_image: /uploads/2009/11/alice_n_the_irving_street_kidz.jpg
+summary: "My friends and I recorded a cover of 'Colors of The Wind' from the major motion picture _Pocahontas_."
 tags: [ukulele, multitrack, music]
 ---
 

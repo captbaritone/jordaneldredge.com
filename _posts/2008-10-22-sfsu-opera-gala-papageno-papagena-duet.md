@@ -1,5 +1,6 @@
 ---
 title: "SFSU Opera Gala: Papageno Papagena Duet"
+summary: "Video of myself and Sanja Wetzel performing the Papageno Papagena Duet in San Francisco State's Opera Gala."
 archive: true
 tags: [opera, youtube, music]
 ---

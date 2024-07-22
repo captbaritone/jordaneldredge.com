@@ -1,5 +1,6 @@
 ---
 title: "Acceptance testing with Codeception and Vagrant"
+summary: "How to get Codeception acceptance tests working in a Vagrant workflow."
 tags: ["php"]
 ---
 

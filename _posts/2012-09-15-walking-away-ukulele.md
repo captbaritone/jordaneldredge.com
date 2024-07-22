@@ -1,6 +1,7 @@
 ---
 title: "Walking Away [Ukulele]"
 summary_image: /uploads/2012/09/4418315357_78878f2695_o-500x500.jpg
+summary: "An original song from the vaults. Recorded on my first ukulele into my first (MacBook) laptop."
 tags: ["mp3", "music", "ukulele"]
 ---
 

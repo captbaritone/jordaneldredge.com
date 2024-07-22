@@ -1,6 +1,7 @@
 ---
 title: "Tag: Sleepy Time Down South"
 archive: true
+summary: "I multitracked a barbershop tag 'Sleepy Time Down South'"
 tags: [barbershop, multitrack, mp3, music]
 ---
 

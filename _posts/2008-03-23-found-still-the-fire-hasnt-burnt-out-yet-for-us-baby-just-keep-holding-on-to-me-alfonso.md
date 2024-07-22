@@ -1,5 +1,6 @@
 ---
 title: 'Found: "still, the fire hasn''t burnt out yet for us Baby, just keep holding on to me Alfonso"'
+summary: "I found a letter in which the writer tries to assure the recipient that the fire hasn't burnt out yet for them."
 tags: [found]
 ---
 

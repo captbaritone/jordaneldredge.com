@@ -1,5 +1,6 @@
 ---
 title: 'Found: "Update on Money Unpaid to Me and Evil Needed to be Stopped"'
+summary: "A chaotic note I found taped to a newspaper vending box."
 tags: [found, nsfw]
 ---
 

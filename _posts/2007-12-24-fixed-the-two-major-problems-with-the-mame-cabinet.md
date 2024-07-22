@@ -1,5 +1,6 @@
 ---
 title: "Fixed the two major problems with the MAME cabinet"
+summary: "Update on my MAME cabinet project."
 tags: []
 ---
 

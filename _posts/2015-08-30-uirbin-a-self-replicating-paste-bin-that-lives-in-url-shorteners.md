@@ -1,5 +1,6 @@
 ---
 title: "UriBin: A self-replicating paste bin that lives in url shorteners"
+summary: "I wrote a mad-scientist project that creates self-replicating paste bins that live in URL shorteners."
 archive: true
 tags: ["project", "javascript"]
 ---

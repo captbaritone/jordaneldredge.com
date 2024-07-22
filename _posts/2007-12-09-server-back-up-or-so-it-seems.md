@@ -1,6 +1,7 @@
 ---
 title: "Server back up (or so it seems)"
 archive: true
+summary: "Announcing that the server is back up after a period of downtime."
 tags: [meta]
 ---
 

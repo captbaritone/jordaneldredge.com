@@ -1,5 +1,6 @@
 ---
 title: "Eight-Part Barbershop Tag In Parallel Fifths"
+summary: "Experimenting with recording every part in a barbershop tag a perfect fifth higher to create jazzy chords."
 tags: [barbershop, multitrack, mp3, music]
 ---
 

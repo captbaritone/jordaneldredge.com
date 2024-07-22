@@ -1,6 +1,7 @@
 ---
 title: "I Love You Truly [Ukulele Mp3]"
 summary_image: /uploads/2012/02/305303_10150758097545034_695475033_20230725_3825594_n-500x373.jpg
+summary: "I arranged and recorded 'I Love You Truly' on electric ukulele for Chelsea."
 tags: [music, ukulele, chelsea, mp3]
 ---
 

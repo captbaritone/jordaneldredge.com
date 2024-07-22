@@ -1,6 +1,7 @@
 ---
 title: '[Video] Tom Lehrer''s "My Home Town" on Ukulele'
 archive: true
+summary: "I recorded Tom Lehrer's 'My Home Town' on my cheap $35 Ukulele in Golden Gate Park."
 youtube_slug: JQkEWCYo9LU
 tags: [music, ukulele, youtube]
 ---

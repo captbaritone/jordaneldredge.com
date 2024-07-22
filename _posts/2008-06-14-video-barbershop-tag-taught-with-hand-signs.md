@@ -1,6 +1,7 @@
 ---
 title: "Video: Barbershop tag taught with hand signs"
 youtube_slug: EVnBvM6W4so
+summary: "I recorded a video multitrack of a barbershop tag, showing all four parts in sol-feg hand signs."
 tags: [barbershop, youtube, multitrack]
 ---
 

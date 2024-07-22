@@ -1,5 +1,6 @@
 ---
 title: "Barbershop multi-track: Happy Anniversary Chelsea"
+summary: "I recorded a barbershop tag for Chelsea on our year and a half anniversary."
 tags: [barbershop, mp3, multitrack, chelsea]
 ---
 

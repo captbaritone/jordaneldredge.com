@@ -53,7 +53,10 @@ export class Post implements Indexable, Linkable, Listable {
 
   /** @gqlField */
   summary(): string | undefined {
-    return this.metadata.summary || null;
+    if (!this.metadata.summary) {
+      throw new Error(`No summary found for post ${this.url().path()}`);
+    }
+    return this.metadata.summary;
   }
 
   /** @gqlField */

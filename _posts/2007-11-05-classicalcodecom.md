@@ -1,6 +1,7 @@
 ---
 title: "classicalcode.com"
 summary_image: /uploads/2007/11/servidores2_ddclient_07112006.jpg
+summary: "Announcing that I've moved domain names"
 archive: true
 tags: [meta]
 ---

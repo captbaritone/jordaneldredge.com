@@ -1,5 +1,6 @@
 ---
 title: "Found: Three smutty paper airplanes"
+summary: "Three paper airplanes I found in San Francisco with writing on them which is decidedly not safe for work."
 tags: [found, nsfw]
 ---
 

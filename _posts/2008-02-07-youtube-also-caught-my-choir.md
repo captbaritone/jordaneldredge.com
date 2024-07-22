@@ -1,6 +1,7 @@
 ---
 title: "Youtube also caught my choir"
 youtube_slug: 0usF9fycCSE
+summary: "Sharing a youtube video of the choir in which I sing."
 tags: [music, youtube]
 ---
 

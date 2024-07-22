@@ -1,6 +1,7 @@
 ---
 title: 'Multitrack Video: "In My Room"'
 youtube_slug: vdLnQ5T0VaU
+summary: "On New Years Day some friends and I recorded a multitrack video of The Beach Boys' song 'In My Room'."
 tags: [youtube, chelsea, ukulele, multitrack, mp3, music]
 ---
 

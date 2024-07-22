@@ -1,5 +1,6 @@
 ---
 title: "Barbershop multi-track: Who'll Take My Place When I'm Gone"
+summary: "I recorded a multi-track of the barbershop tag 'Who'll Take My Place When I'm Gone'"
 tags: [barbershop, multitrack, mp3, music]
 ---
 

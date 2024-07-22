@@ -1,5 +1,6 @@
 ---
 title: "Silly fach generator"
+summary: "I created a website that will generate silly fach names."
 tags: [music, generator, fach, opera]
 ---
 

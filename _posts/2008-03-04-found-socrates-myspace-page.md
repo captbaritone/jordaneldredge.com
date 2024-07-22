@@ -1,5 +1,6 @@
 ---
 title: "Found: Socrates Myspace Page"
+summary: "A drawing I found depicting what Socrates' Myspace page would look like."
 tags: [found]
 ---
 

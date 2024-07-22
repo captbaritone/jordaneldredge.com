@@ -1,5 +1,6 @@
 ---
 title: "Endlessly rising Shepard Tone"
+summary: "I created the Shepard Tone audio illusion using Lilypond."
 tags: [lilypond, music, mp3]
 ---
 

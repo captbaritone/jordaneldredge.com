@@ -1,6 +1,7 @@
 ---
 title: "The ABCs Backwards"
 youtube_slug: WmelrI2ArLs
+summary: "I learned to sing the alphabet song backwards and recorded it in Golden Gate Park."
 tags: [music, youtube]
 ---
 

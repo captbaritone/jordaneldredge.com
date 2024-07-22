@@ -1,6 +1,7 @@
 ---
 title: "You might be a nerd if: You write a perl script to count sheep for you..."
 archive: true
+summary: "A perl script to count sheep in binary that I wrote when I couldn't sleep."
 tags: []
 ---
 

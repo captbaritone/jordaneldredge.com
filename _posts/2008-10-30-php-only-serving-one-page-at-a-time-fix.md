@@ -1,5 +1,6 @@
 ---
 title: "Php only serving one page at a time [fix!]"
+summary: "I uncovered the reason why my php server was only serving one page at a time."
 tags: [php]
 ---
 

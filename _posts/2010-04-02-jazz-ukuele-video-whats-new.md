@@ -1,6 +1,7 @@
 ---
 title: "Jazz Ukuele Video: What's New?"
 youtube_slug: eJoKuzVGyFY
+summary: "I arranged and recorded a jazz ukulele version of the classic song 'What's New?'"
 tags: [ukulele, multitrack, mp3, music, pdf]
 ---
 

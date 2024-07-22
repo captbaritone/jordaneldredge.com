@@ -1,6 +1,7 @@
 ---
 title: "Installed MediaWiki"
 archive: true
+summary: "Announcing that I've installed MediaWiki on my server"
 tags: [meta]
 ---
 

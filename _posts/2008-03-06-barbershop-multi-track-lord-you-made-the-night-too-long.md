@@ -1,5 +1,6 @@
 ---
 title: "Barbershop multi-track: Lord, You Made the Night Too Long"
+summary: "I recorded a multi-track of the barbershop tag 'Lord, You Made the Night Too Long'"
 tags: [music, barbershop, multitrack, mp3]
 ---
 

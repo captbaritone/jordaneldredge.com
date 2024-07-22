@@ -1,6 +1,7 @@
 ---
 title: "Barbershop tag taught as a limerick"
 archive: true
+summary: "I wrote a limerick which dictates a singable barbershop tag."
 tags: [barbershop]
 ---
 

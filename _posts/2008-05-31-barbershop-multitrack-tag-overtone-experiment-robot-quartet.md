@@ -1,5 +1,6 @@
 ---
 title: "Barbershop Multitrack Tag: Overtone experiment / robot quartet"
+summary: "I recorded a barbershop tag in a robot voice to experiment with overtones."
 tags: [barbershop, mp3, multitrack]
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: "Music nerd limericks"
 archive: true
+summary: "Two nerdy music limericks that I wrote."
 tags: [music]
 ---
 

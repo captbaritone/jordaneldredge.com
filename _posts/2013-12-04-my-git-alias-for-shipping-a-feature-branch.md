@@ -1,5 +1,6 @@
 ---
 title: "My Git alias for shipping a feature branch"
+summary: "A handy Git alias for merging a feature branch into master and pushing it to the server."
 tags: ["git"]
 ---
 

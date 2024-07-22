@@ -1,5 +1,6 @@
 ---
 title: "Only the first and last letters of a word need be in the right place"
+summary: "A made a script that scrambles the inner letters of words but, surprisingly, leaves them still readable."
 tags: []
 ---
 

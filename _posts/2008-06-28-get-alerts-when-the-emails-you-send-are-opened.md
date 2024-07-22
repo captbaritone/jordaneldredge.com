@@ -1,5 +1,6 @@
 ---
 title: "Get alerts when the emails you send are opened"
+summary: "I wrote a script that sends you an email when the image you embed in your emails is opened."
 tags: [security, defunct, php]
 ---
 

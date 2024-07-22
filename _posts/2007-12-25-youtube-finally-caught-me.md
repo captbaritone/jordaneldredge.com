@@ -1,6 +1,7 @@
 ---
 title: "Youtube finally caught me"
 archive: true
+summary: "Sharing a video of me singing Papageno"
 youtube_slug: MGtwpWbRWxw
 tags: [opera, youtube, music]
 ---

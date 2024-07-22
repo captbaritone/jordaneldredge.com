@@ -1,5 +1,6 @@
 ---
 title: "We're Going To Be Friends (White Stripes Cover)"
+summary: "I recorded a cover of 'We're Going To Be Friends' by the White Stripes with multiple voice parts and ukulele."
 tags: [multitrack, ukulele, music, mp3]
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: "SFSU Chamber Singers sing for ACDA"
 youtube_slug: dO--mXsEyS0
+summary: "A video of my choir singing at St. Boniface Church in Anaheim, California."
 tag: [music, youtube]
 ---
 

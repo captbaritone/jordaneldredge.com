@@ -1,6 +1,8 @@
 ---
 title: 'Keeping the Party "Up-Tempo"'
 youtube_slug: fvWXrld200E
+archive: true
+summary: "I recorded a capella versions of two simple piano piece with my friend Joachim Luis."
 tags: [mp3, youtube, multitrack]
 ---
 

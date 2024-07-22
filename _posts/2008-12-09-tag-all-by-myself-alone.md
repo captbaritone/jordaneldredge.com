@@ -1,6 +1,7 @@
 ---
 title: "Tag: All By Myself Alone"
 archive: true
+summary: "I recorded a multi-track of the barbershop tag 'All By Myself Alone'"
 tags: [barbershop, mp3, multitrack, music]
 ---
 

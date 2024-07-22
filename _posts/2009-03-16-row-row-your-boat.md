@@ -1,6 +1,7 @@
 ---
 title: "Row Row Your Boat"
 archive: true
+summary: "I sing 'Row Row Your Boat' in a round with myself, shifting the words one note back each time."
 youtube_slug: _YWitlb7BUc
 tags: [youtube, music, pdf, lilypond]
 ---

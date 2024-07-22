@@ -1,7 +1,8 @@
 ---
 title: "Twitter Bot: UkeChord"
 archive: true
-tags: [project, twitter, ukulele, music]
+summary: "I wrote a Twitter bot that sends ukulele chord fingerings via text message."
+tags: [project, twitter, ukulele, music, defunct]
 ---
 
 **Edit (May 18, 2012): This bot is now defunct.**

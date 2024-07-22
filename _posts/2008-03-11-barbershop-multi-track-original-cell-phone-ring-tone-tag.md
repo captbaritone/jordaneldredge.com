@@ -1,5 +1,6 @@
 ---
 title: "Barbershop multi-track: Original cell phone ring tone tag"
+summary: "I wrote and recorded a multi-track of a barbershop tag for my cell phone ring tone."
 tags: [original, music, barbershop, mp3, multitrack]
 ---
 

@@ -1,5 +1,7 @@
 ---
 title: 'Some of my finds have been chosen for "Find of the Day"'
+summary: "Four of my finds have been chosen for the Found Magazine's Find of the Day feature."
+archive: true
 tags: [found]
 ---
 

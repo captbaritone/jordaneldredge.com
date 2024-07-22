@@ -1,6 +1,7 @@
 ---
 title: "Recording of robot reading song translation"
 archive: true
+summary: "I goofed around and recorded a robot reading a translation of a song."
 tags: [music, mp3]
 ---
 

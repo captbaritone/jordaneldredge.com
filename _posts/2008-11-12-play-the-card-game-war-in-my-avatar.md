@@ -1,5 +1,6 @@
 ---
 title: 'Play the card game "War" in my avatar'
+summary: "I programed a dynamic avatar that plays the card game war."
 tags: [refresh, game, php, defunct]
 ---
 

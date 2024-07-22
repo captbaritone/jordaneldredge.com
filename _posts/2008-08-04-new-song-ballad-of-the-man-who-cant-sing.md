@@ -1,5 +1,6 @@
 ---
 title: "New Song: Ballad of the man who can't sing"
+summary: "I wrote and recorded an original song about not being able to write."
 tags: [mp3, original, music]
 ---
 

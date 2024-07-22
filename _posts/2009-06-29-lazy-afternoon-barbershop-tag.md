@@ -1,5 +1,7 @@
 ---
 title: '"Lazy Afternoon" Barbershop Tag'
+summary_image: /uploads/2009/06/n695475033_6330053_5271599-500x375.jpg
+summary: "I wrote and recorded a barbershop tag for Chelsea."
 tags: [barbershop, music, mp3, multitrack]
 ---
 

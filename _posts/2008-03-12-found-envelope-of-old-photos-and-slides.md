@@ -1,5 +1,6 @@
 ---
 title: "Found: Envelope of old photos and slides"
+summary: "I found an envelope of old photos and slides in a PG&E bill return envelope."
 tags: [found]
 ---
 

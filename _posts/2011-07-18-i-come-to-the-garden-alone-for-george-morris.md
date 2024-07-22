@@ -1,6 +1,7 @@
 ---
 title: "I Come To the Garden Alone (For George Morris)"
 youtube_slug: FDB0LMrDdEs
+summary: "I arranged and recorded the hymn 'In The Garden' on ukulele in memory of George Morris."
 tags: [mp3, pdf, ukulele, music]
 ---
 

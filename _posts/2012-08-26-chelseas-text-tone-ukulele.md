@@ -1,6 +1,7 @@
 ---
 title: "Chelsea's Text Tone [Ukulele]"
 summary_image: /uploads/2012/08/531292_3691278771372_40740060_n-500x375.jpg
+summary: "A tiny ukulele track for Chelsea's iPhone text tone."
 tags: [music, ukulele, chelsea, mp3]
 ---
 

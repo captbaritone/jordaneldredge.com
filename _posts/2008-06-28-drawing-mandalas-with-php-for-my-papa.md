@@ -1,5 +1,6 @@
 ---
 title: "Drawing mandalas with PHP for my Papa"
+summary: "I wrote a PHP script that generates mandalas based on the size and number of points you give it."
 tags: [php]
 ---
 

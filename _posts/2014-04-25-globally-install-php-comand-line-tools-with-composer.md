@@ -1,5 +1,6 @@
 ---
 title: "Globally install PHP command-line tools with Composer"
+summary: "How to install CLI tools wiht Composer."
 tags: ["php"]
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: '"The Surprise Slide" Ukulele Micro Song'
 summary_image: /uploads/2011/05/26168_641716358228_11708863_37009223_4275532_n-500x375.jpg
+summary: "A micro song for Chelsea, written and recorded while she was in San Diego."
 tags: [mp3, ukulele, multitrack, music]
 ---
 

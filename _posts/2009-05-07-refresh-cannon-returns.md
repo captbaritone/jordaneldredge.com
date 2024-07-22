@@ -1,6 +1,7 @@
 ---
 title: "Refresh Cannon Returns"
 archive: true
+summary: "I got my server back up and running and now you can play Refresh Cannon again."
 tags: [defunct]
 ---
 

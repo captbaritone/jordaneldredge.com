@@ -1,5 +1,6 @@
 ---
 title: '[Original Song] "Parking Garage"'
+summary: "I recorded a short song in a parking garage."
 tags: [multitrack, chelsea, music, mp3]
 ---
 

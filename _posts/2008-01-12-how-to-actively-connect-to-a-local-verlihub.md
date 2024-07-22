@@ -1,6 +1,7 @@
 ---
 title: "How to actively connect to a local Verlihub"
 archive: true
+summary: "How to connect to a local Verlihub in active mode"
 tags: []
 ---
 

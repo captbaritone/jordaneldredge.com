@@ -1,5 +1,6 @@
 ---
 title: "Writing a custom Codeception module"
+summary: "How to write a custom Codeception module and distribute it as a Composer package."
 tags: ["php"]
 ---
 

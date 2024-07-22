@@ -1,6 +1,7 @@
 ---
 title: "Fix For Digg Link in Sociable 3.4.4 Wordpress Plugin "
 archive: true
+summary: "Sharing a fix I found for the broken Digg link in the Sociable 3.4.4 Wordpress plugin."
 tags: [wordpress]
 ---
 

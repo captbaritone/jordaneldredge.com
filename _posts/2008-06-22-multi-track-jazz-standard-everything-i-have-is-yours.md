@@ -1,5 +1,6 @@
 ---
 title: "Multi-track Jazz Standard: Everything I have is yours"
+summary: "I record a multi-track of the jazz standard Everything I Have is Yours, with strange harmonies."
 tags: [multitrack, mp3, music, chelsea]
 ---
 

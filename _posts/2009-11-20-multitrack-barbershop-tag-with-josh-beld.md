@@ -1,6 +1,7 @@
 ---
 title: "Multitrack Barbershop Tag With Josh Beld"
 archive: true
+summary: "I recorded a barbershop tag with my friend Josh Beld."
 tags: [barbaershop, multitrack, music]
 ---
 

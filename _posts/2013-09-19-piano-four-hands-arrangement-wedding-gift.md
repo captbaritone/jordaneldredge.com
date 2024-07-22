@@ -1,6 +1,7 @@
 ---
 title: "Piano Four-Hands Arrangement (Wedding Gift)"
 summary_image: /uploads/2013/09/eldredge-nammies_four_hands.png
+summary: "As a wedding gift for Chelsea I arranged a piano four-hands version of the song her dad wrote to sing her to sleep."
 tags: [lilypond, music, mp3, chelsea, piano]
 ---
 

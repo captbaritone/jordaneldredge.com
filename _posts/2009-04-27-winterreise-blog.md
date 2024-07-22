@@ -1,6 +1,7 @@
 ---
 title: "Winterreise Blog"
 archive: true
+summary: "I have started a blog about Franz Schubert's Winterreise."
 tags: [project, music]
 ---
 

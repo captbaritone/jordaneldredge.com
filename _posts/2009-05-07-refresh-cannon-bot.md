@@ -1,5 +1,6 @@
 ---
 title: "Refresh Cannon Bot"
+summary: "Geoff's Boring Programming Stuff wrote a bot to beat my Refresh Cannon game."
 tags: [game, refresh, defunct]
 ---
 

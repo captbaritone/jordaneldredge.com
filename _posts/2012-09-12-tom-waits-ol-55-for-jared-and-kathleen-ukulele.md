@@ -1,6 +1,7 @@
 ---
 title: 'Tom Waits'' "Ol'' 55" for Jared and Kathleen [Ukulele]'
 summary_image: /uploads/2012/08/561217_10150915093251302_1710160913_n-500x375.jpg
+summary: "I recorded a simple version of Tom Waits' 'Ol' 55' for my friends Jared and Kathleen's wedding."
 tags: ["music", "ukulele", "mp3"]
 ---
 

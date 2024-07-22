@@ -1,6 +1,7 @@
 ---
 title: 'Irving Berlin''s "Blue Skies" on Eleuke electric ukulele'
 youtube_slug: MUcnYnjIk88
+summary: "I arranged and recorded Irving Berlin's 'Blue Skies' on my new Eleuke electric ukulele."
 tags: [youtube, ukulele, music]
 ---
 

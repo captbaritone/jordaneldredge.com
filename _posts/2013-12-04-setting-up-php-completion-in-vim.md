@@ -1,5 +1,6 @@
 ---
 title: "Setting up PHP completion in Vim"
+summary: ".vimrc settings for PHP completion in Vim"
 tags: ["php", "vim"]
 ---
 

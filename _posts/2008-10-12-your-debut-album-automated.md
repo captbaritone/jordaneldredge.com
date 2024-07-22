@@ -1,5 +1,6 @@
 ---
 title: "Your Debut Album (Automated)"
+summary: "I wrote a PHP script that automates a hilarious method for generating Your Debut Album."
 tags: [music, generator]
 ---
 

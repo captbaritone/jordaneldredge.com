@@ -1,5 +1,6 @@
 ---
 title: "Alvin sings Schumann's Widmung"
+summary: "I tricked my professor into thinking I found a recording of the Chipmunks singing Schumann's Widmung."
 tags: [multitrack, opera, music]
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: "My first barbershop multi-track: Love Letters"
+summary: "I recorded a multi-track of the barbershop tag 'Love Letters Straight From the Heart'"
 tag: [music, barbershop, multitrack, mp3]
 ---
 

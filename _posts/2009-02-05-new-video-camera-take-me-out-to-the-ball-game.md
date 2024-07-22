@@ -1,6 +1,7 @@
 ---
 title: "New Video Camera: Take Me Out to the Ball Game"
 archive: true
+summary: "I recorded myself singing 'Take Me Out to the Ball Game' off by one word."
 youtube_slug: RYjIj23-7D4
 tags: [music, youtube]
 ---

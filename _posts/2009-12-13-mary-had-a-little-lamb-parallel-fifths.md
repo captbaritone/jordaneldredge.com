@@ -1,6 +1,7 @@
 ---
 title: "Mary Had a Little Lamb - Parallel Fifths"
 youtube_slug: PETo9TT-qP8
+summary: "My dad and I recorded a version of Mary Had a Little Lamb where I sang and played the same song a fifth above."
 tags: [ukulele, youtube, music]
 ---
 

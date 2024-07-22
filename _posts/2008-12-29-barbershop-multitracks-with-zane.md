@@ -1,5 +1,6 @@
 ---
 title: "Barbershop Multitracks with Zane"
+summary: "I recorded two barbershop tags with my friend Zane Fiala."
 tags: [mp3, youtube, multitrack, barbershop]
 ---
 

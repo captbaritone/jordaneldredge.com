@@ -1,6 +1,7 @@
 ---
 title: "Electric ukulele ring-tone for Chelsea"
 summary_image: /uploads/2010/09/PICT0483-500x375.jpg
+summary: "While visiting my parent's cabin in the woods, I created a little ring-tone song with my Electric Ukulele for Chelsea."
 tags: [mp3, ukulele, music, chelsea, multitrack]
 ---
 

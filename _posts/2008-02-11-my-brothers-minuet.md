@@ -1,5 +1,6 @@
 ---
 title: "My brother's minuet"
+summary: "I recorded myself playing a minuet my brother wrote for a music course."
 tags: [music, mp3, piano]
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: "A trick to get consistent checkbox form values"
 alias: /blog/a_trick_to_get_consistant_checkbox_form_values
+summary: "A tehcnique to ensure that unchecked checkboxes submit a value of zero with PHP apps."
 tags: ["html"]
 ---
 

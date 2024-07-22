@@ -1,6 +1,7 @@
 ---
 title: "Backyard Ukulele Session: Ukulele Videos with Chelsea"
 youtube_slug: ZIxgGRyTtKk
+summary: "Chelsea and I recorded a few songs in our backyard with the help of Beau Lambert."
 tags: [music, ukulele, chelsea, youtube]
 ---
 

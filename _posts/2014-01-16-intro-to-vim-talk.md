@@ -1,6 +1,7 @@
 ---
 title: "Intro to Vim Talk"
 tags: ["talk", "vim"]
+summary: "I gave a talk at the San Francisco Vim Enthusiasts user group."
 ---
 
 On Tuesday I gave my very first talk. I've been attending the [San Francisco Vim

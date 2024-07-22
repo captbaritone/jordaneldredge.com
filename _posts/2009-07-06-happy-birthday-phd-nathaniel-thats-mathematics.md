@@ -1,5 +1,6 @@
 ---
 title: 'Happy Birthday/PhD Nathaniel: "That''s Mathematics"'
+summary: "I got my family to record a math themed song for my brother's birthday and graduation."
 tags: [multitrack, music, ukulele]
 ---
 

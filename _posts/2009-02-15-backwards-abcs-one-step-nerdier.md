@@ -1,6 +1,7 @@
 ---
 title: "Backwards ABCs One Step Nerdier"
 youtube_slug: EA-f_rx95WY
+summary: "I recorded myself singing the ABCs backwards while playing the ukulele."
 tags: [music, youtube]
 ---
 

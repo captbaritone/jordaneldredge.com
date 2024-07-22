@@ -1,5 +1,6 @@
 ---
 title: "Infinite javascript array using AJAX"
+summary: "A simple way to asynchronously load suggestions into an array in JavaScript."
 tags: ["javascript"]
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: "Mac OS X keychain fix"
+summary: "How to fix a corrupt keychain file on Mac OS X"
 tags: []
 ---
 

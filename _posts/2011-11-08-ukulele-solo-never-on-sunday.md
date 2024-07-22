@@ -1,6 +1,7 @@
 ---
 title: "[Ukulele Solo] Never On Sunday"
 youtube_slug: lPM9QRCEB60
+summary: "I arranged and recorded a solo ukulele version of the classic song 'Never on Sunday'."
 tags: [music, ukulele, mp3]
 ---
 

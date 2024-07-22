@@ -1,5 +1,6 @@
 ---
 title: "Barbershop multi-track: I Love To Sing 'Em (Best tag so far!)"
+summary: "I recorded a multi-track of the barbershop tag 'I Love To Sing 'Em'"
 tags: [barbershop, multitrack, mp3]
 ---
 

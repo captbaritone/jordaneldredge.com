@@ -1,5 +1,6 @@
 ---
 title: "Shrewd Simon Short"
+summary: "I recorded myself reading a tongue twister story about Shrewd Simon Short."
 tags: [mp3]
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: "Opera stuff looking for good home (free)"
 archive: true
+summary: "Trying to find a home for a collection of opera libretti, Opera News, and San Francisco Opera programs."
 tags: [opera]
 ---
 

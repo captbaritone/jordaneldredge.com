@@ -1,5 +1,6 @@
 ---
 title: "Found: Henry system of music transcription"
+summary: "A strange document I found on the ground which refers to an unknown music transcription system."
 tags: [found, music]
 ---
 

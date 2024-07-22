@@ -1,6 +1,7 @@
 ---
 title: "In Dixie Land (Where I Was Born)"
 archive: true
+summary: "I recorded a barbershop tag 'In Dixie Land (Where I Was Born)' with a Zoom H4."
 tags: [barbershop, multitrack, mp3, music]
 ---
 

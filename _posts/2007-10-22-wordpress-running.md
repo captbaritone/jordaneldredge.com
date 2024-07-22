@@ -1,6 +1,7 @@
 ---
 title: "Wordpress running"
 archive: true
+summary: "First ever blog post in which I announce that I have wordpress running."
 tags: [meta]
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: "Video: Overtone singing"
 youtube_slug: d8hnK5_5wL8
+summary: "I experiment with overtone singing."
 tags: [music, youtube]
 ---
 

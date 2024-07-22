@@ -1,5 +1,6 @@
 ---
 title: "Alice 'n The Irving Street Kidz"
+summary: "My friends and I recorded a rendition of 'I Want to Hold Your Hand' by The Beatles."
 tags: [mp3, music, ukulele, multitrack]
 ---
 

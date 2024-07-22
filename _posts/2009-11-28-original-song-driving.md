@@ -1,5 +1,7 @@
 ---
 title: 'Original Song: "Driving"'
+summary_image: /uploads/2009/11/9622_166802582176_739287176_4016994_1081156_n-500x375.jpg
+summary: "I wrote a song for Chelsea after three years of dating."
 tags: [chelsea, multitrack, ukulele, mp3, music]
 ---
 

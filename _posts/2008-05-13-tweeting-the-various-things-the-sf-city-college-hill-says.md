@@ -1,6 +1,7 @@
 ---
 title: "Tweeting the various things the SF City College hill says"
 archive: true
+summary: "I started to Twitter accounts to document the various things the hill on the south side of the City College has written on it."
 tags: [twitter, defunct]
 ---
 

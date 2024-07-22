@@ -1,5 +1,6 @@
 ---
 title: '[Multitrack] "That''s Why I Love You"'
+summary: "I recorded an a cappella version of 'That's Why I Love You' by The Flamingos."
 tags: [multitrack, chelsea, mp3, music]
 ---
 

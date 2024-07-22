@@ -1,5 +1,6 @@
 ---
 title: "Barbershop multi-track: Cry"
+summary: "I recorded a multi-track of the barbershop tag 'Cry'"
 tags: [barbershop, multitrack, mp3]
 ---
 

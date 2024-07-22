@@ -1,5 +1,6 @@
 ---
 title: "Testing emails with Codeception"
+summary: "A Codeception helper to test emails sent by your application."
 tags: ["php"]
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: 'One way "curl pipe sh" install scripts can be dangerous [proof of concept]'
+summary: "One way in which 'curl pipe sh' install scripts can be dangerous."
 tags: ["security"]
 ---
 
