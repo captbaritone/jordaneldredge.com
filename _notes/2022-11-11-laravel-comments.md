@@ -6,13 +6,13 @@ summary: >-
   An insane detail that points to the obsessive approach Taylor Otwell took with
   Laravel
 summary_image: >-
-  https://prod-files-secure.s3.us-west-2.amazonaws.com/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/c2bcf002-2b8b-47b2-8f0c-6d726fa216c1/undefined_-_Imgur.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240722%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240722T054531Z&X-Amz-Expires=3600&X-Amz-Signature=c6ac313ceead457c4af8e78ef6aadc3b4ba6a46838f6a915d38f45f0659c3cad&X-Amz-SignedHeaders=host&x-id=GetObject
+  /notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/c2bcf002-2b8b-47b2-8f0c-6d726fa216c1/undefined_-_Imgur.png
 ---
 In the early-ish days of the PHP framework [Laravel](https://laravel.com/), the author [Taylor Otwell](https://github.com/taylorotwell) took an obsessive approach to code consistency. Not only did every method include a docblock with a description, but each description was _exactly_ three lines long, and each line was _exactly_ three characters shorter than the previous line.
 
 ### Example
 
-![](/public/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/c2bcf002-2b8b-47b2-8f0c-6d726fa216c1/undefined_-_Imgur.png)
+![](/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/c2bcf002-2b8b-47b2-8f0c-6d726fa216c1/undefined_-_Imgur.png)
 
 [_Image source_](https://imgur.com/UnIUZmZ)
 
