@@ -7,9 +7,7 @@ summary: Code review feedback that could be encoded as a lint rule, should be
 ---
 Here is a general rule I like to follow, and encourage others to follow, in code review in order to reduce [bike-shedding](https://thedecisionlab.com/biases/bikeshedding):
 
-
 During code review, you may not give feedback that could be encoded as a lint rule. If you don’t care enough about the issue to enable/write the lint rule, it’s not fair to ask the author to care enough to update their code.
-
 
 ## Advantages of writing your feedback as a lint rule:
 

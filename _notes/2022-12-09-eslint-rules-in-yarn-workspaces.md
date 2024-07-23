@@ -12,5 +12,4 @@ I recently needed to figure out how to create custom project-specific lint rules
 - Add a dependency on that package to your workspace’s root package.json using the `link:<path>` syntax. Mine looked like: `"eslint-plugin-relay-internal": "link:./packages/eslint-plugin-relay-internal",`
 - Reference the package normally in the workspace’s eslintrc.
 
-You can see the PR here: [https://github.com/facebook/relay/pull/4147](https://github.com/facebook/relay/pull/4147)
-
+You can see the PR here: <https://github.com/facebook/relay/pull/4147>

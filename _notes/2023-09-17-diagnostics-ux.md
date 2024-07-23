@@ -7,4 +7,3 @@ summary: >-
   design
 ---
 Title says it all. I’m sure I’ve stolen this observation from someone else, but I can’t recall.
-
