@@ -29,13 +29,12 @@ export class Post implements Indexable, Linkable, Listable {
 
   /** @gqlField */
   content(): Markdown {
-    return new Markdown(this._content);
+    return Markdown.fromString(this._content);
   }
 
-  contentWithHeader(): Markdown {
+  contentWithHeader(): string {
     const yamlMetadata = yaml.dump(this.metadata);
-    const markdown = `---\n${yamlMetadata}---${this._content}`;
-    return new Markdown(markdown);
+    return `---\n${yamlMetadata}---${this._content}`;
   }
 
   /** @gqlField */

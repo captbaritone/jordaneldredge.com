@@ -3,18 +3,16 @@ import { Indexable, Linkable, Listable } from "./interfaces.js";
 import yaml from "js-yaml";
 import { SiteUrl } from "./SiteUrl";
 import { Query } from "./GraphQLRoots";
+import { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import {
-  BlockObjectResponse,
-  PageObjectResponse,
-} from "@notionhq/client/build/src/api-endpoints";
-import {
-  blocksToMarkdownString,
+  blocksToMarkdownAst,
   getMetadata,
   retrieveBlocks,
   retrievePage,
 } from "../services/notion";
-import { dump } from "js-yaml";
 import { TagSet } from "./TagSet";
+import { Node } from "unist";
+import { visit } from "unist-util-visit";
 
 /**
  * A less formal post. Usually a quite observation, shared link or anecdote.
@@ -63,27 +61,35 @@ export class Note implements Indexable, Linkable, Listable {
 
   /** @gqlField */
   async summaryImage(): Promise<string | undefined> {
-    const pageBlocks = await retrieveBlocks(this.id);
-    for (const _block of pageBlocks.results) {
-      const block: BlockObjectResponse = _block as any;
-      if (block.type === "image") {
-        // @ts-ignore
-        return block.image.file.url;
+    const markdown = await this.content();
+    const markdownAst = await markdown.ast();
+    let summaryImage: string | undefined = undefined;
+    visit(markdownAst, (node, index, parent) => {
+      if (summaryImage != null) {
+        return false;
       }
-    }
-    return undefined;
+      if (node.type === "image" && node.imageProps?.cachedPath) {
+        summaryImage = node.imageProps.cachedPath;
+      }
+    });
+
+    return summaryImage;
+  }
+
+  async rawMarkdownAst(): Promise<Node> {
+    const pageBlocks = await retrieveBlocks(this.id);
+    return await blocksToMarkdownAst(pageBlocks.results);
   }
 
   /** @gqlField */
   async content(): Promise<Markdown> {
-    const pageBlocks = await retrieveBlocks(this.id);
-    const markdown = await blocksToMarkdownString(pageBlocks.results);
-    return new Markdown(markdown);
+    const ast = await this.rawMarkdownAst();
+    return new Markdown(ast);
   }
 
-  async contentWithHeader(): Promise<Markdown> {
-    const pageBlocks = await retrieveBlocks(this.id);
-    const content = await blocksToMarkdownString(pageBlocks.results);
+  async contentWithHeader(): Promise<string> {
+    const contentMarkdown = await this.content();
+
     const metadata: {
       title: string;
       tags: string[];
@@ -100,33 +106,11 @@ export class Note implements Indexable, Linkable, Listable {
       metadata.summary_image = summaryImage;
     }
     const yamlMetadata = yaml.dump(metadata);
-    const markdown = `---\n${yamlMetadata}---${content}`;
-    return new Markdown(markdown);
+    const markdown = `---\n${yamlMetadata}---\n${await contentMarkdown.markdownString()}`;
+    return markdown;
   }
 
-  /**
-   * Return as a Markdown file including a yaml header with metadata including
-   * tags and summary.
-   *
-   * See .serializedFilename() for the filename.
-   */
-  async serialize(): Promise<Markdown> {
-    const content = await this.content();
-    const metadata = dump({
-      title: this.title(),
-      tags: this.tagSet()
-        .tags()
-        .map((tag) => tag.name()),
-      summary: this.summary(),
-    }).trim();
-    const markdownContent = content.markdownString().trim();
-
-    const markdown = `---\n${metadata}\n---\n${markdownContent}\n`;
-
-    return new Markdown(markdown);
-  }
-
-  async serializedFilename(): Promise<string> {
+  serializedFilename(): string {
     const date = new Date(this.date()).toISOString().substring(0, 10);
     return `${date}-${this.slug()}.md`;
   }

@@ -32,7 +32,7 @@ export class Page implements Indexable {
 
   /** @gqlField */
   content(): Markdown {
-    return new Markdown(this._content);
+    return Markdown.fromString(this._content);
   }
   /** @gqlField */
   title(): string {

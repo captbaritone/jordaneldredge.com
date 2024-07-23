@@ -8,6 +8,10 @@ import {
 import { unstable_cache } from "next/cache";
 import { ListBlockChildrenResponseResults } from "notion-to-md/build/types";
 import { makeLogger } from "../logger";
+import { unified } from "unified";
+import remarkParse from "remark-parse";
+import type { Node } from "unist";
+import { parse } from "../data/markdownUtils";
 
 const log = makeLogger("Notion");
 
@@ -26,11 +30,14 @@ const notion = new Client({
 });
 const n2m = new NotionToMarkdown({ notionClient: notion });
 
-export async function blocksToMarkdownString(
+export async function blocksToMarkdownAst(
   blocks: ListBlockChildrenResponseResults
-): Promise<string> {
+): Promise<Node> {
   const mdBlocks = await n2m.blocksToMarkdown(blocks);
-  return n2m.toMarkdownString(mdBlocks);
+  // In the future we could define a direct mapping from the n2m AST to unist
+  // AST without having to serialize in the middle.
+  const markdownString = n2m.toMarkdownString(mdBlocks);
+  return parse(markdownString);
 }
 
 /*
@@ -89,7 +96,7 @@ export async function getMetadata(): Promise<NoteMetadata> {
   return { slugToId, idToSlug, idToTags, tagToIds, idToSummary };
 }
 
-export const _retrievePage = unstable_cache(
+export const retrievePage = unstable_cache(
   async (id: string): Promise<PageObjectResponse> => {
     log("Retrieving page...", id);
     // @ts-ignore Not sure how to convince TypeScript that we are not getting a partial response.
@@ -107,11 +114,6 @@ export const _retrievePage = unstable_cache(
     return page;
   }
 );
-
-export const retrievePage = async (id: string) => {
-  debugger;
-  return _retrievePage(id);
-};
 
 export const retrieveBlocks = unstable_cache(
   (id: string): Promise<ListBlockChildrenResponse> => {

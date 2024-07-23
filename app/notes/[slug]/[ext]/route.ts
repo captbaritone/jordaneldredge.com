@@ -10,7 +10,7 @@ export async function GET(_: NextRequest, { params }) {
     case "md": {
       const note = await getNoteBySlug(slug);
       const content = await note.contentWithHeader();
-      return new Response(content.markdownString());
+      return new Response(content);
     }
     default:
       return new Response("Not found", { status: 404 });

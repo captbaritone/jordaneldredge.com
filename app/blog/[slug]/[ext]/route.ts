@@ -9,7 +9,7 @@ export async function GET(_: NextRequest, { params }) {
   switch (ext) {
     case "md": {
       const post = getPostBySlug(slug);
-      return new Response(post.contentWithHeader().markdownString());
+      return new Response(post.contentWithHeader());
     }
     default:
       return new Response("Not found", { status: 404 });
