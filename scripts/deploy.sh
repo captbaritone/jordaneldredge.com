@@ -24,10 +24,6 @@ scp -r build/* jordan:~/projects/jordaneldredge.com/build
 
 echo "Build complete and copied to server"
 echo "On server:\n\n"
-echo "cd ~/projects/jordaneldredge.com \\"
-echo "git fetch origin \\"
-echo "git rebase origin/master \\"
-echo "nvm use 20 \\"
-echo "pnpm i \\"
-echo "pm2 reload ecosystem.config.js\n\n"
+echo "cd ~/projects/jordaneldredge.com"
+echo "./scripts/reload.sh\n\n"
 echo "Celebrate! 🎉"
