@@ -6,12 +6,9 @@ import {
   QueryDatabaseResponse,
 } from "@notionhq/client/build/src/api-endpoints";
 import { ListBlockChildrenResponseResults } from "notion-to-md/build/types";
-import { makeLogger } from "../logger";
 import type { Node } from "unist";
 import { parse } from "../data/markdownUtils";
 import { memoize, TEN_MINUTES } from "../memoize";
-
-const log = makeLogger("Notion");
 
 type NoteMetadata = {
   slugToId: { [slug: string]: string };
@@ -100,7 +97,6 @@ export const getMetadata = memoize(
 export const retrievePage = memoize(
   { ttl: TEN_MINUTES, key: "retrievePage" },
   async (id: string): Promise<PageObjectResponse> => {
-    log("Retrieving page...", id);
     // @ts-ignore Not sure how to convince TypeScript that we are not getting a partial response.
     const page: PageObjectResponse = await notion.pages.retrieve({
       page_id: id,
@@ -120,7 +116,6 @@ export const retrievePage = memoize(
 export const retrieveBlocks = memoize(
   { ttl: TEN_MINUTES, key: "retrieveBlocks" },
   (id: string): Promise<ListBlockChildrenResponse> => {
-    log("Retrieving blocks... (page content or index list)", id);
     return notion.blocks.children.list({ block_id: id });
   }
 );
@@ -128,7 +123,6 @@ export const retrieveBlocks = memoize(
 export const retrieveDatabase = memoize(
   { ttl: TEN_MINUTES, key: "retrieveDatabase" },
   (id: string): Promise<QueryDatabaseResponse> => {
-    log("Retrieving database...", id);
     return notion.databases.query({ database_id: id });
   }
 );

@@ -6,13 +6,10 @@ import { Markdown } from "./Markdown";
 import { Indexable } from "./interfaces";
 import { SiteUrl } from "./SiteUrl";
 import { Query } from "./GraphQLRoots";
-import { makeLogger } from "../logger";
 import { TagSet } from "./TagSet";
 import { memoize, TEN_MINUTES } from "../memoize";
 
 const pagesDirectory = join(process.cwd(), "./_pages");
-
-const log = makeLogger("Page");
 
 /**
  * A static top-level content page.
@@ -63,7 +60,6 @@ export class Page implements Indexable {
 export const getAllPages = memoize(
   { ttl: TEN_MINUTES, key: "getAllPages" },
   (): Page[] => {
-    log("Listing pages off disk");
     return fs
       .readdirSync(pagesDirectory)
       .filter((fileName) => {
@@ -84,7 +80,6 @@ export const getPageBySlug = memoize(
   { ttl: TEN_MINUTES, key: "getPageBySlug" },
   (slug: string): Page => {
     const fullPath = join(pagesDirectory, `${slug}.md`);
-    log("Reading page off disk", fullPath);
     const fileContents = fs.readFileSync(fullPath, "utf8");
     const { data, content } = matter(fileContents, {
       engines: {

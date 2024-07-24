@@ -7,14 +7,11 @@ import { Indexable, Linkable, Listable } from "./interfaces";
 import { TagSet } from "./TagSet";
 import { SiteUrl } from "./SiteUrl";
 import { Query } from "./GraphQLRoots";
-import { makeLogger } from "../logger";
 import { memoize, TEN_MINUTES } from "../memoize";
 
 const postsDirectory = join(process.cwd(), "./_posts");
 
 const FILE_NAME_PARSER = /^(\d{4}-\d{2}-\d{2})-([a-z0-9\_\.\-]+)\.md$/g;
-
-const log = makeLogger("Page");
 
 /**
  * A formal blog post.
@@ -151,7 +148,6 @@ export const getSlugPostMap = memoize(
   { ttl: TEN_MINUTES, key: "getSlugPostMap" },
   (): { [slug: string]: PostInfo } => {
     const map = {};
-    log("Listing posts off disk");
     for (const fileName of fs.readdirSync(postsDirectory)) {
       const matches = Array.from(fileName.matchAll(FILE_NAME_PARSER))[0];
       if (matches == null) {
@@ -172,7 +168,6 @@ export const getPostBySlug = memoize(
       throw new Error(`Could not find file for slug "${slug}".`);
     }
     const fullPath = join(postsDirectory, `${postInfo.fileName}`);
-    log("Reading post off disk", fullPath);
     const fileContents = fs.readFileSync(fullPath, "utf8");
     const { data, content } = matter(fileContents, {
       engines: {
