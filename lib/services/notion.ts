@@ -7,8 +7,6 @@ import {
 } from "@notionhq/client/build/src/api-endpoints";
 import { ListBlockChildrenResponseResults } from "notion-to-md/build/types";
 import { makeLogger } from "../logger";
-import { unified } from "unified";
-import remarkParse from "remark-parse";
 import type { Node } from "unist";
 import { parse } from "../data/markdownUtils";
 import { memoize, TEN_MINUTES } from "../memoize";
