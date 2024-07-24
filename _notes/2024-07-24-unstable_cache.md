@@ -6,7 +6,7 @@ summary: I found some interesting information about Next.js’ elusive unstable_
 ---
 In working on my personal site, I’ve been trying to add some caching using Next.js’s `unstable_cache()` feature. It sounds like what I want, but the behavior has been quite unpredictable and the [spartan documentation](https://nextjs.org/docs/app/api-reference/functions/unstable_cache) does not help much. Luckily [Alfonsus Ardani](https://github.com/alfonsusac) went down this rabbit hole before me and documented his many findings in this great Notion doc.
 
-[`unstable_cache()`](/f300b3184d6a472ea5282543d50b9f02)[ from next/cache](/f300b3184d6a472ea5282543d50b9f02)
+[`unstable_cache()`](/f300b3184d6a472ea5282543d50b9f02)[ from next/cache](https://capt.dev/unstable_cache)
 
 It turns out one of my major issues was I was returning classes from my cached functions and that fails. In fact, it has many subtle complexiteis and caveats:
 
