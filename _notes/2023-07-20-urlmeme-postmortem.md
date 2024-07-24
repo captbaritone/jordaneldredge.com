@@ -3,7 +3,11 @@ title: Why UrlMe.me failed
 tags:
   - observation
 summary: Reflections on why my side project meme generator never caught on
+summary_image: >-
+  /notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/c5c9bd2b-2342-479d-85a1-66aeb432a2c7/it_failed.jpg
 ---
+![](/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/c5c9bd2b-2342-479d-85a1-66aeb432a2c7/it_failed.jpg)
+
 I made an [image macro generator site](https://urlme.me/) that had a unique idea: what if the entire UI of the generator was just the URL? The pitch was “Type a url, get a meme”.
 
 The site never caught on (not that I tried super hard). I’ve spent some time reflecting on why, and I thought others might enjoy learning from mistakes:
