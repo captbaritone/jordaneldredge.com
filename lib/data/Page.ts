@@ -8,6 +8,7 @@ import { SiteUrl } from "./SiteUrl";
 import { Query } from "./GraphQLRoots";
 import { makeLogger } from "../logger";
 import { TagSet } from "./TagSet";
+import { memoize, TEN_MINUTES } from "../memoize";
 
 const pagesDirectory = join(process.cwd(), "./_pages");
 
@@ -59,33 +60,39 @@ export class Page implements Indexable {
   }
 }
 
-export function getAllPages(): Page[] {
-  log("Listing pages off disk");
-  return fs
-    .readdirSync(pagesDirectory)
-    .filter((fileName) => {
-      // Ensure we skip non-md and 404.md
-      return /[a-z]+.md$/.test(fileName);
-    })
-    .map((fileName) => {
-      const slug = fileName.replace(/\.md$/, "");
-      if (slug == null) {
-        throw new Error("No slug!");
-      }
-      return getPageBySlug(slug);
+export const getAllPages = memoize(
+  { ttl: TEN_MINUTES, key: "getAllPages" },
+  (): Page[] => {
+    log("Listing pages off disk");
+    return fs
+      .readdirSync(pagesDirectory)
+      .filter((fileName) => {
+        // Ensure we skip non-md and 404.md
+        return /[a-z]+.md$/.test(fileName);
+      })
+      .map((fileName) => {
+        const slug = fileName.replace(/\.md$/, "");
+        if (slug == null) {
+          throw new Error("No slug!");
+        }
+        return getPageBySlug(slug);
+      });
+  }
+);
+
+export const getPageBySlug = memoize(
+  { ttl: TEN_MINUTES, key: "getPageBySlug" },
+  (slug: string): Page => {
+    const fullPath = join(pagesDirectory, `${slug}.md`);
+    log("Reading page off disk", fullPath);
+    const fileContents = fs.readFileSync(fullPath, "utf8");
+    const { data, content } = matter(fileContents, {
+      engines: {
+        // @ts-ignore
+        yaml: (s) => yaml.load(s, { schema: yaml.JSON_SCHEMA }),
+      },
     });
-}
 
-export function getPageBySlug(slug: string): Page {
-  const fullPath = join(pagesDirectory, `${slug}.md`);
-  log("Reading page off disk", fullPath);
-  const fileContents = fs.readFileSync(fullPath, "utf8");
-  const { data, content } = matter(fileContents, {
-    engines: {
-      // @ts-ignore
-      yaml: (s) => yaml.load(s, { schema: yaml.JSON_SCHEMA }),
-    },
-  });
-
-  return new Page(slug, content, data);
-}
+    return new Page(slug, content, data);
+  }
+);

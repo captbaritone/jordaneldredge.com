@@ -8,6 +8,7 @@ import { TagSet } from "./TagSet";
 import { SiteUrl } from "./SiteUrl";
 import { Query } from "./GraphQLRoots";
 import { makeLogger } from "../logger";
+import { memoize, TEN_MINUTES } from "../memoize";
 
 const postsDirectory = join(process.cwd(), "./_posts");
 
@@ -146,42 +147,51 @@ type PostInfo = {
   date: string;
 };
 
-function getSlugPostMap(): { [slug: string]: PostInfo } {
-  const map = {};
-  log("Listing posts off disk");
-  for (const fileName of fs.readdirSync(postsDirectory)) {
-    const matches = Array.from(fileName.matchAll(FILE_NAME_PARSER))[0];
-    if (matches == null) {
-      throw new Error(`Incorrect filename for post. Got "${fileName}".`);
+export const getSlugPostMap = memoize(
+  { ttl: TEN_MINUTES, key: "getSlugPostMap" },
+  (): { [slug: string]: PostInfo } => {
+    const map = {};
+    log("Listing posts off disk");
+    for (const fileName of fs.readdirSync(postsDirectory)) {
+      const matches = Array.from(fileName.matchAll(FILE_NAME_PARSER))[0];
+      if (matches == null) {
+        throw new Error(`Incorrect filename for post. Got "${fileName}".`);
+      }
+      const [_, date, slug] = matches;
+      map[slug] = { fileName, slug, date };
     }
-    const [_, date, slug] = matches;
-    map[slug] = { fileName, slug, date };
+    return map;
   }
-  return map;
-}
+);
 
-export function getPostBySlug(slug: string): Post {
-  const postInfo = getSlugPostMap()[slug];
-  if (postInfo == null) {
-    throw new Error(`Could not find file for slug "${slug}".`);
+export const getPostBySlug = memoize(
+  { ttl: TEN_MINUTES, key: "getPostBySlug" },
+  (slug: string): Post => {
+    const postInfo = getSlugPostMap()[slug];
+    if (postInfo == null) {
+      throw new Error(`Could not find file for slug "${slug}".`);
+    }
+    const fullPath = join(postsDirectory, `${postInfo.fileName}`);
+    log("Reading post off disk", fullPath);
+    const fileContents = fs.readFileSync(fullPath, "utf8");
+    const { data, content } = matter(fileContents, {
+      engines: {
+        // @ts-ignore
+        yaml: (s) => yaml.load(s, { schema: yaml.JSON_SCHEMA }),
+      },
+    });
+
+    return new Post(content, data, postInfo);
   }
-  const fullPath = join(postsDirectory, `${postInfo.fileName}`);
-  log("Reading post off disk", fullPath);
-  const fileContents = fs.readFileSync(fullPath, "utf8");
-  const { data, content } = matter(fileContents, {
-    engines: {
-      // @ts-ignore
-      yaml: (s) => yaml.load(s, { schema: yaml.JSON_SCHEMA }),
-    },
-  });
+);
 
-  return new Post(content, data, postInfo);
-}
-
-export function getAllPosts(): Post[] {
-  const posts = Object.values(getSlugPostMap())
-    .map(({ slug }) => getPostBySlug(slug))
-    // sort posts by date in descending order
-    .sort((post1, post2) => (post1.date() < post2.date() ? 1 : -1));
-  return posts;
-}
+export const getAllPosts = memoize(
+  { ttl: TEN_MINUTES, key: "getAllPosts" },
+  (): Post[] => {
+    const posts = Object.values(getSlugPostMap())
+      .map(({ slug }) => getPostBySlug(slug))
+      // sort posts by date in descending order
+      .sort((post1, post2) => (post1.date() < post2.date() ? 1 : -1));
+    return posts;
+  }
+);

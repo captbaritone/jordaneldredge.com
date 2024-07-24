@@ -5,13 +5,13 @@ import {
   PageObjectResponse,
   QueryDatabaseResponse,
 } from "@notionhq/client/build/src/api-endpoints";
-import { unstable_cache } from "next/cache";
 import { ListBlockChildrenResponseResults } from "notion-to-md/build/types";
 import { makeLogger } from "../logger";
 import { unified } from "unified";
 import remarkParse from "remark-parse";
 import type { Node } from "unist";
 import { parse } from "../data/markdownUtils";
+import { memoize, TEN_MINUTES } from "../memoize";
 
 const log = makeLogger("Notion");
 
@@ -55,48 +55,52 @@ const stringToId = (str: string): string => {
 const TIL_INDEX_PAGE_ID = "4817435c-8e47-4d3c-858f-6f5949339ffe";
 const METADATA_DATABASE_ID = stringToId("bbac761ed5f849048b2045d928b5f453");
 
-export async function getMetadata(): Promise<NoteMetadata> {
-  const result = await retrieveDatabase(METADATA_DATABASE_ID);
+export const getMetadata = memoize(
+  { ttl: TEN_MINUTES, key: "getMetadata" },
+  async (): Promise<NoteMetadata> => {
+    const result = await retrieveDatabase(METADATA_DATABASE_ID);
 
-  // TODO: Pagination!
+    // TODO: Pagination!
 
-  const idToSummary = {};
-  const slugToId = {};
-  const idToSlug = {};
+    const idToSummary = {};
+    const slugToId = {};
+    const idToSlug = {};
 
-  const tagToIds = {};
-  const idToTags = {};
+    const tagToIds = {};
+    const idToTags = {};
 
-  result.results.forEach((page) => {
-    // @ts-ignore
-    const properties = page.properties;
-    const tags = properties.Tags.multi_select.map((select) => {
-      return select.name;
+    result.results.forEach((page) => {
+      // @ts-ignore
+      const properties = page.properties;
+      const tags = properties.Tags.multi_select.map((select) => {
+        return select.name;
+      });
+
+      const slug = properties.Slug.rich_text[0]?.text.content;
+      const summary = properties.Summary.rich_text[0]?.text.content;
+      const id = properties.Note.title[0]?.mention.page.id;
+      if (slug && id) {
+        slugToId[slug] = id;
+        idToSlug[id] = slug;
+      }
+      for (const tag of tags) {
+        if (!tagToIds[tag]) {
+          tagToIds[tag] = [];
+        }
+        tagToIds[tag].push(id);
+      }
+
+      idToSummary[id] = summary;
+
+      idToTags[id] = tags;
     });
 
-    const slug = properties.Slug.rich_text[0]?.text.content;
-    const summary = properties.Summary.rich_text[0]?.text.content;
-    const id = properties.Note.title[0]?.mention.page.id;
-    if (slug && id) {
-      slugToId[slug] = id;
-      idToSlug[id] = slug;
-    }
-    for (const tag of tags) {
-      if (!tagToIds[tag]) {
-        tagToIds[tag] = [];
-      }
-      tagToIds[tag].push(id);
-    }
+    return { slugToId, idToSlug, idToTags, tagToIds, idToSummary };
+  }
+);
 
-    idToSummary[id] = summary;
-
-    idToTags[id] = tags;
-  });
-
-  return { slugToId, idToSlug, idToTags, tagToIds, idToSummary };
-}
-
-export const retrievePage = unstable_cache(
+export const retrievePage = memoize(
+  { ttl: TEN_MINUTES, key: "retrievePage" },
   async (id: string): Promise<PageObjectResponse> => {
     log("Retrieving page...", id);
     // @ts-ignore Not sure how to convince TypeScript that we are not getting a partial response.
@@ -115,14 +119,16 @@ export const retrievePage = unstable_cache(
   }
 );
 
-export const retrieveBlocks = unstable_cache(
+export const retrieveBlocks = memoize(
+  { ttl: TEN_MINUTES, key: "retrieveBlocks" },
   (id: string): Promise<ListBlockChildrenResponse> => {
     log("Retrieving blocks... (page content or index list)", id);
     return notion.blocks.children.list({ block_id: id });
   }
 );
 
-export const retrieveDatabase = unstable_cache(
+export const retrieveDatabase = memoize(
+  { ttl: TEN_MINUTES, key: "retrieveDatabase" },
   (id: string): Promise<QueryDatabaseResponse> => {
     log("Retrieving database...", id);
     return notion.databases.query({ database_id: id });
