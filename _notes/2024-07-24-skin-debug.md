@@ -1,0 +1,14 @@
+---
+title: The Winamp Skin Museum has a secret debug mode
+tags:
+  - winamp
+  - anecdote
+summary: Shhhh. Don't tell anyone, but the Winamp Skin Museum has a secret debug mode.
+summary_image: >-
+  /notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/6b7a6af9-118a-464c-9963-25a715a435bd/Screenshot_2024-07-24_at_11.17.44_AM.png
+---
+Shhhh. Don't tell anyone, but the [Winamp Skin Museum](https://skins.webamp.org/) has a secret debug mode.
+
+Press "d" when viewing a skin to inspect its sprite sheets, cursors, configuration files and more. This was super easy to build based on the [Winamp Skin Museum’s GraphQL endpoint](https://jordaneldredge.com/notes/winamp-sqlite/).
+
+![](/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/6b7a6af9-118a-464c-9963-25a715a435bd/Screenshot_2024-07-24_at_11.17.44_AM.png)
