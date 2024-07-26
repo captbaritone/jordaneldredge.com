@@ -66,5 +66,15 @@ const SERIALIZE_MARKDOWN_OPTIONS: Options = {
     textDirective(node) {
       return `:${node.name}`;
     },
+    leafDirective(node) {
+      // Just a small subset of the real syntax, but fine for now.
+      // https://talk.commonmark.org/t/generic-directives-plugins-syntax/444
+      const attributes = Object.entries(node.attributes)
+        .map(([name, value]) => {
+          return `${name}=${value}`;
+        })
+        .join(" ");
+      return `::${node.name}{${attributes}}`;
+    },
   },
 };
