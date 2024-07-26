@@ -238,17 +238,19 @@ async function downloadImages(tree): Promise<void> {
           // ensure the directory exists
           fs.mkdirSync(path.dirname(destination), { recursive: true });
           promises.push(
-            fetch(node.url, { cache: "no-store" }).then(
-              async ({ body, ok }) => {
+            fetch(node.url, { cache: "no-store" })
+              .then(async ({ body, ok }) => {
                 if (!ok) {
-                  console.log("Failed to fetch image", node.url);
+                  console.error("Failed to fetch image", node.url);
                   return;
                 }
                 // Save file to destination
                 const dest = fs.createWriteStream(destination);
                 await finished(Readable.fromWeb(body).pipe(dest));
-              }
-            )
+              })
+              .catch((e) => {
+                console.error("Failed to fetch image", node.url, e);
+              })
           );
         }
       }
