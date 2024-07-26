@@ -33,6 +33,10 @@ export class Note implements Indexable, Linkable, Listable {
     private _date: string
   ) {}
 
+  notionId(): string {
+    return this.id;
+  }
+
   /** @gqlField */
   url(): SiteUrl {
     return new SiteUrl(`/notes/${this.slug()}`);

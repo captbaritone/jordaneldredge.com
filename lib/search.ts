@@ -23,6 +23,17 @@ export async function reindex(db: Database) {
   for (const entry of indexable) {
     await indexEntry(db, entry);
   }
+
+  for (const note of notes) {
+    const notionId = note.notionId();
+    const slug = note.slug();
+    if (slug !== notionId) {
+      await db.run(
+        `DELETE FROM search_index WHERE page_type = 'note' AND slug = ?;`,
+        [notionId]
+      );
+    }
+  }
 }
 
 export async function search(db: Database, query: string) {
@@ -46,6 +57,7 @@ LIMIT 20;`,
 }
 
 export async function indexEntry(db: Database, indexable: Data.Indexable) {
+  console.log("INDEXING", indexable.slug());
   const markdown = await indexable.content();
   const title = indexable.title();
   const summary = indexable.summary == null ? "" : indexable.summary() || "";
