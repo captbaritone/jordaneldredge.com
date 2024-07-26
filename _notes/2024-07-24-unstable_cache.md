@@ -2,6 +2,7 @@
 title: Next.js’s unstable_cache() demystified
 tags:
   - share
+  - til
 summary: I found some interesting information about Next.js’ elusive unstable_cache API
 ---
 In working on my personal site, I’ve been trying to add some caching using Next.js’s `unstable_cache()` feature. It sounds like what I want, but the behavior has been quite unpredictable and the [spartan documentation](https://nextjs.org/docs/app/api-reference/functions/unstable_cache) does not help much. Luckily [Alfonsus Ardani](https://github.com/alfonsusac) went down this rabbit hole before me and documented his many findings in this great Notion doc.

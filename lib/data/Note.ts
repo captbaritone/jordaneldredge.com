@@ -1,3 +1,5 @@
+import path from "node:path";
+import fs from "node:fs";
 import { Markdown } from "./Markdown";
 import { Indexable, Linkable, Listable } from "./interfaces.js";
 import yaml from "js-yaml";
@@ -13,6 +15,8 @@ import {
 import { TagSet } from "./TagSet";
 import { Node } from "unist";
 import { visit } from "unist-util-visit";
+import { Readable } from "node:stream";
+import { finished } from "node:stream/promises";
 
 /**
  * A less formal post. Usually a quite observation, shared link or anecdote.
@@ -84,6 +88,7 @@ export class Note implements Indexable, Linkable, Listable {
   /** @gqlField */
   async content(): Promise<Markdown> {
     const ast = await this.rawMarkdownAst();
+    await downloadImages(ast);
     return new Markdown(ast);
   }
 
@@ -190,4 +195,42 @@ function expectTitle(page: PageObjectResponse, slug: string): string {
   });
 
   return texts.join(" ");
+}
+
+async function downloadImages(tree): Promise<void> {
+  const promises: Promise<unknown>[] = [];
+  visit(tree, (node, index, parent) => {
+    if (node.type === "image") {
+      const url = new URL(node.url);
+      if (url.hostname.endsWith("amazonaws.com")) {
+        const pathname = url.pathname;
+        const destination = path.join(
+          process.cwd(),
+          "public",
+          "notion-mirror",
+          pathname
+        );
+
+        // If the file already exists:
+        if (!fs.existsSync(destination)) {
+          // ensure the directory exists
+          fs.mkdirSync(path.dirname(destination), { recursive: true });
+          promises.push(
+            fetch(node.url, { cache: "no-store" }).then(
+              async ({ body, ok }) => {
+                if (!ok) {
+                  console.log("Failed to fetch image", node.url);
+                  return;
+                }
+                // Save file to destination
+                const dest = fs.createWriteStream(destination);
+                await finished(Readable.fromWeb(body).pipe(dest));
+              }
+            )
+          );
+        }
+      }
+    }
+  });
+  await Promise.all(promises);
 }

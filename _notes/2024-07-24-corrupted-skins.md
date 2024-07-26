@@ -39,6 +39,8 @@ Another was called `bobs_car.wsz` and, as advertised, contained just this pictur
 
 ![](/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/02d049fc-ee84-42b7-95f1-52c4c434db63/bobs_car.jpg)
 
+_Update 2024/7/25:_ Someone on Hacker News [identified](https://news.ycombinator.com/item?id=41065196) this location as [Kilmacolm Road Viewpoint](https://www.google.com/maps/place/Kilmacolm+Road+Viewpoint/@55.9285659,-4.7106362,3a,75y,90t/data=!3m8!1e2!3m6!1sAF1QipPpt-joyGwDUQF1ZE44AaDN6NFZbmd87LGrERqZ!2e10!3e12!6shttps:%2F%2Fgz0.googleusercontent.com%2Fp%2FAF1QipPpt-joyGwDUQF1ZE44AaDN6NFZbmd87LGrERqZ%3Dw414-h552-k-no!7i3024!8i4032!4m7!3m6!1s0x4889b105a0b0d8bf:0xf62aa0cffb734fbe!8m2!3d55.9285659!4d-4.7106362!10e5!16s%2Fg%2F11fpn_qb67?entry=ttu) in Scotland.
+
 ---
 
 But then things got interesting. I found one that was an encrypted zip archive.
@@ -139,6 +141,10 @@ Upon listening it sounded like it was being played backwards, so I reversed the 
 [Severgein Sect(reversed).wav](https://capt.dev/file/HFNMgySWlK27_5Bceihx1/Sovergein_Sect_mp3cut.net.mp3)
 
 I think it’s someone saying the name of the skin and some other information?
+
+_Update 2024/7/25:_ [_@PenanceArkana on Twitter:_](https://x.com/PenanceArkana/status/1816349964701757718)
+
+> The "Sovereign Sect" audio appears to say "Alien Workshop Sovereign Sect 2001". "Sovereign Sect" is/was what appears to be a collaborative skate products effort between Habitat Skateboards and Alien Workshop Skateboards.
 
 ---
 

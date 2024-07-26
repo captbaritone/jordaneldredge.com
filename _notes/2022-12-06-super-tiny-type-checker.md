@@ -1,6 +1,9 @@
 ---
 title: Super Tiny Type Checker
-tags: []
+tags:
+  - share
+  - staticAnalysis
+summary: A minimal JS implementation of a type checker great for hands on learners
 ---
 Jamie Kyle, author of [Super Tiny Compiler](https://jordaneldredge.com/notes/9f2687e9-f871-4da3-b251-48b04b5f2be7/), also wrote an educational implementation of a type checker in the same vein. This one he never got around to publishing publicly on GitHub, but he did share it as a thread on Twitter.
 
