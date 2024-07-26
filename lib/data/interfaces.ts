@@ -39,4 +39,10 @@ export interface Listable extends Linkable {
   tagSet(): TagSet;
   /** @gqlField */
   summaryImage(): Promise<string | undefined>;
+  showInLists(): boolean;
+  /**
+   * A unique ID for use in RSS feeds. This ID should be unique amongst content
+   * on the site and also stable for a given pice of content.
+   */
+  feedId(): string;
 }

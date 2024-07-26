@@ -6,6 +6,7 @@ tags:
 summary: >-
   A pattern for tracking location information when compiling to a high level
   language
+notion_id: d505aa52-71d5-4599-841f-6a0511ed1582
 ---
 While working on [Relay Resolvers](https://relay.dev/docs/guides/relay-resolvers/), I stumbled upon a nice technique for compiling to a target language. When compiling from one language to another, rather than generating text representation of target language, generate an AST of the target language and populate the AST ‘s location information/spans from the source text.
 

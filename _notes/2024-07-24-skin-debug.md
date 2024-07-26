@@ -4,6 +4,7 @@ tags:
   - winamp
   - anecdote
 summary: Shhhh. Don't tell anyone, but the Winamp Skin Museum has a secret debug mode.
+notion_id: fd600db8-0458-41f5-8478-c489d14213c5
 summary_image: >-
   /notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/6b7a6af9-118a-464c-9963-25a715a435bd/Screenshot_2024-07-24_at_11.17.44_AM.png
 ---

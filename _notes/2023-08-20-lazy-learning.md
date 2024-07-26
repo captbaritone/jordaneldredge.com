@@ -3,6 +3,7 @@ title: Eager vs Lazy Learning
 tags:
   - observation
 summary: An observation about the way I learn
+notion_id: b7e58dac-13ee-4618-8e0c-05e79215bed6
 ---
 I’ve observed a parallel between eager/lazy evaluation in computing and different approaches to learning. In this model, learning can be thought of as compute-intensive work that results in storing the resulting knowledge in a cache.
 

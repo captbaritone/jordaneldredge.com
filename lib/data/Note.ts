@@ -33,6 +33,13 @@ export class Note implements Indexable, Linkable, Listable {
     private _date: string
   ) {}
 
+  // The Feed ID uses the notionID instead of the slug because the slug can
+  // change, or at least get added later.
+  feedId(): string {
+    const url = new SiteUrl(`/notes/${this.notionId()}`);
+    return url.fullyQualified();
+  }
+
   notionId(): string {
     return this.id;
   }
@@ -104,10 +111,12 @@ export class Note implements Indexable, Linkable, Listable {
       tags: string[];
       summary: string | undefined;
       summary_image?: string;
+      notion_id: string;
     } = {
       title: this.title(),
       tags: this.tagSet().tagNames(),
       summary: this.summary(),
+      notion_id: this.notionId(),
     };
     const summaryImage = await this.summaryImage();
 
@@ -119,9 +128,18 @@ export class Note implements Indexable, Linkable, Listable {
     return markdown;
   }
 
-  serializedFilename(): string {
+  serializedFilename(forceNotionId: boolean = false): string {
     const date = new Date(this.date()).toISOString().substring(0, 10);
-    return `${date}-${this.slug()}.md`;
+    const slug = forceNotionId ? this.notionId() : this.slug();
+    return `${date}-${slug}.md`;
+  }
+
+  showInLists(): boolean {
+    // For now we show all notes in the list.
+    // In the future we may want to add an "archive" column to the metadata
+    // database.
+
+    return true;
   }
 
   /** @gqlField */

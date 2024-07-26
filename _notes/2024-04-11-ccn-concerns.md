@@ -6,6 +6,7 @@ tags:
 summary: >-
   Explaining some of the non-obvious problems with the Client Controlled
   Nullability GraphQL spec RFC 
+notion_id: dabcf1d7-b292-42b7-b17c-a92b76c38698
 ---
 My first project when I joined the [Relay](https://relay.dev/) team was a [`@required`](https://relay.dev/docs/guides/required-directive/) directive which allowed client fragments to declaratively specify how to handle the possibility of null values. It was fully implemented in the client (runtime + compiler).
 

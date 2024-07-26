@@ -1,31 +1,46 @@
 import { Feed } from "feed";
-import * as Data from "../../../lib/data";
+import * as Data from "../../../../lib/data";
+import { NextRequest } from "next/server";
 
 export const revalidate = 600;
 
-export default async function handler(req, res) {
-  const allPosts = Data.getAllPosts();
+const NOTES_EPOCH = new Date("2024-07-22");
 
-  const publicPosts = allPosts.filter((post) => post.showInLists());
+export async function GET(request: NextRequest, { params }) {
+  const allPosts = Data.getAllPosts();
+  const allNotes = await Data.getAllNotes();
+  const visibleNotes = allNotes.filter((note) => {
+    // Notes were not originally included in the feed. To avoid dumping all of
+    // them into the feed retroactively, only include notes starting at around
+    // the time they were added to the feed.
+    const date = new Date(note.date());
+    return date >= NOTES_EPOCH;
+  });
+
+  const allContent = [...allPosts, ...visibleNotes];
+
+  const publicPosts = allContent.filter((post) => post.showInLists());
+
+  publicPosts.sort((a, b) => {
+    return new Date(b.date()).getTime() - new Date(a.date()).getTime();
+  });
 
   const feed = await buildRssFeedLazy(publicPosts);
 
-  switch (req.query.kind) {
+  switch (params.kind) {
     case "rss.xml":
-      res.end(feed.rss2());
+      return new Response(feed.rss2());
       break;
     case "rss.json":
-      res.end(feed.json1());
-      break;
+      return new Response(feed.json1());
     case "atom.xml":
-      res.end(feed.atom1());
-      break;
+      return new Response(feed.atom1());
     default:
-      res.status(404).end();
+      return new Response("Not found", { status: 404 });
   }
 }
 
-async function buildRssFeedLazy(allPosts: Data.Post[]) {
+async function buildRssFeedLazy(allPosts: Data.Listable[]) {
   const siteURL = "https://jordaneldredge.com";
   const author = {
     name: "Jordan Eldredge",
@@ -57,13 +72,14 @@ async function buildRssFeedLazy(allPosts: Data.Post[]) {
   const items = await Promise.all(
     allPosts.map(async (post) => {
       const url = post.url().fullyQualified();
+      const id = post.feedId();
       let summaryImage = await post.summaryImage();
       if (summaryImage != null && !summaryImage.startsWith("http")) {
         summaryImage = `${siteURL}${summaryImage}`;
       }
       return {
         title: post.title(),
-        id: url,
+        id,
         link: url,
         description: post.summary(),
         content: post.summary(),

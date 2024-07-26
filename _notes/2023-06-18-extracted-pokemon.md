@@ -3,6 +3,7 @@ title: Extracting a beloved Pokémon from a corrupted save game
 tags:
   - share
 summary: Sharing a YouTube video of an awesome ROM hacking rescue mission
+notion_id: 15d902f9-7627-4722-9e64-c834b392fda8
 summary_image: >-
   /notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/dec8ce93-35be-430f-abab-6253d0e64cb1/Untitled.png
 ---

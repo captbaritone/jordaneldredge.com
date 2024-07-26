@@ -5,6 +5,7 @@ tags:
 summary: >-
   I believe the benefits of GraphQL are fundamentally under-realized. Most
   organizations fail to capture much of the value it can provide.
+notion_id: e27872d4-e70c-4d25-bb04-ad74bd025b40
 ---
 _Originally_ [_shared on Twitter_](https://twitter.com/captbaritone/status/1644182593548726274)
 

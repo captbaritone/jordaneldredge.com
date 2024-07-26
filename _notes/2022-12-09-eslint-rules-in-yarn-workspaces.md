@@ -6,6 +6,7 @@ tags:
 summary: >-
   How to create custom project-specific lint rules for a repository that is
   using Yarn Workspaces where ESLint is run from the workspace root
+notion_id: 8f94713f-b127-4585-9f7f-b29dd1198b78
 ---
 I recently needed to figure out how to create custom project-specific lint rules for a repository that is using [Yarn workspaces](https://classic.yarnpkg.com/lang/en/docs/workspaces/) where ESLint is run from the workspace root.
 

@@ -3,6 +3,7 @@ title: An old engineer’s tale
 tags:
   - anecdote
 summary: My dad‘s reframing of a sexist idiom
+notion_id: 37e72013-e782-4cf1-8cf1-d60a2b58ea59
 ---
 Growing up, my dad, an electrical engineer, would always say “an old engineer’s tale” instead of “an old wives tale”.
 

@@ -9,6 +9,7 @@ tags:
 summary: >-
   A pattern for rendering Markdown in React apps directly from an AST without
   any serialized HTML
+notion_id: 208ba2e8-436d-438e-a3c9-1380e7d7df75
 ---
 I’ve been pretty happy with the approach I’m using for rendering Markdown for this blog. Pages are checked into the codebase as markdown files. At build time these files are parsed to an abstract syntax tree (AST) using [`remark-parse`](https://www.npmjs.com/package/remark-parse). This AST is then passed into my page component where a recursive Rect component pmaps the AST into the appropriate HTML/DOM.
 

@@ -6,6 +6,7 @@ tags:
 summary: >-
   Sharing a humorous rewrite of a classic poem that would often get pulled out
   around Christmas time during my childhood 
+notion_id: 9873f30f-8df5-4654-99ce-f2add0993baa
 ---
 As a kid, my dad somehow discovered a version of the classic poem The Night Before Christmas in which every sentence had been made as overly complex as possible. I remember it being pulled out printed in a monospaced font. As far as I know it never had any attribution as to who actually wrote it.
 

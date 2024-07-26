@@ -6,6 +6,7 @@ tags:
 summary: >-
   The Winamp Skin Museum is powered by an sqlite3 database containing 1.2gb of
   metadata about 86,000 Winamp skins and exposed as a public GraphQL endpoint
+notion_id: c43cf40f-bd71-4000-8a53-6e4150eb0897
 summary_image: >-
   /notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/3eff4cda-73c0-4f9f-a6f6-0b747a8e9e18/Untitled.png
 ---

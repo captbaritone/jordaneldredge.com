@@ -4,6 +4,7 @@ tags:
   - eslint
   - opinion
 summary: Code review feedback that could be encoded as a lint rule, should be
+notion_id: 6650a0a0-28e4-408e-a976-a467e31557da
 ---
 Here is a general rule I like to follow, and encourage others to follow, in code review in order to reduce [bike-shedding](https://thedecisionlab.com/biases/bikeshedding):
 

@@ -25,6 +25,10 @@ export class Post implements Indexable, Linkable, Listable {
     private postInfo: PostInfo
   ) {}
 
+  feedId(): string {
+    return this.url().fullyQualified();
+  }
+
   /** @gqlField */
   content(): Markdown {
     return Markdown.fromString(this._content);

@@ -5,6 +5,7 @@ tags:
 summary: >-
   An insane detail that points to the obsessive approach Taylor Otwell took with
   Laravel
+notion_id: fcbf0934-9836-4e1f-a737-b1be763ab383
 summary_image: >-
   /notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/c2bcf002-2b8b-47b2-8f0c-6d726fa216c1/undefined_-_Imgur.png
 ---

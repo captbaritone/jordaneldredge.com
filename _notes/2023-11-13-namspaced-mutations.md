@@ -4,6 +4,7 @@ tags:
   - graphql
   - opinion
 summary: Explaining why nesting your mutations inside GraphQL types is problematic
+notion_id: de644566-6178-4e99-a55d-a7061b444957
 ---
 A pattern I’ve seen recommended in GraphQL schema design is to define special mutation types in order to group your mutation fields into namespaces. Something like this:
 

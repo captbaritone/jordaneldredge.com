@@ -4,6 +4,7 @@ tags:
   - share
   - anecdote
 summary: There was once a proposal to codify the ”cool s” as a unicode character
+notion_id: 327cd976-d564-4124-9a0a-893335e6ac5b
 summary_image: >-
   /notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/da7fd8fa-25c9-409b-b632-117aa72b5b46/IMG_2649.png
 ---

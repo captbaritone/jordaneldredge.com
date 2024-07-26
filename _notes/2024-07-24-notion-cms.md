@@ -8,6 +8,7 @@ tags:
 summary: >-
   Why I chose to use Notion as the backing CMS for the Notes portion of this
   site, and the technical details of how it’s implemented
+notion_id: dbbf2aea-c222-4cea-a6af-d6e19f83a606
 summary_image: >-
   /notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/727fb2ac-8f96-4964-8790-c88490cb5417/Screenshot_2024-07-24_at_11.53.31_AM.png
 ---

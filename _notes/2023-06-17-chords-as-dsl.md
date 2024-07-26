@@ -3,6 +3,7 @@ title: Chord notation is a domain-specific language
 tags:
   - observation
 summary: Reflecting on parallels between chord notation and software language design
+notion_id: 114616f9-da8d-422a-9a72-a12f9e7ae5bd
 ---
 In computer programming, a [domain-specific language](https://en.wikipedia.org/wiki/Domain-specific_language) (DSL) is a tiny programming language or notation system which is purpose-built for a niche use case. These are generally far less capable than a so-called “general purpose” programming language, but trade that capability for being able to express intent at a higher level of abstraction within its domain. They tend to be “declarative”, meaning they describe _what_ to do, rather than _how_ to do it. Finally, they are often embedded within programs written in a more powerful general-purpose language.
 

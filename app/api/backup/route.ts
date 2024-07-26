@@ -14,10 +14,22 @@ export async function GET(request: NextRequest) {
   for (const note of notes) {
     const contentWithHeader = await note.contentWithHeader();
     const fileName = note.serializedFilename();
-    const filePath = path.join(process.cwd(), "_notes", fileName);
+    const notionIdFileName = note.serializedFilename(true);
+
+    const filePath = joinNotesPath(fileName);
+
+    // If the file not a slug assigned since last backup, delete the old file
+    if (fileName !== notionIdFileName) {
+      const notionIdFilePath = joinNotesPath(notionIdFileName);
+      fs.rmSync(notionIdFilePath, { force: true });
+    }
 
     fs.mkdirSync(path.dirname(filePath), { recursive: true });
     fs.writeFileSync(filePath, contentWithHeader);
   }
   return new Response("Backup complete");
+}
+
+function joinNotesPath(fileName: string) {
+  return path.join(process.cwd(), "_notes", fileName);
 }

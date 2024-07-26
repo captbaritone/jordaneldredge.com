@@ -3,6 +3,7 @@ title: Why there was never a Winamp 4
 tags:
   - anecdote
 summary: Did you ever wonder why they skipped straight from Winamp 3 to Winamp 5?
+notion_id: 88787a3e-c6e0-4923-aa05-1bb003b521f5
 ---
 [Winamp](https://en.wikipedia.org/wiki/Winamp), famously, skipped over version 4 and went straight from Winamp 3 to Winamp 5. The stated excuse was that it was a combination of versions 2 and 3, since version 3 had been poorly received, and that “2 + 3 = 5”.
 

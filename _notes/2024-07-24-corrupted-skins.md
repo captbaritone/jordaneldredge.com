@@ -7,9 +7,14 @@ tags:
 summary: >-
   I started looking through corrupt Winamp skins and it lead me down some very
   strange rabbit holes
+notion_id: a3ea435d-f7ab-4f7f-a106-ed23644b0358
 summary_image: >-
   /notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/e94461bd-1f9c-4ef4-bbda-23acc32ef0df/EsErCPFVoAACjOn.jpeg
 ---
+_Discussed on_ [_Hacker News_](https://news.ycombinator.com/item?id=41064645)_,_ [_Slashdot_](https://news.slashdot.org/story/24/07/26/0058212/bizarre-secrets-found-investigating-corrupt-winamp-skins)_._
+
+---
+
 In January of 2021 I was exploring the corpus of Skins I collected for the [Winamp Skin Museum](https://jordaneldredge.com/blog/winamp-skin-musuem/) and found some that seemed corrupted, so I decided to explore them. Winamp skins are actually just zip files with a different file extension, so I tried extracting their files to see what I could find.
 
 This ended up leading me down a series of wild rabbit holes where I found:
@@ -29,9 +34,11 @@ Here’s the story:
 
 ---
 
-The first corrupted file I looked at contained just a PDF advertising a rentable bowling pin mascot costume:
+The first corrupted file I looked at was called `Wicked_Ways.wsz` and contained just a PDF advertising a rentable bowling pin mascot costume:
 
 ![](/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/e94461bd-1f9c-4ef4-bbda-23acc32ef0df/EsErCPFVoAACjOn.jpeg)
+
+I’m particularly curious about what exactly a “’Kool’ Tube” is. Some mechanism for keeping the occupant from overheating I assume?
 
 ---
 
@@ -51,7 +58,11 @@ I took the opportunity to learn about tools for brute forcing passwords in zip f
 
 ![](/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/7371ccc8-08f3-4202-b955-39ba04f31394/Screen_Shot_2021-01-18_at_10.46.36_PM.png)
 
-The password was "honda”. No idea why it might have been encrypted.
+The password was "honda”. No idea why it might have been encrypted. You can find the decrypted version [here](https://skins.webamp.org/skin/79dd58bc6e30f5a260f7aefd631d8ea2/2003_acura_rsx.updated.wsz/).
+
+---
+
+The next one contained a Flintstones [rule 34](https://en.m.wikipedia.org/wiki/Rule_34) image, which I won’t include here for obvious reasons.
 
 ---
 
@@ -65,7 +76,7 @@ I found another encrypted zip file. This time the password was not in my wordlis
 
 Password was "nayane”.
 
-I went ahead and uploaded the decrypted version [here](/a3ea435df7ab4f7fa106ed23644b0358).
+I went ahead and uploaded the decrypted version [here](https://skins.webamp.org/skin/e880983b4c4597570b72041cb3dfac19/NIKE%20V10.wsz/).
 
 ---
 

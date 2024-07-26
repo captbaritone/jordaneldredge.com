@@ -4,6 +4,7 @@ tags:
   - eslint
   - opinion
 summary: A class of lint rules that I think are best to avoid
+notion_id: 4dfb59e7-22ff-4cd7-93bc-97f8ca2b7062
 ---
 Some lint rules set a threshold or limit on some metric. For example, cyclomatic complexity, nesting depth or number of arguments. I’ve found these rules tend to end up being fundamentally frustrating for all involved.
 

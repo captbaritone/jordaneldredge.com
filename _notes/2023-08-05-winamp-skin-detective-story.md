@@ -4,6 +4,7 @@ tags:
   - winamp
   - anecdote
 summary: Tracking down the cause of some mysteriously corrupted Winamp skins
+notion_id: dc60fad4-de0b-465f-b0f0-cd4217d3c157
 summary_image: >-
   /notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/fa0ff4b2-ba0e-41f8-af03-a14453041eb7/Screenshot_2023-08-04_at_8.03.39_PM.png
 ---

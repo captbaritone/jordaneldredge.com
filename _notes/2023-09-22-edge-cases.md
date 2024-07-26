@@ -5,6 +5,7 @@ tags:
 summary: >-
   How my thinking about edge cases has evolved as I’ve grown as a software
   engineer
+notion_id: 8a156929-ffdb-495e-9861-e9ddd5d46f30
 ---
 I used to take great pride in being “helpful” by spotting edge case flaws in designs and “helping” people avoid pursuing flawed solutions by pointing them out. In retrospect, that was not the most productive mode in which to operate.
 

@@ -3,6 +3,7 @@ title: Why UrlMe.me failed
 tags:
   - observation
 summary: Reflections on why my side project meme generator never caught on
+notion_id: a6d192dd-d25a-45d0-8977-b74ae315bf49
 summary_image: >-
   /notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/c5c9bd2b-2342-479d-85a1-66aeb432a2c7/it_failed.jpg
 ---

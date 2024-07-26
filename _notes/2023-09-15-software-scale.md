@@ -5,6 +5,7 @@ tags:
 summary: >-
   On scaling software to large numbers of developers, not just large amounts of
   data
+notion_id: 614bf6fb-f58e-4318-8d5d-462bf6bb0d5d
 ---
 When people talk about “software at scale” their first thought is often about algorithms and infrastructure scaling to billions/trillions of requests.
 

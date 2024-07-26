@@ -3,6 +3,7 @@ title: On persuasive technical writing and clarity of thought
 tags:
   - observation
 summary: How technical writing forces clearer thinking
+notion_id: 3f59c76b-03e3-465c-8adb-c3011b801648
 ---
 _This note was originally_ [_a Thread_](https://www.threads.net/@captbaritone/post/CwvauQzvdt0/?igshid=MzRlODBiNWFlZA%3D%3D)_._
 

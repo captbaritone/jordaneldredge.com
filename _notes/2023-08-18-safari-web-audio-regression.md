@@ -6,6 +6,7 @@ tags:
 summary: >-
   Documenting a regression, I observed in iOS’ implementation of the web audio
   API
+notion_id: f00d09ef-5286-4429-a499-255585c3bb43
 ---
 _Update, Sept. 8, 2023: Apple engineering has acknowledged that this is a bug in the Safari Media frameworks rather than WebKit itself, and that they expect it to get fixed in an upcoming beta release._
 
