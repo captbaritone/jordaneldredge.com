@@ -15,22 +15,35 @@ export async function reindex(db: Database) {
   console.log("REINDEX");
 
   const posts = Data.getAllPosts();
-  const pages = Data.getAllPages();
   const notes = await Data.getAllNotes();
 
-  const indexable = [...posts, ...pages, ...notes];
+  const indexable = [...posts, ...notes];
 
   for (const entry of indexable) {
     await indexEntry(db, entry);
   }
 
-  for (const note of notes) {
-    const notionId = note.notionId();
-    const slug = note.slug();
-    if (slug !== notionId) {
+  await scrub(db, posts, notes);
+}
+
+//
+async function scrub(db: Database, posts: Data.Post[], notes: Data.Note[]) {
+  const postUrls = posts.map((p) => p.url().path());
+  const noteUrls = notes.map((n) => n.url().path());
+
+  const indexableUrlPaths = new Set([...postUrls, ...noteUrls]);
+
+  // For each current index entry, check if the slug is valid:
+  const entries = await db.all(`SELECT slug, page_type FROM search_index;`);
+
+  for (const entry of entries) {
+    const topLevelDir = entry.page_type === "post" ? "blog" : "notes";
+    const entryPath = `/${topLevelDir}/${entry.slug}`;
+    if (!indexableUrlPaths.has(entryPath)) {
+      console.log("SCRUB", entryPath);
       await db.run(
-        `DELETE FROM search_index WHERE page_type = 'note' AND slug = ?;`,
-        [notionId]
+        `DELETE FROM search_index WHERE slug = ? AND page_type = ?;`,
+        [entry.slug, entry.page_type]
       );
     }
   }
@@ -64,9 +77,9 @@ export async function indexEntry(db: Database, indexable: Data.Indexable) {
   const tags = indexable
     .tagSet()
     .tags()
-    .map((t) => t.name)
+    .map((t) => t.name())
     .join(" ");
-  const content = markdown.markdownString();
+  const content = await markdown.markdownString();
   await db.run(
     `
 INSERT INTO search_index (

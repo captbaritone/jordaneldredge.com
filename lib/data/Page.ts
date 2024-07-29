@@ -3,7 +3,6 @@ import matter from "gray-matter";
 import { join } from "path";
 import yaml from "js-yaml";
 import { Markdown } from "./Markdown";
-import { Indexable } from "./interfaces";
 import { SiteUrl } from "./SiteUrl";
 import { Query } from "./GraphQLRoots";
 import { TagSet } from "./TagSet";
@@ -15,7 +14,7 @@ const pagesDirectory = join(process.cwd(), "./_pages");
  * A static top-level content page.
  * @gqlType
  */
-export class Page implements Indexable {
+export class Page {
   pageType = "page" as const;
   constructor(
     private _slug: string,
