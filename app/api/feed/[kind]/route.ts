@@ -7,6 +7,16 @@ export const revalidate = 600;
 const NOTES_EPOCH = new Date("2024-07-22");
 
 export async function GET(request: NextRequest, { params }) {
+  const body = await getBody(params.kind);
+  if (body == null) {
+    return new Response("Not Found", { status: 404 });
+  }
+  return new Response(body, {
+    headers: { "Content-Type": "application/xml; charset=utf-8" },
+  });
+}
+
+async function getBody(kind: string): Promise<string | null> {
   const allPosts = Data.getAllPosts();
   const allNotes = await Data.getAllNotes();
   const visibleNotes = allNotes.filter((note) => {
@@ -27,19 +37,18 @@ export async function GET(request: NextRequest, { params }) {
 
   const feed = await buildRssFeedLazy(publicPosts);
 
-  switch (params.kind) {
+  switch (kind) {
     case "rss.xml":
     case "rss-beta.xml":
-      return new Response(feed.rss2());
-      break;
+      return feed.rss2();
     case "rss.json":
     case "rss-beta.json":
-      return new Response(feed.json1());
+      return feed.json1();
     case "atom.xml":
     case "atom-beta.xml":
-      return new Response(feed.atom1());
+      return feed.atom1();
     default:
-      return new Response("Not found", { status: 404 });
+      return null;
   }
 }
 
