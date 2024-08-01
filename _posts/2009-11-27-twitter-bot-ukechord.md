@@ -7,7 +7,7 @@ tags: [project, twitter, ukulele, music, defunct]
 
 **Edit (May 18, 2012): This bot is now defunct.**
 
-I would like to introduce you all to my new creation [UkeChord](http://twitter.com/ukechord). UkeChord is an automated Twitter robot who will send you ukulele fingerings for any chord you request. Please share your thoughts or improvements in the comments below.
+I would like to introduce you all to my new creation [UkeChord](http://twitter.com/ukechord). UkeChord is an automated Twitter robot who will send you ukulele fingerings for any chord you request.
 
 **Goal:** To offer Ukulele chord fingerings via text message.
 
