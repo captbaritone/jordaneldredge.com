@@ -6,6 +6,9 @@ export function generateMetadata({ params }) {
   return { title, twitter: { title } };
 }
 
+export const revalidate = 600;
+export const dynamic = "force-static";
+
 export default async function TagPage({ params }) {
   const tag = new Tag(params.tag);
   const items = await tag.items();
