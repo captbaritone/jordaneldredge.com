@@ -4,7 +4,7 @@ summary: "I recorded a multi-track of the barbershop tag 'I Love To Sing 'Em'"
 tags: [barbershop, multitrack, mp3]
 ---
 
-Continuing in my [attempts to improve](http://blog.classicalcode.com/category/music/barbershop/) my barbershop skillz, I sat down today and recorded my first up-tempo multi-track barbershop tag. Despite my fears, my voice is in much better shape in this one even though it required many more takes. To be honest, I was beginning to doubt weather my voice would ever be able to sing barbershop convincingly. Especially up-tempo numbers.
+Continuing in my [attempts to improve](/tag/barbershop) my barbershop skillz, I sat down today and recorded my first up-tempo multi-track barbershop tag. Despite my fears, my voice is in much better shape in this one even though it required many more takes. To be honest, I was beginning to doubt weather my voice would ever be able to sing barbershop convincingly. Especially up-tempo numbers.
 
 **Improvements:**
 
