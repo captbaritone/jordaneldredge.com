@@ -30,17 +30,14 @@ export async function GET(request: NextRequest, { params }) {
 
   switch (params.kind) {
     case "rss.xml":
-    case "rss-beta.xml":
       return new Response(feed.rss2(), {
         headers: { "Content-Type": "application/xml; charset=utf-8" },
       });
     case "rss.json":
-    case "rss-beta.json":
       return new Response(feed.json1(), {
         headers: { "Content-Type": "application/json; charset=utf-8" },
       });
     case "atom.xml":
-    case "atom-beta.xml":
       return new Response(feed.atom1(), {
         headers: { "Content-Type": "application/xml; charset=utf-8" },
       });
