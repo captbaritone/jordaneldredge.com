@@ -3,7 +3,7 @@
 import { useOptimistic, useTransition } from "react";
 import { useRouter } from "next/navigation";
 
-export default function Search({ query }) {
+export default function SearchInput({ query }) {
   let router = useRouter();
   let [optimisticQuery, setOptimisticQuery] = useOptimistic(query);
   let [pending, startTransition] = useTransition();
@@ -20,7 +20,7 @@ export default function Search({ query }) {
     <div className="markdown" data-pending={pending ? "" : undefined}>
       <h1>Search</h1>
       <input
-        placeholder="Find posts, notes and pages"
+        placeholder="Find posts and notes"
         onChange={(e) => updateQuery(e.target.value)}
         style={{
           border: "1px solid grey",

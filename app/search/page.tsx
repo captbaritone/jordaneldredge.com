@@ -1,4 +1,4 @@
-import PageImpl from "./pageImpl";
+import SearchInput from "./searchInput";
 import * as Search from "../../lib/search";
 import { Note, Post } from "../../lib/data";
 import { Listable } from "../../lib/data/interfaces";
@@ -14,7 +14,7 @@ export default async function SearchComponent({ searchParams }) {
 
   return (
     <div className="has-[[data-pending]]:animate-pulse">
-      <PageImpl query={query} />
+      <SearchInput query={query} />
       <Results query={query} />
     </div>
   );
