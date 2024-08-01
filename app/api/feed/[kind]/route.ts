@@ -8,16 +8,6 @@ export const dynamic = "force-static";
 const NOTES_EPOCH = new Date("2024-07-22");
 
 export async function GET(request: NextRequest, { params }) {
-  const body = await getBody(params.kind);
-  if (body == null) {
-    return new Response("Not Found", { status: 404 });
-  }
-  return new Response(body, {
-    headers: { "Content-Type": "application/xml; charset=utf-8" },
-  });
-}
-
-async function getBody(kind: string): Promise<string | null> {
   const allPosts = Data.getAllPosts();
   const allNotes = await Data.getAllNotes();
   const visibleNotes = allNotes.filter((note) => {
@@ -38,18 +28,24 @@ async function getBody(kind: string): Promise<string | null> {
 
   const feed = await buildRssFeedLazy(publicPosts);
 
-  switch (kind) {
+  switch (params.kind) {
     case "rss.xml":
     case "rss-beta.xml":
-      return feed.rss2();
+      return new Response(feed.rss2(), {
+        headers: { "Content-Type": "application/xml; charset=utf-8" },
+      });
     case "rss.json":
     case "rss-beta.json":
-      return feed.json1();
+      return new Response(feed.json1(), {
+        headers: { "Content-Type": "application/json; charset=utf-8" },
+      });
     case "atom.xml":
     case "atom-beta.xml":
-      return feed.atom1();
+      return new Response(feed.atom1(), {
+        headers: { "Content-Type": "application/xml; charset=utf-8" },
+      });
     default:
-      return null;
+      return new Response("Not found", { status: 404 });
   }
 }
 
