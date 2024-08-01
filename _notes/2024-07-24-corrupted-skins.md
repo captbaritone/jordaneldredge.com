@@ -11,7 +11,7 @@ notion_id: a3ea435d-f7ab-4f7f-a106-ed23644b0358
 summary_image: >-
   /notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/e94461bd-1f9c-4ef4-bbda-23acc32ef0df/EsErCPFVoAACjOn.jpeg
 ---
-_Discussed on_ [_Hacker News_](https://news.ycombinator.com/item?id=41064645)_,_ [_Slashdot_](https://news.slashdot.org/story/24/07/26/0058212/bizarre-secrets-found-investigating-corrupt-winamp-skins)_._
+_Discussed on_ [_Hacker News_](https://news.ycombinator.com/item?id=41064645)_,_ [_Slashdot_](https://news.slashdot.org/story/24/07/26/0058212/bizarre-secrets-found-investigating-corrupt-winamp-skins)_,_ [_r/internetIsBeautiful_](https://www.reddit.com/r/InternetIsBeautiful/s/WW3WKtgnGF)_,_ [_lemmy.world_](https://lemmy.world/post/17995324)
 
 ---
 
