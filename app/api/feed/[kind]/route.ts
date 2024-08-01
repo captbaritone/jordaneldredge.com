@@ -3,6 +3,7 @@ import * as Data from "../../../../lib/data";
 import { NextRequest } from "next/server";
 
 export const revalidate = 600;
+export const dynamic = "force-static";
 
 const NOTES_EPOCH = new Date("2024-07-22");
 
