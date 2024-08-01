@@ -29,11 +29,14 @@ export async function GET(request: NextRequest, { params }) {
 
   switch (params.kind) {
     case "rss.xml":
+    case "rss-beta.xml":
       return new Response(feed.rss2());
       break;
     case "rss.json":
+    case "rss-beta.json":
       return new Response(feed.json1());
     case "atom.xml":
+    case "atom-beta.xml":
       return new Response(feed.atom1());
     default:
       return new Response("Not found", { status: 404 });
