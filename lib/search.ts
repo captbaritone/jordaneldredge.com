@@ -3,18 +3,13 @@ import sqlite3 from "sqlite3";
 import { open } from "sqlite";
 import * as Data from "./data";
 
-let db: Promise<Database> | null = null;
+const filename = process.env.SEARCH_INDEX_LOCATION;
+if (!filename) {
+  throw new Error("No SEARCH_INDEX_LOCATION set");
+}
+const db = open({ filename, driver: sqlite3.Database });
 
 export async function getDb(): Promise<Database> {
-  if (db != null) {
-    console.log("Cached db");
-    return await db;
-  }
-  const filename = process.env.SEARCH_INDEX_LOCATION;
-  if (!filename) {
-    throw new Error("No SEARCH_INDEX_LOCATION set");
-  }
-  db = open({ filename, driver: sqlite3.Database });
   return await db;
 }
 
