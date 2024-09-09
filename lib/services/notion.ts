@@ -1,8 +1,9 @@
 import { Client, LogLevel } from "@notionhq/client";
 import { NotionToMarkdown } from "notion-to-md";
 import {
-  ListBlockChildrenResponse,
+  BlockObjectResponse,
   PageObjectResponse,
+  PartialBlockObjectResponse,
   QueryDatabaseResponse,
 } from "@notionhq/client/build/src/api-endpoints";
 import { ListBlockChildrenResponseResults } from "notion-to-md/build/types";
@@ -113,12 +114,27 @@ export const retrievePage = memoize(
   }
 );
 
-export const retrieveBlocks = memoize(
-  { ttl: TEN_MINUTES, key: "retrieveBlocks" },
-  (id: string): Promise<ListBlockChildrenResponse> => {
-    return notion.blocks.children.list({ block_id: id });
+export const retrieveBlocks = async (
+  id: string
+): Promise<{
+  results: Array<PartialBlockObjectResponse | BlockObjectResponse>;
+}> => {
+  let start_cursor: string | undefined = undefined;
+  let has_more = true;
+  const results: Array<PartialBlockObjectResponse | BlockObjectResponse> = [];
+  while (has_more) {
+    const response = await notion.blocks.children.list({
+      block_id: id,
+      start_cursor,
+    });
+    has_more = response.has_more;
+    start_cursor = response.next_cursor ?? undefined;
+    for (const child of response.results) {
+      results.push(child);
+    }
   }
-);
+  return { results };
+};
 
 export const retrieveDatabase = memoize(
   { ttl: TEN_MINUTES, key: "retrieveDatabase" },

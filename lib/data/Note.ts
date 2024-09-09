@@ -153,16 +153,15 @@ export class Note implements Indexable, Linkable, Listable {
   }
 }
 
-const TIL_INDEX_PAGE_ID = "4817435c-8e47-4d3c-858f-6f5949339ffe";
+const NOTES_INDEX_PAGE_ID = "4817435c-8e47-4d3c-858f-6f5949339ffe";
 
 export async function getAllNotes(): Promise<Note[]> {
   const [_children, metadata] = await Promise.all([
-    retrieveBlocks(TIL_INDEX_PAGE_ID),
+    retrieveBlocks(NOTES_INDEX_PAGE_ID),
     getMetadata(),
   ]);
 
   const children = _children as any;
-
   return children.results
     .filter((block) => block.type === "child_page")
     .sort((a, b) => {
@@ -191,7 +190,7 @@ export async function getNoteBySlug(slug: string): Promise<Note> {
   const page = await retrievePage(id);
   if (
     page.parent.type !== "page_id" ||
-    page.parent.page_id !== TIL_INDEX_PAGE_ID
+    page.parent.page_id !== NOTES_INDEX_PAGE_ID
   ) {
     throw new Error("Invalid page ID.");
   }
