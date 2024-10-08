@@ -1,19 +1,19 @@
+import "dotenv/config";
 import path from "node:path";
 import fs from "node:fs";
-import * as Data from "../../../lib/data";
-import { NextRequest } from "next/server";
+import * as Data from "../lib/data";
 
-export const dynamic = "force-dynamic";
+main();
 
-export async function GET(request: NextRequest) {
+async function main() {
+  console.log("Looking for notes to backup");
   // We don't want regular users to be able to trigger a backup
-  if (process.env.NODE_ENV !== "development") {
-    return new Response("Not found", { status: 404 });
-  }
   const notes = await Data.getAllNotes();
+  console.log(`Found ${notes.length} notes to backup`);
   for (const note of notes) {
     const contentWithHeader = await note.contentWithHeader();
     const fileName = note.serializedFilename();
+    console.log("Backing up note", fileName);
     const notionIdFileName = note.serializedFilename(true);
 
     const filePath = joinNotesPath(fileName);
@@ -27,7 +27,7 @@ export async function GET(request: NextRequest) {
     fs.mkdirSync(path.dirname(filePath), { recursive: true });
     fs.writeFileSync(filePath, contentWithHeader);
   }
-  return new Response("Backup complete");
+  console.log("Backup complete");
 }
 
 function joinNotesPath(fileName: string) {
