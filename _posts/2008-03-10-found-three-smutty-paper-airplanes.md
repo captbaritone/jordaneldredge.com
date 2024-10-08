@@ -8,8 +8,8 @@ My all-time favorite finds are these three, which I found [here](http://maps.goo
 
 The following links are most likely "Not Safe For Work".
 
-[Paper airplane 1](/uploads/2008/02/photo-0018.jpg "Paper airplane 1")
+[Paper airplane 1](/uploads/2008/02/airplane1.png "Paper airplane 1")
 
-[Paper airplane 2](/uploads/2008/02/photo-0019.jpg "Paper airplane 2")
+[Paper airplane 2](/uploads/2008/02/airplane2.png "Paper airplane 2")
 
-[Paper airplane 3](/uploads/2008/02/photo-0046.jpg "Paper airplane 3")
+[Paper airplane 3](/uploads/2008/02/airplane3.png "Paper airplane 3")
