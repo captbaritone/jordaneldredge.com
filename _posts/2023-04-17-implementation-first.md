@@ -88,3 +88,9 @@ For example, untyped languages have no way to specify what GraphQL type a given 
 ## Conclusion
 
 While the implementation-first approach to authoring a GraphQL server is not possible in all languages, when it _is_ possible, I believe it has many advantages. It reduces duplication, mitigates the risk of desynchronization, and removes mental overhead. I hope that when you are evaluating the GraphQL server library options available to you, you will take a moment to consider which ones are implementation-first, and the benefits that may imply.
+
+---
+
+_Update Oct. 2024_: Erik Wrede's 2024 GraphQL conf talk _Why You Should Use Implementation-First to Build Your GraphQL Schema_ does a great job of expanding upon the ideas in this post:
+
+::youtube{token=ZilgUSmo_hA}
