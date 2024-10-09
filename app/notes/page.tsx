@@ -16,7 +16,6 @@ export const metadata = {
 };
 
 export default async function Notes() {
-  const db = await getDb();
   const allNotes = await notes();
 
   return (

@@ -1,6 +1,7 @@
 import { Feed } from "feed";
 import * as Data from "../../../../lib/data";
 import { NextRequest } from "next/server";
+import { blogPosts, notes } from "../../../../lib/search";
 
 export const revalidate = 600;
 export const dynamic = "force-static";
@@ -8,8 +9,8 @@ export const dynamic = "force-static";
 const NOTES_EPOCH = new Date("2024-07-22");
 
 export async function GET(request: NextRequest, { params }) {
-  const allPosts = Data.getAllPosts();
-  const allNotes = await Data.getAllNotes();
+  const allPosts = await blogPosts();
+  const allNotes = await notes();
   const visibleNotes = allNotes.filter((note) => {
     // Notes were not originally included in the feed. To avoid dumping all of
     // them into the feed retroactively, only include notes starting at around
@@ -23,7 +24,13 @@ export async function GET(request: NextRequest, { params }) {
   const publicPosts = allContent.filter((post) => post.showInLists());
 
   publicPosts.sort((a, b) => {
-    return new Date(b.date()).getTime() - new Date(a.date()).getTime();
+    const dateDiff =
+      new Date(b.date()).getTime() - new Date(a.date()).getTime();
+    if (dateDiff !== 0) {
+      return dateDiff;
+    }
+    // Sort by title
+    return b.title().localeCompare(a.title());
   });
 
   const feed = await buildRssFeedLazy(publicPosts);
