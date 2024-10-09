@@ -10,7 +10,8 @@
     "lint-md": "remark --quiet .",
     "lint": "remark --quiet . && next lint",
     "postinstall": "patch-package",
-    "backup": "tsx scripts/backup.ts --env-file .env"
+    "backup": "tsx scripts/backup.ts",
+    "migrate": "tsx scripts/create_search_tables.ts"
   },
   "dependencies": {
     "@notionhq/client": "^2.2.1",

@@ -2,7 +2,7 @@ import { Markdown } from "./Markdown";
 import { SiteUrl } from "./SiteUrl";
 import { TagSet } from "./TagSet";
 
-type PageType = "post" | "page" | "note";
+export type PageType = "post" | "page" | "note";
 
 /**
  * Entries which can be indexed in our search index.
@@ -14,6 +14,10 @@ export interface Indexable {
   summary?(): string | undefined;
   tagSet(): TagSet;
   slug(): string;
+  date(): string;
+  summaryImage(): Promise<string | undefined>;
+  feedId(): string;
+  showInLists(): boolean;
 }
 
 /**

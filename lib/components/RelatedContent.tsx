@@ -1,7 +1,8 @@
 import React from "react";
 import Link from "next/link.js";
 import { Listable } from "../data/interfaces";
-import { getAllNotes, getAllPosts } from "../data";
+import { getDb, SearchIndexRow } from "../search";
+import * as Data from "../data";
 
 type Props = {
   item: Listable;
@@ -13,6 +14,9 @@ export default async function RelatedContent({ item }: Props) {
     return null;
   }
   const relatedItems = await related(item, 3);
+  if (relatedItems.length === 0) {
+    return null;
+  }
   return (
     <>
       <div className="border-t-2 border-gray-200 border-solid">
@@ -43,31 +47,39 @@ export default async function RelatedContent({ item }: Props) {
 }
 
 async function related(self: Listable, first: number): Promise<Listable[]> {
-  const allPosts = getAllPosts().filter((post) => post.showInLists());
-  const allNotes = await getAllNotes();
-
-  const items = [...allPosts, ...allNotes];
-
   const ownTags = self.tagSet().tagNames();
   const urlPath = self.url().path();
 
-  const otherItems = items.filter((post) => {
-    return post.url().path() !== urlPath;
-  });
+  const db = await getDb();
 
-  return otherItems
-    .map((post) => {
-      const otherTags = post.tagSet().tagNames();
+  const content: SearchIndexRow[] = await db.all(`
+    SELECT slug, page_type, tags, title FROM search_index`);
+
+  const items: Listable[] = content
+    .map((item) => {
+      // TODO: Could we do this tag comparisons (or at least an initial filter)
+      // in the DB? Probably not a big deal given the small number of posts, but
+      // it's kinda silly doing it here.
+      const otherTags = item.tags.split(" ");
       const intersection = otherTags.filter((tag) =>
         ownTags.includes(tag)
       ).length;
 
       const union = new Set([...ownTags, ...otherTags]).size;
 
-      return { overlap: intersection / union, post };
+      return { overlap: intersection / union, item };
     })
     .filter((post) => post.overlap > 0)
     .sort((a, b) => b.overlap - a.overlap)
-    .slice(0, first)
-    .map((post) => post.post);
+    .map(({ item }): Listable => {
+      return new Data.ListableSearchRow(item);
+    })
+    // Initial trim lets us only do the final path comparison on n+1 items.
+    .slice(0, first + 1)
+    .filter((item) => {
+      return item.url().path() !== urlPath;
+    })
+    .slice(0, first);
+
+  return items;
 }

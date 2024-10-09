@@ -1,28 +1,16 @@
-import * as Data from "../../lib/data";
 import Link from "next/link";
 import ListItem from "../../lib/components/ListItem";
+import { blogPosts, getDb } from "../../lib/search";
 
 export const metadata = {
   title: "Blog",
-  twitter: {
-    title: "Blog",
-  },
+  twitter: { title: "Blog" },
 };
 
-const BEST_OF_SLUGS = new Set([
-  "grats",
-  "interesting-bugs-caught-by-eslints-no-constant-binary-expression",
-  "speeding-up-winamps-music-visualizer-with-webassembly",
-  "winamp-skin-musuem",
-  "this-software-is-punk-rock",
-]);
-
 export default async function Home() {
-  const allPosts = Data.getAllPosts();
+  const allPosts = await blogPosts();
 
   const publicPosts = allPosts.filter((post) => post.showInLists());
-
-  const bestOf = publicPosts.filter((post) => BEST_OF_SLUGS.has(post.slug()));
 
   return (
     <>
@@ -34,12 +22,6 @@ export default async function Home() {
         </p>
         <hr />
       </div>
-      {/*
-      {bestOf.map((post) => {
-        return <ListItem key={post.slug()} item={post} />;
-      })}
-      <hr />
-      */}
       {publicPosts.map((post) => {
         return <ListItem key={post.slug()} item={post} />;
       })}

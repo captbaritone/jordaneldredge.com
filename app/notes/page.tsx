@@ -1,6 +1,6 @@
-import * as Data from "../../lib/data";
 import Link from "next/link";
 import ListItem from "../../lib/components/ListItem";
+import { getDb, notes } from "../../lib/search";
 
 // Pages are static
 export const dynamic = "force-static";
@@ -16,7 +16,9 @@ export const metadata = {
 };
 
 export default async function Notes() {
-  const childPages = await Data.getAllNotes();
+  const db = await getDb();
+  const allNotes = await notes();
+
   return (
     <>
       <div className="markdown">
@@ -27,7 +29,7 @@ export default async function Notes() {
         </p>
         <hr />
       </div>
-      {childPages.map((post) => {
+      {allNotes.map((post) => {
         return <ListItem key={post.slug()} item={post} />;
       })}
     </>

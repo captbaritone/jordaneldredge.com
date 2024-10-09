@@ -1,5 +1,6 @@
+import fs from "node:fs";
 import "dotenv/config";
-import { getDb } from "../lib/search";
+import { getDb, reindex } from "../lib/search";
 
 // sqlite-utils enable-fts search-index.db search_index title content --create-triggers --replace
 
@@ -11,6 +12,9 @@ CREATE TABLE search_index (
   summary TEXT NOT NULL,
   tags TEXT NOT NULL,
   content TEXT NOT NULL,
+  date TEXT NOT NULL,
+  summary_image_path TEXT,
+  feed_id TEXT NOT NULL,
   UNIQUE(page_type, slug)
 );
 CREATE VIRTUAL TABLE [search_index_fts] USING FTS5 (
@@ -35,9 +39,24 @@ END;
 `;
 
 async function main() {
+  const filename = process.env.SEARCH_INDEX_LOCATION;
+  if (!filename) {
+    throw new Error("No SEARCH_INDEX_LOCATION set");
+  }
+  fs.rmSync(filename, { force: true });
+
   const db = await getDb();
+  /*
+  await db.exec("DROP TABLE IF EXISTS search_index;");
+  await db.exec("DROP TABLE IF EXISTS search_index_fts_data;");
+  await db.exec("DROP TABLE IF EXISTS search_index_fts_idx;");
+  await db.exec("DROP TABLE IF EXISTS search_index_fts_docsize;");
+  await db.exec("DROP TABLE IF EXISTS search_index_fts_config;");
+  await db.exec("DROP TABLE IF EXISTS search_index_fts;");
+  */
 
   await db.exec(CREATE_TABLE);
+  reindex(db);
 }
 
 main();

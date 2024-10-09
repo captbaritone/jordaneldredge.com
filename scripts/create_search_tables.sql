@@ -5,8 +5,11 @@ CREATE TABLE search_index (
   slug TEXT NOT NULL,
   title TEXT NOT NULL,
   summary TEXT NOT NULL,
-  tags TEXT NOT NULL,
+  tags TEXT NOT NULL, -- Space deliniated list
   content TEXT NOT NULL,
+  date: TEXT NOT NULL, -- YYYY-MM-DD
+  summary_image_path: TEXT, -- path relative to jordaneldredge.com/
+  feed_id: TEXT NOT NULL, -- for notes this is the Notion UUID
   UNIQUE(page_type, slug)
 );
 CREATE VIRTUAL TABLE [search_index_fts] USING FTS5 (
