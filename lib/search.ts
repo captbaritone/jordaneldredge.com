@@ -50,8 +50,12 @@ export async function reindex(db: Database) {
 
 //
 async function scrub(db: Database, posts: Data.Post[], notes: Data.Note[]) {
-  const postUrls = posts.map((p) => p.url().path());
-  const noteUrls = notes.map((n) => n.url().path());
+  const postUrls = posts
+    .filter((p) => p.showInLists())
+    .map((p) => p.url().path());
+  const noteUrls = notes
+    .filter((p) => p.showInLists())
+    .map((n) => n.url().path());
 
   const indexableUrlPaths = new Set([...postUrls, ...noteUrls]);
 
@@ -61,7 +65,7 @@ async function scrub(db: Database, posts: Data.Post[], notes: Data.Note[]) {
   for (const entry of entries) {
     const topLevelDir = entry.page_type === "post" ? "blog" : "notes";
     const entryPath = `/${topLevelDir}/${entry.slug}`;
-    if (!indexableUrlPaths.has(entryPath) || !entry.showInLists()) {
+    if (!indexableUrlPaths.has(entryPath)) {
       console.log("SCRUB", entryPath);
       await db.run(
         `DELETE FROM search_index WHERE slug = ? AND page_type = ?;`,
