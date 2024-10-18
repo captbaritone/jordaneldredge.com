@@ -11,7 +11,7 @@ notion_id: 110376e2-3751-80f6-affd-fec7a553943a
 ---
 People are often curious to hear how I went from a background/degree in classical music to a career in software. So, I thought it would be worth while to write down my full story. This post is a series of anecdotes capturing what, in retrospect, feel like the key events that allowed me to go from an arts education to a sustainable software career. It ends with some reflections on what I think made it possible.
 
-One quick aside before I begin: this is just _my_ story. The industry has changed dramatically over the intervening years, so I would caution anyone against expecting this to be a repeatable playbook that could be expected to yield similar results today.
+One quick aside before I begin: this is just _my_ story. The industry has changed dramatically over the intervening years, so I would caution against reading this as a playbook that could be expected to yield similar results today.
 
 ---
 
@@ -27,11 +27,13 @@ The project captivated me, and throughout my high school and college years, I sp
 
 ## Software as a job
 
-One evening after graduating college, I was sitting on the couch with my roommate, who happened to do freelance web development for restaurants and small businesses. He was stressing over a deadline while I was happily hacking away on [some side project](https://jordaneldredge.com/blog/how-i-ddosed-myself-with-an-avatar/) or other. He asked me if I wanted to help him with his work project in exchange for a portion of the money. Being unemployed, it sounded like a reasonable proposition. For the next several years I worked as a subcontractor for him. Mostly building PHP sites for local small business.
+One evening after graduating college, I was sitting on the couch with my roommate, who happened to do freelance web development for restaurants and small businesses. He was stressing over a deadline while I was happily hacking away on [some side project](https://jordaneldredge.com/blog/how-i-ddosed-myself-with-an-avatar/) or other. He asked me if I wanted to help him with his work project in exchange for a portion of the money. Being unemployed, it sounded like a reasonable proposition. For the next several years I worked as a subcontractor for him. Mostly building PHP sites for local small businesses.
 
-I learned a lot through this work, but after a while I started to hit a ceiling. The budget and scope of these projects did not allow for growth or the luxury of focusing on software as a craft. I learned about a conference (the first [Laracon](https://laracon.us/)) which I thought might help me grow and asked if he would pay for me to go. He declined, but pointed out that if I really thought it was a good investment, I should pay for myself. I did. After working in isolation for so long, it was an eye opening experience, and I gained a lot of perspective about what the rest of the industry was like.
+I learned a lot through this work, but after a while I started to hit a ceiling. The budget and scope of these projects did not allow for growth or the luxury of focusing on software as a craft. I learned about a conference (the first [Laracon](https://laracon.us/)) which I thought might help me grow and asked if he would pay for me to attend. He declined, but pointed out that if I really thought it was a good career investment, I should pay for myself. I did. After working in isolation for so long, it was an eye opening experience, and I gained a lot of perspective about what the rest of the industry was like.
 
-It cemented by belief that a full time job would offer the growth opportunities I desired. But, I was still terrified that I wasn’t qualified, or would be unable to cope with the expectations of a full time job. With some much-needed encouragement from my wife, I decided to take a risk and try getting a full-time job writing software.
+It cemented by suspicion that a full time job would offer the growth opportunities I desired. But, I was still terrified that I wasn’t qualified, or would be unable to cope with the expectations of a full time job. In retrospect part of this was influenced by the fact that both my parents were self employed and I didn’t have any examples in my life of adults who were happily employed at a full time job.
+
+With some much-needed encouragement from my wife, I decided to take a risk and try getting a full-time job writing software.
 
 On my last day doing freelance work a friend, who I knew as an amateur musician but who also happened to be a software engineer, coincidentally reached out asking if I was looking for a job. The ~200 person startup where he worked was hiring, and there was a lucrative referral bonus waiting for him if he referred someone who got hired. I put together a résumé, called my brother to ask what “big O notation” meant, did a phone screen, and to my surprise not only got an interview, but passed it.
 
