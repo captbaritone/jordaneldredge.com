@@ -35,43 +35,45 @@ export default function Layout({ children }) {
           </Script>
           <HotKeys />
           <div className="max-w-2xl mx-auto p-5">
-            <nav className="flex justify-between flex-col sm:flex-row pb-2">
-              <div className="font-medium">
+            <div className="flex justify-between flex-col sm:flex-row pb-2">
+              <h1 className="font-medium text-base">
                 <Link href="/">Jordan Eldredge</Link>
-              </div>
-              <ul className="flex">
-                <li className="pr-5">
-                  <NavLink href="/">About</NavLink>
-                </li>
-                <li className="pr-5">
-                  <NavLink href="/blog/">Blog</NavLink>
-                </li>
-                <li className="pr-5">
-                  <NavLink href="/notes/">Notes</NavLink>
-                </li>
-                {/*
+              </h1>
+              <nav>
+                <ul className="flex">
+                  <li className="pr-5">
+                    <NavLink href="/">About</NavLink>
+                  </li>
+                  <li className="pr-5">
+                    <NavLink href="/blog/">Blog</NavLink>
+                  </li>
+                  <li className="pr-5">
+                    <NavLink href="/notes/">Notes</NavLink>
+                  </li>
+                  {/*
             <li className="pr-5">
               <NavLink href="/talks/">Talks</NavLink>
             </li>
 */}
-                <li className="pr-5">
-                  <NavLink href="/projects/">Projects</NavLink>
-                </li>
-                {/*
+                  <li className="pr-5">
+                    <NavLink href="/projects/">Projects</NavLink>
+                  </li>
+                  {/*
             <li className="pr-5">
               <NavLink href="/singer/">Singer</NavLink>
             </li>
             */}
-                <li className="pr-4">
-                  <NavLink href="/contact/">Contact</NavLink>
-                </li>
-                <li className="text-sm flex items-center pr-1">
-                  <Link href={"/search"}>
-                    <FaSearch title="Search" />
-                  </Link>
-                </li>
-              </ul>
-            </nav>
+                  <li className="pr-4">
+                    <NavLink href="/contact/">Contact</NavLink>
+                  </li>
+                  <li className="text-sm flex items-center pr-1">
+                    <Link href={"/search"}>
+                      <FaSearch title="Search" />
+                    </Link>
+                  </li>
+                </ul>
+              </nav>
+            </div>
             <main>{children}</main>
             <footer className="py-8 pb-12 text-center block border-t-2 border-gray-200 border-solid">
               <a rel="me" href="https://twitter.com/captbaritone">

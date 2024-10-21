@@ -34,21 +34,23 @@ export default async function Note({ params }) {
   const ast = await content.ast();
 
   return (
-    <article>
-      <div className="markdown">
-        <h1>{note.title()}</h1>
-        <div
-          className="italic text-sm text-gray-400"
-          style={{
-            marginTop: "-1.4rem",
-            marginBottom: "1rem",
-          }}
-        >
-          <DateString date={new Date(note.date())} />
+    <div>
+      <article>
+        <div className="markdown">
+          <h1>{note.title()}</h1>
+          <div
+            className="italic text-sm text-gray-400"
+            style={{
+              marginTop: "-1.4rem",
+              marginBottom: "1rem",
+            }}
+          >
+            <DateString date={new Date(note.date())} />
+          </div>
+          <Markdown ast={ast} options={{ expandYoutube: true }} />
         </div>
-        <Markdown ast={ast} options={{ expandYoutube: true }} />
-      </div>
+      </article>
       <RelatedContent item={note} />
-    </article>
+    </div>
   );
 }
