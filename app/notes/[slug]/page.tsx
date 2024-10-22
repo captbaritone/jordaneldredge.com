@@ -1,8 +1,6 @@
-import Markdown from "../../../lib/components/Markdown";
 import * as Data from "../../../lib/data";
-import DateString from "../../../lib/components/DateString";
 import { Metadata } from "next";
-import RelatedContent from "../../../lib/components/RelatedContent";
+import ContentPage from "../../../lib/components/ContentPage";
 
 // https://beta.nextjs.org/docs/data-fetching/caching#segment-level-caching
 export const revalidate = 600;
@@ -32,25 +30,5 @@ export default async function Note({ params }) {
   const note = await Data.getNoteBySlug(params.slug);
   const content = await note.content();
   const ast = await content.ast();
-
-  return (
-    <div>
-      <article>
-        <div className="markdown">
-          <h1>{note.title()}</h1>
-          <div
-            className="italic text-sm text-gray-400"
-            style={{
-              marginTop: "-1.4rem",
-              marginBottom: "1rem",
-            }}
-          >
-            <DateString date={new Date(note.date())} />
-          </div>
-          <Markdown ast={ast} options={{ expandYoutube: true }} />
-        </div>
-      </article>
-      <RelatedContent item={note} />
-    </div>
-  );
+  return <ContentPage item={note} markdownAst={ast} expandYoutube={false} />;
 }
