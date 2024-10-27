@@ -4,6 +4,7 @@ import {
   BlockObjectResponse,
   PageObjectResponse,
   PartialBlockObjectResponse,
+  PartialPageObjectResponse,
   QueryDatabaseResponse,
 } from "@notionhq/client/build/src/api-endpoints";
 import { ListBlockChildrenResponseResults } from "notion-to-md/build/types";
@@ -17,6 +18,7 @@ type NoteMetadata = {
   idToTags: { [id: string]: string[] };
   idToSummary: { [id: string]: string };
   tagToIds: { [tag: string]: string[] };
+  rowPosts: PageObjectResponse[];
 };
 
 // Initializing a client
@@ -64,17 +66,23 @@ export const getMetadata = memoize(
 
     const tagToIds = {};
     const idToTags = {};
+    const rowPosts: PageObjectResponse[] = [];
 
     result.results.forEach((page) => {
       // @ts-ignore
       const properties = page.properties;
+      const mention = properties.Note.title[0]?.mention;
       const tags = properties.Tags.multi_select.map((select) => {
         return select.name;
       });
 
       const slug = properties.Slug.rich_text[0]?.text.content;
       const summary = properties.Summary.rich_text[0]?.text.content;
-      const id = properties.Note.title[0]?.mention.page.id;
+      if (mention == null) {
+        // @ts-ignore
+        rowPosts.push(page);
+      }
+      const id = mention ? mention.page.id : page.id;
       if (slug && id) {
         slugToId[slug] = id;
         idToSlug[id] = slug;
@@ -91,7 +99,7 @@ export const getMetadata = memoize(
       idToTags[id] = tags;
     });
 
-    return { slugToId, idToSlug, idToTags, tagToIds, idToSummary };
+    return { slugToId, idToSlug, idToTags, tagToIds, idToSummary, rowPosts };
   }
 );
 

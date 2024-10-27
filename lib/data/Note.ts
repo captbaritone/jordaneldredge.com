@@ -161,11 +161,34 @@ export async function getAllNotes(): Promise<Note[]> {
     getMetadata(),
   ]);
 
-  const children = _children as any;
-  return children.results
-    .filter((block) => block.type === "child_page")
-    .sort((a, b) => {
-      return a.created_time > b.created_time ? -1 : 1;
+  const rows: PageObjectResponse[] = metadata.rowPosts;
+
+  const rowNotes = rows
+    .filter((block) => {
+      const properties: any = block.properties;
+      const status = properties.Status.select.name;
+      return status === "Published" || status === "Archived";
+    })
+    .map((page) => {
+      const properties: any = page.properties;
+      const title = properties.Note.title[0].plain_text;
+      const tags = properties.Tags.multi_select.map((select) => {
+        return select.name;
+      });
+      const slug = properties.Slug.rich_text[0]?.text.content;
+      const summary = properties.Summary.rich_text[0]?.text.content;
+      const publishedDate = properties["Published Date"].date;
+      const date =
+        publishedDate != null ? publishedDate.start : page.created_time;
+      return new Note(page.id, slug, tags, title, summary, date);
+    });
+
+  const children: any = _children.results;
+
+  const notes = children
+    .filter((block) => {
+      // From Note page they are child pages
+      return block.type === "child_page";
     })
     .map((page) => {
       const slug = metadata.idToSlug[page.id] || page.id;
@@ -175,12 +198,18 @@ export async function getAllNotes(): Promise<Note[]> {
         page.id,
         slug,
         tags,
-        page.child_page.title,
+        page.child_page?.title ?? page.properties.Note.title[0].plain_text,
         summary,
         // TODO: This might be the metadata's created time
         page.created_time
       );
     });
+
+  const allNotes = [...rowNotes, ...notes];
+  allNotes.sort((a, b) => {
+    return a.date() > b.date() ? -1 : 1;
+  });
+  return allNotes;
 }
 
 export async function getNoteBySlug(slug: string): Promise<Note> {

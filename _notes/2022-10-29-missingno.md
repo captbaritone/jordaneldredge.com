@@ -1,6 +1,13 @@
 ---
 title: 'Talk: Explaining the MissingNo glitch in the Game Boy Pokemon games'
-tags: []
+tags:
+  - share
+  - talk
+  - video
+summary: >-
+  A deep dive into how Gameboy games were written and analyzing the disassembled
+  Pokémon game code to understand the mechanics of the famous glitch that could
+  let you catch MissingNo
 notion_id: decf723d-140f-4a5b-8bf9-642174dbc385
 ---
 Siân Griffin gives a very approachable breakdown of the collection of bugs and compromises that lead to the famous MissingNo glitch in the classic Pokemon games.

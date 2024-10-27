@@ -2,7 +2,11 @@
 title: >-
   Can’t use Shiki (and likely other Wasm-based tools) in Next 13 server
   components
-tags: []
+tags:
+  - javascript
+  - staticAnalysis
+  - react
+summary: A bug I hit with Skiki and Next 13
 notion_id: 6549b4bc-f1a0-4fed-98c1-630074c4a023
 ---
 It seems Next 13 bundles server code using Webpack. This does not play well with [Shiki](https://github.com/shikijs/shiki) which uses `require.resolve` to [locate a Wasm file in a sibling package](https://github.com/shikijs/shiki/blob/1ad7634f729f48d55838be9b3e08134e390d7f33/packages/shiki/src/loader.ts#L58-L61) and pull it in via `fs.readFileSync`. I suspect many Wasm based packages end up needing to do something like this, since Node does not offer a first-class way to require binary Wasm code.
