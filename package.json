@@ -11,7 +11,8 @@
     "lint": "remark --quiet . && next lint",
     "postinstall": "patch-package",
     "backup": "tsx scripts/backup.ts",
-    "migrate": "tsx scripts/create_search_tables.ts"
+    "migrate": "tsx scripts/create_search_tables.ts",
+    "reindex": "tsx scripts/reindex.ts"
   },
   "dependencies": {
     "@notionhq/client": "^2.2.1",
