@@ -9,5 +9,5 @@ export { getAllPosts, getPostBySlug, Post } from "./Post";
 export { getAllNotes, getNoteBySlug, Note } from "./Note";
 export { getSingerResume } from "./SingerResume";
 export type { ResumeEntry } from "./SingerResume";
-export type { Indexable, Listable } from "./interfaces";
+export type { Indexable, Listable, Content } from "./interfaces";
 export { ListableSearchRow };

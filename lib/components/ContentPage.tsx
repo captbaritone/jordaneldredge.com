@@ -5,18 +5,19 @@ import DateString from "./DateString";
 import GitHubComments from "./GitHubComments";
 
 type ContentPageProps = {
-  markdownAst: any;
-  item: Data.Listable;
+  item: Data.Content;
   issueId?: string;
+  // TODO: Could we do this at AST transform time?
   expandYoutube: boolean;
 };
 
-export default function ContentPage({
-  markdownAst,
+export default async function ContentPage({
   item,
   issueId,
   expandYoutube,
 }: ContentPageProps) {
+  const content = await item.content();
+  const ast = await content.ast();
   return (
     <div>
       <article>
@@ -31,7 +32,7 @@ export default function ContentPage({
           >
             <DateString date={new Date(item.date())} />
           </div>
-          <Markdown ast={markdownAst} options={{ expandYoutube }} />
+          <Markdown ast={ast} options={{ expandYoutube }} />
         </div>
       </article>
       {issueId && <GitHubComments issue={issueId} />}

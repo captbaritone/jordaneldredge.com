@@ -50,3 +50,11 @@ export interface Listable extends Linkable {
    */
   feedId(): string;
 }
+
+/**
+ * An entity that can be rendered in a list of items.
+ * @gqlInterface
+ */
+export interface Content extends Listable {
+  content(): Promise<Markdown> | Markdown;
+}

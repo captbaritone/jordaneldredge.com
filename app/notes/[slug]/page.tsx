@@ -28,7 +28,5 @@ export async function generateMetadata({ params }): Promise<Metadata> {
 
 export default async function Note({ params }) {
   const note = await Data.getNoteBySlug(params.slug);
-  const content = await note.content();
-  const ast = await content.ast();
-  return <ContentPage item={note} markdownAst={ast} expandYoutube={false} />;
+  return <ContentPage item={note} expandYoutube={false} />;
 }
