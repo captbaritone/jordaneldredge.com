@@ -1,6 +1,8 @@
 ---
 title: Turning the database inside-out with Apache Samza
-tags: []
+tags:
+  - share
+  - javascript
 summary: ' '
 notion_id: a37c0cf1-c04e-4b86-bb84-bd561a378c69
 ---

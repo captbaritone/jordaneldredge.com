@@ -1,6 +1,7 @@
 ---
 title: Will Mastodon eventually end up centralizing like email?
-tags: []
+tags:
+  - observation
 notion_id: de8a7406-2401-4956-860d-d8fc62fa7ec0
 ---
 In 2022, it’s [almost impossible](https://cfenollosa.com/blog/after-self-hosting-my-email-for-twenty-three-years-i-have-thrown-in-the-towel-the-oligopoly-has-won.html) to run your own email server and actually have your emails be treated as non-spam by people you want to send email to. I fear Mastodon’s model may eventually suffer from the same dynamics.

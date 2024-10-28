@@ -2,7 +2,10 @@
 title: >-
   Introduction to Compiler Construction by Christoph Kirsch - University of
   Salzburg
-tags: []
+tags:
+  - staticAnalysis
+  - share
+summary: An online compiler course which I found quite helpful
 notion_id: 76374850-d80b-4019-8d55-421e327e5e86
 ---
 A few years ago, my brother gave me the most amazing gift for Christmas. He would take an online course with me in compilers. As someone who is in the field of engineering but never studied it in college, I feel like I missed a lot of the theory of how software works, and compilers are a big part of that.

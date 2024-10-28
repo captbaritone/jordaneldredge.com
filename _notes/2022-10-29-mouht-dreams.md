@@ -1,6 +1,8 @@
 ---
 title: Mouth Dreams mashup album by Neil Cicierega
-tags: []
+tags:
+  - music
+  - share
 notion_id: f44fd95e-9041-4cbb-9582-aecbb44eb13f
 ---
 Neil Cicierega’s album Mouth Dreams is his most recent installment in his series of mashup albums. As a musician, I can attest that they are as virtuosic in their execution as they are witty and hilarious in their musical commentary and construction.

@@ -1,6 +1,9 @@
 ---
 title: The Commodordion, an accordion made out of two Commodore 64s
-tags: []
+tags:
+  - share
+  - video
+  - music
 notion_id: deec59a9-cbc0-4eb5-b534-0d32a7a2b482
 ---
 Amazing idea and execution. It feels like it sets up the idea of a musical instrument that feels like using Vim.

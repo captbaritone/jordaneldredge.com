@@ -1,6 +1,7 @@
 ---
 title: My personal search engine
-tags: []
+tags:
+  - thisSite
 notion_id: ad2a8f36-9d78-4d03-9f2c-f3f32f1a51e0
 ---
 For the last year and a half I’ve been running my own personal search engine. To be fair, it’s not actually doing any search indexing or searching. It’s really just a web endpoint that I can configure my browser to use as a search engine and is modeled after Meta’s internal [bunnylol](https://www.quora.com/What-is-Facebooks-bunnylol) tool. In short, it has special handling for a series of simple commands or prefixes, and falls through to a Google Search if the query does not match one of these commands.

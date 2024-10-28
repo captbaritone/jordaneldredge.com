@@ -1,6 +1,10 @@
 ---
 title: A C program whose source code forms a Magic Eye
-tags: []
+tags:
+  - share
+summary: >-
+  What if you wrote a program to generate magic eyes. What if that program’s
+  source code was itself a magic eye!
 notion_id: 25421074-8024-45da-af33-147c1387ce04
 summary_image: >-
   /notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/aabb0069-28a5-44a8-abcb-f95b6e13623d/Screenshot_2022-11-24_at_10.31.50_PM.png

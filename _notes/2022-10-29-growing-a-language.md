@@ -1,6 +1,8 @@
 ---
 title: Growing a Language, by Guy Steele
-tags: []
+tags:
+  - share
+  - staticAnalysis
 notion_id: e0d3865e-37c2-4529-b158-4965560131cc
 ---
 This has to be one of the most artful and insightful, and down-right virtuosic tech talks I’ve ever watched, and it’s from a Java conference in 1998!
