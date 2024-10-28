@@ -9,6 +9,7 @@ import { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import {
   blocksToMarkdownAst,
   getMetadata,
+  METADATA_DATABASE_ID,
   retrieveBlocks,
   retrievePage,
 } from "../services/notion";
@@ -153,8 +154,6 @@ export class Note implements Indexable, Linkable, Listable {
   }
 }
 
-const NOTES_INDEX_PAGE_ID = "4817435c-8e47-4d3c-858f-6f5949339ffe";
-
 export async function getAllNotes(): Promise<Note[]> {
   const metadata = await getMetadata();
 
@@ -168,24 +167,13 @@ export async function getAllNotes(): Promise<Note[]> {
     })
     .map((page) => {
       const properties: any = page.properties;
-      const texts = properties.Note.title.map((block) => {
-        if (block.type !== "text") {
-          throw new Error(`Expected a text block for ${slug}.`);
-        }
-        return block.text.content;
-      });
-
-      const title = texts.join("");
       const tags = properties.Tags.multi_select.map((select) => {
         return select.name;
       });
-
-      const slugRichText = properties.Slug.rich_text[0];
-      const slug = slugRichText ? slugRichText.text.content : page.id;
-      const summary = properties.Summary.rich_text[0]?.text.content;
-      const publishedDate = properties["Published Date"].date;
-      const date =
-        publishedDate != null ? publishedDate.start : page.created_time;
+      const slug = expectSlug(page);
+      const summary = expectSummary(page);
+      const date = expectPublishedDate(page);
+      const title = expectTitle(page, slug);
       return new Note(page.id, slug, tags, title, summary, date);
     });
 
@@ -196,38 +184,57 @@ export async function getAllNotes(): Promise<Note[]> {
 }
 
 export async function getNoteBySlug(slug: string): Promise<Note> {
-  const { slugToId, idToTags, idToSummary } = await getMetadata();
+  const { slugToId } = await getMetadata();
 
   const id = slugToId[slug] ?? slug;
   const page = await retrievePage(id);
   if (
-    page.parent.type !== "page_id" ||
-    page.parent.page_id !== NOTES_INDEX_PAGE_ID
+    page.parent.type !== "database_id" ||
+    page.parent.database_id !== METADATA_DATABASE_ID
   ) {
     throw new Error("Invalid page ID.");
   }
 
   const title = expectTitle(page, slug);
-
-  const summary = idToSummary[id];
-  const tags = idToTags[id];
-  return new Note(id, slug, tags, title, summary, page.created_time);
+  const summary = expectSummary(page);
+  const tags = expectTags(page);
+  return new Note(page.id, slug, tags, title, summary, page.created_time);
 }
 
 function expectTitle(page: PageObjectResponse, slug: string): string {
-  const titleObj = page.properties.title;
-  if (titleObj.type !== "title") {
-    throw new Error(`Invalid title object for ${slug}.`);
-  }
-
-  const texts = titleObj.title.map((block) => {
+  const properties: any = page.properties;
+  const texts = properties.Note.title.map((block) => {
     if (block.type !== "text") {
       throw new Error(`Expected a text block for ${slug}.`);
     }
     return block.text.content;
   });
 
-  return texts.join(" ");
+  return texts.join("");
+}
+
+function expectPublishedDate(page: PageObjectResponse): string {
+  const properties: any = page.properties;
+  const publishedDate = properties["Published Date"].date;
+  return publishedDate != null ? publishedDate.start : page.created_time;
+}
+
+function expectSlug(page: PageObjectResponse): string {
+  // @ts-ignore
+  const slugRichText = page.properties.Slug.rich_text[0];
+  return slugRichText ? slugRichText.text.content : page.id;
+}
+
+function expectSummary(page: PageObjectResponse): string {
+  const properties: any = page.properties;
+  return properties.Summary.rich_text[0]?.text.content;
+}
+
+function expectTags(page: PageObjectResponse): string[] {
+  const properties: any = page.properties;
+  return properties.Tags.multi_select.map((select) => {
+    return select.name;
+  });
 }
 
 async function downloadImages(tree): Promise<void> {

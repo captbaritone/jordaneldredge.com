@@ -13,10 +13,6 @@ import { memoize, TEN_MINUTES } from "../memoize";
 
 type NoteMetadata = {
   slugToId: { [slug: string]: string };
-  idToSlug: { [id: string]: string };
-  idToTags: { [id: string]: string[] };
-  idToSummary: { [id: string]: string };
-  tagToIds: { [tag: string]: string[] };
   rowPosts: PageObjectResponse[];
 };
 
@@ -49,8 +45,9 @@ const stringToId = (str: string): string => {
   return str.replace(ID_REGEX, "$1-$2-$3-$4-$5");
 };
 
-const TIL_INDEX_PAGE_ID = "4817435c-8e47-4d3c-858f-6f5949339ffe";
-const METADATA_DATABASE_ID = stringToId("bbac761ed5f849048b2045d928b5f453");
+export const METADATA_DATABASE_ID = stringToId(
+  "bbac761ed5f849048b2045d928b5f453"
+);
 
 export const getMetadata = memoize(
   { ttl: TEN_MINUTES, key: "getMetadata" },
@@ -63,7 +60,6 @@ export const getMetadata = memoize(
     const slugToId = {};
     const idToSlug = {};
 
-    const tagToIds = {};
     const idToTags = {};
     const rowPosts: PageObjectResponse[] = [];
 
@@ -86,19 +82,13 @@ export const getMetadata = memoize(
         slugToId[slug] = id;
         idToSlug[id] = slug;
       }
-      for (const tag of tags) {
-        if (!tagToIds[tag]) {
-          tagToIds[tag] = [];
-        }
-        tagToIds[tag].push(id);
-      }
 
       idToSummary[id] = summary;
 
       idToTags[id] = tags;
     });
 
-    return { slugToId, idToSlug, idToTags, tagToIds, idToSummary, rowPosts };
+    return { slugToId, rowPosts };
   }
 );
 
@@ -110,11 +100,12 @@ export const retrievePage = memoize(
       page_id: id,
     });
     if (
-      page.parent.type !== "page_id" ||
+      page.parent.type !== "database_id" ||
       // NOTE! This is belt and suspenders security boundary. The integration
       // itself should only have permission to see the relevant pages.
-      page.parent.page_id !== TIL_INDEX_PAGE_ID
+      page.parent.database_id !== METADATA_DATABASE_ID
     ) {
+      console.log(page);
       throw new Error("Invalid page ID.");
     }
     return page;
