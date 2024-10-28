@@ -156,26 +156,32 @@ export class Note implements Indexable, Linkable, Listable {
 const NOTES_INDEX_PAGE_ID = "4817435c-8e47-4d3c-858f-6f5949339ffe";
 
 export async function getAllNotes(): Promise<Note[]> {
-  const [_children, metadata] = await Promise.all([
-    retrieveBlocks(NOTES_INDEX_PAGE_ID),
-    getMetadata(),
-  ]);
+  const metadata = await getMetadata();
 
   const rows: PageObjectResponse[] = metadata.rowPosts;
 
   const rowNotes = rows
     .filter((block) => {
       const properties: any = block.properties;
-      const status = properties.Status.select.name;
+      const status = properties.Status.select?.name;
       return status === "Published" || status === "Archived";
     })
     .map((page) => {
       const properties: any = page.properties;
-      const title = properties.Note.title[0].plain_text;
+      const texts = properties.Note.title.map((block) => {
+        if (block.type !== "text") {
+          throw new Error(`Expected a text block for ${slug}.`);
+        }
+        return block.text.content;
+      });
+
+      const title = texts.join("");
       const tags = properties.Tags.multi_select.map((select) => {
         return select.name;
       });
-      const slug = properties.Slug.rich_text[0]?.text.content;
+
+      const slugRichText = properties.Slug.rich_text[0];
+      const slug = slugRichText ? slugRichText.text.content : page.id;
       const summary = properties.Summary.rich_text[0]?.text.content;
       const publishedDate = properties["Published Date"].date;
       const date =
@@ -183,33 +189,10 @@ export async function getAllNotes(): Promise<Note[]> {
       return new Note(page.id, slug, tags, title, summary, date);
     });
 
-  const children: any = _children.results;
-
-  const notes = children
-    .filter((block) => {
-      // From Note page they are child pages
-      return block.type === "child_page";
-    })
-    .map((page) => {
-      const slug = metadata.idToSlug[page.id] || page.id;
-      const tags = metadata.idToTags[page.id] || [];
-      const summary = metadata.idToSummary[page.id];
-      return new Note(
-        page.id,
-        slug,
-        tags,
-        page.child_page?.title ?? page.properties.Note.title[0].plain_text,
-        summary,
-        // TODO: This might be the metadata's created time
-        page.created_time
-      );
-    });
-
-  const allNotes = [...rowNotes, ...notes];
-  allNotes.sort((a, b) => {
+  rowNotes.sort((a, b) => {
     return a.date() > b.date() ? -1 : 1;
   });
-  return allNotes;
+  return rowNotes;
 }
 
 export async function getNoteBySlug(slug: string): Promise<Note> {

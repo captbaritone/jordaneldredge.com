@@ -4,7 +4,6 @@ import {
   BlockObjectResponse,
   PageObjectResponse,
   PartialBlockObjectResponse,
-  PartialPageObjectResponse,
   QueryDatabaseResponse,
 } from "@notionhq/client/build/src/api-endpoints";
 import { ListBlockChildrenResponseResults } from "notion-to-md/build/types";
@@ -56,7 +55,7 @@ const METADATA_DATABASE_ID = stringToId("bbac761ed5f849048b2045d928b5f453");
 export const getMetadata = memoize(
   { ttl: TEN_MINUTES, key: "getMetadata" },
   async (): Promise<NoteMetadata> => {
-    const result = await retrieveDatabase(METADATA_DATABASE_ID);
+    const results = await retrieveDatabase(METADATA_DATABASE_ID);
 
     // TODO: Pagination!
 
@@ -68,7 +67,7 @@ export const getMetadata = memoize(
     const idToTags = {};
     const rowPosts: PageObjectResponse[] = [];
 
-    result.results.forEach((page) => {
+    results.forEach((page) => {
       // @ts-ignore
       const properties = page.properties;
       const mention = properties.Note.title[0]?.mention;
@@ -146,7 +145,23 @@ export const retrieveBlocks = async (
 
 export const retrieveDatabase = memoize(
   { ttl: TEN_MINUTES, key: "retrieveDatabase" },
-  (id: string): Promise<QueryDatabaseResponse> => {
-    return notion.databases.query({ database_id: id });
+  async (databaseId: string): Promise<QueryDatabaseResponse["results"]> => {
+    let results: QueryDatabaseResponse["results"] = [];
+    let hasMore = true;
+    let cursor: string | undefined = undefined;
+
+    while (hasMore) {
+      const response = await notion.databases.query({
+        database_id: databaseId,
+        start_cursor: cursor,
+        page_size: 50, // Adjust the page size as needed
+      });
+
+      results = results.concat(response.results);
+      hasMore = response.has_more;
+      cursor = response.next_cursor ?? undefined;
+    }
+
+    return results;
   }
 );
