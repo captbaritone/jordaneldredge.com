@@ -20,7 +20,7 @@ I thought it was a good question and one I feel represents the ecosystem’s gen
 
 You might enjoy this GraphQL Conf from last month:
 
-<https://youtu.be/PGBC-0E-kco?si=TE2mToFiWcamkFf3>
+::youtube{token=PGBC-0E-kco}
 
 It walks through deriving the Connection spec from scratch motivated by confronting the different challenges of optimal pagination logic. It also demonstrates how it generalizes the many challenges associated with fetching lists, and allows clients (like Relay) to generically implement sophisticated/optimal list fetching logic.
 

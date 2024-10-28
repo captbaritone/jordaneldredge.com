@@ -11,4 +11,4 @@ One of my favorite Tom Lehrer quotes:
 
 From his introduction to the song “Alma” on the album [_That Was the Year That Was_](https://en.wikipedia.org/wiki/That_Was_the_Year_That_Was)_._
 
-<https://youtu.be/QL6KgbrGSKQ?t=70>
+::youtube{token=QL6KgbrGSKQ?t=70}

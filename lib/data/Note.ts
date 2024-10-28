@@ -19,6 +19,10 @@ import { visit } from "unist-util-visit";
 import { Readable } from "node:stream";
 import { finished } from "node:stream/promises";
 
+// Regex matching Youtube URLs and extracting the token
+const YOUTUBE_REGEX =
+  /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)/;
+
 /**
  * A less formal post. Usually a quite observation, shared link or anecdote.
  * @gqlType
@@ -87,6 +91,9 @@ export class Note implements Indexable, Linkable, Listable {
       if (node.type === "image" && node.imageProps?.cachedPath) {
         summaryImage = node.imageProps.cachedPath;
       }
+      if (node.type === "leafDirective" && node.name === "youtube") {
+        summaryImage = `https://img.youtube.com/vi/${node.attributes.token}/hqdefault.jpg`;
+      }
     });
 
     return summaryImage;
@@ -94,7 +101,9 @@ export class Note implements Indexable, Linkable, Listable {
 
   async rawMarkdownAst(): Promise<Node> {
     const pageBlocks = await retrieveBlocks(this.id);
-    return await blocksToMarkdownAst(pageBlocks.results);
+    const ast = await blocksToMarkdownAst(pageBlocks.results);
+    applyDirectives(ast);
+    return ast;
   }
 
   /** @gqlField */
@@ -154,6 +163,25 @@ export class Note implements Indexable, Linkable, Listable {
   }
 }
 
+function applyDirectives(ast: Node) {
+  visit(ast, "paragraph", (_node, index, parent) => {
+    const node: any = _node;
+    if (node.children.length === 1 && node.children[0].type === "link") {
+      const linkNode = node.children[0];
+      if (YOUTUBE_REGEX.test(linkNode.url)) {
+        // @ts-ignore
+        const [, token] = YOUTUBE_REGEX.exec(linkNode.url);
+        // @ts-ignore
+        parent.children.splice(index, 1, {
+          type: "leafDirective",
+          name: "youtube",
+          attributes: { token },
+        });
+      }
+    }
+  });
+}
+
 export async function getAllNotes(): Promise<Note[]> {
   const metadata = await getMetadata();
 
@@ -178,7 +206,7 @@ export async function getAllNotes(): Promise<Note[]> {
     });
 
   rowNotes.sort((a, b) => {
-    return a.date() > b.date() ? -1 : 1;
+    return new Date(a.date()).getTime() > new Date(b.date()).getTime() ? -1 : 1;
   });
   return rowNotes;
 }

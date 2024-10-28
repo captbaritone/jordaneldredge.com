@@ -12,4 +12,4 @@ I learned about this years ago, and probably think about it once a week. It’s 
 
 This excerpt is from a song on his [Mouth Silence](http://www.neilcic.com/mouthsilence/) mashup album.
 
-[https://youth.be/nEmyonfpsgI](https://youtu.be/nEmyonfpsgI)
+::youtube{token=nEmyonfpsgI}

@@ -7,15 +7,9 @@ import GitHubComments from "./GitHubComments";
 type ContentPageProps = {
   item: Data.Content;
   issueId?: string;
-  // TODO: Could we do this at AST transform time?
-  expandYoutube: boolean;
 };
 
-export default async function ContentPage({
-  item,
-  issueId,
-  expandYoutube,
-}: ContentPageProps) {
+export default async function ContentPage({ item, issueId }: ContentPageProps) {
   const content = await item.content();
   const ast = await content.ast();
   return (
@@ -32,7 +26,7 @@ export default async function ContentPage({
           >
             <DateString date={new Date(item.date())} />
           </div>
-          <Markdown ast={ast} options={{ expandYoutube }} />
+          <Markdown ast={ast} />
         </div>
       </article>
       {issueId && <GitHubComments issue={issueId} />}

@@ -16,4 +16,4 @@ At this year’s GraphQL Conf I gave a talk on some work I’ve been helping dri
 
 It’s also a good introduction to the new `@catch` and `@throwOnFieldError` directives that have shipped in [Relay version 18](https://github.com/facebook/relay/releases/tag/v18.0.0).
 
-<https://www.youtube.com/watch?v=kVYlplb1gKk>
+::youtube{token=kVYlplb1gKk}

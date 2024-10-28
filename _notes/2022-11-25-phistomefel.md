@@ -21,4 +21,4 @@ For a detailed and illustrated explanation, see: <https://crackingthecryptic.fan
 
 A nicely illustrated example can be found in this video from the Youtube channel Numberphile where guest Simon Anthony of Cracking the Cryptic walks us through an approachable description:
 
-<https://www.youtube.com/watch?v=pezlnN4X52g>
+::youtube{token=pezlnN4X52g}

@@ -41,5 +41,5 @@ export default async function Post({ params }) {
   const ast = await post.content().ast();
   // const typoLink = `https://github.com/captbaritone/jordaneldredge.com/blob/master/_posts/${post.filename}`;
   const issueId = post.githubCommentsIssueId();
-  return <ContentPage item={post} expandYoutube={false} issueId={issueId} />;
+  return <ContentPage item={post} issueId={issueId} />;
 }

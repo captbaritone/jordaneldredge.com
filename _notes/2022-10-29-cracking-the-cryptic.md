@@ -9,4 +9,4 @@ For the last year or more I’ve been addicted to watching these two middle-aged
 
 This channel has become my go-to entertainment while watching dishes, or when I’m feeling stressed or overwhelmed. Puzzles give me a sense of a world in order, where all problems have logical solutions, and finding that solution is inevitable.
 
-<https://www.youtube.com/watch?v=hAyZ9K2EBF0>
+::youtube{token=hAyZ9K2EBF0}

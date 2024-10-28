@@ -9,6 +9,6 @@ This has to be one of the most artful and insightful, and down-right virtuosic t
 
 Guy Steele makes the case for optimizing for extensibility in languages, specifically allowing for operator overloading in Java, but does so by giving a talk in which he assumes that the audience only knows single syllable words. All other words he must define before using. So over the course of the talk, he builds up the language as he goes, slowing becoming more and more expressive over the course of the hour.
 
-<https://www.youtube.com/watch?v=_ahvzDzKdB0>
+::youtube{token=_ahvzDzKdB0}
 
 For those who prefer reading, and this one would absolutely be worth reading in order to savor all the word choices, he also prepared a written transcript: <https://www.cs.virginia.edu/~evans/cs655/readings/steele.pdf>

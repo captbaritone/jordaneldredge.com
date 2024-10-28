@@ -11,7 +11,7 @@ I love this YouTube video where a Pokémon gameboy reverse engineering hacker he
 
 They video creates an amazingly compelling story arc with twists, turns, emotions and redemption from what us ultimately just some Swedish nerd (I use this term with great admiration) mucking about in the raw bytes of a saved game rom.
 
-<https://youtu.be/XqgmR1Hqvbk>
+::youtube{token=XqgmR1Hqvbk}
 
 I have to imagine this was hugely gratifying for the Pokémon hacker, who was able to leverage his very niche area of expertise to really help this guy in a meaningful way.
 

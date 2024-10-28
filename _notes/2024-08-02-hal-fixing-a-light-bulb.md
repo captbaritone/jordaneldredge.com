@@ -17,4 +17,4 @@ Every task ends up encountering at least one — if not many — annoying and un
 
 This clip comes to mind at least once a week during my work day. Maybe it’s just because I work in the JavaScript ecosystem?
 
-<https://www.youtube.com/watch?v=AbSehcT19u0>
+::youtube{token=AbSehcT19u0}

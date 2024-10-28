@@ -14,4 +14,4 @@ Siân Griffin gives a very approachable breakdown of the collection of bugs and 
 
 This talk gives a great introduction to how Game Boy games were authored (assembly!) and the clever optimizations that went into writing games within these constraints. You’re left with profound respect for the authors of these games, and the way these constraints required the authors to have immense technical creativity.
 
-<https://www.youtube.com/watch?v=RNsEsZbXE-4>
+::youtube{token=RNsEsZbXE-4}

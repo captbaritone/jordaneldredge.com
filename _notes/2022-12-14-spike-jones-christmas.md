@@ -17,4 +17,4 @@ Anyway, _Spike Jones presents Xmas Spectacular_ features some of the most beauti
 For me, it perfectly captures the lush warmth and family goofiness of spending the holidays with my family.
 
 - [On Spotify](https://open.spotify.com/album/4NB0SeV8QBX2aDxeQFLtx6?si=m_MCIaxRR7aIjPygWurMag)
-- [YouTube](https://youtube.com/playlist?list=OLAK5uy_kbWhzOjGLpPikxJ9gP7wXfczy_k9nyFAg)
+- ::youtube{token=playlist?list=OLAK5uy_kbWhzOjGLpPikxJ9gP7wXfczy_k9nyFAg}
