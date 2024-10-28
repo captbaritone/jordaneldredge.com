@@ -28,6 +28,8 @@ export default function SearchInput({ query }) {
           marginBottom: "1rem",
           width: "100%",
           borderRadius: "0.5rem",
+          // https://stackoverflow.com/a/6394497
+          fontSize: "16px",
         }}
         value={optimisticQuery}
         autoFocus
