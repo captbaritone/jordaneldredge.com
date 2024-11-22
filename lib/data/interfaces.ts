@@ -18,6 +18,7 @@ export interface Indexable {
   summaryImage(): Promise<string | undefined>;
   feedId(): string;
   showInLists(): boolean;
+  lastModified(): number;
 }
 
 /**

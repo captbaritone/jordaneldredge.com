@@ -17,6 +17,7 @@ CREATE TABLE search_index (
   summary_image_path TEXT,
   feed_id TEXT NOT NULL,
   page_rank REAL,
+  last_updated INTEGER,
   UNIQUE(page_type, slug)
 );
 CREATE VIRTUAL TABLE [search_index_fts] USING FTS5 (
@@ -50,7 +51,7 @@ async function main() {
   const db = await getDb();
 
   await db.exec(CREATE_TABLE);
-  reindex(db);
+  await reindex(db);
 }
 
 main();

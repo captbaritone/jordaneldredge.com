@@ -3,6 +3,7 @@ import sqlite3 from "sqlite3";
 import { open } from "sqlite";
 import * as Data from "./data";
 import { PageType } from "./data/interfaces";
+import { updateRank } from "./data/Ranking";
 
 export type SearchIndexRow = {
   page_type: PageType;
@@ -47,6 +48,7 @@ export async function reindex(db: Database) {
   }
 
   await scrub(db, posts, notes);
+  await updateRank(db);
 }
 
 //
@@ -156,8 +158,28 @@ ORDER BY date DESC;`
   return rows.map((row) => new Data.ListableSearchRow(row));
 }
 
+async function needsReindexing(db: Database, indexable: Data.Indexable) {
+  const feedId = indexable.feedId();
+  const rows = await db.all(
+    "SELECT last_updated FROM search_index WHERE feed_id = ?",
+    [feedId]
+  );
+  if (rows.length === 0) {
+    return true;
+  }
+  const row = rows[0];
+  const lastIndexed = row.last_updated;
+  const lastModified = indexable.lastModified();
+  return lastIndexed < lastModified;
+}
+
 export async function indexEntry(db: Database, indexable: Data.Indexable) {
+  if (!(await needsReindexing(db, indexable))) {
+    console.log("Skipping indexing", indexable.slug());
+    return;
+  }
   console.log("INDEXING", indexable.slug());
+  const feedId = indexable.feedId();
   const markdown = await indexable.content();
   const title = indexable.title();
   const summary = indexable.summary == null ? "" : indexable.summary() || "";
@@ -169,12 +191,12 @@ export async function indexEntry(db: Database, indexable: Data.Indexable) {
   const content = await markdown.markdownString();
   const date = indexable.date();
   const summaryImage = await indexable.summaryImage();
-  const feedId = indexable.feedId();
+  const now = Date.now();
   await db.run(
     `
 INSERT INTO search_index (
-  page_type, title, summary, tags, content, slug, date, summary_image_path, feed_id
-) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) ON CONFLICT(page_type, slug) DO UPDATE SET title = ?, summary = ?, tags = ?, content = ?, date = ?, summary_image_path = ?, feed_id = ?;`,
+  page_type, title, summary, tags, content, slug, date, summary_image_path, feed_id, last_updated
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ON CONFLICT(page_type, slug) DO UPDATE SET title = ?, summary = ?, tags = ?, content = ?, date = ?, summary_image_path = ?, feed_id = ?, last_updated = ?;`,
     [
       indexable.pageType,
       title,
@@ -185,6 +207,7 @@ INSERT INTO search_index (
       date,
       summaryImage,
       feedId,
+      now,
 
       // Passed a second time for
       // TODO: Use named params
@@ -195,6 +218,7 @@ INSERT INTO search_index (
       date,
       summaryImage,
       feedId,
+      now,
     ]
   );
 }

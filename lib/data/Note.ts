@@ -36,8 +36,13 @@ export class Note implements Indexable, Linkable, Listable {
     private _title: string,
     private _summary: string | undefined,
     private _date: string,
+    private _lastModified: number,
     private _status: Status = "Published"
   ) {}
+
+  lastModified(): number {
+    return this._lastModified;
+  }
 
   // The Feed ID uses the notionID instead of the slug because the slug can
   // change, or at least get added later.
@@ -200,7 +205,17 @@ export async function getAllNotes(): Promise<Note[]> {
       const date = expectPublishedDate(page);
       const title = expectTitle(page, slug);
       const status = expectStatus(page);
-      return new Note(page.id, slug, tags, title, summary, date, status);
+      const lastUpdated = new Date(page.last_edited_time).getTime();
+      return new Note(
+        page.id,
+        slug,
+        tags,
+        title,
+        summary,
+        date,
+        lastUpdated,
+        status
+      );
     });
 
   rowNotes.sort((a, b) => {
@@ -224,7 +239,16 @@ export async function getNoteBySlug(slug: string): Promise<Note> {
   const title = expectTitle(page, slug);
   const summary = expectSummary(page);
   const tags = expectTags(page);
-  return new Note(page.id, slug, tags, title, summary, page.created_time);
+  const lastUpdated = new Date(page.last_edited_time).getTime();
+  return new Note(
+    page.id,
+    slug,
+    tags,
+    title,
+    summary,
+    page.created_time,
+    lastUpdated
+  );
 }
 
 type Status = "Published" | "Archived" | "Draft";

@@ -22,8 +22,13 @@ export class Post implements Indexable, Linkable, Listable {
   constructor(
     private _content: string,
     private metadata: any,
-    private postInfo: PostInfo
+    private postInfo: PostInfo,
+    private _lastModified: number
   ) {}
+
+  lastModified(): number {
+    return this._lastModified;
+  }
 
   feedId(): string {
     return this.url().fullyQualified();
@@ -151,7 +156,7 @@ type PostInfo = {
 export const getSlugPostMap = memoize(
   { ttl: TEN_MINUTES, key: "getSlugPostMap" },
   (): { [slug: string]: PostInfo } => {
-    const map = {};
+    const map: { [slug: string]: PostInfo } = {};
     for (const fileName of fs.readdirSync(postsDirectory)) {
       const matches = Array.from(fileName.matchAll(FILE_NAME_PARSER))[0];
       if (matches == null) {
@@ -180,7 +185,11 @@ export const getPostBySlug = memoize(
       },
     });
 
-    return new Post(content, data, postInfo);
+    // Get last updated timestamp from file system
+    const stats = fs.statSync(fullPath);
+    const lastUpdated = stats.mtimeMs;
+
+    return new Post(content, data, postInfo, lastUpdated);
   }
 );
 
