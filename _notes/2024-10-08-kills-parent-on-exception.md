@@ -18,7 +18,7 @@ Note that the addition of this decorator has two effects:
 - It makes the field non-nullable, which makes your life easier
 - It causes errors to be more destructive, which negatively impacts the reliability of your app
 
-By choosing the name the API after the potentially non-obvious negative consequence of using the API rather than the highly desirable convince it enables, you force the users to reckon with the tradeoff they are making both in their editor and also in code review. Features which make the developers life easier at the expense of the user can be very tempting and therefore the API designer should take special pains to either not expose such APIs, or ensure the developer is held accountable for making that tradeoff when the do use it. A name like `KillsParentOnException` is one powerful way to achieve this.
+By choosing to the name the API after the potentially non-obvious negative consequence of using the API rather than the highly desirable convenience it enables, you force the users to reckon with the tradeoff they are making both in their editor and also in code review. Features which make the developers life easier at the expense of the user can be very tempting and therefore the API designer should take special pains to either not expose such APIs, or ensure the developer is held accountable for making that tradeoff when they do use it. A name like `KillsParentOnException` is one powerful way to achieve this.
 
 I liked this API naming so much, I [copied it](https://grats.capt.dev/docs/resolvers/nullability/) in my TypeScript GraphQL tool [Grats](https://grats.capt.dev/).
 

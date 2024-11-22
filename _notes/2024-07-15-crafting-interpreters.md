@@ -11,7 +11,7 @@ summary_image: >-
 ---
 ![](/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/7b8b516f-bbe5-4437-bfa5-08c769bcfa1f/Untitled.png)
 
-If you are interested in how computer languages work, or how they are implanted I can’t think of a better book than Bob Nystrom’s [Crafting Interpreters](https://craftinginterpreters.com/).
+If you are interested in how computer languages work, or how they are implemented I can’t think of a better book than Bob Nystrom’s [Crafting Interpreters](https://craftinginterpreters.com/).
 
 He sets out to dispel the notion that compilers and interpreters are some advanced type of programming that can only be understood by an upper echelon of computer wizard and succeeds roundly in that goal.
 

@@ -3,6 +3,7 @@ title: I archived all the Tweets referenced by my blog
 tags:
   - javascript
   - thisSite
+summary: Preserving Tweets
 notion_id: d8726b54-59d7-4ee0-a9cf-d442c4257cdb
 ---
 In light of the chaos that seems to be enveloping Twitter these last few weeks, I decided it was prudent to archive all the Tweets embedded in or mentioned by my personal blog. I ended up doing this with the `twit` NPM package.

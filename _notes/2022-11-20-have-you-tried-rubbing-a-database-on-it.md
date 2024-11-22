@@ -2,6 +2,9 @@
 title: Have you tried rubbing a database on it?
 tags:
   - share
+summary: >-
+  A collection of mad science talks applying the ideas of databases to all kinds
+  of different problems
 notion_id: 1263e050-adce-46a4-ab15-b930979b78fa
 ---
 “[Have you tried rubbing a database on it](https://www.hytradboi.com/)” appears to have been a fantastic conference where people presented all kinds of crazy eccentric projects related to databases. I didn’t know about it at the time, but luckily for me the talks were recorded.

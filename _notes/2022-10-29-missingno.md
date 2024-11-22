@@ -9,6 +9,7 @@ summary: >-
   Pokémon game code to understand the mechanics of the famous glitch that could
   let you catch MissingNo
 notion_id: decf723d-140f-4a5b-8bf9-642174dbc385
+summary_image: https://img.youtube.com/vi/RNsEsZbXE-4/hqdefault.jpg
 ---
 Siân Griffin gives a very approachable breakdown of the collection of bugs and compromises that lead to the famous MissingNo glitch in the classic Pokemon games.
 

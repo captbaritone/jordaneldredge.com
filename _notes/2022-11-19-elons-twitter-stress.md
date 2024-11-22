@@ -2,6 +2,7 @@
 title: Why I’m so stressed following Elon’s Twitter 2.0
 tags:
   - observation
+summary: A vulnerable reflection
 notion_id: be4312b4-49e9-4e24-a981-45880e256aeb
 ---
 I realized why I’m so stressed as I follow this Twitter story. Elon is making the case that the current model of building software, where people are given support and are cared for and are given freedom to be creative and drive decision making from the bottom up, is flawed and failing. Instead, he argues, we need a system that consists of top down mandates and a small number of macho tough-guy code machines to do this work. And he’s not alone. This narrative has had a constant, if oft ridiculed, voice in the software world for the last several years.

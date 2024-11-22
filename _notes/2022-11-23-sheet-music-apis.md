@@ -3,6 +3,7 @@ title: On sheet music and software APIs
 tags:
   - observation
   - music
+summary: Reflections on the parallels between sheet music notation and software
 notion_id: 33563918-2330-4076-8120-635db8d2b3bd
 ---
 Defining what makes “classical music” — especially modern classical music — distinct from other forms of music is an interesting challenge. In discussing this with [Chelsea](https://www.chelseahollow.com/), one thing I’ve alighted on is the role of notated sheet music in classical music. Across this history and sub-genres of classical music one commonality is that communication between the composer and the performers is done formally through notated sheet music.
