@@ -1,8 +1,8 @@
+import { getDb } from "../search";
 import { Query } from "./GraphQLRoots";
 import { Linkable, Listable } from "./interfaces";
-import { getAllNotes } from "./Note";
-import { getAllPosts } from "./Post";
 import { SiteUrl } from "./SiteUrl";
+import * as Data from "../data";
 
 /**
  * A tag that can be associated with items.
@@ -25,20 +25,24 @@ export class Tag implements Linkable {
    * @gqlField
    */
   async items(): Promise<Listable[]> {
-    const allPosts = getAllPosts();
-    const allNotes = await getAllNotes();
-
-    const publicPosts = allPosts.filter((post) => {
-      const tagNames = post.tagSet().tagNames();
-      return tagNames.some((tag) => tag === this._name);
-    });
-
-    const publicNotes = allNotes.filter((note) => {
-      const tagNames = note.tagSet().tagNames();
-      return tagNames.some((tag) => tag === this._name);
-    });
-
-    return [...publicPosts, ...publicNotes];
+    const db = await getDb();
+    const rows = await db.all(
+      `
+  SELECT
+    search_index.slug,
+    search_index.page_type,
+    search_index.summary,
+    search_index.tags,
+    search_index.title,
+    search_index.summary_image_path,
+    search_index.date,
+    search_index.feed_id
+  FROM search_index
+  WHERE search_index.tags LIKE '%' || ? || '%'
+  ORDER BY date DESC;`,
+      [this.name()]
+    );
+    return rows.map((row) => new Data.ListableSearchRow(row));
   }
 
   /** @gqlField */

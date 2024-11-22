@@ -1,6 +1,6 @@
 import Link from "next/link";
 import ListItem from "../../lib/components/ListItem";
-import { getDb, notes } from "../../lib/search";
+import { notes } from "../../lib/search";
 
 // Pages are static
 export const dynamic = "force-static";
