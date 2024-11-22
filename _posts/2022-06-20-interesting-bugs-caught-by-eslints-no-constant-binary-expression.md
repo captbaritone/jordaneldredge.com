@@ -7,7 +7,7 @@ canonical_url: https://eslint.org/blog/2022/07/interesting-bugs-caught-by-no-con
 tags: ["eslint", "javascript", "staticAnalysis"]
 ---
 
-_This post originally appeared as a guest post on [ESLint's blog](https://eslint.org/blog/2022/07/interesting-bugs-caught-by-no-constant-binary-expression/)._
+_This post originally appeared as a guest post on [ESLint's blog](https://eslint.org/blog/2022/07/interesting-bugs-caught-by-no-constant-binary-expression/). It has been discussed on [Hacker News](https://news.ycombinator.com/item?id=38196644)_ and [Lobster.rs]("https://lobste.rs/s/icirwz/interesting_bugs_caught_by_eslint_s_no",).
 
 ---
 

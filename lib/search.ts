@@ -15,6 +15,7 @@ export type SearchIndexRow = {
   date: string;
   summary_image_path: string;
   feed_id: string;
+  page_rank: number;
 };
 
 const filename = process.env.SEARCH_INDEX_LOCATION;

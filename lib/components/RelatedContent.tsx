@@ -53,7 +53,7 @@ async function related(self: Listable, first: number): Promise<Listable[]> {
   const db = await getDb();
 
   const content: SearchIndexRow[] = await db.all(`
-    SELECT slug, page_type, tags, title FROM search_index`);
+    SELECT slug, page_type, tags, title, page_rank FROM search_index`);
 
   const items: Listable[] = content
     .map((item) => {
@@ -70,12 +70,19 @@ async function related(self: Listable, first: number): Promise<Listable[]> {
       return { overlap: intersection / union, item };
     })
     .filter((post) => post.overlap > 0)
-    .sort((a, b) => b.overlap - a.overlap)
-    .map(({ item }): Listable => {
-      return new Data.ListableSearchRow(item);
+    .sort((a, b) => {
+      const overlapDiff = b.overlap - a.overlap;
+      if (overlapDiff !== 0) {
+        return overlapDiff;
+      }
+      // Use page_rank to break a tie
+      return b.item.page_rank - a.item.page_rank;
     })
     // Initial trim lets us only do the final path comparison on n+1 items.
     .slice(0, first + 1)
+    .map(({ item }): Listable => {
+      return new Data.ListableSearchRow(item);
+    })
     .filter((item) => {
       return item.url().path() !== urlPath;
     })

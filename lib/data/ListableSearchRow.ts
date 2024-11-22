@@ -2,6 +2,7 @@ import { SearchIndexRow } from "../search";
 import { Listable } from "./interfaces";
 import { SiteUrl } from "./SiteUrl";
 import { TagSet } from "./TagSet";
+import * as Search from "../search";
 
 export default class ListableSearchRow implements Listable {
   _item: SearchIndexRow;
@@ -41,5 +42,25 @@ export default class ListableSearchRow implements Listable {
       case "note":
         return new SiteUrl(`/notes/${this._item.slug}`);
     }
+  }
+
+  static async allItems() {
+    const db = await Search.getDb();
+    const rows = await db.all(
+      `
+    SELECT
+      content,
+      tags,
+      feed_id,
+      page_type,
+      slug,
+      summary,
+      title, 
+      summary_image_path,
+      date
+    FROM search_index
+    ORDER BY page_rank DESC`
+    );
+    return rows.map((row) => new ListableSearchRow(row));
   }
 }

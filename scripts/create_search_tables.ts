@@ -6,6 +6,7 @@ import { getDb, reindex } from "../lib/search";
 
 const CREATE_TABLE = `
 CREATE TABLE search_index (
+  id INTEGER PRIMARY KEY,
   page_type TEXT NOT NULL,
   slug TEXT NOT NULL,
   title TEXT NOT NULL,
@@ -15,6 +16,7 @@ CREATE TABLE search_index (
   date TEXT NOT NULL,
   summary_image_path TEXT,
   feed_id TEXT NOT NULL,
+  page_rank REAL,
   UNIQUE(page_type, slug)
 );
 CREATE VIRTUAL TABLE [search_index_fts] USING FTS5 (
@@ -46,14 +48,6 @@ async function main() {
   fs.rmSync(filename, { force: true });
 
   const db = await getDb();
-  /*
-  await db.exec("DROP TABLE IF EXISTS search_index;");
-  await db.exec("DROP TABLE IF EXISTS search_index_fts_data;");
-  await db.exec("DROP TABLE IF EXISTS search_index_fts_idx;");
-  await db.exec("DROP TABLE IF EXISTS search_index_fts_docsize;");
-  await db.exec("DROP TABLE IF EXISTS search_index_fts_config;");
-  await db.exec("DROP TABLE IF EXISTS search_index_fts;");
-  */
 
   await db.exec(CREATE_TABLE);
   reindex(db);

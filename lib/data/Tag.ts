@@ -39,7 +39,7 @@ export class Tag implements Linkable {
     search_index.feed_id
   FROM search_index
   WHERE search_index.tags LIKE '%' || ? || '%'
-  ORDER BY date DESC;`,
+  ORDER BY page_rank DESC;`,
       [this.name()]
     );
     return rows.map((row) => new Data.ListableSearchRow(row));

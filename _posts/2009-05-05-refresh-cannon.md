@@ -4,10 +4,6 @@ tags: [project, game, refresh, defunct]
 summary: "I turned my forum avatar image into an interactive projectile aiming game."
 ---
 
-EDIT: _Due to an excess of traffic, I have had to take Refresh Cannon off of this page. Please try again later. I am so sorry folks. Feel free to subscribe to the RSS feed. I will post it again when things cool down._
-
-And... were back.
-
 ![](/projects/refresh-cannon/index.php "Refresh Hero")
 
 Inspired by the popularity of [Refresh Hero](/blog/refresh-hero-avatar-game/), I am continuing in my exploration of the limits of avatar images. Of course the main challenge is developing ways for the user to have meaningful interaction with only their refresh button. The [previous game](/blog/refresh-hero-avatar-game/) used the element of time in binary fashion: either you got it right, or not. This new game uses time to allow you to adjust two different variables.
