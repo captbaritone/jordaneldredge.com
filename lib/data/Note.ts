@@ -35,7 +35,8 @@ export class Note implements Indexable, Linkable, Listable {
     private _tags: string[],
     private _title: string,
     private _summary: string | undefined,
-    private _date: string
+    private _date: string,
+    private _status: Status = "Published"
   ) {}
 
   // The Feed ID uses the notionID instead of the slug because the slug can
@@ -122,6 +123,7 @@ export class Note implements Indexable, Linkable, Listable {
       summary: string | undefined;
       summary_image?: string;
       notion_id: string;
+      archive?: boolean;
     } = {
       title: this.title(),
       tags: this.tagSet().tagNames(),
@@ -132,6 +134,9 @@ export class Note implements Indexable, Linkable, Listable {
 
     if (summaryImage) {
       metadata.summary_image = summaryImage;
+    }
+    if (this._status === "Archived") {
+      metadata.archive = true;
     }
     const yamlMetadata = yaml.dump(metadata);
     const markdown = `---\n${yamlMetadata}---\n${await contentMarkdown.markdownString()}`;
@@ -145,11 +150,7 @@ export class Note implements Indexable, Linkable, Listable {
   }
 
   showInLists(): boolean {
-    // For now we show all notes in the list.
-    // In the future we may want to add an "archive" column to the metadata
-    // database.
-
-    return true;
+    return this._status === "Published";
   }
 
   /** @gqlField */
@@ -189,20 +190,17 @@ export async function getAllNotes(): Promise<Note[]> {
 
   const rowNotes = rows
     .filter((block) => {
-      const properties: any = block.properties;
-      const status = properties.Status.select?.name;
+      const status = expectStatus(block);
       return status === "Published" || status === "Archived";
     })
     .map((page) => {
-      const properties: any = page.properties;
-      const tags = properties.Tags.multi_select.map((select) => {
-        return select.name;
-      });
+      const tags = expectTags(page);
       const slug = expectSlug(page);
       const summary = expectSummary(page);
       const date = expectPublishedDate(page);
       const title = expectTitle(page, slug);
-      return new Note(page.id, slug, tags, title, summary, date);
+      const status = expectStatus(page);
+      return new Note(page.id, slug, tags, title, summary, date, status);
     });
 
   rowNotes.sort((a, b) => {
@@ -227,6 +225,21 @@ export async function getNoteBySlug(slug: string): Promise<Note> {
   const summary = expectSummary(page);
   const tags = expectTags(page);
   return new Note(page.id, slug, tags, title, summary, page.created_time);
+}
+
+type Status = "Published" | "Archived" | "Draft";
+
+function expectStatus(page: PageObjectResponse): Status {
+  const properties: any = page.properties;
+  const status = properties.Status.select?.name;
+  switch (status) {
+    case "Published":
+    case "Archived":
+    case "Draft":
+      return status;
+    default:
+      return "Draft";
+  }
 }
 
 function expectTitle(page: PageObjectResponse, slug: string): string {
