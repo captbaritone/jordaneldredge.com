@@ -6,8 +6,8 @@ import ContentPage from "../../../lib/components/ContentPage";
 // SQLIte
 //
 // https://beta.nextjs.org/docs/data-fetching/caching#segment-level-caching
-// export const revalidate = 600;
-// export const dynamic = "force-static";
+export const revalidate = 600;
+export const dynamic = "force-static";
 
 export async function generateMetadata({ params }): Promise<Metadata> {
   // TODO: Figure out how to read search params in head.js
