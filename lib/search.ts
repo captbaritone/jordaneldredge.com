@@ -160,17 +160,14 @@ ORDER BY date DESC;`
 
 async function needsReindexing(db: Database, indexable: Data.Indexable) {
   const feedId = indexable.feedId();
-  const rows = await db.all(
+  const row = await db.get(
     "SELECT last_updated FROM search_index WHERE feed_id = ?",
     [feedId]
   );
-  if (rows.length === 0) {
+  if (row == null) {
     return true;
   }
-  const row = rows[0];
-  const lastIndexed = row.last_updated;
-  const lastModified = indexable.lastModified();
-  return lastIndexed < lastModified;
+  return row.last_updated < indexable.lastModified();
 }
 
 export async function indexEntry(db: Database, indexable: Data.Indexable) {

@@ -1,10 +1,11 @@
 import { SearchIndexRow } from "../search";
-import { Listable } from "./interfaces";
+import { Listable, Content } from "./interfaces";
 import { SiteUrl } from "./SiteUrl";
 import { TagSet } from "./TagSet";
 import * as Search from "../search";
+import { Markdown } from "./Markdown";
 
-export default class ListableSearchRow implements Listable {
+export default class ListableSearchRow implements Listable, Content {
   _item: SearchIndexRow;
   constructor(item: SearchIndexRow) {
     this._item = item;
@@ -32,6 +33,9 @@ export default class ListableSearchRow implements Listable {
   }
   feedId(): string {
     return this._item.feed_id;
+  }
+  content(): Promise<Markdown> | Markdown {
+    return Markdown.fromString(this._item.content);
   }
   url() {
     switch (this._item.page_type) {
@@ -62,5 +66,14 @@ export default class ListableSearchRow implements Listable {
     ORDER BY page_rank DESC`
     );
     return rows.map((row) => new ListableSearchRow(row));
+  }
+
+  static async getNoteBySlug(slug: string) {
+    const db = await Search.getDb();
+    const row = await db.get(
+      "SELECT * FROM search_index WHERE page_type = 'note' AND slug = ?",
+      slug
+    );
+    return new ListableSearchRow(row);
   }
 }
