@@ -4,6 +4,7 @@ import { SiteUrl } from "./SiteUrl";
 import { TagSet } from "./TagSet";
 import * as Search from "../search";
 import { Markdown } from "./Markdown";
+import { getNoteBySlug } from "./Note";
 
 export default class ListableSearchRow implements Listable, Content {
   _item: SearchIndexRow;
@@ -74,6 +75,9 @@ export default class ListableSearchRow implements Listable, Content {
       "SELECT * FROM search_index WHERE page_type = 'note' AND slug = ?",
       slug
     );
+    if (row == null) {
+      return getNoteBySlug(slug);
+    }
     return new ListableSearchRow(row);
   }
 }
