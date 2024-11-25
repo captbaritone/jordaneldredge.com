@@ -13,6 +13,10 @@ summary_image: >-
 ---
 ![](/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/8b644494-12b4-4aa3-8e6f-fd02f95341bd/Screenshot_2024-11-19_at_4.39.04_PM.png)
 
+_Discussed on_ [_Hacker News_](https://news.ycombinator.com/item?id=42215438)
+
+---
+
 _TL;DR several years ago I got a proof of concept working where I was able to render highly interactive “modern” Winamp skins in the browser by reverse engineering Maki byte code and implementing an interpreter for it in JavaScript. You can try the_ [_proof of concept_](https://webamp.org/modern/) _in your browser._
 
 ---
@@ -97,18 +101,36 @@ I’ll end with a collection of screenshots showing some of the interesting skin
 
 ---
 
-![](/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/e81f8abb-a6bd-4618-bfb3-7957a0697819/Screenshot_2024-11-19_at_6.58.35_PM.png)
+![](/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/514cbb99-2b2d-4d18-a621-d6f826a9cf05/Screenshot_2024-11-22_at_9.49.46_PM.png)
 
-<https://webamp.org/modern/?skin=assets%2Fskins%2FHeadspace.wmz>
-
----
-
-![](/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/e4c3e064-943a-44f8-a8dc-a70cd3482364/Screenshot_2024-11-19_at_7.01.26_PM.png)
-
-<https://webamp.org/modern/?skin=assets%2Fskins%2FTokyoBay.face>
+[https://webamp.org/modern/?skin=https://r2.webampskins.org/skins/c2273648295a986350f0e2007b705e85.wal](https://webamp.org/modern/?skin=https%3A%2F%2Fr2.webampskins.org%2Fskins%2Fc2273648295a986350f0e2007b705e85.wal)
 
 ---
 
-![](/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/be5545dd-afe8-4f54-9cc0-7336d2a8441a/Screenshot_2024-11-19_at_7.01.44_PM.png)
+![](/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/ac26dbf8-edb7-4fc9-96fe-d590489de37b/Screenshot_2024-11-22_at_9.52.46_PM.png)
 
-<https://webamp.org/modern/?skin=assets%2Fskins%2FK-Nine05r.kjofol>
+[https://webamp.org/modern/?skin=https://r2.webampskins.org/skins/84be4029fa8dd4305b3eee70c648749b.wal](https://webamp.org/modern/?skin=https%3A%2F%2Fr2.webampskins.org%2Fskins%2F84be4029fa8dd4305b3eee70c648749b.wal)
+
+---
+
+![](/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/322618d1-d08c-4ada-bcd6-ba97e837abf5/Screenshot_2024-11-22_at_9.54.11_PM.png)
+
+[https://webamp.org/modern/?skin=https://r2.webampskins.org/skins/00bf47f38660c04f89c3abe06eacd5af.wal](https://webamp.org/modern/?skin=https%3A%2F%2Fr2.webampskins.org%2Fskins%2F00bf47f38660c04f89c3abe06eacd5af.wal)
+
+---
+
+![](/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/d0ef561f-1616-418b-9044-c2121865e4cf/Screenshot_2024-11-22_at_9.56.53_PM.png)
+
+[https://webamp.org/modern/?skin=https://r2.webampskins.org/skins/97a759e2f0261eb0b7c65452d70318d0.wal](https://webamp.org/modern/?skin=https%3A%2F%2Fr2.webampskins.org%2Fskins%2F97a759e2f0261eb0b7c65452d70318d0.wal)
+
+---
+
+![](/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/dad3ca85-9543-4d3a-b129-7e83839762c9/Screenshot_2024-11-22_at_9.58.03_PM.png)
+
+[https://webamp.org/modern/?skin=https://r2.webampskins.org/skins/026d840ca4bebf678704f460f740790b.wal](https://webamp.org/modern/?skin=https%3A%2F%2Fr2.webampskins.org%2Fskins%2F026d840ca4bebf678704f460f740790b.wal)
+
+---
+
+![](/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/61e55b5e-c750-4013-8a45-2d3400f1c670/Screenshot_2024-11-22_at_9.59.09_PM.png)
+
+[https://webamp.org/modern/?skin=https://r2.webampskins.org/skins/2f2d4a3b9aff93ed9d1a240597c298c6.wal](https://webamp.org/modern/?skin=https%3A%2F%2Fr2.webampskins.org%2Fskins%2F2f2d4a3b9aff93ed9d1a240597c298c6.wal)

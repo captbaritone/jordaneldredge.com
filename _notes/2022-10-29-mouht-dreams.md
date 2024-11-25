@@ -8,6 +8,8 @@ notion_id: f44fd95e-9041-4cbb-9582-aecbb44eb13f
 ---
 Neil Cicierega’s album Mouth Dreams is his most recent installment in his series of mashup albums. As a musician, I can attest that they are as virtuosic in their execution as they are witty and hilarious in their musical commentary and construction.
 
+My understanding is that the origin of this project was someone realizing that one could unpack the Guitar Hero games to extract the isolated instrument/vocal tracks from many popular songs.
+
 I keep returning to this album and forcing it upon my musical friends. Every track has dozens of “shh, listen to this part!” moments, but track seven is a musically perfect mashup which somehow manages to seamlessly combine:
 
 - [The Partridge Family](https://en.wikipedia.org/wiki/The_Partridge_Family)'s "C'mon, Get Happy"
