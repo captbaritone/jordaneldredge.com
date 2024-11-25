@@ -40,8 +40,8 @@ const ALL_SEARCH_ENTRIES = db.prepare<[], { page_type: string; slug: string }>(
   `SELECT slug, page_type FROM search_index;`
 );
 
-const DELETE_ENTRY = db.prepare<[string, string], void>(
-  `DELETE FROM search_index WHERE slug = ? AND page_type = ?;`
+const DELETE_ENTRY = db.prepare<{ slug: string; pageType: string }, void>(
+  `DELETE FROM search_index WHERE slug = :slug AND page_type = :pageType;`
 );
 
 //
@@ -63,12 +63,12 @@ function scrub(posts: Data.Post[], notes: Data.Note[]) {
     const entryPath = `/${topLevelDir}/${entry.slug}`;
     if (!indexableUrlPaths.has(entryPath)) {
       console.log("SCRUB", entryPath);
-      DELETE_ENTRY.run(entry.slug, entry.page_type);
+      DELETE_ENTRY.run({ slug: entry.slug, pageType: entry.page_type });
     }
   }
 }
 
-const SEARCH = db.prepare<[string], SearchIndexRow>(
+const SEARCH = db.prepare<{ query: string }, SearchIndexRow>(
   `
   SELECT
     search_index.slug,
@@ -81,15 +81,18 @@ const SEARCH = db.prepare<[string], SearchIndexRow>(
     search_index.feed_id
   FROM search_index_fts
   LEFT JOIN search_index ON search_index.rowid = search_index_fts.rowid
-  WHERE search_index_fts MATCH ?
+  WHERE search_index_fts MATCH (
+    'title:' || :query || '*' || 
+    ' OR content:' || :query || '*' || 
+    ' OR tags:' || :query || '*' || 
+    ' OR summary:' || :query || '*'
+  )
   ORDER BY rank
   LIMIT 20;`
 );
 
 export function search(query: string): Array<Data.ListableSearchRow> {
-  const rows = SEARCH.all(
-    `title:"${query}" * OR content:"${query}" * OR tags:"${query}" * OR summary:"${query}" *`
-  );
+  const rows = SEARCH.all({ query });
   function getItem(m: SearchIndexRow): Data.ListableSearchRow | null {
     switch (m.page_type) {
       case "post":
@@ -148,24 +151,53 @@ export function notes(): Array<Data.ListableSearchRow> {
   return rows.map((row) => new Data.ListableSearchRow(row));
 }
 
-const GET_LAST_UPDATED = db.prepare<[string], { last_updated: number }>(
-  "SELECT last_updated FROM search_index WHERE feed_id = ?"
-);
+const GET_LAST_UPDATED = db.prepare<
+  { feedId: string },
+  { last_updated: number }
+>("SELECT last_updated FROM search_index WHERE feed_id = :feedId");
 
 function needsReindexing(indexable: Data.Indexable) {
   const feedId = indexable.feedId();
-  const row = GET_LAST_UPDATED.get(feedId);
+  const row = GET_LAST_UPDATED.get({ feedId });
   if (row == null) {
     return true;
   }
   return row.last_updated < indexable.lastModified();
 }
 
-const UPSERT_INDEX = db.prepare(
-  `
-INSERT INTO search_index (
-page_type, title, summary, tags, content, slug, date, summary_image_path, feed_id, last_updated
-) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ON CONFLICT(page_type, slug) DO UPDATE SET title = ?, summary = ?, tags = ?, content = ?, date = ?, summary_image_path = ?, feed_id = ?, last_updated = ?;`
+const UPSERT_INDEX = db.prepare<{
+  pageType: string;
+  title: string;
+  summary: string;
+  tags: string;
+  content: string;
+  slug: string;
+  date: string;
+  summaryImagePath: string | undefined;
+  feedId: string;
+  lastUpdated: number;
+}>(
+  `INSERT INTO search_index (
+  page_type,
+  title,
+  summary,
+  tags,
+  content,
+  slug,
+  date,
+  summary_image_path,
+  feed_id,
+  last_updated
+) VALUES (:pageType, :title, :summary, :tags, :content, :slug, :date, :summaryImagePath, :feedId, :lastUpdated) ON CONFLICT(page_type, slug) 
+ DO UPDATE SET
+  title = :title,
+  summary = :summary,
+  tags = :tags,
+  content = :content,
+  date = :date,
+  summary_image_path = :summaryImagePath,
+  feed_id = :feedId,
+  last_updated = :lastUpdated;`
 );
 
 export async function indexEntry(indexable: Data.Indexable) {
@@ -185,29 +217,18 @@ export async function indexEntry(indexable: Data.Indexable) {
     .join(" ");
   const content = await markdown.markdownString();
   const date = indexable.date();
-  const summaryImage = await indexable.summaryImage();
+  const summaryImagePath = await indexable.summaryImage();
   const now = Date.now();
-  UPSERT_INDEX.run([
-    indexable.pageType,
+  UPSERT_INDEX.run({
+    pageType: indexable.pageType,
     title,
     summary,
     tags,
     content,
-    indexable.slug(),
+    slug: indexable.slug(),
     date,
-    summaryImage,
+    summaryImagePath,
     feedId,
-    now,
-
-    // Passed a second time for
-    // TODO: Use named params
-    title,
-    summary,
-    tags,
-    content,
-    date,
-    summaryImage,
-    feedId,
-    now,
-  ]);
+    lastUpdated: now,
+  });
 }

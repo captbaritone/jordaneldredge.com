@@ -26,7 +26,7 @@ export class Tag implements Linkable {
    * @gqlField
    */
   items(): Listable[] {
-    const rows = ITEMS_WITH_TAG.all(this.name());
+    const rows = ITEMS_WITH_TAG.all({ tag: this.name() });
     return rows.map((row) => new Data.ListableSearchRow(row));
   }
 
@@ -36,7 +36,7 @@ export class Tag implements Linkable {
   }
 }
 
-const ITEMS_WITH_TAG = db.prepare<[string], SearchIndexRow>(
+const ITEMS_WITH_TAG = db.prepare<{ tag: string }, SearchIndexRow>(
   `
 SELECT
 search_index.slug,
@@ -48,6 +48,6 @@ search_index.summary_image_path,
 search_index.date,
 search_index.feed_id
 FROM search_index
-WHERE search_index.tags LIKE '%' || ? || '%'
+WHERE search_index.tags LIKE '%' || :tag || '%'
 ORDER BY page_rank DESC;`
 );
