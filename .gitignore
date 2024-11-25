@@ -34,4 +34,6 @@ yarn-error.log*
 public/feed
 
 search-index.db
+search-index.db-shm
+search-index.db-wal
 .vercel

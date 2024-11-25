@@ -2,7 +2,7 @@ import "dotenv/config";
 import { parse } from "./markdownUtils";
 import { visit } from "unist-util-visit";
 import Graph from "../pageRank";
-import { Database } from "sqlite";
+import { db } from "../db";
 
 // External links are used to seed the graph. Ideally we could find a way to
 // move these to metadata in the individual posts.
@@ -25,21 +25,36 @@ const EXTERNAL_LINKS = {
   "/notes/winamp-sqlite": ["https://news.ycombinator.com/item?id=31703874"],
 };
 
+const ALL_ENTRIES = db.prepare<
+  [],
+  {
+    content: string;
+    page_type: string;
+    slug: string;
+    feed_id: string;
+    tags: string;
+  }
+>(
+  `
+SELECT
+content,
+tags,
+feed_id,
+page_type,
+slug
+FROM search_index`
+);
+
+const UPDATE_RANK = db.prepare(
+  "UPDATE search_index SET page_rank = ? WHERE feed_id = ?"
+);
+
 /**
  * Uses a weighted pagerank algorithm to assign a page_rank score to each entry
  * in the search_index.
  */
-export async function updateRank(db: Database) {
-  const rows = await db.all(
-    `
-  SELECT
-    content,
-    tags,
-    feed_id,
-    page_type,
-    slug
-  FROM search_index`
-  );
+export function updateRank() {
+  const rows = ALL_ENTRIES.all();
 
   const graph = new Graph({});
   const l = new LinkNormalizer();
@@ -80,10 +95,7 @@ export async function updateRank(db: Database) {
     const pageUrl = l.assertCanonicalized(row.feed_id);
     const pageRank =
       rank[pageUrl] == null || isNaN(rank[pageUrl]) ? 0 : rank[pageUrl];
-    await db.all("UPDATE search_index SET page_rank = ? WHERE feed_id = ?", [
-      pageRank,
-      row.feed_id,
-    ]);
+    UPDATE_RANK.run([pageRank, row.feed_id]);
   }
 }
 

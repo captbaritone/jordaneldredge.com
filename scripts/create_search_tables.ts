@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import "dotenv/config";
-import { getDb, reindex } from "../lib/search";
+import { reindex } from "../lib/search";
+import { db } from "../lib/db";
 
 // sqlite-utils enable-fts search-index.db search_index title content --create-triggers --replace
 
@@ -48,10 +49,8 @@ async function main() {
   }
   fs.rmSync(filename, { force: true });
 
-  const db = await getDb();
-
-  await db.exec(CREATE_TABLE);
-  await reindex(db);
+  db.exec(CREATE_TABLE);
+  await reindex();
 }
 
 main();

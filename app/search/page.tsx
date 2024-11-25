@@ -2,12 +2,12 @@ import SearchInput from "./searchInput";
 import * as Search from "../../lib/search";
 import ListItem from "../../lib/components/ListItem";
 
-export async function generateMetadata({ searchParams }) {
+export function generateMetadata({ searchParams }) {
   const title = searchParams.q ? `Search: "${searchParams.q}"` : "Search";
   return { title };
 }
 
-export default async function SearchComponent({ searchParams }) {
+export default function SearchComponent({ searchParams }) {
   const query = searchParams.q || "";
 
   return (
@@ -18,11 +18,11 @@ export default async function SearchComponent({ searchParams }) {
   );
 }
 
-async function Results({ query }) {
+function Results({ query }) {
   if (query === "") {
     return <ResultAlternative>Enter a search query above</ResultAlternative>;
   }
-  const listable = await Search.search(query);
+  const listable = Search.search(query);
   if (listable.length === 0) {
     return <ResultAlternative>No results found</ResultAlternative>;
   }

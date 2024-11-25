@@ -1,14 +1,14 @@
 import Link from "next/link";
 import ListItem from "../../lib/components/ListItem";
-import { blogPosts, getDb } from "../../lib/search";
+import { blogPosts } from "../../lib/search";
 
 export const metadata = {
   title: "Blog",
   twitter: { title: "Blog" },
 };
 
-export default async function Home() {
-  const allPosts = await blogPosts();
+export default function Home() {
+  const allPosts = blogPosts();
 
   const publicPosts = allPosts.filter((post) => post.showInLists());
 

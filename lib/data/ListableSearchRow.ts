@@ -2,9 +2,9 @@ import { SearchIndexRow } from "../search";
 import { Listable, Content } from "./interfaces";
 import { SiteUrl } from "./SiteUrl";
 import { TagSet } from "./TagSet";
-import * as Search from "../search";
 import { Markdown } from "./Markdown";
 import { getNoteBySlug } from "./Note";
+import { db } from "../db";
 
 export default class ListableSearchRow implements Listable, Content {
   _item: SearchIndexRow;
@@ -50,34 +50,35 @@ export default class ListableSearchRow implements Listable, Content {
   }
 
   static async allItems() {
-    const db = await Search.getDb();
-    const rows = await db.all(
-      `
-    SELECT
-      content,
-      tags,
-      feed_id,
-      page_type,
-      slug,
-      summary,
-      title, 
-      summary_image_path,
-      date
-    FROM search_index
-    ORDER BY page_rank DESC`
-    );
+    const rows = ALL_ITEMS_RANKED.all();
     return rows.map((row) => new ListableSearchRow(row));
   }
 
-  static async getNoteBySlug(slug: string) {
-    const db = await Search.getDb();
-    const row = await db.get(
-      "SELECT * FROM search_index WHERE page_type = 'note' AND slug = ?",
-      slug
-    );
+  static getNoteBySlug(slug: string) {
+    const row = db
+      .prepare<[string], SearchIndexRow>(
+        "SELECT * FROM search_index WHERE page_type = 'note' AND slug = ?"
+      )
+      .get(slug);
     if (row == null) {
       return getNoteBySlug(slug);
     }
     return new ListableSearchRow(row);
   }
 }
+
+const ALL_ITEMS_RANKED = db.prepare<[], SearchIndexRow>(
+  `
+SELECT
+content,
+tags,
+feed_id,
+page_type,
+slug,
+summary,
+title, 
+summary_image_path,
+date
+FROM search_index
+ORDER BY page_rank DESC`
+);

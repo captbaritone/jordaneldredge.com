@@ -16,8 +16,7 @@ export const metadata = {
 };
 
 export default async function Notes() {
-  const allNotes = await notes();
-
+  const allNotes = notes();
   return (
     <>
       <div className="markdown">

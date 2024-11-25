@@ -1,8 +1,9 @@
 import React from "react";
 import Link from "next/link.js";
 import { Listable } from "../data/interfaces";
-import { getDb, SearchIndexRow } from "../search";
+import { SearchIndexRow } from "../search";
 import * as Data from "../data";
+import { db } from "../db";
 
 type Props = {
   item: Listable;
@@ -46,14 +47,15 @@ export default async function RelatedContent({ item }: Props) {
   );
 }
 
-async function related(self: Listable, first: number): Promise<Listable[]> {
+function related(self: Listable, first: number): Listable[] {
   const ownTags = self.tagSet().tagNames();
   const urlPath = self.url().path();
 
-  const db = await getDb();
-
-  const content: SearchIndexRow[] = await db.all(`
-    SELECT slug, page_type, tags, title, page_rank FROM search_index`);
+  const content = db
+    .prepare<[], SearchIndexRow>(
+      `SELECT slug, page_type, tags, title, page_rank FROM search_index`
+    )
+    .all();
 
   const items: Listable[] = content
     .map((item) => {

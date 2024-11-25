@@ -1,8 +1,9 @@
-import { getDb } from "../search";
+import { SearchIndexRow } from "../search";
 import { Query } from "./GraphQLRoots";
 import { Linkable, Listable } from "./interfaces";
 import { SiteUrl } from "./SiteUrl";
 import * as Data from "../data";
+import { db } from "../db";
 
 /**
  * A tag that can be associated with items.
@@ -24,24 +25,8 @@ export class Tag implements Linkable {
    * The list of items that have this tag.
    * @gqlField
    */
-  async items(): Promise<Listable[]> {
-    const db = await getDb();
-    const rows = await db.all(
-      `
-  SELECT
-    search_index.slug,
-    search_index.page_type,
-    search_index.summary,
-    search_index.tags,
-    search_index.title,
-    search_index.summary_image_path,
-    search_index.date,
-    search_index.feed_id
-  FROM search_index
-  WHERE search_index.tags LIKE '%' || ? || '%'
-  ORDER BY page_rank DESC;`,
-      [this.name()]
-    );
+  items(): Listable[] {
+    const rows = ITEMS_WITH_TAG.all(this.name());
     return rows.map((row) => new Data.ListableSearchRow(row));
   }
 
@@ -50,3 +35,19 @@ export class Tag implements Linkable {
     return new Tag(args.name);
   }
 }
+
+const ITEMS_WITH_TAG = db.prepare<[string], SearchIndexRow>(
+  `
+SELECT
+search_index.slug,
+search_index.page_type,
+search_index.summary,
+search_index.tags,
+search_index.title,
+search_index.summary_image_path,
+search_index.date,
+search_index.feed_id
+FROM search_index
+WHERE search_index.tags LIKE '%' || ? || '%'
+ORDER BY page_rank DESC;`
+);
