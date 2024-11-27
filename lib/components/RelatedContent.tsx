@@ -49,12 +49,20 @@ export default async function RelatedContent({ item }: Props) {
 
 function related(self: Listable, first: number): Listable[] {
   const ownTags = self.tagSet().tagNames();
-  const queryFragment = ownTags
-    // For plural tags we can't use proper interpolation. So we filter out any
-    // non-alphabetic tags as a security precaution.
-    .filter((tag) => tag.match(/^[a-zA-Z]+$/))
-    .map((tag) => `(instr(tags, '${tag}') > 0)`)
-    .join(" + ");
+  // For plural tags we can't use proper interpolation. So we filter out any
+  // non-alphabetic tags as a security precaution.
+  const validTags = ownTags.filter((tag) => {
+    const isValid = tag.match(/^[a-zA-Z0-9]+$/);
+    if (!isValid) {
+      console.warn(`Invalid tag name: "${tag}"`);
+    }
+    return isValid;
+  });
+  const queryFragment =
+    validTags.length > 0
+      ? validTags.map((tag) => `(instr(tags, '${tag}') > 0)`).join(" + ")
+      : "1"; // Fallback to 1 to ensure valid SQL
+
   const query = sql`
     SELECT
       page_type,
