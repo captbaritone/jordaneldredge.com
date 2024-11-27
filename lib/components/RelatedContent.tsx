@@ -14,7 +14,7 @@ export default async function RelatedContent({ item }: Props) {
   if (!tags || tags.length === 0) {
     return null;
   }
-  const relatedItems = await related(item, 3);
+  const relatedItems = related(item, 3);
   if (relatedItems.length === 0) {
     return null;
   }
@@ -47,15 +47,15 @@ export default async function RelatedContent({ item }: Props) {
   );
 }
 
+const ALL_TAGS_ON_ALL_ITEMS = db.prepare<[], SearchIndexRow>(
+  `SELECT slug, page_type, tags, title, page_rank FROM search_index`
+);
+
 function related(self: Listable, first: number): Listable[] {
   const ownTags = self.tagSet().tagNames();
   const urlPath = self.url().path();
 
-  const content = db
-    .prepare<[], SearchIndexRow>(
-      `SELECT slug, page_type, tags, title, page_rank FROM search_index`
-    )
-    .all();
+  const content = ALL_TAGS_ON_ALL_ITEMS.all();
 
   const items: Listable[] = content
     .map((item) => {

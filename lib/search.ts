@@ -1,4 +1,3 @@
-import { Database } from "better-sqlite3";
 import * as Data from "./data";
 import { PageType } from "./data/interfaces";
 import { updateRank } from "./data/Ranking";
