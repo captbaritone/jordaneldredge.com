@@ -37,7 +37,7 @@ export class Note implements Indexable, Linkable, Listable {
     private _summary: string | undefined,
     private _date: string,
     private _lastModified: number,
-    private _status: Status = "Published"
+    private _status: Status = "Published",
   ) {}
 
   lastModified(): number {
@@ -214,7 +214,7 @@ export async function getAllNotes(): Promise<Note[]> {
         summary,
         date,
         lastUpdated,
-        status
+        status,
       );
     });
 
@@ -247,7 +247,7 @@ export async function getNoteBySlug(slug: string): Promise<Note> {
     title,
     summary,
     page.created_time,
-    lastUpdated
+    lastUpdated,
   );
 }
 
@@ -313,7 +313,7 @@ async function downloadImages(tree): Promise<void> {
           process.cwd(),
           "public",
           "notion-mirror",
-          pathname
+          pathname,
         );
 
         // If the file already exists:
@@ -333,7 +333,7 @@ async function downloadImages(tree): Promise<void> {
               })
               .catch((e) => {
                 console.error("Failed to fetch image", node.url, e);
-              })
+              }),
           );
         }
       }

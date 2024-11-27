@@ -3,7 +3,7 @@ import Link from "next/link.js";
 import { Listable } from "../data/interfaces";
 import { SearchIndexRow } from "../search";
 import * as Data from "../data";
-import { db } from "../db";
+import { db, sql } from "../db";
 
 type Props = {
   item: Listable;
@@ -47,48 +47,39 @@ export default async function RelatedContent({ item }: Props) {
   );
 }
 
-const ALL_TAGS_ON_ALL_ITEMS = db.prepare<[], SearchIndexRow>(
-  `SELECT slug, page_type, tags, title, page_rank FROM search_index`
-);
-
 function related(self: Listable, first: number): Listable[] {
   const ownTags = self.tagSet().tagNames();
-  const urlPath = self.url().path();
-
-  const content = ALL_TAGS_ON_ALL_ITEMS.all();
-
-  const items: Listable[] = content
-    .map((item) => {
-      // TODO: Could we do this tag comparisons (or at least an initial filter)
-      // in the DB? Probably not a big deal given the small number of posts, but
-      // it's kinda silly doing it here.
-      const otherTags = item.tags.split(" ");
-      const intersection = otherTags.filter((tag) =>
-        ownTags.includes(tag)
-      ).length;
-
-      const union = new Set([...ownTags, ...otherTags]).size;
-
-      return { overlap: intersection / union, item };
-    })
-    .filter((post) => post.overlap > 0)
-    .sort((a, b) => {
-      const overlapDiff = b.overlap - a.overlap;
-      if (overlapDiff !== 0) {
-        return overlapDiff;
-      }
-      // Use page_rank to break a tie
-      return b.item.page_rank - a.item.page_rank;
-    })
-    // Initial trim lets us only do the final path comparison on n+1 items.
-    .slice(0, first + 1)
-    .map(({ item }): Listable => {
-      return new Data.ListableSearchRow(item);
-    })
-    .filter((item) => {
-      return item.url().path() !== urlPath;
-    })
-    .slice(0, first);
-
-  return items;
+  const queryFragment = ownTags
+    // For plural tags we can't use proper interpolation. So we filter out any
+    // non-alphabetic tags as a security precaution.
+    .filter((tag) => tag.match(/^[a-zA-Z]+$/))
+    .map((tag) => `(instr(tags, '${tag}') > 0)`)
+    .join(" + ");
+  const query = sql`
+    SELECT
+      page_type,
+      slug,
+      title,
+      summary,
+      tags,
+      content,
+      DATE,
+      summary_image_path,
+      feed_id,
+      page_rank,
+      (${queryFragment}) AS tag_match_count
+    FROM
+      search_index
+    WHERE
+      feed_id != :feedId
+    ORDER BY
+      tag_match_count DESC,
+      page_rank DESC
+    LIMIT
+      :first;
+  `;
+  const rows = db
+    .prepare<{ first: number; feedId: string }, SearchIndexRow>(query)
+    .all({ first, feedId: self.feedId() });
+  return rows.map((item) => new Data.ListableSearchRow(item));
 }

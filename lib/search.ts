@@ -1,7 +1,7 @@
 import * as Data from "./data";
 import { PageType } from "./data/interfaces";
 import { updateRank } from "./data/Ranking";
-import { db } from "./db";
+import { db, sql } from "./db";
 
 export type SearchIndexRow = {
   page_type: PageType;
@@ -36,12 +36,21 @@ export async function reindex() {
 }
 
 const ALL_SEARCH_ENTRIES = db.prepare<[], { page_type: string; slug: string }>(
-  `SELECT slug, page_type FROM search_index;`
+  sql`
+    SELECT
+      slug,
+      page_type
+    FROM
+      search_index;
+  `,
 );
 
-const DELETE_ENTRY = db.prepare<{ slug: string; pageType: string }, void>(
-  `DELETE FROM search_index WHERE slug = :slug AND page_type = :pageType;`
-);
+const DELETE_ENTRY = db.prepare<{ slug: string; pageType: string }, void>(sql`
+  DELETE FROM search_index
+  WHERE
+    slug = :slug
+    AND page_type = :pageType;
+`);
 
 //
 function scrub(posts: Data.Post[], notes: Data.Note[]) {
@@ -67,8 +76,7 @@ function scrub(posts: Data.Post[], notes: Data.Note[]) {
   }
 }
 
-const SEARCH = db.prepare<{ query: string }, SearchIndexRow>(
-  `
+const SEARCH = db.prepare<{ query: string }, SearchIndexRow>(sql`
   SELECT
     search_index.slug,
     search_index.page_type,
@@ -78,17 +86,18 @@ const SEARCH = db.prepare<{ query: string }, SearchIndexRow>(
     search_index.summary_image_path,
     search_index.date,
     search_index.feed_id
-  FROM search_index_fts
-  LEFT JOIN search_index ON search_index.rowid = search_index_fts.rowid
-  WHERE search_index_fts MATCH (
-    'title:' || :query || '*' || 
-    ' OR content:' || :query || '*' || 
-    ' OR tags:' || :query || '*' || 
-    ' OR summary:' || :query || '*'
-  )
-  ORDER BY rank
-  LIMIT 20;`
-);
+  FROM
+    search_index_fts
+    LEFT JOIN search_index ON search_index.rowid = search_index_fts.rowid
+  WHERE
+    search_index_fts MATCH (
+      'title:' || :query || '*' || ' OR content:' || :query || '*' || ' OR tags:' || :query || '*' || ' OR summary:' || :query || '*'
+    )
+  ORDER BY
+    RANK
+  LIMIT
+    20;
+`);
 
 export function search(query: string): Array<Data.ListableSearchRow> {
   const rows = SEARCH.all({ query });
@@ -108,8 +117,7 @@ export function search(query: string): Array<Data.ListableSearchRow> {
   return rows.map((row) => getItem(row)).filter((item) => item != null);
 }
 
-const GET_ALL_BLOG_POSTS = db.prepare<[], SearchIndexRow>(
-  `
+const GET_ALL_BLOG_POSTS = db.prepare<[], SearchIndexRow>(sql`
   SELECT
     search_index.slug,
     search_index.page_type,
@@ -119,18 +127,20 @@ const GET_ALL_BLOG_POSTS = db.prepare<[], SearchIndexRow>(
     search_index.summary_image_path,
     search_index.date,
     search_index.feed_id
-  FROM search_index
-  WHERE search_index.page_type = 'post'
-  ORDER BY date DESC;`
-);
+  FROM
+    search_index
+  WHERE
+    search_index.page_type = 'post'
+  ORDER BY
+    DATE DESC;
+`);
 
 export function blogPosts(): Array<Data.ListableSearchRow> {
   const rows = GET_ALL_BLOG_POSTS.all();
   return rows.map((row) => new Data.ListableSearchRow(row));
 }
 
-const GET_ALL_NOTES = db.prepare<[], SearchIndexRow>(
-  `
+const GET_ALL_NOTES = db.prepare<[], SearchIndexRow>(sql`
   SELECT
     search_index.slug,
     search_index.page_type,
@@ -140,10 +150,13 @@ const GET_ALL_NOTES = db.prepare<[], SearchIndexRow>(
     search_index.summary_image_path,
     search_index.date,
     search_index.feed_id
-  FROM search_index
-  WHERE search_index.page_type = 'note'
-  ORDER BY date DESC;`
-);
+  FROM
+    search_index
+  WHERE
+    search_index.page_type = 'note'
+  ORDER BY
+    DATE DESC;
+`);
 
 export function notes(): Array<Data.ListableSearchRow> {
   const rows = GET_ALL_NOTES.all();
@@ -153,7 +166,14 @@ export function notes(): Array<Data.ListableSearchRow> {
 const GET_LAST_UPDATED = db.prepare<
   { feedId: string },
   { last_updated: number }
->("SELECT last_updated FROM search_index WHERE feed_id = :feedId");
+>(sql`
+  SELECT
+    last_updated
+  FROM
+    search_index
+  WHERE
+    feed_id = :feedId
+`);
 
 function needsReindexing(indexable: Data.Indexable) {
   const feedId = indexable.feedId();
@@ -175,29 +195,44 @@ const UPSERT_INDEX = db.prepare<{
   summaryImagePath: string | undefined;
   feedId: string;
   lastUpdated: number;
-}>(
-  `INSERT INTO search_index (
-  page_type,
-  title,
-  summary,
-  tags,
-  content,
-  slug,
-  date,
-  summary_image_path,
-  feed_id,
-  last_updated
-) VALUES (:pageType, :title, :summary, :tags, :content, :slug, :date, :summaryImagePath, :feedId, :lastUpdated) ON CONFLICT(page_type, slug) 
- DO UPDATE SET
-  title = :title,
-  summary = :summary,
-  tags = :tags,
-  content = :content,
-  date = :date,
-  summary_image_path = :summaryImagePath,
-  feed_id = :feedId,
-  last_updated = :lastUpdated;`
-);
+}>(sql`
+  INSERT INTO
+    search_index (
+      page_type,
+      title,
+      summary,
+      tags,
+      content,
+      slug,
+      DATE,
+      summary_image_path,
+      feed_id,
+      last_updated
+    )
+  VALUES
+    (
+      :pageType,
+      :title,
+      :summary,
+      :tags,
+      :content,
+      :slug,
+      :date,
+      :summaryImagePath,
+      :feedId,
+      :lastUpdated
+    )
+  ON CONFLICT (page_type, slug) DO UPDATE
+  SET
+    title = :title,
+    summary = :summary,
+    tags = :tags,
+    content = :content,
+    DATE = :date,
+    summary_image_path = :summaryImagePath,
+    feed_id = :feedId,
+    last_updated = :lastUpdated;
+`);
 
 export async function indexEntry(indexable: Data.Indexable) {
   if (!needsReindexing(indexable)) {

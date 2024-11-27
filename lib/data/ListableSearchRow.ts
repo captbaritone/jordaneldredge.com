@@ -4,7 +4,7 @@ import { SiteUrl } from "./SiteUrl";
 import { TagSet } from "./TagSet";
 import { Markdown } from "./Markdown";
 import { getNoteBySlug } from "./Note";
-import { db } from "../db";
+import { db, sql } from "../db";
 
 export default class ListableSearchRow implements Listable, Content {
   _item: SearchIndexRow;
@@ -56,9 +56,15 @@ export default class ListableSearchRow implements Listable, Content {
 
   static getNoteBySlug(slug: string) {
     const row = db
-      .prepare<[string], SearchIndexRow>(
-        "SELECT * FROM search_index WHERE page_type = 'note' AND slug = ?"
-      )
+      .prepare<[string], SearchIndexRow>(sql`
+        SELECT
+          *
+        FROM
+          search_index
+        WHERE
+          page_type = 'note'
+          AND slug = ?
+      `)
       .get(slug);
     if (row == null) {
       return getNoteBySlug(slug);
@@ -67,18 +73,19 @@ export default class ListableSearchRow implements Listable, Content {
   }
 }
 
-const ALL_ITEMS_RANKED = db.prepare<[], SearchIndexRow>(
-  `
-SELECT
-content,
-tags,
-feed_id,
-page_type,
-slug,
-summary,
-title, 
-summary_image_path,
-date
-FROM search_index
-ORDER BY page_rank DESC`
-);
+const ALL_ITEMS_RANKED = db.prepare<[], SearchIndexRow>(sql`
+  SELECT
+    content,
+    tags,
+    feed_id,
+    page_type,
+    slug,
+    summary,
+    title,
+    summary_image_path,
+    DATE
+  FROM
+    search_index
+  ORDER BY
+    page_rank DESC
+`);

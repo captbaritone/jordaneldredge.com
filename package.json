@@ -62,7 +62,6 @@
       ]
     ]
   },
-  "prettier": {},
   "devDependencies": {
     "@types/better-sqlite3": "^7.6.12",
     "@types/react": "^18.2.55",
@@ -74,6 +73,9 @@
     "jest": "^27.4.3",
     "node-fetch": "2",
     "patch-package": "^6.5.0",
+    "prettier": "^3.4.1",
+    "prettier-plugin-embed": "^0.4.15",
+    "prettier-plugin-sql": "^0.18.1",
     "rehype-parse": "^8.0.3",
     "remark-lint-mdash-style": "^1.1.1",
     "typescript": "5.5.3",

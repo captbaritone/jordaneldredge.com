@@ -2,7 +2,7 @@ import "dotenv/config";
 import { parse } from "./markdownUtils";
 import { visit } from "unist-util-visit";
 import Graph from "../pageRank";
-import { db } from "../db";
+import { db, sql } from "../db";
 
 // External links are used to seed the graph. Ideally we could find a way to
 // move these to metadata in the individual posts.
@@ -34,20 +34,24 @@ const ALL_ENTRIES = db.prepare<
     feed_id: string;
     tags: string;
   }
->(
-  `
-SELECT
-content,
-tags,
-feed_id,
-page_type,
-slug
-FROM search_index`
-);
+>(sql`
+  SELECT
+    content,
+    tags,
+    feed_id,
+    page_type,
+    slug
+  FROM
+    search_index
+`);
 
-const UPDATE_RANK = db.prepare(
-  "UPDATE search_index SET page_rank = ? WHERE feed_id = ?"
-);
+const UPDATE_RANK = db.prepare(sql`
+  UPDATE search_index
+  SET
+    page_rank = ?
+  WHERE
+    feed_id = ?
+`);
 
 /**
  * Uses a weighted pagerank algorithm to assign a page_rank score to each entry
