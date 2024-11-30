@@ -17,17 +17,17 @@ export type SearchIndexRow = {
   page_rank: number;
 };
 
-export async function reindex() {
-  console.log("REINDEX");
+export async function reindex({ force = false }: { force: boolean }) {
+  console.log("REINDEX", { force });
 
   const posts = Data.getAllPosts();
-  const notes = await Data.getAllNotes();
+  const notes = await Data.getAllNotesFromNotion();
 
   const indexable: Data.Indexable[] = [...posts, ...notes];
 
   for (const entry of indexable) {
     if (entry.showInLists()) {
-      await indexEntry(entry);
+      await indexEntry(entry, { force });
     }
   }
 
@@ -234,8 +234,11 @@ const UPSERT_INDEX = db.prepare<{
     last_updated = :lastUpdated;
 `);
 
-export async function indexEntry(indexable: Data.Indexable) {
-  if (!needsReindexing(indexable)) {
+export async function indexEntry(
+  indexable: Data.Indexable,
+  { force = false }: { force: boolean },
+) {
+  if (!needsReindexing(indexable) && !force) {
     console.log("Skipping indexing", indexable.slug());
     return;
   }

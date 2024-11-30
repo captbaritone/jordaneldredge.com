@@ -98,7 +98,7 @@ export class Note implements Indexable, Linkable, Listable {
         summaryImage = node.imageProps.cachedPath;
       }
       if (node.type === "leafDirective" && node.name === "youtube") {
-        summaryImage = `https://img.youtube.com/vi/${node.attributes.token}/hqdefault.jpg`;
+        summaryImage = `/youtube/${node.attributes.token}.jpg`;
       }
     });
 
@@ -157,16 +157,6 @@ export class Note implements Indexable, Linkable, Listable {
   showInLists(): boolean {
     return this._status === "Published";
   }
-
-  /** @gqlField */
-  static async getNoteBySlug(_: Query, args: { slug: string }): Promise<Note> {
-    return getNoteBySlug(args.slug);
-  }
-
-  /** @gqlField  */
-  static async getAllNotes(_: Query): Promise<Note[]> {
-    return getAllNotes();
-  }
 }
 
 function applyDirectives(ast: Node) {
@@ -188,7 +178,7 @@ function applyDirectives(ast: Node) {
   });
 }
 
-export async function getAllNotes(): Promise<Note[]> {
+export async function getAllNotesFromNotion(): Promise<Note[]> {
   const metadata = await getMetadata();
 
   const rows: PageObjectResponse[] = metadata.rowPosts;
@@ -224,6 +214,9 @@ export async function getAllNotes(): Promise<Note[]> {
   return rowNotes;
 }
 
+/**
+ * @deprecated We should prefer to get this from the DB instead of Notion
+ */
 export async function getNoteBySlug(slug: string): Promise<Note> {
   const { slugToId } = await getMetadata();
 
@@ -305,6 +298,36 @@ function expectTags(page: PageObjectResponse): string[] {
 async function downloadImages(tree): Promise<void> {
   const promises: Promise<unknown>[] = [];
   visit(tree, (node, index, parent) => {
+    if (node.type === "leafDirective" && node.name === "youtube") {
+      const summaryImage = `https://img.youtube.com/vi/${node.attributes.token}/hqdefault.jpg`;
+      const destination = path.join(
+        process.cwd(),
+        "public",
+        "youtube",
+        `${node.attributes.token}.jpg`,
+      );
+
+      if (!fs.existsSync(destination)) {
+        fs.mkdirSync(path.dirname(destination), { recursive: true });
+        promises.push(
+          fetch(summaryImage, { cache: "no-store" })
+            .then(async ({ body, ok }) => {
+              if (!ok) {
+                console.error("Failed to fetch image", summaryImage);
+                return;
+              }
+              // Save file to destination
+              const dest = fs.createWriteStream(destination);
+              await finished(Readable.fromWeb(body).pipe(dest));
+            })
+            .catch((e) => {
+              console.error("Failed to fetch image", summaryImage, e);
+            }),
+        );
+      }
+
+      return;
+    }
     if (node.type === "image") {
       const url = new URL(node.url);
       if (url.hostname.endsWith("amazonaws.com")) {
