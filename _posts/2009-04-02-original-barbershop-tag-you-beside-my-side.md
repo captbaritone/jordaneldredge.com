@@ -1,7 +1,7 @@
 ---
 title: "Original Barbershop Tag: You Beside My Side"
 summary: "I wrote a barbershop tag for my girlfriend Chelsea."
-tag: [music, barbershop, multitrack, chelsea, mp3, pdf, youtube, lilypond]
+tags: [music, barbershop, multitrack, chelsea, mp3, pdf, youtube, lilypond]
 ---
 
 A few days ago, I wrote a barbershop tag for my girlfriend [Chelsea](http://www.chelseahollow.com).
