@@ -11,11 +11,11 @@ notion_id: 144376e2-3751-80de-abf0-ec0b005d6d26
 summary_image: >-
   /notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/8b644494-12b4-4aa3-8e6f-fd02f95341bd/Screenshot_2024-11-19_at_4.39.04_PM.png
 ---
-![](/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/8b644494-12b4-4aa3-8e6f-fd02f95341bd/Screenshot_2024-11-19_at_4.39.04_PM.png)
-
 _Discussed on_ [_Hacker News_](https://news.ycombinator.com/item?id=42215438)
 
 ---
+
+![](/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/8b644494-12b4-4aa3-8e6f-fd02f95341bd/Screenshot_2024-11-19_at_4.39.04_PM.png)
 
 _TL;DR several years ago I got a proof of concept working where I was able to render highly interactive “modern” Winamp skins in the browser by reverse engineering Maki byte code and implementing an interpreter for it in JavaScript. You can try the_ [_proof of concept_](https://webamp.org/modern/) _in your browser._
 

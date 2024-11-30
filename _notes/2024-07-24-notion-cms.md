@@ -24,7 +24,7 @@ Markdown+Git was to heavy-weight for this. I wanted something I could post to fr
 
 I was already a heavy user of Notion for note taking, todo lists and other personal projects, so decide to try using Notion to author posts and use their API to dynamically pull them into my website.
 
-It ended up working really well! I’ve written [over 90 of these notes](https://jordaneldredge.com/notes/) of varying lengths since I added the feature in October of 2022. I credit this to both having a lower friction way to post, and also carving out a separate section on my site where I clarify that these are less formal posts. That game me permission to do less proof reading (I’m terribly prone to typos) and just post. This is Twitter, not Medium!
+It ended up working really well! I’ve written [over 90 of these notes](https://jordaneldredge.com/notes/) of varying lengths since I added the feature in October of 2022. I credit this to both having a lower friction way to post, and also carving out a separate section on my site where I clarify that these are less formal posts. That gave me permission to do less proof reading (I’m terribly prone to typos) and just post. This is Twitter, not Medium!
 
 Since I’ve found the approach so nice, I figured others might be doing something similar, so I wanted to share how I’ve built it so far.
 
