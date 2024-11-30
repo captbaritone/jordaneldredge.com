@@ -22,6 +22,7 @@ const EXTERNAL_LINKS = {
   "/blog/speeding-up-winamps-music-visualizer-with-webassembly": [
     "https://news.ycombinator.com/item?id=26675526",
   ],
+  "/notes/webamp-modern": ["https://news.ycombinator.com/item?id=42215438"],
   "/notes/winamp-sqlite": ["https://news.ycombinator.com/item?id=31703874"],
 };
 
