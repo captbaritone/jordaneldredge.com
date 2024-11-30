@@ -49,25 +49,39 @@ export default class ListableSearchRow implements Listable, Content {
     }
   }
 
+  metadata(): Object {
+    return JSON.parse(this._item.metadata);
+  }
+
   static async allItems() {
     const rows = ALL_ITEMS_RANKED.all();
     return rows.map((row) => new ListableSearchRow(row));
   }
 
   static getNoteBySlug(slug: string) {
+    return (
+      ListableSearchRow.getByTypeAndSlug("note", slug) || getNoteBySlug(slug)
+    );
+  }
+
+  static getPostBySlug(slug: string) {
+    return ListableSearchRow.getByTypeAndSlug("post", slug);
+  }
+
+  static getByTypeAndSlug(pageType: string, slug: string) {
     const row = db
-      .prepare<[string], SearchIndexRow>(sql`
+      .prepare<{ pageType: string; slug: string }, SearchIndexRow>(sql`
         SELECT
           *
         FROM
           search_index
         WHERE
-          page_type = 'note'
-          AND slug = ?
+          page_type = :pageType
+          AND slug = :slug
       `)
-      .get(slug);
+      .get({ pageType, slug });
     if (row == null) {
-      return getNoteBySlug(slug);
+      return null;
     }
     return new ListableSearchRow(row);
   }
@@ -83,6 +97,7 @@ const ALL_ITEMS_RANKED = db.prepare<[], SearchIndexRow>(sql`
     summary,
     title,
     summary_image_path,
+    metadata,
     DATE
   FROM
     search_index

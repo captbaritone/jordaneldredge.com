@@ -73,6 +73,7 @@ function related(self: Listable, first: number): Listable[] {
       content,
       DATE,
       summary_image_path,
+      metadata,
       feed_id,
       page_rank,
       (${queryFragment}) AS tag_match_count

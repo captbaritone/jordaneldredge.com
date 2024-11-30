@@ -5,5 +5,8 @@ main();
 
 async function main() {
   const force = process.argv.includes("--force");
-  await Search.reindex({ force });
+  await Search.reindex({
+    force,
+    predicate: (indexable) => indexable.pageType === "post",
+  });
 }

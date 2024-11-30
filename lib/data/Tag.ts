@@ -45,9 +45,10 @@ search_index.summary,
 search_index.tags,
 search_index.title,
 search_index.summary_image_path,
+search_index.metadata,
 search_index.date,
 search_index.feed_id
 FROM search_index
 WHERE search_index.tags LIKE '%' || :tag || '%'
-ORDER BY page_rank DESC;`
+ORDER BY page_rank DESC;`,
 );

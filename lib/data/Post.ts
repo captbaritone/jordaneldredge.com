@@ -21,10 +21,14 @@ export class Post implements Indexable, Linkable, Listable {
   pageType = "post" as const;
   constructor(
     private _content: string,
-    private metadata: any,
+    private _metadata: any,
     private postInfo: PostInfo,
-    private _lastModified: number
+    private _lastModified: number,
   ) {}
+
+  metadata(): Object {
+    return this._metadata;
+  }
 
   lastModified(): number {
     return this._lastModified;
@@ -40,7 +44,7 @@ export class Post implements Indexable, Linkable, Listable {
   }
 
   contentWithHeader(): string {
-    const yamlMetadata = yaml.dump(this.metadata);
+    const yamlMetadata = yaml.dump(this._metadata);
     return `---\n${yamlMetadata}---${this._content}`;
   }
 
@@ -51,7 +55,7 @@ export class Post implements Indexable, Linkable, Listable {
 
   /** @gqlField */
   title(): string {
-    return this.metadata.title;
+    return this._metadata.title;
   }
   /** A unique name for the Post. Used in the URL and for refetching. */
   slug(): string {
@@ -65,19 +69,19 @@ export class Post implements Indexable, Linkable, Listable {
 
   /** @gqlField */
   summary(): string | undefined {
-    if (!this.metadata.summary) {
+    if (!this._metadata.summary) {
       throw new Error(`No summary found for post ${this.url().path()}`);
     }
-    return this.metadata.summary;
+    return this._metadata.summary;
   }
 
   /** @gqlField */
   async summaryImage(): Promise<string | undefined> {
-    if (this.metadata.summary_image) {
-      return `${this.metadata.summary_image}`;
+    if (this._metadata.summary_image) {
+      return `${this._metadata.summary_image}`;
     }
-    if (this.metadata.youtube_slug) {
-      return `https://img.youtube.com/vi/${this.metadata.youtube_slug}/hqdefault.jpg`;
+    if (this._metadata.youtube_slug) {
+      return `https://img.youtube.com/vi/${this._metadata.youtube_slug}/hqdefault.jpg`;
     }
     return undefined;
   }
@@ -88,23 +92,23 @@ export class Post implements Indexable, Linkable, Listable {
 
   /** @gqlField */
   canonicalUrl(): string | undefined {
-    return this.metadata.canonical_url;
+    return this._metadata.canonical_url;
   }
   githubCommentsIssueId(): string | undefined {
-    return this.metadata.github_comments_issue_id;
+    return this._metadata.github_comments_issue_id;
   }
   archive(): boolean {
-    return this.metadata.archive || false;
+    return this._metadata.archive || false;
   }
   draft(): boolean {
-    return this.metadata.draft || false;
+    return this._metadata.draft || false;
   }
   showInLists(): boolean {
     return !this.archive() && !this.draft();
   }
   /** @gqlField */
   tagSet(): TagSet {
-    return TagSet.fromTagStrings(this.metadata.tags);
+    return TagSet.fromTagStrings(this._metadata.tags);
   }
 
   relatedPosts(first: number): Post[] {
@@ -112,7 +116,7 @@ export class Post implements Indexable, Linkable, Listable {
       .tags()
       .map((tag) => tag.name());
     const otherPosts = getAllPosts().filter(
-      (post) => post.showInLists() && post.slug() !== this.slug()
+      (post) => post.showInLists() && post.slug() !== this.slug(),
     );
     const postsWithOverlap = otherPosts
       .map((post) => {
@@ -121,7 +125,7 @@ export class Post implements Indexable, Linkable, Listable {
           .tags()
           .map((tag) => tag.name());
         const intersection = otherTags.filter((tag) =>
-          ownTags.includes(tag)
+          ownTags.includes(tag),
         ).length;
 
         const union = new Set([...ownTags, ...otherTags]).size;
@@ -166,7 +170,7 @@ export const getSlugPostMap = memoize(
       map[slug] = { fileName, slug, date };
     }
     return map;
-  }
+  },
 );
 
 export const getPostBySlug = memoize(
@@ -190,7 +194,7 @@ export const getPostBySlug = memoize(
     const lastUpdated = stats.mtimeMs;
 
     return new Post(content, data, postInfo, lastUpdated);
-  }
+  },
 );
 
 export const getAllPosts = memoize(
@@ -201,5 +205,5 @@ export const getAllPosts = memoize(
       // sort posts by date in descending order
       .sort((post1, post2) => (post1.date() < post2.date() ? 1 : -1));
     return posts;
-  }
+  },
 );

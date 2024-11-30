@@ -15,18 +15,25 @@ export type SearchIndexRow = {
   summary_image_path: string;
   feed_id: string;
   page_rank: number;
+  metadata: string;
 };
 
-export async function reindex({ force = false }: { force: boolean }) {
+export async function reindex({
+  force = false,
+  predicate = (indexable: Data.Indexable) => true,
+}: {
+  force?: boolean;
+  predicate?: (indexable: Data.Indexable) => boolean;
+}) {
   console.log("REINDEX", { force });
 
-  const posts = Data.getAllPosts();
-  const notes = await Data.getAllNotesFromNotion();
+  const posts: Data.Post[] = Data.getAllPosts();
+  const notes: Data.Note[] = await Data.getAllNotesFromNotion();
 
   const indexable: Data.Indexable[] = [...posts, ...notes];
 
   for (const entry of indexable) {
-    if (entry.showInLists()) {
+    if (entry.showInLists() && predicate(entry)) {
       await indexEntry(entry, { force });
     }
   }
@@ -85,6 +92,7 @@ const SEARCH = db.prepare<{ query: string }, SearchIndexRow>(sql`
     search_index.title,
     search_index.summary_image_path,
     search_index.date,
+    search_index.metadata,
     search_index.feed_id
   FROM
     search_index_fts
@@ -125,6 +133,7 @@ const GET_ALL_BLOG_POSTS = db.prepare<[], SearchIndexRow>(sql`
     search_index.tags,
     search_index.title,
     search_index.summary_image_path,
+    search_index.metadata,
     search_index.date,
     search_index.feed_id
   FROM
@@ -148,6 +157,7 @@ const GET_ALL_NOTES = db.prepare<[], SearchIndexRow>(sql`
     search_index.tags,
     search_index.title,
     search_index.summary_image_path,
+    search_index.metadata,
     search_index.date,
     search_index.feed_id
   FROM
@@ -195,6 +205,7 @@ const UPSERT_INDEX = db.prepare<{
   summaryImagePath: string | undefined;
   feedId: string;
   lastUpdated: number;
+  metadata: string;
 }>(sql`
   INSERT INTO
     search_index (
@@ -207,7 +218,8 @@ const UPSERT_INDEX = db.prepare<{
       DATE,
       summary_image_path,
       feed_id,
-      last_updated
+      last_updated,
+      metadata
     )
   VALUES
     (
@@ -220,7 +232,8 @@ const UPSERT_INDEX = db.prepare<{
       :date,
       :summaryImagePath,
       :feedId,
-      :lastUpdated
+      :lastUpdated,
+      :metadata
     )
   ON CONFLICT (page_type, slug) DO UPDATE
   SET
@@ -231,7 +244,8 @@ const UPSERT_INDEX = db.prepare<{
     DATE = :date,
     summary_image_path = :summaryImagePath,
     feed_id = :feedId,
-    last_updated = :lastUpdated;
+    last_updated = :lastUpdated,
+    metadata = :metadata
 `);
 
 export async function indexEntry(
@@ -256,6 +270,7 @@ export async function indexEntry(
   const date = indexable.date();
   const summaryImagePath = await indexable.summaryImage();
   const now = Date.now();
+  const metadata = stripStructuredMetadata(indexable.metadata());
   UPSERT_INDEX.run({
     pageType: indexable.pageType,
     title,
@@ -267,5 +282,20 @@ export async function indexEntry(
     summaryImagePath,
     feedId,
     lastUpdated: now,
+    metadata: JSON.stringify(metadata),
   });
+}
+
+function stripStructuredMetadata(metadata: {
+  title?: string;
+  summary?: string;
+  summary_image?: string;
+  tags?: string;
+}): Object {
+  const copy = { ...metadata };
+  delete copy.title;
+  delete copy.summary_image;
+  delete copy.summary;
+  delete copy.tags;
+  return copy;
 }

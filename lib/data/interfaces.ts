@@ -19,6 +19,7 @@ export interface Indexable {
   feedId(): string;
   showInLists(): boolean;
   lastModified(): number;
+  metadata(): Object;
 }
 
 /**
@@ -50,6 +51,7 @@ export interface Listable extends Linkable {
    * on the site and also stable for a given pice of content.
    */
   feedId(): string;
+  metadata(): Object;
 }
 
 /**

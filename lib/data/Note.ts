@@ -4,7 +4,6 @@ import { Markdown } from "./Markdown";
 import { Indexable, Linkable, Listable } from "./interfaces.js";
 import yaml from "js-yaml";
 import { SiteUrl } from "./SiteUrl";
-import { Query } from "./GraphQLRoots";
 import { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import {
   blocksToMarkdownAst,
@@ -156,6 +155,12 @@ export class Note implements Indexable, Linkable, Listable {
 
   showInLists(): boolean {
     return this._status === "Published";
+  }
+
+  metadata(): Object {
+    return {
+      notion_id: this.notionId(),
+    };
   }
 }
 
