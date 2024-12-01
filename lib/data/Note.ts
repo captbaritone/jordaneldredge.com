@@ -1,16 +1,14 @@
 import path from "node:path";
 import fs from "node:fs";
 import { Markdown } from "./Markdown";
-import { Indexable, Linkable, Listable } from "./interfaces.js";
+import { Indexable } from "./interfaces.js";
 import yaml from "js-yaml";
 import { SiteUrl } from "./SiteUrl";
 import { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import {
   blocksToMarkdownAst,
   getMetadata,
-  METADATA_DATABASE_ID,
   retrieveBlocks,
-  retrievePage,
 } from "../services/notion";
 import { TagSet } from "./TagSet";
 import { Node } from "unist";
@@ -26,7 +24,7 @@ const YOUTUBE_REGEX =
  * A less formal post. Usually a quite observation, shared link or anecdote.
  * @gqlType
  */
-export class Note implements Indexable, Linkable, Listable {
+export class Note implements Indexable {
   pageType = "note" as const;
   constructor(
     private id: string,
@@ -217,36 +215,6 @@ export async function getAllNotesFromNotion(): Promise<Note[]> {
     return new Date(a.date()).getTime() > new Date(b.date()).getTime() ? -1 : 1;
   });
   return rowNotes;
-}
-
-/**
- * @deprecated We should prefer to get this from the DB instead of Notion
- */
-export async function getNoteBySlug(slug: string): Promise<Note> {
-  const { slugToId } = await getMetadata();
-
-  const id = slugToId[slug] ?? slug;
-  const page = await retrievePage(id);
-  if (
-    page.parent.type !== "database_id" ||
-    page.parent.database_id !== METADATA_DATABASE_ID
-  ) {
-    throw new Error("Invalid page ID.");
-  }
-
-  const title = expectTitle(page, slug);
-  const summary = expectSummary(page);
-  const tags = expectTags(page);
-  const lastUpdated = new Date(page.last_edited_time).getTime();
-  return new Note(
-    page.id,
-    slug,
-    tags,
-    title,
-    summary,
-    page.created_time,
-    lastUpdated,
-  );
 }
 
 type Status = "Published" | "Archived" | "Draft";

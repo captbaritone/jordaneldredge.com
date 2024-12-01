@@ -19,7 +19,7 @@ export class Page {
   constructor(
     private _slug: string,
     private _content: string,
-    private metadata: any
+    private metadata: any,
   ) {}
 
   /** @gqlField */
@@ -46,14 +46,6 @@ export class Page {
   tagSet(): TagSet {
     return new TagSet([]);
   }
-  /** @gqlField */
-  static async getPageBySlug(_: Query, args: { slug: string }): Promise<Page> {
-    return getPageBySlug(args.slug);
-  }
-  /** @gqlField */
-  static async getAllPages(_: Query): Promise<Page[]> {
-    return getAllPages();
-  }
 }
 
 export const getAllPages = memoize(
@@ -72,7 +64,7 @@ export const getAllPages = memoize(
         }
         return getPageBySlug(slug);
       });
-  }
+  },
 );
 
 export const getPageBySlug = memoize(
@@ -88,5 +80,5 @@ export const getPageBySlug = memoize(
     });
 
     return new Page(slug, content, data);
-  }
+  },
 );

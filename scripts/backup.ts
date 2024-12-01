@@ -2,13 +2,15 @@ import "dotenv/config";
 import path from "node:path";
 import fs from "node:fs";
 import * as Data from "../lib/data";
+import * as Search from "../lib/search";
 
 main();
 
 async function main() {
+  const force = process.argv.includes("--force");
   console.log("Looking for notes to backup");
   // We don't want regular users to be able to trigger a backup
-  const notes = await Data.getAllNotesFromNotion();
+  const notes = Search.notes();
   console.log(`Found ${notes.length} notes to backup`);
   for (const note of notes) {
     const fileName = note.serializedFilename();
@@ -17,9 +19,9 @@ async function main() {
     const filePath = joinNotesPath(fileName);
     if (fs.existsSync(filePath)) {
       const stat = fs.statSync(filePath);
-      if (stat.mtimeMs >= lastModified) {
+      if (stat.mtimeMs >= lastModified && !force) {
         console.log("Skipping note", fileName);
-        continue;
+        // continue;
       }
     }
     console.log("Backing up note", fileName);

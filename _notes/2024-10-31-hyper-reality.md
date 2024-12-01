@@ -7,7 +7,7 @@ summary: >-
   This incredible 2016 video presents a dystopian, visually opulent, and
   depressingly believable augmented reality future. 
 notion_id: 130376e2-3751-807e-ad14-dcc3a91737b4
-summary_image: https://img.youtube.com/vi/YJg02ivYzSs/hqdefault.jpg
+summary_image: /youtube/YJg02ivYzSs.jpg
 ---
 This incredible 2016 video presents a dystopian, visually opulent, and depressingly believable augmented reality future.
 

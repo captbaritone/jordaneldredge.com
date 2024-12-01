@@ -1,8 +1,14 @@
-import * as Data from "../../../lib/data";
+import {
+  ListableSearchRow,
+  getAllPostsFromFileSystem,
+} from "../../../lib/data";
 import ContentPage from "../../../lib/components/ContentPage";
 
 export async function generateMetadata({ params }) {
-  const post = Data.getPostBySlug(params.slug);
+  const post = ListableSearchRow.getPostBySlug(params.slug);
+  if (post == null) {
+    return {};
+  }
   const summaryImage = await post.summaryImage();
   return {
     title: post.title(),
@@ -24,11 +30,9 @@ export async function generateMetadata({ params }) {
 }
 
 export async function generateStaticParams() {
-  const posts = Data.getAllPosts();
+  const posts = getAllPostsFromFileSystem();
   return posts.map((post) => {
-    return {
-      slug: post.slug(),
-    };
+    return { slug: post.slug() };
   });
 }
 
@@ -36,10 +40,11 @@ export async function generateStaticParams() {
 export const dynamicParams = false;
 
 export default async function Post({ params }) {
-  const post = Data.getPostBySlug(params.slug);
-
-  const ast = await post.content().ast();
-  // const typoLink = `https://github.com/captbaritone/jordaneldredge.com/blob/master/_posts/${post.filename}`;
+  const post = ListableSearchRow.getPostBySlug(params.slug);
+  if (post == null) {
+    // 404
+    return null;
+  }
   const issueId = post.githubCommentsIssueId();
   return <ContentPage item={post} issueId={issueId} />;
 }

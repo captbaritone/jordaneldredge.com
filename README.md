@@ -33,3 +33,20 @@ I've been curious about [PageRank](https://en.wikipedia.org/wiki/PageRank) for a
 ### Backups
 
 While Notion is very convenient for writing and editing content, I wanted an editor agnostic backup of my content. I liked how the "markdown file in a git repo" model provided a format that was easy to replicate to multiple locations (GitHub, a server, my laptop), was easy to inspect, and also provided an auditable (and revertible) history. To provide those same benefits for Notion content, I've implemented a backup system that fetches all Notion pages and stores them in a git repository. This is done via the `pnpm run backup` script.
+
+### Diagram
+
+```mermaid
+graph TD
+    FILE_SYSTEM[File System] -->|Markdown Parsing| DB[Database]
+    DB -->|Static Rendering| BLOG_LIST[Blog List]
+    DB -->|Static Rendering| BLOG_PAGE[Blog Page]
+
+    NOTION[Notion] -->|Notion API| DB
+    DB --> SEARCH[Search UI]
+    DB --> NOTES_LIST[Notes List]
+    DB --> TAG_LIST[Tag List]
+    DB --> NOTE_PAGE[Note Page]
+    DB -->|Notes Only| BACKUP[Backup of Notes]
+    DB -->|PageRank| DB
+```

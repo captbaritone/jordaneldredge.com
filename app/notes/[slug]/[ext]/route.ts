@@ -1,5 +1,5 @@
 import { NextRequest } from "next/server";
-import { getNoteBySlug } from "../../../../lib/data";
+import { ListableSearchRow } from "../../../../lib/data";
 
 export const revalidate = 600;
 export const dynamic = "force-static";
@@ -11,8 +11,11 @@ export async function GET(_: NextRequest, { params }) {
   const slug = fullSlug.slice(0, fullSlug.length - ext.length - 1);
   switch (ext) {
     case "md": {
-      const note = await getNoteBySlug(slug);
-      const content = await note.contentWithHeader();
+      const note = ListableSearchRow.getNoteBySlug(slug);
+      if (note == null) {
+        return new Response("Not found", { status: 404 });
+      }
+      const content = note.contentWithHeader();
       return new Response(content);
     }
     default:

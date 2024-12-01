@@ -1,6 +1,6 @@
 import { SearchIndexRow } from "../search";
 import { Query } from "./GraphQLRoots";
-import { Linkable, Listable } from "./interfaces";
+import { Linkable } from "./interfaces";
 import { SiteUrl } from "./SiteUrl";
 import * as Data from "../data";
 import { db } from "../db";
@@ -25,7 +25,7 @@ export class Tag implements Linkable {
    * The list of items that have this tag.
    * @gqlField
    */
-  items(): Listable[] {
+  items(): Data.ListableSearchRow[] {
     const rows = ITEMS_WITH_TAG.all({ tag: this.name() });
     return rows.map((row) => new Data.ListableSearchRow(row));
   }

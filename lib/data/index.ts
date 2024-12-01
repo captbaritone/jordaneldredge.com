@@ -5,9 +5,9 @@
 import ListableSearchRow from "./ListableSearchRow";
 
 export { getAllPages, getPageBySlug, Page } from "./Page";
-export { getAllPosts, getPostBySlug, Post } from "./Post";
-export { getAllNotesFromNotion, getNoteBySlug, Note } from "./Note";
+export { getAllPostsFromFileSystem, Post } from "./Post";
+export { getAllNotesFromNotion, Note } from "./Note";
 export { getSingerResume } from "./SingerResume";
 export type { ResumeEntry } from "./SingerResume";
-export type { Indexable, Listable, Content } from "./interfaces";
+export type { Indexable } from "./interfaces";
 export { ListableSearchRow };

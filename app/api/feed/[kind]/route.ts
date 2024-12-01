@@ -53,7 +53,7 @@ export async function GET(request: NextRequest, { params }) {
   }
 }
 
-async function buildRssFeedLazy(allPosts: Data.Listable[]) {
+async function buildRssFeedLazy(allPosts: Data.ListableSearchRow[]) {
   const siteURL = "https://jordaneldredge.com";
   const author = {
     name: "Jordan Eldredge",
@@ -101,7 +101,7 @@ async function buildRssFeedLazy(allPosts: Data.Listable[]) {
         date: new Date(post.date()),
         image: summaryImage,
       };
-    })
+    }),
   );
   for (const item of items) {
     feed.addItem(item);

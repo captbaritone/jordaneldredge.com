@@ -4,7 +4,7 @@ tags:
   - share
 summary: Sharing a YouTube video of an awesome ROM hacking rescue mission
 notion_id: 15d902f9-7627-4722-9e64-c834b392fda8
-summary_image: https://img.youtube.com/vi/XqgmR1Hqvbk/hqdefault.jpg
+summary_image: /youtube/XqgmR1Hqvbk.jpg
 ---
 I love this YouTube video where a Pokémon gameboy reverse engineering hacker helps extract a Pokémon which this guy accidentally, and tragically, corrupted as a seven year old.
 

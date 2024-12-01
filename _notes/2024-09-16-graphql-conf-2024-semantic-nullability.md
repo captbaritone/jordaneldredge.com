@@ -11,7 +11,7 @@ summary: >-
   error handling and its implications for potentially fundamentally solving the
   problem of pervasive nullability in GraphQL
 notion_id: 605c4506-27cf-4162-850d-e435f429c52b
-summary_image: https://img.youtube.com/vi/kVYlplb1gKk/hqdefault.jpg
+summary_image: /youtube/kVYlplb1gKk.jpg
 ---
 At this year’s GraphQL Conf I gave a talk on some work I’ve been helping drive within [Relay](https://relay.dev/) and through the GraphQL Working Group. It outlines how nullability and error handling are entangled in GraphQL today, and how if clients can start handling field errors explicitly, there is a chance to untangle these two concepts. The result is a much better product development experience that retains network response resiliency.
 

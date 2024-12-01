@@ -1,12 +1,11 @@
 import React from "react";
 import Link from "next/link.js";
-import { Listable } from "../data/interfaces";
 import { SearchIndexRow } from "../search";
 import * as Data from "../data";
 import { db, sql } from "../db";
 
 type Props = {
-  item: Listable;
+  item: Data.ListableSearchRow;
 };
 
 export default async function RelatedContent({ item }: Props) {
@@ -47,7 +46,10 @@ export default async function RelatedContent({ item }: Props) {
   );
 }
 
-function related(self: Listable, first: number): Listable[] {
+function related(
+  self: Data.ListableSearchRow,
+  first: number,
+): Data.ListableSearchRow[] {
   const ownTags = self.tagSet().tagNames();
   // For plural tags we can't use proper interpolation. So we filter out any
   // non-alphabetic tags as a security precaution.

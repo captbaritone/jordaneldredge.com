@@ -15,6 +15,7 @@ export type SearchIndexRow = {
   summary_image_path: string;
   feed_id: string;
   page_rank: number;
+  last_updated: number;
   metadata: string;
 };
 
@@ -27,13 +28,13 @@ export async function reindex({
 }) {
   console.log("REINDEX", { force });
 
-  const posts: Data.Post[] = Data.getAllPosts();
+  const posts: Data.Post[] = Data.getAllPostsFromFileSystem();
   const notes: Data.Note[] = await Data.getAllNotesFromNotion();
 
   const indexable: Data.Indexable[] = [...posts, ...notes];
 
   for (const entry of indexable) {
-    if (entry.showInLists() && predicate(entry)) {
+    if (predicate(entry)) {
       await indexEntry(entry, { force });
     }
   }
@@ -159,7 +160,9 @@ const GET_ALL_NOTES = db.prepare<[], SearchIndexRow>(sql`
     search_index.summary_image_path,
     search_index.metadata,
     search_index.date,
-    search_index.feed_id
+    search_index.feed_id,
+    search_index.last_updated,
+    search_index.content
   FROM
     search_index
   WHERE

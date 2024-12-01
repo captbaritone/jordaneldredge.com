@@ -14,7 +14,7 @@ export class TagSet {
   }
 
   static fromTagStrings(tagStrings: string[] | null): TagSet {
-    if (tagStrings == null) {
+    if (tagStrings == null || tagStrings.length === 0) {
       return new TagSet([]);
     }
     return new TagSet(tagStrings.map((tag) => new Tag(tag)));

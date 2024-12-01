@@ -3,7 +3,7 @@ import { join } from "path";
 import matter from "gray-matter";
 import yaml from "js-yaml";
 import { Markdown } from "./Markdown";
-import { Indexable, Linkable, Listable } from "./interfaces";
+import { Indexable } from "./interfaces";
 import { TagSet } from "./TagSet";
 import { SiteUrl } from "./SiteUrl";
 import { Query } from "./GraphQLRoots";
@@ -17,7 +17,7 @@ const FILE_NAME_PARSER = /^(\d{4}-\d{2}-\d{2})-([a-z0-9\_\.\-]+)\.md$/g;
  * A formal blog post.
  * @gqlType
  */
-export class Post implements Indexable, Linkable, Listable {
+export class Post implements Indexable {
   pageType = "post" as const;
   constructor(
     private _content: string,
@@ -115,7 +115,7 @@ export class Post implements Indexable, Linkable, Listable {
     const ownTags = this.tagSet()
       .tags()
       .map((tag) => tag.name());
-    const otherPosts = getAllPosts().filter(
+    const otherPosts = getAllPostsFromFileSystem().filter(
       (post) => post.showInLists() && post.slug() !== this.slug(),
     );
     const postsWithOverlap = otherPosts
@@ -139,16 +139,6 @@ export class Post implements Indexable, Linkable, Listable {
       .slice(0, first)
       .map((post) => post.post);
   }
-
-  /** @gqlField */
-  static async getPostBySlug(_: Query, args: { slug: string }): Promise<Post> {
-    return getPostBySlug(args.slug);
-  }
-
-  /** @gqlField  */
-  static async getAllPosts(_: Query): Promise<Post[]> {
-    return getAllPosts();
-  }
 }
 
 type PostInfo = {
@@ -157,7 +147,7 @@ type PostInfo = {
   date: string;
 };
 
-export const getSlugPostMap = memoize(
+const getSlugPostMap = memoize(
   { ttl: TEN_MINUTES, key: "getSlugPostMap" },
   (): { [slug: string]: PostInfo } => {
     const map: { [slug: string]: PostInfo } = {};
@@ -173,35 +163,30 @@ export const getSlugPostMap = memoize(
   },
 );
 
-export const getPostBySlug = memoize(
-  { ttl: TEN_MINUTES, key: "getPostBySlug" },
-  (slug: string): Post => {
-    const postInfo = getSlugPostMap()[slug];
-    if (postInfo == null) {
-      throw new Error(`Could not find file for slug "${slug}".`);
-    }
-    const fullPath = join(postsDirectory, `${postInfo.fileName}`);
-    const fileContents = fs.readFileSync(fullPath, "utf8");
-    const { data, content } = matter(fileContents, {
-      engines: {
-        // @ts-ignore
-        yaml: (s) => yaml.load(s, { schema: yaml.JSON_SCHEMA }),
-      },
-    });
-
-    // Get last updated timestamp from file system
-    const stats = fs.statSync(fullPath);
-    const lastUpdated = stats.mtimeMs;
-
-    return new Post(content, data, postInfo, lastUpdated);
-  },
-);
-
-export const getAllPosts = memoize(
+export const getAllPostsFromFileSystem = memoize(
   { ttl: TEN_MINUTES, key: "getAllPosts" },
   (): Post[] => {
     const posts = Object.values(getSlugPostMap())
-      .map(({ slug }) => getPostBySlug(slug))
+      .map(({ slug }) => {
+        const postInfo = getSlugPostMap()[slug];
+        if (postInfo == null) {
+          throw new Error(`Could not find file for slug "${slug}".`);
+        }
+        const fullPath = join(postsDirectory, `${postInfo.fileName}`);
+        const fileContents = fs.readFileSync(fullPath, "utf8");
+        const { data, content } = matter(fileContents, {
+          engines: {
+            // @ts-ignore
+            yaml: (s) => yaml.load(s, { schema: yaml.JSON_SCHEMA }),
+          },
+        });
+
+        // Get last updated timestamp from file system
+        const stats = fs.statSync(fullPath);
+        const lastUpdated = stats.mtimeMs;
+
+        return new Post(content, data, postInfo, lastUpdated);
+      })
       // sort posts by date in descending order
       .sort((post1, post2) => (post1.date() < post2.date() ? 1 : -1));
     return posts;
