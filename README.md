@@ -38,15 +38,19 @@ While Notion is very convenient for writing and editing content, I wanted an edi
 
 ```mermaid
 graph TD
-    FILE_SYSTEM[File System] -->|Markdown Parsing| DB[Database]
-    DB -->|Static Rendering| BLOG_LIST[Blog List]
-    DB -->|Static Rendering| BLOG_PAGE[Blog Page]
-
-    NOTION[Notion] -->|Notion API| DB
-    DB --> SEARCH[Search UI]
-    DB --> NOTES_LIST[Notes List]
-    DB --> TAG_LIST[Tag List]
-    DB --> NOTE_PAGE[Note Page]
+    MARKDOWN_FILES[Markdown Files] -->|File System| POST_PROVIDER[Post Provider]
+    NOTION[Notion Pages] -->|Notion API| NOTE_PROVIDER[Note Provider]
+    POST_PROVIDER --> DB[SQLite Database]
+    NOTE_PROVIDER --> DB
     DB -->|Notes Only| BACKUP[Backup of Notes]
+    DB --> RSS[RSS Feed]
     DB -->|PageRank| DB
+    DB --->|Static Rendering| BLOG_LIST[Blog List]
+    DB ---> ALL_LIST["ALL Content (PageRank)"]
+
+    DB ---> SEARCH[Search Results]
+    DB ---> NOTES_LIST[Notes List]
+    DB ---> TAG_Pages[Tag Pages]
+    DB ----> NOTE_PAGE[Note Page]
+    DB ---->|Static Rendering| BLOG_PAGE[Blog Page]
 ```

@@ -6,7 +6,7 @@ import yaml from "js-yaml";
 import { PageType } from "./Indexable";
 import { Tag } from "./Tag";
 
-type Metadata = {
+export type Metadata = {
   title?: string;
   summary_image?: string;
   summary?: string;
@@ -20,10 +20,26 @@ type Metadata = {
   draft?: boolean;
 };
 
+type ContentDBRow = {
+  page_type: PageType;
+  slug: string;
+  title: string;
+  summary: string;
+  /** Space delimited list */
+  tags: string;
+  content: string;
+  DATE: string;
+  summary_image_path: string;
+  feed_id: string;
+  page_rank: number;
+  last_updated: number;
+  metadata: string;
+};
+
 export default class Content {
-  _item: SearchIndexRow;
+  _item: ContentDBRow;
   _metadata: Metadata;
-  constructor(item: SearchIndexRow) {
+  constructor(item: ContentDBRow) {
     this._item = item;
     this._metadata = JSON.parse(item.metadata);
   }
@@ -34,7 +50,7 @@ export default class Content {
     return this._item.title;
   }
   date(): string {
-    return this._item.date;
+    return this._item.DATE;
   }
   summary() {
     return this._item.summary;
@@ -141,7 +157,7 @@ export default class Content {
         page_rank,
         (${queryFragment}) AS tag_match_count
       FROM
-        search_index
+        content
       WHERE
         feed_id != :feedId
       ORDER BY
@@ -151,7 +167,7 @@ export default class Content {
         :first;
     `;
     const rows = db
-      .prepare<{ first: number; feedId: string }, SearchIndexRow>(query)
+      .prepare<{ first: number; feedId: string }, ContentDBRow>(query)
       .all({ first, feedId: this.feedId() });
     return rows.map((item) => new Content(item));
   }
@@ -163,7 +179,7 @@ export default class Content {
 
   static search(query: string): Array<Content> {
     const rows = SEARCH.all({ query });
-    function getItem(m: SearchIndexRow): Content | null {
+    function getItem(m: ContentDBRow): Content | null {
       switch (m.page_type) {
         case "post":
         case "note":
@@ -180,13 +196,11 @@ export default class Content {
   }
 
   static blogPosts(): Array<Content> {
-    const rows = GET_ALL_BLOG_POSTS.all();
-    return rows.map((row) => new Content(row));
+    return this.getAllByPageType("post");
   }
 
   static notes(): Array<Content> {
-    const rows = GET_ALL_NOTES.all();
-    return rows.map((row) => new Content(row));
+    return this.getAllByPageType("note");
   }
 
   static withTag(tag: Tag): Array<Content> {
@@ -212,110 +226,55 @@ export default class Content {
     }
     return new Content(row);
   }
+  private static getAllByPageType(pageType: PageType): Content[] {
+    const rows = GET_ALL_BY_PAGE_TYPE.all({ pageType });
+    return rows.map((row) => new Content(row));
+  }
 }
 
-const GET_ALL_BLOG_POSTS = db.prepare<[], SearchIndexRow>(sql`
-  SELECT
-    search_index.slug,
-    search_index.page_type,
-    search_index.summary,
-    search_index.tags,
-    search_index.title,
-    search_index.summary_image_path,
-    search_index.metadata,
-    search_index.date,
-    search_index.feed_id
-  FROM
-    search_index
-  WHERE
-    search_index.page_type = 'post'
-  ORDER BY
-    DATE DESC;
-`);
-const GET_ALL_NOTES = db.prepare<[], SearchIndexRow>(sql`
-  SELECT
-    search_index.slug,
-    search_index.page_type,
-    search_index.summary,
-    search_index.tags,
-    search_index.title,
-    search_index.summary_image_path,
-    search_index.metadata,
-    search_index.date,
-    search_index.feed_id,
-    search_index.last_updated,
-    search_index.content
-  FROM
-    search_index
-  WHERE
-    search_index.page_type = 'note'
-  ORDER BY
-    DATE DESC;
-`);
+const GET_ALL_BY_PAGE_TYPE = db.prepare<{ pageType: PageType }, ContentDBRow>(
+  sql`
+    SELECT
+      *
+    FROM
+      content
+    WHERE
+      page_type = :pageType
+    ORDER BY
+      DATE DESC;
+  `,
+);
 
 const CONTENT_BY_TYPE_AND_SLUG = db.prepare<
   { pageType: string; slug: string },
-  SearchIndexRow
+  ContentDBRow
 >(sql`
   SELECT
     *
   FROM
-    search_index
+    content
   WHERE
     page_type = :pageType
     AND slug = :slug
 `);
 
-const ALL_ITEMS_RANKED = db.prepare<[], SearchIndexRow>(sql`
+const ALL_ITEMS_RANKED = db.prepare<[], ContentDBRow>(sql`
   SELECT
-    content,
-    tags,
-    feed_id,
-    page_type,
-    slug,
-    summary,
-    title,
-    summary_image_path,
-    metadata,
-    DATE
+    *
   FROM
-    search_index
+    content
   ORDER BY
     page_rank DESC
 `);
 
-type SearchIndexRow = {
-  page_type: PageType;
-  slug: string;
-  title: string;
-  summary: string;
-  /** Space delimited list */
-  tags: string;
-  content: string;
-  date: string;
-  summary_image_path: string;
-  feed_id: string;
-  page_rank: number;
-  last_updated: number;
-  metadata: string;
-};
-
-const SEARCH = db.prepare<{ query: string }, SearchIndexRow>(sql`
+const SEARCH = db.prepare<{ query: string }, ContentDBRow>(sql`
   SELECT
-    search_index.slug,
-    search_index.page_type,
-    search_index.summary,
-    search_index.tags,
-    search_index.title,
-    search_index.summary_image_path,
-    search_index.date,
-    search_index.metadata,
-    search_index.feed_id
+    content.*
   FROM
-    search_index_fts
-    LEFT JOIN search_index ON search_index.rowid = search_index_fts.rowid
+    content_fts
+    LEFT JOIN content ON content.rowid = content_fts.rowid
   WHERE
-    search_index_fts MATCH (
+    content_fts MATCH (
       'title:' || :query || '*' || ' OR content:' || :query || '*' || ' OR tags:' || :query || '*' || ' OR summary:' || :query || '*'
     )
   ORDER BY
@@ -324,21 +283,13 @@ const SEARCH = db.prepare<{ query: string }, SearchIndexRow>(sql`
     20;
 `);
 
-const ITEMS_WITH_TAG = db.prepare<{ tag: string }, SearchIndexRow>(sql`
+const ITEMS_WITH_TAG = db.prepare<{ tag: string }, ContentDBRow>(sql`
   SELECT
-    search_index.slug,
-    search_index.page_type,
-    search_index.summary,
-    search_index.tags,
-    search_index.title,
-    search_index.summary_image_path,
-    search_index.metadata,
-    search_index.date,
-    search_index.feed_id
+    *
   FROM
-    search_index
+    content
   WHERE
-    search_index.tags LIKE '%' || :tag || '%'
+    tags LIKE '%' || :tag || '%'
   ORDER BY
     page_rank DESC;
 `);

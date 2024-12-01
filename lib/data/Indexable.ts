@@ -1,98 +1,95 @@
-import * as Data from "../data";
 import { updateRank } from "./Ranking";
 import { db, sql } from "../db";
 
-import { Markdown } from "./Markdown";
-import { TagSet } from "./TagSet";
+import { NoteProvider } from "./providers/Note";
+import { PostProvider } from "./providers/Post";
+
+export type IndexableStub = {
+  pageType: PageType;
+  slug: string;
+  lastModified: number;
+  id: string;
+};
+
+/**
+ * Models a source of content where the list of content can be enumerated
+ * relatively quickly, and then each piece of content can be resolved into a
+ * full Indexable object if the content has changed since it was last indexed.
+ */
+export interface IndexableProvider {
+  /**
+   * Enumerate all the content that this provider can provide.
+   */
+  enumerate(): Promise<IndexableStub[]>;
+  /**
+   * Resolve a specific piece of content into a full Indexable object. Generally
+   * this will involve reading the content from disk or an external API, and
+   * thus can/should be avoided if the content has not changed.
+   */
+  resolve(stub: IndexableStub): Promise<IndexableConcrete>;
+}
 
 export type PageType = "post" | "page" | "note";
 
-/**
- * Entries which can be indexed in our search index.
- */
-export interface Indexable {
+export type IndexableConcrete = {
   pageType: PageType;
-  content(): Promise<Markdown> | Markdown;
-  title(): string;
-  summary?(): string | undefined;
-  tagSet(): TagSet;
-  slug(): string;
-  date(): string;
-  summaryImage(): Promise<string | undefined>;
-  feedId(): string;
-  lastModified(): number;
-  metadata(): Object;
-}
+  content: string;
+  title: string;
+  summary?: string;
+  tags: string[];
+  slug: string;
+  date: string;
+  summaryImage?: string;
+  feedId: string;
+  lastModified: number;
+  metadata: Object;
+};
 
-export async function reindex({
-  force = false,
-  predicate = (indexable: Indexable) => true,
-}: {
-  force?: boolean;
-  predicate?: (indexable: Indexable) => boolean;
-}) {
+export async function reindex({ force = false }: { force?: boolean }) {
   console.log("REINDEX", { force });
-
-  const posts: Data.Post[] = Data.getAllPostsFromFileSystem();
-  const notes: Data.Note[] = await Data.getAllNotesFromNotion();
-
-  const indexable: Indexable[] = [...posts, ...notes];
-
-  for (const entry of indexable) {
-    if (predicate(entry)) {
-      await indexEntry(entry, { force });
+  const providers = [new NoteProvider(), new PostProvider()];
+  const stubIDs = new Set<string>();
+  for (const provider of providers) {
+    for (const stub of await provider.enumerate()) {
+      stubIDs.add(getStubId(stub.pageType, stub.slug));
+      const row = GET_LAST_UPDATED_PAGE_AND_SLUG.get(stub);
+      if (!force && row != null && row.last_updated >= stub.lastModified) {
+        console.log("Skipping indexing", stub.slug);
+        continue;
+      }
+      console.log("INDEXING", stub.slug);
+      const indexable = await provider.resolve(stub);
+      UPSERT_INDEX.run({
+        pageType: indexable.pageType,
+        title: indexable.title,
+        summary: indexable.summary || "",
+        tags: indexable.tags.join(" "),
+        content: indexable.content,
+        slug: indexable.slug,
+        date: indexable.date,
+        summaryImagePath: indexable.summaryImage,
+        feedId: indexable.feedId,
+        lastUpdated: Date.now(),
+        metadata: JSON.stringify(stripStructuredMetadata(indexable.metadata)),
+      });
     }
   }
 
-  scrub(posts, notes);
+  // Check for indexed entries that no longer exist, and clean them up
+  for (const entry of ALL_SEARCH_ENTRIES.all()) {
+    const stubID = getStubId(entry.page_type, entry.slug);
+    if (!stubIDs.has(stubID)) {
+      console.log("SCRUB", stubID);
+      DELETE_ENTRY.run({ slug: entry.slug, pageType: entry.page_type });
+    }
+  }
+
+  // Recompute the rank of all pages
   updateRank();
 }
 
-export async function indexEntry(
-  indexable: Indexable,
-  { force = false }: { force: boolean },
-) {
-  if (!needsReindexing(indexable) && !force) {
-    console.log("Skipping indexing", indexable.slug());
-    return;
-  }
-  console.log("INDEXING", indexable.slug());
-  const feedId = indexable.feedId();
-  const markdown = await indexable.content();
-  const title = indexable.title();
-  const summary = indexable.summary == null ? "" : indexable.summary() || "";
-  const tags = indexable
-    .tagSet()
-    .tags()
-    .map((t) => t.name())
-    .join(" ");
-  const content = await markdown.markdownString();
-  const date = indexable.date();
-  const summaryImagePath = await indexable.summaryImage();
-  const now = Date.now();
-  const metadata = stripStructuredMetadata(indexable.metadata());
-  UPSERT_INDEX.run({
-    pageType: indexable.pageType,
-    title,
-    summary,
-    tags,
-    content,
-    slug: indexable.slug(),
-    date,
-    summaryImagePath,
-    feedId,
-    lastUpdated: now,
-    metadata: JSON.stringify(metadata),
-  });
-}
-
-function needsReindexing(indexable: Indexable) {
-  const feedId = indexable.feedId();
-  const row = GET_LAST_UPDATED.get({ feedId });
-  if (row == null) {
-    return true;
-  }
-  return row.last_updated < indexable.lastModified();
+function getStubId(pageType: string, slug: string): string {
+  return `${pageType}:${slug}`;
 }
 
 function stripStructuredMetadata(metadata: {
@@ -109,57 +106,34 @@ function stripStructuredMetadata(metadata: {
   return copy;
 }
 
-//
-function scrub(posts: Data.Post[], notes: Data.Note[]) {
-  const postUrls = posts
-    .filter((p) => p.showInLists())
-    .map((p) => p.url().path());
-  const noteUrls = notes
-    .filter((p) => p.showInLists())
-    .map((n) => n.url().path());
-
-  const indexableUrlPaths = new Set([...postUrls, ...noteUrls]);
-
-  // For each current index entry, check if the slug is valid:
-  const entries = ALL_SEARCH_ENTRIES.all();
-
-  for (const entry of entries) {
-    const topLevelDir = entry.page_type === "post" ? "blog" : "notes";
-    const entryPath = `/${topLevelDir}/${entry.slug}`;
-    if (!indexableUrlPaths.has(entryPath)) {
-      console.log("SCRUB", entryPath);
-      DELETE_ENTRY.run({ slug: entry.slug, pageType: entry.page_type });
-    }
-  }
-}
-
 const ALL_SEARCH_ENTRIES = db.prepare<[], { page_type: string; slug: string }>(
   sql`
     SELECT
       slug,
       page_type
     FROM
-      search_index;
+      content;
   `,
 );
 
 const DELETE_ENTRY = db.prepare<{ slug: string; pageType: string }, void>(sql`
-  DELETE FROM search_index
+  DELETE FROM content
   WHERE
     slug = :slug
     AND page_type = :pageType;
 `);
 
-const GET_LAST_UPDATED = db.prepare<
-  { feedId: string },
+const GET_LAST_UPDATED_PAGE_AND_SLUG = db.prepare<
+  { pageType: string; slug: string },
   { last_updated: number }
 >(sql`
   SELECT
     last_updated
   FROM
-    search_index
+    content
   WHERE
-    feed_id = :feedId
+    page_type = :pageType
+    AND slug = :slug
 `);
 
 const UPSERT_INDEX = db.prepare<{
@@ -176,7 +150,7 @@ const UPSERT_INDEX = db.prepare<{
   metadata: string;
 }>(sql`
   INSERT INTO
-    search_index (
+    content (
       page_type,
       title,
       summary,

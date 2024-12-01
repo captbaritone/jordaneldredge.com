@@ -43,11 +43,11 @@ const ALL_ENTRIES = db.prepare<
     page_type,
     slug
   FROM
-    search_index
+    content
 `);
 
 const UPDATE_RANK = db.prepare(sql`
-  UPDATE search_index
+  UPDATE content
   SET
     page_rank = ?
   WHERE
@@ -56,7 +56,7 @@ const UPDATE_RANK = db.prepare(sql`
 
 /**
  * Uses a weighted pagerank algorithm to assign a page_rank score to each entry
- * in the search_index.
+ * in the content.
  */
 export function updateRank() {
   const rows = ALL_ENTRIES.all();

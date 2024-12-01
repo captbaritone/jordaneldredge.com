@@ -11,7 +11,7 @@ import type { Node } from "unist";
 import { parse } from "../data/markdownUtils";
 import { memoize, TEN_MINUTES } from "../memoize";
 
-type NoteMetadata = {
+export type NoteMetadata = {
   slugToId: { [slug: string]: string };
   rowPosts: PageObjectResponse[];
 };
@@ -24,7 +24,7 @@ const notion = new Client({
 const n2m = new NotionToMarkdown({ notionClient: notion });
 
 export async function blocksToMarkdownAst(
-  blocks: ListBlockChildrenResponseResults
+  blocks: ListBlockChildrenResponseResults,
 ): Promise<Node> {
   const mdBlocks = await n2m.blocksToMarkdown(blocks);
   // In the future we could define a direct mapping from the n2m AST to unist
@@ -46,7 +46,7 @@ const stringToId = (str: string): string => {
 };
 
 export const METADATA_DATABASE_ID = stringToId(
-  "bbac761ed5f849048b2045d928b5f453"
+  "bbac761ed5f849048b2045d928b5f453",
 );
 
 export const getMetadata = memoize(
@@ -89,7 +89,7 @@ export const getMetadata = memoize(
     });
 
     return { slugToId, rowPosts };
-  }
+  },
 );
 
 export const retrievePage = memoize(
@@ -109,11 +109,11 @@ export const retrievePage = memoize(
       throw new Error("Invalid page ID.");
     }
     return page;
-  }
+  },
 );
 
 export const retrieveBlocks = async (
-  id: string
+  id: string,
 ): Promise<{
   results: Array<PartialBlockObjectResponse | BlockObjectResponse>;
 }> => {
@@ -154,5 +154,5 @@ export const retrieveDatabase = memoize(
     }
 
     return results;
-  }
+  },
 );

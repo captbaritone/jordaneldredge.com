@@ -1,4 +1,4 @@
-import { Content, getAllPostsFromFileSystem } from "../../../lib/data";
+import { Content } from "../../../lib/data";
 import ContentPage from "../../../lib/components/ContentPage";
 
 export async function generateMetadata({ params }) {
@@ -27,7 +27,7 @@ export async function generateMetadata({ params }) {
 }
 
 export async function generateStaticParams() {
-  const posts = getAllPostsFromFileSystem();
+  const posts = Content.blogPosts();
   return posts.map((post) => {
     return { slug: post.slug() };
   });

@@ -33,7 +33,9 @@ export default async function ListItem({ item }: Props) {
         </div>
         {summaryImage ? (
           <div className="h-24 md:h-32 aspect-video relative">
-            <Image alt="" fill src={summaryImage} className="object-cover" />
+            <Link href={item.url().path()}>
+              <Image alt="" fill src={summaryImage} className="object-cover" />
+            </Link>
           </div>
         ) : null}
       </div>
