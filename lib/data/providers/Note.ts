@@ -70,7 +70,7 @@ export class NoteProvider implements IndexableProvider {
       pageType: "note",
       slug,
       tags: expectTags(page),
-      title: expectPublishedDate(page),
+      title: expectTitle(page, slug),
       summary: expectSummary(page),
       summaryImage: await this._summaryImage(markdown),
       date: expectPublishedDate(page),
