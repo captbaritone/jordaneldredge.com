@@ -1,7 +1,6 @@
 import path from "node:path";
 import fs from "node:fs";
 import { Markdown } from "./Markdown";
-import { Indexable } from "./interfaces.js";
 import yaml from "js-yaml";
 import { SiteUrl } from "./SiteUrl";
 import { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
@@ -15,6 +14,7 @@ import { Node } from "unist";
 import { visit } from "unist-util-visit";
 import { Readable } from "node:stream";
 import { finished } from "node:stream/promises";
+import { Indexable } from "./Indexable";
 
 // Regex matching Youtube URLs and extracting the token
 const YOUTUBE_REGEX =

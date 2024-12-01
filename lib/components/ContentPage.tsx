@@ -5,7 +5,7 @@ import DateString from "./DateString";
 import GitHubComments from "./GitHubComments";
 
 type ContentPageProps = {
-  item: Data.ListableSearchRow;
+  item: Data.Content;
   issueId?: string;
 };
 

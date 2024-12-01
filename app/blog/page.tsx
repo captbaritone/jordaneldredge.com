@@ -1,6 +1,6 @@
 import Link from "next/link";
 import ListItem from "../../lib/components/ListItem";
-import { blogPosts } from "../../lib/search";
+import { Content } from "../../lib/data";
 
 export const metadata = {
   title: "Blog",
@@ -8,7 +8,7 @@ export const metadata = {
 };
 
 export default function Home() {
-  const allPosts = blogPosts();
+  const allPosts = Content.blogPosts();
 
   const publicPosts = allPosts.filter((post) => post.showInLists());
 

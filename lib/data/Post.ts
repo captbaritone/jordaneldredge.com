@@ -3,11 +3,10 @@ import { join } from "path";
 import matter from "gray-matter";
 import yaml from "js-yaml";
 import { Markdown } from "./Markdown";
-import { Indexable } from "./interfaces";
 import { TagSet } from "./TagSet";
 import { SiteUrl } from "./SiteUrl";
-import { Query } from "./GraphQLRoots";
 import { memoize, TEN_MINUTES } from "../memoize";
+import { Indexable } from "./Indexable";
 
 const postsDirectory = join(process.cwd(), "./_posts");
 

@@ -1,11 +1,8 @@
-import {
-  ListableSearchRow,
-  getAllPostsFromFileSystem,
-} from "../../../lib/data";
+import { Content, getAllPostsFromFileSystem } from "../../../lib/data";
 import ContentPage from "../../../lib/components/ContentPage";
 
 export async function generateMetadata({ params }) {
-  const post = ListableSearchRow.getPostBySlug(params.slug);
+  const post = Content.getPostBySlug(params.slug);
   if (post == null) {
     return {};
   }
@@ -40,7 +37,7 @@ export async function generateStaticParams() {
 export const dynamicParams = false;
 
 export default async function Post({ params }) {
-  const post = ListableSearchRow.getPostBySlug(params.slug);
+  const post = Content.getPostBySlug(params.slug);
   if (post == null) {
     // 404
     return null;

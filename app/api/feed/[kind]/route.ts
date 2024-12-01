@@ -1,7 +1,6 @@
 import { Feed } from "feed";
 import * as Data from "../../../../lib/data";
 import { NextRequest } from "next/server";
-import { blogPosts, notes } from "../../../../lib/search";
 
 export const revalidate = 600;
 export const dynamic = "force-static";
@@ -9,8 +8,8 @@ export const dynamic = "force-static";
 const NOTES_EPOCH = new Date("2024-07-22");
 
 export async function GET(request: NextRequest, { params }) {
-  const allPosts = await blogPosts();
-  const allNotes = await notes();
+  const allPosts = Data.Content.blogPosts();
+  const allNotes = Data.Content.notes();
   const visibleNotes = allNotes.filter((note) => {
     // Notes were not originally included in the feed. To avoid dumping all of
     // them into the feed retroactively, only include notes starting at around
@@ -53,7 +52,7 @@ export async function GET(request: NextRequest, { params }) {
   }
 }
 
-async function buildRssFeedLazy(allPosts: Data.ListableSearchRow[]) {
+async function buildRssFeedLazy(allPosts: Data.Content[]) {
   const siteURL = "https://jordaneldredge.com";
   const author = {
     name: "Jordan Eldredge",

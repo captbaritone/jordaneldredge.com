@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import DateString from "./DateString.js";
-import { ListableSearchRow } from "../data";
+import { Content } from "../data";
 
 type Props = {
-  item: ListableSearchRow;
+  item: Content;
 };
 
 export default async function ListItem({ item }: Props) {

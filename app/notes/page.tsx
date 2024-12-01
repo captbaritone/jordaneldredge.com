@@ -1,6 +1,6 @@
 import Link from "next/link";
 import ListItem from "../../lib/components/ListItem";
-import { notes } from "../../lib/search";
+import { Content } from "../../lib/data";
 
 // Pages are static
 export const dynamic = "force-static";
@@ -16,7 +16,7 @@ export const metadata = {
 };
 
 export default async function Notes() {
-  const allNotes = notes();
+  const allNotes = Content.notes();
   return (
     <>
       <div className="markdown">

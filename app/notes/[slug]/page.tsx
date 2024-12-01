@@ -1,4 +1,4 @@
-import { ListableSearchRow } from "../../../lib/data";
+import { Content } from "../../../lib/data";
 import { Metadata } from "next";
 import ContentPage from "../../../lib/components/ContentPage";
 
@@ -11,7 +11,10 @@ export const dynamic = "force-static";
 
 export async function generateMetadata({ params }): Promise<Metadata> {
   // TODO: Figure out how to read search params in head.js
-  const note = await ListableSearchRow.getNoteBySlug(params.slug);
+  const note = Content.getNoteBySlug(params.slug);
+  if (note == null) {
+    throw new Error("Not found");
+  }
   const summaryImage = await note.summaryImage();
   return {
     title: note.title(),
@@ -29,7 +32,10 @@ export async function generateMetadata({ params }): Promise<Metadata> {
   };
 }
 
-export default async function Note({ params }) {
-  const note = await ListableSearchRow.getNoteBySlug(params.slug);
+export default function Note({ params }) {
+  const note = Content.getNoteBySlug(params.slug);
+  if (note == null) {
+    throw new Error("Not found");
+  }
   return <ContentPage item={note} />;
 }
