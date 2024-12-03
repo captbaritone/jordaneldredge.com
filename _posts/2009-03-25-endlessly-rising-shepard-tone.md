@@ -15,5 +15,3 @@ The midi file created by Lilypond: [shepard_tone.midi](/uploads/2009/03/shepard_
 An mp3 file generated from the midi file above:
 
 ::audio{src=/uploads/2009/03/shepard_tone.mp3}
-
-[Download](/uploads/2009/03/shepard_tone.mp3 "Download as .mp3")

@@ -22,7 +22,6 @@ Take a listen, and download the mp3 or iPhone ringtone:
 
 ::audio{src=/uploads/2013/05/Papagenos-Glockenspiel-kulele.mp3}
 
-[Download as .mp3](/uploads/2013/05/Papagenos-Glockenspiel-kulele.mp3)
 [Download as .m4r](/uploads/2013/05/Papagenos-Glockenspiel-kulele.m4r) (iPhone ring tone)
 
 ## Bonus:
@@ -32,9 +31,9 @@ Two text-tones on the same theme
 **Papageno's Ton**
 ::audio{src=/uploads/2013/05/Papagenos-Ton.mp3}
 
-[Download as .mp3](/uploads/2013/05/Papagenos-Ton.mp3)/[Download as .m4r](/uploads/2013/05/Papagenos-Ton.m4r) (iPhone ring tone)
+[Download as .m4r](/uploads/2013/05/Papagenos-Ton.m4r) (iPhone ring tone)
 
 **Papageno's Tritone**
 ::audio{src=/uploads/2013/05/Papagenos-Tritone.mp3}
 
-[Download as .mp3](/uploads/2013/05/Papagenos-Tritone.mp3)/[Download as .m4r](/uploads/2013/05/Papagenos-Tritone.m4r) (iPhone ring tone)
+[Download as .m4r](/uploads/2013/05/Papagenos-Tritone.m4r) (iPhone ring tone)

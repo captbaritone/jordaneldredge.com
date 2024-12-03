@@ -22,6 +22,4 @@ Have a listen! (Or download the first bit of it as an iPhone ring tone)
 
 ::audio{src=/uploads/2011/05/The-Surprise-Slide.mp3}
 
-[Download .mp3](/uploads/2011/05/The-Surprise-Slide.mp3)
-
 [Download .m4r (iPhone ring tone)](/uploads/2011/05/The-Surprise-Slide.m4r)

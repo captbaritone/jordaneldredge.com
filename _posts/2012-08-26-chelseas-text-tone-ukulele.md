@@ -15,6 +15,4 @@ Here's one from the archives. Last year Chelsea had her phone stolen on Muni. As
 
 ::audio{src=/uploads/2012/08/Chelseas-Text-Tome-C6-Harmonics.mp3}
 
-[Download as .mp3](/uploads/2012/08/Chelseas-Text-Tome-C6-Harmonics.mp3)
-
 [Download as .m4r](/uploads/2012/08/Chelseas-Text-Tome-C6-Harmonics.m4r) (iPhone text tone)
