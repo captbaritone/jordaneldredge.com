@@ -17,12 +17,25 @@
 
 /* http://www.h3xed.com/web-development/how-to-make-a-responsive-100-width-youtube-iframe-embed */
 .video-container {
-  position: relative;
-  width: 100%;
   height: 0;
-  padding-bottom: 60%;
+  position: relative;
+  max-width: 100%;
+  margin: 0 auto;
   margin-bottom: 1rem;
 }
+
+.video-container.horizontal {
+  aspect-ratio: 16 / 9; /* Horizontal layout for regular videos */
+  width: 100%;
+  padding-bottom: 60%;
+}
+
+.video-container.vertical {
+  aspect-ratio: 9 / 16; /* Vertical layout for Shorts */
+  max-height: 640px; /* Optionally limit max height */
+  padding-bottom: 100%;
+}
+
 .video-container .youtube-video {
   position: absolute;
   top: 0;

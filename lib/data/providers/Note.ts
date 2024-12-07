@@ -22,7 +22,7 @@ import { Metadata } from "../Content";
 
 // Regex matching Youtube URLs and extracting the token
 const YOUTUBE_REGEX =
-  /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)/;
+  /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:watch\?v=|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]+)/;
 
 export class NoteProvider implements IndexableProvider {
   _metadata: NoteMetadata;
