@@ -108,11 +108,16 @@ function applyDirectives(ast: Node) {
       if (YOUTUBE_REGEX.test(linkNode.url)) {
         // @ts-ignore
         const [, token] = YOUTUBE_REGEX.exec(linkNode.url);
+
+        const attributes = { token };
+        if (linkNode.url.includes("shorts")) {
+          attributes["vertical"] = true;
+        }
         // @ts-ignore
         parent.children.splice(index, 1, {
           type: "leafDirective",
           name: "youtube",
-          attributes: { token },
+          attributes,
         });
       }
     }
