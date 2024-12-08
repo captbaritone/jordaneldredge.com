@@ -87,6 +87,7 @@ class ScriptWriter {
     execSync(
       `ffmpeg -y -f concat -safe 0 -i ${fileList} -acodec libmp3lame -b:a 192k ${outputFile}`,
     );
+    fs.rmSync(fileList);
   }
 
   async generateAudioChunks(segments: ContentSection[]) {

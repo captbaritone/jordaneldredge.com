@@ -1,7 +1,6 @@
 import { Feed, Item } from "feed";
 import * as Data from "../../../../lib/data";
 import { NextRequest } from "next/server";
-import { Enclosure } from "feed/lib/typings";
 
 export const revalidate = 600;
 export const dynamic = "force-static";
@@ -75,7 +74,7 @@ async function buildRssFeedLazy(allPosts: Data.Content[]) {
         id,
         link: url,
         description: post.summary(),
-        content: post.summary(),
+        content: `Read the post at ${url}`,
         author: [author],
         contributor: [],
         date: new Date(post.date()),

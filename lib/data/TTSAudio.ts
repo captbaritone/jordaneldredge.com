@@ -82,5 +82,9 @@ const RECORD_TTS = db.prepare<{
   lastUpdated: number;
   byteLength: number;
 }>(
-  `INSERT INTO tts (r2_key, content_id, last_updated, byte_length) VALUES (:r2Key, :contentId, :lastUpdated, :byteLength);`,
+  `
+  TRANSACTION;
+  DELETE FROM tts WHERE content_id = :contentId;
+  INSERT INTO tts (r2_key, content_id, last_updated, byte_length) VALUES (:r2Key, :contentId, :lastUpdated, :byteLength);
+  COMMIT;`,
 );
