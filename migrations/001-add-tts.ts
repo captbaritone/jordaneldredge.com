@@ -1,6 +1,5 @@
 import "dotenv/config";
 import { db } from "../lib/db";
-import { Content } from "../lib/data";
 
 const EXISTING = [
   {
@@ -1758,6 +1757,8 @@ export async function up() {
 
   // console.log(JSON.stringify(rows));
   // return;
+
+  const { Content } = await import("../lib/data");
 
   for (const { r2_key, byte_length, slug } of EXISTING) {
     const content = Content.getBySlug(slug);
