@@ -12,7 +12,7 @@ type ContentPageProps = {
 
 export default async function ContentPage({ item, issueId }: ContentPageProps) {
   const content = item.content();
-  const audioUrl = item.publicAudioUrl();
+  const audio = item.ttsAudio();
   const ast = await content.ast();
   return (
     <div>
@@ -29,11 +29,11 @@ export default async function ContentPage({ item, issueId }: ContentPageProps) {
             <div className="italic">
               <DateString date={new Date(item.date())} />
             </div>
-            {audioUrl && (
+            {audio && (
               <>
                 <div className="pl-2 pr-2">{"|"}</div>
                 <PlayButton
-                  audioUrl={audioUrl.path()}
+                  audioUrl={audio.vanityUrl().path()}
                   title="Play an AI generated audio reading of this content."
                 />
               </>
