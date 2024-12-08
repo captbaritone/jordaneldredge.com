@@ -45,6 +45,10 @@ export default class TTSAudio {
     return this._byteLength;
   }
 
+  lastUpdated(): number {
+    return this._lastUpdated;
+  }
+
   static async upload(contentId: string, mp3Path: string): Promise<TTSAudio> {
     const byteLength = fs.statSync(mp3Path).size;
     const key = `tts/${contentId}.mp3`;

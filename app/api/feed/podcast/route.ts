@@ -1,5 +1,5 @@
 import { Feed, Item } from "feed";
-import * as Data from "../../../lib/data";
+import * as Data from "../../../../lib/data";
 import { NextRequest } from "next/server";
 import { Enclosure } from "feed/lib/typings";
 
@@ -59,22 +59,16 @@ async function buildRssFeedLazy(allPosts: Data.Content[]) {
   });
 
   const items = await Promise.all(
-    allPosts.map(async (post): Promise<Item> => {
+    allPosts.map(async (post): Promise<Item | null> => {
       const url = post.url().fullyQualified();
       const id = post.feedId();
       let summaryImage = await post.summaryImage();
       if (summaryImage != null && !summaryImage.startsWith("http")) {
         summaryImage = `${siteURL}${summaryImage}`;
       }
-      let enclosure: Enclosure | undefined;
-
       const ttsAudio = post.ttsAudio();
-      if (ttsAudio != null) {
-        enclosure = {
-          url: ttsAudio.vanityUrl().fullyQualified(),
-          type: "audio/mpeg",
-          duration: ttsAudio.byteLength(),
-        };
+      if (ttsAudio == null) {
+        return null;
       }
       return {
         title: post.title(),
@@ -85,13 +79,19 @@ async function buildRssFeedLazy(allPosts: Data.Content[]) {
         author: [author],
         contributor: [],
         date: new Date(post.date()),
-        image: summaryImage,
-        audio: enclosure,
+        image: summaryImage, // This seems to get replaced by the audio enclosure
+        audio: {
+          url: ttsAudio.vanityUrl().fullyQualified(),
+          type: "audio/mpeg",
+          duration: ttsAudio.byteLength(),
+        },
       };
     }),
   );
   for (const item of items) {
-    feed.addItem(item);
+    if (item != null) {
+      feed.addItem(item);
+    }
   }
   return feed;
 }

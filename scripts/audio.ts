@@ -18,8 +18,11 @@ const tempDir = path.resolve("./temp");
 async function main() {
   const allContent = Content.all();
   for (const content of allContent) {
-    if (content.ttsAudio() != null) {
-      console.log(`Skipping ${content.title()} because it already has audio.`);
+    const ttsAudio = content.ttsAudio();
+    if (ttsAudio != null && ttsAudio.lastUpdated() > content.lastModified()) {
+      console.log(
+        `Skipping ${content.title()} because it already has up to date audio.`,
+      );
       continue;
     }
     if (
@@ -70,6 +73,10 @@ class ScriptWriter {
     this.mergeAudioFiles(files, outputFile);
 
     await TTSAudio.upload(content.id(), outputFile);
+    fs.rmSync(outputFile);
+    for (const file of files) {
+      fs.rmSync(file);
+    }
   }
 
   mergeAudioFiles(files: string[], outputFile: string) {
@@ -77,7 +84,6 @@ class ScriptWriter {
     const fileListContent = files.map((file) => `file '${file}'`).join("\n");
     fs.writeFileSync(fileList, fileListContent);
 
-    //   execSync(`ffmpeg -y -f concat -safe 0 -i ${fileList} -c copy ${outputFile}`);
     execSync(
       `ffmpeg -y -f concat -safe 0 -i ${fileList} -acodec libmp3lame -b:a 192k ${outputFile}`,
     );
