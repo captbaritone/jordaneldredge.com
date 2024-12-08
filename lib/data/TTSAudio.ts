@@ -47,10 +47,10 @@ type TTSAudioRow = {
   byte_length: string;
 };
 
-// const GET_TTS = db.prepare<{ contentId: number }, TTSAudioRow>(
-//   `
-// SELECT r2_key, content_id, last_updated, byte_length FROM tts WHERE content_id = :contentId;`,
-// );
+const GET_TTS = db.prepare<{ contentId: number }, TTSAudioRow>(
+  `
+SELECT r2_key, content_id, last_updated, byte_length FROM tts WHERE content_id = :contentId;`,
+);
 
 const RECORD_TTS = db.prepare<{
   r2Key: string;
