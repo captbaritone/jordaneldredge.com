@@ -26,15 +26,9 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export async function generateStaticParams() {
-  const posts = Content.blogPosts();
-  return posts.map((post) => {
-    return { slug: post.slug() };
-  });
-}
-
-// Do not try to render arbitrary slugs
-export const dynamicParams = false;
+// https://beta.nextjs.org/docs/data-fetching/caching#segment-level-caching
+export const revalidate = 600;
+export const dynamic = "force-static";
 
 export default async function Post({ params }) {
   const post = Content.getPostBySlug(params.slug);

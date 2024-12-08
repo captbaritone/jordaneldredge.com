@@ -251,6 +251,14 @@ export default class Content {
     }
     return new Content(row);
   }
+
+  static getBySlug(slug: string): Content | null {
+    const row = CONTENT_BY_SLUG.get({ slug });
+    if (row == null) {
+      return null;
+    }
+    return new Content(row);
+  }
   private static getAllByPageType(pageType: PageType): Content[] {
     const rows = GET_ALL_BY_PAGE_TYPE.all({ pageType });
     return rows.map((row) => new Content(row));
@@ -281,6 +289,15 @@ const CONTENT_BY_TYPE_AND_SLUG = db.prepare<
   WHERE
     page_type = :pageType
     AND slug = :slug
+`);
+
+const CONTENT_BY_SLUG = db.prepare<{ slug: string }, ContentDBRow>(sql`
+  SELECT
+    *
+  FROM
+    content
+  WHERE
+    slug = :slug
 `);
 
 const ALL_ITEMS_RANKED = db.prepare<[], ContentDBRow>(sql`

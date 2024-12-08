@@ -2,9 +2,6 @@ import { Content } from "../../../lib/data";
 import { Metadata } from "next";
 import ContentPage from "../../../lib/components/ContentPage";
 
-// Disabling caching for now since we are serving everything directly from
-// SQLIte
-//
 // https://beta.nextjs.org/docs/data-fetching/caching#segment-level-caching
 export const revalidate = 600;
 export const dynamic = "force-static";
