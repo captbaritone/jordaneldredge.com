@@ -64,10 +64,7 @@ export default function AudioPlayer() {
             <div className="whitespace-nowrap font-mono">
               {formatSeconds(currentTime)}
             </div>
-            <div className="px-2 w-full ">
-              <Progress />
-            </div>
-
+            <Progress />
             <div className="whitespace-nowrap font-mono">
               {formatSeconds(duration)}
             </div>
@@ -155,29 +152,34 @@ function Progress() {
       if (audioState == null) {
         return;
       }
-      const { width, left } = e.target.getBoundingClientRect();
+      const { width, left } = e.currentTarget.getBoundingClientRect();
       const x = e.clientX - left;
       const percent = x / width;
       audioState.setProgressPercent(percent);
     },
-    [audioState]
+    [audioState],
   );
   return (
-    <div
-      onClick={handleClick}
-      style={{
-        width: "100%",
-        height: 3,
-        backgroundColor: "lightgrey",
-      }}
-    >
-      <div
-        style={{
-          width: `${percentComplete * 100}%`,
-          height: "100%",
-          backgroundColor: "black",
-        }}
-      />
+    <div className="px-2 w-full">
+      <div className="py-2" onClick={handleClick}>
+        <div
+          style={{
+            width: "100%",
+            height: 3,
+            borderTop: 10,
+            borderBottom: 10,
+            backgroundColor: "lightgrey",
+          }}
+        >
+          <div
+            style={{
+              width: `${percentComplete * 100}%`,
+              height: "100%",
+              backgroundColor: "black",
+            }}
+          />
+        </div>
+      </div>
     </div>
   );
 }
