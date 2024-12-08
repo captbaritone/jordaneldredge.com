@@ -54,11 +54,14 @@ export default class TTSAudio {
     const key = `tts/${contentId}.mp3`;
     await upload(key, mp3Path, "audio/mpeg");
     const lastUpdated = Date.now();
-    RECORD_TTS.run({
-      r2Key: key,
-      contentId: parseInt(contentId, 10),
-      lastUpdated,
-      byteLength,
+    db.transaction(() => {
+      DELETE_TTS_FOR_CONTENT.run({ contentId: parseInt(contentId, 10) });
+      RECORD_TTS.run({
+        r2Key: key,
+        contentId: parseInt(contentId, 10),
+        lastUpdated,
+        byteLength,
+      });
     });
     return new TTSAudio(contentId, key, lastUpdated, byteLength);
   }
@@ -83,8 +86,9 @@ const RECORD_TTS = db.prepare<{
   byteLength: number;
 }>(
   `
-  TRANSACTION;
-  DELETE FROM tts WHERE content_id = :contentId;
-  INSERT INTO tts (r2_key, content_id, last_updated, byte_length) VALUES (:r2Key, :contentId, :lastUpdated, :byteLength);
-  COMMIT;`,
+  INSERT INTO tts (r2_key, content_id, last_updated, byte_length) VALUES (:r2Key, :contentId, :lastUpdated, :byteLength);`,
+);
+
+const DELETE_TTS_FOR_CONTENT = db.prepare<{ contentId: number }>(
+  `DELETE FROM tts WHERE content_id = :contentId;`,
 );
