@@ -98,15 +98,9 @@ export default class Content {
         return new SiteUrl(`/notes/${this._item.slug}`);
     }
   }
+
   ttsAudio(): TTSAudio | null {
     return TTSAudio.fromContentId(this.id());
-  }
-
-  publicAudioUrl(): SiteUrl | null {
-    if (this.ttsAudio() == null) {
-      return null;
-    }
-    return new SiteUrl(this.url().path() + ".mp3");
   }
 
   serializedFilename(forceNotionId: boolean = false): string {
@@ -259,6 +253,14 @@ export default class Content {
     }
     return new Content(row);
   }
+
+  static getById(id: number): Content | null {
+    const row = CONTENT_BY_ID.get({ id });
+    if (row == null) {
+      return null;
+    }
+    return new Content(row);
+  }
   private static getAllByPageType(pageType: PageType): Content[] {
     const rows = GET_ALL_BY_PAGE_TYPE.all({ pageType });
     return rows.map((row) => new Content(row));
@@ -298,6 +300,15 @@ const CONTENT_BY_SLUG = db.prepare<{ slug: string }, ContentDBRow>(sql`
     content
   WHERE
     slug = :slug
+`);
+
+const CONTENT_BY_ID = db.prepare<{ id: number }, ContentDBRow>(sql`
+  SELECT
+    *
+  FROM
+    content
+  WHERE
+    id = :id
 `);
 
 const ALL_ITEMS_RANKED = db.prepare<[], ContentDBRow>(sql`

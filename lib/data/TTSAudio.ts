@@ -1,12 +1,15 @@
 import { db } from "../db";
 import { upload } from "../s3";
 import fs from "node:fs";
+import Content from "./Content";
+import { SiteUrl } from "./SiteUrl";
 
 export default class TTSAudio {
   constructor(
     private _contentId: string,
     private _r2Key: string,
     private _lastUpdated: number,
+    private _byteLength: number,
   ) {}
 
   static fromContentId(contentId: string): TTSAudio | null {
@@ -17,12 +20,29 @@ export default class TTSAudio {
     return new TTSAudio(
       audioRow.content_id,
       audioRow.r2_key,
-      Date.parse(audioRow.last_updated),
+      audioRow.last_updated,
+      audioRow.byte_length,
     );
+  }
+
+  content(): Content {
+    const content = Content.getById(parseInt(this._contentId, 10));
+    if (content == null) {
+      throw new Error(`Content not found for TTSAudio ${this._contentId}`);
+    }
+    return content;
+  }
+
+  vanityUrl(): SiteUrl {
+    return new SiteUrl(this.content().url().path() + ".mp3");
   }
 
   url(): string {
     return `${process.env.CLOUDFLARE_R2_PUBLIC_URL}/${this._r2Key}`;
+  }
+
+  byteLength(): number {
+    return this._byteLength;
   }
 
   static async upload(contentId: string, mp3Path: string): Promise<TTSAudio> {
@@ -36,15 +56,15 @@ export default class TTSAudio {
       lastUpdated,
       byteLength,
     });
-    return new TTSAudio(contentId, key, lastUpdated);
+    return new TTSAudio(contentId, key, lastUpdated, byteLength);
   }
 }
 
 type TTSAudioRow = {
   r2_key: string;
   content_id: string;
-  last_updated: string;
-  byte_length: string;
+  last_updated: number;
+  byte_length: number;
 };
 
 const GET_TTS = db.prepare<{ contentId: number }, TTSAudioRow>(
