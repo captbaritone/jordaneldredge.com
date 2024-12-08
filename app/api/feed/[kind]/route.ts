@@ -1,6 +1,7 @@
-import { Feed } from "feed";
+import { Feed, Item } from "feed";
 import * as Data from "../../../../lib/data";
 import { NextRequest } from "next/server";
+import { Enclosure } from "feed/lib/typings";
 
 export const revalidate = 600;
 export const dynamic = "force-static";
@@ -82,13 +83,21 @@ async function buildRssFeedLazy(allPosts: Data.Content[]) {
   });
 
   const items = await Promise.all(
-    allPosts.map(async (post) => {
+    allPosts.map(async (post): Promise<Item> => {
       const url = post.url().fullyQualified();
       const id = post.feedId();
       let summaryImage = await post.summaryImage();
       if (summaryImage != null && !summaryImage.startsWith("http")) {
         summaryImage = `${siteURL}${summaryImage}`;
       }
+      let enclosure: Enclosure | undefined;
+
+      // Disabled until we figure out how to have this not clobber the image
+      // const audioUrl = post.publicAudioUrl();
+      // if (audioUrl != null && false) {
+      //   // TODO: Add `length` which is in bytes
+      //   enclosure = { url: audioUrl.fullyQualified(), type: "audio/mpeg" };
+      // }
       return {
         title: post.title(),
         id,
@@ -99,6 +108,7 @@ async function buildRssFeedLazy(allPosts: Data.Content[]) {
         contributor: [],
         date: new Date(post.date()),
         image: summaryImage,
+        audio: enclosure,
       };
     }),
   );

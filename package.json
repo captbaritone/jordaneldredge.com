@@ -11,10 +11,12 @@
     "lint": "remark --quiet . && next lint",
     "postinstall": "patch-package",
     "backup": "tsx scripts/backup.ts",
-    "migrate": "tsx scripts/create_tables.ts",
-    "reindex": "tsx scripts/reindex.ts"
+    "migrate": "tsx migrations/001-add-tts.ts",
+    "reindex": "tsx scripts/reindex.ts",
+    "audio": "tsx scripts/audio.ts"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.705.0",
     "@notionhq/client": "^2.2.1",
     "@plaiceholder/next": "2.2.0",
     "@types/js-yaml": "^4.0.9",
@@ -28,6 +30,7 @@
     "mdast-util-to-markdown": "^2.1.0",
     "next": "^14.1.0",
     "notion-to-md": "^2.5.5",
+    "openai": "^4.73.1",
     "plaiceholder": "2.2.0",
     "postcss": "^8.4.35",
     "react": "^18.2.0",
@@ -48,6 +51,7 @@
     "unified": "^10.1.0",
     "unist-util-map": "^4.0.0",
     "unist-util-visit": "^5.0.0",
+    "unist-util-visit-parents": "^6.0.1",
     "vscode-oniguruma": "1.6.2"
   },
   "remarkConfig": {

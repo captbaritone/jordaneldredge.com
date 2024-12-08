@@ -2,6 +2,7 @@ import { Query } from "./GraphQLRoots";
 import { Linkable } from "./interfaces";
 import { SiteUrl } from "./SiteUrl";
 import * as Data from "../data";
+import { Content } from "../data";
 
 /**
  * A tag that can be associated with items.
@@ -23,12 +24,12 @@ export class Tag implements Linkable {
    * The list of items that have this tag.
    * @gqlField
    */
-  items(): Data.Content[] {
+  items(): Content[] {
     return Data.Content.withTag(this);
   }
 
   /** @gqlField */
-  static getTagByName(_: Query, args: { name: string }): Tag {
-    return new Tag(args.name);
+  static getTagByName(_: Query, name: string): Tag {
+    return new Tag(name);
   }
 }

@@ -5,6 +5,7 @@ import { db, sql } from "../db";
 import yaml from "js-yaml";
 import { PageType } from "./Indexable";
 import { Tag } from "./Tag";
+import TTSAudio from "./TTSAudio";
 
 export type Metadata = {
   title?: string;
@@ -21,6 +22,7 @@ export type Metadata = {
 };
 
 type ContentDBRow = {
+  id: number;
   page_type: PageType;
   slug: string;
   title: string;
@@ -36,6 +38,7 @@ type ContentDBRow = {
   metadata: string;
 };
 
+/** @gqlType */
 export default class Content {
   _item: ContentDBRow;
   _metadata: Metadata;
@@ -43,23 +46,32 @@ export default class Content {
     this._item = item;
     this._metadata = JSON.parse(item.metadata);
   }
-  slug() {
+  id(): string {
+    return String(this._item.id);
+  }
+  /** @gqlField */
+  slug(): string {
     return this._item.slug;
   }
-  title() {
+  /** @gqlField */
+  title(): string {
     return this._item.title;
   }
+  /** @gqlField */
   date(): string {
     return this._item.DATE;
   }
-  summary() {
+  /** @gqlField */
+  summary(): string {
     return this._item.summary;
   }
-  tagSet() {
+  /** @gqlField */
+  tagSet(): TagSet {
     const tagStrings =
       this._item.tags.length < 1 ? [] : this._item.tags.split(" ");
     return TagSet.fromTagStrings(tagStrings);
   }
+  /** @gqlField */
   async summaryImage(): Promise<string | undefined> {
     return this._item.summary_image_path;
   }
@@ -71,10 +83,12 @@ export default class Content {
   feedId(): string {
     return this._item.feed_id;
   }
-  content(): Promise<Markdown> | Markdown {
+  /** @gqlField */
+  content(): Markdown {
     return Markdown.fromString(this._item.content);
   }
-  url() {
+  /** @gqlField */
+  url(): SiteUrl {
     switch (this._item.page_type) {
       case "page":
         return new SiteUrl(`/${this._item.slug}`);
@@ -83,6 +97,16 @@ export default class Content {
       case "note":
         return new SiteUrl(`/notes/${this._item.slug}`);
     }
+  }
+  ttsAudio(): TTSAudio | null {
+    return TTSAudio.fromContentId(this.id());
+  }
+
+  publicAudioUrl(): SiteUrl | null {
+    if (this.ttsAudio() == null) {
+      return null;
+    }
+    return new SiteUrl(this.url().path() + ".mp3");
   }
 
   serializedFilename(forceNotionId: boolean = false): string {
@@ -95,6 +119,7 @@ export default class Content {
     return this._metadata;
   }
 
+  /** @gqlField */
   githubCommentsIssueId(): string | undefined {
     return this._metadata.github_comments_issue_id;
   }
@@ -172,7 +197,7 @@ export default class Content {
     return rows.map((item) => new Content(item));
   }
 
-  static async all() {
+  static all() {
     const rows = ALL_ITEMS_RANKED.all();
     return rows.map((row) => new Content(row));
   }

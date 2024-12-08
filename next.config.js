@@ -65,8 +65,16 @@ module.exports = withPlaiceholder({
         destination: "/blog/:slug/md",
       },
       {
+        source: "/blog/:slug(.+\\.mp3)",
+        destination: "/blog/:slug/mp3",
+      },
+      {
         source: "/notes/:slug(.+\\.md)",
         destination: "/notes/:slug/md",
+      },
+      {
+        source: "/notes/:slug(.+\\.mp3)",
+        destination: "/notes/:slug/mp3",
       },
     ];
   },

@@ -1,8 +1,9 @@
 import Markdown from "./Markdown";
 import * as Data from "../data";
 import RelatedContent from "./RelatedContent";
-import DateString from "./DateString";
 import GitHubComments from "./GitHubComments";
+import DateString from "./DateString";
+import PlayButton from "./PlayButton";
 
 type ContentPageProps = {
   item: Data.Content;
@@ -10,7 +11,8 @@ type ContentPageProps = {
 };
 
 export default async function ContentPage({ item, issueId }: ContentPageProps) {
-  const content = await item.content();
+  const content = item.content();
+  const audioUrl = item.publicAudioUrl();
   const ast = await content.ast();
   return (
     <div>
@@ -18,13 +20,24 @@ export default async function ContentPage({ item, issueId }: ContentPageProps) {
         <div className="markdown">
           <h1>{item.title()}</h1>
           <div
-            className="italic text-sm text-gray-400"
+            className="flex flex-row text-sm  text-gray-400"
             style={{
               marginTop: "-1.4rem",
               marginBottom: "1rem",
             }}
           >
-            <DateString date={new Date(item.date())} />
+            <div className="italic">
+              <DateString date={new Date(item.date())} />
+            </div>
+            {audioUrl && (
+              <>
+                <div className="pl-2 pr-2">{"|"}</div>
+                <PlayButton
+                  audioUrl={audioUrl.path()}
+                  title="Play an AI generated audio reading of this content."
+                />
+              </>
+            )}
           </div>
           <Markdown ast={ast} />
         </div>

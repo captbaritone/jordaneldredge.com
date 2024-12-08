@@ -1,8 +1,7 @@
 import "dotenv/config";
 import path from "node:path";
 import fs from "node:fs";
-import * as Data from "../lib/data";
-import * as Search from "../lib/search";
+import Content from "../lib/data/Content";
 
 main();
 
@@ -10,7 +9,7 @@ async function main() {
   const force = process.argv.includes("--force");
   console.log("Looking for notes to backup");
   // We don't want regular users to be able to trigger a backup
-  const notes = Search.notes();
+  const notes = Content.notes();
   console.log(`Found ${notes.length} notes to backup`);
   for (const note of notes) {
     const fileName = note.serializedFilename();

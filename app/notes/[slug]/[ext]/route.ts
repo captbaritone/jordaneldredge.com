@@ -18,6 +18,18 @@ export async function GET(_: NextRequest, { params }) {
       const content = note.contentWithHeader();
       return new Response(content);
     }
+    case "mp3": {
+      const note = Content.getNoteBySlug(slug);
+      if (note == null) {
+        return new Response("Not found", { status: 404 });
+      }
+      const ttsAudio = note.ttsAudio();
+      if (ttsAudio == null) {
+        return new Response("Not found", { status: 404 });
+      }
+      // Redirect to the audio file
+      return Response.redirect(ttsAudio.url(), 302);
+    }
     default:
       return new Response("Not found", { status: 404 });
   }

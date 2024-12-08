@@ -9,8 +9,8 @@ export function generateMetadata({ params }) {
 export const revalidate = 600;
 export const dynamic = "force-static";
 
-export default async function All({ params }) {
-  const items = await Content.all();
+export default function All({ params }) {
+  const items = Content.all();
 
   if (items.length === 0) {
     // TODO: 404?
