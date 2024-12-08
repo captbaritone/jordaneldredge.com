@@ -5,7 +5,7 @@ summary: A private, mobile-first web app that writes your journal directly to Dr
 tags: ["javascript", "project", "localFirst"]
 ---
 
-For the last three months, one and off, I've been working on a journaling web application. It solves my own journaling needs, maybe it would be useful to you as well.
+For the last three months, on and off, I've been working on a journaling web application. It solves my own journaling needs, maybe it would be useful to you as well.
 
 It assumes the following:
 

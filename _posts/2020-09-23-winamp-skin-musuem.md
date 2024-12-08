@@ -16,10 +16,10 @@ The project has proven more successful than I could have hoped, **serving ~30 mi
 
 I hope that the site feels simple to users, even obvious. At its core it’s just a single scrollable grid of filterable screenshots with a live preview when you select one. But, both the decision behind that design, and how I built it, were driven by a well defined vision.
 
-Websites that curate skins have been around since skins were first “a thing”. However, since that time, the web, bandwidth, and CPUs have come a long way. So, **I set out to build a website that leveraged this technical progress to saturate the user with as much Winamp skin aesthetic as possible.** Delivering on this vision required solving a two interesting problems:
+Websites that curate skins have been around since skins were first “a thing”. However, since that time, the web, bandwidth, and CPUs have come a long way. So, **I set out to build a website that leveraged this technical progress to saturate the user with as much Winamp skin aesthetic as possible.** Delivering on this vision required solving two interesting problems:
 
 1. Get lots of skins with screenshots
-2. Build an interface that maximizes the skins we can show across all possible axis
+2. Build an interface that maximizes the skins we can show across all possible axes
 
 Finally I had an additional constraint. I, correctly as it turns out, suspected that a site like this might generate a lot of interest, so I needed to ensure that the site could withstand large traffic spikes, and that the cost of running the site would be reasonable even in the face of large spikes.
 

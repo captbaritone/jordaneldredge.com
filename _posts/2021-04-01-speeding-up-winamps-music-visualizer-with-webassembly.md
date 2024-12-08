@@ -14,7 +14,7 @@ _Webamp's with its music visualizer Butterchurn, now powered by Wasm_
 
 ## Why Wasm?
 
-Webamp's visualizer is provided by Butterchurn, an open source JavaScript and WebGL implementation of Winamp's infamous [Milkdrop](https://en.wikipedia.org/wiki/MilkDrop) music visualizer. Milkdrop's iconic visuals are the product of `.milk` "presets" which contain [HLSL](https://en.wikipedia.org/wiki/High-Level_Shading_Language) shader code and code written Eel, a language that Nullsoft invented. Milkdrop uses this code to convert audio signal into pixels.
+Webamp's visualizer is provided by Butterchurn, an open source JavaScript and WebGL implementation of Winamp's infamous [Milkdrop](https://en.wikipedia.org/wiki/MilkDrop) music visualizer. Milkdrop's iconic visuals are the product of `.milk` "presets" which contain [HLSL](https://en.wikipedia.org/wiki/High-Level_Shading_Language) shader code and code written in Eel, a language that Nullsoft invented. Milkdrop uses this code to convert audio signal into pixels.
 
 Butterchurn originally worked by transpiling the HLSL shader code to WebGL code and transpiling the Eel code to JavaScript. The resulting code was then distributed as `.json` files from which Butterchurn could read the code and `eval()` it.
 
