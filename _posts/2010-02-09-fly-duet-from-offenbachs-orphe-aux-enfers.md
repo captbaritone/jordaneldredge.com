@@ -1,7 +1,7 @@
 ---
 title: "Fly Duet from Offenbach's Orphée aux enfers"
 archive: true
-youtube_slug: 6HXCSosh_9w
+# youtube_slug: 6HXCSosh_9w
 summary: "A video of Chelsea Hollow and I performing the Fly Duet from Offenbach's Orphée aux enfers."
 tags: [chelsea, youtube, opera, music, defunct]
 ---

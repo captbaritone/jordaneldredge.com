@@ -4,7 +4,7 @@ tags:
   - quote
 summary: Tom Lehrer quote on comparing your successes to those of others
 notion_id: ec9088e7-6e9e-403d-8034-6508f35751b2
-summary_image: /youtube/QL6KgbrGSKQ?t=70.jpg
+summary_image: https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/youtube/QL6KgbrGSKQ.jpg
 ---
 One of my favorite Tom Lehrer quotes:
 
@@ -12,4 +12,4 @@ One of my favorite Tom Lehrer quotes:
 
 From his introduction to the song “Alma” on the album [_That Was the Year That Was_](https://en.wikipedia.org/wiki/That_Was_the_Year_That_Was)_._
 
-::youtube{token=QL6KgbrGSKQ?t=70}
+::youtube{token=QL6KgbrGSKQ}

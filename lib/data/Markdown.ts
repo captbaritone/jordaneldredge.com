@@ -3,12 +3,7 @@ import { Node } from "unist";
 import { visit } from "unist-util-visit";
 import remarkInlineLinks from "remark-inline-links";
 import { toMarkdown, Options } from "mdast-util-to-markdown";
-import {
-  fixHtml,
-  processImages,
-  syntaxHighlighting,
-  parse,
-} from "./markdownUtils";
+import { fixHtml, syntaxHighlighting, parse } from "./markdownUtils";
 
 /**
  * Content that can be represented as markdown.
@@ -31,7 +26,6 @@ export class Markdown {
    */
   async markdownString(): Promise<string> {
     const ast = this.cloneAst();
-    await processImages(ast);
     visit(ast, (node, index, parent) => {
       if (node.type === "image") {
         // @ts-ignore
@@ -52,7 +46,6 @@ export class Markdown {
     fixHtml(ast);
 
     await syntaxHighlighting(ast);
-    await processImages(ast);
     return ast;
   }
 }

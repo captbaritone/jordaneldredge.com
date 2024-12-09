@@ -5,9 +5,9 @@ tags:
 summary: Reflections on why my side project meme generator never caught on
 notion_id: a6d192dd-d25a-45d0-8977-b74ae315bf49
 summary_image: >-
-  /notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/c5c9bd2b-2342-479d-85a1-66aeb432a2c7/it_failed.jpg
+  https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/c5c9bd2b-2342-479d-85a1-66aeb432a2c7/it_failed.jpg
 ---
-![](/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/c5c9bd2b-2342-479d-85a1-66aeb432a2c7/it_failed.jpg)
+![](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/c5c9bd2b-2342-479d-85a1-66aeb432a2c7/it_failed.jpg)
 
 I made an [image macro generator site](https://urlme.me/) that had a unique idea: what if the entire UI of the generator was just the URL? The pitch was “Type a url, get a meme”.
 

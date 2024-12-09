@@ -5,6 +5,6 @@ export const dynamic = "force-dynamic";
 
 export async function GET() {
   await Indexable.reindex({ force: false });
-  revalidatePath("/");
+  revalidatePath("/", "layout");
   return new Response(JSON.stringify({ status: "ok" }));
 }

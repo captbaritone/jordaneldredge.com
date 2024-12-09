@@ -8,6 +8,8 @@ import {
   IndexableProvider,
   IndexableStub,
 } from "../Indexable";
+import { ensureYoutubeImage, keyForYoutubeThumbnail } from "./providerUtils";
+import { keyUrl } from "../../s3";
 
 const postsDirectory = join(process.cwd(), "./_posts");
 
@@ -48,9 +50,13 @@ export class PostProvider implements IndexableProvider {
       engines: { yaml: (s) => yaml.load(s, { schema: yaml.JSON_SCHEMA }) },
     });
 
+    if (metadata.youtube_slug != null) {
+      await ensureYoutubeImage(metadata.youtube_slug);
+    }
+
     let summaryImage = metadata.summary_image;
     if (summaryImage == null && metadata.youtube_slug != null) {
-      summaryImage = `https://img.youtube.com/vi/${metadata.youtube_slug}/hqdefault.jpg`;
+      summaryImage = keyUrl(keyForYoutubeThumbnail(metadata.youtube_slug));
     }
     return {
       pageType: "post",

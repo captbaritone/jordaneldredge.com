@@ -7,7 +7,7 @@ summary: >-
   My response to a Reddit user’s question about the value of the Relay
   Connection Spec
 notion_id: 11b376e2-3751-8058-8a7f-c7a1a11c786c
-summary_image: /youtube/PGBC-0E-kco.jpg
+summary_image: https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/youtube/PGBC-0E-kco.jpg
 ---
 Reddit user [SherlockCodes](https://www.reddit.com/user/SherlockCodes/) recently [asked](https://www.reddit.com/r/graphql/s/wB2DEFtFQg) this question:
 

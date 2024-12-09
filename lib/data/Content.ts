@@ -6,6 +6,7 @@ import yaml from "js-yaml";
 import { PageType } from "./Indexable";
 import { Tag } from "./Tag";
 import TTSAudio from "./TTSAudio";
+import { keyUrl } from "../s3";
 
 export type Metadata = {
   title?: string;
@@ -72,7 +73,7 @@ export default class Content {
     return TagSet.fromTagStrings(tagStrings);
   }
   /** @gqlField */
-  async summaryImage(): Promise<string | undefined> {
+  summaryImage(): string | undefined {
     return this._item.summary_image_path;
   }
   showInLists(): boolean {

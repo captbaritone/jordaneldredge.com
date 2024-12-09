@@ -8,11 +8,11 @@ summary: >-
   and how it helped create a positive feedback loop
 notion_id: 126376e2-3751-801c-8c4e-c000e83ca9e3
 summary_image: >-
-  /notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/bc13baf2-e89c-4a99-a4b6-08f53e12e901/Screenshot_2024-10-20_at_9.29.34_PM.png
+  https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/bc13baf2-e89c-4a99-a4b6-08f53e12e901/Screenshot_2024-10-20_at_9.29.34_PM.png
 ---
 When I launched the [Winamp Skin Museum](https://jordaneldredge.com/blog/winamp-skin-musuem/) in 2020, we had 64k skins. Thanks to people’s generous use of the museum’s upload feature, on July 30th, 2024 we crossed 100k skins. I thought this would be a good opportunity to reflect on the design of the museum’s over-engineered upload feature, some of it’s clever tricks, and how its design and implementation have facilitated a virtuous positive feedback loop.
 
-![](/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/bc13baf2-e89c-4a99-a4b6-08f53e12e901/Screenshot_2024-10-20_at_9.29.34_PM.png)
+![](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/bc13baf2-e89c-4a99-a4b6-08f53e12e901/Screenshot_2024-10-20_at_9.29.34_PM.png)
 
 ## Goals
 

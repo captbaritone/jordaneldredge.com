@@ -6,9 +6,9 @@ tags:
 summary: Webamp.org has a feature that lets it pose as if it were in action
 notion_id: 12f376e2-3751-8053-bdb1-e1a5776bb325
 summary_image: >-
-  /notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/ee127ca2-dabf-4d09-ba6a-79571304d7e9/Screenshot_2024-10-29_at_10.00.51_PM.png
+  https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/ee127ca2-dabf-4d09-ba6a-79571304d7e9/Screenshot_2024-10-29_at_10.00.51_PM.png
 ---
-![](/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/ee127ca2-dabf-4d09-ba6a-79571304d7e9/Screenshot_2024-10-29_at_10.00.51_PM.png)
+![](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/ee127ca2-dabf-4d09-ba6a-79571304d7e9/Screenshot_2024-10-29_at_10.00.51_PM.png)
 
 The [Winamp Skin Museum](https://jordaneldredge.com/blog/winamp-skin-musuem/) now contains [over 100,000 skins](https://jordaneldredge.com/notes/skin-upload/), and the main way it surfaces them is as a screenshot. In fact, one of the key dependencies of building the Winamp Skin Museum was the ability to automate the process of generating screenshots of Winamp skins.
 

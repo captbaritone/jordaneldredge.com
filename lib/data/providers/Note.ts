@@ -1,5 +1,4 @@
 import path from "node:path";
-import fs from "node:fs";
 import { Markdown } from "../Markdown";
 import { SiteUrl } from "../SiteUrl";
 import { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
@@ -11,14 +10,18 @@ import {
 } from "../../services/notion";
 import { Node } from "unist";
 import { visit } from "unist-util-visit";
-import { Readable } from "node:stream";
-import { finished } from "node:stream/promises";
 import {
   IndexableConcrete,
   IndexableProvider,
   IndexableStub,
 } from "../Indexable";
 import { Metadata } from "../Content";
+import {
+  ensureYoutubeImage,
+  keyForYoutubeThumbnail,
+  maybeUploadImage,
+} from "./providerUtils";
+import { keyUrl } from "../../s3";
 
 // Regex matching Youtube URLs and extracting the token
 const YOUTUBE_REGEX =
@@ -61,9 +64,9 @@ export class NoteProvider implements IndexableProvider {
     const ast = await blocksToMarkdownAst(pageBlocks.results);
     applyDirectives(ast);
     const markdown = new Markdown(ast);
-    const content = await markdown.markdownString();
 
-    await downloadImages(ast);
+    await rewriteImageUrls(ast);
+    const content = await markdown.markdownString();
 
     const slug = expectSlug(page);
     return {
@@ -87,11 +90,11 @@ export class NoteProvider implements IndexableProvider {
       if (summaryImage != null) {
         return false;
       }
-      if (node.type === "image" && node.imageProps?.cachedPath) {
-        summaryImage = node.imageProps.cachedPath;
+      if (node.type === "image") {
+        summaryImage = node.url;
       }
       if (node.type === "leafDirective" && node.name === "youtube") {
-        summaryImage = `/youtube/${node.attributes.token}.jpg`;
+        summaryImage = keyUrl(keyForYoutubeThumbnail(node.attributes.token));
       }
     });
     return summaryImage;
@@ -173,58 +176,27 @@ function expectTags(page: PageObjectResponse): string[] {
   });
 }
 
-async function downloadImages(tree): Promise<void> {
+async function rewriteImageUrls(tree): Promise<void> {
   const promises: Promise<unknown>[] = [];
   visit(tree, (node, index, parent) => {
     if (node.type === "leafDirective" && node.name === "youtube") {
-      const summaryImage = `https://img.youtube.com/vi/${node.attributes.token}/hqdefault.jpg`;
-      const destination = path.join(
-        process.cwd(),
-        "public",
-        "youtube",
-        `${node.attributes.token}.jpg`,
-      );
-
-      if (!fs.existsSync(destination)) {
-        promises.push(download(summaryImage, destination));
-      }
+      promises.push(ensureYoutubeImage(node.attributes.token));
       return;
     }
     if (node.type === "image") {
       const url = new URL(node.url);
       if (url.hostname.endsWith("amazonaws.com")) {
         const pathname = url.pathname;
-        const destination = path.join(
-          process.cwd(),
-          "public",
-          "notion-mirror",
-          pathname,
-        );
+        const r2_key = path.join("notion-mirror", pathname);
 
         // If the file already exists:
-        if (!fs.existsSync(destination)) {
-          promises.push(download(node.url, destination));
-        }
+        promises.push(
+          maybeUploadImage(r2_key, node.url).then(() => {
+            node.url = keyUrl(r2_key);
+          }),
+        );
       }
     }
   });
   await Promise.all(promises);
-}
-
-async function download(url: string, destination: string): Promise<void> {
-  // ensure the directory exists
-  fs.mkdirSync(path.dirname(destination), { recursive: true });
-  const { body, ok } = await fetch(url, { cache: "no-store" });
-  if (!ok) {
-    console.error("Failed to fetch image", url);
-    return;
-  }
-  // Save file to destination
-  try {
-    const dest = fs.createWriteStream(destination);
-    // @ts-ignore
-    await finished(Readable.fromWeb(body).pipe(dest));
-  } catch (e) {
-    console.error("Failed to fetch image", url, e);
-  }
 }

@@ -1,15 +1,13 @@
-const { withPlaiceholder } = require("@plaiceholder/next");
-
 /**
  * @type {import('next').NextConfig}
  */
-module.exports = withPlaiceholder({
+module.exports = {
   experimental: {
     scrollRestoration: true,
     // https://github.com/shikijs/next-shiki
     serverComponentsExternalPackages: ["shiki", "vscode-oniguruma"],
   },
-  transpilePackages: ["unified", "plaiceholder", "unist-util-visit"],
+  transpilePackages: ["unified", "unist-util-visit"],
   typescript: {
     ignoreBuildErrors: true,
   },
@@ -32,6 +30,11 @@ module.exports = withPlaiceholder({
         protocol: "https",
         hostname: "img.youtube.com",
         pathname: "/vi/**",
+      },
+      {
+        protocol: "https",
+        hostname: "pub-d4cecb3d578a4c0a8939680792e49682.r2.dev",
+        pathname: "/**",
       },
       {
         protocol: "https",
@@ -86,7 +89,7 @@ module.exports = withPlaiceholder({
   trailingSlash: true,
   swcMinify: true,
   distDir: "build",
-});
+};
 
 process.on("unhandledRejection", (error) => {
   console.log("unhandledRejection", error);

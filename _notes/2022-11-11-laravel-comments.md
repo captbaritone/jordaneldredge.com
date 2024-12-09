@@ -7,13 +7,13 @@ summary: >-
   Laravel
 notion_id: fcbf0934-9836-4e1f-a737-b1be763ab383
 summary_image: >-
-  /notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/c2bcf002-2b8b-47b2-8f0c-6d726fa216c1/undefined_-_Imgur.png
+  https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/c2bcf002-2b8b-47b2-8f0c-6d726fa216c1/undefined_-_Imgur.png
 ---
 In the early-ish days of the PHP framework [Laravel](https://laravel.com/), the author [Taylor Otwell](https://github.com/taylorotwell) took an obsessive approach to code consistency. Not only did every method include a docblock with a description, but each description was _exactly_ three lines long, and each line was _exactly_ three characters shorter than the previous line.
 
 ### Example
 
-![](/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/c2bcf002-2b8b-47b2-8f0c-6d726fa216c1/undefined_-_Imgur.png)
+![](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/c2bcf002-2b8b-47b2-8f0c-6d726fa216c1/undefined_-_Imgur.png)
 
 [_Image source_](https://imgur.com/UnIUZmZ)
 

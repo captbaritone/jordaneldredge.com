@@ -85,6 +85,8 @@ export default function Layout({ children }) {
               </a>
               {" • "}
               <a href="/feed/rss.xml">RSS</a>
+              {" • "}
+              <a href="/notes/tts-podcast/">Podcast</a>
             </footer>
           </div>
           <AudioPlayer />

@@ -6,7 +6,7 @@ tags:
   - music
 summary: Mad scientist combines two Commodore 64s into a chiptune accordion
 notion_id: deec59a9-cbc0-4eb5-b534-0d32a7a2b482
-summary_image: /youtube/EBCYvoC4muc.jpg
+summary_image: https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/youtube/EBCYvoC4muc.jpg
 ---
 Amazing idea and execution. It feels like it sets up the idea of a musical instrument that feels like using Vim.
 

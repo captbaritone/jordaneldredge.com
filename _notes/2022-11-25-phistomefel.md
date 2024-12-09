@@ -6,7 +6,7 @@ summary: >-
   An incredible property that all sudoku puzzles have which can be proven with
   set theory
 notion_id: 7cfde580-325b-4cce-8c23-ca1c92bb3935
-summary_image: /youtube/pezlnN4X52g.jpg
+summary_image: https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/youtube/pezlnN4X52g.jpg
 ---
 During the pandemic I became a fan of [Cracking the Cryptic](https://www.youtube.com/c/CrackingTheCryptic), a Youtube Channel in which two English guys solve — often very challenging — variant sudoku puzzles. It turns out these puzzles often have fascinating and clever emergent logic puzzles embedded within them.
 

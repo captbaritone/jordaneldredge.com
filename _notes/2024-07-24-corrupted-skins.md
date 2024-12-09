@@ -9,7 +9,7 @@ summary: >-
   strange rabbit holes
 notion_id: a3ea435d-f7ab-4f7f-a106-ed23644b0358
 summary_image: >-
-  /notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/e94461bd-1f9c-4ef4-bbda-23acc32ef0df/EsErCPFVoAACjOn.jpeg
+  https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/e94461bd-1f9c-4ef4-bbda-23acc32ef0df/EsErCPFVoAACjOn.jpeg
 ---
 _Discussed on_ [_Hacker News_](https://news.ycombinator.com/item?id=41064645)_,_ [_Slashdot_](https://news.slashdot.org/story/24/07/26/0058212/bizarre-secrets-found-investigating-corrupt-winamp-skins)_,_ [_r/internetIsBeautiful_](https://www.reddit.com/r/InternetIsBeautiful/comments/1eculxu/the_bizarre_secrets_i_found_investigating_corrupt/)_,_ [_lemmy.world_](https://lemmy.world/post/17995324)
 
@@ -36,7 +36,7 @@ Here’s the story:
 
 The first corrupted file I looked at was called `Wicked_Ways.wsz` and contained just a PDF advertising a rentable bowling pin mascot costume:
 
-![](/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/e94461bd-1f9c-4ef4-bbda-23acc32ef0df/EsErCPFVoAACjOn.jpeg)
+![](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/e94461bd-1f9c-4ef4-bbda-23acc32ef0df/EsErCPFVoAACjOn.jpeg)
 
 I’m particularly curious about what exactly a “’Kool’ Tube” is. Some mechanism for keeping the occupant from overheating I assume?
 
@@ -44,7 +44,7 @@ I’m particularly curious about what exactly a “’Kool’ Tube” is. Some m
 
 Another was called `bobs_car.wsz` and, as advertised, contained just this picture, which I have to assume is the titular “Bob’s car”.
 
-![](/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/02d049fc-ee84-42b7-95f1-52c4c434db63/bobs_car.jpg)
+![](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/02d049fc-ee84-42b7-95f1-52c4c434db63/bobs_car.jpg)
 
 _Update 2024/7/25:_ Someone on Hacker News [identified](https://news.ycombinator.com/item?id=41065196) this location as [Kilmacolm Road Viewpoint](https://www.google.com/maps/place/Kilmacolm+Road+Viewpoint/@55.9285659,-4.7106362,3a,75y,90t/data=!3m8!1e2!3m6!1sAF1QipPpt-joyGwDUQF1ZE44AaDN6NFZbmd87LGrERqZ!2e10!3e12!6shttps:%2F%2Fgz0.googleusercontent.com%2Fp%2FAF1QipPpt-joyGwDUQF1ZE44AaDN6NFZbmd87LGrERqZ%3Dw414-h552-k-no!7i3024!8i4032!4m7!3m6!1s0x4889b105a0b0d8bf:0xf62aa0cffb734fbe!8m2!3d55.9285659!4d-4.7106362!10e5!16s%2Fg%2F11fpn_qb67?entry=ttu) in Scotland.
 
@@ -56,7 +56,7 @@ But then things got interesting. I found one that was an encrypted zip archive.
 
 I took the opportunity to learn about tools for brute forcing passwords in zip files. Soon enough, I cracked it, and found its contents:
 
-![](/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/7371ccc8-08f3-4202-b955-39ba04f31394/Screen_Shot_2021-01-18_at_10.46.36_PM.png)
+![](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/7371ccc8-08f3-4202-b955-39ba04f31394/Screen_Shot_2021-01-18_at_10.46.36_PM.png)
 
 The password was "honda”. No idea why it might have been encrypted. You can find the decrypted version [here](https://skins.webamp.org/skin/79dd58bc6e30f5a260f7aefd631d8ea2/2003_acura_rsx.updated.wsz/).
 
@@ -72,7 +72,7 @@ Another one had been created by a dad in Thailand who made an Adobe Illustrator 
 
 I found another encrypted zip file. This time the password was not in my wordlist. After a bit of fiddling with the cracking tool’s config file, I was able to brute force it as well. The result was a valid Winamp skin!
 
-![](/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/4d300a93-0973-42bf-8eff-43d2b4b33d94/Screen_Shot_2021-01-19_at_4.12.13_PM.png)
+![](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/4d300a93-0973-42bf-8eff-43d2b4b33d94/Screen_Shot_2021-01-19_at_4.12.13_PM.png)
 
 Password was "nayane”.
 
@@ -101,13 +101,13 @@ USE THIS PASSWORD:KEWL16
 
 Inside the skin was a file `Suprise!.zip` which was itself encrypted, but the password didn’t work! Eventually I figured out that the password needed to be lower case. Inside were a bunch of `.avs` files:
 
-![](/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/5b5f915c-44b9-4c36-adf6-1d69ea615450/Screen_Shot_2021-01-20_at_11.45.00_AM.png)
+![](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/5b5f915c-44b9-4c36-adf6-1d69ea615450/Screen_Shot_2021-01-20_at_11.45.00_AM.png)
 
 ---
 
 [This skin](https://skins.webamp.org/skin/5447f1bdfd64ffa7b3abe051ad717bcb/Chet_Baker.wsz/) included a file named `secret.txt` which was just a biography of [Chet Baker](https://en.wikipedia.org/wiki/Chet_Baker).
 
-![](/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/a1ef95d4-8330-453f-a3e4-1df46ef9249b/Screen_Shot_2021-01-20_at_11.48.43_AM.png)
+![](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/a1ef95d4-8330-453f-a3e4-1df46ef9249b/Screen_Shot_2021-01-20_at_11.48.43_AM.png)
 
 ---
 
@@ -163,27 +163,27 @@ Some days later I found a skin that contained just one file: `WORM.EXE` That sou
 
 I fed it to Virus Total but it didn’t detect any issues. So, someone in the Webamp Discord bravely tried running it in a VM and got this prompt:
 
-![](/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/0c010165-607f-4476-8b84-cb384f3a42f6/unknown.png)
+![](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/0c010165-607f-4476-8b84-cb384f3a42f6/unknown.png)
 
 It was a worm _game_, like the game snake!
 
-![](/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/4a0c7793-43a4-41b0-9a86-e99750e33f9f/VxrgXlCeTz.gif)
+![](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/4a0c7793-43a4-41b0-9a86-e99750e33f9f/VxrgXlCeTz.gif)
 
 Here’s top speed:
 
-![](/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/e775bd6e-fab0-4017-8c30-448f0a3f05eb/rgoq4NmUII.gif)
+![](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/e775bd6e-fab0-4017-8c30-448f0a3f05eb/rgoq4NmUII.gif)
 
 ---
 
 Another skin had just one file `Standing around the hoop.jpg`
 
-![](/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/b4461029-d051-4d3e-a6bd-a9925006ab2f/Standing_around_the_hoop.jpg)
+![](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/b4461029-d051-4d3e-a6bd-a9925006ab2f/Standing_around_the_hoop.jpg)
 
 ---
 
 Another one contained just a single file `ellie.bmp` Here’s Ellie I suppose?
 
-![](/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/000b0643-74f1-4cf5-9592-dc0be20e0ff0/elli.png)
+![](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/000b0643-74f1-4cf5-9592-dc0be20e0ff0/elli.png)
 
 Reencoded as `.png`
 
@@ -199,7 +199,7 @@ Another had two new born baby pictures and a text file:
 
 Finally, I thought to look for skins that contained other skins within them, and discovered 127 skins! 54 of which were not already in the museum, so I uploaded them.
 
-![](/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/f4239931-353a-4530-8939-80bf9f217673/Screen_Shot_2021-01-24_at_12.51.41_PM.png)
+![](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/f4239931-353a-4530-8939-80bf9f217673/Screen_Shot_2021-01-24_at_12.51.41_PM.png)
 
 ---
 

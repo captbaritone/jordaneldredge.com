@@ -4,7 +4,7 @@ tags:
   - share
 summary: Sharing a YouTube video of an awesome ROM hacking rescue mission
 notion_id: 15d902f9-7627-4722-9e64-c834b392fda8
-summary_image: /youtube/XqgmR1Hqvbk.jpg
+summary_image: https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/youtube/XqgmR1Hqvbk.jpg
 ---
 I love this YouTube video where a Pokémon gameboy reverse engineering hacker helps extract a Pokémon which this guy accidentally, and tragically, corrupted as a seven year old.
 
@@ -14,6 +14,6 @@ They video creates an amazingly compelling story arc with twists, turns, emotion
 
 I have to imagine this was hugely gratifying for the Pokémon hacker, who was able to leverage his very niche area of expertise to really help this guy in a meaningful way.
 
-![](/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/dec8ce93-35be-430f-abab-6253d0e64cb1/Untitled.png)
+![](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/dec8ce93-35be-430f-abab-6253d0e64cb1/Untitled.png)
 
 <https://xkcd.com/208/>

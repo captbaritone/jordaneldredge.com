@@ -1,5 +1,5 @@
 import { db } from "../db";
-import { upload } from "../s3";
+import { keyUrl, upload } from "../s3";
 import fs from "node:fs";
 import Content from "./Content";
 import { SiteUrl } from "./SiteUrl";
@@ -38,7 +38,7 @@ export default class TTSAudio {
   }
 
   url(): string {
-    return `${process.env.CLOUDFLARE_R2_PUBLIC_URL}/${this._r2Key}`;
+    return keyUrl(this._r2Key);
   }
 
   byteLength(): number {
