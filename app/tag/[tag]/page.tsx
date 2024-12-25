@@ -9,9 +9,9 @@ export function generateMetadata({ params }) {
 export const revalidate = 10;
 export const dynamic = "force-static";
 
-export default async function TagPage({ params }) {
+export default function TagPage({ params }) {
   const tag = new Tag(params.tag);
-  const items = await tag.items();
+  const items = tag.items();
 
   if (items.length === 0) {
     // TODO: 404?
