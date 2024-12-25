@@ -9,7 +9,6 @@ import {
 import { ListBlockChildrenResponseResults } from "notion-to-md/build/types";
 import type { Node } from "unist";
 import { parse } from "../data/markdownUtils";
-import { memoize, TEN_MINUTES } from "../memoize";
 
 export type NoteMetadata = {
   slugToId: { [slug: string]: string };
@@ -30,7 +29,7 @@ export async function blocksToMarkdownAst(
   // In the future we could define a direct mapping from the n2m AST to unist
   // AST without having to serialize in the middle.
   const markdownString = n2m.toMarkdownString(mdBlocks);
-  return parse(markdownString);
+  return parse(markdownString.parent);
 }
 
 /*
@@ -49,68 +48,62 @@ export const METADATA_DATABASE_ID = stringToId(
   "bbac761ed5f849048b2045d928b5f453",
 );
 
-export const getMetadata = memoize(
-  { ttl: TEN_MINUTES, key: "getMetadata" },
-  async (): Promise<NoteMetadata> => {
-    const results = await retrieveDatabase(METADATA_DATABASE_ID);
+export async function getMetadata(): Promise<NoteMetadata> {
+  const results = await retrieveDatabase(METADATA_DATABASE_ID);
 
-    // TODO: Pagination!
+  // TODO: Pagination!
 
-    const idToSummary = {};
-    const slugToId = {};
-    const idToSlug = {};
+  const idToSummary = {};
+  const slugToId = {};
+  const idToSlug = {};
 
-    const idToTags = {};
-    const rowPosts: PageObjectResponse[] = [];
+  const idToTags = {};
+  const rowPosts: PageObjectResponse[] = [];
 
-    results.forEach((page) => {
+  results.forEach((page) => {
+    // @ts-ignore
+    const properties = page.properties;
+    const mention = properties.Note.title[0]?.mention;
+    const tags = properties.Tags.multi_select.map((select) => {
+      return select.name;
+    });
+
+    const slug = properties.Slug.rich_text[0]?.text.content;
+    const summary = properties.Summary.rich_text[0]?.text.content;
+    if (mention == null) {
       // @ts-ignore
-      const properties = page.properties;
-      const mention = properties.Note.title[0]?.mention;
-      const tags = properties.Tags.multi_select.map((select) => {
-        return select.name;
-      });
-
-      const slug = properties.Slug.rich_text[0]?.text.content;
-      const summary = properties.Summary.rich_text[0]?.text.content;
-      if (mention == null) {
-        // @ts-ignore
-        rowPosts.push(page);
-      }
-      const id = mention ? mention.page.id : page.id;
-      if (slug && id) {
-        slugToId[slug] = id;
-        idToSlug[id] = slug;
-      }
-
-      idToSummary[id] = summary;
-
-      idToTags[id] = tags;
-    });
-
-    return { slugToId, rowPosts };
-  },
-);
-
-export const retrievePage = memoize(
-  { ttl: TEN_MINUTES, key: "retrievePage" },
-  async (id: string): Promise<PageObjectResponse> => {
-    // @ts-ignore Not sure how to convince TypeScript that we are not getting a partial response.
-    const page: PageObjectResponse = await notion.pages.retrieve({
-      page_id: id,
-    });
-    if (
-      page.parent.type !== "database_id" ||
-      // NOTE! This is belt and suspenders security boundary. The integration
-      // itself should only have permission to see the relevant pages.
-      page.parent.database_id !== METADATA_DATABASE_ID
-    ) {
-      console.log(page);
-      throw new Error("Invalid page ID.");
+      rowPosts.push(page);
     }
-    return page;
-  },
-);
+    const id = mention ? mention.page.id : page.id;
+    if (slug && id) {
+      slugToId[slug] = id;
+      idToSlug[id] = slug;
+    }
+
+    idToSummary[id] = summary;
+
+    idToTags[id] = tags;
+  });
+
+  return { slugToId, rowPosts };
+}
+
+export async function retrievePage(id: string): Promise<PageObjectResponse> {
+  // @ts-ignore Not sure how to convince TypeScript that we are not getting a partial response.
+  const page: PageObjectResponse = await notion.pages.retrieve({
+    page_id: id,
+  });
+  if (
+    page.parent.type !== "database_id" ||
+    // NOTE! This is belt and suspenders security boundary. The integration
+    // itself should only have permission to see the relevant pages.
+    page.parent.database_id !== METADATA_DATABASE_ID
+  ) {
+    console.log(page);
+    throw new Error("Invalid page ID.");
+  }
+  return page;
+}
 
 export const retrieveBlocks = async (
   id: string,
@@ -134,25 +127,24 @@ export const retrieveBlocks = async (
   return { results };
 };
 
-export const retrieveDatabase = memoize(
-  { ttl: TEN_MINUTES, key: "retrieveDatabase" },
-  async (databaseId: string): Promise<QueryDatabaseResponse["results"]> => {
-    let results: QueryDatabaseResponse["results"] = [];
-    let hasMore = true;
-    let cursor: string | undefined = undefined;
+export async function retrieveDatabase(
+  databaseId: string,
+): Promise<QueryDatabaseResponse["results"]> {
+  let results: QueryDatabaseResponse["results"] = [];
+  let hasMore = true;
+  let cursor: string | undefined = undefined;
 
-    while (hasMore) {
-      const response = await notion.databases.query({
-        database_id: databaseId,
-        start_cursor: cursor,
-        page_size: 50, // Adjust the page size as needed
-      });
+  while (hasMore) {
+    const response = await notion.databases.query({
+      database_id: databaseId,
+      start_cursor: cursor,
+      page_size: 50, // Adjust the page size as needed
+    });
 
-      results = results.concat(response.results);
-      hasMore = response.has_more;
-      cursor = response.next_cursor ?? undefined;
-    }
+    results = results.concat(response.results);
+    hasMore = response.has_more;
+    cursor = response.next_cursor ?? undefined;
+  }
 
-    return results;
-  },
-);
+  return results;
+}

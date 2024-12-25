@@ -45,13 +45,22 @@ export type IndexableConcrete = {
   metadata: Object;
 };
 
-export async function reindex({ force = false }: { force?: boolean }) {
+export async function reindex({
+  force = false,
+  filter = null,
+}: {
+  force?: boolean;
+  filter: string | null;
+}) {
   console.log("REINDEX", { force });
   const providers = [new NoteProvider(), new PostProvider()];
   const stubIDs = new Set<string>();
   for (const provider of providers) {
     for (const stub of await provider.enumerate()) {
       stubIDs.add(getStubId(stub.pageType, stub.slug));
+      if (filter && !stub.slug.includes(filter)) {
+        continue;
+      }
       const row = GET_LAST_UPDATED_PAGE_AND_SLUG.get(stub);
       if (!force && row != null && row.last_updated >= stub.lastModified) {
         console.log("Skipping indexing", stub.slug);
@@ -74,7 +83,6 @@ export async function reindex({ force = false }: { force?: boolean }) {
       });
     }
   }
-
   // Check for indexed entries that no longer exist, and clean them up
   for (const entry of ALL_SEARCH_ENTRIES.all()) {
     const stubID = getStubId(entry.page_type, entry.slug);

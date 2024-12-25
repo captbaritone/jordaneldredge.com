@@ -5,7 +5,8 @@ main();
 
 async function main() {
   const force = process.argv.includes("--force");
-  await Search.reindex({
-    force,
-  });
+  const filter =
+    process.argv.find((arg) => arg.startsWith("--filter="))?.split("=")[1] ??
+    null;
+  await Search.reindex({ force, filter });
 }
