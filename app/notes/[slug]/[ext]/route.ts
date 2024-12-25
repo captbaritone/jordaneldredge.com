@@ -1,7 +1,7 @@
 import { NextRequest } from "next/server";
 import { Content } from "../../../../lib/data";
 
-export const revalidate = 600;
+export const revalidate = 10;
 export const dynamic = "force-static";
 
 // NOTE: This route depends upon a rewrite in the project config to allow it to match:

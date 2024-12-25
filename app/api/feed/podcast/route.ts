@@ -2,7 +2,7 @@ import { Feed, Item } from "feed";
 import * as Data from "../../../../lib/data";
 import { NextRequest } from "next/server";
 
-export const revalidate = 600;
+export const revalidate = 10;
 export const dynamic = "force-static";
 
 export async function GET(request: NextRequest, { params }) {

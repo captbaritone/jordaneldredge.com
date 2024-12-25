@@ -3,7 +3,7 @@ import * as Data from "../../../../lib/data";
 import { NextRequest } from "next/server";
 import { Enclosure } from "feed/lib/typings";
 
-export const revalidate = 600;
+export const revalidate = 10;
 export const dynamic = "force-static";
 
 const NOTES_EPOCH = new Date("2024-07-22");

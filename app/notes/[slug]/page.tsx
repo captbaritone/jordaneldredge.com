@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import ContentPage from "../../../lib/components/ContentPage";
 
 // https://beta.nextjs.org/docs/data-fetching/caching#segment-level-caching
-export const revalidate = 600;
+export const revalidate = 10;
 export const dynamic = "force-static";
 
 export async function generateMetadata({ params }): Promise<Metadata> {
