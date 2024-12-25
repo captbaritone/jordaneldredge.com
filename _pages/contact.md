@@ -6,6 +6,7 @@ Here are some ways to get in touch with me:
 
 - Email: [jordan@jordaneldredge.com](mailto:jordan@jordaneldredge.com)
 - Threads: [@captbaritone](https://threads.net/@captbaritone)
+- Bluesky: [@capt.dev](https://bsky.app/profile/capt.dev)
 - Twitter: [@captbaritone](https://twitter.com/captbaritone)
 - Github: [captbaritone](https://github.com/captbaritone)
 - LinkedIn: [jordaneldredge](https://www.linkedin.com/in/jordaneldredge/)

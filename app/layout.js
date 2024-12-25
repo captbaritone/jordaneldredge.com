@@ -76,8 +76,8 @@ export default function Layout({ children }) {
             </div>
             <main>{children}</main>
             <footer className="py-8 pb-12 text-center block border-t-2 border-gray-200 border-solid">
-              <a rel="me" href="https://twitter.com/captbaritone">
-                Twitter
+              <a rel="me" href="https://bsky.app/profile/capt.dev">
+                Bluesky
               </a>
               {" • "}
               <a rel="me" href="https://threads.net/@captbaritone">
