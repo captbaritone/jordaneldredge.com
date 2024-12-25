@@ -28,8 +28,8 @@ export class Tag implements Linkable {
     return Data.Content.withTag(this);
   }
 
-  /** @gqlField */
-  static getTagByName(_: Query, name: string): Tag {
+  /** @gqlQueryField */
+  static getTagByName(name: string): Tag {
     return new Tag(name);
   }
 }
