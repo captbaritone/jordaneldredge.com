@@ -75,7 +75,9 @@ class ScriptWriter {
     await TTSAudio.upload(content.id(), outputFile);
     fs.rmSync(outputFile);
     for (const file of files) {
-      fs.rmSync(file);
+      if (file.startsWith(tempDir)) {
+        fs.rmSync(file);
+      }
     }
   }
 
@@ -86,6 +88,7 @@ class ScriptWriter {
 
     execSync(
       `ffmpeg -y -f concat -safe 0 -i ${fileList} -acodec libmp3lame -b:a 192k ${outputFile}`,
+      { stdio: "pipe" },
     );
     fs.rmSync(fileList);
   }
@@ -154,10 +157,12 @@ class ScriptWriter {
       switch (child.type) {
         case "leafDirective":
           if (child.name === "audio") {
-            sections.push({
-              kind: "audio",
-              path: path.resolve(path.join("./public", child.attributes.src)),
-            });
+            if (child.attributes.src.startsWith("/")) {
+              sections.push({
+                kind: "audio",
+                path: path.resolve(path.join("./public", child.attributes.src)),
+              });
+            }
           }
           break;
         default:

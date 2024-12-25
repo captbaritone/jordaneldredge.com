@@ -54,7 +54,7 @@ export default class TTSAudio {
     const key = `tts/${contentId}.mp3`;
     await upload(key, mp3Path, "audio/mpeg");
     const lastUpdated = Date.now();
-    db.transaction(() => {
+    const update = db.transaction(() => {
       DELETE_TTS_FOR_CONTENT.run({ contentId: parseInt(contentId, 10) });
       RECORD_TTS.run({
         r2Key: key,
@@ -63,6 +63,7 @@ export default class TTSAudio {
         byteLength,
       });
     });
+    update();
     return new TTSAudio(contentId, key, lastUpdated, byteLength);
   }
 }
