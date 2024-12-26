@@ -9,28 +9,18 @@ export const dynamic = "force-static";
 const NOTES_EPOCH = new Date("2024-07-22");
 
 export async function GET(request: NextRequest, { params }) {
-  const allPosts = Data.Content.blogPosts();
-  const allNotes = Data.Content.notes();
-  const visibleNotes = allNotes.filter((note) => {
-    // Notes were not originally included in the feed. To avoid dumping all of
-    // them into the feed retroactively, only include notes starting at around
-    // the time they were added to the feed.
-    const date = new Date(note.date());
-    return date >= NOTES_EPOCH;
+  const posts = Data.Content.all({
+    sort: "latest",
+    filters: ["showInLists"],
   });
 
-  const allContent = [...allPosts, ...visibleNotes];
-
-  const publicPosts = allContent.filter((post) => post.showInLists());
-
-  publicPosts.sort((a, b) => {
-    const dateDiff =
-      new Date(b.date()).getTime() - new Date(a.date()).getTime();
-    if (dateDiff !== 0) {
-      return dateDiff;
+  const publicPosts = posts.filter((content) => {
+    // For legacy reasons we omit notes from before they were included in RSS.
+    if (content.pageType() === "note") {
+      const date = new Date(content.date());
+      return date >= NOTES_EPOCH;
     }
-    // Sort by title
-    return b.title().localeCompare(a.title());
+    return true;
   });
 
   const feed = await buildRssFeedLazy(publicPosts);

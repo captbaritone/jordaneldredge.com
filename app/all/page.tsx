@@ -1,5 +1,6 @@
 import ListItem from "../../lib/components/ListItem";
 import Content from "../../lib/data/Content";
+import SortSelect from "./SortSelect";
 
 export function generateMetadata({ params }) {
   const title = `All Posts`;
@@ -9,8 +10,9 @@ export function generateMetadata({ params }) {
 export const revalidate = 10;
 export const dynamic = "force-static";
 
-export default function All({ params }) {
-  const items = Content.all();
+export default function All({ searchParams }) {
+  const sort: "best" | "latest" = searchParams.sort || "best";
+  const items = Content.all({ sort, filters: [] });
 
   if (items.length === 0) {
     // TODO: 404?
@@ -20,7 +22,15 @@ export default function All({ params }) {
     <>
       <div className="markdown">
         <h1>All Posts</h1>
-        <p>All Blogs posts and Notes with the best first.</p>
+        <div className="flex justify-between">
+          <p>All Blogs Posts and Notes.</p>
+          <div>
+            <label>
+              Sort:
+              <SortSelect currentParam={sort} />
+            </label>
+          </div>
+        </div>
         <hr />
       </div>
       {items.map((post) => {

@@ -5,25 +5,13 @@ import { NextRequest } from "next/server";
 export const revalidate = 10;
 export const dynamic = "force-static";
 
-export async function GET(request: NextRequest, { params }) {
-  const allPosts = Data.Content.blogPosts();
-  const allNotes = Data.Content.notes();
-
-  const allContent = [...allPosts, ...allNotes];
-
-  const publicPosts = allContent.filter((post) => post.showInLists());
-
-  publicPosts.sort((a, b) => {
-    const dateDiff =
-      new Date(b.date()).getTime() - new Date(a.date()).getTime();
-    if (dateDiff !== 0) {
-      return dateDiff;
-    }
-    // Sort by title
-    return b.title().localeCompare(a.title());
+export async function GET() {
+  const allContent = Data.Content.all({
+    sort: "latest",
+    filters: ["showInLists"],
   });
 
-  const feed = await buildRssFeedLazy(publicPosts);
+  const feed = await buildRssFeedLazy(allContent);
 
   return new Response(feed.rss2(), {
     headers: { "Content-Type": "application/xml; charset=utf-8" },

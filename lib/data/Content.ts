@@ -6,7 +6,6 @@ import yaml from "js-yaml";
 import { PageType } from "./Indexable";
 import { Tag } from "./Tag";
 import TTSAudio from "./TTSAudio";
-import { keyUrl } from "../s3";
 
 export type Metadata = {
   title?: string;
@@ -39,6 +38,13 @@ type ContentDBRow = {
   metadata: string;
 };
 
+type ContentFilter = "showInLists" | "note" | "post";
+
+type ContentQuery = {
+  sort: "best" | "latest";
+  filters: ContentFilter[];
+};
+
 /** @gqlType */
 export default class Content {
   _item: ContentDBRow;
@@ -46,6 +52,9 @@ export default class Content {
   constructor(item: ContentDBRow) {
     this._item = item;
     this._metadata = JSON.parse(item.metadata);
+  }
+  pageType(): PageType {
+    return this._item.page_type;
   }
   id(): string {
     return String(this._item.id);
@@ -192,9 +201,29 @@ export default class Content {
     return rows.map((item) => new Content(item));
   }
 
-  static all() {
-    const rows = ALL_ITEMS_RANKED.all();
-    return rows.map((row) => new Content(row));
+  static all(query: ContentQuery): Content[] {
+    let rows: ContentDBRow[];
+    switch (query.sort) {
+      case "best":
+        rows = ALL_ITEMS_RANKED.all();
+        break;
+      case "latest":
+        rows = ALL_ITEMS_LATEST.all();
+        break;
+      default:
+        throw new Error(`Unknown sort: ${query.sort}`);
+    }
+    let content = rows.map((row) => new Content(row));
+    for (const filter of query.filters) {
+      switch (filter) {
+        case "showInLists":
+          content = content.filter((item) => item.showInLists());
+          break;
+        default:
+          throw new Error(`Unknown filter: ${filter}`);
+      }
+    }
+    return content;
   }
 
   static search(query: string): Array<Content> {
@@ -319,6 +348,16 @@ const ALL_ITEMS_RANKED = db.prepare<[], ContentDBRow>(sql`
     content
   ORDER BY
     page_rank DESC
+`);
+
+const ALL_ITEMS_LATEST = db.prepare<[], ContentDBRow>(sql`
+  SELECT
+    *
+  FROM
+    content
+  ORDER BY
+    DATE DESC,
+    title;
 `);
 
 const SEARCH = db.prepare<{ query: string }, ContentDBRow>(sql`

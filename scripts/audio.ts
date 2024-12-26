@@ -16,7 +16,7 @@ const openai = new OpenAI();
 const tempDir = path.resolve("./temp");
 
 async function main() {
-  const allContent = Content.all();
+  const allContent = Content.all({ sort: "latest", filters: [] });
   for (const content of allContent) {
     const ttsAudio = content.ttsAudio();
     if (ttsAudio != null && ttsAudio.lastUpdated() > content.lastModified()) {
