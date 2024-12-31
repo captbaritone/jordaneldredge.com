@@ -25,7 +25,7 @@ export class Tag implements Linkable {
    * @gqlField
    */
   items(): Content[] {
-    return Data.Content.withTag(this);
+    return Data.ContentConnection.withTag(this);
   }
 
   /** @gqlQueryField */

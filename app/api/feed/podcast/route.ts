@@ -6,7 +6,7 @@ export const revalidate = 10;
 export const dynamic = "force-static";
 
 export async function GET() {
-  const allContent = Data.Content.all({
+  const allContent = Data.ContentConnection.all({
     sort: "latest",
     filters: ["showInLists"],
   });

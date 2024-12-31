@@ -1,12 +1,12 @@
 import { Content } from "../../../lib/data";
 import ContentPage from "../../../lib/components/ContentPage";
 
-export async function generateMetadata({ params }) {
+export function generateMetadata({ params }) {
   const post = Content.getPostBySlug(params.slug);
   if (post == null) {
     return {};
   }
-  const summaryImage = await post.summaryImage();
+  const summaryImage = post.summaryImage();
   return {
     title: post.title(),
     description: post.summary() || post.title(),

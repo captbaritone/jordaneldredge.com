@@ -1,5 +1,5 @@
 import ListItem from "../../lib/components/ListItem";
-import Content from "../../lib/data/Content";
+import { ContentConnection } from "../../lib/data";
 import SortSelect from "./SortSelect";
 
 export function generateMetadata({ params }) {
@@ -12,7 +12,7 @@ export const dynamic = "force-static";
 
 export default function All({ searchParams }) {
   const sort: "best" | "latest" = searchParams.sort || "best";
-  const items = Content.all({ sort, filters: [] });
+  const items = ContentConnection.all({ sort, filters: [] });
 
   if (items.length === 0) {
     // TODO: 404?

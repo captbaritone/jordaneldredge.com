@@ -3,8 +3,10 @@
  */
 
 import Content from "./Content";
+import ContentConnection from "./ContentConnection";
 
 export { getAllPages, getPageBySlug, Page } from "./Page";
 export { getSingerResume } from "./SingerResume";
 export type { ResumeEntry } from "./SingerResume";
 export { Content };
+export { ContentConnection };

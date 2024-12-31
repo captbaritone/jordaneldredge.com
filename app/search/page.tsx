@@ -1,6 +1,6 @@
 import SearchInput from "./searchInput";
 import ListItem from "../../lib/components/ListItem";
-import { Content } from "../../lib/data";
+import { ContentConnection } from "../../lib/data";
 
 export function generateMetadata({ searchParams }) {
   const title = searchParams.q ? `Search: "${searchParams.q}"` : "Search";
@@ -22,7 +22,7 @@ function Results({ query }) {
   if (query === "") {
     return <ResultAlternative>Enter a search query above</ResultAlternative>;
   }
-  const listable = Content.search(query);
+  const listable = ContentConnection.search(query);
   if (listable.length === 0) {
     return <ResultAlternative>No results found</ResultAlternative>;
   }

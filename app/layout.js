@@ -9,6 +9,9 @@ import NavLink from "./NavLink";
 import AudioPlayer from "./AudioPlayer";
 import AudioContextProvider from "./AudioContext";
 import HotKeys from "./HotKeys";
+import { getSession } from "../lib/session";
+import LogoutButton from "./LogoutButton";
+import LoginButton from "./LoginButton";
 
 export const metadata = {
   metadataBase: new URL("https://jordaneldredge.com"),
@@ -17,7 +20,8 @@ export const metadata = {
   },
 };
 
-export default function Layout({ children }) {
+export default async function Layout({ children }) {
+  const session = await getSession();
   return (
     <html>
       <body>
@@ -87,6 +91,8 @@ export default function Layout({ children }) {
               <a href="/feed/rss.xml">RSS</a>
               {" • "}
               <a href="/notes/tts-podcast/">Podcast</a>
+              {" • "}
+              {session.userId ? <LogoutButton /> : <LoginButton />}
             </footer>
           </div>
           <AudioPlayer />
