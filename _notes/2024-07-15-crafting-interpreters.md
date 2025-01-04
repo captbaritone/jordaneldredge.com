@@ -9,7 +9,7 @@ notion_id: 95667dcd-4132-41e8-8203-ccd826183a2a
 summary_image: >-
   https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/7b8b516f-bbe5-4437-bfa5-08c769bcfa1f/Untitled.png
 ---
-![](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/7b8b516f-bbe5-4437-bfa5-08c769bcfa1f/Untitled.png)
+![Untitled.png](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/7b8b516f-bbe5-4437-bfa5-08c769bcfa1f/Untitled.png)
 
 If you are interested in how computer languages work, or how they are implemented I can’t think of a better book than Bob Nystrom’s [Crafting Interpreters](https://craftinginterpreters.com/).
 

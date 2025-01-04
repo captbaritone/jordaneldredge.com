@@ -9,7 +9,6 @@
     "export": "next export",
     "lint-md": "remark --quiet .",
     "lint": "remark --quiet . && next lint",
-    "postinstall": "patch-package",
     "backup": "tsx scripts/backup.ts",
     "migrate": "tsx migrations/003-add-users-and-webauthn.ts",
     "reindex": "tsx scripts/reindex.ts",
@@ -34,7 +33,7 @@
     "js-yaml": "^4.1.0",
     "mdast-util-to-markdown": "^2.1.0",
     "next": "^14.1.0",
-    "notion-to-md": "^2.5.5",
+    "notion-to-md": "^3.1.1",
     "openai": "^4.73.1",
     "postcss": "^8.4.35",
     "react": "^18.2.0",
@@ -80,7 +79,6 @@
     "eslint-config-next": "^14.1.0",
     "jest": "^27.4.3",
     "node-fetch": "2",
-    "patch-package": "^6.5.0",
     "prettier": "^3.4.1",
     "prettier-plugin-embed": "^0.4.15",
     "prettier-plugin-sql": "^0.18.1",
@@ -88,5 +86,11 @@
     "remark-lint-mdash-style": "^1.1.1",
     "typescript": "5.5.3",
     "vercel": "^29.0.0"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "notion-to-md@3.1.1": "patches/notion-to-md@3.1.1.patch",
+      "shiki@0.11.1": "patches/shiki@0.11.1.patch"
+    }
   }
 }

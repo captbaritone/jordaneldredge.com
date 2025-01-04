@@ -15,7 +15,7 @@ _Discussed on_ [_Hacker News_](https://news.ycombinator.com/item?id=42215438)
 
 ---
 
-![](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/8b644494-12b4-4aa3-8e6f-fd02f95341bd/Screenshot_2024-11-19_at_4.39.04_PM.png)
+![Screenshot\_2024-11-19\_at\_4.39.04\_PM.png](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/8b644494-12b4-4aa3-8e6f-fd02f95341bd/Screenshot_2024-11-19_at_4.39.04_PM.png)
 
 _TL;DR several years ago I got a proof of concept working where I was able to render highly interactive “modern” Winamp skins in the browser by reverse engineering Maki byte code and implementing an interpreter for it in JavaScript. You can try the_ [_proof of concept_](https://webamp.org/modern/) _in your browser._
 
@@ -59,7 +59,7 @@ Having an interpreter was actually just the beginning. Just like having a JavaSc
 
 Basically each of these classes needed to be implemented and define some mapping/binding from its properties and methods to an equivilent DOM representation. I took a pragmatic approach. I picked the simplest skin I could find and started implementing the classes and methods needed just to render that one skin. Slowly but surely I was able to get the one skin rendering! After that first skin, I pick another small skin and over time I had a small handful working and then dozens!
 
-![](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/68b66ce9-6089-4fe1-8b71-7f85cdb2772c/Screenshot_2024-11-19_at_6.57.08_PM.png)
+![Screenshot\_2024-11-19\_at\_6.57.08\_PM.png](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/68b66ce9-6089-4fe1-8b71-7f85cdb2772c/Screenshot_2024-11-19_at_6.57.08_PM.png)
 
 [CornerAmp\_Redux.wal, the first skin I got working in Webamp Modern](https://webamp.org/modern/?skin=assets%2Fskins%2FCornerAmp_Redux.wal)
 
@@ -75,7 +75,7 @@ In the end, I had to admit that my approach was stalled out and his approach, wh
 
 I revived the [progress dashboard](https://webamp.org/modern/progress.html) I had made which introspected the implementation to derive an always-up-to-date progress report, and just stamped his diffs as they poured in.
 
-![](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/fb623f47-d527-46b9-8635-69a5082c18e3/Screenshot_2024-11-19_at_6.55.47_PM.png)
+![Screenshot\_2024-11-19\_at\_6.55.47\_PM.png](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/fb623f47-d527-46b9-8635-69a5082c18e3/Screenshot_2024-11-19_at_6.55.47_PM.png)
 
 In the end, he made considerable progress, getting many additional features working, but the project still struggled to feel robust or complete. Eventually his attention moved on to other things, but I’m still grateful for the energy he brought to the project!
 
@@ -95,42 +95,42 @@ I still hold out hope that I’ll be motivated at some point in the future to co
 
 I’ll end with a collection of screenshots showing some of the interesting skins that Webamp Modern is capable of rendering. I’d encourage you to click into the skins to try them in your browser and interact with them to see the animations and explore all the little drawers and tabs.
 
-![](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/404c13f1-053b-4d3b-8212-f7732d039260/Screenshot_2024-11-19_at_7.03.26_PM.png)
+![Screenshot\_2024-11-19\_at\_7.03.26\_PM.png](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/404c13f1-053b-4d3b-8212-f7732d039260/Screenshot_2024-11-19_at_7.03.26_PM.png)
 
 [https://webamp.org/modern/](https://webamp.org/modern/?skin=)
 
 ---
 
-![](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/514cbb99-2b2d-4d18-a621-d6f826a9cf05/Screenshot_2024-11-22_at_9.49.46_PM.png)
+![Screenshot\_2024-11-22\_at\_9.49.46\_PM.png](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/514cbb99-2b2d-4d18-a621-d6f826a9cf05/Screenshot_2024-11-22_at_9.49.46_PM.png)
 
 [https://webamp.org/modern/?skin=https://r2.webampskins.org/skins/c2273648295a986350f0e2007b705e85.wal](https://webamp.org/modern/?skin=https%3A%2F%2Fr2.webampskins.org%2Fskins%2Fc2273648295a986350f0e2007b705e85.wal)
 
 ---
 
-![](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/ac26dbf8-edb7-4fc9-96fe-d590489de37b/Screenshot_2024-11-22_at_9.52.46_PM.png)
+![Screenshot\_2024-11-22\_at\_9.52.46\_PM.png](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/ac26dbf8-edb7-4fc9-96fe-d590489de37b/Screenshot_2024-11-22_at_9.52.46_PM.png)
 
 [https://webamp.org/modern/?skin=https://r2.webampskins.org/skins/84be4029fa8dd4305b3eee70c648749b.wal](https://webamp.org/modern/?skin=https%3A%2F%2Fr2.webampskins.org%2Fskins%2F84be4029fa8dd4305b3eee70c648749b.wal)
 
 ---
 
-![](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/322618d1-d08c-4ada-bcd6-ba97e837abf5/Screenshot_2024-11-22_at_9.54.11_PM.png)
+![Screenshot\_2024-11-22\_at\_9.54.11\_PM.png](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/322618d1-d08c-4ada-bcd6-ba97e837abf5/Screenshot_2024-11-22_at_9.54.11_PM.png)
 
 [https://webamp.org/modern/?skin=https://r2.webampskins.org/skins/00bf47f38660c04f89c3abe06eacd5af.wal](https://webamp.org/modern/?skin=https%3A%2F%2Fr2.webampskins.org%2Fskins%2F00bf47f38660c04f89c3abe06eacd5af.wal)
 
 ---
 
-![](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/d0ef561f-1616-418b-9044-c2121865e4cf/Screenshot_2024-11-22_at_9.56.53_PM.png)
+![Screenshot\_2024-11-22\_at\_9.56.53\_PM.png](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/d0ef561f-1616-418b-9044-c2121865e4cf/Screenshot_2024-11-22_at_9.56.53_PM.png)
 
 [https://webamp.org/modern/?skin=https://r2.webampskins.org/skins/97a759e2f0261eb0b7c65452d70318d0.wal](https://webamp.org/modern/?skin=https%3A%2F%2Fr2.webampskins.org%2Fskins%2F97a759e2f0261eb0b7c65452d70318d0.wal)
 
 ---
 
-![](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/dad3ca85-9543-4d3a-b129-7e83839762c9/Screenshot_2024-11-22_at_9.58.03_PM.png)
+![Screenshot\_2024-11-22\_at\_9.58.03\_PM.png](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/dad3ca85-9543-4d3a-b129-7e83839762c9/Screenshot_2024-11-22_at_9.58.03_PM.png)
 
 [https://webamp.org/modern/?skin=https://r2.webampskins.org/skins/026d840ca4bebf678704f460f740790b.wal](https://webamp.org/modern/?skin=https%3A%2F%2Fr2.webampskins.org%2Fskins%2F026d840ca4bebf678704f460f740790b.wal)
 
 ---
 
-![](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/61e55b5e-c750-4013-8a45-2d3400f1c670/Screenshot_2024-11-22_at_9.59.09_PM.png)
+![Screenshot\_2024-11-22\_at\_9.59.09\_PM.png](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/61e55b5e-c750-4013-8a45-2d3400f1c670/Screenshot_2024-11-22_at_9.59.09_PM.png)
 
 [https://webamp.org/modern/?skin=https://r2.webampskins.org/skins/2f2d4a3b9aff93ed9d1a240597c298c6.wal](https://webamp.org/modern/?skin=https%3A%2F%2Fr2.webampskins.org%2Fskins%2F2f2d4a3b9aff93ed9d1a240597c298c6.wal)

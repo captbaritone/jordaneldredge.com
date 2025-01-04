@@ -14,7 +14,7 @@ _TL;DR: You can copy_ [_this link_](https://jordaneldredge.com/feed/podcast/) _i
 
 ---
 
-![](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/3406fb27-6d01-4df4-9781-709aec856965/Screenshot_2024-12-08_at_12.02.05_AM.png)
+![Screenshot\_2024-12-08\_at\_12.02.05\_AM.png](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/3406fb27-6d01-4df4-9781-709aec856965/Screenshot_2024-12-08_at_12.02.05_AM.png)
 
 I personally prefer listening to reading. As such, for years I’ve developed [personal workflows](https://jordaneldredge.com/blog/listen-faster/) around bookmarking interesting text content to consume later as audio content. But now that LLM’s have made good text to speech accessible to tinkerers like myself, it occurred to me that others might like to consume my blog’s content in a similar way.
 
@@ -32,7 +32,7 @@ My blog already has an [RSS feed](https://jordaneldredge.com/feed/rss.xml), but 
 
 ## Integrating with existing audio content
 
-![](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/a2ba7b27-e0df-440e-b179-1a8a157f3358/Screenshot_2024-12-08_at_12.19.46_AM.png)
+![Screenshot\_2024-12-08\_at\_12.19.46\_AM.png](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/a2ba7b27-e0df-440e-b179-1a8a157f3358/Screenshot_2024-12-08_at_12.19.46_AM.png)
 
 As a [musician](https://jordaneldredge.com/notes/opera-to-tech/) several of my posts already contain audio content. For example some posts embed snippets of me [singing](https://jordaneldredge.com/blog/original-song-our-love-will-last-as-long/) or [playing ukulele](https://jordaneldredge.com/blog/charlie-chaplins-smile-ukulele-solo/). For these I was able to stitch together the text-to-speech audio and the “real” audio into a single, contiguous Mp3 artifact.
 
@@ -44,4 +44,4 @@ The code is all on GitHub. Here’s the script that generates the mp3s: [audio.t
 
 AI APIs can get pretty expensive, so I was pleased to find that it only cost about $15 to convert the 291 posts I’ve written over the last 17 years.
 
-![](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/cfc30752-459e-4d2e-a89b-0974b38a591b/Screenshot_2024-12-07_at_10.24.11_PM.png)
+![Screenshot\_2024-12-07\_at\_10.24.11\_PM.png](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/cfc30752-459e-4d2e-a89b-0974b38a591b/Screenshot_2024-12-07_at_10.24.11_PM.png)

@@ -26,6 +26,6 @@ To learn more about this byte code, I attempted to locate the byte code interpre
 
 ## The branch for multiplication
 
-![](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/699a3d15-bbbe-41c0-b824-5219276d04d3/Screenshot_2023-06-01_at_11.05.42_PM.png)
+![Screenshot\_2023-06-01\_at\_11.05.42\_PM.png](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/699a3d15-bbbe-41c0-b824-5219276d04d3/Screenshot_2023-06-01_at_11.05.42_PM.png)
 
 Update Nov. 20, 2024: I’ve written a larger note about my attempt to [render modern Winamp skins in the browser](https://jordaneldredge.com/notes/webamp-modern/).

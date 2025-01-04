@@ -5,6 +5,7 @@ import { userIsAdmin } from "../../../../lib/session";
 import { TagSet } from "../../../../lib/data/TagSet";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import ReindexButton from "./ReindexButton";
 
 export default async function DebugContent({ params }) {
   const isAdmin = await userIsAdmin();
@@ -22,6 +23,7 @@ export default async function DebugContent({ params }) {
 
   return (
     <div className="markdown pb-4">
+      {item.pageType() === "note" && <ReindexButton slug={item.slug()} />}
       <Section title={<>Debug Content ({item.id()})</>}>
         <table>
           <tbody>

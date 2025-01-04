@@ -13,7 +13,7 @@ In the early-ish days of the PHP framework [Laravel](https://laravel.com/), the 
 
 ### Example
 
-![](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/c2bcf002-2b8b-47b2-8f0c-6d726fa216c1/undefined_-_Imgur.png)
+![undefined\_-\_Imgur.png](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/c2bcf002-2b8b-47b2-8f0c-6d726fa216c1/undefined_-_Imgur.png)
 
 [_Image source_](https://imgur.com/UnIUZmZ)
 

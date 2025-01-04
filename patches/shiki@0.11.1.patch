@@ -1,0 +1,13 @@
+diff --git a/dist/index.js b/dist/index.js
+index 5b734129a5fcf224cffd59c2081358ef770271a4..a68cb3cbfc4191612a15478ee148bdb039bd1a7d 100644
+--- a/dist/index.js
++++ b/dist/index.js
+@@ -1676,7 +1676,7 @@ async function getOniguruma() {
+       }
+     } else {
+       const path = require("path");
+-      const wasmPath = path.join(require.resolve("vscode-oniguruma"), "../onig.wasm");
++      const wasmPath = path.join(process.cwd(), "node_modules", "vscode-oniguruma", "release", "onig.wasm");
+       const fs = require("fs");
+       const wasmBin = fs.readFileSync(wasmPath).buffer;
+       loader = vscodeOniguruma.loadWASM(wasmBin);

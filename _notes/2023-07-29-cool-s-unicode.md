@@ -19,4 +19,4 @@ X+🆒= 𝕏
 
 The possibilities are endless!
 
-![](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/da7fd8fa-25c9-409b-b632-117aa72b5b46/IMG_2649.png)
+![IMG\_2649.png](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/da7fd8fa-25c9-409b-b632-117aa72b5b46/IMG_2649.png)

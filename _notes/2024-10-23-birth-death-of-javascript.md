@@ -10,9 +10,7 @@ summary: >-
   language that is JavaScript
 notion_id: 128376e2-3751-8001-b55e-c4028f6af1fe
 ---
-The Birth and Death of JavaScript is perhaps one of my favorite talks. It is equal parts hilarious and (increasingly) prophetic.
-
-In my mind it’s the tech talk equivalent of 2006 film Idiocracy in that it’s a comedy that, overtime, is slowly becoming a documentary.
+The Birth and Death of JavaScript is perhaps one of my favorite talks. It is equal parts hilarious and (increasingly) prophetic. In my mind it’s the tech talk equivalent of the 2006 film _Idiocracy_ in that it’s a comedy that, overtime, is slowly becoming a documentary.
 
 From Gary’s own description:
 

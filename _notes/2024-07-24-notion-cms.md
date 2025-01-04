@@ -38,13 +38,13 @@ I draft notes by adding a new subpage to a page called “Notes Drafts”. The �
 
 The Notes section of this website is rendered by fetching the contents of the Notion “Notes” page, iterating thought it’s blocks and collecting the page id of each `child_page` block. So, as pages are added and removed from the “Notes” page, they are published and unpublished from my site. Their order is based on their Notion creation date.
 
-![](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/727fb2ac-8f96-4964-8790-c88490cb5417/Screenshot_2024-07-24_at_11.53.31_AM.png)
+![Screenshot\_2024-07-24\_at\_11.53.31\_AM.png](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/727fb2ac-8f96-4964-8790-c88490cb5417/Screenshot_2024-07-24_at_11.53.31_AM.png)
 
 ## Metadata
 
 You’ll notice that pages also have a permalink slug (the bit of the url after `/notes/`) a summary paragraph and even tags. This are achieved via a “Notes Metadata” database in Notion where the primary column is a reference to an individual Note’s page and the other columns contain structured data about the post:
 
-![](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/d6d3f2a8-9931-441a-bf7f-0715ead3b1b7/Screenshot_2024-07-24_at_11.55.24_AM.png)
+![Screenshot\_2024-07-24\_at\_11.55.24\_AM.png](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/d6d3f2a8-9931-441a-bf7f-0715ead3b1b7/Screenshot_2024-07-24_at_11.55.24_AM.png)
 
 This database is also fetched from Notion when rendering the list, and parsed into a map containing the metadata for each post. All of these fields are optional, so I can choose not to add them, or post quickly and come back to add them after the fact. If a slug is not defined, the Notion id (UUID) of the page is used for the URL.
 
@@ -70,7 +70,7 @@ Another advantage of converting everything to Markdown, is that it commodifies N
 
 In fact, I have a script which serializes the posts in Notion to [Markdown files in the repo](https://github.com/captbaritone/jordaneldredge.com/tree/dc611db6986cc87d7e5dac77540d1c4064aa9f72/_notes) that look identical to my existing blog posts: Markdown with a Yaml header for metadata.
 
-![](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/19c69eee-6b62-4e4e-9312-eaf048941871/Screenshot_2024-07-24_at_2.52.28_PM.png)
+![Screenshot\_2024-07-24\_at\_2.52.28\_PM.png](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/19c69eee-6b62-4e4e-9312-eaf048941871/Screenshot_2024-07-24_at_2.52.28_PM.png)
 
 This means that in a pinch I could just delete the Notion integration and go back to rendering from Markdown. I could even setup my server to fallback to these files in the case of Notion API errors (though I haven’t gone that far yet).
 

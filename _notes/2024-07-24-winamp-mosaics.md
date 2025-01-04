@@ -21,25 +21,25 @@ Some of the results:
 
 ## Winamp Logo
 
-![](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/de10cdc9-395a-4ae6-a34d-c8635a711783/Untitled.png)
+![Untitled.png](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/de10cdc9-395a-4ae6-a34d-c8635a711783/Untitled.png)
 
 ## Justin Frankel
 
 Only fitting to creat a mosaic of the creator of Winamp.
 
-![](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/8defb888-79fd-47d3-a3d6-6b3043e148d0/Untitled.png)
+![Untitled.png](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/8defb888-79fd-47d3-a3d6-6b3043e148d0/Untitled.png)
 
 ## Jason Scott
 
 I did one of Jason Scott, archivist at large at the Internet Archive, since he helped facilitate [archiving these Winamp Skins at the Internet Archive](https://blog.archive.org/2018/10/02/dont-click-on-the-llama/).
 
-![](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/8c7fd82b-e211-4221-b054-bf111e046653/Untitled.png)
+![Untitled.png](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/8c7fd82b-e211-4221-b054-bf111e046653/Untitled.png)
 
 ## Bernie Sanders
 
 The iconic photo of Bernie Sanders with his mittens.
 
-![](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/2a5da455-411e-435b-aefa-46c5bd9da75c/image.png)
+![image.png](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/2a5da455-411e-435b-aefa-46c5bd9da75c/image.png)
 
 ---
 

@@ -16,7 +16,7 @@ This note was originally posted as a [thread on Twitter](https://twitter.com/cap
 
 The Winamp Skin Museum is powered by a sqlite3 database containing 1.2gb of metadata about 86,000 Winamp skins. It's all exposed in this explorable GraphQL endpoint: [https://api.webamp.org/graphql](https://t.co/VTW0YVwtQp)
 
-![](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/3eff4cda-73c0-4f9f-a6f6-0b747a8e9e18/Untitled.png)
+![Untitled.png](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/3eff4cda-73c0-4f9f-a6f6-0b747a8e9e18/Untitled.png)
 
 The data includes:
 

@@ -15,4 +15,4 @@ Is there a name for the steadily increasing anxiety you feel as you build up sta
 
 Me filling out step ten of an account creation form in a modal inside a pop-over on a website spawned inside the Facebook app’s browser on my phone:
 
-![](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/2d5211c8-c670-4e1e-a4e3-03db6a74bef1/Untitled.png)
+![Untitled.png](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/2d5211c8-c670-4e1e-a4e3-03db6a74bef1/Untitled.png)

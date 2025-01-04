@@ -14,6 +14,6 @@ They video creates an amazingly compelling story arc with twists, turns, emotion
 
 I have to imagine this was hugely gratifying for the Pokémon hacker, who was able to leverage his very niche area of expertise to really help this guy in a meaningful way.
 
-![](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/dec8ce93-35be-430f-abab-6253d0e64cb1/Untitled.png)
+![Untitled.png](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/dec8ce93-35be-430f-abab-6253d0e64cb1/Untitled.png)
 
 <https://xkcd.com/208/>

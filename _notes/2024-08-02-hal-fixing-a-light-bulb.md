@@ -9,7 +9,7 @@ notion_id: c1aeaf6f-a726-4ed7-a55b-e49c24b274b5
 summary_image: >-
   https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/b5bbe09d-75bf-42ed-b13c-1e9ef7f2f5c5/Screenshot_2024-08-01_at_8.52.55_PM.png
 ---
-![](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/b5bbe09d-75bf-42ed-b13c-1e9ef7f2f5c5/Screenshot_2024-08-01_at_8.52.55_PM.png)
+![Screenshot\_2024-08-01\_at\_8.52.55\_PM.png](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/b5bbe09d-75bf-42ed-b13c-1e9ef7f2f5c5/Screenshot_2024-08-01_at_8.52.55_PM.png)
 
 This clip from Malcolm in the Middle in which Hal tries to change a light bulb only to discover a seemingly bottomless chain of tool fixes he has to complete before he can accomplish the task he actually set out to do feels like it perfectly encapsulates the experience of trying to get anything done in the software world.
 

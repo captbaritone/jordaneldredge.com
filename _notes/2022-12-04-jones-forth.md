@@ -9,7 +9,7 @@ notion_id: dde16ae5-5f6c-4e04-9354-04ada0cef76b
 summary_image: >-
   https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/f2db3d14-cb68-4624-964f-fabcd3df5cdb/Screenshot_2024-07-21_at_4.52.11_PM.png
 ---
-![](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/f2db3d14-cb68-4624-964f-fabcd3df5cdb/Screenshot_2024-07-21_at_4.52.11_PM.png)
+![Screenshot\_2024-07-21\_at\_4.52.11\_PM.png](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/f2db3d14-cb68-4624-964f-fabcd3df5cdb/Screenshot_2024-07-21_at_4.52.11_PM.png)
 
 Jones Forth is an implementation of the elegant and fascinating Forth programming language in x86 assembly. Now, before you go running, it’s written as an in depth introduction to Forth and does not require in-depth understanding of assembly to appreciate and enjoy.
 
