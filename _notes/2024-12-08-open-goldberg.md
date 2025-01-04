@@ -5,12 +5,12 @@ tags:
   - music
 summary: >-
   Sharing one of my favorite music projects: a gorgeous, free - as in freedom -
-  recording of J.S. Bach’s Goldberg Variations
+  recording of J.S. Bach’s Goldberg Variations.
 notion_id: 156376e2-3751-805d-940d-de40bb1643b7
 summary_image: >-
   https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/7b56fa52-3bd0-47a8-bc49-f186f3df9021/image.png
 ---
-One of my favorite internet projects ever is the Open Goldberg Variations. This was a 2011 Kickstarter project to produce a studio recording of Bach’s Goldberg Variations and donate it to the public domain. The project was successfully funded, and both Ishizaka’s performance and the recording production are stellar.
+One of my favorite internet projects ever is the Open Goldberg Variations.. This was a 2011 Kickstarter project to produce a studio recording of Bach’s Goldberg Variations and donate it to the public domain. The project was successfully funded, and both Ishizaka’s performance and the recording production are stellar.
 
 ![](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/7b56fa52-3bd0-47a8-bc49-f186f3df9021/image.png)
 

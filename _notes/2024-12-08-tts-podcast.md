@@ -10,6 +10,10 @@ notion_id: 156376e2-3751-80ed-a80d-f3ce2daf7003
 summary_image: >-
   https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/3406fb27-6d01-4df4-9781-709aec856965/Screenshot_2024-12-08_at_12.02.05_AM.png
 ---
+_TL;DR: You can copy_ [_this link_](https://jordaneldredge.com/feed/podcast/) _into your podcast player to subscribe an text-to-speech version of this blog._
+
+---
+
 ![](https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/3406fb27-6d01-4df4-9781-709aec856965/Screenshot_2024-12-08_at_12.02.05_AM.png)
 
 I personally prefer listening to reading. As such, for years I’ve developed [personal workflows](https://jordaneldredge.com/blog/listen-faster/) around bookmarking interesting text content to consume later as audio content. But now that LLM’s have made good text to speech accessible to tinkerers like myself, it occurred to me that others might like to consume my blog’s content in a similar way.
