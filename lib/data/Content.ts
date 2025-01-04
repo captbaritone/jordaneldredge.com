@@ -4,7 +4,6 @@ import { Markdown } from "./Markdown";
 import { db, sql } from "../db";
 import yaml from "js-yaml";
 import { PageType } from "./Indexable";
-import { Tag } from "./Tag";
 import TTSAudio from "./TTSAudio";
 
 export type Metadata = {
@@ -92,14 +91,27 @@ export default class Content {
   }
   /** @gqlField */
   url(): SiteUrl {
+    return new SiteUrl(this._urlString());
+  }
+
+  markdownUrl(): SiteUrl {
+    return new SiteUrl(this._urlString() + ".md");
+  }
+
+  _urlString(): string {
     switch (this._item.page_type) {
       case "page":
-        return new SiteUrl(`/${this._item.slug}`);
+        return `/${this._item.slug}`;
       case "post":
-        return new SiteUrl(`/blog/${this._item.slug}`);
+        return `/blog/${this._item.slug}`;
       case "note":
-        return new SiteUrl(`/notes/${this._item.slug}`);
+        return `/notes/${this._item.slug}`;
     }
+  }
+
+  // Admin-only URL for inspecting this piece of content
+  debugUrl(): SiteUrl {
+    return new SiteUrl(`/debug/content/${this.slug()}`);
   }
 
   ttsAudio(): TTSAudio | null {

@@ -2,7 +2,7 @@ import "dotenv/config";
 import fs from "fs";
 import path from "path";
 import OpenAI from "openai";
-import { Content } from "../lib/data";
+import { Content, ContentConnection } from "../lib/data";
 import { execSync } from "child_process";
 import { Node } from "unist";
 import { Options, toMarkdown } from "mdast-util-to-markdown";
@@ -16,7 +16,7 @@ const openai = new OpenAI();
 const tempDir = path.resolve("./temp");
 
 async function main() {
-  const allContent = Content.all({ sort: "latest", filters: [] });
+  const allContent = ContentConnection.all({ sort: "latest", filters: [] });
   for (const content of allContent) {
     const ttsAudio = content.ttsAudio();
     if (ttsAudio != null && ttsAudio.lastUpdated() > content.lastModified()) {

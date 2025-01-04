@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 import ListItem from "../../../lib/components/ListItem";
 import { Tag } from "../../../lib/data/Tag";
 
@@ -14,7 +15,7 @@ export default function TagPage({ params }) {
   const items = tag.items();
 
   if (items.length === 0) {
-    // TODO: 404?
+    notFound();
   }
 
   return (

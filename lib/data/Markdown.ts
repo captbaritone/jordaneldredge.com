@@ -24,7 +24,7 @@ export class Markdown {
    * The content encoded as a markdown string.
    * @gqlField
    */
-  async markdownString(): Promise<string> {
+  markdownString(): string {
     const ast = this.cloneAst();
     visit(ast, (node, index, parent) => {
       if (node.type === "image") {

@@ -1,5 +1,6 @@
 import { Content } from "../../../lib/data";
 import ContentPage from "../../../lib/components/ContentPage";
+import { notFound } from "next/navigation";
 
 export function generateMetadata({ params }) {
   const post = Content.getPostBySlug(params.slug);
@@ -27,14 +28,13 @@ export function generateMetadata({ params }) {
 }
 
 // https://beta.nextjs.org/docs/data-fetching/caching#segment-level-caching
-export const revalidate = 10;
-export const dynamic = "force-static";
+// export const revalidate = 10;
+// export const dynamic = "force-static";
 
 export default async function Post({ params }) {
   const post = Content.getPostBySlug(params.slug);
   if (post == null) {
-    // 404
-    return null;
+    notFound();
   }
   const issueId = post.githubCommentsIssueId();
   return <ContentPage item={post} issueId={issueId} />;

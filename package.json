@@ -13,7 +13,8 @@
     "backup": "tsx scripts/backup.ts",
     "migrate": "tsx migrations/003-add-users-and-webauthn.ts",
     "reindex": "tsx scripts/reindex.ts",
-    "audio": "tsx scripts/audio.ts"
+    "audio": "tsx scripts/audio.ts",
+    "images": "tsx scripts/generate_images.ts"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.705.0",

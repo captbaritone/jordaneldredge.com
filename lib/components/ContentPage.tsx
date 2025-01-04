@@ -4,6 +4,7 @@ import RelatedContent from "./RelatedContent";
 import GitHubComments from "./GitHubComments";
 import DateString from "./DateString";
 import PlayButton from "./PlayButton";
+import { userIsAdmin } from "../session";
 
 type ContentPageProps = {
   item: Data.Content;
@@ -11,6 +12,7 @@ type ContentPageProps = {
 };
 
 export default async function ContentPage({ item, issueId }: ContentPageProps) {
+  const isAdmin = await userIsAdmin();
   const content = item.content();
   const audio = item.ttsAudio();
   const ast = await content.ast();
@@ -36,6 +38,12 @@ export default async function ContentPage({ item, issueId }: ContentPageProps) {
                   audioUrl={audio.vanityUrl().path()}
                   title="Play an AI generated audio reading of this content."
                 />
+              </>
+            )}
+            {isAdmin && (
+              <>
+                <div className="pl-2 pr-2">{"|"}</div>
+                <a href={item.debugUrl().path()}>Debug</a>
               </>
             )}
           </div>

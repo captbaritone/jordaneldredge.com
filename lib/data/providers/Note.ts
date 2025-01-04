@@ -66,7 +66,7 @@ export class NoteProvider implements IndexableProvider {
     const markdown = new Markdown(ast);
 
     await rewriteImageUrls(ast);
-    const content = await markdown.markdownString();
+    const content = markdown.markdownString();
 
     const slug = expectSlug(page);
     return {
