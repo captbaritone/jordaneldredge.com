@@ -5,7 +5,6 @@ import {
   generateAuthenticationOptions,
   generateRegistrationOptions,
   PublicKeyCredentialCreationOptionsJSON,
-  PublicKeyCredentialRequestOptionsJSON,
   RegistrationResponseJSON,
   verifyAuthenticationResponse,
   verifyRegistrationResponse,
@@ -44,14 +43,13 @@ export async function logout() {
 }
 
 export async function authenticationOptions() {
-  const options: PublicKeyCredentialRequestOptionsJSON =
-    await generateAuthenticationOptions({
-      rpID,
-      // https://simplewebauthn.dev/docs/advanced/passkeys#generateauthenticationoptions
-      userVerification: "preferred",
-      // Require users to use a previously-registered authenticator
-      allowCredentials: [],
-    });
+  const options = await generateAuthenticationOptions({
+    rpID,
+    // https://simplewebauthn.dev/docs/advanced/passkeys#generateauthenticationoptions
+    userVerification: "preferred",
+    // Require users to use a previously-registered authenticator
+    allowCredentials: [],
+  });
 
   const session = await getSession();
   session.challenge = options.challenge;
@@ -134,26 +132,25 @@ export async function registrationOptions(
   // (Pseudocode) Retrieve any of the user's previously-
   // registered authenticators
 
-  const options: PublicKeyCredentialCreationOptionsJSON =
-    await generateRegistrationOptions({
-      rpName,
-      rpID,
-      userName: username,
-      // Don't prompt users for additional information about the authenticator
-      // (Recommended for smoother UX)
-      attestationType: "none",
-      // Prevent users from re-registering existing authenticators
-      excludeCredentials: [],
-      // See "Guiding use of authenticators via authenticatorSelection" below
-      authenticatorSelection: {
-        // Defaults
-        // Set "required" to force users to use a platform authenticator
-        residentKey: "required",
-        userVerification: "preferred",
-        // Optional
-        authenticatorAttachment: "platform",
-      },
-    });
+  const options = await generateRegistrationOptions({
+    rpName,
+    rpID,
+    userName: username,
+    // Don't prompt users for additional information about the authenticator
+    // (Recommended for smoother UX)
+    attestationType: "none",
+    // Prevent users from re-registering existing authenticators
+    excludeCredentials: [],
+    // See "Guiding use of authenticators via authenticatorSelection" below
+    authenticatorSelection: {
+      // Defaults
+      // Set "required" to force users to use a platform authenticator
+      residentKey: "required",
+      userVerification: "preferred",
+      // Optional
+      authenticatorAttachment: "platform",
+    },
+  });
 
   session.challenge = options.challenge;
 
