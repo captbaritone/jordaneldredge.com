@@ -90,7 +90,7 @@ export default async function Layout({ children }) {
               {" • "}
               <a href="/feed/rss.xml">RSS</a>
               {" • "}
-              <a href="/notes/tts-podcast/">Podcast</a>
+              <Link href={{ pathname: "/notes/tts-podcast/" }}>Podcast</Link>
               {" • "}
               {session.userId ? <LogoutButton /> : <LoginButton />}
             </footer>

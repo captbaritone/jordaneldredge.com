@@ -5,6 +5,7 @@ import GitHubComments from "./GitHubComments";
 import DateString from "./DateString";
 import PlayButton from "./PlayButton";
 import { userIsAdmin } from "../session";
+import Link from "next/link";
 
 type ContentPageProps = {
   item: Data.Content;
@@ -43,7 +44,7 @@ export default async function ContentPage({ item, issueId }: ContentPageProps) {
             {isAdmin && (
               <>
                 <div className="pl-2 pr-2">{"|"}</div>
-                <a href={item.debugUrl().path()}>Debug</a>
+                <Link href={{ pathname: item.debugUrl().path() }}>Debug</Link>
               </>
             )}
           </div>

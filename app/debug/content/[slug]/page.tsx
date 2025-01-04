@@ -4,6 +4,7 @@ import { SiteUrl } from "../../../../lib/data/SiteUrl";
 import { userIsAdmin } from "../../../../lib/session";
 import { TagSet } from "../../../../lib/data/TagSet";
 import { notFound } from "next/navigation";
+import Link from "next/link";
 
 export default async function DebugContent({ params }) {
   const isAdmin = await userIsAdmin();
@@ -135,7 +136,7 @@ function Url({ url }: { url: SiteUrl }) {
   if (url == null) {
     return "<none>";
   }
-  return <a href={url.path()}>{url.path()}</a>;
+  return <Link href={{ pathname: url.path() }}>{url.path()}</Link>;
 }
 
 function Tags({ tags }: { tags: TagSet }) {
@@ -143,9 +144,9 @@ function Tags({ tags }: { tags: TagSet }) {
     <Join separator={", "}>
       {tags.tags().map((tag, i) => {
         return (
-          <a key={i} href={tag.url().path()}>
+          <Link key={i} href={{ pathname: tag.url().path() }}>
             {tag.name()}
-          </a>
+          </Link>
         );
       })}
     </Join>
