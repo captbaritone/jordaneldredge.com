@@ -1,3 +1,4 @@
+"use server";
 import { updateRank } from "./Ranking";
 import { db, sql } from "../db";
 
