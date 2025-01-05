@@ -1,4 +1,3 @@
-import { Query } from "./GraphQLRoots";
 import { Linkable } from "./interfaces";
 import { SiteUrl } from "./SiteUrl";
 import * as Data from "../data";

@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
-import ListItem from "../../../lib/components/ListItem";
-import { Tag } from "../../../lib/data/Tag";
+import ListItem from "../../../../lib/components/ListItem";
+import { Tag } from "../../../../lib/data/Tag";
 
 export function generateMetadata({ params }) {
   const title = `Blog posts tagged "${params.tag}"`;

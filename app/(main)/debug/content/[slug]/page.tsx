@@ -1,8 +1,8 @@
 import React from "react";
-import { Content } from "../../../../lib/data";
-import { SiteUrl } from "../../../../lib/data/SiteUrl";
-import { userIsAdmin } from "../../../../lib/session";
-import { TagSet } from "../../../../lib/data/TagSet";
+import { Content } from "../../../../../lib/data";
+import { SiteUrl } from "../../../../../lib/data/SiteUrl";
+import { userIsAdmin } from "../../../../../lib/session";
+import { TagSet } from "../../../../../lib/data/TagSet";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import ReindexButton from "./ReindexButton";

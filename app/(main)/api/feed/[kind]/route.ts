@@ -1,5 +1,5 @@
 import { Feed, Item } from "feed";
-import * as Data from "../../../../lib/data";
+import * as Data from "../../../../../lib/data";
 import { NextRequest } from "next/server";
 import { Enclosure } from "feed/lib/typings";
 

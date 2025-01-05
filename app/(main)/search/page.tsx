@@ -1,6 +1,6 @@
 import SearchInput from "./searchInput";
-import ListItem from "../../lib/components/ListItem";
-import { ContentConnection } from "../../lib/data";
+import ListItem from "../../../lib/components/ListItem";
+import { ContentConnection } from "../../../lib/data";
 
 export function generateMetadata({ searchParams }) {
   const title = searchParams.q ? `Search: "${searchParams.q}"` : "Search";

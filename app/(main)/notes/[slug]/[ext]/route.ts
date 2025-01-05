@@ -1,5 +1,5 @@
 import { NextRequest } from "next/server";
-import { Content } from "../../../../lib/data";
+import { Content } from "../../../../../lib/data";
 
 export const revalidate = 10;
 export const dynamic = "force-static";

@@ -1,6 +1,6 @@
-import { Content } from "../../../lib/data";
+import { Content } from "../../../../lib/data";
 import { Metadata } from "next";
-import ContentPage from "../../../lib/components/ContentPage";
+import ContentPage from "../../../../lib/components/ContentPage";
 
 // https://beta.nextjs.org/docs/data-fetching/caching#segment-level-caching
 // export const revalidate = 10;
