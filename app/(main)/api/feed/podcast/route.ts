@@ -1,6 +1,5 @@
 import { Feed, Item } from "feed";
-import * as Data from "../../../../lib/data";
-import { NextRequest } from "next/server";
+import * as Data from "../../../../../lib/data";
 
 export const revalidate = 10;
 export const dynamic = "force-static";

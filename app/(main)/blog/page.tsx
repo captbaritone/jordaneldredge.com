@@ -1,6 +1,6 @@
 import Link from "next/link";
-import ListItem from "../../lib/components/ListItem";
-import { ContentConnection } from "../../lib/data";
+import ListItem from "../../../lib/components/ListItem";
+import { ContentConnection } from "../../../lib/data";
 
 export const metadata = {
   title: "Blog",

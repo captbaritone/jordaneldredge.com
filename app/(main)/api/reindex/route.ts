@@ -1,4 +1,4 @@
-import * as Indexable from "../../../lib/data/Indexable";
+import * as Indexable from "../../../../lib/data/Indexable";
 
 export const dynamic = "force-dynamic";
 
