@@ -1,5 +1,5 @@
-import { Content } from "../../../lib/data";
-import ContentPage from "../../../lib/components/ContentPage";
+import { Content } from "../../../../lib/data";
+import ContentPage from "../../../../lib/components/ContentPage";
 import { notFound } from "next/navigation";
 
 export function generateMetadata({ params }) {

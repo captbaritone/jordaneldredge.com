@@ -1,5 +1,5 @@
-import { getAllPages, getPageBySlug } from "../../lib/data";
-import RootPage from "../RootPage";
+import { getAllPages, getPageBySlug } from "../../../lib/data";
+import RootPage from "../../RootPage";
 
 export function generateMetadata({ params }) {
   const page = getPageBySlug(params.slug);

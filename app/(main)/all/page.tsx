@@ -1,5 +1,7 @@
+import { notFound } from "next/navigation";
 import ListItem from "../../lib/components/ListItem";
 import { ContentConnection } from "../../lib/data";
+import { userIsAdmin } from "../../lib/session";
 import SortSelect from "./SortSelect";
 
 export function generateMetadata({ params }) {
@@ -10,7 +12,10 @@ export function generateMetadata({ params }) {
 export const revalidate = 10;
 export const dynamic = "force-static";
 
-export default function All({ searchParams }) {
+export default async function All({ searchParams }) {
+  if (!(await userIsAdmin())) {
+    notFound();
+  }
   const sort: "best" | "latest" = searchParams.sort || "best";
   const items = ContentConnection.all({ sort, filters: [] });
 

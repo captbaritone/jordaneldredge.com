@@ -1,6 +1,6 @@
 "use client";
 import { startAuthentication } from "@simplewebauthn/browser";
-import { authenticationOptions, verifyAuth } from "./register/auth";
+import { authenticationOptions, verifyAuth } from "./(main)/register/auth";
 
 export default function LoginButton() {
   async function login() {

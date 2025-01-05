@@ -1,5 +1,5 @@
 "use client";
-import { logout } from "./register/auth";
+import { logout } from "./(main)/register/auth";
 
 export default function LogoutButton() {
   return (

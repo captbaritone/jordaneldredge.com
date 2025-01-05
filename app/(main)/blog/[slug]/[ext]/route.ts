@@ -1,5 +1,5 @@
 import { NextRequest } from "next/server";
-import { Content } from "../../../../lib/data";
+import { Content } from "../../../../../lib/data";
 
 // NOTE: This route depends upon a rewrite in the project config to allow it to match:
 // /blog/<slug>.md

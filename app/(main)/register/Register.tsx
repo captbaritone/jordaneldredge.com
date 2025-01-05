@@ -35,30 +35,27 @@ export default function LoginButton() {
 
   return (
     <div className="markdown">
-      <h1>Register</h1>
-      <p>
-        Accounts can currently only be created with passkeys. Registering an
-        account may (or may not) allow access to additional features.
-      </p>
-      <div className="w-full max-w-sm pb-6">
-        <form onSubmit={register}>
-          <div className="mb-4">
-            <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="email"
-              type="email"
-              placeholder="Enter your email address"
-            />
-          </div>
-          <div className="flex items-center justify-between">
-            <input
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              type="submit"
-              value="Create Passkey"
-            />
-          </div>
-        </form>
-      </div>
+      <form className="flex flex-col py-4" onSubmit={register}>
+        <h1>Register</h1>
+        <p>
+          Accounts can currently only be created with passkeys. Registering an
+          account may (or may not) allow access to additional features.
+        </p>
+        <div className="flex flex-col bg-gray-100 rounded-lg border border-gray-400">
+          <input
+            id="email"
+            type="email"
+            required
+            placeholder="Enter your email address"
+            className="py-1 px-4 m-2 border rounded-md border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+          />
+        </div>
+        <input
+          type="submit"
+          value="Create Passkey"
+          className="self-end my-4 bg-green-700 active:bg-green-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        />
+      </form>
     </div>
   );
 }

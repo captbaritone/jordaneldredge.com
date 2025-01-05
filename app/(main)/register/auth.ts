@@ -9,8 +9,8 @@ import {
   verifyAuthenticationResponse,
   verifyRegistrationResponse,
 } from "@simplewebauthn/server";
-import { getSession } from "../../lib/session";
-import { db } from "../../lib/db";
+import { getSession } from "../../../lib/session";
+import { db } from "../../../lib/db";
 
 /**
  * Human-readable title for your website

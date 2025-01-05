@@ -10,7 +10,7 @@
     "lint-md": "remark --quiet .",
     "lint": "remark --quiet . && next lint",
     "backup": "tsx scripts/backup.ts",
-    "migrate": "tsx migrations/003-add-users-and-webauthn.ts",
+    "migrate": "tsx migrations/004-add-pastes.ts",
     "reindex": "tsx scripts/reindex.ts",
     "audio": "tsx scripts/audio.ts",
     "images": "tsx scripts/generate_images.ts"
