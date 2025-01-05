@@ -1,6 +1,6 @@
 "use client";
 
-import { reindex } from "../../../../lib/data/Indexable";
+import { reindex } from "../../../../../lib/data/Indexable";
 
 type Props = {
   slug: string;

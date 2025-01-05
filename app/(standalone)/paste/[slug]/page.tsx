@@ -3,6 +3,7 @@ import { parse, syntaxHighlighting } from "../../../../lib/data/markdownUtils";
 import { db, sql } from "../../../../lib/db";
 import Markdown from "../../../../lib/components/Markdown";
 import Link from "next/link";
+import { userIsAdmin } from "../../../../lib/session";
 
 export function metadata() {
   return {
@@ -17,16 +18,22 @@ export default async function Paste({ params }) {
     notFound();
   }
 
+  const isAdmin = await userIsAdmin();
+
   return (
     <div className="markdown">
       <div className="flex justify-end pt-2 pr-4 gap-1">
         <Link href={{ pathname: `/paste/${paste.id}/${paste.file_name}` }}>
           Raw
         </Link>
-        {" | "}
-        <Link href={{ pathname: `/paste/${paste.id}/${paste.file_name}` }}>
-          Edit
-        </Link>
+        {isAdmin && (
+          <>
+            {" | "}
+            <Link href={{ pathname: `/paste/${paste.id}/${paste.file_name}` }}>
+              Edit
+            </Link>
+          </>
+        )}
       </div>
       <div className="max-w-2xl mx-auto p-5 -mt-4">
         <Content paste={paste} />
@@ -38,7 +45,9 @@ export default async function Paste({ params }) {
 async function Content({ paste }) {
   if (paste.file_name && paste.file_name.endsWith(".md")) {
     const ast = parse(paste.content);
+
     await syntaxHighlighting(ast);
+
     return <Markdown ast={ast} />;
   }
   return <pre>{paste.content}</pre>;
