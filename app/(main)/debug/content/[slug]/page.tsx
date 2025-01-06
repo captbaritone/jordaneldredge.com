@@ -6,6 +6,7 @@ import { TagSet } from "../../../../../lib/data/TagSet";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import ReindexButton from "./ReindexButton";
+import { Bytes } from "../../../../../lib/components/Bytes";
 
 export default async function DebugContent({ params }) {
   const isAdmin = await userIsAdmin();
@@ -123,15 +124,6 @@ function RawObject({ object }: { object: Object }) {
       </tbody>
     </table>
   );
-}
-
-// Format bytes as a human-readable string.
-function Bytes({ bytes }: { bytes: number }) {
-  const sizes = ["Bytes", "KB", "MB", "GB", "TB"];
-  if (bytes == 0) return "0 Byte";
-  const i = Math.floor(Math.log(bytes) / Math.log(1024));
-
-  return `${bytes} (${(bytes / Math.pow(1024, i)).toFixed(2)} ${sizes[i]})`;
 }
 
 function Url({ url }: { url: SiteUrl }) {

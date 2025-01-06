@@ -25,7 +25,7 @@ export default async function Paste({ params }) {
 
   const session = await getSession();
 
-  const ownsPaste = paste.author_id === session.userId;
+  const ownsPaste = Number(paste.author_id) === session.userId;
 
   return (
     <div className="markdown">
