@@ -3,7 +3,7 @@ import { parse, syntaxHighlighting } from "../../../../lib/data/markdownUtils";
 import { db, sql } from "../../../../lib/db";
 import Markdown from "../../../../lib/components/Markdown";
 import Link from "next/link";
-import { userIsAdmin } from "../../../../lib/session";
+import { getSession, userIsAdmin } from "../../../../lib/session";
 
 export function metadata() {
   return {
@@ -19,6 +19,13 @@ export default async function Paste({ params }) {
   }
 
   const isAdmin = await userIsAdmin();
+  if (!isAdmin) {
+    notFound();
+  }
+
+  const session = await getSession();
+
+  const ownsPaste = paste.author_id === session.userId;
 
   return (
     <div className="markdown">
@@ -26,12 +33,10 @@ export default async function Paste({ params }) {
         <Link href={{ pathname: `/paste/${paste.id}/${paste.file_name}` }}>
           Raw
         </Link>
-        {isAdmin && (
+        {ownsPaste && (
           <>
             {" | "}
-            <Link href={{ pathname: `/paste/${paste.id}/${paste.file_name}` }}>
-              Edit
-            </Link>
+            <Link href={{ pathname: `/paste/edit/${paste.id}` }}>Edit</Link>
           </>
         )}
       </div>
@@ -55,12 +60,13 @@ async function Content({ paste }) {
 
 const GET_PASTE = db.prepare<
   { slug: string },
-  { content: string; file_name?: string; id: number }
+  { content: string; file_name?: string; id: number; author_id: number }
 >(sql`
   SELECT
     id,
     content,
-    file_name
+    file_name,
+    author_id
   FROM
     pastes
   WHERE
