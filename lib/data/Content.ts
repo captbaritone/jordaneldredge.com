@@ -252,7 +252,10 @@ const CONTENT_BY_TYPE_AND_SLUG = db.prepare<
     content
   WHERE
     page_type = :pageType
-    AND slug = :slug
+    AND (
+      slug = :slug
+      OR json_extract(metadata, '$.notion_id') = :slug
+    );
 `);
 
 const CONTENT_BY_SLUG = db.prepare<{ slug: string }, ContentDBRow>(sql`
@@ -262,6 +265,7 @@ const CONTENT_BY_SLUG = db.prepare<{ slug: string }, ContentDBRow>(sql`
     content
   WHERE
     slug = :slug
+    OR json_extract(metadata, '$.notion_id') = :slug;
 `);
 
 const CONTENT_BY_ID = db.prepare<{ id: number }, ContentDBRow>(sql`
