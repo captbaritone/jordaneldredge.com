@@ -16,13 +16,9 @@ hand-drawn title cards!
 
 Chelsea's parents, Tom and Grace, wrote the "Nammies Song" to help their kids go to sleep at night.
 
-&nbsp;
-
 ::youtube{token=P126k_BlBig}
 
 "The Diaper Changing Blues" was written by Chelsea's mom Grace, for Chelsea's little brother Thomas who was not fond of having his diaper changed.
-
-&nbsp;
 
 ::youtube{token=trikN01A5Dc}
 
