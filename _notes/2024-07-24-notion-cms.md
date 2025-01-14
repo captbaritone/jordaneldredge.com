@@ -20,7 +20,7 @@ For most of its history my blog has mostly served as a place to share the result
 
 As Twitter started shifting under Musk’s ownership, I realized that I wanted a place that I owned myself where I could share the types of content I usually shared on Twitter: Anecdotes, observations, links to interesting content, things I had recently learned, etc. Maybe not as a distribution channel, but as a place to put things that I could link out to in the future.
 
-Markdown+Git was to heavy-weight for this. I wanted something I could post to from my phone while waiting in line at the grocery store, but also have the freedom to create longer form content.
+Markdown+Git was too heavy-weight for this. I wanted something I could post to from my phone while waiting in line at the grocery store, but also have the freedom to create longer form content.
 
 I was already a heavy user of Notion for note taking, todo lists and other personal projects, so decide to try using Notion to author posts and use their API to dynamically pull them into my website.
 
@@ -54,7 +54,7 @@ The existing blog posts on my site are rendered from Markdown using a [technique
 
 ### Images
 
-Images in Notion docs have URLs that point to Amazon S3 buckets and have a special signature added to them which expires. This causes problems if I want to be able to cache these results sine the image URLs will eventually go out of date. To combat this, I do a quick traversal of the AST and for each image, download any new ones locally to my server and then rewrite the URL in the AST to point to my local version.
+Images in Notion docs have URLs that point to Amazon S3 buckets and have a special signature added to them which expires. This causes problems if I want to be able to cache these results since the image URLs will eventually go out of date. To combat this, I do a quick traversal of the AST and for each image, download any new ones locally to my server and then rewrite the URL in the AST to point to my local version.
 
 ### Audio Embeds
 
