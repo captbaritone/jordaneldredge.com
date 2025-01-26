@@ -1,9 +1,9 @@
-import { FaSearch } from "react-icons/fa";
 import Link from "next/link";
 import NavLink from "../NavLink";
 import { getSession } from "../../lib/session";
 import LogoutButton from "../LogoutButton";
 import LoginButton from "../LoginButton";
+import SearchIcon from "./SearchIcon";
 
 export const metadata = {
   metadataBase: new URL("https://jordaneldredge.com"),
@@ -48,9 +48,7 @@ export default async function Layout({ children }) {
               <NavLink href="/contact/">Contact</NavLink>
             </li>
             <li className="text-sm flex items-center pr-1">
-              <Link href={"/search"}>
-                <FaSearch title="Search" />
-              </Link>
+              <SearchIcon />
             </li>
           </ul>
         </nav>
