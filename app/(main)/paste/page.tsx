@@ -28,7 +28,8 @@ export default async function Posts() {
           <tr>
             <th>File Name</th>
             <th>Created</th>
-            <th className="">Size</th>
+            <th>Size</th>
+            <th>Edit</th>
           </tr>
         </thead>
         <tbody>
@@ -45,6 +46,9 @@ export default async function Posts() {
               </td>
               <td>
                 <Bytes bytes={paste.size} />
+              </td>
+              <td>
+                <a href={`/paste/edit/${paste.id}`}>Edit</a>
               </td>
             </tr>
           ))}
