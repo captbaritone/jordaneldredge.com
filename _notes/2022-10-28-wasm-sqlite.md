@@ -3,6 +3,7 @@ title: The Chrome team is working with the SQLite team on an official Wasm build
 tags:
   - share
   - javascript
+  - sqlite
 summary: SQLite is getting an official Wasm build
 notion_id: 4e5b319c-6b72-423a-af3c-80433ac00d8e
 ---
