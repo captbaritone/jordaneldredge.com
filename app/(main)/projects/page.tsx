@@ -12,9 +12,9 @@ export default function Projects() {
       <div className="markdown">
         <h1>Projects</h1>
         <p>
-          Over the years I've built a number of software side projects. Below
-          are a list of the more interesting ones. For a more exhaustive list
-          see my <a href="/blog/">blog</a>.
+          Over the years I&rsquo;ve built a number of software side projects.
+          Below are a list of the more interesting ones. For a more exhaustive
+          list see my <a href="/blog/">blog</a>.
         </p>
         <hr />
       </div>
