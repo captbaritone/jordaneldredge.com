@@ -68,6 +68,14 @@ export default async function Layout({ children }) {
         <Link href={{ pathname: "/notes/tts-podcast/" }}>Podcast</Link>
         {" • "}
         {session.userId ? <LogoutButton /> : <LoginButton />}
+        {session.userId && (
+          <>
+            <br />
+            <a href="/paste/">Pastes</a>
+            {" • "}
+            <a href="/api/reindex">Reindex</a>
+          </>
+        )}
       </footer>
     </div>
   );

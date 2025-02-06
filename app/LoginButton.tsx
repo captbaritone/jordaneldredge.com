@@ -7,12 +7,12 @@ export default function LoginButton() {
     const optionsJSON = await authenticationOptions();
     const authResp = await startAuthentication({ optionsJSON });
     const authed = await verifyAuth(authResp);
-    if (authed) {
+    if (authed.kind === "ok") {
       alert("Authentication successful!");
       // Reload the page to show the authenticated state
       location.reload();
     } else {
-      alert("Authentication failed.");
+      alert(`Authentication failed: ${authed.error}`);
     }
   }
   return <button onClick={login}>Login</button>;

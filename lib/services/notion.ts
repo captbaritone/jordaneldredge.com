@@ -99,7 +99,6 @@ export async function retrievePage(id: string): Promise<PageObjectResponse> {
     // itself should only have permission to see the relevant pages.
     page.parent.database_id !== METADATA_DATABASE_ID
   ) {
-    console.log(page);
     throw new Error("Invalid page ID.");
   }
   return page;
