@@ -10,7 +10,7 @@ notion_id: 156376e2-3751-80ed-a80d-f3ce2daf7003
 summary_image: >-
   https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/notion-mirror/84ebb48c-616a-4f51-ae9a-991a4e0a7e9b/3406fb27-6d01-4df4-9781-709aec856965/Screenshot_2024-12-08_at_12.02.05_AM.png
 ---
-_TL;DR: You can copy_ [_this link_](https://jordaneldredge.com/feed/podcast/) _into your podcast player to subscribe an text-to-speech version of this blog._
+_TL;DR: You can copy_ [_this link_](https://jordaneldredge.com/feed/podcast/) _into your podcast player to subscribe to a text-to-speech version of this blog._
 
 ---
 

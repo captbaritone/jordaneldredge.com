@@ -3,6 +3,7 @@ title: “A Christmas Carol” by Tom Lehrer
 tags:
   - music
   - video
+  - piano
 summary: >-
   Sharing a quick video I made of Tom Lehrer’s very funny song “A Christmas
   Carol”

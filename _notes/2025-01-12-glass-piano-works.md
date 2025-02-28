@@ -3,6 +3,7 @@ title: Philip Glass Piano Works by Víkingur Ólafsson
 tags:
   - music
   - share
+  - piano
 summary: Sharing an album I’ve been obsessed with this year
 notion_id: 156376e2-3751-80d9-9d5c-ec6ed1d1215e
 summary_image: >-

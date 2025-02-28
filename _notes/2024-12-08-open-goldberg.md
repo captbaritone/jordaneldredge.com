@@ -3,6 +3,7 @@ title: Open Goldberg Variations
 tags:
   - share
   - music
+  - piano
 summary: >-
   Sharing one of my favorite music projects: a gorgeous, free - as in freedom -
   recording of J.S. Bach’s Goldberg Variations
