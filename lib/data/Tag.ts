@@ -27,7 +27,9 @@ export class Tag implements Linkable {
     return Data.ContentConnection.withTag(this);
   }
 
-  /** @gqlQueryField */
+  /**
+   * Get a tag by name.
+   * @gqlQueryField */
   static getTagByName(name: string): Tag {
     return new Tag(name);
   }

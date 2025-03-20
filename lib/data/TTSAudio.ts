@@ -1,9 +1,13 @@
+import type { Int } from "grats";
 import { db } from "../db";
 import { keyUrl, upload } from "../s3";
 import fs from "node:fs";
 import Content from "./Content";
 import { SiteUrl } from "./SiteUrl";
 
+/**
+ * Auto generated audio for a content item.
+ * @gqlType */
 export default class TTSAudio {
   constructor(
     private _contentId: string,
@@ -25,6 +29,7 @@ export default class TTSAudio {
     );
   }
 
+  /** @gqlField */
   content(): Content {
     const content = Content.getById(parseInt(this._contentId, 10));
     if (content == null) {
@@ -33,19 +38,23 @@ export default class TTSAudio {
     return content;
   }
 
+  /** @gqlField */
   vanityUrl(): SiteUrl {
     return new SiteUrl(this.content().url().path() + ".mp3");
   }
 
+  /** @gqlField */
   url(): string {
     return keyUrl(this._r2Key);
   }
 
-  byteLength(): number {
+  /** @gqlField */
+  byteLength(): Int {
     return this._byteLength;
   }
 
-  lastUpdated(): number {
+  /** @gqlField */
+  lastUpdated(): Int {
     return this._lastUpdated;
   }
 

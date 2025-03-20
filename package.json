@@ -13,7 +13,8 @@
     "migrate": "tsx migrations/004-add-pastes.ts",
     "reindex": "tsx scripts/reindex.ts",
     "audio": "tsx scripts/audio.ts",
-    "images": "tsx scripts/generate_images.ts"
+    "images": "tsx scripts/generate_images.ts",
+    "grats": "grats"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.705.0",
@@ -28,6 +29,8 @@
     "better-sqlite3": "^11.5.0",
     "dotenv": "^16.4.5",
     "feed": "^4.2.2",
+    "graphql": "^16.10.0",
+    "graphql-yoga": "^5.13.2",
     "gray-matter": "^4.0.2",
     "iron-session": "^8.0.4",
     "js-yaml": "^4.1.0",
@@ -77,6 +80,7 @@
     "encoding": "^0.1.13",
     "eslint": "^8.22.0",
     "eslint-config-next": "^14.1.0",
+    "grats": "^0.0.32",
     "jest": "^27.4.3",
     "lodash": "^4.17.21",
     "node-fetch": "2",

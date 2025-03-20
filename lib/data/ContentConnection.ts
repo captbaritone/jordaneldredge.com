@@ -36,6 +36,10 @@ export default class ContentConnection {
     return content;
   }
 
+  /**
+   * Search for content by title, content, or tags.
+   * @gqlQueryField
+   */
   static search(query: string): Array<Content> {
     const rows = SEARCH.all({ query });
     function getItem(m: ContentDBRow): Content | null {
@@ -54,10 +58,18 @@ export default class ContentConnection {
     return rows.map((row) => getItem(row)).filter((item) => item != null);
   }
 
+  /**
+   * Formal write-ups of projects and ideas.
+   * @gqlQueryField
+   */
   static blogPosts(): Array<Content> {
     return this.getAllByPageType("post");
   }
 
+  /**
+   * Quick thoughts, observations, and links.
+   * @gqlQueryField
+   */
   static notes(): Array<Content> {
     return this.getAllByPageType("note");
   }
@@ -131,3 +143,21 @@ const GET_ALL_BY_PAGE_TYPE = db.prepare<{ pageType: PageType }, ContentDBRow>(
       DATE DESC;
   `,
 );
+
+type StructuredSearchQuery = {
+  query: string;
+  tags: string[];
+};
+
+// Parse out things like `tag:foo` from the search query
+function parseSearchQuery(rawQuery: string): StructuredSearchQuery {
+  const query = rawQuery.trim();
+  const tagMatches = query.match(/tag:([a-zA-Z0-9_-]+)/g);
+
+  console.log("tagMatches", tagMatches);
+
+  return {
+    query: rawQuery,
+    tags: [],
+  };
+}

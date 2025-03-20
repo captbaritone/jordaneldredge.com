@@ -94,6 +94,9 @@ export default class Content {
     return new SiteUrl(this._urlString());
   }
 
+  /**
+   * Url to download the post as a markdown file.
+   * @gqlField */
   markdownUrl(): SiteUrl {
     return new SiteUrl(this._urlString() + ".md");
   }
@@ -114,6 +117,9 @@ export default class Content {
     return new SiteUrl(`/debug/content/${this.slug()}`);
   }
 
+  /**
+   * The audio version of this content, if it exists.
+   * @gqlField */
   ttsAudio(): TTSAudio | null {
     return TTSAudio.fromContentId(this.id());
   }
@@ -128,7 +134,6 @@ export default class Content {
     return this._metadata;
   }
 
-  /** @gqlField */
   githubCommentsIssueId(): string | undefined {
     return this._metadata.github_comments_issue_id;
   }
@@ -225,6 +230,9 @@ export default class Content {
     return new Content(row);
   }
 
+  /**
+   * Find a piece of content by its slug.
+   * @gqlQueryField getContentBySlug */
   static getBySlug(slug: string): Content | null {
     const row = CONTENT_BY_SLUG.get({ slug });
     if (row == null) {
