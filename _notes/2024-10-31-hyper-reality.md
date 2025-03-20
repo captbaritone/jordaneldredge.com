@@ -3,6 +3,7 @@ title: 'Hyper-Reality '
 tags:
   - video
   - share
+  - note
 summary: >-
   This incredible 2016 video presents a dystopian, visually opulent, and
   depressingly believable augmented reality future. 

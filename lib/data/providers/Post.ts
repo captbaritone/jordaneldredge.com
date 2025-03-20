@@ -63,7 +63,7 @@ export class PostProvider implements IndexableProvider {
       content,
       title: metadata.title,
       summary: metadata.summary,
-      tags: metadata.tags,
+      tags: [...metadata.tags, "blog"],
       slug: slug,
       date: date,
       summaryImage,

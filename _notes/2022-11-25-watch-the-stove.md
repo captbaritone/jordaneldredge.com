@@ -3,6 +3,7 @@ title: Hamburger Helper released a rap album
 tags:
   - music
   - share
+  - note
 summary: Title says it all
 notion_id: fc90658c-5e0d-470c-b545-8a6049afaff8
 summary_image: >-

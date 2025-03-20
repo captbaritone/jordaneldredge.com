@@ -2,6 +2,7 @@
 title: Elf Storage
 tags:
   - anecdote
+  - note
 summary: Probably the funniest vandalism I’ve ever seen
 notion_id: a5169f37-cc9b-41e7-a1d8-acabd36d408f
 ---

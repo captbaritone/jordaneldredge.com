@@ -2,6 +2,7 @@
 title: Have you tried rubbing a database on it?
 tags:
   - share
+  - note
 summary: >-
   A collection of mad science talks applying the ideas of databases to all kinds
   of different problems

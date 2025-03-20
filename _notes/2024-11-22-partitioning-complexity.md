@@ -2,6 +2,7 @@
 title: Partitioning complexity
 tags:
   - share
+  - note
 summary: >-
   Sharing Kent Beck’s excellent article describing how we can find modes of
   working which can help manage complexity as it scales

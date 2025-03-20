@@ -2,6 +2,7 @@
 title: How to build a typeahead
 tags:
   - share
+  - note
 summary: >-
   Sharing the canonical post on how to properly build a typeahead. It’s much
   more complicated than it first appears

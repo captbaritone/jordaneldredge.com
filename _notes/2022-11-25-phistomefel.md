@@ -2,6 +2,7 @@
 title: 'Sudoku Set Equivalence Theory: The Phistomefel Ring'
 tags:
   - share
+  - note
 summary: >-
   An incredible property that all sudoku puzzles have which can be proven with
   set theory

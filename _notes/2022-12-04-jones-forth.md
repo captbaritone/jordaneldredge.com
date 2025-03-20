@@ -2,6 +2,7 @@
 title: Jones Forth
 tags:
   - share
+  - note
 summary: >-
   A prodigiously commented implementation of the Forth programming language in
   x86 assembly. So clearly communicated even I could mostly follow it

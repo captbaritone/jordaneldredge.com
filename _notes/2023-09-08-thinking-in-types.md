@@ -3,6 +3,7 @@ title: Type systems as a mental tool
 tags:
   - opinion
   - observation
+  - note
 summary: Type systems lead to clearer thinking and thus better code
 notion_id: f5fcd9c8-305b-4a8e-9f3c-0979ca8be5ed
 ---

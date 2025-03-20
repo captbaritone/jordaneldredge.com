@@ -5,6 +5,7 @@ tags:
   - javascript
   - react
   - opinion
+  - note
 summary: >-
   A vision for using GraphQL on the client for local-first apps, apps using e2e
   encryption, and other apps with heavy client state

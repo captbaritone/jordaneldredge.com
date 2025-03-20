@@ -2,6 +2,7 @@
 title: Hal fixing a light bulb (what software development always feels like to me)
 tags:
   - share
+  - note
 summary: >-
   This clip from Malcolm in the Middle perfectly encapsulates the experience of
   trying to get anything done with software

@@ -2,6 +2,7 @@
 title: Laravel’s obsessive comment style
 tags:
   - anecdote
+  - note
 summary: >-
   An insane detail that points to the obsessive approach Taylor Otwell took with
   Laravel

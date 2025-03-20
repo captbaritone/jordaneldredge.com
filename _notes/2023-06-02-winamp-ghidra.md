@@ -2,6 +2,7 @@
 title: Disassembling Winamp with Ghidra to find the Maki interpreter
 tags:
   - winamp
+  - note
 summary: Sharing my n00b attempt at disassembling the Winamp binary
 notion_id: ba22162c-3f6a-4352-9131-f3aec509468c
 summary_image: >-

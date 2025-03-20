@@ -4,6 +4,7 @@ tags:
   - music
   - share
   - piano
+  - note
 summary: Sharing an album I’ve been obsessed with this year
 notion_id: 156376e2-3751-80d9-9d5c-ec6ed1d1215e
 summary_image: >-
@@ -20,3 +21,8 @@ In the summer, when planning a flight abroad for work, I was searching Spotify f
 I’d recommend the exhilarating Etude 6 as a good starting point if you want to have a listen. The combination of blistering tempo and textual clarity must be heard to be believed.
 
 [Spotify Link](https://open.spotify.com/wrapped/share/share-b4a0029b5e244ce2913da3d2475c6354?si=--TFznzuS12__AcuMBXKiw\&track-id=3dzgmH9o9P9Kw4n3P3bWOR)
+
+_Update March 14th 2025:_ On March 2nd my wife and I went to see Ólafsson and [Yuja Wang](https://en.m.wikipedia.org/wiki/Yuja_Wang) play a concert of piano duos at San Francisco Symphony. When the concert was scheduled to start, a staff member at the symphony came out on stage and announced that Wang was ill and would be unable to perform. However, he added, Ólafsson had graciously offered to perform his now Grammy winning interpretation of Goldberg Variations instead. The performance was one of the most magical and captivating I’ve ever attended. For a review of the performance with an accounting of the dramatic last minute replacement see [KQED’s review of the evening](https://www.kqed.org/arts/13972538/review-vikingur-olafsson-goldberg-variations-davies-yuja-wang-canceled). Other reviews of the evening:
+
+- <https://seenandheard-international.com/2025/03/vikingur-olafsson-goes-solo-with-bach-in-san-francisco-after-yuja-wang-is-sidelined/>
+- <https://garykamiya.substack.com/p/olafsson-and-bach-to-the-rescue>

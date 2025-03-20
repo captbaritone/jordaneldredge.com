@@ -3,6 +3,7 @@ title: Next.js’s unstable_cache() demystified
 tags:
   - share
   - til
+  - note
 summary: I found some interesting information about Next.js’ elusive unstable_cache API
 notion_id: f0059280-f796-4bf3-bb62-c98c1391139c
 ---

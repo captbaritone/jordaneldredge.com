@@ -3,6 +3,7 @@ title: Creating project-specific ESLint rules in a Yarn workspace
 tags:
   - eslint
   - til
+  - note
 summary: >-
   How to create custom project-specific lint rules for a repository that is
   using Yarn Workspaces where ESLint is run from the workspace root

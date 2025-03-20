@@ -4,6 +4,7 @@ tags:
   - share
   - sqlite
   - talk
+  - note
 summary: >-
   SQLite’s creator Dr. Richard Hipp shares the story and implimentation of
   SQLite

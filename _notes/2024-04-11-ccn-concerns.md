@@ -3,6 +3,7 @@ title: The Challenges with Client Controlled Nullability
 tags:
   - graphql
   - opinion
+  - note
 summary: >-
   Explaining some of the non-obvious problems with the Client Controlled
   Nullability GraphQL spec RFC 

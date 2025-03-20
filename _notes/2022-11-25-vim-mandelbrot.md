@@ -2,6 +2,7 @@
 title: A Vim macro that edits itself to draw a fractal
 tags:
   - share
+  - note
 summary: A virtuosic self-executing Vim macro that renders a fractal in your editor
 notion_id: d25050ed-8bff-4fd5-8a3d-ab3613918010
 summary_image: >-

@@ -3,6 +3,7 @@ title: I was on the Changelog podcast again
 tags:
   - podcast
   - winamp
+  - note
 summary: >-
   I caught up with Jerod and Adam about nostalgia, music, file sharing, Napster
   and the weird stuff I found in corrupt Winamp skins

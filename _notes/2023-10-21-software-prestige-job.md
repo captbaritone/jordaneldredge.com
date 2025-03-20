@@ -2,6 +2,7 @@
 title: On software becoming a prestige job
 tags:
   - observation
+  - note
 summary: Reflecting on how the reasons people pursue software engineering has evolved
 notion_id: 7f3be74a-4aa5-4dc4-bcc4-347146c50ade
 ---

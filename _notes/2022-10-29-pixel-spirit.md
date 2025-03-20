@@ -2,6 +2,7 @@
 title: 'Pixel Spirit: Gorgeous tarot deck with GLSL shader code'
 tags:
   - share
+  - note
 summary: A luscious gift for anyone in your life interested in shaders. Maybe yourself?
 notion_id: ab649aa6-9efc-424b-8df2-da27d6470a37
 ---

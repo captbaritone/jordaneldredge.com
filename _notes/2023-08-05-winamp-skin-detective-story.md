@@ -3,6 +3,7 @@ title: A Winamp Skin Detective Story
 tags:
   - winamp
   - anecdote
+  - note
 summary: Tracking down the cause of some mysteriously corrupted Winamp skins
 notion_id: dc60fad4-de0b-465f-b0f0-cd4217d3c157
 summary_image: >-

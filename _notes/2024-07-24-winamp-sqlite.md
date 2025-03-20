@@ -4,6 +4,7 @@ tags:
   - winamp
   - anecdote
   - sqlite
+  - note
 summary: >-
   The Winamp Skin Museum is powered by an sqlite3 database containing 1.2gb of
   metadata about 86,000 Winamp skins and exposed as a public GraphQL endpoint

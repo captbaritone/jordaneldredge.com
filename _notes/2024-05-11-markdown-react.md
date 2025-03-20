@@ -6,6 +6,7 @@ tags:
   - javascript
   - opinion
   - thisSite
+  - note
 summary: >-
   A pattern for rendering Markdown in React apps directly from an AST without
   any serialized HTML

@@ -2,6 +2,7 @@
 title: Mother Earth Mother Board
 tags:
   - share
+  - note
 summary: One of my favorite tech long reads of all time
 notion_id: b379b55a-969a-4b5c-ad2e-b24cdb9f8afd
 ---

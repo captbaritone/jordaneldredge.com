@@ -5,6 +5,7 @@ tags:
   - anecdote
   - react
   - thisSite
+  - note
 summary: >-
   Why I chose to use Notion as the backing CMS for the Notes portion of this
   site, and the technical details of how it’s implemented

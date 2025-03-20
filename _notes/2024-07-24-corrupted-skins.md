@@ -4,6 +4,7 @@ tags:
   - winamp
   - found
   - anecdote
+  - note
 summary: >-
   I started looking through corrupt Winamp skins and it lead me down some very
   strange rabbit holes

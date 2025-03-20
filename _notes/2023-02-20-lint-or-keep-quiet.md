@@ -3,6 +3,7 @@ title: Lint or Keep Quiet
 tags:
   - eslint
   - opinion
+  - note
 summary: Code review feedback that could be encoded as a lint rule, should be
 notion_id: 6650a0a0-28e4-408e-a976-a467e31557da
 ---

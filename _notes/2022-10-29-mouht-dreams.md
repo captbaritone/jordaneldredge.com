@@ -3,6 +3,7 @@ title: Mouth Dreams mashup album by Neil Cicierega
 tags:
   - music
   - share
+  - note
 summary: Sheer musical brilliance and hilarity
 notion_id: f44fd95e-9041-4cbb-9582-aecbb44eb13f
 ---

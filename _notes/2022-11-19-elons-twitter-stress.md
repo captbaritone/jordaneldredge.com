@@ -2,6 +2,7 @@
 title: Why I’m so stressed following Elon’s Twitter 2.0
 tags:
   - observation
+  - note
 summary: A vulnerable reflection
 notion_id: be4312b4-49e9-4e24-a981-45880e256aeb
 ---

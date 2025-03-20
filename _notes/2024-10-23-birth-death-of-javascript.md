@@ -5,6 +5,7 @@ tags:
   - javascript
   - talk
   - video
+  - note
 summary: >-
   Sharing this classic brilliant, hilarious and prophetic talk about the crazy
   language that is JavaScript

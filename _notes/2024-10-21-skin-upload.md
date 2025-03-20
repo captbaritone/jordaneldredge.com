@@ -3,6 +3,7 @@ title: '100k skins: Reflections on the Winamp Skin Museum’s upload flow'
 tags:
   - winamp
   - javascript
+  - note
 summary: >-
   A technical breakdown of the Winamp Skin Museum’s over-engineered upload flow,
   and how it helped create a positive feedback loop

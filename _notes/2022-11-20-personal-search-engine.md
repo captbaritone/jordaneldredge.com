@@ -2,6 +2,7 @@
 title: My personal search engine
 tags:
   - thisSite
+  - note
 summary: A little web service I wrote to help myself
 notion_id: ad2a8f36-9d78-4d03-9f2c-f3f32f1a51e0
 ---

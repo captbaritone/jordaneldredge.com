@@ -3,6 +3,7 @@ title: Why use the Relay Connection Spec?
 tags:
   - graphql
   - share
+  - note
 summary: >-
   My response to a Reddit user’s question about the value of the Relay
   Connection Spec

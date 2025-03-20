@@ -3,6 +3,7 @@ title: A verbose version of The Night Before Christmas
 tags:
   - share
   - anecdote
+  - note
 summary: >-
   Sharing a humorous rewrite of a classic poem that would often get pulled out
   around Christmas time during my childhood 

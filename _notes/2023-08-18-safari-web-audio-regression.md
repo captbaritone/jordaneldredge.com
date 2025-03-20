@@ -3,6 +3,7 @@ title: Web Audio regression in Safari iOS 17 Beta
 tags:
   - javascript
   - til
+  - note
 summary: >-
   Documenting a regression, I observed in iOS’ implementation of the web audio
   API

@@ -3,6 +3,7 @@ title: Itsy Bitsy Data Structures
 tags:
   - share
   - javascript
+  - note
 summary: >-
   Sharing this repository which  teaches data structures through charmingly
   commented JavaScript implementations

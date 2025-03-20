@@ -3,6 +3,7 @@ title: Avoid “straw that broke the camels back” lint rules
 tags:
   - eslint
   - opinion
+  - note
 summary: A class of lint rules that I think are best to avoid
 notion_id: 4dfb59e7-22ff-4cd7-93bc-97f8ca2b7062
 ---

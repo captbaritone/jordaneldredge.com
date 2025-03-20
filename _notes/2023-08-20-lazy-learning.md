@@ -2,6 +2,7 @@
 title: Eager vs Lazy Learning
 tags:
   - observation
+  - note
 summary: An observation about the way I learn
 notion_id: b7e58dac-13ee-4618-8e0c-05e79215bed6
 ---

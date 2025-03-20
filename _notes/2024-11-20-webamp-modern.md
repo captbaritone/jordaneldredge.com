@@ -4,6 +4,7 @@ tags:
   - winamp
   - javascript
   - staticAnalysis
+  - note
 summary: >-
   Writing an interpreter for a custom bytecode opens the door for rendering
   interactive custom Winamp skins in the browser

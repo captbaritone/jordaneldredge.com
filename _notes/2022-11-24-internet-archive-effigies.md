@@ -2,6 +2,7 @@
 title: The Internet Archive is populated by hundreds of gnome-like effigies
 tags:
   - anecdote
+  - note
 summary: The Internet Archive is wild. Eccentric, and all the better because of it
 notion_id: ea4dddd4-6ab2-41b0-be88-3976f240b491
 summary_image: >-

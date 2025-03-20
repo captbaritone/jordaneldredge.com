@@ -4,6 +4,7 @@ tags:
   - music
   - anecdote
   - observation
+  - note
 summary: >-
   Reflections on my journey from a classical music background to a career in big
   tech

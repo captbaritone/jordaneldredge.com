@@ -6,6 +6,7 @@ tags:
   - react
   - talk
   - video
+  - note
 summary: >-
   Youtube video of the talk I gave at GraphQL Conf 2024 covering advanced client
   error handling and its implications for potentially fundamentally solving the

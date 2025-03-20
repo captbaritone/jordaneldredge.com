@@ -4,6 +4,7 @@ tags:
   - music
   - share
   - video
+  - note
 summary: Sharing an obscure novelty song
 notion_id: 5cc4eb28-0cd2-443c-a5ab-68eccf001a48
 summary_image: https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/youtube/goJ0QIaXZ-w.jpg

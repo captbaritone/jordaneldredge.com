@@ -3,6 +3,7 @@ title: Compiling to AST
 tags:
   - opinion
   - staticAnalysis
+  - note
 summary: >-
   A pattern for tracking location information when compiling to a high level
   language

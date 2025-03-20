@@ -2,6 +2,7 @@
 title: A C program whose source code forms a Magic Eye
 tags:
   - share
+  - note
 summary: >-
   What if you wrote a program to generate magic eyes. What if that program’s
   source code was itself a magic eye!

@@ -4,6 +4,7 @@ tags:
   - share
   - music
   - piano
+  - note
 summary: >-
   Sharing one of my favorite music projects: a gorgeous, free - as in freedom -
   recording of J.S. Bach’s Goldberg Variations

@@ -2,6 +2,7 @@
 title: Software at Scale
 tags:
   - observation
+  - note
 summary: >-
   On scaling software to large numbers of developers, not just large amounts of
   data

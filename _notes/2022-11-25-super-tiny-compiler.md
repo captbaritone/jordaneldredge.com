@@ -4,6 +4,7 @@ tags:
   - staticAnalysis
   - javascript
   - share
+  - note
 summary: A tiny compiler written in JavaScript perfect for hands on learning
 notion_id: 9f2687e9-f871-4da3-b251-48b04b5f2be7
 ---

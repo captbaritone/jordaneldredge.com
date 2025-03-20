@@ -2,6 +2,7 @@
 title: Seeing Beyond Edge Cases
 tags:
   - observation
+  - note
 summary: >-
   How my thinking about edge cases has evolved as I’ve grown as a software
   engineer

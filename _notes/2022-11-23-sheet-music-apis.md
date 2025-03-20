@@ -3,6 +3,7 @@ title: On sheet music and software APIs
 tags:
   - observation
   - music
+  - note
 summary: Reflections on the parallels between sheet music notation and software
 notion_id: 33563918-2330-4076-8120-635db8d2b3bd
 ---

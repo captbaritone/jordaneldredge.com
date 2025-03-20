@@ -3,6 +3,7 @@ title: The tangibility of SQLite databases
 tags:
   - observation
   - sqlite
+  - note
 summary: For some reason SQLite databases feel more “real” to me
 notion_id: fca04651-18e9-4f47-bd99-50b079e9e14e
 ---

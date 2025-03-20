@@ -3,6 +3,7 @@ title: Spike Jones Presents a Xmas Spectacular
 tags:
   - share
   - music
+  - note
 summary: My favorite Christmas album
 notion_id: afaae38d-e4ed-4038-b382-4d9abfae4805
 summary_image: >-

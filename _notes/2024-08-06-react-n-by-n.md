@@ -4,6 +4,7 @@ tags:
   - javascript
   - react
   - observation
+  - note
 summary: Explaining how exactly the UI = f(state) model tames code complexity
 notion_id: d2e97d43-b5f8-461d-aa92-97a3af00025a
 ---
