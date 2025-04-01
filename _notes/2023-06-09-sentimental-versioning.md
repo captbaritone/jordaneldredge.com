@@ -6,7 +6,7 @@ tags:
 summary: Sharing a great post about software projects with unique versioning schemes
 notion_id: 879cb532-5299-47cf-8af0-03e44210fc08
 ---
-While so called “semantic versioning” has spawned its own sub-genera of debate about the semantics of semantics, there are a whole host of projects that carve their own paths with their version numbering scheme. Some of these schemes are so creative as to be mini works of art in and of themselves. [Dominic Tar](https://twitter.com/dominictarr) has captured a delightful selection of such schemes in [Sentimental Versioning](http://sentimentalversioning.org/).
+While so called “semantic versioning” has spawned its own sub-genera of debate about the semantics of semantics, there are a whole host of projects that carve their own paths with their version numbering scheme. Some of these schemes are so creative as to be mini works of art in and of themselves. [Dominic Tar](https://twitter.com/dominictarr) has captured a delightful selection of such schemes in [Sentimental Versioning](https://github.com/dominictarr/sentimental-versioning/blob/master/README.md).
 
 My favorite example sited is that of Tex and Metafont:
 
