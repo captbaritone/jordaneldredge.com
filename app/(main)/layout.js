@@ -76,6 +76,12 @@ export default async function Layout({ children }) {
             <a href="/api/reindex">Reindex</a>
           </>
         )}
+        <div
+          className="flex justify-center p-4"
+          style={{ imageRendering: "pixelated" }}
+        >
+          <img src="https://capt.dev/counter/hits/20" alt="Hit Counter" />
+        </div>
       </footer>
     </div>
   );

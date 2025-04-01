@@ -6,7 +6,7 @@ import { Bytes } from "../../../lib/components/Bytes";
 import DateString, { TimeString } from "../../../lib/components/DateString";
 import Link from "next/link";
 
-export default async function Posts() {
+export default async function Pastes() {
   const session = await getSession();
   const userId = session.userId;
   if (userId == null) {
