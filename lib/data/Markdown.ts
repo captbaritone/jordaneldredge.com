@@ -55,6 +55,9 @@ const SERIALIZE_MARKDOWN_OPTIONS: Options = {
   emphasis: "_",
   rule: "-",
   handlers: {
+    delete(node) {
+      return `~~${node.children.map((child) => child.value).join("")}~~`;
+    },
     // @ts-ignore
     textDirective(node) {
       return `:${node.name}`;
