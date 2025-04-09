@@ -9,6 +9,8 @@ tags:
   - observations
 ---
 
+_This post has been [translated into Korean](https://ricki-lee.medium.com/%EB%B2%88%EC%97%AD-%EC%83%81%ED%83%9C-%EC%A0%84%EC%9D%B4-f-%EC%83%81%ED%83%9C-08b98e781779)._
+
 _TL;DR: Thinking about the React component tree as modeling a state machine can help clarify the implications of asynchronous updates and React’s concurrent features._
 
 ---
@@ -50,7 +52,7 @@ Some of React’s concurrent mode features, for example [startTransition](https:
 
 This means that if we perform a state update which will change which updates are valid, we will need to pair it with an optimistic or pending update which flushes synchronously.
 
-For this reason, many of React’s concurrent features include built-in support for either an `isPending` flag ([useTransition](https://react.dev/reference/react/useTransition), [useActionState](http://useactionstate/), [useFormStatus](http://useformstatus/)) or an optimistic update that is paired with the low priority update ([useOptimistic](https://react.dev/reference/react/useOptimistic)).
+For this reason, many of React’s concurrent features include built-in support for either an `isPending` flag ([useTransition](https://react.dev/reference/react/useTransition), [useActionState](https://react.dev/reference/react/useActionState) and [useFormStatus](https://react.dev/reference/react-dom/hooks/useFormStatus) or an optimistic update that is paired with the low priority update ([useOptimistic](https://react.dev/reference/react/useOptimistic)).
 
 ## Conclusion
 
