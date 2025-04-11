@@ -154,8 +154,6 @@ function parseSearchQuery(rawQuery: string): StructuredSearchQuery {
   const query = rawQuery.trim();
   const tagMatches = query.match(/tag:([a-zA-Z0-9_-]+)/g);
 
-  console.log("tagMatches", tagMatches);
-
   return {
     query: rawQuery,
     tags: [],

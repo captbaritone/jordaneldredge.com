@@ -17,7 +17,7 @@ export async function GET(request: NextRequest, { params }) {
   const publicPosts = posts.filter((content) => {
     // For legacy reasons we omit notes from before they were included in RSS.
     if (content.pageType() === "note") {
-      const date = new Date(content.date());
+      const date = content.dateObj();
       return date >= NOTES_EPOCH;
     }
     return true;
@@ -96,7 +96,7 @@ async function buildRssFeedLazy(allPosts: Data.Content[]) {
         content: post.summary(),
         author: [author],
         contributor: [],
-        date: new Date(post.date()),
+        date: post.dateObj(),
         image: summaryImage,
         audio: enclosure,
       };

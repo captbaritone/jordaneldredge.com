@@ -1,15 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
-import DateString from "./DateString.js";
+import DateString from "./DateString";
 import { Content } from "../data";
 
 type Props = {
   item: Content;
 };
 
-export default async function ListItem({ item }: Props) {
+export default function ListItem({ item }: Props) {
   const summary = item.summary == null ? undefined : item.summary();
-  const summaryImage = await item.summaryImage();
+  const summaryImage = item.summaryImage();
   return (
     <>
       <div className="my-4 flex justify-between gap-4">
@@ -27,7 +27,7 @@ export default async function ListItem({ item }: Props) {
             </Link>
           </h2>
           <span className="italic inline text-sm my-1 text-gray-400 flex">
-            <DateString date={new Date(item.date())} />
+            <DateString date={item.dateObj()} />
           </span>
           {summary ? <p>{summary}</p> : null}
         </div>

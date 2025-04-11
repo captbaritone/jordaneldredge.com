@@ -64,7 +64,7 @@ async function buildRssFeedLazy(allPosts: Data.Content[]) {
         content: `Read the post at ${url}`,
         author: [author],
         contributor: [],
-        date: new Date(post.date()),
+        date: post.dateObj(),
         image: summaryImage, // This seems to get replaced by the audio enclosure
         audio: {
           url: ttsAudio.vanityUrl().fullyQualified(),

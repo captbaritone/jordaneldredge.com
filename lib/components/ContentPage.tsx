@@ -30,7 +30,7 @@ export default async function ContentPage({ item, issueId }: ContentPageProps) {
             }}
           >
             <div className="italic">
-              <DateString date={new Date(item.date())} />
+              <DateString date={item.dateObj()} />
             </div>
             {audio && (
               <>

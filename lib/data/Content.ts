@@ -59,9 +59,19 @@ export default class Content {
   title(): string {
     return this._item.title;
   }
-  /** @gqlField */
+  /**
+   * YYYY-MM-DD in Local Time (PST)
+   * @gqlField */
   date(): string {
     return this._item.DATE;
+  }
+  dateObj(): Date {
+    const date = new Date(this._item.DATE);
+    // Convert a date that was actually in local (PST) time to UTC
+    // This is a workaround for the fact that SQLite stores dates without a timezone
+    const localOffset = 8 * 60 * 60 * 1000;
+    const utcDate = new Date(date.getTime() + localOffset);
+    return utcDate;
   }
   /** @gqlField */
   summary(): string {
