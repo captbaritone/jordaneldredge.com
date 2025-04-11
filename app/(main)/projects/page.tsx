@@ -50,7 +50,7 @@ export default function Projects() {
       <ListItem
         title="Winamp Skin Museum"
         url="https://skins.webamp.org"
-        summaryImage="https://jordaneldredge.com/_next/image/?url=%2Fimages%2Fwinamp-skin-museum-small.png&w=2048&q=75"
+        summaryImage="/images/winamp-skin-museum-small.png"
         summary="Infinite scroll through &gt;90k Winamp skins with instant search and in-browser interactive preview."
       >
         <i>
@@ -77,12 +77,13 @@ export default function Projects() {
           <a href="https://github.com/captbaritone/webamp/blob/master/packages/webamp/docs/skin-museum-press.md">
             more
           </a>
+          )
         </i>
       </ListItem>
       <ListItem
         title="Grats"
         url="/blog/grats/"
-        summaryImage="https://jordaneldredge.com/_next/image/?url=%2Fuploads%2F2024%2Fgrats.png&w=2048&q=75"
+        summaryImage="/uploads/2024/grats.png"
         summary="Implementation-First GraphQL for TypeScript using static analysis."
       >
         <i>
@@ -96,7 +97,7 @@ export default function Projects() {
       <ListItem
         title="Eel-Wasm"
         url="/blog/speeding-up-winamps-music-visualizer-with-webassembly/"
-        summaryImage="https://jordaneldredge.com/_next/image/?url=%2Fimages%2Fbutterchurn-wasm%2Fbutterchurn.png&w=2048&q=75"
+        summaryImage="/images/butterchurn-wasm/butterchurn.png"
         summary="An in-browser compiler which speeds up in-browser rendering of user-defined music visualizations."
       >
         <i>
@@ -107,7 +108,7 @@ export default function Projects() {
       <ListItem
         title="Interesting Bugs Caught by ESLint's no-constant-binary-expression"
         url="/blog/interesting-bugs-caught-by-eslints-no-constant-binary-expression/"
-        summaryImage="https://jordaneldredge.com/_next/image/?url=%2Fuploads%2F2024%2Flogic-bug.webp&w=2048&q=75"
+        summaryImage="/uploads/2024/logic-bug.webp"
         summary="A core ESLint rule which I proposed and contributed. Has caught interesting bugs in many popular JavaScript projects."
       >
         <i>
@@ -153,7 +154,13 @@ function ListItem({ children, summaryImage, title, url, summary }: Props) {
         {summaryImage ? (
           <div className="h-24 md:h-32 aspect-video relative">
             <Link href={url}>
-              <Image alt="" fill src={summaryImage} className="object-cover" />
+              <Image
+                alt=""
+                fill
+                sizes="(max-width: 768px) 171px, 228px"
+                src={summaryImage}
+                className="object-cover"
+              />
             </Link>
           </div>
         ) : null}

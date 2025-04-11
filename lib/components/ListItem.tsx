@@ -34,7 +34,13 @@ export default function ListItem({ item }: Props) {
         {summaryImage ? (
           <div className="h-24 md:h-32 aspect-video relative">
             <Link href={item.url().path()}>
-              <Image alt="" fill src={summaryImage} className="object-cover" />
+              <Image
+                alt=""
+                fill
+                sizes="(max-width: 768px) 171px, 228px"
+                src={summaryImage}
+                className="object-cover"
+              />
             </Link>
           </div>
         ) : null}
