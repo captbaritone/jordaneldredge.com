@@ -5,8 +5,8 @@ import OpenAI from "openai";
 import { Content, ContentConnection } from "../lib/data";
 import { execSync } from "child_process";
 import { Node } from "unist";
-import { Options, toMarkdown } from "mdast-util-to-markdown";
 import { CONTINUE, visit } from "unist-util-visit";
+import { toString } from "mdast-util-to-string";
 import TTSAudio from "../lib/data/TTSAudio";
 
 // Open AI only allows TTS queries with a maximum of 4096 characters.
@@ -61,9 +61,9 @@ class ScriptWriter {
     this.cleanForRecording(node);
     const header: ContentSection = {
       kind: "string",
-      text: `# ${content.title()}\n\n*By Jordan Eldredge*\n*${getBylineDate(
+      text: `${content.title()}\n\nBy Jordan Eldredge\n${getBylineDate(
         new Date(content.date()),
-      )}*\n\n---\n\n`,
+      )}\n\n`,
     };
     const sections = this.asSections(node);
     const mergedSections = this.mergeSections([header, ...sections]);
@@ -79,6 +79,7 @@ class ScriptWriter {
         fs.rmSync(file);
       }
     }
+    return;
   }
 
   mergeAudioFiles(files: string[], outputFile: string) {
@@ -166,7 +167,10 @@ class ScriptWriter {
           }
           break;
         default:
-          const markdownString = toMarkdown(child, SERIALIZE_MARKDOWN_OPTIONS);
+          const markdownString = toString(child, {
+            includeImageAlt: false,
+            includeHtml: false,
+          });
           if (markdownString === "") {
             continue;
           }
@@ -190,26 +194,6 @@ class ScriptWriter {
     });
   }
 }
-
-const SERIALIZE_MARKDOWN_OPTIONS: Options = {
-  bullet: "-",
-  emphasis: "_",
-  rule: "-",
-  handlers: {
-    // @ts-ignore
-    textDirective(node) {
-      return node.name;
-    },
-    image(node) {
-      return "";
-    },
-    leafDirective(node) {
-      throw new Error(
-        "Unexpected leaf directive when serializing markdown for audio.",
-      );
-    },
-  },
-};
 
 main().catch((error) => {
   console.error("Error:", error);
