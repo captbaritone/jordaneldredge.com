@@ -32,7 +32,7 @@ export default function SearchInput({ query }) {
         fontSize: "16px",
       }}
       value={optimisticQuery}
-      autoFocus
+      autoFocus={query != null}
       type="search"
       name="q"
       placeholder="Search..."

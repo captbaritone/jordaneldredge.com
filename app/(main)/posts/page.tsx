@@ -1,5 +1,5 @@
 import ListItem from "../../../lib/components/ListItem";
-import { ContentConnection } from "../../../lib/data";
+import { Content, ContentConnection } from "../../../lib/data";
 import SortSelect from "./SortSelect";
 import SearchInput from "./SearchInput";
 
@@ -13,8 +13,8 @@ export const dynamic = "force-static";
 
 export default async function All({ searchParams }) {
   const sort: "best" | "latest" = searchParams.sort || "best";
-  let items;
-  if (searchParams.q && searchParams.q.length > 0) {
+  let items: Array<Content>;
+  if (searchParams.q) {
     const q = searchParams.q.toLowerCase();
     items = ContentConnection.search(q);
   } else {

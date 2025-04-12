@@ -3,8 +3,9 @@ import { FaSearch } from "react-icons/fa";
 import { useSearchKeyboardEvents } from "../useSearchKeyboardEvents";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { ALL } from "../config";
 
-const SEARCH_URL = "/search";
+const SEARCH_URL = ALL ? "/posts?q=" : "/search";
 
 export default function SearchIcon() {
   const router = useRouter();
