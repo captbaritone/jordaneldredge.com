@@ -63,10 +63,8 @@
   @apply leading-relaxed text-sm;
 }
 
-@screen sm {
-  .markdown {
-    @apply text-base;
-  }
+.markdown {
+  @apply text-base;
 }
 
 @screen lg {
@@ -136,6 +134,7 @@
 }
 
 .markdown hr {
+  display: none;
   @apply py-2 text-center block border-t-2 border-gray-200 border-solid;
 }
 /* Tables */

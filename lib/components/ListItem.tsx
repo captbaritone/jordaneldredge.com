@@ -40,6 +40,9 @@ export default function ListItem({ item }: Props) {
                 sizes="(max-width: 768px) 171px, 228px"
                 src={summaryImage}
                 className="object-cover"
+                style={{
+                  boxShadow: "2px 2px 5px rgba(0, 0, 0, 0.4)",
+                }}
               />
             </Link>
           </div>

@@ -4,6 +4,7 @@ import { getSession } from "../../lib/session";
 import LogoutButton from "../LogoutButton";
 import LoginButton from "../LoginButton";
 import SearchIcon from "./SearchIcon";
+import { ALL } from "../config";
 
 export const metadata = {
   metadataBase: new URL("https://jordaneldredge.com"),
@@ -21,16 +22,24 @@ export default async function Layout({ children }) {
           <Link href="/">Jordan Eldredge</Link>
         </h1>
         <nav>
-          <ul className="flex">
+          <ul className="flex justify-end">
             <li className="pr-5">
               <NavLink href="/">About</NavLink>
             </li>
-            <li className="pr-5">
-              <NavLink href="/blog/">Blog</NavLink>
-            </li>
-            <li className="pr-5">
-              <NavLink href="/notes/">Notes</NavLink>
-            </li>
+            {ALL ? (
+              <li className="pr-5">
+                <NavLink href="/posts/">Posts</NavLink>
+              </li>
+            ) : (
+              <>
+                <li className="pr-5">
+                  <NavLink href="/blog/">Blog</NavLink>
+                </li>
+                <li className="pr-5">
+                  <NavLink href="/notes/">Notes</NavLink>
+                </li>
+              </>
+            )}
             {/*
             <li className="pr-5">
               <NavLink href="/talks/">Talks</NavLink>
