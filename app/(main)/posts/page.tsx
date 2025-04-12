@@ -8,10 +8,7 @@ export function generateMetadata({ params }) {
   return { title, twitter: { title } };
 }
 
-export const revalidate = 10;
-export const dynamic = "force-static";
-
-export default async function All({ searchParams }) {
+export default async function Posts({ searchParams }) {
   const sort: "best" | "latest" = searchParams.sort || "best";
   let items: Array<Content>;
   if (searchParams.q) {
