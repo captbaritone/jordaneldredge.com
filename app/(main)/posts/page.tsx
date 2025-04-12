@@ -3,8 +3,8 @@ import { Content, ContentConnection } from "../../../lib/data";
 import SortSelect from "./SortSelect";
 import SearchInput from "./SearchInput";
 
-export function generateMetadata({ params }) {
-  const title = `Posts`;
+export function generateMetadata({ searchParams }) {
+  const title = searchParams.q ? `Posts: "${searchParams.q}"` : "Posts";
   return { title, twitter: { title } };
 }
 
