@@ -366,28 +366,27 @@ function extract(rawAst: Node): {
   const audioFiles: Array<AudioFile> = [];
   const tweets: Array<Tweet> = [];
 
-  visit(rawAst, {
-    // @ts-ignore
-    link: (node: { url: string }) => {
-      links.push(node.url);
-    },
-    image: (node: { url: string }) => {
-      images.push(node.url);
-    },
-    leafDirective: (node: LeafDirectiveNode) => {
-      if (node.name === "youtube") {
-        youtubeVideos.push(
-          new YoutubeVideo(
-            node.attributes.token,
-            Boolean(node.attributes.vertical),
-          ),
-        );
-      } else if (node.name === "audio") {
-        audioFiles.push(new AudioFile(node.attributes.src));
-      } else if (node.name === "tweet") {
-        tweets.push(new Tweet(node.attributes.status));
-      }
-    },
+  visit(rawAst, "link", (node: any) => {
+    links.push(node.url);
+  });
+
+  visit(rawAst, "image", (node: any) => {
+    images.push(node.url);
+  });
+
+  visit(rawAst, "leafDirective", (node: LeafDirectiveNode) => {
+    if (node.name === "youtube") {
+      youtubeVideos.push(
+        new YoutubeVideo(
+          node.attributes.token,
+          Boolean(node.attributes.vertical),
+        ),
+      );
+    } else if (node.name === "audio") {
+      audioFiles.push(new AudioFile(node.attributes.src));
+    } else if (node.name === "tweet") {
+      tweets.push(new Tweet(node.attributes.status));
+    }
   });
   return {
     links,
