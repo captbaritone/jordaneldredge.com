@@ -13,7 +13,7 @@ export default async function Posts({ searchParams }) {
   let items: Array<Content>;
   if (searchParams.q) {
     const q = searchParams.q.toLowerCase();
-    items = ContentConnection.search(q);
+    items = ContentConnection.search(q, sort);
   } else {
     items = ContentConnection.all({ sort, filters: ["showInLists"] });
   }

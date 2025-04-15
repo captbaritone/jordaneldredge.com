@@ -75,6 +75,10 @@ export async function reindex({
       }
       console.log("INDEXING", stub.slug);
       const indexable = await provider.resolve(stub);
+
+      const markdown = Markdown.fromString(indexable.content, null);
+      const extracted = extract(markdown.cloneAst());
+
       const indexTransaction = db.transaction(() => {
         UPSERT_INDEX.run({
           pageType: indexable.pageType,
@@ -97,10 +101,6 @@ export async function reindex({
         if (!contentId) {
           throw new Error(`Failed to get content ID for ${indexable.slug}`);
         }
-
-        const markdown = Markdown.fromString(indexable.content, contentId);
-
-        const extracted = extract(markdown.cloneAst());
 
         DELETE_IMAGES_FOR_CONTENT.run({ contentId });
         DELETE_AUDIO_FOR_CONTENT.run({ contentId });
@@ -141,7 +141,7 @@ export async function reindex({
         }
       });
 
-      indexTransaction();
+      retryBusy(() => indexTransaction());
     }
   }
   // Check for indexed entries that no longer exist, and clean them up
@@ -173,6 +173,17 @@ function stripStructuredMetadata(metadata: {
   delete copy.summary;
   delete copy.tags;
   return copy;
+}
+
+function retryBusy(fn: () => void, retries = 10, delayMs = 100): void {
+  while (true) {
+    try {
+      return fn();
+    } catch (err: any) {
+      if (err.code !== "SQLITE_BUSY" || retries-- <= 0) throw err;
+      Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, delayMs);
+    }
+  }
 }
 
 const ALL_SEARCH_ENTRIES = db.prepare<[], { page_type: string; slug: string }>(

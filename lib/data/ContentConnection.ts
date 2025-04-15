@@ -40,8 +40,8 @@ export default class ContentConnection {
    * Search for content by title, content, or tags.
    * @gqlQueryField
    */
-  static search(query: string): Array<Content> {
-    const rows = SEARCH.all({ query });
+  static search(query: string, sort: "best" | "latest"): Array<Content> {
+    const rows = SEARCH.all({ query, sortBy: sort, limit: 20 });
     function getItem(m: ContentDBRow): Content | null {
       switch (m.page_type) {
         case "post":
@@ -104,7 +104,10 @@ const ALL_ITEMS_LATEST = db.prepare<[], ContentDBRow>(sql`
     title;
 `);
 
-const SEARCH = db.prepare<{ query: string }, ContentDBRow>(sql`
+const SEARCH = db.prepare<
+  { query: string; limit: number; sortBy: "best" | "latest" },
+  ContentDBRow
+>(sql`
   SELECT
     content.*
   FROM
@@ -115,9 +118,16 @@ const SEARCH = db.prepare<{ query: string }, ContentDBRow>(sql`
       'title:' || :query || '*' || ' OR content:' || :query || '*' || ' OR tags:' || :query || '*' || ' OR summary:' || :query || '*'
     )
   ORDER BY
-    RANK
+    CASE :sortBy
+      WHEN 'best' THEN RANK
+      ELSE NULL
+    END DESC,
+    CASE :sortBy
+      WHEN 'latest' THEN content.DATE
+      ELSE NULL
+    END DESC
   LIMIT
-    20;
+    :limit;
 `);
 
 const ITEMS_WITH_TAG = db.prepare<{ tag: string }, ContentDBRow>(sql`
@@ -143,19 +153,3 @@ const GET_ALL_BY_PAGE_TYPE = db.prepare<{ pageType: PageType }, ContentDBRow>(
       DATE DESC;
   `,
 );
-
-type StructuredSearchQuery = {
-  query: string;
-  tags: string[];
-};
-
-// Parse out things like `tag:foo` from the search query
-function parseSearchQuery(rawQuery: string): StructuredSearchQuery {
-  const query = rawQuery.trim();
-  const tagMatches = query.match(/tag:([a-zA-Z0-9_-]+)/g);
-
-  return {
-    query: rawQuery,
-    tags: [],
-  };
-}

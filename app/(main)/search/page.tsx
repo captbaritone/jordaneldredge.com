@@ -22,7 +22,7 @@ function Results({ query }) {
   if (query === "") {
     return <ResultAlternative>Enter a search query above</ResultAlternative>;
   }
-  const listable = ContentConnection.search(query);
+  const listable = ContentConnection.search(query, "best");
   if (listable.length === 0) {
     return <ResultAlternative>No results found</ResultAlternative>;
   }
