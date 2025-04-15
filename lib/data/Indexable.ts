@@ -4,6 +4,12 @@ import { db, sql } from "../db";
 
 import { NoteProvider } from "./providers/Note";
 import { PostProvider } from "./providers/Post";
+import { Markdown } from "./Markdown";
+import { AudioFile } from "./AudioFile";
+import { YoutubeVideo } from "./YoutubeVideo";
+import { Tweet } from "./Tweet";
+import { visit } from "unist-util-visit";
+import { Node } from "unist";
 
 export type IndexableStub = {
   pageType: PageType;
@@ -69,19 +75,73 @@ export async function reindex({
       }
       console.log("INDEXING", stub.slug);
       const indexable = await provider.resolve(stub);
-      UPSERT_INDEX.run({
-        pageType: indexable.pageType,
-        title: indexable.title,
-        summary: indexable.summary || "",
-        tags: indexable.tags.join(" "),
-        content: indexable.content,
-        slug: indexable.slug,
-        date: indexable.date,
-        summaryImagePath: indexable.summaryImage,
-        feedId: indexable.feedId,
-        lastUpdated: Date.now(),
-        metadata: JSON.stringify(stripStructuredMetadata(indexable.metadata)),
+      const indexTransaction = db.transaction(() => {
+        UPSERT_INDEX.run({
+          pageType: indexable.pageType,
+          title: indexable.title,
+          summary: indexable.summary || "",
+          tags: indexable.tags.join(" "),
+          content: indexable.content,
+          slug: indexable.slug,
+          date: indexable.date,
+          summaryImagePath: indexable.summaryImage,
+          feedId: indexable.feedId,
+          lastUpdated: Date.now(),
+          metadata: JSON.stringify(stripStructuredMetadata(indexable.metadata)),
+        });
+
+        const contentId = GET_CONTENT_ID.get({
+          pageType: indexable.pageType,
+          slug: indexable.slug,
+        })?.id;
+        if (!contentId) {
+          throw new Error(`Failed to get content ID for ${indexable.slug}`);
+        }
+
+        const markdown = Markdown.fromString(indexable.content, contentId);
+
+        const extracted = extract(markdown.cloneAst());
+
+        DELETE_IMAGES_FOR_CONTENT.run({ contentId });
+        DELETE_AUDIO_FOR_CONTENT.run({ contentId });
+        DELETE_LINKS_FOR_CONTENT.run({ contentId });
+        DELETE_YOUTUBE_FOR_CONTENT.run({ contentId });
+        DELETE_TWEETS_FOR_CONTENT.run({ contentId });
+
+        for (const image of extracted.images) {
+          ADD_CONTENT_IMAGE.run({
+            contentId,
+            imageUrl: image,
+          });
+        }
+
+        for (const link of extracted.links) {
+          ADD_CONTENT_LINK.run({
+            contentId,
+            linkUrl: link,
+          });
+        }
+        for (const youtube of extracted.youtubeVideos) {
+          ADD_CONTENT_YOUTUBE.run({
+            contentId,
+            youtubeToken: youtube.token,
+          });
+        }
+        for (const audio of extracted.audioFiles) {
+          ADD_CONTENT_AUDIO.run({
+            contentId,
+            audioUrl: audio.src,
+          });
+        }
+        for (const tweet of extracted.tweets) {
+          ADD_CONTENT_TWEET.run({
+            contentId,
+            tweetStatus: tweet.statusId,
+          });
+        }
       });
+
+      indexTransaction();
     }
   }
   // Check for indexed entries that no longer exist, and clean them up
@@ -145,6 +205,94 @@ const GET_LAST_UPDATED_PAGE_AND_SLUG = db.prepare<
     AND slug = :slug
 `);
 
+const GET_CONTENT_ID = db.prepare<
+  { pageType: string; slug: string },
+  { id: number }
+>(sql`
+  SELECT
+    id
+  FROM
+    content
+  WHERE
+    page_type = :pageType
+    AND slug = :slug
+`);
+
+const ADD_CONTENT_IMAGE = db.prepare<{
+  contentId: number;
+  imageUrl: string;
+}>(sql`
+  INSERT INTO
+    content_images (content_id, image_url)
+  VALUES
+    (:contentId, :imageUrl)
+`);
+
+const ADD_CONTENT_LINK = db.prepare<{
+  contentId: number;
+  linkUrl: string;
+}>(sql`
+  INSERT INTO
+    content_links (content_id, link_url)
+  VALUES
+    (:contentId, :linkUrl)
+`);
+const ADD_CONTENT_YOUTUBE = db.prepare<{
+  contentId: number;
+  youtubeToken: string;
+}>(sql`
+  INSERT INTO
+    content_youtube (content_id, youtube_token)
+  VALUES
+    (:contentId, :youtubeToken)
+`);
+const ADD_CONTENT_AUDIO = db.prepare<{
+  contentId: number;
+  audioUrl: string;
+}>(sql`
+  INSERT INTO
+    content_audio (content_id, audio_url)
+  VALUES
+    (:contentId, :audioUrl)
+`);
+const ADD_CONTENT_TWEET = db.prepare<{
+  contentId: number;
+  tweetStatus: string;
+}>(sql`
+  INSERT INTO
+    content_tweets (content_id, tweet_status)
+  VALUES
+    (:contentId, :tweetStatus)
+`);
+
+const DELETE_IMAGES_FOR_CONTENT = db.prepare<{ contentId: number }, void>(sql`
+  DELETE FROM content_images
+  WHERE
+    content_id = :contentId
+`);
+
+const DELETE_LINKS_FOR_CONTENT = db.prepare<{ contentId: number }, void>(sql`
+  DELETE FROM content_links
+  WHERE
+    content_id = :contentId
+`);
+
+const DELETE_YOUTUBE_FOR_CONTENT = db.prepare<{ contentId: number }, void>(sql`
+  DELETE FROM content_youtube
+  WHERE
+    content_id = :contentId
+`);
+const DELETE_AUDIO_FOR_CONTENT = db.prepare<{ contentId: number }, void>(sql`
+  DELETE FROM content_audio
+  WHERE
+    content_id = :contentId
+`);
+const DELETE_TWEETS_FOR_CONTENT = db.prepare<{ contentId: number }, void>(sql`
+  DELETE FROM content_tweets
+  WHERE
+    content_id = :contentId
+`);
+
 const UPSERT_INDEX = db.prepare<{
   pageType: string;
   title: string;
@@ -198,3 +346,54 @@ const UPSERT_INDEX = db.prepare<{
     last_updated = :lastUpdated,
     metadata = :metadata
 `);
+
+type LeafDirectiveNode =
+  | { name: "audio"; attributes: { src: string } }
+  | { name: "tweet"; attributes: { status: string } }
+  | { name: "youtube"; attributes: { token: string; vertical?: any } }
+  | { name: "__unknown" };
+
+function extract(rawAst: Node): {
+  links: Array<string>;
+  images: Array<string>;
+  youtubeVideos: Array<YoutubeVideo>;
+  audioFiles: Array<AudioFile>;
+  tweets: Array<Tweet>;
+} {
+  const links: Array<string> = [];
+  const images: Array<string> = [];
+  const youtubeVideos: Array<YoutubeVideo> = [];
+  const audioFiles: Array<AudioFile> = [];
+  const tweets: Array<Tweet> = [];
+
+  visit(rawAst, {
+    // @ts-ignore
+    link: (node: { url: string }) => {
+      links.push(node.url);
+    },
+    image: (node: { url: string }) => {
+      images.push(node.url);
+    },
+    leafDirective: (node: LeafDirectiveNode) => {
+      if (node.name === "youtube") {
+        youtubeVideos.push(
+          new YoutubeVideo(
+            node.attributes.token,
+            Boolean(node.attributes.vertical),
+          ),
+        );
+      } else if (node.name === "audio") {
+        audioFiles.push(new AudioFile(node.attributes.src));
+      } else if (node.name === "tweet") {
+        tweets.push(new Tweet(node.attributes.status));
+      }
+    },
+  });
+  return {
+    links,
+    images,
+    youtubeVideos,
+    audioFiles,
+    tweets,
+  };
+}

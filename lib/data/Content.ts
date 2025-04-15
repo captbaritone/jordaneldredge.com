@@ -97,7 +97,7 @@ export default class Content {
   }
   /** @gqlField */
   content(): Markdown {
-    return Markdown.fromString(this._item.content);
+    return Markdown.fromString(this._item.content, this._item.id);
   }
   /** @gqlField */
   url(): SiteUrl {

@@ -63,7 +63,7 @@ export class NoteProvider implements IndexableProvider {
     const pageBlocks = await retrieveBlocks(page.id);
     const ast = await blocksToMarkdownAst(pageBlocks.results);
     applyDirectives(ast);
-    const markdown = new Markdown(ast);
+    const markdown = new Markdown(ast, null);
 
     await rewriteImageUrls(ast);
     const content = markdown.markdownString();

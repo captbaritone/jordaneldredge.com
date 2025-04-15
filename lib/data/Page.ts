@@ -21,7 +21,7 @@ export class Page {
   }
 
   content(): Markdown {
-    return Markdown.fromString(this._content);
+    return Markdown.fromString(this._content, null);
   }
   title(): string {
     return this.metadata.title;

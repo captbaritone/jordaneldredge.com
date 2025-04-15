@@ -6,18 +6,127 @@ import queryBlogPostsResolver from "./../../../lib/data/ContentConnection";
 import queryGetContentBySlugResolver from "./../../../lib/data/Content";
 import queryNotesResolver from "./../../../lib/data/ContentConnection";
 import querySearchResolver from "./../../../lib/data/ContentConnection";
+import { AudioFile as queryAudioFilesResolver } from "./../../../lib/data/AudioFile";
 import { Tag as queryGetTagByNameResolver } from "./../../../lib/data/Tag";
-import { GraphQLSchema, GraphQLObjectType, GraphQLList, GraphQLNonNull, GraphQLString, GraphQLInt } from "graphql";
+import { Image as queryImagesResolver } from "./../../../lib/data/Image";
+import { Link as queryLinksResolver } from "./../../../lib/data/Link";
+import { Tweet as queryTweetsResolver } from "./../../../lib/data/Tweet";
+import { YoutubeVideo as queryYoutubeVideosResolver } from "./../../../lib/data/YoutubeVideo";
+import { GraphQLSchema, GraphQLObjectType, GraphQLList, GraphQLNonNull, GraphQLString, GraphQLBoolean, GraphQLInt } from "graphql";
 export function getSchema(): GraphQLSchema {
+    const AudioFileType: GraphQLObjectType = new GraphQLObjectType({
+        name: "AudioFile",
+        description: "An audio file which has been embedded in a piece of content.",
+        fields() {
+            return {
+                src: {
+                    name: "src",
+                    type: GraphQLString
+                },
+                url: {
+                    name: "url",
+                    type: GraphQLString
+                }
+            };
+        }
+    });
+    const ImageType: GraphQLObjectType = new GraphQLObjectType({
+        name: "Image",
+        description: "An image which has been embedded in a piece of content.",
+        fields() {
+            return {
+                src: {
+                    name: "src",
+                    type: GraphQLString
+                }
+            };
+        }
+    });
+    const LinkType: GraphQLObjectType = new GraphQLObjectType({
+        name: "Link",
+        description: "A link which has been embedded in a piece of content.",
+        fields() {
+            return {
+                url: {
+                    name: "url",
+                    type: GraphQLString
+                }
+            };
+        }
+    });
+    const TweetType: GraphQLObjectType = new GraphQLObjectType({
+        name: "Tweet",
+        description: "A Tweet which has been embedded in a piece of content.",
+        fields() {
+            return {
+                statusId: {
+                    name: "statusId",
+                    type: GraphQLString
+                },
+                url: {
+                    name: "url",
+                    type: GraphQLString
+                }
+            };
+        }
+    });
+    const YoutubeVideoType: GraphQLObjectType = new GraphQLObjectType({
+        name: "YoutubeVideo",
+        description: "A Youtube video which has been embedded in a piece of content.",
+        fields() {
+            return {
+                embedUrl: {
+                    name: "embedUrl",
+                    type: GraphQLString
+                },
+                thumbnailUrl: {
+                    name: "thumbnailUrl",
+                    type: GraphQLString
+                },
+                token: {
+                    name: "token",
+                    type: GraphQLString
+                },
+                url: {
+                    name: "url",
+                    type: GraphQLString
+                },
+                vertical: {
+                    name: "vertical",
+                    type: GraphQLBoolean
+                }
+            };
+        }
+    });
     const MarkdownType: GraphQLObjectType = new GraphQLObjectType({
         name: "Markdown",
         description: "Content that can be represented as markdown.",
         fields() {
             return {
+                audioFiles: {
+                    name: "audioFiles",
+                    type: new GraphQLList(new GraphQLNonNull(AudioFileType))
+                },
+                images: {
+                    name: "images",
+                    type: new GraphQLList(new GraphQLNonNull(ImageType))
+                },
+                links: {
+                    name: "links",
+                    type: new GraphQLList(new GraphQLNonNull(LinkType))
+                },
                 markdownString: {
                     description: "The content encoded as a markdown string.",
                     name: "markdownString",
                     type: GraphQLString
+                },
+                tweets: {
+                    name: "tweets",
+                    type: new GraphQLList(new GraphQLNonNull(TweetType))
+                },
+                youtubeVideos: {
+                    name: "youtubeVideos",
+                    type: new GraphQLList(new GraphQLNonNull(YoutubeVideoType))
                 }
             };
         }
@@ -109,6 +218,7 @@ export function getSchema(): GraphQLSchema {
                     type: MarkdownType
                 },
                 date: {
+                    description: "YYYY-MM-DD in Local Time (PST)",
                     name: "date",
                     type: GraphQLString
                 },
@@ -153,6 +263,13 @@ export function getSchema(): GraphQLSchema {
         name: "Query",
         fields() {
             return {
+                audioFiles: {
+                    name: "audioFiles",
+                    type: new GraphQLList(new GraphQLNonNull(AudioFileType)),
+                    resolve() {
+                        return queryAudioFilesResolver.audioFiles();
+                    }
+                },
                 blogPosts: {
                     description: "Formal write-ups of projects and ideas.",
                     name: "blogPosts",
@@ -187,6 +304,20 @@ export function getSchema(): GraphQLSchema {
                         return queryGetTagByNameResolver.getTagByName(args.name);
                     }
                 },
+                images: {
+                    name: "images",
+                    type: new GraphQLList(new GraphQLNonNull(ImageType)),
+                    resolve() {
+                        return queryImagesResolver.images();
+                    }
+                },
+                links: {
+                    name: "links",
+                    type: new GraphQLList(new GraphQLNonNull(LinkType)),
+                    resolve() {
+                        return queryLinksResolver.links();
+                    }
+                },
                 notes: {
                     description: "Quick thoughts, observations, and links.",
                     name: "notes",
@@ -207,12 +338,26 @@ export function getSchema(): GraphQLSchema {
                     resolve(_source, args) {
                         return querySearchResolver.search(args.query);
                     }
+                },
+                tweets: {
+                    name: "tweets",
+                    type: new GraphQLList(new GraphQLNonNull(TweetType)),
+                    resolve() {
+                        return queryTweetsResolver.tweets();
+                    }
+                },
+                youtubeVideos: {
+                    name: "youtubeVideos",
+                    type: new GraphQLList(new GraphQLNonNull(YoutubeVideoType)),
+                    resolve() {
+                        return queryYoutubeVideosResolver.youtubeVideos();
+                    }
                 }
             };
         }
     });
     return new GraphQLSchema({
         query: QueryType,
-        types: [ContentType, MarkdownType, QueryType, SiteUrlType, TTSAudioType, TagType, TagSetType]
+        types: [AudioFileType, ContentType, ImageType, LinkType, MarkdownType, QueryType, SiteUrlType, TTSAudioType, TagType, TagSetType, TweetType, YoutubeVideoType]
     });
 }
