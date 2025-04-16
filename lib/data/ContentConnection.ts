@@ -41,7 +41,11 @@ export default class ContentConnection {
    * @gqlQueryField
    */
   static search(query: string, sort: "best" | "latest"): Array<Content> {
-    const rows = SEARCH.all({ query, sortBy: sort, limit: 20 });
+    const rows = SEARCH.all({
+      query: escapeForFTS(query),
+      sortBy: sort,
+      limit: 20,
+    });
     function getItem(m: ContentDBRow): Content | null {
       switch (m.page_type) {
         case "post":
@@ -103,6 +107,17 @@ const ALL_ITEMS_LATEST = db.prepare<[], ContentDBRow>(sql`
     DATE DESC,
     title;
 `);
+
+// https://stackoverflow.com/a/79510332/1263117
+// - Escape all double quotes (") in the query by replacing them with ""
+// - Split the user's query on white space, into words
+// - Wrap each word in double quotes
+// - Join the words back together with a space
+function escapeForFTS(query: string): string {
+  const escaped = query.replace(/"/g, '""');
+  const words = escaped.split(/\s+/).map((word) => '"' + word + '"');
+  return words.join(" ");
+}
 
 const SEARCH = db.prepare<
   { query: string; limit: number; sortBy: "best" | "latest" },
