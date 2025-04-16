@@ -24,6 +24,9 @@ const EXTERNAL_LINKS = {
   ],
   "/notes/webamp-modern": ["https://news.ycombinator.com/item?id=42215438"],
   "/notes/winamp-sqlite": ["https://news.ycombinator.com/item?id=31703874"],
+  "/blog/transitions-f-of-state/": [
+    "https://news.ycombinator.com/item?id=43615624",
+  ],
 };
 
 const ALL_ENTRIES = db.prepare<

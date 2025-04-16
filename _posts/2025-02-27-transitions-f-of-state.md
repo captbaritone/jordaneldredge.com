@@ -9,7 +9,7 @@ tags:
   - observations
 ---
 
-_This post has been [translated into Korean](https://ricki-lee.medium.com/%EB%B2%88%EC%97%AD-%EC%83%81%ED%83%9C-%EC%A0%84%EC%9D%B4-f-%EC%83%81%ED%83%9C-08b98e781779)._
+_This post has been discussed on [Hacker News](https://news.ycombinator.com/item?id=43615624) and [translated into Korean](https://ricki-lee.medium.com/%EB%B2%88%EC%97%AD-%EC%83%81%ED%83%9C-%EC%A0%84%EC%9D%B4-f-%EC%83%81%ED%83%9C-08b98e781779)._
 
 _TL;DR: Thinking about the React component tree as modeling a state machine can help clarify the implications of asynchronous updates and React’s concurrent features._
 
