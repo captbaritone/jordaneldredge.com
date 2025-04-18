@@ -56,6 +56,25 @@ export class Markdown {
     fixHtml(ast);
 
     await syntaxHighlighting(ast);
+
+    const imageMap = new Map<string, { width: number; height: number }>();
+
+    for (const image of this.images()) {
+      if (image.width && image.height) {
+        imageMap.set(image._src, {
+          width: image.width,
+          height: image.height,
+        });
+      }
+    }
+
+    visit(ast, "image", (node) => {
+      if (imageMap.has(node.url)) {
+        const { width, height } = imageMap.get(node.url)!;
+        node.imageProps = { width, height };
+      }
+      return node;
+    });
     return ast;
   }
 
@@ -83,16 +102,22 @@ export class Markdown {
       return [];
     }
     const images = db
-      .prepare<[{ contentId: number }], { image_url: string }>(sql`
+      .prepare<
+        [{ contentId: number }],
+        { image_url: string; height?: number; width?: number }
+      >(sql`
         SELECT
-          image_url
+          content_images.image_url,
+          image_metadata.width,
+          image_metadata.height
         FROM
           content_images
+          LEFT JOIN image_metadata ON image_metadata.image_url = content_images.image_url
         WHERE
           content_id = :contentId
       `)
       .all({ contentId: this.contentId });
-    return images.map((row) => new Image(row.image_url));
+    return images.map((row) => new Image(row.image_url, row.width, row.height));
   }
 
   /** @gqlField */

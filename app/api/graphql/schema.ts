@@ -12,7 +12,7 @@ import { Image as queryImagesResolver } from "./../../../lib/data/Image";
 import { Link as queryLinksResolver } from "./../../../lib/data/Link";
 import { Tweet as queryTweetsResolver } from "./../../../lib/data/Tweet";
 import { YoutubeVideo as queryYoutubeVideosResolver } from "./../../../lib/data/YoutubeVideo";
-import { GraphQLSchema, GraphQLObjectType, GraphQLList, GraphQLNonNull, GraphQLString, GraphQLBoolean, GraphQLInt } from "graphql";
+import { GraphQLSchema, GraphQLObjectType, GraphQLList, GraphQLNonNull, GraphQLString, GraphQLInt, GraphQLBoolean, GraphQLEnumType } from "graphql";
 export function getSchema(): GraphQLSchema {
     const AudioFileType: GraphQLObjectType = new GraphQLObjectType({
         name: "AudioFile",
@@ -35,9 +35,17 @@ export function getSchema(): GraphQLSchema {
         description: "An image which has been embedded in a piece of content.",
         fields() {
             return {
+                height: {
+                    name: "height",
+                    type: GraphQLInt
+                },
                 src: {
                     name: "src",
                     type: GraphQLString
+                },
+                width: {
+                    name: "width",
+                    type: GraphQLInt
                 }
             };
         }
@@ -259,6 +267,17 @@ export function getSchema(): GraphQLSchema {
             };
         }
     });
+    const SortOptionType: GraphQLEnumType = new GraphQLEnumType({
+        name: "SortOption",
+        values: {
+            best: {
+                value: "best"
+            },
+            latest: {
+                value: "latest"
+            }
+        }
+    });
     const QueryType: GraphQLObjectType = new GraphQLObjectType({
         name: "Query",
         fields() {
@@ -333,10 +352,13 @@ export function getSchema(): GraphQLSchema {
                     args: {
                         query: {
                             type: new GraphQLNonNull(GraphQLString)
+                        },
+                        sort: {
+                            type: new GraphQLNonNull(SortOptionType)
                         }
                     },
                     resolve(_source, args) {
-                        return querySearchResolver.search(args.query);
+                        return querySearchResolver.search(args.query, args.sort);
                     }
                 },
                 tweets: {
@@ -358,6 +380,6 @@ export function getSchema(): GraphQLSchema {
     });
     return new GraphQLSchema({
         query: QueryType,
-        types: [AudioFileType, ContentType, ImageType, LinkType, MarkdownType, QueryType, SiteUrlType, TTSAudioType, TagType, TagSetType, TweetType, YoutubeVideoType]
+        types: [SortOptionType, AudioFileType, ContentType, ImageType, LinkType, MarkdownType, QueryType, SiteUrlType, TTSAudioType, TagType, TagSetType, TweetType, YoutubeVideoType]
     });
 }

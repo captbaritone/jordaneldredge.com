@@ -10,6 +10,9 @@ import { YoutubeVideo } from "./YoutubeVideo";
 import { Tweet } from "./Tweet";
 import { visit } from "unist-util-visit";
 import { Node } from "unist";
+import imageSize from "image-size";
+import { join } from "node:path";
+import * as fs from "node:fs";
 
 export type IndexableStub = {
   pageType: PageType;
@@ -17,6 +20,7 @@ export type IndexableStub = {
   lastModified: number;
   id: string;
 };
+const publicDirectory = join(process.cwd(), "./public");
 
 /**
  * Models a source of content where the list of content can be enumerated
@@ -142,6 +146,39 @@ export async function reindex({
       });
 
       retryBusy(() => indexTransaction());
+
+      for (const image of extracted.images) {
+        const existingImage = HAS_IMAGE_METADATA.get({ imageUrl: image });
+        if (!existingImage) {
+          let buffer: Buffer;
+          if (image.startsWith("/")) {
+            const fullPath = join(publicDirectory, image);
+            try {
+              buffer = fs.readFileSync(fullPath);
+            } catch {
+              console.error("Failed to read image metadata", fullPath);
+              continue;
+            }
+          } else if (image.startsWith("https://")) {
+            const response = await fetch(image);
+            if (!response.ok) {
+              console.error("Failed to fetch image metadata", image);
+              continue;
+            }
+            const arrayBuffer = await response.arrayBuffer();
+            buffer = Buffer.from(arrayBuffer);
+          } else {
+            console.error("Unknown image URL", image);
+            continue;
+          }
+          const dimensions = imageSize(buffer);
+          ADD_IMAGE_METADATA.run({
+            imageUrl: image,
+            width: dimensions.width,
+            height: dimensions.height,
+          });
+        }
+      }
     }
   }
   // Check for indexed entries that no longer exist, and clean them up
@@ -237,6 +274,28 @@ const ADD_CONTENT_IMAGE = db.prepare<{
     content_images (content_id, image_url)
   VALUES
     (:contentId, :imageUrl)
+`);
+
+const HAS_IMAGE_METADATA = db.prepare<{
+  imageUrl: string;
+}>(sql`
+  SELECT
+    image_url
+  FROM
+    image_metadata
+  WHERE
+    image_url = :imageUrl
+`);
+
+const ADD_IMAGE_METADATA = db.prepare<{
+  imageUrl: string;
+  width: number;
+  height: number;
+}>(sql`
+  INSERT INTO
+    image_metadata (image_url, width, height)
+  VALUES
+    (:imageUrl, :width, :height)
 `);
 
 const ADD_CONTENT_LINK = db.prepare<{

@@ -3,6 +3,9 @@ import Content, { ContentDBRow } from "./Content";
 import { PageType } from "./Indexable";
 import { Tag } from "./Tag";
 
+/** @gqlEnum */
+type SortOption = "best" | "latest";
+
 type ContentFilter = "showInLists" | "note" | "post";
 
 export type ContentQuery = {
@@ -40,7 +43,7 @@ export default class ContentConnection {
    * Search for content by title, content, or tags.
    * @gqlQueryField
    */
-  static search(query: string, sort: "best" | "latest"): Array<Content> {
+  static search(query: string, sort: SortOption): Array<Content> {
     const rows = SEARCH.all({
       query: escapeForFTS(query),
       sortBy: sort,
