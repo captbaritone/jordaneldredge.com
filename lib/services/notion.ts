@@ -88,22 +88,6 @@ export async function getMetadata(): Promise<NoteMetadata> {
   return { slugToId, rowPosts };
 }
 
-export async function retrievePage(id: string): Promise<PageObjectResponse> {
-  // @ts-ignore Not sure how to convince TypeScript that we are not getting a partial response.
-  const page: PageObjectResponse = await notion.pages.retrieve({
-    page_id: id,
-  });
-  if (
-    page.parent.type !== "database_id" ||
-    // NOTE! This is belt and suspenders security boundary. The integration
-    // itself should only have permission to see the relevant pages.
-    page.parent.database_id !== METADATA_DATABASE_ID
-  ) {
-    throw new Error("Invalid page ID.");
-  }
-  return page;
-}
-
 export const retrieveBlocks = async (
   id: string,
 ): Promise<{
