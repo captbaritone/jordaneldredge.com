@@ -54,6 +54,8 @@ type Query {
   audioFiles: [AudioFile!]
   """Formal write-ups of projects and ideas."""
   blogPosts: [Content!]
+  """Search for content by title, content, or tags."""
+  experimentalSearch(searchQuery: String!): [Content!]
   """Find a piece of content by its slug."""
   getContentBySlug(slug: String!): Content
   """Get a tag by name."""

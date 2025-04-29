@@ -3,6 +3,7 @@
  * Do not manually edit. Regenerate by running `npx grats`.
  */
 import queryBlogPostsResolver from "./../../../lib/data/ContentConnection";
+import queryExperimentalSearchResolver from "./../../../lib/data/ContentConnection";
 import queryGetContentBySlugResolver from "./../../../lib/data/Content";
 import queryNotesResolver from "./../../../lib/data/ContentConnection";
 import querySearchResolver from "./../../../lib/data/ContentConnection";
@@ -295,6 +296,19 @@ export function getSchema(): GraphQLSchema {
                     type: new GraphQLList(new GraphQLNonNull(ContentType)),
                     resolve() {
                         return queryBlogPostsResolver.blogPosts();
+                    }
+                },
+                experimentalSearch: {
+                    description: "Search for content by title, content, or tags.",
+                    name: "experimentalSearch",
+                    type: new GraphQLList(new GraphQLNonNull(ContentType)),
+                    args: {
+                        searchQuery: {
+                            type: new GraphQLNonNull(GraphQLString)
+                        }
+                    },
+                    resolve(_source, args) {
+                        return queryExperimentalSearchResolver.experimentalSearch(args.searchQuery);
                     }
                 },
                 getContentBySlug: {

@@ -1,4 +1,5 @@
 import { db, sql } from "../db";
+import { compile } from "../services/search/Compiler";
 import Content, { ContentDBRow } from "./Content";
 import { PageType } from "./Indexable";
 import { Tag } from "./Tag";
@@ -37,6 +38,31 @@ export default class ContentConnection {
       }
     }
     return content;
+  }
+
+  /**
+   * Search for content by title, content, or tags.
+   * @gqlQueryField
+   */
+  static experimentalSearch(searchQuery: string): Array<Content> {
+    const { query, wildcards } = compile(searchQuery);
+    console.log("query", query, wildcards);
+    const prepared = db.prepare(query);
+    const rows = prepared.all(wildcards);
+    function getItem(m: ContentDBRow): Content | null {
+      switch (m.page_type) {
+        case "post":
+        case "note":
+          const item = new Content(m);
+          if (!item.showInLists()) {
+            return null;
+          }
+          return item;
+        default:
+          return null;
+      }
+    }
+    return rows.map((row) => getItem(row)).filter((item) => item != null);
   }
 
   /**
