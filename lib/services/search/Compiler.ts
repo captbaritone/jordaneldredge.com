@@ -1,14 +1,17 @@
-import { ValidationError } from "./Diagnostics";
+import { Result, ValidationError } from "./Diagnostics";
 import { parse, ParseNode, PrefixNode } from "./Parser";
 
-export function compile(searchQuery: string): {
+export function compile(searchQuery: string): Result<{
   query: string;
   wildcards: { [key: string]: string };
-} {
-  const queryTree = parse(searchQuery);
+}> {
+  const { value: queryTree, warnings } = parse(searchQuery);
   const compiler = new Compiler();
   compiler.compile(queryTree);
-  return { query: compiler.serialize(), wildcards: compiler.params };
+  return {
+    value: { query: compiler.serialize(), wildcards: compiler.params },
+    warnings: [...warnings, ...compiler._warnings],
+  };
 }
 
 const ALL_TEXT_COLUMNS = ["title", "content", "tags", "summary"];
@@ -18,9 +21,10 @@ class Compiler {
   _negate: boolean = false;
   _nextParam: number = 0;
   _whereClauses: string[] = [];
+  _warnings: ValidationError[] = [];
   params: { [key: string]: string } = {};
   compile(node: ParseNode) {
-    this._whereClauses.push(this.expression(node, 0));
+    this._whereClauses.push(this.expression(node));
   }
   expression(node: ParseNode): string {
     switch (node.type) {
@@ -71,11 +75,12 @@ class Compiler {
         return this.hasForeignReference("content_images");
       case "tweet":
         return this.hasForeignReference("content_tweets");
-      default:
-        throw new ValidationError(
-          `Unknown "has" value: ${node.value}`,
-          node.loc,
+      default: {
+        this._warnings.push(
+          new ValidationError(`Unknown "has" value: ${node.value}`, node.loc),
         );
+        return this.contentMatch(ALL_TEXT_COLUMNS, `has:${node.value}`);
+      }
     }
   }
 

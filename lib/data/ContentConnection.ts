@@ -45,8 +45,7 @@ export default class ContentConnection {
    * @gqlQueryField
    */
   static experimentalSearch(searchQuery: string): Array<Content> {
-    const { query, wildcards } = compile(searchQuery);
-    console.log("query", query, wildcards);
+    const { query, wildcards } = compile(searchQuery).value;
     const prepared = db.prepare(query);
     const rows = prepared.all(wildcards);
     function getItem(m: ContentDBRow): Content | null {

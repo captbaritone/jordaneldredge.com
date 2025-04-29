@@ -11,3 +11,8 @@ export type Loc = {
   start: number;
   end: number;
 };
+
+export type Result<T> = {
+  value: T;
+  warnings: ValidationError[];
+};

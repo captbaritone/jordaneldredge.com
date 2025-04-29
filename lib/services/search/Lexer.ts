@@ -10,10 +10,12 @@ export type Token =
   | { kind: "-"; loc: Loc }
   | { kind: "has"; loc: Loc }
   | { kind: "since"; loc: Loc }
-  | { kind: "until"; loc: Loc };
+  | { kind: "until"; loc: Loc }
+  | { kind: "eof"; loc: Loc };
 
 export class Lexer {
   private pos = 0;
+  _warnings: ValidationError[] = [];
 
   constructor(private input: string) {}
 
@@ -59,6 +61,7 @@ export class Lexer {
           break;
       }
     }
+    yield { kind: "eof", loc: { start: this.pos, end: this.pos } };
   }
 
   private isWhitespace(c: string): boolean {
@@ -89,10 +92,13 @@ export class Lexer {
     let buffer = "";
     while (true) {
       if (this.pos >= this.input.length) {
-        throw new ValidationError("Unterminated string literal", {
-          start: this.pos,
-          end: this.pos,
-        });
+        this._warnings.push(
+          new ValidationError("Unterminated string literal", {
+            start: this.pos,
+            end: this.pos,
+          }),
+        );
+        break; // End of input
       }
       const char = this.input[this.pos];
       this.pos++;
