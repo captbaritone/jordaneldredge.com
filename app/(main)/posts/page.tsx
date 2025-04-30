@@ -1,7 +1,8 @@
 import ListItem from "../../../lib/components/ListItem";
-import { Content, ContentConnection } from "../../../lib/data";
+import { ContentConnection } from "../../../lib/data";
 import SortSelect from "./SortSelect";
 import SearchInput from "./SearchInput";
+import { SortOption } from "../../../lib/services/search/Compiler";
 
 export function generateMetadata({ searchParams }) {
   const title = searchParams.q ? `Posts: "${searchParams.q}"` : "Posts";
@@ -9,14 +10,9 @@ export function generateMetadata({ searchParams }) {
 }
 
 export default async function Posts({ searchParams }) {
-  const sort: "best" | "latest" = searchParams.sort || "best";
-  let items: Array<Content>;
-  if (searchParams.q) {
-    const q = searchParams.q.toLowerCase();
-    items = ContentConnection.experimentalSearch(q);
-  } else {
-    items = ContentConnection.all({ sort, filters: ["showInLists"] });
-  }
+  const sort: SortOption = searchParams.sort || "best";
+  const q = (searchParams.q ?? "").toLowerCase();
+  const items = ContentConnection.search(q, sort);
 
   return (
     <>

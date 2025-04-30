@@ -9,8 +9,8 @@ export type Token =
   | { kind: ":"; loc: Loc }
   | { kind: "-"; loc: Loc }
   | { kind: "has"; loc: Loc }
-  | { kind: "since"; loc: Loc }
-  | { kind: "until"; loc: Loc }
+  | { kind: "after"; loc: Loc }
+  | { kind: "before"; loc: Loc }
   | { kind: "eof"; loc: Loc };
 
 export class Lexer {
@@ -50,8 +50,8 @@ export class Lexer {
           const end = this.pos;
           switch (word) {
             case "has":
-            case "since":
-            case "until":
+            case "after":
+            case "before":
               yield { kind: word, loc: { start, end } };
               break;
             default:

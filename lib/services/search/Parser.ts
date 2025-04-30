@@ -7,7 +7,7 @@ export type TextNode = {
   loc: Loc;
 };
 
-export type Prefix = "has" | "since" | "until";
+export type Prefix = "has" | "after" | "before";
 
 export type PrefixNode = {
   type: "prefix";
@@ -79,8 +79,8 @@ class Parser {
     const token = this.peek();
     switch (token.kind) {
       case "has":
-      case "since":
-      case "until":
+      case "before":
+      case "after":
         return this.parsePrefix(token.kind);
       case "-":
         const unaryToken = token;
@@ -120,6 +120,7 @@ class Parser {
             loc: tagToken.loc,
           };
         }
+        this.next();
         return {
           type: "tag",
           value: maybeText.value,

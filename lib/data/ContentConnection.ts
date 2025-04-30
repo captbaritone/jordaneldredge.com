@@ -16,78 +16,21 @@ export type ContentQuery = {
 
 export default class ContentConnection {
   static all(query: ContentQuery): Content[] {
-    let rows: ContentDBRow[];
-    switch (query.sort) {
-      case "best":
-        rows = ALL_ITEMS_RANKED.all();
-        break;
-      case "latest":
-        rows = ALL_ITEMS_LATEST.all();
-        break;
-      default:
-        throw new Error(`Unknown sort: ${query.sort}`);
-    }
-    let content = rows.map((row) => new Content(row));
-    for (const filter of query.filters) {
-      switch (filter) {
-        case "showInLists":
-          content = content.filter((item) => item.showInLists());
-          break;
-        default:
-          throw new Error(`Unknown filter: ${filter}`);
-      }
-    }
-    return content;
+    return ContentConnection.search("", query.sort, null);
   }
 
   /**
    * Search for content by title, content, or tags.
    * @gqlQueryField
    */
-  static experimentalSearch(searchQuery: string): Array<Content> {
-    const { query, wildcards } = compile(searchQuery).value;
-    const prepared = db.prepare(query);
-    const rows = prepared.all(wildcards);
-    function getItem(m: ContentDBRow): Content | null {
-      switch (m.page_type) {
-        case "post":
-        case "note":
-          const item = new Content(m);
-          if (!item.showInLists()) {
-            return null;
-          }
-          return item;
-        default:
-          return null;
-      }
-    }
-    return rows.map((row) => getItem(row)).filter((item) => item != null);
-  }
-
-  /**
-   * Search for content by title, content, or tags.
-   * @gqlQueryField
-   */
-  static search(query: string, sort: SortOption): Array<Content> {
-    const rows = SEARCH.all({
-      query: escapeForFTS(query),
-      sortBy: sort,
-      limit: 20,
-    });
-    function getItem(m: ContentDBRow): Content | null {
-      switch (m.page_type) {
-        case "post":
-        case "note":
-          const item = new Content(m);
-          if (!item.showInLists()) {
-            return null;
-          }
-          return item;
-        default:
-          return null;
-      }
-    }
-    return rows.map((row) => getItem(row)).filter((item) => item != null);
+  static search(
+    query: string,
+    sort: SortOption,
+    first?: number | null,
+  ): Array<Content> {
+    const compiled = compile(query, sort, first ?? 20).value;
+    const prepared = db.prepare<any, ContentDBRow>(compiled.query);
+    return prepared.all(compiled.params).map((row) => new Content(row));
   }
 
   /**
@@ -107,92 +50,10 @@ export default class ContentConnection {
   }
 
   static withTag(tag: Tag): Array<Content> {
-    const rows = ITEMS_WITH_TAG.all({ tag: tag.name() });
-    return rows.map((row) => new Content(row));
+    return ContentConnection.search(`#${tag.name()}`, "best", null);
   }
 
   private static getAllByPageType(pageType: PageType): Content[] {
-    const rows = GET_ALL_BY_PAGE_TYPE.all({ pageType });
-    return rows.map((row) => new Content(row));
+    return ContentConnection.search(`#${pageType}`, "best", null);
   }
 }
-
-const ALL_ITEMS_RANKED = db.prepare<[], ContentDBRow>(sql`
-  SELECT
-    *
-  FROM
-    content
-  ORDER BY
-    page_rank DESC
-`);
-
-const ALL_ITEMS_LATEST = db.prepare<[], ContentDBRow>(sql`
-  SELECT
-    *
-  FROM
-    content
-  ORDER BY
-    DATE DESC,
-    title;
-`);
-
-// https://stackoverflow.com/a/79510332/1263117
-// - Escape all double quotes (") in the query by replacing them with ""
-// - Split the user's query on white space, into words
-// - Wrap each word in double quotes
-// - Join the words back together with a space
-function escapeForFTS(query: string): string {
-  const escaped = query.replace(/"/g, '""');
-  const words = escaped.split(/\s+/).map((word) => '"' + word + '"');
-  return words.join(" ");
-}
-
-const SEARCH = db.prepare<
-  { query: string; limit: number; sortBy: "best" | "latest" },
-  ContentDBRow
->(sql`
-  SELECT
-    content.*
-  FROM
-    content_fts
-    LEFT JOIN content ON content.rowid = content_fts.rowid
-  WHERE
-    content_fts MATCH (
-      'title:' || :query || '*' || ' OR content:' || :query || '*' || ' OR tags:' || :query || '*' || ' OR summary:' || :query || '*'
-    )
-  ORDER BY
-    CASE :sortBy
-      WHEN 'best' THEN RANK
-      ELSE NULL
-    END DESC,
-    CASE :sortBy
-      WHEN 'latest' THEN content.DATE
-      ELSE NULL
-    END DESC
-  LIMIT
-    :limit;
-`);
-
-const ITEMS_WITH_TAG = db.prepare<{ tag: string }, ContentDBRow>(sql`
-  SELECT
-    *
-  FROM
-    content
-  WHERE
-    tags LIKE '%' || :tag || '%'
-  ORDER BY
-    page_rank DESC;
-`);
-
-const GET_ALL_BY_PAGE_TYPE = db.prepare<{ pageType: PageType }, ContentDBRow>(
-  sql`
-    SELECT
-      *
-    FROM
-      content
-    WHERE
-      page_type = :pageType
-    ORDER BY
-      DATE DESC;
-  `,
-);
