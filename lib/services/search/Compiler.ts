@@ -91,6 +91,7 @@ class Compiler {
       case "text":
         return this.contentMatch(node.value, toBoolean);
       case "group":
+        // TODO: What if we are boolean?
         if (this.isMachNode(node)) {
           return this.matchExpression(node);
         }
@@ -231,7 +232,7 @@ class Compiler {
   }
 
   where(): string {
-    return `WHERE ${this._whereClauses.join(" AND ")}`;
+    return `WHERE ${this._whereClauses.join("\nAND ")}`;
   }
 
   sort(): string {
