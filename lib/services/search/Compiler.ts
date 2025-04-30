@@ -1,5 +1,5 @@
 import { Result, ValidationError } from "./Diagnostics";
-import { parse, ParseNode, PrefixNode } from "./Parser";
+import { MatchNode, parse, ParseNode, PrefixNode } from "./Parser";
 
 export type SortOption = "best" | "latest";
 
@@ -41,11 +41,59 @@ class Compiler {
     this.whereMetadataKeyIsFalsy("draft");
     this._whereClauses.push(this.expression(node, false));
   }
+
+  // Detects if a
+  isMachNode(node: ParseNode): node is MatchNode {
+    switch (node.type) {
+      case "text":
+        return true;
+      case "group":
+        if (node.children.length === 0) {
+          return false;
+        }
+        return node.children.every((child) => this.isMachNode(child));
+      case "tag":
+        return false;
+      case "unary":
+        return this.isMachNode(node.expression);
+      case "prefix":
+        return false;
+      default:
+        // @ts-expect-error
+        throw new Error(`Unknown node type: ${node.type}`);
+    }
+  }
+
+  matchExpression(node: MatchNode): string {
+    this._hasMatch = true;
+    const clause = this.matchClause(node);
+    const columnList = ALL_TEXT_COLUMNS.join(" ");
+    return `content_fts MATCH ('{${columnList}}:' || ${clause} || '*')`;
+  }
+
+  matchClause(node: MatchNode): string {
+    switch (node.type) {
+      case "text":
+        return this.registerParam(this.escapeForFTS(node.value));
+      case "group":
+        const matchClauses = node.children.map((child) => {
+          return this.matchClause(child);
+        });
+        return `(${matchClauses.join(`\nAND `)})`;
+      default:
+        // @ts-expect-error
+        throw new Error(`Unknown node type: ${node.type}`);
+    }
+  }
+
   expression(node: ParseNode, toBoolean: boolean): string {
     switch (node.type) {
       case "text":
-        return this.contentMatch(ALL_TEXT_COLUMNS, node.value, toBoolean);
+        return this.contentMatch(node.value, toBoolean);
       case "group":
+        if (this.isMachNode(node)) {
+          return this.matchExpression(node);
+        }
         if (node.children.length === 0) {
           return "TRUE";
         }
@@ -119,11 +167,7 @@ class Compiler {
         this._warnings.push(
           new ValidationError(`Unknown "has" value: ${node.value}`, node.loc),
         );
-        return this.contentMatch(
-          ALL_TEXT_COLUMNS,
-          `has:${node.value}`,
-          toBoolean,
-        );
+        return this.contentMatch(`has:${node.value}`, toBoolean);
       }
     }
   }
@@ -146,9 +190,9 @@ class Compiler {
   // By only de-optimizing to this approach when the result is expected to be
   // boolean, we can still preserve the ranking of the results in the common
   // case.
-  contentMatch(columns: string[], value: string, toBoolean: boolean): string {
+  contentMatch(value: string, toBoolean: boolean): string {
     const param = this.registerParam(this.escapeForFTS(value));
-    const columnList = columns.join(" ");
+    const columnList = ALL_TEXT_COLUMNS.join(" ");
     const condition = `content_fts MATCH ('{${columnList}}:' || ${param} || '*')`;
     if (!toBoolean) {
       // Set this._hasMatch to true so we know that we can sort by MATCH rank later.

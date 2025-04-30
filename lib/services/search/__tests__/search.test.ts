@@ -150,9 +150,9 @@ test("multiple strings", () => {
         },
         "query": "SELECT content.* FROM content_fts
     LEFT JOIN content ON content.rowid = content_fts.rowid
-    WHERE (json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive')) AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft')) AND ((content.rowid IN (SELECT content_fts.rowid FROM content_fts WHERE content_fts MATCH ('{title content tags summary}:' || :param0 || '*')))
-    AND (content.rowid IN (SELECT content_fts.rowid FROM content_fts WHERE content_fts MATCH ('{title content tags summary}:' || :param1 || '*'))))
-    ORDER BY page_rank DESC",
+    WHERE (json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive')) AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft')) AND content_fts MATCH ('{title content tags summary}:' || ((:param0)
+    AND (:param1)) || '*')
+    ORDER BY RANK, page_rank DESC",
       },
       "warnings": [],
     }
@@ -189,9 +189,9 @@ test("Quoted string", () => {
         },
         "query": "SELECT content.* FROM content_fts
     LEFT JOIN content ON content.rowid = content_fts.rowid
-    WHERE (json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive')) AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft')) AND (content.rowid IN (SELECT content_fts.rowid FROM content_fts WHERE content_fts MATCH ('{title content tags summary}:' || :param0 || '*'))
-    AND content.rowid IN (SELECT content_fts.rowid FROM content_fts WHERE content_fts MATCH ('{title content tags summary}:' || :param1 || '*')))
-    ORDER BY page_rank DESC",
+    WHERE (json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive')) AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft')) AND content_fts MATCH ('{title content tags summary}:' || (:param0
+    AND :param1) || '*')
+    ORDER BY RANK, page_rank DESC",
       },
       "warnings": [],
     }
@@ -287,9 +287,9 @@ describe("Error Recovery", () => {
           },
           "query": "SELECT content.* FROM content_fts
       LEFT JOIN content ON content.rowid = content_fts.rowid
-      WHERE (json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive')) AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft')) AND (content.rowid IN (SELECT content_fts.rowid FROM content_fts WHERE content_fts MATCH ('{title content tags summary}:' || :param0 || '*'))
-      AND content.rowid IN (SELECT content_fts.rowid FROM content_fts WHERE content_fts MATCH ('{title content tags summary}:' || :param1 || '*')))
-      ORDER BY page_rank DESC",
+      WHERE (json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive')) AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft')) AND content_fts MATCH ('{title content tags summary}:' || (:param0
+      AND :param1) || '*')
+      ORDER BY RANK, page_rank DESC",
         },
         "warnings": [
           [ValidationError: Unterminated string literal],
@@ -307,8 +307,8 @@ describe("Error Recovery", () => {
           },
           "query": "SELECT content.* FROM content_fts
       LEFT JOIN content ON content.rowid = content_fts.rowid
-      WHERE (json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive')) AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft')) AND (content.rowid IN (SELECT content_fts.rowid FROM content_fts WHERE content_fts MATCH ('{title content tags summary}:' || :param0 || '*')))
-      ORDER BY page_rank DESC",
+      WHERE (json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive')) AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft')) AND content_fts MATCH ('{title content tags summary}:' || (:param0) || '*')
+      ORDER BY RANK, page_rank DESC",
         },
         "warnings": [
           [ValidationError: Expected closing parenthesis],
@@ -326,9 +326,9 @@ describe("Error Recovery", () => {
           },
           "query": "SELECT content.* FROM content_fts
       LEFT JOIN content ON content.rowid = content_fts.rowid
-      WHERE (json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive')) AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft')) AND (content.rowid IN (SELECT content_fts.rowid FROM content_fts WHERE content_fts MATCH ('{title content tags summary}:' || :param0 || '*'))
-      AND content.rowid IN (SELECT content_fts.rowid FROM content_fts WHERE content_fts MATCH ('{title content tags summary}:' || :param1 || '*')))
-      ORDER BY page_rank DESC",
+      WHERE (json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive')) AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft')) AND content_fts MATCH ('{title content tags summary}:' || (:param0
+      AND :param1) || '*')
+      ORDER BY RANK, page_rank DESC",
         },
         "warnings": [
           [ValidationError: Unexpected colon],

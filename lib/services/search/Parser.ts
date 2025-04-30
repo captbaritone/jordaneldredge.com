@@ -35,6 +35,14 @@ export type GroupNode = {
   loc: Loc;
 };
 
+export type MatchNode = TextNode | MatchGroupNode;
+
+export type MatchGroupNode = {
+  type: "group";
+  children: MatchNode[];
+  loc: Loc;
+};
+
 export type ParseNode = TextNode | PrefixNode | TagNode | UnaryNode | GroupNode;
 
 export function parse(input: string): Result<ParseNode> {
