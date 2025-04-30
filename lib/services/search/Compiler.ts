@@ -58,12 +58,13 @@ class Compiler {
         // We need to match the tag at the start or end of the string, or
         // between spaces.
         const param = this.registerParam(node.value);
-        return [
+        const joined = [
           `content.tags LIKE ${param}`, // This is the only tag
           `content.tags LIKE ${param} || ' %'`, // This is the first
           `content.tags LIKE '% ' || ${param}`, // This is the last tag
           `content.tags LIKE '% ' || ${param} || ' %'`, // This is in the middle
         ].join(" OR ");
+        return `(${joined})`;
       case "unary":
         return `NOT (${this.expression(node.expression)})`;
       case "prefix":

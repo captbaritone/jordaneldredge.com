@@ -2,7 +2,6 @@ import "dotenv/config";
 
 import { describe, expect, test } from "vitest";
 import { compile as _compile } from "../Compiler";
-import { parse } from "../Parser";
 import type { SortOption } from "../Compiler";
 import { db } from "../../../db";
 
@@ -58,7 +57,7 @@ describe("sort", () => {
               "param0": "foo",
             },
             "query": "SELECT content.* FROM content
-        WHERE (json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive')) AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft')) AND content.tags LIKE :param0 OR content.tags LIKE :param0 || ' %' OR content.tags LIKE '% ' || :param0 OR content.tags LIKE '% ' || :param0 || ' %'
+        WHERE (json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive')) AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft')) AND (content.tags LIKE :param0 OR content.tags LIKE :param0 || ' %' OR content.tags LIKE '% ' || :param0 OR content.tags LIKE '% ' || :param0 || ' %')
         ORDER BY page_rank DESC",
           },
           "warnings": [],
@@ -92,7 +91,7 @@ describe("sort", () => {
               "param0": "foo",
             },
             "query": "SELECT content.* FROM content
-        WHERE (json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive')) AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft')) AND content.tags LIKE :param0 OR content.tags LIKE :param0 || ' %' OR content.tags LIKE '% ' || :param0 OR content.tags LIKE '% ' || :param0 || ' %'
+        WHERE (json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive')) AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft')) AND (content.tags LIKE :param0 OR content.tags LIKE :param0 || ' %' OR content.tags LIKE '% ' || :param0 OR content.tags LIKE '% ' || :param0 || ' %')
         ORDER BY content.DATE DESC",
           },
           "warnings": [],
