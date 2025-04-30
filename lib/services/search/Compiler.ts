@@ -29,6 +29,7 @@ class Compiler {
   _warnings: ValidationError[] = [];
   _sort: SortOption;
   _limit: number | null;
+  _hasMatch: boolean = false;
   params: { [key: string]: string } = {};
   constructor(sort: SortOption, limit: number | null) {
     this._sort = sort;
@@ -38,18 +39,18 @@ class Compiler {
     // Currently we always ignore draft and archive posts.
     this.whereMetadataKeyIsFalsy("archive");
     this.whereMetadataKeyIsFalsy("draft");
-    this._whereClauses.push(this.expression(node));
+    this._whereClauses.push(this.expression(node, false));
   }
-  expression(node: ParseNode): string {
+  expression(node: ParseNode, toBoolean: boolean): string {
     switch (node.type) {
       case "text":
-        return this.contentMatch(ALL_TEXT_COLUMNS, node.value);
+        return this.contentMatch(ALL_TEXT_COLUMNS, node.value, toBoolean);
       case "group":
         if (node.children.length === 0) {
           return "TRUE";
         }
         const groupClauses = node.children.map((child) => {
-          return this.expression(child);
+          return this.expression(child, true);
         });
         return `(${groupClauses.join(`\nAND `)})`;
       case "tag":
@@ -66,19 +67,19 @@ class Compiler {
         ].join(" OR ");
         return `(${joined})`;
       case "unary":
-        return `NOT (${this.expression(node.expression)})`;
+        return `NOT (${this.expression(node.expression, true)})`;
       case "prefix":
-        return this.prefix(node);
+        return this.prefix(node, toBoolean);
       default:
         // @ts-expect-error
         throw new Error(`Unknown node type: ${node.type}`);
     }
   }
 
-  prefix(node: PrefixNode): string {
+  prefix(node: PrefixNode, toBoolean: boolean): string {
     switch (node.prefix) {
       case "has":
-        return this.has(node);
+        return this.has(node, toBoolean);
       case "after":
         const sinceParam = this.registerParam(node.value);
         return `content.DATE > ${sinceParam}`;
@@ -90,7 +91,7 @@ class Compiler {
     }
   }
 
-  has(node: PrefixNode): string {
+  has(node: PrefixNode, toBoolean: boolean): string {
     switch (node.value) {
       case "video":
         return this.hasForeignReference("content_youtube");
@@ -118,7 +119,11 @@ class Compiler {
         this._warnings.push(
           new ValidationError(`Unknown "has" value: ${node.value}`, node.loc),
         );
-        return this.contentMatch(ALL_TEXT_COLUMNS, `has:${node.value}`);
+        return this.contentMatch(
+          ALL_TEXT_COLUMNS,
+          `has:${node.value}`,
+          toBoolean,
+        );
       }
     }
   }
@@ -127,23 +132,31 @@ class Compiler {
     return `EXISTS (SELECT 1 FROM ${foreignTable} WHERE ${foreignTable}.content_id = content.id)`;
   }
 
-  // Ideally we could use a regular MATCH FTS search here. However, MATCH is not
-  // a boolean operator which means it can't compose with things like AND OR or
-  // negation. This is because conceptually MATCH is really a ranking function
-  // (_how much_ does this record match the query) than a predicate (_does_ this
-  // record match the query).
+  // Ideally we could always use a regular MATCH FTS search here. However, MATCH
+  // is not a boolean operator which means it can't compose with things like AND
+  // OR or negation. This is because conceptually MATCH is really a ranking
+  // function (_how much_ does this record match the query) than a predicate
+  // (_does_ this record match the query).
   //
-  // To work around this, we use a subquery to fake a boolean result.
-  // This is sub optimal because it means we forego match-based ranking.
+  // To work around this, if we are expected to emit a boolean condition, we use
+  // a subquery to fake a boolean result.
   // https://sqlite.org/forum/forumpost/09117b51f41116d4
   //
-  // A more advanced version of this compiler might try to understand when a
-  // string value is _not_ being used in a boolean position, and in that case
-  // use the MATCH operator directly.
-  contentMatch(columns: string[], value: string): string {
+  //
+  // By only de-optimizing to this approach when the result is expected to be
+  // boolean, we can still preserve the ranking of the results in the common
+  // case.
+  contentMatch(columns: string[], value: string, toBoolean: boolean): string {
     const param = this.registerParam(this.escapeForFTS(value));
     const columnList = columns.join(" ");
-    return `content.rowid IN (SELECT content_fts.rowid FROM content_fts WHERE content_fts MATCH ('{${columnList}}:' || ${param} || '*'))`;
+    const condition = `content_fts MATCH ('{${columnList}}:' || ${param} || '*')`;
+    if (!toBoolean) {
+      // Set this._hasMatch to true so we know that we can sort by MATCH rank later.
+      this._hasMatch = true;
+      return condition;
+    } else {
+      return `content.rowid IN (SELECT content_fts.rowid FROM content_fts WHERE ${condition})`;
+    }
   }
 
   // https://stackoverflow.com/a/79510332/1263117
@@ -180,10 +193,15 @@ class Compiler {
   sort(): string {
     switch (this._sort) {
       case "best":
-        // return `ORDER BY RANK DESC`;
+        if (this._hasMatch) {
+          return `ORDER BY RANK, page_rank DESC`;
+        }
         return `ORDER BY page_rank DESC`;
       case "latest":
-        return `ORDER BY content.DATE DESC`;
+        if (this._hasMatch) {
+          return `ORDER BY content.DATE, RANK, page_rank DESC`;
+        }
+        return `ORDER BY content.DATE, page_rank DESC`;
       default:
         throw new Error(`Unknown sort option: ${this._sort}`);
     }
@@ -198,7 +216,8 @@ class Compiler {
   }
 
   serialize(): string {
-    return `SELECT content.* FROM content
+    return `SELECT content.* FROM content_fts
+LEFT JOIN content ON content.rowid = content_fts.rowid
 ${this.where()}
 ${this.sort()}
 ${this.limit()}`.trim();

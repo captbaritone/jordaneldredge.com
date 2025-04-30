@@ -10,7 +10,7 @@ function compile(
   sort: SortOption = "best",
   limit?: number,
 ) {
-  const query = _compile(queryString, sort, limit);
+  const query = _compile(queryString, sort, limit ?? null);
   const stmt = db.prepare(query.value.query);
   const bound = stmt.bind(query.value.params);
   bound.all();
@@ -23,7 +23,8 @@ describe("Empty", () => {
       {
         "value": {
           "params": {},
-          "query": "SELECT content.* FROM content
+          "query": "SELECT content.* FROM content_fts
+      LEFT JOIN content ON content.rowid = content_fts.rowid
       WHERE (json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive')) AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft')) AND TRUE
       ORDER BY page_rank DESC",
         },
@@ -37,7 +38,8 @@ describe("Empty", () => {
       {
         "value": {
           "params": {},
-          "query": "SELECT content.* FROM content
+          "query": "SELECT content.* FROM content_fts
+      LEFT JOIN content ON content.rowid = content_fts.rowid
       WHERE (json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive')) AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft')) AND TRUE
       ORDER BY page_rank DESC",
         },
@@ -56,7 +58,8 @@ describe("sort", () => {
             "params": {
               "param0": "foo",
             },
-            "query": "SELECT content.* FROM content
+            "query": "SELECT content.* FROM content_fts
+        LEFT JOIN content ON content.rowid = content_fts.rowid
         WHERE (json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive')) AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft')) AND (content.tags LIKE :param0 OR content.tags LIKE :param0 || ' %' OR content.tags LIKE '% ' || :param0 OR content.tags LIKE '% ' || :param0 || ' %')
         ORDER BY page_rank DESC",
           },
@@ -72,9 +75,10 @@ describe("sort", () => {
             "params": {
               "param0": ""foo"",
             },
-            "query": "SELECT content.* FROM content
-        WHERE (json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive')) AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft')) AND content.rowid IN (SELECT content_fts.rowid FROM content_fts WHERE content_fts MATCH ('{title content tags summary}:' || :param0 || '*'))
-        ORDER BY page_rank DESC",
+            "query": "SELECT content.* FROM content_fts
+        LEFT JOIN content ON content.rowid = content_fts.rowid
+        WHERE (json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive')) AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft')) AND content_fts MATCH ('{title content tags summary}:' || :param0 || '*')
+        ORDER BY RANK, page_rank DESC",
           },
           "warnings": [],
         }
@@ -90,9 +94,10 @@ describe("sort", () => {
             "params": {
               "param0": "foo",
             },
-            "query": "SELECT content.* FROM content
+            "query": "SELECT content.* FROM content_fts
+        LEFT JOIN content ON content.rowid = content_fts.rowid
         WHERE (json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive')) AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft')) AND (content.tags LIKE :param0 OR content.tags LIKE :param0 || ' %' OR content.tags LIKE '% ' || :param0 OR content.tags LIKE '% ' || :param0 || ' %')
-        ORDER BY content.DATE DESC",
+        ORDER BY content.DATE, page_rank DESC",
           },
           "warnings": [],
         }
@@ -106,9 +111,10 @@ describe("sort", () => {
             "params": {
               "param0": ""foo"",
             },
-            "query": "SELECT content.* FROM content
-        WHERE (json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive')) AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft')) AND content.rowid IN (SELECT content_fts.rowid FROM content_fts WHERE content_fts MATCH ('{title content tags summary}:' || :param0 || '*'))
-        ORDER BY content.DATE DESC",
+            "query": "SELECT content.* FROM content_fts
+        LEFT JOIN content ON content.rowid = content_fts.rowid
+        WHERE (json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive')) AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft')) AND content_fts MATCH ('{title content tags summary}:' || :param0 || '*')
+        ORDER BY content.DATE, RANK, page_rank DESC",
           },
           "warnings": [],
         }
@@ -124,9 +130,10 @@ test("simple string", () => {
         "params": {
           "param0": ""winamp"",
         },
-        "query": "SELECT content.* FROM content
-    WHERE (json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive')) AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft')) AND content.rowid IN (SELECT content_fts.rowid FROM content_fts WHERE content_fts MATCH ('{title content tags summary}:' || :param0 || '*'))
-    ORDER BY page_rank DESC",
+        "query": "SELECT content.* FROM content_fts
+    LEFT JOIN content ON content.rowid = content_fts.rowid
+    WHERE (json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive')) AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft')) AND content_fts MATCH ('{title content tags summary}:' || :param0 || '*')
+    ORDER BY RANK, page_rank DESC",
       },
       "warnings": [],
     }
@@ -141,7 +148,8 @@ test("multiple strings", () => {
           "param0": ""winamp"",
           "param1": ""sqlite"",
         },
-        "query": "SELECT content.* FROM content
+        "query": "SELECT content.* FROM content_fts
+    LEFT JOIN content ON content.rowid = content_fts.rowid
     WHERE (json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive')) AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft')) AND ((content.rowid IN (SELECT content_fts.rowid FROM content_fts WHERE content_fts MATCH ('{title content tags summary}:' || :param0 || '*')))
     AND (content.rowid IN (SELECT content_fts.rowid FROM content_fts WHERE content_fts MATCH ('{title content tags summary}:' || :param1 || '*'))))
     ORDER BY page_rank DESC",
@@ -159,9 +167,10 @@ test("simple phrase", () => {
         "params": {
           "param0": ""Hello," "world!"",
         },
-        "query": "SELECT content.* FROM content
-    WHERE (json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive')) AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft')) AND content.rowid IN (SELECT content_fts.rowid FROM content_fts WHERE content_fts MATCH ('{title content tags summary}:' || :param0 || '*'))
-    ORDER BY page_rank DESC",
+        "query": "SELECT content.* FROM content_fts
+    LEFT JOIN content ON content.rowid = content_fts.rowid
+    WHERE (json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive')) AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft')) AND content_fts MATCH ('{title content tags summary}:' || :param0 || '*')
+    ORDER BY RANK, page_rank DESC",
       },
       "warnings": [],
     }
@@ -178,7 +187,8 @@ test("Quoted string", () => {
           "param0": ""Hello"",
           "param1": ""World"",
         },
-        "query": "SELECT content.* FROM content
+        "query": "SELECT content.* FROM content_fts
+    LEFT JOIN content ON content.rowid = content_fts.rowid
     WHERE (json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive')) AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft')) AND (content.rowid IN (SELECT content_fts.rowid FROM content_fts WHERE content_fts MATCH ('{title content tags summary}:' || :param0 || '*'))
     AND content.rowid IN (SELECT content_fts.rowid FROM content_fts WHERE content_fts MATCH ('{title content tags summary}:' || :param1 || '*')))
     ORDER BY page_rank DESC",
@@ -198,7 +208,8 @@ describe("Negate", () => {
           "params": {
             "param0": ""Hello"",
           },
-          "query": "SELECT content.* FROM content
+          "query": "SELECT content.* FROM content_fts
+      LEFT JOIN content ON content.rowid = content_fts.rowid
       WHERE (json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive')) AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft')) AND (content.rowid IN (SELECT content_fts.rowid FROM content_fts WHERE content_fts MATCH ('{title content tags summary}:' || :param0 || '*'))
       AND NOT (EXISTS (SELECT 1 FROM content_youtube WHERE content_youtube.content_id = content.id)))
       ORDER BY page_rank DESC",
@@ -217,7 +228,8 @@ describe("Negate", () => {
           "params": {
             "param0": ""Hello"",
           },
-          "query": "SELECT content.* FROM content
+          "query": "SELECT content.* FROM content_fts
+      LEFT JOIN content ON content.rowid = content_fts.rowid
       WHERE (json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive')) AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft')) AND (content.rowid IN (SELECT content_fts.rowid FROM content_fts WHERE content_fts MATCH ('{title content tags summary}:' || :param0 || '*'))
       AND NOT ((EXISTS (SELECT 1 FROM content_youtube WHERE content_youtube.content_id = content.id)
       AND EXISTS (SELECT 1 FROM content_audio WHERE content_audio.content_id = content.id))))
@@ -236,7 +248,8 @@ describe("Negate", () => {
           "params": {
             "param0": ""Hello"",
           },
-          "query": "SELECT content.* FROM content
+          "query": "SELECT content.* FROM content_fts
+      LEFT JOIN content ON content.rowid = content_fts.rowid
       WHERE (json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive')) AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft')) AND NOT (NOT (content.rowid IN (SELECT content_fts.rowid FROM content_fts WHERE content_fts MATCH ('{title content tags summary}:' || :param0 || '*'))))
       ORDER BY page_rank DESC",
         },
@@ -252,7 +265,8 @@ describe("Negate", () => {
           "params": {
             "param0": ""Hello"",
           },
-          "query": "SELECT content.* FROM content
+          "query": "SELECT content.* FROM content_fts
+      LEFT JOIN content ON content.rowid = content_fts.rowid
       WHERE (json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive')) AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft')) AND NOT (content.rowid IN (SELECT content_fts.rowid FROM content_fts WHERE content_fts MATCH ('{title content tags summary}:' || :param0 || '*')))
       ORDER BY page_rank DESC",
         },
@@ -271,7 +285,8 @@ describe("Error Recovery", () => {
             "param0": ""Hello"",
             "param1": ""World"",
           },
-          "query": "SELECT content.* FROM content
+          "query": "SELECT content.* FROM content_fts
+      LEFT JOIN content ON content.rowid = content_fts.rowid
       WHERE (json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive')) AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft')) AND (content.rowid IN (SELECT content_fts.rowid FROM content_fts WHERE content_fts MATCH ('{title content tags summary}:' || :param0 || '*'))
       AND content.rowid IN (SELECT content_fts.rowid FROM content_fts WHERE content_fts MATCH ('{title content tags summary}:' || :param1 || '*')))
       ORDER BY page_rank DESC",
@@ -290,7 +305,8 @@ describe("Error Recovery", () => {
           "params": {
             "param0": ""Hello"",
           },
-          "query": "SELECT content.* FROM content
+          "query": "SELECT content.* FROM content_fts
+      LEFT JOIN content ON content.rowid = content_fts.rowid
       WHERE (json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive')) AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft')) AND (content.rowid IN (SELECT content_fts.rowid FROM content_fts WHERE content_fts MATCH ('{title content tags summary}:' || :param0 || '*')))
       ORDER BY page_rank DESC",
         },
@@ -308,7 +324,8 @@ describe("Error Recovery", () => {
             "param0": ""oops"",
             "param1": "":" "foo"",
           },
-          "query": "SELECT content.* FROM content
+          "query": "SELECT content.* FROM content_fts
+      LEFT JOIN content ON content.rowid = content_fts.rowid
       WHERE (json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive')) AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft')) AND (content.rowid IN (SELECT content_fts.rowid FROM content_fts WHERE content_fts MATCH ('{title content tags summary}:' || :param0 || '*'))
       AND content.rowid IN (SELECT content_fts.rowid FROM content_fts WHERE content_fts MATCH ('{title content tags summary}:' || :param1 || '*')))
       ORDER BY page_rank DESC",
@@ -327,9 +344,10 @@ describe("Error Recovery", () => {
           "params": {
             "param0": ""has:m"",
           },
-          "query": "SELECT content.* FROM content
-      WHERE (json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive')) AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft')) AND content.rowid IN (SELECT content_fts.rowid FROM content_fts WHERE content_fts MATCH ('{title content tags summary}:' || :param0 || '*'))
-      ORDER BY page_rank DESC",
+          "query": "SELECT content.* FROM content_fts
+      LEFT JOIN content ON content.rowid = content_fts.rowid
+      WHERE (json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive')) AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft')) AND content_fts MATCH ('{title content tags summary}:' || :param0 || '*')
+      ORDER BY RANK, page_rank DESC",
         },
         "warnings": [
           [ValidationError: Unknown "has" value: m],
