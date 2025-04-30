@@ -1,5 +1,5 @@
 import { Loc, Result, ValidationError } from "./Diagnostics";
-import { Lexer, Token as Tokens } from "./Lexer";
+import { Lexer, Token as Token } from "./Lexer";
 
 export type TextNode = {
   type: "text";
@@ -57,15 +57,16 @@ export function parse(input: string): Result<ParseNode> {
 }
 
 class Parser {
-  private current: Tokens;
+  private current: Token;
+  private nextIndex: number = 0;
   _warnings: ValidationError[] = [];
 
-  constructor(private tokens: Iterator<Tokens>) {
-    const next = this.tokens.next();
-    if (next.done) {
+  constructor(private tokens: Token[]) {
+    const next = this.tokens[this.nextIndex];
+    if (next == null) {
       throw new Error("Expected at least an EOF token");
     }
-    this.current = next.value;
+    this.current = next;
   }
 
   parse(): ParseNode {
@@ -244,17 +245,17 @@ class Parser {
     };
   }
 
-  private peek(): Tokens {
+  private peek(): Token {
     return this.current;
   }
 
-  private next(): Tokens {
+  private next(): Token {
     // TODO: Handle EOF
-    this.current = this.tokens.next().value;
+    this.current = this.tokens[++this.nextIndex];
     return this.current;
   }
 
-  private expect<T extends Tokens["kind"]>(kind: T): Tokens & { kind: T } {
+  private expect<T extends Token["kind"]>(kind: T): Token & { kind: T } {
     const token = this.peek();
     if (token.kind !== kind) {
       throw new ValidationError(
@@ -263,7 +264,7 @@ class Parser {
       );
     }
     this.next();
-    return token as Tokens & { kind: T };
+    return token as Token & { kind: T };
   }
 
   private eof(): boolean {

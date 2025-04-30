@@ -2,15 +2,17 @@ import { Loc, ValidationError } from "./Diagnostics";
 
 export type Token =
   | { kind: "text"; value: string; loc: Loc }
+  | { kind: "ident"; value: string; loc: Loc }
   | { kind: "string"; value: string; loc: Loc }
   | { kind: "#"; loc: Loc }
   | { kind: "("; loc: Loc }
   | { kind: ")"; loc: Loc }
   | { kind: ":"; loc: Loc }
   | { kind: "-"; loc: Loc }
-  | { kind: "has"; loc: Loc }
-  | { kind: "after"; loc: Loc }
-  | { kind: "before"; loc: Loc }
+  | { kind: "and"; loc: Loc }
+  | { kind: "or"; loc: Loc }
+  | { kind: "not"; loc: Loc }
+  | { kind: "whitespace"; loc: Loc }
   | { kind: "eof"; loc: Loc };
 
 export class Lexer {
@@ -19,7 +21,8 @@ export class Lexer {
 
   constructor(private input: string) {}
 
-  *tokenize(): Generator<Token> {
+  tokenize(): Token[] {
+    const tokens: Token[] = [];
     while (this.pos < this.input.length) {
       const char = this.input[this.pos];
 
@@ -36,13 +39,13 @@ export class Lexer {
         case ")":
         case ":":
         case "-":
-          yield { kind: char, loc: { start, end: start + 1 } };
+          tokens.push({ kind: char, loc: { start, end: start + 1 } });
           this.pos++;
           break;
         case '"': {
           const string = this.readQuotedString();
           const end = this.pos;
-          yield { kind: "string", value: string, loc: { start, end } };
+          tokens.push({ kind: "string", value: string, loc: { start, end } });
           break;
         }
         default:
@@ -52,16 +55,17 @@ export class Lexer {
             case "has":
             case "after":
             case "before":
-              yield { kind: word, loc: { start, end } };
+              tokens.push({ kind: word, loc: { start, end } });
               break;
             default:
-              yield { kind: "text", value: word, loc: { start, end } };
+              tokens.push({ kind: "text", value: word, loc: { start, end } });
               break;
           }
           break;
       }
     }
-    yield { kind: "eof", loc: { start: this.pos, end: this.pos } };
+    tokens.push({ kind: "eof", loc: { start: this.pos, end: this.pos } });
+    return tokens;
   }
 
   private isWhitespace(c: string): boolean {

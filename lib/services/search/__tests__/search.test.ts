@@ -265,7 +265,7 @@ describe("Negate", () => {
     );
   });
 
-  test.only("double negative", () => {
+  test("double negative", () => {
     expect(compile(`--Hello`)).toMatchInlineSnapshot(`
       {
         "value": {
