@@ -64,7 +64,7 @@ export class Lexer {
             case "has":
             case "after":
             case "before":
-              tokens.push({ kind: word, loc: { start, end } });
+              tokens.push({ kind: "text", value: word, loc: { start, end } });
               break;
             default:
               tokens.push({ kind: "text", value: word, loc: { start, end } });

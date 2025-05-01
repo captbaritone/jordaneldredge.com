@@ -136,7 +136,10 @@ class Compiler {
         const untilParam = this.registerParam(node.value);
         return `content.DATE < ${untilParam}`;
       default:
-        throw new Error(`Unknown prefix: ${node.prefix}`);
+        this._warnings.push(
+          new ValidationError(`Unknown prefix: ${node.prefix}`, node.loc),
+        );
+        return this.contentMatch(`${node.prefix}:${node.value}`, toBoolean);
     }
   }
 

@@ -7,11 +7,9 @@ export type TextNode = {
   loc: Loc;
 };
 
-export type Prefix = "has" | "after" | "before";
-
 export type PrefixNode = {
   type: "prefix";
-  prefix: Prefix;
+  prefix: string;
   value: string;
   loc: Loc;
 };
@@ -94,10 +92,6 @@ class Parser {
     this.consumeWhitespace();
     const token = this.peek();
     switch (token.kind) {
-      case "has":
-      case "before":
-      case "after":
-        return this.parsePrefix(token.kind);
       case "-":
         const unaryToken = token;
         this.next();
@@ -154,6 +148,10 @@ class Parser {
         const values = [token.value];
         let nextToken = this.next();
 
+        if (nextToken.kind === ":") {
+          return this.parsePrefix(token.value);
+        }
+
         while (nextToken.kind === "text" || nextToken.kind === "whitespace") {
           values.push(nextToken.value);
           nextToken = this.next();
@@ -187,19 +185,8 @@ class Parser {
     return { start: start.start, end: end.end };
   }
 
-  private parsePrefix(prefix: Prefix): ParseNode {
+  private parsePrefix(prefix: string): ParseNode {
     const start = this.peek().loc.start;
-    const maybeColon = this.next();
-    if (maybeColon.kind !== ":") {
-      this._warnings.push(
-        new ValidationError(`Expected ":" after "${prefix}"`, this.peek().loc),
-      );
-      return {
-        type: "text",
-        value: prefix,
-        loc: { start, end: start },
-      };
-    }
     const maybeText = this.next();
     if (maybeText.kind !== "text") {
       this._warnings.push(
