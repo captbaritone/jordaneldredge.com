@@ -12,7 +12,7 @@ export type Token =
   | { kind: "and"; loc: Loc }
   | { kind: "or"; loc: Loc }
   | { kind: "not"; loc: Loc }
-  | { kind: "whitespace"; loc: Loc }
+  | { kind: "whitespace"; loc: Loc; value: string }
   | { kind: "eof"; loc: Loc };
 
 export class Lexer {
@@ -32,7 +32,11 @@ export class Lexer {
         while (this.isWhitespace(this.input[this.pos])) {
           this.pos++;
         }
-        tokens.push({ kind: "whitespace", loc: { start, end: this.pos } });
+        tokens.push({
+          kind: "whitespace",
+          value: this.input.slice(start, this.pos),
+          loc: { start, end: this.pos },
+        });
         continue;
       }
 

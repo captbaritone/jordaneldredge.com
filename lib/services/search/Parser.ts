@@ -151,15 +151,13 @@ class Parser {
           loc: token.loc,
         };
       case "text":
-        const values: string[] = [];
-        let nextToken = token;
-        do {
+        const values = [token.value];
+        let nextToken = this.next();
+
+        while (nextToken.kind === "text" || nextToken.kind === "whitespace") {
           values.push(nextToken.value);
           nextToken = this.next();
-        } while (
-          this.peek().kind === "text" ||
-          this.peek().kind === "whitespace"
-        );
+        }
         return {
           type: "text",
           value: values.join(" ").trim(),
