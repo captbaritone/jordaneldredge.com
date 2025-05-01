@@ -27,7 +27,12 @@ export class Lexer {
       const char = this.input[this.pos];
 
       if (this.isWhitespace(char)) {
+        const start = this.pos;
         this.pos++;
+        while (this.isWhitespace(this.input[this.pos])) {
+          this.pos++;
+        }
+        tokens.push({ kind: "whitespace", loc: { start, end: this.pos } });
         continue;
       }
 

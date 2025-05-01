@@ -84,7 +84,14 @@ class Parser {
     return { type: "group", children: nodes, loc };
   }
 
+  private consumeWhitespace(): void {
+    while (this.peek().kind === "whitespace") {
+      this.next();
+    }
+  }
+
   private parseExpr(): ParseNode {
+    this.consumeWhitespace();
     const token = this.peek();
     switch (token.kind) {
       case "has":
@@ -147,12 +154,15 @@ class Parser {
         const values: string[] = [];
         let nextToken = token;
         do {
-          const nextToken = this.expect("text");
           values.push(nextToken.value);
-        } while (this.peek().kind === "text");
+          nextToken = this.next();
+        } while (
+          this.peek().kind === "text" ||
+          this.peek().kind === "whitespace"
+        );
         return {
           type: "text",
-          value: values.join(" "),
+          value: values.join(" ").trim(),
           loc: this.locRange(token.loc, nextToken.loc),
         };
       case ":": {
