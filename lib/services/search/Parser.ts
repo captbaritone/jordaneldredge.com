@@ -136,7 +136,6 @@ class Parser {
           value: maybeText.value,
           loc: this.locRange(tagToken.loc, maybeText.loc),
         };
-        break;
       case "string":
         this.next();
         return {
@@ -152,8 +151,19 @@ class Parser {
           return this.parsePrefix(token.value);
         }
 
-        while (nextToken.kind === "text" || nextToken.kind === "whitespace") {
-          values.push(nextToken.value);
+        while (
+          nextToken.kind === "text" ||
+          nextToken.kind === "whitespace" ||
+          nextToken.kind === ":"
+        ) {
+          if (nextToken.kind === ":") {
+            this._warnings.push(
+              new ValidationError("Unexpected colon", token.loc),
+            );
+            values.push(":");
+          } else {
+            values.push(nextToken.value);
+          }
           nextToken = this.next();
         }
         return {
