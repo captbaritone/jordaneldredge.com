@@ -1,8 +1,11 @@
 import { Loc, ValidationError } from "./Diagnostics";
 
+export type TextToken = { kind: "text"; value: string; loc: Loc };
+
 export type Token =
-  | { kind: "text"; value: string; loc: Loc }
+  | TextToken
   | { kind: "ident"; value: string; loc: Loc }
+  | { kind: "prefix"; value: string; loc: Loc }
   | { kind: "string"; value: string; loc: Loc }
   | { kind: "#"; loc: Loc }
   | { kind: "("; loc: Loc }
@@ -46,7 +49,6 @@ export class Lexer {
         case "#":
         case "(":
         case ")":
-        case ":":
         case "-":
           tokens.push({ kind: char, loc: { start, end: start + 1 } });
           this.pos++;
@@ -58,18 +60,26 @@ export class Lexer {
           break;
         }
         default:
+          if (this.isIdentifier(char)) {
+            const ident = this.readIdentifier();
+            if (this.input[this.pos] === ":") {
+              this.pos++;
+              const end = this.pos;
+              tokens.push({
+                kind: "prefix",
+                value: ident,
+                loc: { start, end },
+              });
+              break;
+            } else {
+              const end = this.pos;
+              tokens.push({ kind: "text", value: ident, loc: { start, end } });
+              break;
+            }
+          }
           const word = this.readWord();
           const end = this.pos;
-          switch (word) {
-            case "has":
-            case "after":
-            case "before":
-              tokens.push({ kind: "text", value: word, loc: { start, end } });
-              break;
-            default:
-              tokens.push({ kind: "text", value: word, loc: { start, end } });
-              break;
-          }
+          tokens.push({ kind: "text", value: word, loc: { start, end } });
           break;
       }
     }
@@ -77,12 +87,29 @@ export class Lexer {
     return tokens;
   }
 
+  private isIdentifier(c: string): boolean {
+    // TODO: Use char range?
+    return c.match(/^[a-zA-Z]+$/) !== null;
+  }
+
   private isWhitespace(c: string): boolean {
     return c === " " || c === "\n" || c === "\t";
   }
 
   private isSpecialChar(c: string): boolean {
-    return c === "#" || c === "(" || c === ")" || c === ":";
+    // TODO: Is this the right set of characters?
+    return c === "#" || c === "(" || c === ")" || c === "-" || c === ":";
+  }
+
+  private readIdentifier(): string {
+    const start = this.pos;
+    while (
+      this.pos < this.input.length &&
+      this.isIdentifier(this.input[this.pos])
+    ) {
+      this.pos++;
+    }
+    return this.input.slice(start, this.pos);
   }
 
   private readWord(): string {
@@ -90,7 +117,8 @@ export class Lexer {
     while (
       this.pos < this.input.length &&
       !this.isWhitespace(this.input[this.pos]) &&
-      !this.isSpecialChar(this.input[this.pos])
+      !this.isSpecialChar(this.input[this.pos]) &&
+      !this.isIdentifier(this.input[this.pos])
     ) {
       this.pos++;
     }

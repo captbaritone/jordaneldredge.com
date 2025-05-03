@@ -167,6 +167,10 @@ class Compiler {
         return this.hasMetadata("archive");
       case "comments":
         return this.hasMetadata("github_comments_issue_id");
+      case "post":
+        return "content.page_type = 'post'";
+      case "note":
+        return "content.page_type = 'note'";
       default: {
         this._warnings.push(
           new ValidationError(`Unknown "has" value: ${node.value}`, node.loc),
@@ -238,18 +242,19 @@ class Compiler {
     return `WHERE ${this._whereClauses.join("\nAND ")}`;
   }
 
+  // TODO: Can I avoid having to write DESC multiple times?
   sort(): string {
     switch (this._sort) {
       case "best":
         if (this._hasMatch) {
-          return `ORDER BY RANK, page_rank DESC`;
+          return `ORDER BY RANK DESC, page_rank DESC`;
         }
         return `ORDER BY page_rank DESC`;
       case "latest":
         if (this._hasMatch) {
-          return `ORDER BY content.DATE, RANK, page_rank DESC`;
+          return `ORDER BY content.DATE DESC, RANK DESC, page_rank DESC`;
         }
-        return `ORDER BY content.DATE, page_rank DESC`;
+        return `ORDER BY content.DATE DESC, page_rank DESC`;
       default:
         throw new Error(`Unknown sort option: ${this._sort}`);
     }

@@ -54,6 +54,6 @@ export default class ContentConnection {
   }
 
   private static getAllByPageType(pageType: PageType): Content[] {
-    return ContentConnection.search(`#${pageType}`, "best", null);
+    return ContentConnection.search(`has:${pageType}`, "latest", null);
   }
 }

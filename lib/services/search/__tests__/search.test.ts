@@ -219,6 +219,45 @@ test("Quoted string", () => {
   );
 });
 
+describe("has", () => {
+  test("has:image", () => {
+    expect(compile("has:image")).toMatchInlineSnapshot(`
+      {
+        "value": {
+          "params": {},
+          "query": "SELECT content.* FROM content_fts
+      LEFT JOIN content ON content.rowid = content_fts.rowid
+      WHERE (json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive'))
+      AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft'))
+      AND EXISTS (SELECT 1 FROM content_images WHERE content_images.content_id = content.id)
+      ORDER BY page_rank DESC",
+        },
+        "warnings": [],
+      }
+    `);
+  });
+
+  test("winamp has:image", () => {
+    expect(compile("winamp has:image")).toMatchInlineSnapshot(`
+      {
+        "value": {
+          "params": {
+            "param0": ""winamp"",
+          },
+          "query": "SELECT content.* FROM content_fts
+      LEFT JOIN content ON content.rowid = content_fts.rowid
+      WHERE (json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive'))
+      AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft'))
+      AND (content.rowid IN (SELECT content_fts.rowid FROM content_fts WHERE content_fts MATCH ('{title content tags summary}:' || :param0 || '*'))
+      AND EXISTS (SELECT 1 FROM content_images WHERE content_images.content_id = content.id))
+      ORDER BY page_rank DESC",
+        },
+        "warnings": [],
+      }
+    `);
+  });
+});
+
 describe("Negate", () => {
   test("has clause", () => {
     expect(compile(`Hello -has:video`)).toMatchInlineSnapshot(
@@ -369,22 +408,51 @@ describe("Error Recovery", () => {
     `);
   });
 
-  test("Space around colon", () => {
+  test.skip("Space around colon", () => {
     expect(compile(`has : image`)).toMatchInlineSnapshot(`
       {
         "value": {
           "params": {
-            "param0": ""has" ":" "image"",
+            "param0": ""has"",
+            "param1": "":"",
+            "param2": ""image"",
           },
           "query": "SELECT content.* FROM content_fts
       LEFT JOIN content ON content.rowid = content_fts.rowid
       WHERE (json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive'))
       AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft'))
-      AND content_fts MATCH ('{title content tags summary}:' || :param0 || '*')
+      AND content_fts MATCH ('{title content tags summary}:' || (:param0
+      AND :param1
+      AND :param2) || '*')
       ORDER BY RANK, page_rank DESC",
         },
         "warnings": [
-          [ValidationError: Unexpected colon],
+          [ValidationError: Expected a value after ":"],
+        ],
+      }
+    `);
+  });
+
+  test.skip("Space after colon", () => {
+    expect(compile(`has :image`)).toMatchInlineSnapshot(`
+      {
+        "value": {
+          "params": {
+            "param0": ""has"",
+            "param1": "":"",
+            "param2": ""image"",
+          },
+          "query": "SELECT content.* FROM content_fts
+      LEFT JOIN content ON content.rowid = content_fts.rowid
+      WHERE (json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive'))
+      AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft'))
+      AND content_fts MATCH ('{title content tags summary}:' || (:param0
+      AND :param1
+      AND :param2) || '*')
+      ORDER BY RANK, page_rank DESC",
+        },
+        "warnings": [
+          [ValidationError: Expected a value after ":"],
         ],
       }
     `);

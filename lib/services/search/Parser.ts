@@ -1,5 +1,5 @@
 import { Loc, Result, ValidationError } from "./Diagnostics";
-import { Lexer, Token as Token } from "./Lexer";
+import { Lexer, TextToken, Token as Token } from "./Lexer";
 
 export type TextNode = {
   type: "text";
@@ -68,6 +68,7 @@ class Parser {
   }
 
   parse(): ParseNode {
+    console.log(this.tokens);
     const nodes: ParseNode[] = [];
     while (!this.eof()) {
       nodes.push(this.parseExpr());
@@ -144,51 +145,67 @@ class Parser {
           loc: token.loc,
         };
       case "text":
-        const values = [token.value];
-        let nextToken = this.next();
-
-        if (nextToken.kind === ":") {
-          return this.parsePrefix(token.value);
-        }
-
-        while (
-          nextToken.kind === "text" ||
-          nextToken.kind === "whitespace" ||
-          nextToken.kind === ":"
-        ) {
-          if (nextToken.kind === ":") {
-            this._warnings.push(
-              new ValidationError("Unexpected colon", token.loc),
-            );
-            values.push(":");
-          } else {
-            values.push(nextToken.value);
-          }
-          nextToken = this.next();
-        }
-        return {
-          type: "text",
-          value: values.join(" ").trim(),
-          loc: this.locRange(token.loc, nextToken.loc),
-        };
-      case ":": {
-        this._warnings.push(new ValidationError("Unexpected colon", token.loc));
         this.next();
-        const values: string[] = [":"];
-        let nextToken = token;
-        while (this.peek().kind === "text") {
-          const nextToken = this.expect("text");
-          values.push(nextToken.value);
-        }
-        return {
-          type: "text",
-          value: values.join(" "),
-          loc: this.locRange(token.loc, nextToken.loc),
-        };
-      }
+        return this.parseTextTail(token);
+      case "prefix":
+        this.next();
+        return this.parsePrefix(token.value);
+      // case ":": {
+      //   this._warnings.push(new ValidationError("Unexpected colon", token.loc));
+      //   this.next();
+      //   const values: string[] = [":"];
+      //   let nextToken = token;
+      //   while (this.peek().kind === "text") {
+      //     const nextToken = this.expect("text");
+      //     values.push(nextToken.value);
+      //   }
+      //   return {
+      //     type: "text",
+      //     value: values.join(" "),
+      //     loc: this.locRange(token.loc, nextToken.loc),
+      //   };
+      // }
       default:
         throw new Error(`Unexpected token: ${token.kind}`);
     }
+  }
+
+  private parseTextTail(token: TextToken): ParseNode {
+    const values = [token.value];
+    let nextToken = this.peek();
+    // We've now parsed at least one text token
+
+    outer: while (true) {
+      switch (nextToken.kind) {
+        case "whitespace":
+          values.push(nextToken.value);
+          nextToken = this.next();
+          break;
+        case "text":
+          const textHead = nextToken.value;
+          values.push(nextToken.value);
+          nextToken = this.next();
+          if (nextToken.kind === ":") {
+            throw new Error("Oops! Should parse as prefix");
+          }
+          break;
+        case "prefix":
+        case "string":
+        case "(":
+        case ")":
+        case "-":
+        case "eof":
+          break outer;
+        default:
+          throw new Error(`Unexpected token: ${nextToken.kind}`);
+      }
+    }
+
+    return {
+      type: "text",
+      value: values.join(" ").trim(),
+      loc: this.locRange(token.loc, nextToken.loc),
+    };
   }
 
   private locRange(start: Loc, end: Loc): Loc {
@@ -196,8 +213,8 @@ class Parser {
   }
 
   private parsePrefix(prefix: string): ParseNode {
-    const start = this.peek().loc.start;
-    const maybeText = this.next();
+    const maybeText = this.peek();
+    const start = maybeText.loc.start;
     if (maybeText.kind !== "text") {
       this._warnings.push(
         new ValidationError(

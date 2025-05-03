@@ -10,8 +10,6 @@ export const metadata = {
 export default function Home() {
   const allPosts = ContentConnection.blogPosts();
 
-  const publicPosts = allPosts.filter((post) => post.showInLists());
-
   return (
     <>
       <div className="markdown">
@@ -22,7 +20,7 @@ export default function Home() {
         </p>
         <hr />
       </div>
-      {publicPosts.map((post) => {
+      {allPosts.map((post) => {
         return <ListItem key={post.slug()} item={post} />;
       })}
     </>
