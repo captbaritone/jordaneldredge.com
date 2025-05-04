@@ -4,7 +4,6 @@ export type TextToken = { kind: "text"; value: string; loc: Loc };
 
 export type Token =
   | TextToken
-  | { kind: "ident"; value: string; loc: Loc }
   | { kind: "prefix"; value: string; loc: Loc }
   | { kind: "string"; value: string; loc: Loc }
   | { kind: "#"; loc: Loc }
@@ -12,10 +11,6 @@ export type Token =
   | { kind: ")"; loc: Loc }
   | { kind: ":"; loc: Loc }
   | { kind: "-"; loc: Loc }
-  | { kind: "and"; loc: Loc }
-  | { kind: "or"; loc: Loc }
-  | { kind: "not"; loc: Loc }
-  | { kind: "whitespace"; loc: Loc; value: string }
   | { kind: "eof"; loc: Loc };
 
 export class Lexer {
@@ -30,16 +25,7 @@ export class Lexer {
       const char = this.input[this.pos];
 
       if (this.isWhitespace(char)) {
-        const start = this.pos;
         this.pos++;
-        while (this.isWhitespace(this.input[this.pos])) {
-          this.pos++;
-        }
-        tokens.push({
-          kind: "whitespace",
-          value: this.input.slice(start, this.pos),
-          loc: { start, end: this.pos },
-        });
         continue;
       }
 
@@ -60,26 +46,38 @@ export class Lexer {
           break;
         }
         default:
-          if (this.isIdentifier(char)) {
-            const ident = this.readIdentifier();
-            if (this.input[this.pos] === ":") {
-              this.pos++;
-              const end = this.pos;
-              tokens.push({
-                kind: "prefix",
-                value: ident,
-                loc: { start, end },
-              });
-              break;
-            } else {
-              const end = this.pos;
-              tokens.push({ kind: "text", value: ident, loc: { start, end } });
-              break;
-            }
+          let text = "";
+          while (
+            this.pos < this.input.length &&
+            this.isIdentifier(this.input[this.pos])
+          ) {
+            text += this.input[this.pos];
+            this.pos++;
           }
-          const word = this.readWord();
-          const end = this.pos;
-          tokens.push({ kind: "text", value: word, loc: { start, end } });
+
+          if (text.length > 0 && this.input[this.pos] === ":") {
+            this.pos++;
+            tokens.push({
+              kind: "prefix",
+              value: text,
+              loc: { start, end: this.pos },
+            });
+            break;
+          }
+
+          while (
+            this.pos < this.input.length &&
+            !this.isWhitespace(this.input[this.pos]) &&
+            !this.isSpecialChar(this.input[this.pos])
+          ) {
+            text += this.input[this.pos];
+            this.pos++;
+          }
+          tokens.push({
+            kind: "text",
+            value: text,
+            loc: { start, end: this.pos },
+          });
           break;
       }
     }
@@ -98,31 +96,7 @@ export class Lexer {
 
   private isSpecialChar(c: string): boolean {
     // TODO: Is this the right set of characters?
-    return c === "#" || c === "(" || c === ")" || c === "-" || c === ":";
-  }
-
-  private readIdentifier(): string {
-    const start = this.pos;
-    while (
-      this.pos < this.input.length &&
-      this.isIdentifier(this.input[this.pos])
-    ) {
-      this.pos++;
-    }
-    return this.input.slice(start, this.pos);
-  }
-
-  private readWord(): string {
-    const start = this.pos;
-    while (
-      this.pos < this.input.length &&
-      !this.isWhitespace(this.input[this.pos]) &&
-      !this.isSpecialChar(this.input[this.pos]) &&
-      !this.isIdentifier(this.input[this.pos])
-    ) {
-      this.pos++;
-    }
-    return this.input.slice(start, this.pos);
+    return c === "#" || c === "(" || c === ")" || c === "-";
   }
 
   // Reads a quoted string, e.g., "hello world" including

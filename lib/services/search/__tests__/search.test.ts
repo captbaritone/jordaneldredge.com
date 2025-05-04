@@ -86,7 +86,7 @@ describe("sort", () => {
         WHERE (json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive'))
         AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft'))
         AND content_fts MATCH ('{title content tags summary}:' || :param0 || '*')
-        ORDER BY RANK, page_rank DESC",
+        ORDER BY RANK DESC, page_rank DESC",
           },
           "warnings": [],
         }
@@ -107,7 +107,7 @@ describe("sort", () => {
         WHERE (json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive'))
         AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft'))
         AND (content.tags LIKE :param0 OR content.tags LIKE :param0 || ' %' OR content.tags LIKE '% ' || :param0 OR content.tags LIKE '% ' || :param0 || ' %')
-        ORDER BY content.DATE, page_rank DESC",
+        ORDER BY content.DATE DESC, page_rank DESC",
           },
           "warnings": [],
         }
@@ -126,7 +126,7 @@ describe("sort", () => {
         WHERE (json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive'))
         AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft'))
         AND content_fts MATCH ('{title content tags summary}:' || :param0 || '*')
-        ORDER BY content.DATE, RANK, page_rank DESC",
+        ORDER BY content.DATE DESC, RANK DESC, page_rank DESC",
           },
           "warnings": [],
         }
@@ -147,7 +147,7 @@ test("simple string", () => {
     WHERE (json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive'))
     AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft'))
     AND content_fts MATCH ('{title content tags summary}:' || :param0 || '*')
-    ORDER BY RANK, page_rank DESC",
+    ORDER BY RANK DESC, page_rank DESC",
       },
       "warnings": [],
     }
@@ -168,7 +168,7 @@ test("multiple strings", () => {
     AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft'))
     AND content_fts MATCH ('{title content tags summary}:' || ((:param0)
     AND (:param1)) || '*')
-    ORDER BY RANK, page_rank DESC",
+    ORDER BY RANK DESC, page_rank DESC",
       },
       "warnings": [],
     }
@@ -181,14 +181,16 @@ test("simple phrase", () => {
     {
       "value": {
         "params": {
-          "param0": ""Hello," "world!"",
+          "param0": ""Hello,"",
+          "param1": ""world!"",
         },
         "query": "SELECT content.* FROM content_fts
     LEFT JOIN content ON content.rowid = content_fts.rowid
     WHERE (json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive'))
     AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft'))
-    AND content_fts MATCH ('{title content tags summary}:' || :param0 || '*')
-    ORDER BY RANK, page_rank DESC",
+    AND content_fts MATCH ('{title content tags summary}:' || (:param0
+    AND :param1) || '*')
+    ORDER BY RANK DESC, page_rank DESC",
       },
       "warnings": [],
     }
@@ -211,7 +213,7 @@ test("Quoted string", () => {
     AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft'))
     AND content_fts MATCH ('{title content tags summary}:' || (:param0
     AND :param1) || '*')
-    ORDER BY RANK, page_rank DESC",
+    ORDER BY RANK DESC, page_rank DESC",
       },
       "warnings": [],
     }
@@ -358,7 +360,7 @@ describe("Error Recovery", () => {
       AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft'))
       AND content_fts MATCH ('{title content tags summary}:' || (:param0
       AND :param1) || '*')
-      ORDER BY RANK, page_rank DESC",
+      ORDER BY RANK DESC, page_rank DESC",
         },
         "warnings": [
           [ValidationError: Unterminated string literal],
@@ -379,7 +381,7 @@ describe("Error Recovery", () => {
       WHERE (json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive'))
       AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft'))
       AND content_fts MATCH ('{title content tags summary}:' || (:param0) || '*')
-      ORDER BY RANK, page_rank DESC",
+      ORDER BY RANK DESC, page_rank DESC",
         },
         "warnings": [
           [ValidationError: Expected closing parenthesis],
@@ -399,7 +401,7 @@ describe("Error Recovery", () => {
       WHERE (json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive'))
       AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft'))
       AND content_fts MATCH ('{title content tags summary}:' || :param0 || '*')
-      ORDER BY RANK, page_rank DESC",
+      ORDER BY RANK DESC, page_rank DESC",
         },
         "warnings": [
           [ValidationError: Unknown prefix: oops],
@@ -433,27 +435,23 @@ describe("Error Recovery", () => {
     `);
   });
 
-  test.skip("Space after colon", () => {
+  test("Space after colon", () => {
     expect(compile(`has :image`)).toMatchInlineSnapshot(`
       {
         "value": {
           "params": {
             "param0": ""has"",
-            "param1": "":"",
-            "param2": ""image"",
+            "param1": "":image"",
           },
           "query": "SELECT content.* FROM content_fts
       LEFT JOIN content ON content.rowid = content_fts.rowid
       WHERE (json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive'))
       AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft'))
       AND content_fts MATCH ('{title content tags summary}:' || (:param0
-      AND :param1
-      AND :param2) || '*')
-      ORDER BY RANK, page_rank DESC",
+      AND :param1) || '*')
+      ORDER BY RANK DESC, page_rank DESC",
         },
-        "warnings": [
-          [ValidationError: Expected a value after ":"],
-        ],
+        "warnings": [],
       }
     `);
   });
@@ -470,10 +468,32 @@ describe("Error Recovery", () => {
       WHERE (json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive'))
       AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft'))
       AND content_fts MATCH ('{title content tags summary}:' || :param0 || '*')
-      ORDER BY RANK, page_rank DESC",
+      ORDER BY RANK DESC, page_rank DESC",
         },
         "warnings": [
           [ValidationError: Unknown "has" value: m],
+        ],
+      }
+    `);
+  });
+  test("Start with close paren", () => {
+    expect(compile(`) hello`)).toMatchInlineSnapshot(`
+      {
+        "value": {
+          "params": {
+            "param0": "")"",
+            "param1": ""hello"",
+          },
+          "query": "SELECT content.* FROM content_fts
+      LEFT JOIN content ON content.rowid = content_fts.rowid
+      WHERE (json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive'))
+      AND (json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft'))
+      AND content_fts MATCH ('{title content tags summary}:' || (:param0
+      AND :param1) || '*')
+      ORDER BY RANK DESC, page_rank DESC",
+        },
+        "warnings": [
+          [ValidationError: Unexpected ) without preceding (],
         ],
       }
     `);

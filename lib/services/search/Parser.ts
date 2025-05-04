@@ -82,14 +82,7 @@ class Parser {
     return { type: "group", children: nodes, loc };
   }
 
-  private consumeWhitespace(): void {
-    while (this.peek().kind === "whitespace") {
-      this.next();
-    }
-  }
-
   private parseExpr(): ParseNode {
-    this.consumeWhitespace();
     const token = this.peek();
     switch (token.kind) {
       case "-":
@@ -113,6 +106,12 @@ class Parser {
         };
       case "(":
         return this.parseGroup();
+      case ")":
+        this.next();
+        this._warnings.push(
+          new ValidationError("Unexpected ) without preceding (", token.loc),
+        );
+        return { type: "text", value: ")", loc: token.loc };
       case "#":
         const tagToken = token;
         const maybeText = this.next();
@@ -130,58 +129,16 @@ class Parser {
         };
       case "string":
         this.next();
-        return {
-          type: "text",
-          value: token.value,
-          loc: token.loc,
-        };
+        return { type: "text", value: token.value, loc: token.loc };
       case "text":
         this.next();
-        return this.parseTextTail(token);
+        return { type: "text", value: token.value, loc: token.loc };
       case "prefix":
         this.next();
         return this.parsePrefix(token.value);
       default:
         throw new Error(`Unexpected token: ${token.kind}`);
     }
-  }
-
-  private parseTextTail(token: TextToken): ParseNode {
-    const values = [token.value];
-    let nextToken = this.peek();
-    // We've now parsed at least one text token
-
-    outer: while (true) {
-      switch (nextToken.kind) {
-        case "whitespace":
-          values.push(nextToken.value);
-          nextToken = this.next();
-          break;
-        case "text":
-          const textHead = nextToken.value;
-          values.push(nextToken.value);
-          nextToken = this.next();
-          if (nextToken.kind === ":") {
-            throw new Error("Oops! Should parse as prefix");
-          }
-          break;
-        case "prefix":
-        case "string":
-        case "(":
-        case ")":
-        case "-":
-        case "eof":
-          break outer;
-        default:
-          throw new Error(`Unexpected token: ${nextToken.kind}`);
-      }
-    }
-
-    return {
-      type: "text",
-      value: values.join(" ").trim(),
-      loc: this.locRange(token.loc, nextToken.loc),
-    };
   }
 
   private locRange(start: Loc, end: Loc): Loc {
@@ -211,8 +168,7 @@ class Parser {
   }
 
   private parseGroup(): GroupNode {
-    const start = this.peek().loc;
-    this.expect("(");
+    const start = this.next().loc;
     const children: ParseNode[] = [];
     while (!this.eof() && this.peek().kind !== ")") {
       children.push(this.parseExpr());
@@ -247,18 +203,6 @@ class Parser {
     // TODO: Handle EOF
     this.current = this.tokens[++this.nextIndex];
     return this.current;
-  }
-
-  private expect<T extends Token["kind"]>(kind: T): Token & { kind: T } {
-    const token = this.peek();
-    if (token.kind !== kind) {
-      throw new ValidationError(
-        `Expected ${kind} token, found ${token.kind}`,
-        token.loc,
-      );
-    }
-    this.next();
-    return token as Token & { kind: T };
   }
 
   private eof(): boolean {
