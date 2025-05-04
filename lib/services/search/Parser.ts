@@ -68,7 +68,6 @@ class Parser {
   }
 
   parse(): ParseNode {
-    console.log(this.tokens);
     const nodes: ParseNode[] = [];
     while (!this.eof()) {
       nodes.push(this.parseExpr());
