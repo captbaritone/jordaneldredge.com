@@ -102,11 +102,7 @@ class Parser {
               unaryToken.loc,
             ),
           );
-          return {
-            type: "text",
-            value: "-",
-            loc: unaryToken.loc,
-          };
+          return { type: "text", value: "-", loc: unaryToken.loc };
         }
         const expression = this.parseExpr();
         return {
@@ -124,11 +120,7 @@ class Parser {
           this._warnings.push(
             new ValidationError("Expected a tag name after #", tagToken.loc),
           );
-          return {
-            type: "text",
-            value: "#",
-            loc: tagToken.loc,
-          };
+          return { type: "text", value: "#", loc: tagToken.loc };
         }
         this.next();
         return {
@@ -149,21 +141,6 @@ class Parser {
       case "prefix":
         this.next();
         return this.parsePrefix(token.value);
-      // case ":": {
-      //   this._warnings.push(new ValidationError("Unexpected colon", token.loc));
-      //   this.next();
-      //   const values: string[] = [":"];
-      //   let nextToken = token;
-      //   while (this.peek().kind === "text") {
-      //     const nextToken = this.expect("text");
-      //     values.push(nextToken.value);
-      //   }
-      //   return {
-      //     type: "text",
-      //     value: values.join(" "),
-      //     loc: this.locRange(token.loc, nextToken.loc),
-      //   };
-      // }
       default:
         throw new Error(`Unexpected token: ${token.kind}`);
     }
@@ -221,11 +198,7 @@ class Parser {
           this.peek().loc,
         ),
       );
-      return {
-        type: "text",
-        value: `${prefix}:`,
-        loc: { start, end: start },
-      };
+      return { type: "text", value: `${prefix}:`, loc: { start, end: start } };
     }
     this.next();
     const end = maybeText.loc.end;
