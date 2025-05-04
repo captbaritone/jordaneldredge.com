@@ -54,6 +54,17 @@ export default class ContentConnection {
   }
 
   private static getAllByPageType(pageType: PageType): Content[] {
-    return ContentConnection.search(`has:${pageType}`, "latest", null);
+    let is: string;
+    switch (pageType) {
+      case "post":
+        is = "blog";
+        break;
+      case "note":
+        is = "note";
+        break;
+      default:
+        throw new Error(`Unknown page type: ${pageType}`);
+    }
+    return ContentConnection.search(`is:${is}`, "latest", null);
   }
 }

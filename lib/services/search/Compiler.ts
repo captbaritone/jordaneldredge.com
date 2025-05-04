@@ -129,6 +129,8 @@ class Compiler {
     switch (node.prefix) {
       case "has":
         return this.has(node, toBoolean);
+      case "is":
+        return this.is(node, toBoolean);
       case "after":
         const sinceParam = this.registerParam(node.value);
         return `content.DATE > ${sinceParam}`;
@@ -167,16 +169,25 @@ class Compiler {
         return this.hasMetadata("archive");
       case "comments":
         return this.hasMetadata("github_comments_issue_id");
-      case "post":
-        return "content.page_type = 'post'";
-      case "note":
-        return "content.page_type = 'note'";
       default: {
         this._warnings.push(
           new ValidationError(`Unknown "has" value: ${node.value}`, node.loc),
         );
         return this.contentMatch(`has:${node.value}`, toBoolean);
       }
+    }
+  }
+  is(node: PrefixNode, toBoolean: boolean): string {
+    switch (node.value) {
+      case "blog":
+        return "content.page_type = 'post'";
+      case "note":
+        return "content.page_type = 'note'";
+      default:
+        this._warnings.push(
+          new ValidationError(`Unknown "is" value: ${node.value}`, node.loc),
+        );
+        return this.contentMatch(`is:${node.value}`, toBoolean);
     }
   }
 
