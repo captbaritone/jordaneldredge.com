@@ -1,5 +1,4 @@
-import Link from "next/link";
-import { SummaryImage } from "../../../lib/components/ListItem";
+import { ListItem } from "../../../lib/components/ListItem";
 
 export const metadata = {
   title: `Projects`,
@@ -22,9 +21,8 @@ export default function Projects() {
         title="Webamp"
         url="https://webamp.org"
         summaryImage={"/images/winamp/three-windows-screenshot.png"}
-        summary="A reimplementation of Winamp 2.9 in HTML5 and Javascript."
       >
-        <i>
+        <Wrapper summary="A reimplementation of Winamp 2.9 in HTML5 and Javascript.">
           <a href="https://techcrunch.com/2018/02/09/whip-the-llamas-ass-with-this-javascript-winamp-emulator/">
             TechCrunch
           </a>
@@ -45,15 +43,14 @@ export default function Projects() {
           <a href="https://github.com/captbaritone/webamp/blob/master/packages/webamp/docs/press.md">
             more
           </a>
-        </i>
+        </Wrapper>
       </ListItem>
       <ListItem
         title="Winamp Skin Museum"
         url="https://skins.webamp.org"
         summaryImage="/images/winamp-skin-museum-small.png"
-        summary="Infinite scroll through &gt;90k Winamp skins with instant search and in-browser interactive preview."
       >
-        <i>
+        <Wrapper summary="Infinite scroll through &gt;90k Winamp skins with instant search and in-browser interactive preview.">
           <a href="https://www.theverge.com/tldr/21430347/winamp-skin-museum-nostalgia-90s-00s-internet-art-history-ui">
             The Verge
           </a>
@@ -78,21 +75,20 @@ export default function Projects() {
             more
           </a>
           )
-        </i>
+        </Wrapper>
       </ListItem>
       <ListItem
         title="Grats"
         url="/blog/grats/"
         summaryImage="/uploads/2024/grats.png"
-        summary="Implementation-First GraphQL for TypeScript using static analysis."
       >
-        <i>
+        <Wrapper summary="Implementation-First GraphQL for TypeScript using static analysis.">
           <a href="https://news.ycombinator.com/item?id=39635014">
             Hacker News
           </a>
           ,{" "}
           <a href="https://www.graphqlweekly.com/issues/345/">GraphQL Weekly</a>
-        </i>
+        </Wrapper>
       </ListItem>
       <ListItem
         title="Eel-Wasm"
@@ -100,59 +96,38 @@ export default function Projects() {
         summaryImage="/images/butterchurn-wasm/butterchurn.png"
         summary="An in-browser compiler which speeds up in-browser rendering of user-defined music visualizations."
       >
-        <i>
+        <Wrapper summary="An in-browser compiler which speeds up in-browser rendering of user-defined music visualizations.">
           Presented at{" "}
           <a href="https://www.youtube.com/watch?v=hZzjrgZb-mw">TS Conf 2021</a>
-        </i>
+        </Wrapper>
       </ListItem>
       <ListItem
         title="Interesting Bugs Caught by ESLint's no-constant-binary-expression"
         url="/blog/interesting-bugs-caught-by-eslints-no-constant-binary-expression/"
         summaryImage="/uploads/2024/logic-bug.webp"
-        summary="A core ESLint rule which I proposed and contributed. Has caught interesting bugs in many popular JavaScript projects."
       >
-        <i>
+        <Wrapper summary="A core ESLint rule which I proposed and contributed. Has caught interesting bugs in many popular JavaScript projects.">
           <a href="https://news.ycombinator.com/item?id=38196644">
             Hacker News
           </a>
-        </i>
+        </Wrapper>
       </ListItem>
     </>
   );
 }
 
-type Props = React.PropsWithChildren<{
-  summaryImage: string | undefined;
-  title: string;
+function Wrapper({
+  summary,
+  children,
+}: {
   summary: string;
-  url: string;
-}>;
 
-function ListItem({ children, summaryImage, title, url, summary }: Props) {
+  children: React.ReactNode;
+}): JSX.Element {
   return (
-    <>
-      <div className="my-4 flex justify-between gap-4">
-        <div>
-          <h2 className="font-large font-semibold">
-            <Link
-              href={url}
-              style={{
-                wordBreak: "break-word",
-                /* Adds a hyphen where the word breaks, if supported (No Blink) */
-                hyphens: "auto",
-              }}
-            >
-              {title}
-            </Link>
-          </h2>
-          <div className="markdown">
-            <p>{summary}</p>
-            <div className="italic">{children}</div>
-          </div>
-        </div>
-        {summaryImage ? <SummaryImage url={url} src={summaryImage} /> : null}
-      </div>
-      <hr />
-    </>
+    <div className="markdown">
+      <p>{summary}</p>
+      <div className="italic">{children}</div>
+    </div>
   );
 }
