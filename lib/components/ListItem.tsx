@@ -49,17 +49,19 @@ export function SummaryImage({
   src: string;
 }): JSX.Element | null {
   return (
-    <div className="h-24 md:h-32 aspect-video relative">
+    <div
+      className="h-28 md:h-32 aspect-square sm:aspect-video relative"
+      style={{
+        boxShadow: "2px 2px 5px rgba(0, 0, 0, 0.4)",
+      }}
+    >
       <Link href={url}>
         <Image
           alt=""
           fill
           sizes="(max-width: 768px) 171px, 228px"
           src={src}
-          className="object-cover"
-          style={{
-            boxShadow: "2px 2px 5px rgba(0, 0, 0, 0.4)",
-          }}
+          className="object-cover shadow-sm"
         />
       </Link>
     </div>
