@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import { SummaryImage } from "../../../lib/components/ListItem";
 
 export const metadata = {
   title: `Projects`,
@@ -135,7 +135,6 @@ function ListItem({ children, summaryImage, title, url, summary }: Props) {
         <div>
           <h2 className="font-large font-semibold">
             <Link
-              className="text-blue-500"
               href={url}
               style={{
                 wordBreak: "break-word",
@@ -151,22 +150,7 @@ function ListItem({ children, summaryImage, title, url, summary }: Props) {
             <div className="italic">{children}</div>
           </div>
         </div>
-        {summaryImage ? (
-          <div className="h-24 md:h-32 aspect-video relative">
-            <Link href={url}>
-              <Image
-                alt=""
-                fill
-                sizes="(max-width: 768px) 171px, 228px"
-                src={summaryImage}
-                className="object-cover"
-                style={{
-                  boxShadow: "2px 2px 5px rgba(0, 0, 0, 0.4)",
-                }}
-              />
-            </Link>
-          </div>
-        ) : null}
+        {summaryImage ? <SummaryImage url={url} src={summaryImage} /> : null}
       </div>
       <hr />
     </>
