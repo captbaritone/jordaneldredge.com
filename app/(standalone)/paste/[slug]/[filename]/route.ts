@@ -12,6 +12,15 @@ export function GET(_: NextRequest, { params }) {
     notFound();
   }
 
+  if (row.file_name && row.file_name.endsWith(".html")) {
+    return new Response(row.content, {
+      headers: {
+        "Content-Type": "text/html; charset=utf-8",
+        "Content-Disposition": `inline; filename="${row.file_name}"`,
+      },
+    });
+  }
+
   return new Response(row.content, {
     headers: {
       "Content-Type": "text/plain; charset=utf-8",
