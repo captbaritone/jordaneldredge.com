@@ -79,7 +79,7 @@ class Compiler {
         const matchClauses = node.children.map((child) => {
           return this.matchClause(child);
         });
-        return `(${matchClauses.join(`\nAND `)})`;
+        return `(${matchClauses.join(` || 'AND' || `)})`;
       default:
         // @ts-expect-error
         throw new Error(`Unknown node type: ${node.type}`);
@@ -101,7 +101,7 @@ class Compiler {
         const groupClauses = node.children.map((child) => {
           return this.expression(child, true);
         });
-        return `(${groupClauses.join(`\nAND `)})`;
+        return `(${groupClauses.join(` AND `)})`;
       case "tag":
         // `content.tags` is a space-separated list of tags. A simple `%tag%`
         // would match substrings of tags, which is not what we want.
@@ -212,7 +212,7 @@ class Compiler {
   contentMatch(value: string, toBoolean: boolean): string {
     const param = this.registerParam(this.escapeForFTS(value));
     const columnList = ALL_TEXT_COLUMNS.join(" ");
-    const condition = `content_fts MATCH ('{${columnList}}:' || ${param} || '*')`;
+    const condition = `content_fts MATCH ('{${columnList}}: ' || ${param} || ' *')`;
     if (!toBoolean) {
       // Set this._hasMatch to true so we know that we can sort by MATCH rank later.
       this._hasMatch = true;

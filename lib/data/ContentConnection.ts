@@ -28,7 +28,12 @@ export default class ContentConnection {
     sort: SortOption,
     first?: number | null,
   ): Array<Content> {
-    const compiled = compile(query, sort, first ?? 20).value;
+    const compiled = compile(
+      query,
+      sort,
+      first === undefined ? 20 : first,
+    ).value;
+    console.log("compiled", compiled);
     const prepared = db.prepare<any, ContentDBRow>(compiled.query);
     return prepared.all(compiled.params).map((row) => new Content(row));
   }
