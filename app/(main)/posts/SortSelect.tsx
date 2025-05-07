@@ -40,7 +40,7 @@ export default function SortSelect({ currentParam }) {
           background: "white",
         }}
       >
-        Best
+        Best of
       </option>
       <option
         value="latest"

@@ -19,16 +19,73 @@ export default async function Posts({ searchParams }) {
       <div className="markdown">
         <h1>Posts</h1>
         <div className="flex flex-wrap justify-end pb-2">
-          <p className="w-full sm:w-auto grow">All blogs posts and notes.</p>
-          <div className="w-auto">
-            <label>
-              <SearchInput query={searchParams.q} />
-            </label>
+          <p className="w-full sm:w-auto grow">
+            All <a href="/posts/?q=is:blog&sort=latest">Blogs Posts</a> and{" "}
+            <a href="/posts/?q=is:note&sort=latest">Notes</a>.
+          </p>
+          <div className="flex gap-2 items-stretch w-full sm:w-auto pb-2 sm:pb-0">
+            <div className="w-auto flex-grow">
+              <label>
+                <SearchInput
+                  query={searchParams.q ?? ""}
+                  className="w-full"
+                  autoFocus={searchParams.q != null}
+                />
+              </label>
+            </div>
+            <div className="w-auto">
+              <label>
+                <SortSelect currentParam={sort} />
+              </label>
+            </div>
           </div>
-          <div className="w-auto">
-            <label>
-              <SortSelect currentParam={sort} />
-            </label>
+        </div>
+        <hr />
+      </div>
+      {items.length === 0 ? (
+        <ResultAlternative>No results found</ResultAlternative>
+      ) : (
+        items.map((post) => {
+          return <ListItem key={post.slug()} item={post} />;
+        })
+      )}
+    </>
+  );
+}
+
+export async function PostsStructured({
+  q,
+  sort,
+}: {
+  q?: string;
+  sort: SortOption;
+}) {
+  const items = ContentConnection.search(q ?? "", sort);
+
+  return (
+    <>
+      <div className="markdown">
+        <h1>Posts</h1>
+        <div className="flex flex-wrap justify-end pb-2">
+          <p className="w-full sm:w-auto grow">
+            All <a href="/posts/?q=is:blog&sort=latest">Blogs Posts</a> and{" "}
+            <a href="/posts/?q=is:note&sort=latest">Notes</a>.
+          </p>
+          <div className="flex gap-2 items-stretch w-full sm:w-auto pb-2 sm:pb-0">
+            <div className="w-auto flex-grow">
+              <label>
+                <SearchInput
+                  query={q ?? ""}
+                  className="w-full"
+                  autoFocus={q != null}
+                />
+              </label>
+            </div>
+            <div className="w-auto">
+              <label>
+                <SortSelect currentParam={sort} />
+              </label>
+            </div>
           </div>
         </div>
         <hr />

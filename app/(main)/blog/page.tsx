@@ -1,6 +1,8 @@
 import Link from "next/link";
 import ListItem from "../../../lib/components/ListItem";
 import { ContentConnection } from "../../../lib/data";
+import { ALL } from "../../config";
+import { PostsStructured } from "../posts/page";
 
 export const metadata = {
   title: "Blog",
@@ -8,6 +10,9 @@ export const metadata = {
 };
 
 export default function Home() {
+  if (ALL) {
+    return <PostsStructured q={"is:blog"} sort="latest" />;
+  }
   const allPosts = ContentConnection.blogPosts();
 
   return (
