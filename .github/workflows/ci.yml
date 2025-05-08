@@ -30,12 +30,7 @@ jobs:
 
       - name: Migrations
         run: |
-          npx tsx migrations/001-add-tts.ts
-          npx tsx migrations/002-add-cdn-images.ts
-          npx tsx migrations/003-add-users-and-webauthn.ts
-          npx tsx migrations/004-add-pastes.ts 
-          npx tsx migrations/005-add-content-indexes.ts
-          npx tsx migrations/006-add-image-metadata.ts
+          npx tsx migrations/001-006-catch-up.ts
 
       - name: Tests
         run: pnpm run test
