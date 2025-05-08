@@ -1,10 +1,6 @@
 name: Build Next.js Blog
 
-on:
-  push:
-    branches: [main]
-  pull_request:
-  workflow_dispatch:
+on: [push, pull_request, workflow_dispatch]
 
 jobs:
   build:
