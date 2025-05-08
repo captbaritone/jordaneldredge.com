@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       SEARCH_INDEX_LOCATION: ./content.db
-      SESSION_SECRET: "supersecret"
+      SESSION_SECRET: "supersecret-verylongstring-at-least-32-characters"
 
     steps:
       - name: Checkout code
