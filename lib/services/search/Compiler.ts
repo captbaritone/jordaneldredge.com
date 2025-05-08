@@ -101,7 +101,7 @@ class Compiler {
         const groupClauses = node.children.map((child) => {
           return this.expression(child, true);
         });
-        return `(${groupClauses.join(` AND `)})`;
+        return `(${groupClauses.join(`\nAND `)})`;
       case "tag":
         // `content.tags` is a space-separated list of tags. A simple `%tag%`
         // would match substrings of tags, which is not what we want.

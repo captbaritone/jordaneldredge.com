@@ -33,7 +33,6 @@ export default class ContentConnection {
       sort,
       first === undefined ? 20 : first,
     ).value;
-    console.log("compiled", compiled);
     const prepared = db.prepare<any, ContentDBRow>(compiled.query);
     return prepared.all(compiled.params).map((row) => new Content(row));
   }
