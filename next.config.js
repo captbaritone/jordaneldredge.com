@@ -4,9 +4,9 @@
 module.exports = {
   experimental: {
     scrollRestoration: true,
-    // https://github.com/shikijs/next-shiki
-    serverComponentsExternalPackages: ["shiki", "vscode-oniguruma"],
   },
+  // // https://github.com/shikijs/next-shiki
+  serverExternalPackages: ["shiki", "vscode-oniguruma"],
   transpilePackages: ["unified", "unist-util-visit"],
   typescript: {
     ignoreBuildErrors: true,
@@ -87,7 +87,6 @@ module.exports = {
   },
   pageExtensions: ["js", "jsx", "ts", "tsx", "md"],
   trailingSlash: true,
-  swcMinify: true,
   distDir: "build",
 };
 

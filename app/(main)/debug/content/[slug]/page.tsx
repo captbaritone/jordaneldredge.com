@@ -8,7 +8,8 @@ import Link from "next/link";
 import ReindexButton from "./ReindexButton";
 import { Bytes } from "../../../../../lib/components/Bytes";
 
-export default async function DebugContent({ params }) {
+export default async function DebugContent(props) {
+  const params = await props.params;
   const isAdmin = await userIsAdmin();
   if (!isAdmin) {
     notFound();

@@ -2,7 +2,8 @@ import { Content } from "../../../../lib/data";
 import ContentPage from "../../../../lib/components/ContentPage";
 import { notFound } from "next/navigation";
 
-export function generateMetadata({ params }) {
+export async function generateMetadata(props) {
+  const params = await props.params;
   const post = Content.getPostBySlug(params.slug);
   if (post == null) {
     return {};
@@ -31,7 +32,8 @@ export function generateMetadata({ params }) {
 // export const revalidate = 10;
 // export const dynamic = "force-static";
 
-export default async function Post({ params }) {
+export default async function Post(props) {
+  const params = await props.params;
   const post = Content.getPostBySlug(params.slug);
   if (post == null) {
     notFound();

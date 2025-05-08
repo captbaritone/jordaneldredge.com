@@ -1,5 +1,7 @@
 import { ListItem } from "../../../lib/components/ListItem";
 
+import type { JSX } from "react";
+
 export const metadata = {
   title: `Projects`,
   description: `A list of software side projects by Jordan Eldredge.`,

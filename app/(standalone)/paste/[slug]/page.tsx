@@ -12,7 +12,8 @@ export function metadata() {
   };
 }
 
-export default async function Paste({ params }) {
+export default async function Paste(props) {
+  const params = await props.params;
   const paste = GET_PASTE.get({ slug: params.slug });
   if (paste == null) {
     notFound();

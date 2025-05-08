@@ -6,7 +6,8 @@ import ContentPage from "../../../../lib/components/ContentPage";
 // export const revalidate = 10;
 // export const dynamic = "force-static";
 
-export function generateMetadata({ params }): Metadata {
+export async function generateMetadata(props): Promise<Metadata> {
+  const params = await props.params;
   // TODO: Figure out how to read search params in head.js
   const note = Content.getNoteBySlug(params.slug);
   if (note == null) {
@@ -29,7 +30,8 @@ export function generateMetadata({ params }): Metadata {
   };
 }
 
-export default function Note({ params }) {
+export default async function Note(props) {
+  const params = await props.params;
   const note = Content.getNoteBySlug(params.slug);
   if (note == null) {
     throw new Error("Not found");

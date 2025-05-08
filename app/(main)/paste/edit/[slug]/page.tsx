@@ -3,7 +3,8 @@ import { getSession, userIsAdmin } from "../../../../../lib/session";
 import { update } from "./update";
 import { db, sql } from "../../../../../lib/db";
 
-export default async function EditPaste({ params }) {
+export default async function EditPaste(props) {
+  const params = await props.params;
   const isAdmin = await userIsAdmin();
   if (!isAdmin) {
     notFound();

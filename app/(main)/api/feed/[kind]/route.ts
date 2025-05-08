@@ -8,7 +8,8 @@ export const dynamic = "force-static";
 
 const NOTES_EPOCH = new Date("2024-07-22");
 
-export async function GET(request: NextRequest, { params }) {
+export async function GET(request: NextRequest, props) {
+  const params = await props.params;
   const posts = Data.ContentConnection.all({
     sort: "latest",
     filters: ["showInLists"],

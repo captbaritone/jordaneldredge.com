@@ -2,7 +2,8 @@ import { notFound } from "next/navigation";
 import { db, sql } from "../../../../../lib/db";
 import { NextRequest } from "next/server";
 
-export function GET(_: NextRequest, { params }) {
+export async function GET(_: NextRequest, props) {
+  const params = await props.params;
   const row = GET_PASTE.get({ slug: params.slug });
   if (row == null) {
     notFound();

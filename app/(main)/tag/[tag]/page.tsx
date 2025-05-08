@@ -2,7 +2,8 @@ import { notFound } from "next/navigation";
 import ListItem from "../../../../lib/components/ListItem";
 import { Tag } from "../../../../lib/data/Tag";
 
-export function generateMetadata({ params }) {
+export async function generateMetadata(props) {
+  const params = await props.params;
   const title = `Blog posts tagged "${params.tag}"`;
   return { title, twitter: { title } };
 }
@@ -10,7 +11,8 @@ export function generateMetadata({ params }) {
 export const revalidate = 10;
 export const dynamic = "force-static";
 
-export default function TagPage({ params }) {
+export default async function TagPage(props) {
+  const params = await props.params;
   const tag = new Tag(params.tag);
   const items = tag.items();
 

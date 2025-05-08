@@ -4,12 +4,14 @@ import SortSelect from "./SortSelect";
 import SearchInput from "./SearchInput";
 import { SortOption } from "../../../lib/services/search/Compiler";
 
-export function generateMetadata({ searchParams }) {
+export async function generateMetadata(props) {
+  const searchParams = await props.searchParams;
   const title = searchParams.q ? `Posts: "${searchParams.q}"` : "Posts";
   return { title, twitter: { title } };
 }
 
-export default async function Posts({ searchParams }) {
+export default async function Posts(props) {
+  const searchParams = await props.searchParams;
   const sort: SortOption = searchParams.sort || "best";
   const q = (searchParams.q ?? "").toLowerCase();
   const items = ContentConnection.search(q, sort);
@@ -53,13 +55,7 @@ export default async function Posts({ searchParams }) {
   );
 }
 
-export async function PostsStructured({
-  q,
-  sort,
-}: {
-  q?: string;
-  sort: SortOption;
-}) {
+export function PostsStructured({ q, sort }: { q?: string; sort: SortOption }) {
   const items = ContentConnection.search(q ?? "", sort);
 
   return (

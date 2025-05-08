@@ -1,7 +1,8 @@
 import { getAllPages, getPageBySlug } from "../../../lib/data";
 import RootPage from "../../RootPage";
 
-export function generateMetadata({ params }) {
+export async function generateMetadata(props) {
+  const params = await props.params;
   const page = getPageBySlug(params.slug);
   return {
     title: page.title(),
@@ -24,6 +25,7 @@ export async function generateStaticParams() {
 // Do not try to render arbitrary slugs
 export const dynamicParams = false;
 
-export default function Page({ params }) {
+export default async function Page(props) {
+  const params = await props.params;
   return <RootPage slug={params.slug} />;
 }

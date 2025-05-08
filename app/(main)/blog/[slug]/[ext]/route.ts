@@ -3,7 +3,8 @@ import { Content } from "../../../../../lib/data";
 
 // NOTE: This route depends upon a rewrite in the project config to allow it to match:
 // /blog/<slug>.md
-export async function GET(_: NextRequest, { params }) {
+export async function GET(_: NextRequest, props) {
+  const params = await props.params;
   const { slug: fullSlug, ext } = params;
   const slug = fullSlug.slice(0, fullSlug.length - ext.length - 1);
   switch (ext) {

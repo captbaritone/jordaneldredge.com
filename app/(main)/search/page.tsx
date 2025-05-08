@@ -2,12 +2,14 @@ import SearchInput from "./searchInput";
 import ListItem from "../../../lib/components/ListItem";
 import { ContentConnection } from "../../../lib/data";
 
-export function generateMetadata({ searchParams }) {
+export async function generateMetadata(props) {
+  const searchParams = await props.searchParams;
   const title = searchParams.q ? `Search: "${searchParams.q}"` : "Search";
   return { title };
 }
 
-export default function SearchComponent({ searchParams }) {
+export default async function SearchComponent(props) {
+  const searchParams = await props.searchParams;
   const query = searchParams.q || "";
 
   return (
