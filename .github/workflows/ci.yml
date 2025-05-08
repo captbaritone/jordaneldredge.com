@@ -30,6 +30,7 @@ jobs:
 
       - name: Migrations
         run: |
+          rm "$SEARCH_INDEX_LOCATION"
           npx tsx migrations/001-006-catch-up.ts
 
       - name: Tests
