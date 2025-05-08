@@ -28,6 +28,8 @@ jobs:
 
       - name: Tests
         run: pnpm run test
+        env:
+          SEARCH_INDEX_LOCATION: ./content.db
 
       - name: Build Next.js site
         run: pnpm build
