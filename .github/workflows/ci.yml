@@ -23,5 +23,13 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Grats Build/Check
+        run: ./scripts/grats_check.sh
+
+      - name: Tests
+        run: pnpm run test
+
       - name: Build Next.js site
         run: pnpm build
+        env:
+          SEARCH_INDEX_LOCATION: ./content.db

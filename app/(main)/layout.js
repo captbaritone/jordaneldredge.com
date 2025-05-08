@@ -89,6 +89,7 @@ export default async function Layout({ children }) {
           className="flex justify-center p-4"
           style={{ imageRendering: "pixelated" }}
         >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="https://capt.dev/counter/hits/20" alt="Hit Counter" />
         </div>
       </footer>

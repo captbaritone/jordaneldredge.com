@@ -1,3 +1,4 @@
+import { Int } from "grats";
 import { db, sql } from "../db";
 import { compile } from "../services/search/Compiler";
 import Content, { ContentDBRow } from "./Content";
@@ -26,7 +27,7 @@ export default class ContentConnection {
   static search(
     query: string,
     sort: SortOption,
-    first?: number | null,
+    first?: Int | null,
   ): Array<Content> {
     const compiled = compile(
       query,

@@ -54,8 +54,6 @@ type Query {
   audioFiles: [AudioFile!]
   """Formal write-ups of projects and ideas."""
   blogPosts: [Content!]
-  """Search for content by title, content, or tags."""
-  experimentalSearch(searchQuery: String!): [Content!]
   """Find a piece of content by its slug."""
   getContentBySlug(slug: String!): Content
   """Get a tag by name."""
@@ -65,7 +63,7 @@ type Query {
   """Quick thoughts, observations, and links."""
   notes: [Content!]
   """Search for content by title, content, or tags."""
-  search(query: String!, sort: SortOption!): [Content!]
+  search(first: Int, query: String!, sort: SortOption!): [Content!]
   tweets: [Tweet!]
   youtubeVideos: [YoutubeVideo!]
 }

@@ -3,7 +3,6 @@
  * Do not manually edit. Regenerate by running `npx grats`.
  */
 import queryBlogPostsResolver from "./../../../lib/data/ContentConnection";
-import queryExperimentalSearchResolver from "./../../../lib/data/ContentConnection";
 import queryGetContentBySlugResolver from "./../../../lib/data/Content";
 import queryNotesResolver from "./../../../lib/data/ContentConnection";
 import querySearchResolver from "./../../../lib/data/ContentConnection";
@@ -298,19 +297,6 @@ export function getSchema(): GraphQLSchema {
                         return queryBlogPostsResolver.blogPosts();
                     }
                 },
-                experimentalSearch: {
-                    description: "Search for content by title, content, or tags.",
-                    name: "experimentalSearch",
-                    type: new GraphQLList(new GraphQLNonNull(ContentType)),
-                    args: {
-                        searchQuery: {
-                            type: new GraphQLNonNull(GraphQLString)
-                        }
-                    },
-                    resolve(_source, args) {
-                        return queryExperimentalSearchResolver.experimentalSearch(args.searchQuery);
-                    }
-                },
                 getContentBySlug: {
                     description: "Find a piece of content by its slug.",
                     name: "getContentBySlug",
@@ -364,6 +350,9 @@ export function getSchema(): GraphQLSchema {
                     name: "search",
                     type: new GraphQLList(new GraphQLNonNull(ContentType)),
                     args: {
+                        first: {
+                            type: GraphQLInt
+                        },
                         query: {
                             type: new GraphQLNonNull(GraphQLString)
                         },
@@ -372,7 +361,7 @@ export function getSchema(): GraphQLSchema {
                         }
                     },
                     resolve(_source, args) {
-                        return querySearchResolver.search(args.query, args.sort);
+                        return querySearchResolver.search(args.query, args.sort, args.first);
                     }
                 },
                 tweets: {
