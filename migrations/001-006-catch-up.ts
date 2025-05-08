@@ -51,8 +51,6 @@ export async function up() {
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP -- Timestamp for record creation
     );
 
-    CREATE TABLE sqlite_sequence (name, seq);
-
     CREATE TABLE webauthn_credentials (
       id INTEGER PRIMARY KEY AUTOINCREMENT, -- Unique identifier for the credential
       user_id INTEGER NOT NULL, -- Foreign key to 'users' table
