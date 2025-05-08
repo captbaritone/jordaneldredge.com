@@ -1,4 +1,5 @@
 import { ListItem } from "../../../lib/components/ListItem";
+import Link from "next/link"; // Assuming you're using Next.js
 
 import type { JSX } from "react";
 
@@ -15,7 +16,7 @@ export default function Projects() {
         <p>
           Over the years I&rsquo;ve built a number of software side projects.
           Below are a list of the more interesting ones. For a more exhaustive
-          list see my <a href="/blog/">blog</a>.
+          list see my <Link href="/blog/">blog</Link>.
         </p>
         <hr />
       </div>
@@ -25,26 +26,26 @@ export default function Projects() {
         summaryImage={"/images/winamp/three-windows-screenshot.png"}
       >
         <Wrapper summary="A reimplementation of Winamp 2.9 in HTML5 and Javascript.">
-          <a href="https://techcrunch.com/2018/02/09/whip-the-llamas-ass-with-this-javascript-winamp-emulator/">
+          <Link href="https://techcrunch.com/2018/02/09/whip-the-llamas-ass-with-this-javascript-winamp-emulator/">
             TechCrunch
-          </a>
+          </Link>
           ,{" "}
-          <a href="https://motherboard.vice.com/en_us/article/qvebbv/winamp-2-mp3-music-player-emulator">
+          <Link href="https://www.vice.com/en/article/winamp-2-mp3-music-player-emulator/">
             Motherboard
-          </a>
+          </Link>
           ,{" "}
-          <a href="https://gizmodo.com/winamp-2-has-been-immortalized-in-html5-for-your-pleasu-1655373653">
+          <Link href="https://gizmodo.com/winamp-2-has-been-immortalized-in-html5-for-your-pleasu-1655373653">
             Gizmodo
-          </a>
+          </Link>
           , Hacker News (
-          <a href="https://news.ycombinator.com/item?id=8565665">1</a>,{" "}
-          <a href="https://news.ycombinator.com/item?id=15314629">2</a>,{" "}
-          <a href="https://news.ycombinator.com/item?id=16333550">3</a>,{" "}
-          <a href="https://news.ycombinator.com/item?id=17583997">4</a>
+          <Link href="https://news.ycombinator.com/item?id=8565665">1</Link>,{" "}
+          <Link href="https://news.ycombinator.com/item?id=15314629">2</Link>,{" "}
+          <Link href="https://news.ycombinator.com/item?id=16333550">3</Link>,{" "}
+          <Link href="https://news.ycombinator.com/item?id=17583997">4</Link>
           ), and{" "}
-          <a href="https://github.com/captbaritone/webamp/blob/master/packages/webamp/docs/press.md">
+          <Link href="https://github.com/captbaritone/webamp/blob/master/packages/webamp/docs/press.md">
             more
-          </a>
+          </Link>
         </Wrapper>
       </ListItem>
       <ListItem
@@ -53,29 +54,33 @@ export default function Projects() {
         summaryImage="/images/winamp-skin-museum-small.png"
       >
         <Wrapper summary="Infinite scroll through &gt;90k Winamp skins with instant search and in-browser interactive preview.">
-          <a href="https://www.theverge.com/tldr/21430347/winamp-skin-museum-nostalgia-90s-00s-internet-art-history-ui">
+          <Link href="https://www.theverge.com/tldr/21430347/winamp-skin-museum-nostalgia-90s-00s-internet-art-history-ui">
             The Verge
-          </a>
+          </Link>
           ,{" "}
-          <a href="https://www.pcgamer.com/heres-an-interactive-archive-of-65000-winamp-skins-for-you-to-browse-forever/">
+          <Link href="https://www.pcgamer.com/heres-an-interactive-archive-of-65000-winamp-skins-for-you-to-browse-forever/">
             PC Gamer
-          </a>
+          </Link>
           ,{" "}
-          <a href="https://news.avclub.com/attention-digital-anthropologists-you-can-now-visit-an-1844954715">
+          <Link href="https://news.avclub.com/attention-digital-anthropologists-you-can-now-visit-an-1844954715">
             AV Club
-          </a>
+          </Link>
           ,{" "}
-          <a href="https://gizmodo.com/the-winamp-skin-museum-is-x-tremely-gnarly-1844958728">
+          <Link href="https://gizmodo.com/the-winamp-skin-museum-is-x-tremely-gnarly-1844958728">
             Gizmodo
-          </a>
-          , <a href="https://css-tricks.com/winamp-skin-museum/">CSS-Tricks</a>,{" "}
-          Hacker News (
-          <a href="https://news.ycombinator.com/item?id=24373699">1</a>,{" "}
-          <a href="https://news.ycombinator.com/item?id=31703874">2</a>,{" "}
-          <a href="https://news.ycombinator.com/item?id=30054172">3</a>, and{" "}
-          <a href="https://github.com/captbaritone/webamp/blob/master/packages/webamp/docs/skin-museum-press.md">
+          </Link>
+          ,{" "}
+          <Link href="https://css-tricks.com/winamp-skin-museum/">
+            CSS-Tricks
+          </Link>
+          , Hacker News (
+          <Link href="https://news.ycombinator.com/item?id=24373699">1</Link>,{" "}
+          <Link href="https://news.ycombinator.com/item?id=31703874">2</Link>,{" "}
+          <Link href="https://news.ycombinator.com/item?id=30054172">3</Link>,
+          and{" "}
+          <Link href="https://github.com/captbaritone/webamp/blob/master/packages/webamp/docs/skin-museum-press.md">
             more
-          </a>
+          </Link>
           )
         </Wrapper>
       </ListItem>
@@ -85,11 +90,13 @@ export default function Projects() {
         summaryImage="/uploads/2024/grats.png"
       >
         <Wrapper summary="Implementation-First GraphQL for TypeScript using static analysis.">
-          <a href="https://news.ycombinator.com/item?id=39635014">
+          <Link href="https://news.ycombinator.com/item?id=39635014">
             Hacker News
-          </a>
+          </Link>
           ,{" "}
-          <a href="https://www.graphqlweekly.com/issues/345/">GraphQL Weekly</a>
+          <Link href="https://www.graphqlweekly.com/issues/345/">
+            GraphQL Weekly
+          </Link>
         </Wrapper>
       </ListItem>
       <ListItem
@@ -100,7 +107,9 @@ export default function Projects() {
       >
         <Wrapper summary="An in-browser compiler which speeds up in-browser rendering of user-defined music visualizations.">
           Presented at{" "}
-          <a href="https://www.youtube.com/watch?v=hZzjrgZb-mw">TS Conf 2021</a>
+          <Link href="https://www.youtube.com/watch?v=hZzjrgZb-mw">
+            TS Conf 2021
+          </Link>
         </Wrapper>
       </ListItem>
       <ListItem
@@ -109,9 +118,9 @@ export default function Projects() {
         summaryImage="/uploads/2024/logic-bug.webp"
       >
         <Wrapper summary="A core ESLint rule which I proposed and contributed. Has caught interesting bugs in many popular JavaScript projects.">
-          <a href="https://news.ycombinator.com/item?id=38196644">
+          <Link href="https://news.ycombinator.com/item?id=38196644">
             Hacker News
-          </a>
+          </Link>
         </Wrapper>
       </ListItem>
     </>

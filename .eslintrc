@@ -1,3 +1,10 @@
 {
-  "extends": "next"
+  "extends": "next",
+  "settings": {
+    "next": {
+      "rootDir": "./",
+      "pagesDir": "./pages",
+      // pagesDir can be omitted if you're only using `app/`
+    },
+  },
 }

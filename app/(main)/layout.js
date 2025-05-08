@@ -64,15 +64,15 @@ export default async function Layout({ children }) {
       </div>
       <main>{children}</main>
       <footer className="py-8 pb-12 text-center block border-t-2 border-gray-200 border-solid">
-        <a rel="me" href="https://bsky.app/profile/capt.dev">
+        <Link rel="me" href="https://bsky.app/profile/capt.dev">
           Bluesky
-        </a>
+        </Link>
         {" • "}
-        <a rel="me" href="https://threads.net/@captbaritone">
+        <Link rel="me" href="https://threads.net/@captbaritone">
           Threads
-        </a>
+        </Link>
         {" • "}
-        <a href="/feed/rss.xml">RSS</a>
+        <Link href="/feed/rss.xml">RSS</Link>
         {" • "}
         <Link href={{ pathname: "/notes/tts-podcast/" }}>Podcast</Link>
         {" • "}
@@ -80,9 +80,9 @@ export default async function Layout({ children }) {
         {session.userId && (
           <>
             <br />
-            <a href="/paste/">Pastes</a>
+            <Link href="/paste/">Pastes</Link>
             {" • "}
-            <a href="/api/reindex">Reindex</a>
+            <Link href="/api/reindex">Reindex</Link>
           </>
         )}
         <div

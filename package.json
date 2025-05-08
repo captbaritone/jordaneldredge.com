@@ -86,7 +86,7 @@
     "@types/unist": "^3.0.2",
     "@vitejs/plugin-react": "^4.4.1",
     "encoding": "^0.1.13",
-    "eslint": "^8.22.0",
+    "eslint": "^9.26.0",
     "eslint-config-next": "15.3.2",
     "grats": "^0.0.32",
     "jest": "^27.5.1",
