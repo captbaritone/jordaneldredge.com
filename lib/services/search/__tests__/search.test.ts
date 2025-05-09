@@ -68,7 +68,59 @@ ${JSON.stringify(compile(input).value.params, null, 2)}
   }
 });
 
-test("Novel Schema", () => {
+function createSearchIndexWithTriggers(
+  db: Database,
+  ftsTable: string,
+  contentTable: string,
+  rows: string[],
+) {
+  const newRows = rows.map((row) => `new.${row}`).join(", ");
+  const oldRows = rows.map((row) => `old.${row}`).join(", ");
+  db.exec(sql`
+    CREATE VIRTUAL TABLE ${ftsTable} USING FTS5 (
+      text,
+      ${contentTable} = [${contentTable}]
+    );
+
+    -- After insert trigger to populate the FTS table
+    CREATE TRIGGER fts_ai AFTER INSERT ON ${contentTable} BEGIN
+    INSERT INTO
+      ${ftsTable} (rowid, text)
+    VALUES
+      (new.rowid, ${newRows});
+
+    END;
+
+    -- After delete trigger to remove from the FTS table
+    CREATE TRIGGER fts_ad AFTER DELETE ON ${contentTable} BEGIN
+    INSERT INTO
+      ${ftsTable} (${ftsTable}, rowid, text)
+    VALUES
+      (
+        'delete',
+        old.rowid,
+        ${oldRows}
+      );
+
+    END;
+
+    -- After update trigger to update the FTS table
+    CREATE TRIGGER fts_au AFTER
+    UPDATE ON ${contentTable} BEGIN
+    INSERT INTO
+      ${ftsTable} (${ftsTable}, rowid, text)
+    VALUES
+      (
+        'update',
+        new.rowid,
+        ${newRows}
+      );
+
+    END;
+  `);
+}
+
+describe("Novel Schema", () => {
   const config: SchemaConfig = {
     contentTable: "content",
     ftsTable: "content_fts",
@@ -76,89 +128,115 @@ test("Novel Schema", () => {
     hardCodedConditions: [],
     hasConditions: {},
     isConditions: {},
+    defaultBestSort: "text",
   };
-
-  const queryString = `Hello world`;
 
   // In memory database for testing
   const db: Database = betterSqlite(":memory:", {});
 
   db.exec(sql`
-    CREATE TABLE content (
-      id INTEGER PRIMARY KEY,
-      [text] TEXT NOT NULL,
-      page_rank INTEGER NOT NULL
-    );
-
-    CREATE VIRTUAL TABLE content_fts USING FTS5 (text, content = [content]);
-
-    -- After insert trigger to populate the FTS table
-    CREATE TRIGGER content_ai AFTER INSERT ON content BEGIN
-    INSERT INTO
-      content_fts (rowid, text)
-    VALUES
-      (new.rowid, new.text);
-
-    END;
-
-    -- After delete trigger to remove from the FTS table
-    CREATE TRIGGER content_ad AFTER DELETE ON content BEGIN
-    INSERT INTO
-      content_fts (content_fts, rowid, text)
-    VALUES
-      ('delete', old.rowid, old.text);
-
-    END;
-
-    -- After update trigger to update the FTS table
-    CREATE TRIGGER content_au AFTER
-    UPDATE ON content BEGIN
-    INSERT INTO
-      content_fts (content_fts, rowid, text)
-    VALUES
-      ('update', new.rowid, new.text);
-
-    END;
+    CREATE TABLE content (id INTEGER PRIMARY KEY, [text] TEXT NOT NULL);
   `);
+
+  createSearchIndexWithTriggers(db, "content_fts", "content", ["text"]);
 
   db.exec(sql`
     INSERT INTO
-      content (id, text, page_rank)
+      content (text)
     VALUES
-      (1, 'A', 1),
-      (2, 'A B', 1),
-      (3, 'A B C', 1);
+      ('A'),
+      ('B'),
+      ('C'),
+      ('A B'),
+      ('A B C');
   `);
 
   function search(query: string) {
     const compiled = _compile(query, "best", null, config);
     const stmt = db.prepare(compiled.value.query);
     const bound = stmt.bind(compiled.value.params);
-    return bound.all();
+    return bound.all().map((row: any) => row.text);
   }
 
-  expect(search("C")).toMatchInlineSnapshot(`
+  test("C", () => {
+    expect(search("C")).toMatchInlineSnapshot(`
     [
-      {
-        "id": 3,
-        "page_rank": 1,
-        "text": "A B C",
-      },
+      "A B C",
+      "C",
+    ]
+  `);
+  });
+
+  test("C B", () => {
+    expect(search("C B")).toMatchInlineSnapshot(`
+    [
+      "A B C",
+    ]
+  `);
+  });
+
+  test("Misc", () => {
+    expect(search("B")).toMatchInlineSnapshot(`
+    [
+      "A B C",
+      "A B",
+      "B",
     ]
   `);
 
-  expect(search("C B")).toMatchInlineSnapshot(`
+    expect(search("B -C")).toMatchInlineSnapshot(`
     [
-      {
-        "id": 3,
-        "page_rank": 1,
-        "text": "A B C",
-      },
+      "A B",
+      "B",
     ]
   `);
 
-  // TODO: This crashes
-  // search("B -C");
+    expect(search("B NOT C")).toMatchInlineSnapshot(`
+    [
+      "A B",
+      "B",
+    ]
+  `);
+
+    expect(search("B OR C")).toMatchInlineSnapshot(`
+    [
+      "A B",
+      "B",
+      "A B C",
+      "C",
+    ]
+  `);
+
+    expect(search("B AND C")).toMatchInlineSnapshot(`
+    [
+      "A B C",
+    ]
+  `);
+
+    expect(search("B NOT C")).toMatchInlineSnapshot(`
+    [
+      "A B",
+      "B",
+    ]
+  `);
+  });
+  test("Parens", () => {
+    expect(search("(B)")).toMatchInlineSnapshot(`
+      [
+        "A B C",
+        "A B",
+        "B",
+      ]
+    `);
+  });
+  test("Multiple parens", () => {
+    expect(search("(A) (B)")).toMatchInlineSnapshot(`
+      [
+        "A B C",
+        "A B",
+      ]
+    `);
+  });
 });
 
 // describe("sort", () => {

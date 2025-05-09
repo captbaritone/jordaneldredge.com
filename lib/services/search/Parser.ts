@@ -1,5 +1,6 @@
+import { g } from "vitest/dist/chunks/suite.d.FvehnV49";
 import { Loc, Result, ValidationError } from "./Diagnostics";
-import { Lexer, TextToken, Token as Token } from "./Lexer";
+import { Token as Token } from "./Lexer";
 
 export type TextNode = {
   type: "text";
@@ -27,21 +28,44 @@ export type TagNode = {
   loc: Loc;
 };
 
-export type GroupNode = {
-  type: "group";
-  children: ParseNode[];
+export type OrNode = {
+  type: "or";
+  left: ParseNode;
+  right: ParseNode;
   loc: Loc;
 };
 
-export type MatchNode = TextNode | MatchGroupNode;
-
-export type MatchGroupNode = {
-  type: "group";
-  children: MatchNode[];
+export type AndNode = {
+  type: "and";
+  left: ParseNode;
+  right: ParseNode;
   loc: Loc;
 };
 
-export type ParseNode = TextNode | PrefixNode | TagNode | UnaryNode | GroupNode;
+export type NotNode = {
+  type: "not";
+  left: ParseNode;
+  right: ParseNode;
+  loc: Loc;
+};
+
+// Used to model `()`
+export type TrueNode = {
+  type: "true";
+  loc: Loc;
+};
+
+export type MatchNode = TextNode;
+
+export type ParseNode =
+  | TextNode
+  | PrefixNode
+  | TagNode
+  | UnaryNode
+  | OrNode
+  | AndNode
+  | NotNode
+  | TrueNode;
 
 export function parse(tokens: Token[]): Result<ParseNode> {
   const parser = new Parser(tokens);
@@ -64,25 +88,92 @@ class Parser {
 
   parse(): ParseNode {
     const nodes: ParseNode[] = [];
-    while (!this.eof()) {
-      nodes.push(this.parseExpr());
+    if (this.eof()) {
+      return { type: "true", loc: { start: 0, end: 0 } };
     }
-    if (nodes.length === 1) {
-      return nodes[0];
-    }
-    if (nodes.length === 0) {
-      return { type: "group", children: nodes, loc: { start: 0, end: 0 } };
-    }
-    const loc = this.locRange(nodes[0].loc, nodes[nodes.length - 1].loc);
-    return { type: "group", children: nodes, loc };
+    return this.expression();
   }
 
-  private parseExpr(): ParseNode {
+  private expression(): ParseNode {
+    return this.or();
+  }
+  private or(): ParseNode {
+    let expr = this.and();
+    let token = this.peek();
+    while (token.kind === "OR") {
+      token = this.consume(); // OR
+      const right = this.and();
+      expr = {
+        type: "or",
+        left: expr,
+        right,
+        loc: this.locRange(expr.loc, right.loc),
+      };
+    }
+    return expr;
+  }
+  private and(): ParseNode {
+    let expr = this.not();
+    let token = this.peek();
+    while (token.kind !== "eof") {
+      if (token.kind === "AND") {
+        token = this.consume(); // AND
+        const right = this.not();
+        expr = {
+          type: "and",
+          left: expr,
+          right,
+          loc: this.locRange(expr.loc, right.loc),
+        };
+      } else if (this.peekIsNot()) {
+        const right = this.not();
+        expr = {
+          type: "and",
+          left: expr,
+          right,
+          loc: this.locRange(expr.loc, right.loc),
+        };
+        token = this.peek();
+      } else {
+        break;
+      }
+    }
+    return expr;
+  }
+
+  private peekIsNot(): boolean {
+    const token = this.peek();
+    return (
+      token.kind !== "eof" &&
+      token.kind !== "NOT" &&
+      token.kind !== "AND" &&
+      token.kind !== "OR" &&
+      token.kind !== ")"
+    );
+  }
+
+  private not(): ParseNode {
+    let expr = this.primary();
+    let token = this.peek();
+    while (token.kind === "NOT") {
+      token = this.consume(); // NOT
+      const right = this.primary();
+      expr = {
+        type: "not",
+        left: expr,
+        right,
+        loc: this.locRange(expr.loc, right.loc),
+      };
+    }
+    return expr;
+  }
+
+  private primary(): ParseNode {
     const token = this.peek();
     switch (token.kind) {
       case "-":
         const unaryToken = token;
-        this.next();
+        this.consume();
         if (this.eof()) {
           this._warnings.push(
             new ValidationError(
@@ -92,7 +183,7 @@ class Parser {
           );
           return { type: "text", value: "-", loc: unaryToken.loc };
         }
-        const expression = this.parseExpr();
+        const expression = this.expression();
         return {
           type: "unary",
           prefix: "-",
@@ -100,36 +191,53 @@ class Parser {
           loc: this.locRange(unaryToken.loc, expression.loc),
         };
       case "(":
-        return this.parseGroup();
+        this.consume();
+        if (this.peek().kind === ")") {
+          this.consume();
+          return { type: "true", loc: token.loc };
+        }
+        const sub = this.expression();
+        const maybeCloseParen = this.peek();
+        if (maybeCloseParen.kind !== ")") {
+          this._warnings.push(
+            new ValidationError(
+              "Expected closing parenthesis",
+              maybeCloseParen.loc,
+            ),
+          );
+        } else {
+          this.consume();
+        }
+        return sub;
       case ")":
-        this.next();
+        this.consume();
         this._warnings.push(
           new ValidationError("Unexpected ) without preceding (", token.loc),
         );
         return { type: "text", value: ")", loc: token.loc };
       case "#":
         const tagToken = token;
-        const maybeText = this.next();
+        const maybeText = this.consume();
         if (maybeText.kind !== "text") {
           this._warnings.push(
             new ValidationError("Expected a tag name after #", tagToken.loc),
           );
           return { type: "text", value: "#", loc: tagToken.loc };
         }
-        this.next();
+        this.consume();
         return {
           type: "tag",
           value: maybeText.value,
           loc: this.locRange(tagToken.loc, maybeText.loc),
         };
       case "string":
-        this.next();
+        this.consume();
         return { type: "text", value: token.value, loc: token.loc };
       case "text":
-        this.next();
+        this.consume();
         return { type: "text", value: token.value, loc: token.loc };
       case "prefix":
-        this.next();
+        this.consume();
         return this.parsePrefix(token.value);
       default:
         throw new Error(`Unexpected token: ${token.kind}`);
@@ -152,7 +260,7 @@ class Parser {
       );
       return { type: "text", value: `${prefix}:`, loc: { start, end: start } };
     }
-    this.next();
+    this.consume();
     const end = maybeText.loc.end;
     return {
       type: "prefix",
@@ -162,39 +270,11 @@ class Parser {
     };
   }
 
-  private parseGroup(): GroupNode {
-    const start = this.next().loc;
-    const children: ParseNode[] = [];
-    while (!this.eof() && this.peek().kind !== ")") {
-      children.push(this.parseExpr());
-    }
-    const maybeCloseParen = this.peek();
-    if (maybeCloseParen.kind !== ")") {
-      this._warnings.push(
-        new ValidationError(
-          "Expected closing parenthesis",
-          maybeCloseParen.loc,
-        ),
-      );
-      return {
-        type: "group",
-        children,
-        loc: this.locRange(start, maybeCloseParen.loc),
-      };
-    }
-    this.next();
-    return {
-      type: "group",
-      children,
-      loc: this.locRange(start, maybeCloseParen.loc),
-    };
-  }
-
   private peek(): Token {
     return this.current;
   }
 
-  private next(): Token {
+  private consume(): Token {
     // TODO: Handle EOF
     this.current = this.tokens[++this.nextIndex];
     return this.current;

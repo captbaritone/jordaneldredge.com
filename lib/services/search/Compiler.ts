@@ -18,6 +18,7 @@ export type SchemaConfig = {
   hasConditions: {
     [key: string]: string;
   };
+  defaultBestSort: string;
 };
 
 const SCHEMA: SchemaConfig = {
@@ -49,6 +50,7 @@ const SCHEMA: SchemaConfig = {
     archive: "json_extract(content.metadata, '$.archive')",
     comments: "json_extract(content.metadata, '$.github_comments_issue_id')",
   },
+  defaultBestSort: "page_rank DESC",
 };
 
 export function compile(
@@ -62,10 +64,13 @@ export function compile(
 }> {
   const tokenResult = lex(searchQuery);
   const parseResult = parse(tokenResult.value);
+  // console.log("AST", parseResult);
   const compiler = new Compiler(config, sort, limit);
   compiler.compile(parseResult.value);
+  const sql = compiler.serialize();
+  // console.log("SQL", sql);
   return {
-    value: { query: compiler.serialize(), params: compiler.params },
+    value: { query: sql, params: compiler.params },
     warnings: [
       ...tokenResult.warnings,
       ...parseResult.warnings,
@@ -102,17 +107,18 @@ class Compiler {
     switch (node.type) {
       case "text":
         return true;
-      case "group":
-        if (node.children.length === 0) {
-          return false;
-        }
-        return node.children.every((child) => this.isMachNode(child));
+      case "true":
+        return false;
       case "tag":
         return false;
       case "unary":
-        return this.isMachNode(node.expression);
+        return false;
       case "prefix":
         return false;
+      case "or":
+      case "and":
+      case "not":
+        return this.isMachNode(node.left) && this.isMachNode(node.right);
       default:
         // @ts-expect-error
         throw new Error(`Unknown node type: ${node.type}`);
@@ -123,18 +129,25 @@ class Compiler {
     this._hasMatch = true;
     const clause = this.matchClause(node);
     const columnList = this._config.ftsTextColumns.join(" ");
-    return `${this._config.ftsTable} MATCH ('{${columnList}}:' || ${clause} || '*')`;
+    return `${this._config.ftsTable} MATCH ('{${columnList}}: ' || ${clause} || ' *')`;
   }
 
   matchClause(node: MatchNode): string {
     switch (node.type) {
       case "text":
         return this.registerParam(this.escapeForFTS(node.value));
-      case "group":
-        const matchClauses = node.children.map((child) => {
-          return this.matchClause(child);
-        });
-        return `(${matchClauses.join(` || 'AND' || `)})`;
+      case "and":
+        const leftAnd = this.matchClause(node.left);
+        const rightAnd = this.matchClause(node.right);
+        return `(${leftAnd} || 'AND' || ${rightAnd})`;
+      case "or":
+        const leftOr = this.matchClause(node.left);
+        const rightOr = this.matchClause(node.right);
+        return `(${leftOr} || 'OR' || ${rightOr})`;
+      case "not":
+        const leftNot = this.matchClause(node.left);
+        const rightNot = this.matchClause(node.right);
+        return `(${leftNot} || 'NOT' || ${rightNot})`;
       default:
         // @ts-expect-error
         throw new Error(`Unknown node type: ${node.type}`);
@@ -142,21 +155,12 @@ class Compiler {
   }
 
   expression(node: ParseNode, toBoolean: boolean): string {
+    if (!toBoolean && this.isMachNode(node)) {
+      return this.matchExpression(node);
+    }
     switch (node.type) {
-      case "text":
-        return this.contentMatch(node.value, toBoolean);
-      case "group":
-        // TODO: What if we are boolean?
-        if (this.isMachNode(node)) {
-          return this.matchExpression(node);
-        }
-        if (node.children.length === 0) {
-          return "TRUE";
-        }
-        const groupClauses = node.children.map((child) => {
-          return this.expression(child, true);
-        });
-        return `(${groupClauses.join(`\nAND `)})`;
+      case "true":
+        return "TRUE";
       case "tag":
         // `content.tags` is a space-separated list of tags. A simple `%tag%`
         // would match substrings of tags, which is not what we want.
@@ -174,6 +178,23 @@ class Compiler {
         return `NOT (${this.expression(node.expression, true)})`;
       case "prefix":
         return this.prefix(node, toBoolean);
+      case "or":
+        const left = this.expression(node.left, true);
+        const right = this.expression(node.right, true);
+        return `(${left} OR ${right})`;
+      case "and":
+        const leftAnd = this.expression(node.left, true);
+        const rightAnd = this.expression(node.right, true);
+        return `(${leftAnd} AND ${rightAnd})`;
+      case "not":
+        if (this.isMachNode(node)) {
+          return this.matchExpression(node);
+        }
+        const leftNot = this.expression(node.left, true);
+        const rightNot = this.expression(node.right, true);
+        return `(${leftNot} NOT ${rightNot})`;
+      case "text":
+        return this.contentMatch(node.value, toBoolean);
       default:
         // @ts-expect-error
         throw new Error(`Unknown node type: ${node.type}`);
@@ -278,17 +299,18 @@ class Compiler {
 
   // TODO: Can I avoid having to write DESC multiple times?
   sort(): string {
+    const bestSort = this._config.defaultBestSort;
     switch (this._sort) {
       case "best":
         if (this._hasMatch) {
-          return `ORDER BY RANK DESC, page_rank DESC`;
+          return `ORDER BY RANK DESC, ${bestSort}`;
         }
-        return `ORDER BY page_rank DESC`;
+        return `ORDER BY ${bestSort}`;
       case "latest":
         if (this._hasMatch) {
-          return `ORDER BY ${this._config.contentTable}.DATE DESC, RANK DESC, page_rank DESC`;
+          return `ORDER BY ${this._config.contentTable}.DATE DESC, RANK DESC, ${bestSort}`;
         }
-        return `ORDER BY ${this._config.contentTable}.DATE DESC, page_rank DESC`;
+        return `ORDER BY ${this._config.contentTable}.DATE DESC, ${bestSort}`;
       default:
         throw new Error(`Unknown sort option: ${this._sort}`);
     }

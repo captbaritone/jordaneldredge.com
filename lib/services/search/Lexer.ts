@@ -11,6 +11,9 @@ export type Token =
   | { kind: ")"; loc: Loc }
   | { kind: ":"; loc: Loc }
   | { kind: "-"; loc: Loc }
+  | { kind: "AND"; loc: Loc }
+  | { kind: "OR"; loc: Loc }
+  | { kind: "NOT"; loc: Loc }
   | { kind: "eof"; loc: Loc };
 
 export function lex(input: string): Result<Token[]> {
@@ -59,6 +62,17 @@ export class Lexer {
           ) {
             text += this.input[this.pos];
             this.pos++;
+          }
+
+          if (text === "AND") {
+            tokens.push({ kind: "AND", loc: { start, end: this.pos } });
+            break;
+          } else if (text === "OR") {
+            tokens.push({ kind: "OR", loc: { start, end: this.pos } });
+            break;
+          } else if (text === "NOT") {
+            tokens.push({ kind: "NOT", loc: { start, end: this.pos } });
+            break;
           }
 
           if (text.length > 0 && this.input[this.pos] === ":") {
