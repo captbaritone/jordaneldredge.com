@@ -2,10 +2,12 @@ import "dotenv/config";
 
 import { describe, expect, test } from "vitest";
 import { compile as _compile } from "../Compiler";
-import type { SortOption } from "../Compiler";
-import { db } from "../../../db";
+import type { SchemaConfig, SortOption } from "../Compiler";
+import { db, sql } from "../../../db";
 import fs from "fs";
 import path from "path";
+import { Database } from "better-sqlite3";
+import betterSqlite from "better-sqlite3";
 
 function compile(
   queryString: string,
@@ -64,6 +66,99 @@ ${JSON.stringify(compile(input).value.params, null, 2)}
       }
     });
   }
+});
+
+test("Novel Schema", () => {
+  const config: SchemaConfig = {
+    contentTable: "content",
+    ftsTable: "content_fts",
+    ftsTextColumns: ["text"],
+    hardCodedConditions: [],
+    hasConditions: {},
+    isConditions: {},
+  };
+
+  const queryString = `Hello world`;
+
+  // In memory database for testing
+  const db: Database = betterSqlite(":memory:", {});
+
+  db.exec(sql`
+    CREATE TABLE content (
+      id INTEGER PRIMARY KEY,
+      [text] TEXT NOT NULL,
+      page_rank INTEGER NOT NULL
+    );
+
+    CREATE VIRTUAL TABLE content_fts USING FTS5 (text, content = [content]);
+
+    -- After insert trigger to populate the FTS table
+    CREATE TRIGGER content_ai AFTER INSERT ON content BEGIN
+    INSERT INTO
+      content_fts (rowid, text)
+    VALUES
+      (new.rowid, new.text);
+
+    END;
+
+    -- After delete trigger to remove from the FTS table
+    CREATE TRIGGER content_ad AFTER DELETE ON content BEGIN
+    INSERT INTO
+      content_fts (content_fts, rowid, text)
+    VALUES
+      ('delete', old.rowid, old.text);
+
+    END;
+
+    -- After update trigger to update the FTS table
+    CREATE TRIGGER content_au AFTER
+    UPDATE ON content BEGIN
+    INSERT INTO
+      content_fts (content_fts, rowid, text)
+    VALUES
+      ('update', new.rowid, new.text);
+
+    END;
+  `);
+
+  db.exec(sql`
+    INSERT INTO
+      content (id, text, page_rank)
+    VALUES
+      (1, 'A', 1),
+      (2, 'A B', 1),
+      (3, 'A B C', 1);
+  `);
+
+  function search(query: string) {
+    const compiled = _compile(query, "best", null, config);
+    const stmt = db.prepare(compiled.value.query);
+    const bound = stmt.bind(compiled.value.params);
+    return bound.all();
+  }
+
+  expect(search("C")).toMatchInlineSnapshot(`
+    [
+      {
+        "id": 3,
+        "page_rank": 1,
+        "text": "A B C",
+      },
+    ]
+  `);
+
+  expect(search("C B")).toMatchInlineSnapshot(`
+    [
+      {
+        "id": 3,
+        "page_rank": 1,
+        "text": "A B C",
+      },
+    ]
+  `);
+
+  // TODO: This crashes
+  // search("B -C");
 });
 
 // describe("sort", () => {

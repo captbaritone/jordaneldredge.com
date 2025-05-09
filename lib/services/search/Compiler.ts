@@ -1,20 +1,68 @@
 import { Result, ValidationError } from "./Diagnostics";
-import { lex, Lexer } from "./Lexer";
+import { lex } from "./Lexer";
 import { MatchNode, parse, ParseNode, PrefixNode } from "./Parser";
 
 export type SortOption = "best" | "latest";
+
+/**
+ * Defines the schema of the SQLite database used for full-text search.
+ */
+export type SchemaConfig = {
+  ftsTable: string;
+  ftsTextColumns: string[];
+  contentTable: string;
+  hardCodedConditions: string[];
+  isConditions: {
+    [key: string]: string;
+  };
+  hasConditions: {
+    [key: string]: string;
+  };
+};
+
+const SCHEMA: SchemaConfig = {
+  ftsTable: "content_fts",
+  ftsTextColumns: ["title", "content", "tags", "summary"],
+  contentTable: "content",
+  hardCodedConditions: [
+    `(json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive'))`,
+    `(json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft'))`,
+  ],
+  isConditions: {
+    blog: "content.page_type = 'post'",
+    note: "content.page_type = 'note'",
+  },
+  hasConditions: {
+    video:
+      "EXISTS (SELECT 1 FROM content_youtube WHERE content_youtube.content_id = content.id)",
+    audio:
+      "EXISTS (SELECT 1 FROM content_audio WHERE content_audio.content_id = content.id)",
+    link: "EXISTS (SELECT 1 FROM content_links WHERE content_links.content_id = content.id)",
+
+    image:
+      "EXISTS (SELECT 1 FROM content_images WHERE content_images.content_id = content.id)",
+    media:
+      "EXISTS (SELECT 1 FROM content_images WHERE content_images.content_id = content.id) OR EXISTS (SELECT 1 FROM content_audio WHERE content_audio.content_id = content.id) OR EXISTS (SELECT 1 FROM content_youtube WHERE content_youtube.content_id = content.id)",
+    tweet:
+      "EXISTS (SELECT 1 FROM content_tweets WHERE content_tweets.content_id = content.id)",
+    draft: "json_extract(content.metadata, '$.draft')",
+    archive: "json_extract(content.metadata, '$.archive')",
+    comments: "json_extract(content.metadata, '$.github_comments_issue_id')",
+  },
+};
 
 export function compile(
   searchQuery: string,
   sort: SortOption,
   limit: number | null,
+  config: SchemaConfig = SCHEMA,
 ): Result<{
   query: string;
   params: { [key: string]: string };
 }> {
   const tokenResult = lex(searchQuery);
   const parseResult = parse(tokenResult.value);
-  const compiler = new Compiler(sort, limit);
+  const compiler = new Compiler(config, sort, limit);
   compiler.compile(parseResult.value);
   return {
     value: { query: compiler.serialize(), params: compiler.params },
@@ -26,8 +74,6 @@ export function compile(
   };
 }
 
-const ALL_TEXT_COLUMNS = ["title", "content", "tags", "summary"];
-
 // Compile a search query into an SQL query with params.
 class Compiler {
   _nextParam: number = 0;
@@ -36,15 +82,18 @@ class Compiler {
   _sort: SortOption;
   _limit: number | null;
   _hasMatch: boolean = false;
+  _config: SchemaConfig;
   params: { [key: string]: string } = {};
-  constructor(sort: SortOption, limit: number | null) {
+  constructor(config: SchemaConfig, sort: SortOption, limit: number | null) {
+    this._config = config;
     this._sort = sort;
     this._limit = limit;
   }
   compile(node: ParseNode) {
     // Currently we always ignore draft and archive posts.
-    this.whereMetadataKeyIsFalsy("archive");
-    this.whereMetadataKeyIsFalsy("draft");
+    for (const condition of this._config.hardCodedConditions) {
+      this._whereClauses.push(condition);
+    }
     this._whereClauses.push(this.expression(node, false));
   }
 
@@ -73,8 +122,8 @@ class Compiler {
   matchExpression(node: MatchNode): string {
     this._hasMatch = true;
     const clause = this.matchClause(node);
-    const columnList = ALL_TEXT_COLUMNS.join(" ");
-    return `content_fts MATCH ('{${columnList}}:' || ${clause} || '*')`;
+    const columnList = this._config.ftsTextColumns.join(" ");
+    return `${this._config.ftsTable} MATCH ('{${columnList}}:' || ${clause} || '*')`;
   }
 
   matchClause(node: MatchNode): string {
@@ -115,10 +164,10 @@ class Compiler {
         // between spaces.
         const param = this.registerParam(node.value);
         const joined = [
-          `content.tags LIKE ${param}`, // This is the only tag
-          `content.tags LIKE ${param} || ' %'`, // This is the first
-          `content.tags LIKE '% ' || ${param}`, // This is the last tag
-          `content.tags LIKE '% ' || ${param} || ' %'`, // This is in the middle
+          `${this._config.contentTable}.tags LIKE ${param}`, // This is the only tag
+          `${this._config.contentTable}.tags LIKE ${param} || ' %'`, // This is the first
+          `${this._config.contentTable}.tags LIKE '% ' || ${param}`, // This is the last tag
+          `${this._config.contentTable}.tags LIKE '% ' || ${param} || ' %'`, // This is in the middle
         ].join(" OR ");
         return `(${joined})`;
       case "unary":
@@ -139,10 +188,10 @@ class Compiler {
         return this.is(node, toBoolean);
       case "after":
         const sinceParam = this.registerParam(node.value);
-        return `content.DATE > ${sinceParam}`;
+        return `${this._config.contentTable}.DATE > ${sinceParam}`;
       case "before":
         const untilParam = this.registerParam(node.value);
-        return `content.DATE < ${untilParam}`;
+        return `${this._config.contentTable}.DATE < ${untilParam}`;
       default:
         this._warnings.push(
           new ValidationError(`Unknown prefix: ${node.prefix}`, node.loc),
@@ -152,53 +201,25 @@ class Compiler {
   }
 
   has(node: PrefixNode, toBoolean: boolean): string {
-    switch (node.value) {
-      case "video":
-        return this.hasForeignReference("content_youtube");
-      case "audio":
-        return this.hasForeignReference("content_audio");
-      case "link":
-        return this.hasForeignReference("content_links");
-      case "image":
-        return this.hasForeignReference("content_images");
-      case "media":
-        return [
-          this.hasForeignReference("content_images"),
-          this.hasForeignReference("content_audio"),
-          this.hasForeignReference("content_youtube"),
-        ].join(" OR ");
-      case "tweet":
-        return this.hasForeignReference("content_tweets");
-      case "draft":
-        return this.hasMetadata("draft");
-      case "archive":
-        return this.hasMetadata("archive");
-      case "comments":
-        return this.hasMetadata("github_comments_issue_id");
-      default: {
-        this._warnings.push(
-          new ValidationError(`Unknown "has" value: ${node.value}`, node.loc),
-        );
-        return this.contentMatch(`has:${node.value}`, toBoolean);
-      }
+    const condition = this._config.hasConditions[node.value];
+    if (condition != null) {
+      return condition;
     }
+
+    this._warnings.push(
+      new ValidationError(`Unknown "has" value: ${node.value}`, node.loc),
+    );
+    return this.contentMatch(`has:${node.value}`, toBoolean);
   }
   is(node: PrefixNode, toBoolean: boolean): string {
-    switch (node.value) {
-      case "blog":
-        return "content.page_type = 'post'";
-      case "note":
-        return "content.page_type = 'note'";
-      default:
-        this._warnings.push(
-          new ValidationError(`Unknown "is" value: ${node.value}`, node.loc),
-        );
-        return this.contentMatch(`is:${node.value}`, toBoolean);
+    const condition = this._config.isConditions[node.value];
+    if (condition != null) {
+      return condition;
     }
-  }
-
-  hasForeignReference(foreignTable: string): string {
-    return `EXISTS (SELECT 1 FROM ${foreignTable} WHERE ${foreignTable}.content_id = content.id)`;
+    this._warnings.push(
+      new ValidationError(`Unknown "is" value: ${node.value}`, node.loc),
+    );
+    return this.contentMatch(`is:${node.value}`, toBoolean);
   }
 
   // Ideally we could always use a regular MATCH FTS search here. However, MATCH
@@ -217,14 +238,14 @@ class Compiler {
   // case.
   contentMatch(value: string, toBoolean: boolean): string {
     const param = this.registerParam(this.escapeForFTS(value));
-    const columnList = ALL_TEXT_COLUMNS.join(" ");
-    const condition = `content_fts MATCH ('{${columnList}}: ' || ${param} || ' *')`;
+    const columnList = this._config.ftsTextColumns.join(" ");
+    const condition = `${this._config.ftsTable} MATCH ('{${columnList}}: ' || ${param} || ' *')`;
     if (!toBoolean) {
       // Set this._hasMatch to true so we know that we can sort by MATCH rank later.
       this._hasMatch = true;
       return condition;
     } else {
-      return `content.rowid IN (SELECT content_fts.rowid FROM content_fts WHERE ${condition})`;
+      return `${this._config.contentTable}.rowid IN (SELECT ${this._config.ftsTable}.rowid FROM ${this._config.ftsTable} WHERE ${condition})`;
     }
   }
 
@@ -251,10 +272,6 @@ class Compiler {
     );
   }
 
-  hasMetadata(key: string) {
-    return `(json_extract(metadata, '$.${key}') IS NOT NULL AND json_extract(metadata, '$.${key}'))`;
-  }
-
   where(): string {
     return `WHERE ${this._whereClauses.join("\nAND ")}`;
   }
@@ -269,9 +286,9 @@ class Compiler {
         return `ORDER BY page_rank DESC`;
       case "latest":
         if (this._hasMatch) {
-          return `ORDER BY content.DATE DESC, RANK DESC, page_rank DESC`;
+          return `ORDER BY ${this._config.contentTable}.DATE DESC, RANK DESC, page_rank DESC`;
         }
-        return `ORDER BY content.DATE DESC, page_rank DESC`;
+        return `ORDER BY ${this._config.contentTable}.DATE DESC, page_rank DESC`;
       default:
         throw new Error(`Unknown sort option: ${this._sort}`);
     }
@@ -286,8 +303,8 @@ class Compiler {
   }
 
   serialize(): string {
-    return `SELECT content.* FROM content_fts
-LEFT JOIN content ON content.rowid = content_fts.rowid
+    return `SELECT ${this._config.contentTable}.* FROM ${this._config.ftsTable}
+LEFT JOIN ${this._config.contentTable} ON ${this._config.contentTable}.rowid = ${this._config.ftsTable}.rowid
 ${this.where()}
 ${this.sort()}
 ${this.limit()}`.trim();
