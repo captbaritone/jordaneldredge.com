@@ -14,49 +14,11 @@ export default async function Posts(props) {
   const searchParams = await props.searchParams;
   const sort: SortOption = searchParams.sort || "best";
   const q = (searchParams.q ?? "").toLowerCase();
-  const items = ContentConnection.search(q, sort);
-
-  return (
-    <>
-      <div className="markdown">
-        <h1>Posts</h1>
-        <div className="flex flex-wrap justify-end pb-2">
-          <p className="w-full sm:w-auto grow">
-            All <a href="/posts/?q=is:blog&sort=latest">Blogs Posts</a> and{" "}
-            <a href="/posts/?q=is:note&sort=latest">Notes</a>.
-          </p>
-          <div className="flex gap-2 items-stretch w-full sm:w-auto pb-2 sm:pb-0">
-            <div className="w-auto flex-grow">
-              <label>
-                <SearchInput
-                  query={searchParams.q ?? ""}
-                  className="w-full"
-                  autoFocus={searchParams.q != null}
-                />
-              </label>
-            </div>
-            <div className="w-auto">
-              <label>
-                <SortSelect currentParam={sort} />
-              </label>
-            </div>
-          </div>
-        </div>
-        <hr />
-      </div>
-      {items.length === 0 ? (
-        <ResultAlternative>No results found</ResultAlternative>
-      ) : (
-        items.map((post) => {
-          return <ListItem key={post.slug()} item={post} />;
-        })
-      )}
-    </>
-  );
+  return <PostsStructured q={q} sort={sort} />;
 }
 
 export function PostsStructured({ q, sort }: { q?: string; sort: SortOption }) {
-  const items = ContentConnection.search(q ?? "", sort);
+  const result = ContentConnection.searchResult(q ?? "", sort);
 
   return (
     <>
@@ -85,11 +47,24 @@ export function PostsStructured({ q, sort }: { q?: string; sort: SortOption }) {
           </div>
         </div>
         <hr />
+        {/* <div>
+          <pre>{result.sql}</pre>
+          <pre>{JSON.stringify(result.params)}</pre>
+          <ul>
+            {result.warnings.map((warning, index) => {
+              return (
+                <li key={index} className="text-red-500">
+                  {warning.message} {warning.loc.start}:{warning.loc.end}
+                </li>
+              );
+            })}
+          </ul>
+        </div> */}
       </div>
-      {items.length === 0 ? (
+      {result.value.length === 0 ? (
         <ResultAlternative>No results found</ResultAlternative>
       ) : (
-        items.map((post) => {
+        result.value.map((post) => {
           return <ListItem key={post.slug()} item={post} />;
         })
       )}

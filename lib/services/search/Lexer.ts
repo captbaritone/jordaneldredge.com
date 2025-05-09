@@ -1,4 +1,4 @@
-import { Loc, ValidationError } from "./Diagnostics";
+import { Loc, Result, ValidationError } from "./Diagnostics";
 
 export type TextToken = { kind: "text"; value: string; loc: Loc };
 
@@ -12,6 +12,12 @@ export type Token =
   | { kind: ":"; loc: Loc }
   | { kind: "-"; loc: Loc }
   | { kind: "eof"; loc: Loc };
+
+export function lex(input: string): Result<Token[]> {
+  const lexer = new Lexer(input);
+  const tokens = lexer.tokenize();
+  return { value: tokens, warnings: lexer._warnings };
+}
 
 export class Lexer {
   private pos = 0;

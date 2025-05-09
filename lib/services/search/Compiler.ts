@@ -1,4 +1,5 @@
 import { Result, ValidationError } from "./Diagnostics";
+import { lex, Lexer } from "./Lexer";
 import { MatchNode, parse, ParseNode, PrefixNode } from "./Parser";
 
 export type SortOption = "best" | "latest";
@@ -11,12 +12,17 @@ export function compile(
   query: string;
   params: { [key: string]: string };
 }> {
-  const { value: queryTree, warnings } = parse(searchQuery);
+  const tokenResult = lex(searchQuery);
+  const parseResult = parse(tokenResult.value);
   const compiler = new Compiler(sort, limit);
-  compiler.compile(queryTree);
+  compiler.compile(parseResult.value);
   return {
     value: { query: compiler.serialize(), params: compiler.params },
-    warnings: [...warnings, ...compiler._warnings],
+    warnings: [
+      ...tokenResult.warnings,
+      ...parseResult.warnings,
+      ...compiler._warnings,
+    ],
   };
 }
 

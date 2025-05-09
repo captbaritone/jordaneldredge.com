@@ -43,15 +43,10 @@ export type MatchGroupNode = {
 
 export type ParseNode = TextNode | PrefixNode | TagNode | UnaryNode | GroupNode;
 
-export function parse(input: string): Result<ParseNode> {
-  const lexer = new Lexer(input);
-  const tokens = lexer.tokenize();
+export function parse(tokens: Token[]): Result<ParseNode> {
   const parser = new Parser(tokens);
   const ast = parser.parse();
-  return {
-    value: ast,
-    warnings: [...lexer._warnings, ...parser._warnings],
-  };
+  return { value: ast, warnings: parser._warnings };
 }
 
 class Parser {
