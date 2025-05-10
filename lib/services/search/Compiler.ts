@@ -64,10 +64,10 @@ export function compile(
 }> {
   const tokenResult = lex(searchQuery);
   const parseResult = parse(tokenResult.value);
-  // console.log("AST", parseResult);
   const compiler = new Compiler(config, sort, limit);
   compiler.compile(parseResult.value);
   const sql = compiler.serialize();
+  // console.log("AST", parseResult.value);
   // console.log("SQL", sql);
   return {
     value: { query: sql, params: compiler.params },
@@ -179,20 +179,20 @@ class Compiler {
       case "prefix":
         return this.prefix(node, toBoolean);
       case "or":
-        const left = this.expression(node.left, true);
-        const right = this.expression(node.right, true);
+        const left = this.expression(node.left, toBoolean);
+        const right = this.expression(node.right, toBoolean);
         return `(${left} OR ${right})`;
       case "and":
-        const leftAnd = this.expression(node.left, true);
-        const rightAnd = this.expression(node.right, true);
+        const leftAnd = this.expression(node.left, toBoolean);
+        const rightAnd = this.expression(node.right, toBoolean);
         return `(${leftAnd} AND ${rightAnd})`;
       case "not":
         if (this.isMachNode(node)) {
           return this.matchExpression(node);
         }
-        const leftNot = this.expression(node.left, true);
+        const leftNot = this.expression(node.left, toBoolean);
         const rightNot = this.expression(node.right, true);
-        return `(${leftNot} NOT ${rightNot})`;
+        return `(${leftNot} AND NOT ${rightNot})`;
       case "text":
         return this.contentMatch(node.value, toBoolean);
       default:

@@ -55,7 +55,27 @@ export type TrueNode = {
   loc: Loc;
 };
 
-export type MatchNode = TextNode;
+type MatchAndNode = {
+  type: "and";
+  left: MatchNode;
+  right: MatchNode;
+  loc: Loc;
+};
+
+type MatchOrNode = {
+  type: "or";
+  left: MatchNode;
+  right: MatchNode;
+  loc: Loc;
+};
+type MatchNotNode = {
+  type: "not";
+  left: MatchNode;
+  right: MatchNode;
+  loc: Loc;
+};
+
+export type MatchNode = TextNode | MatchAndNode | MatchOrNode | MatchNotNode;
 
 export type ParseNode =
   | TextNode

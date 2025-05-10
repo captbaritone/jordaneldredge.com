@@ -127,7 +127,9 @@ describe("Novel Schema", () => {
     ftsTextColumns: ["text"],
     hardCodedConditions: [],
     hasConditions: {},
-    isConditions: {},
+    isConditions: {
+      A: "content.text = 'A'",
+    },
     defaultBestSort: "text",
   };
 
@@ -233,6 +235,41 @@ describe("Novel Schema", () => {
     expect(search("(A) (B)")).toMatchInlineSnapshot(`
       [
         "A B C",
+        "A B",
+      ]
+    `);
+  });
+
+  test("--A", () => {
+    expect(search("--A")).toMatchInlineSnapshot(`
+      [
+        "A",
+        "A B",
+        "A B C",
+      ]
+    `);
+  });
+  // test("A NOT -A", () => {
+  //   expect(search("A NOT -A")).toMatchInlineSnapshot();
+  // });
+  test("is:A", () => {
+    expect(search("is:A")).toMatchInlineSnapshot(`
+      [
+        "A",
+      ]
+    `);
+  });
+  test("A NOT is:A", () => {
+    expect(search("A NOT is:A")).toMatchInlineSnapshot(`
+      [
+        "A B C",
+        "A B",
+      ]
+    `);
+  });
+  test("(A NOT (C OR is:A))", () => {
+    expect(search("(A NOT (C OR is:A))")).toMatchInlineSnapshot(`
+      [
         "A B",
       ]
     `);
