@@ -1,6 +1,7 @@
 import { Loc, Result, ValidationError } from "./Diagnostics";
 
 export type TextToken = { kind: "text"; value: string; loc: Loc };
+export type UnaryToken = { kind: "-"; value: string; loc: Loc };
 
 export type Token =
   | TextToken
@@ -10,7 +11,7 @@ export type Token =
   | { kind: "("; loc: Loc }
   | { kind: ")"; loc: Loc }
   | { kind: ":"; loc: Loc }
-  | { kind: "-"; loc: Loc }
+  | UnaryToken
   | { kind: "AND"; loc: Loc }
   | { kind: "OR"; loc: Loc }
   | { kind: "NOT"; loc: Loc }

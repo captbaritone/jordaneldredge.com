@@ -275,6 +275,9 @@ describe("Novel Schema", () => {
     `);
   });
   describe("error recovery", () => {
+    test("-", () => {
+      expect(search("-")).toMatchInlineSnapshot(`[]`);
+    });
     test("NOT", () => {
       expect(search("NOT")).toMatchInlineSnapshot(`[]`);
     });

@@ -86,6 +86,8 @@ export type ParseNode =
   | NotNode
   | TrueNode;
 
+type NonEofToken = Exclude<Token, { kind: "eof" }>;
+
 export function parse(tokens: Token[]): Result<ParseNode> {
   const parser = new Parser(tokens);
   const ast = parser.parse();
@@ -106,36 +108,29 @@ class Parser {
   }
 
   parse(): ParseNode {
-    if (this.eof()) {
+    const head = this.peek();
+    if (head.kind === "eof") {
       return { type: "true", loc: { start: 0, end: 0 } };
     }
-    return this.expression();
+    return this.expression(head);
   }
 
-  private peekIsExpressionToken(): boolean {
-    return this.peekIsOrExpressionToken();
+  private expression(head: NonEofToken): ParseNode {
+    return this.or(head);
   }
 
-  private expression(): ParseNode {
-    return this.or();
-  }
-
-  peekIsOrExpressionToken(): boolean {
-    return this.peekIsAndExpressionToken();
-  }
-
-  private or(): ParseNode {
-    let expr = this.and();
+  private or(head: NonEofToken): ParseNode {
+    let expr = this.and(head);
     let token = this.peek();
     while (token.kind === "OR") {
       token = this.consumeButExpect(); // OR
-      if (this.eof()) {
+      if (token.kind === "eof") {
         this._warnings.push(
           new ValidationError("Unexpected end of input after OR", token.loc),
         );
         return expr;
       }
-      const right = this.and();
+      const right = this.and(token);
       expr = {
         type: "or",
         left: expr,
@@ -146,23 +141,19 @@ class Parser {
     return expr;
   }
 
-  peekIsAndExpressionToken(): boolean {
-    return this.peekIsNotExpressionToken();
-  }
-
-  private and(): ParseNode {
-    let expr = this.not();
+  private and(head: NonEofToken): ParseNode {
+    let expr = this.not(head);
     let token = this.peek();
     while (token.kind !== "eof") {
       if (token.kind === "AND") {
         token = this.consumeButExpect(); // AND
-        if (this.eof()) {
+        if (token.kind === "eof") {
           this._warnings.push(
             new ValidationError("Unexpected end of input after AND", token.loc),
           );
           return { type: "text", value: "AND", loc: token.loc };
         }
-        const right = this.not();
+        const right = this.not(token);
         expr = {
           type: "and",
           left: expr,
@@ -170,7 +161,7 @@ class Parser {
           loc: this.locRange(expr.loc, right.loc),
         };
       } else if (this.peekIsNotExpressionToken()) {
-        const right = this.not();
+        const right = this.not(token);
         expr = {
           type: "and",
           left: expr,
@@ -189,18 +180,18 @@ class Parser {
     return this.peekIsPrimaryExpressionToken();
   }
 
-  private not(): ParseNode {
-    let expr = this.primary();
+  private not(head: NonEofToken): ParseNode {
+    let expr = this.primary(head);
     let token = this.peek();
     while (token.kind === "NOT") {
       token = this.consumeButExpect(); // NOT
-      if (this.eof()) {
+      if (token.kind === "eof") {
         this._warnings.push(
           new ValidationError("Unexpected end of input after NOT", token.loc),
         );
         return expr;
       }
-      const right = this.primary();
+      const right = this.primary(token);
       expr = {
         type: "not",
         left: expr,
@@ -226,13 +217,12 @@ class Parser {
     }
   }
 
-  private primary(): ParseNode {
-    const token = this.peek();
+  private primary(token: NonEofToken): ParseNode {
     switch (token.kind) {
       case "-": {
         const unaryToken = token;
-        this.consumeButExpect();
-        if (this.eof()) {
+        const head = this.consumeButExpect();
+        if (head.kind === "eof") {
           this._warnings.push(
             new ValidationError(
               "Unexpected end of input after unary operator",
@@ -241,24 +231,24 @@ class Parser {
           );
           return { type: "text", value: "-", loc: unaryToken.loc };
         }
-        const expression = this.expression();
+        const expression = this.expression(head);
 
         const loc = this.locRange(unaryToken.loc, expression.loc);
         return { type: "unary", prefix: "-", expression, loc };
       }
       case "(":
-        this.consumeButExpect();
-        if (this.peek().kind === ")") {
+        const head = this.consumeButExpect();
+        if (head.kind === ")") {
           this.consume();
-          return { type: "true", loc: token.loc };
+          return { type: "true", loc: this.locRange(head.loc, head.loc) };
         }
-        if (this.eof()) {
+        if (head.kind === "eof") {
           this._warnings.push(
             new ValidationError("Unexpected end of input after (", token.loc),
           );
           return { type: "text", value: "(", loc: token.loc };
         }
-        const sub = this.expression();
+        const sub = this.expression(head);
         const maybeCloseParen = this.peek();
         if (maybeCloseParen.kind !== ")") {
           this._warnings.push(
@@ -351,9 +341,5 @@ class Parser {
     // TODO: Handle EOF
     this.current = this.tokens[++this.nextIndex];
     return this.current;
-  }
-
-  private eof(): boolean {
-    return this.current.kind === "eof";
   }
 }
