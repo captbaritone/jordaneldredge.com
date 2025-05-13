@@ -69,6 +69,7 @@ export function compile(
   const sql = compiler.serialize();
   // console.log("AST", parseResult.value);
   // console.log("SQL", sql);
+  // console.log("params", compiler.params);
   return {
     value: { query: sql, params: compiler.params },
     warnings: [
@@ -80,7 +81,7 @@ export function compile(
 }
 
 // Compile a search query into an SQL query with params.
-class Compiler {
+export class Compiler {
   _nextParam: number = 0;
   _whereClauses: string[] = [];
   _warnings: ValidationError[] = [];

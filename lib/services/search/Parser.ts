@@ -1,4 +1,3 @@
-import { g } from "vitest/dist/chunks/suite.d.FvehnV49";
 import { Loc, Result, ValidationError } from "./Diagnostics";
 import { Token as Token } from "./Lexer";
 
@@ -107,21 +106,35 @@ class Parser {
   }
 
   parse(): ParseNode {
-    const nodes: ParseNode[] = [];
     if (this.eof()) {
       return { type: "true", loc: { start: 0, end: 0 } };
     }
     return this.expression();
   }
 
+  private peekIsExpressionToken(): boolean {
+    return this.peekIsOrExpressionToken();
+  }
+
   private expression(): ParseNode {
     return this.or();
   }
+
+  peekIsOrExpressionToken(): boolean {
+    return this.peekIsAndExpressionToken();
+  }
+
   private or(): ParseNode {
     let expr = this.and();
     let token = this.peek();
     while (token.kind === "OR") {
-      token = this.consume(); // OR
+      token = this.consumeButExpect(); // OR
+      if (this.eof()) {
+        this._warnings.push(
+          new ValidationError("Unexpected end of input after OR", token.loc),
+        );
+        return expr;
+      }
       const right = this.and();
       expr = {
         type: "or",
@@ -132,12 +145,23 @@ class Parser {
     }
     return expr;
   }
+
+  peekIsAndExpressionToken(): boolean {
+    return this.peekIsNotExpressionToken();
+  }
+
   private and(): ParseNode {
     let expr = this.not();
     let token = this.peek();
     while (token.kind !== "eof") {
       if (token.kind === "AND") {
-        token = this.consume(); // AND
+        token = this.consumeButExpect(); // AND
+        if (this.eof()) {
+          this._warnings.push(
+            new ValidationError("Unexpected end of input after AND", token.loc),
+          );
+          return { type: "text", value: "AND", loc: token.loc };
+        }
         const right = this.not();
         expr = {
           type: "and",
@@ -145,7 +169,7 @@ class Parser {
           right,
           loc: this.locRange(expr.loc, right.loc),
         };
-      } else if (this.peekIsNot()) {
+      } else if (this.peekIsNotExpressionToken()) {
         const right = this.not();
         expr = {
           type: "and",
@@ -161,22 +185,21 @@ class Parser {
     return expr;
   }
 
-  private peekIsNot(): boolean {
-    const token = this.peek();
-    return (
-      token.kind !== "eof" &&
-      token.kind !== "NOT" &&
-      token.kind !== "AND" &&
-      token.kind !== "OR" &&
-      token.kind !== ")"
-    );
+  private peekIsNotExpressionToken(): boolean {
+    return this.peekIsPrimaryExpressionToken();
   }
 
   private not(): ParseNode {
     let expr = this.primary();
     let token = this.peek();
     while (token.kind === "NOT") {
-      token = this.consume(); // NOT
+      token = this.consumeButExpect(); // NOT
+      if (this.eof()) {
+        this._warnings.push(
+          new ValidationError("Unexpected end of input after NOT", token.loc),
+        );
+        return expr;
+      }
       const right = this.primary();
       expr = {
         type: "not",
@@ -188,12 +211,27 @@ class Parser {
     return expr;
   }
 
-  private primary(): ParseNode {
+  private peekIsPrimaryExpressionToken(): boolean {
     const token = this.peek();
     switch (token.kind) {
       case "-":
+      case "(":
+      case "#":
+      case "string":
+      case "text":
+      case "prefix":
+        return true;
+      default:
+        return false;
+    }
+  }
+
+  private primary(): ParseNode {
+    const token = this.peek();
+    switch (token.kind) {
+      case "-": {
         const unaryToken = token;
-        this.consume();
+        this.consumeButExpect();
         if (this.eof()) {
           this._warnings.push(
             new ValidationError(
@@ -204,17 +242,21 @@ class Parser {
           return { type: "text", value: "-", loc: unaryToken.loc };
         }
         const expression = this.expression();
-        return {
-          type: "unary",
-          prefix: "-",
-          expression,
-          loc: this.locRange(unaryToken.loc, expression.loc),
-        };
+
+        const loc = this.locRange(unaryToken.loc, expression.loc);
+        return { type: "unary", prefix: "-", expression, loc };
+      }
       case "(":
-        this.consume();
+        this.consumeButExpect();
         if (this.peek().kind === ")") {
           this.consume();
           return { type: "true", loc: token.loc };
+        }
+        if (this.eof()) {
+          this._warnings.push(
+            new ValidationError("Unexpected end of input after (", token.loc),
+          );
+          return { type: "text", value: "(", loc: token.loc };
         }
         const sub = this.expression();
         const maybeCloseParen = this.peek();
@@ -237,7 +279,7 @@ class Parser {
         return { type: "text", value: ")", loc: token.loc };
       case "#":
         const tagToken = token;
-        const maybeText = this.consume();
+        const maybeText = this.consumeButExpect();
         if (maybeText.kind !== "text") {
           this._warnings.push(
             new ValidationError("Expected a tag name after #", tagToken.loc),
@@ -245,11 +287,8 @@ class Parser {
           return { type: "text", value: "#", loc: tagToken.loc };
         }
         this.consume();
-        return {
-          type: "tag",
-          value: maybeText.value,
-          loc: this.locRange(tagToken.loc, maybeText.loc),
-        };
+        const loc = this.locRange(tagToken.loc, maybeText.loc);
+        return { type: "tag", value: maybeText.value, loc };
       case "string":
         this.consume();
         return { type: "text", value: token.value, loc: token.loc };
@@ -257,8 +296,16 @@ class Parser {
         this.consume();
         return { type: "text", value: token.value, loc: token.loc };
       case "prefix":
-        this.consume();
+        this.consumeButExpect();
         return this.parsePrefix(token.value);
+      case "AND":
+      case "OR":
+      case "NOT":
+        this.consume();
+        this._warnings.push(
+          new ValidationError(`Unexpected \`${token.kind}\` token.`, token.loc),
+        );
+        return { type: "text", value: token.kind, loc: token.loc };
       default:
         throw new Error(`Unexpected token: ${token.kind}`);
     }
@@ -295,6 +342,12 @@ class Parser {
   }
 
   private consume(): Token {
+    // TODO: Handle EOF
+    this.current = this.tokens[++this.nextIndex];
+    return this.current;
+  }
+
+  private consumeButExpect(): Token {
     // TODO: Handle EOF
     this.current = this.tokens[++this.nextIndex];
     return this.current;

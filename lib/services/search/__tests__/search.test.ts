@@ -274,6 +274,26 @@ describe("Novel Schema", () => {
       ]
     `);
   });
+  describe("error recovery", () => {
+    test("NOT", () => {
+      expect(search("NOT")).toMatchInlineSnapshot(`[]`);
+    });
+    test("AND", () => {
+      expect(search("AND")).toMatchInlineSnapshot(`[]`);
+    });
+    test("OR", () => {
+      expect(search("OR")).toMatchInlineSnapshot(`[]`);
+    });
+    test("-", () => {
+      expect(search("-")).toMatchInlineSnapshot(`[]`);
+    });
+    test("a AND", () => {
+      expect(search("a AND")).toMatchInlineSnapshot(`[]`);
+    });
+    test("a (", () => {
+      expect(search("a (")).toMatchInlineSnapshot(`[]`);
+    });
+  });
 });
 
 // describe("sort", () => {
