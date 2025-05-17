@@ -3,6 +3,7 @@ import { ContentConnection } from "../../../lib/data";
 import SortSelect from "./SortSelect";
 import SearchInput from "./SearchInput";
 import { SortOption } from "../../../lib/services/search/Compiler";
+import Link from "next/link";
 
 export async function generateMetadata(props) {
   const searchParams = await props.searchParams;
@@ -26,8 +27,8 @@ export function PostsStructured({ q, sort }: { q?: string; sort: SortOption }) {
         <h1>Posts</h1>
         <div className="flex flex-wrap justify-end pb-2">
           <p className="w-full sm:w-auto grow">
-            All <a href="/posts/?q=is:blog&sort=latest">Blogs Posts</a> and{" "}
-            <a href="/posts/?q=is:note&sort=latest">Notes</a>.
+            All <Link href="/posts/?q=is:blog&sort=latest">Blogs Posts</Link>{" "}
+            and <Link href="/posts/?q=is:note&sort=latest">Notes</Link>.
           </p>
           <div className="flex gap-2 items-stretch w-full sm:w-auto pb-2 sm:pb-0">
             <div className="w-auto flex-grow">

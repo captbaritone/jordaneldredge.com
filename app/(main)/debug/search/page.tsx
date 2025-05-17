@@ -43,15 +43,17 @@ function debugCompiler(
   };
 }
 
-function useQueryFromUrl(): [string, (query: string) => void] {
+function getInitialState() {
   if (typeof window === "undefined") {
-    return ["", () => {}];
+    return "";
   }
-  const [query, setQuery] = useState(() => {
-    const url = new URL(window.location.href);
-    const queryParam = url.searchParams.get("query");
-    return queryParam !== null ? decodeURIComponent(queryParam) : "";
-  });
+  const url = new URL(window.location.href);
+  const queryParam = url.searchParams.get("query");
+  return queryParam !== null ? decodeURIComponent(queryParam) : "";
+}
+
+function useQueryFromUrl(): [string, (query: string) => void] {
+  const [query, setQuery] = useState(getInitialState);
   const updateQuery = (newQuery: string) => {
     setQuery(newQuery);
     const url = new URL(window.location.href);
@@ -138,14 +140,7 @@ export function Details({ query }) {
       <h2>SQL</h2>
       <details>
         <summary>Click to expand</summary>
-        <Pre
-          style={{
-            whiteSpace: "pre-wrap",
-            wordWrap: "break-word",
-          }}
-        >
-          {sql}
-        </Pre>
+        <Pre>{sql}</Pre>
       </details>
       <h2>Params</h2>
       <details>
