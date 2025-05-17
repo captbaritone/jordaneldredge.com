@@ -4,6 +4,7 @@ import SortSelect from "./SortSelect";
 import SearchInput from "./SearchInput";
 import { SortOption } from "../../../lib/services/search/Compiler";
 import Link from "next/link";
+import KeyboardList from "../../../lib/components/KeyboardList";
 
 export async function generateMetadata(props) {
   const searchParams = await props.searchParams;
@@ -65,9 +66,16 @@ export function PostsStructured({ q, sort }: { q?: string; sort: SortOption }) {
       {result.value.length === 0 ? (
         <ResultAlternative>No results found</ResultAlternative>
       ) : (
-        result.value.map((post) => {
-          return <ListItem key={post.slug()} item={post} />;
-        })
+        <KeyboardList key={q}>
+          {result.value.map((post) => {
+            const url = post.url().path();
+            return {
+              component: <ListItem key={post.slug()} item={post} />,
+              key: url,
+              url,
+            };
+          })}
+        </KeyboardList>
       )}
     </>
   );

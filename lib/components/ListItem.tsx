@@ -41,7 +41,7 @@ export function ListItem({
 }: Props) {
   return (
     <>
-      <div className="my-4 flex justify-between gap-4">
+      <div className="py-4 flex justify-between gap-4">
         <div>
           <h2 className="font-large font-semibold">
             <Link

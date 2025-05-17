@@ -1,6 +1,7 @@
 import SearchInput from "./searchInput";
 import ListItem from "../../../lib/components/ListItem";
 import { ContentConnection } from "../../../lib/data";
+import KeyboardList from "../../../lib/components/KeyboardList";
 
 export async function generateMetadata(props) {
   const searchParams = await props.searchParams;
@@ -30,9 +31,16 @@ function Results({ query }) {
   }
   return (
     <div>
-      {listable.map((listable) => {
-        return <ListItem key={listable.url().path()} item={listable} />;
-      })}
+      <KeyboardList key={query}>
+        {listable.map((listable) => {
+          const url = listable.url().path();
+          return {
+            component: <ListItem item={listable} />,
+            key: url,
+            url,
+          };
+        })}
+      </KeyboardList>
     </div>
   );
 }
