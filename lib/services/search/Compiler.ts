@@ -130,7 +130,7 @@ export class Compiler {
     this._hasMatch = true;
     const clause = this.matchClause(node);
     const columnList = this._config.ftsTextColumns.join(" ");
-    return `${this._config.ftsTable} MATCH ('{${columnList}}: ' || ${clause} || ' *')`;
+    return `${this._config.ftsTable} MATCH ('{${columnList}}: ' || (${clause}))`;
   }
 
   matchClause(node: MatchNode): string {
@@ -261,7 +261,7 @@ export class Compiler {
   contentMatch(value: string, toBoolean: boolean): string {
     const param = this.registerParam(this.escapeForFTS(value));
     const columnList = this._config.ftsTextColumns.join(" ");
-    const condition = `${this._config.ftsTable} MATCH ('{${columnList}}: ' || ${param} || ' *')`;
+    const condition = `${this._config.ftsTable} MATCH ('{${columnList}}: ' || ${param})`;
     if (!toBoolean) {
       // Set this._hasMatch to true so we know that we can sort by MATCH rank later.
       this._hasMatch = true;

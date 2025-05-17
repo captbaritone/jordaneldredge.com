@@ -79,7 +79,8 @@ function createSearchIndexWithTriggers(
   db.exec(sql`
     CREATE VIRTUAL TABLE ${ftsTable} USING FTS5 (
       text,
-      ${contentTable} = [${contentTable}]
+      ${contentTable} = [${contentTable}],
+      tokenize = porter
     );
 
     -- After insert trigger to populate the FTS table
@@ -119,6 +120,68 @@ function createSearchIndexWithTriggers(
     END;
   `);
 }
+
+describe("Cats and Dogs", () => {
+  const config: SchemaConfig = {
+    contentTable: "content",
+    ftsTable: "content_fts",
+    ftsTextColumns: ["text"],
+    hardCodedConditions: [],
+    hasConditions: {},
+    isConditions: {},
+    defaultBestSort: "text",
+  };
+  // In memory database for testing
+  const db: Database = betterSqlite(":memory:", {});
+  db.exec(sql`
+    CREATE TABLE content (id INTEGER PRIMARY KEY, [text] TEXT NOT NULL);
+  `);
+
+  createSearchIndexWithTriggers(db, "content_fts", "content", ["text"]);
+
+  db.exec(sql`
+    INSERT INTO
+      content (text)
+    VALUES
+      ('cats and dogs'),
+      ('cats like to eat hotdogs'),
+      ('hotdogs are delicious'),
+      ('dogs are cute'),
+      ('cats are cute');
+  `);
+
+  function search(query: string) {
+    const compiled = _compile(query, "best", null, config);
+    const stmt = db.prepare(compiled.value.query);
+    const bound = stmt.bind(compiled.value.params);
+    console.log(compiled.value.query, compiled.value.params);
+    return bound.all().map((row: any) => row.text);
+  }
+
+  // const query = "cat OR (dog AND !hotdog)";
+  const query = "cat OR dog";
+  test(query, () => {
+    expect(search(query)).toMatchInlineSnapshot(`
+      [
+        "cats like to eat hotdogs",
+        "cats are cute",
+        "dogs are cute",
+        "cats and dogs",
+      ]
+    `);
+  });
+
+  const query2 = "cat OR (dog NOT cute)";
+  test(query2, () => {
+    expect(search(query2)).toMatchInlineSnapshot(`
+      [
+        "cats like to eat hotdogs",
+        "cats are cute",
+        "cats and dogs",
+      ]
+    `);
+  });
+});
 
 describe("Novel Schema", () => {
   const config: SchemaConfig = {
