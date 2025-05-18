@@ -126,7 +126,7 @@ class Parser {
     let expr = this.and(head);
     let token = this.peek();
     while (token.kind === "OR") {
-      token = this.consumeButExpect(); // OR
+      token = this.consume(); // OR
       if (token.kind === "eof") {
         this._warnings.push(
           new ValidationError("Unexpected end of input after OR", token.loc),
@@ -149,7 +149,7 @@ class Parser {
     let token = this.peek();
     while (token.kind !== "eof") {
       if (token.kind === "AND") {
-        token = this.consumeButExpect(); // AND
+        token = this.consume(); // AND
         if (token.kind === "eof") {
           this._warnings.push(
             new ValidationError("Unexpected end of input after AND", token.loc),
@@ -187,7 +187,7 @@ class Parser {
     let expr = this.primary(head);
     let token = this.peek();
     while (token.kind === "NOT") {
-      token = this.consumeButExpect(); // NOT
+      token = this.consume(); // NOT
       if (token.kind === "eof") {
         this._warnings.push(
           new ValidationError("Unexpected end of input after NOT", token.loc),
@@ -224,7 +224,7 @@ class Parser {
     switch (token.kind) {
       case "-": {
         const unaryToken = token;
-        const head = this.consumeButExpect();
+        const head = this.consume();
         if (head.kind === "eof") {
           this._warnings.push(
             new ValidationError(
@@ -240,7 +240,7 @@ class Parser {
         return { type: "unary", prefix: "-", expression, loc };
       }
       case "(":
-        const head = this.consumeButExpect();
+        const head = this.consume();
         if (head.kind === ")") {
           this.consume();
           return { type: "true", loc: this.locRange(head.loc, head.loc) };
@@ -274,7 +274,7 @@ class Parser {
       }
       case "#":
         const tagToken = token;
-        const maybeText = this.consumeButExpect();
+        const maybeText = this.consume();
         if (maybeText.kind !== "text") {
           this._warnings.push(
             new ValidationError("Expected a tag name after #", tagToken.loc),
@@ -297,7 +297,7 @@ class Parser {
         const isEof = this.peek().kind === "eof";
         return { type: "text", value: token.value, loc: token.loc, isEof };
       case "prefix":
-        this.consumeButExpect();
+        this.consume();
         return this.parsePrefix(token.value);
       case "AND":
       case "OR":
@@ -351,12 +351,6 @@ class Parser {
   }
 
   private consume(): Token {
-    // TODO: Handle EOF
-    this.current = this.tokens[++this.nextIndex];
-    return this.current;
-  }
-
-  private consumeButExpect(): Token {
     // TODO: Handle EOF
     this.current = this.tokens[++this.nextIndex];
     return this.current;
