@@ -136,7 +136,8 @@ export class Compiler {
   matchClause(node: MatchNode): string {
     switch (node.type) {
       case "text":
-        return this.registerParam(this.escapeForFTS(node.value));
+        const param = this.registerParam(this.escapeForFTS(node.value));
+        return node.isEof ? `${param} || ' *'` : param;
       case "and":
         const leftAnd = this.matchClause(node.left);
         const rightAnd = this.matchClause(node.right);

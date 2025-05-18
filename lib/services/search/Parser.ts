@@ -4,6 +4,9 @@ import { Token as Token } from "./Lexer";
 export type TextNode = {
   type: "text";
   value: string;
+  // true if this string ends with the EOF token. This information can
+  // allow the compiler to model this string as a prefix query.
+  isEof: boolean;
   loc: Loc;
 };
 
@@ -151,7 +154,7 @@ class Parser {
           this._warnings.push(
             new ValidationError("Unexpected end of input after AND", token.loc),
           );
-          return { type: "text", value: "AND", loc: token.loc };
+          return { type: "text", value: "AND", loc: token.loc, isEof: true };
         }
         const right = this.not(token);
         expr = {
@@ -229,7 +232,7 @@ class Parser {
               unaryToken.loc,
             ),
           );
-          return { type: "text", value: "-", loc: unaryToken.loc };
+          return { type: "text", value: "-", loc: unaryToken.loc, isEof: true };
         }
         const expression = this.expression(head);
 
@@ -246,7 +249,7 @@ class Parser {
           this._warnings.push(
             new ValidationError("Unexpected end of input after (", token.loc),
           );
-          return { type: "text", value: "(", loc: token.loc };
+          return { type: "text", value: "(", loc: token.loc, isEof: true };
         }
         const sub = this.expression(head);
         const maybeCloseParen = this.peek();
@@ -261,12 +264,14 @@ class Parser {
           this.consume();
         }
         return sub;
-      case ")":
+      case ")": {
         this.consume();
         this._warnings.push(
           new ValidationError("Unexpected ) without preceding (", token.loc),
         );
-        return { type: "text", value: ")", loc: token.loc };
+        const isEof = this.peek().kind === "eof";
+        return { type: "text", value: ")", loc: token.loc, isEof };
+      }
       case "#":
         const tagToken = token;
         const maybeText = this.consumeButExpect();
@@ -274,28 +279,36 @@ class Parser {
           this._warnings.push(
             new ValidationError("Expected a tag name after #", tagToken.loc),
           );
-          return { type: "text", value: "#", loc: tagToken.loc };
+          return { type: "text", value: "#", loc: tagToken.loc, isEof: true };
         }
         this.consume();
         const loc = this.locRange(tagToken.loc, maybeText.loc);
         return { type: "tag", value: maybeText.value, loc };
       case "string":
         this.consume();
-        return { type: "text", value: token.value, loc: token.loc };
+        return {
+          type: "text",
+          value: token.value,
+          loc: token.loc,
+          isEof: false,
+        };
       case "text":
         this.consume();
-        return { type: "text", value: token.value, loc: token.loc };
+        const isEof = this.peek().kind === "eof";
+        return { type: "text", value: token.value, loc: token.loc, isEof };
       case "prefix":
         this.consumeButExpect();
         return this.parsePrefix(token.value);
       case "AND":
       case "OR":
-      case "NOT":
+      case "NOT": {
         this.consume();
         this._warnings.push(
           new ValidationError(`Unexpected \`${token.kind}\` token.`, token.loc),
         );
-        return { type: "text", value: token.kind, loc: token.loc };
+        const isEof = this.peek().kind === "eof";
+        return { type: "text", value: token.kind, loc: token.loc, isEof };
+      }
       default:
         throw new Error(`Unexpected token: ${token.kind}`);
     }
@@ -315,7 +328,13 @@ class Parser {
           this.peek().loc,
         ),
       );
-      return { type: "text", value: `${prefix}:`, loc: { start, end: start } };
+      const isEof = this.peek().kind === "eof";
+      return {
+        type: "text",
+        value: `${prefix}:`,
+        loc: { start, end: start },
+        isEof,
+      };
     }
     this.consume();
     const end = maybeText.loc.end;
