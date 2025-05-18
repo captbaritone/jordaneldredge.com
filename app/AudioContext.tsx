@@ -1,53 +1,9 @@
 "use client";
 import { useContext, useEffect, useState } from "react";
 import React from "react";
+import { AudioState } from "./AudioState";
 
-class AudioState extends EventTarget {
-  _url = null;
-  constructor() {
-    super();
-    this._audio = typeof window !== "undefined" ? new window.Audio() : null;
-  }
-
-  url() {
-    return this._url;
-  }
-
-  pause() {
-    this._audio.pause();
-  }
-
-  resume() {
-    this._audio.play();
-  }
-
-  play(src) {
-    this._audio.src = src;
-    this._url = src;
-    this.dispatchEvent(new CustomEvent("urlchange"));
-    this._audio.play();
-  }
-
-  stop() {
-    this._audio.pause();
-    this._url = null;
-    this.dispatchEvent(new CustomEvent("urlchange"));
-  }
-
-  toggleMute() {
-    this._audio.volume = 0;
-  }
-
-  setVolume(volume) {
-    this._audio.volume = volume;
-  }
-
-  setProgressPercent(percent) {
-    this._audio.currentTime = this._audio.duration * percent;
-  }
-}
-
-export const AudioContext = React.createContext(null);
+const AudioContext = React.createContext<AudioState | null>(null);
 
 export default function AudioContextProvider({ children }) {
   const [state, _] = useState(() => new AudioState());
@@ -57,12 +13,18 @@ export default function AudioContextProvider({ children }) {
   );
 }
 
-export function useAudioContext() {
-  return useContext(AudioContext);
+export function useAudioContext(): AudioState {
+  const state = useContext(AudioContext);
+  if (!state) {
+    throw new Error(
+      "useAudioContext must be used within an AudioContextProvider",
+    );
+  }
+  return state;
 }
 
-function useAudioSrc() {
-  const audioContext = useContext(AudioContext);
+function useAudioSrc(): HTMLAudioElement {
+  const audioContext = useAudioContext();
   return audioContext._audio;
 }
 
@@ -102,9 +64,9 @@ export function usePlaying() {
 }
 
 export function useCurrentTrack() {
-  const audioContext = useContext(AudioContext);
+  const audioContext = useAudioContext();
   const audioSrc = audioContext._audio;
-  const [currentTrack, setCurrentTrack] = useState(null);
+  const [currentTrack, setCurrentTrack] = useState<string | null>(null);
   useEffect(() => {
     function handlePlay() {
       setCurrentTrack(audioContext.url());

@@ -2,13 +2,13 @@
 import React from "react";
 import { FaPlay, FaPause, FaDownload } from "react-icons/fa";
 import {
-  AudioContext,
+  useAudioContext,
   usePlaying,
   useCurrentTrack,
 } from "../../app/AudioContext";
 
 export default function AudioPlayer({ src }) {
-  const audioContext = React.useContext(AudioContext);
+  const audioContext = useAudioContext();
   const currentTrack = useCurrentTrack();
   const playing = usePlaying();
   const isPlaying = currentTrack?.endsWith(src) && playing;
