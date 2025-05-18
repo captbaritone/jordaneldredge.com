@@ -1,14 +1,22 @@
 "use client";
 
 export class AudioState extends EventTarget {
-  _audio: HTMLAudioElement;
+  _audio: HTMLAudioElement | null;
   _url: null | string = null;
   constructor() {
     super();
-    if (typeof window === "undefined") {
-      throw new Error("AudioState can only be used in a browser environment");
+    if (typeof window !== "undefined") {
+      this._audio = new window.Audio();
+    } else {
+      this._audio = null;
     }
-    this._audio = new window.Audio();
+  }
+
+  audio() {
+    if (!this._audio) {
+      throw new Error("Audio is not available");
+    }
+    return this._audio;
   }
 
   url() {
@@ -16,35 +24,35 @@ export class AudioState extends EventTarget {
   }
 
   pause() {
-    this._audio.pause();
+    this.audio().pause();
   }
 
   resume(): Promise<void> {
-    return this._audio.play();
+    return this.audio().play();
   }
 
   play(src: string): Promise<void> {
-    this._audio.src = src;
+    this.audio().src = src;
     this._url = src;
     this.dispatchEvent(new CustomEvent("urlchange"));
-    return this._audio.play();
+    return this.audio().play();
   }
 
   stop() {
-    this._audio.pause();
+    this.audio().pause();
     this._url = null;
     this.dispatchEvent(new CustomEvent("urlchange"));
   }
 
   toggleMute() {
-    this._audio.volume = 0;
+    this.audio().volume = 0;
   }
 
   setVolume(volume: number) {
-    this._audio.volume = volume;
+    this.audio().volume = volume;
   }
 
   setProgressPercent(percent: number) {
-    this._audio.currentTime = this._audio.duration * percent;
+    this.audio().currentTime = this.audio().duration * percent;
   }
 }
