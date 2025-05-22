@@ -23,6 +23,7 @@ export async function generateMetadata(props): Promise<Metadata> {
       description: note.summary() || note.title(),
     },
     openGraph: {
+      url: note.url().fullyQualified(),
       title: note.title(),
       images: summaryImage ? [{ url: summaryImage }] : [],
       type: "article",

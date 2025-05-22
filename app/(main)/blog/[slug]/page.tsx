@@ -18,6 +18,7 @@ export async function generateMetadata(props) {
       description: post.summary() || post.title(),
     },
     openGraph: {
+      url: post.url().fullyQualified(),
       title: post.title(),
       images: summaryImage ? [{ url: summaryImage }] : [],
       type: "article",
