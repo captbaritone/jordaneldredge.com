@@ -63,22 +63,20 @@ export function ListItem({
           {children}
         </div>
         {summaryImage ? (
-          <div
-            className="h-28 md:h-32 aspect-square sm:aspect-video relative"
-            style={{
-              boxShadow: "2px 2px 5px rgba(0, 0, 0, 0.4)",
-            }}
-          >
-            <Link href={url}>
+          <Link href={url}>
+            <span className="h-28 md:h-32 aspect-square sm:aspect-video relative block">
               <Image
                 alt=""
                 fill
+                style={{
+                  boxShadow: "2px 2px 5px rgba(0, 0, 0, 0.4)",
+                }}
                 sizes="(max-width: 768px) 171px, 228px"
                 src={summaryImage}
                 className="object-cover shadow-sm"
               />
-            </Link>
-          </div>
+            </span>
+          </Link>
         ) : null}
       </div>
       <hr />
