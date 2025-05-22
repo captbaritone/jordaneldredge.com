@@ -5,6 +5,7 @@ import SearchInput from "./SearchInput";
 import { SortOption } from "../../../lib/services/search/Compiler";
 import Link from "next/link";
 import KeyboardList from "../../../lib/components/KeyboardList";
+import { ReactNode } from "react";
 
 export async function generateMetadata(props) {
   const searchParams = await props.searchParams;
@@ -19,18 +20,32 @@ export default async function Posts(props) {
   return <PostsStructured q={q} sort={sort} />;
 }
 
-export function PostsStructured({ q, sort }: { q?: string; sort: SortOption }) {
+type Props = {
+  q?: string;
+  sort: SortOption;
+  title?: string;
+  description?: ReactNode;
+};
+
+export function PostsStructured({
+  q,
+  sort,
+  title = "Posts",
+  description = (
+    <>
+      All <Link href="/posts/?q=is:blog&sort=latest">Blogs Posts</Link> and{" "}
+      <Link href="/posts/?q=is:note&sort=latest">Notes</Link>.
+    </>
+  ),
+}: Props) {
   const result = ContentConnection.searchResult(q ?? "", sort);
 
   return (
     <>
       <div className="markdown">
-        <h1>Posts</h1>
+        <h1>{title}</h1>
         <div className="flex flex-wrap justify-end pb-2">
-          <p className="w-full sm:w-auto grow">
-            All <Link href="/posts/?q=is:blog&sort=latest">Blogs Posts</Link>{" "}
-            and <Link href="/posts/?q=is:note&sort=latest">Notes</Link>.
-          </p>
+          <p className="w-full sm:w-auto grow">{description}</p>
           <div className="flex gap-2 items-stretch w-full sm:w-auto pb-2 sm:pb-0">
             <div className="w-auto flex-grow">
               <label>
@@ -49,19 +64,6 @@ export function PostsStructured({ q, sort }: { q?: string; sort: SortOption }) {
           </div>
         </div>
         <hr />
-        {/* <div>
-          <pre>{result.sql}</pre>
-          <pre>{JSON.stringify(result.params)}</pre>
-          <ul>
-            {result.warnings.map((warning, index) => {
-              return (
-                <li key={index} className="text-red-500">
-                  {warning.message} {warning.loc.start}:{warning.loc.end}
-                </li>
-              );
-            })}
-          </ul>
-        </div> */}
       </div>
       {result.value.length === 0 ? (
         <ResultAlternative>No results found</ResultAlternative>
