@@ -4,6 +4,7 @@
 module.exports = {
   experimental: {
     scrollRestoration: true,
+    viewTransition: true,
   },
   // // https://github.com/shikijs/next-shiki
   serverExternalPackages: ["shiki", "vscode-oniguruma"],
