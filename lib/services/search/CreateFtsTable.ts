@@ -1,12 +1,14 @@
 import { Database } from "better-sqlite3";
 import { sql } from "../../sql";
+import { SchemaConfig } from "./Compiler";
 
 export function createSearchIndexWithTriggers(
   db: Database,
-  ftsTable: string,
-  contentTable: string,
-  rows: string[],
+  config: SchemaConfig,
 ) {
+  const rows = config.ftsTextColumns;
+  const ftsTable = config.ftsTable;
+  const contentTable = config.contentTable;
   const newRows = rows.map((row) => `new.${row}`).join(", ");
   const oldRows = rows.map((row) => `old.${row}`).join(", ");
   const rawRows = rows.map((row) => `${row}`).join(", ");

@@ -12,52 +12,16 @@ export type SchemaConfig = {
   ftsTextColumns: string[];
   contentTable: string;
   hardCodedConditions: string[];
-  isConditions: {
-    [key: string]: string;
-  };
-  hasConditions: {
-    [key: string]: string;
-  };
+  keyValueCondition(key: string, value: string): string | null;
+  tagCondition(tagNameParam: string): string | null;
   defaultBestSort: string;
 };
 
-const SCHEMA: SchemaConfig = {
-  ftsTable: "content_fts_2",
-  ftsTextColumns: ["title", "content", "tags", "summary"],
-  contentTable: "content",
-  hardCodedConditions: [
-    `(json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive'))`,
-    `(json_extract(metadata, '$.draft') IS NULL OR NOT json_extract(metadata, '$.draft'))`,
-  ],
-  isConditions: {
-    blog: "content.page_type = 'post'",
-    note: "content.page_type = 'note'",
-  },
-  hasConditions: {
-    video:
-      "EXISTS (SELECT 1 FROM content_youtube WHERE content_youtube.content_id = content.id)",
-    audio:
-      "EXISTS (SELECT 1 FROM content_audio WHERE content_audio.content_id = content.id)",
-    link: "EXISTS (SELECT 1 FROM content_links WHERE content_links.content_id = content.id)",
-
-    image:
-      "EXISTS (SELECT 1 FROM content_images WHERE content_images.content_id = content.id)",
-    media:
-      "EXISTS (SELECT 1 FROM content_images WHERE content_images.content_id = content.id) OR EXISTS (SELECT 1 FROM content_audio WHERE content_audio.content_id = content.id) OR EXISTS (SELECT 1 FROM content_youtube WHERE content_youtube.content_id = content.id)",
-    tweet:
-      "EXISTS (SELECT 1 FROM content_tweets WHERE content_tweets.content_id = content.id)",
-    draft: "json_extract(content.metadata, '$.draft')",
-    archive: "json_extract(content.metadata, '$.archive')",
-    comments: "json_extract(content.metadata, '$.github_comments_issue_id')",
-  },
-  defaultBestSort: "page_rank DESC",
-};
-
 export function compile(
+  config: SchemaConfig,
   searchQuery: string,
   sort: SortOption,
   limit: number | null,
-  config: SchemaConfig = SCHEMA,
 ): Result<{
   query: string;
   params: { [key: string]: string };
@@ -169,13 +133,14 @@ export class Compiler {
         // We need to match the tag at the start or end of the string, or
         // between spaces.
         const param = this.registerParam(node.value);
-        const joined = [
-          `${this._config.contentTable}.tags LIKE ${param}`, // This is the only tag
-          `${this._config.contentTable}.tags LIKE ${param} || ' %'`, // This is the first
-          `${this._config.contentTable}.tags LIKE '% ' || ${param}`, // This is the last tag
-          `${this._config.contentTable}.tags LIKE '% ' || ${param} || ' %'`, // This is in the middle
-        ].join(" OR ");
-        return `(${joined})`;
+        const condition = this._config.tagCondition(param);
+        if (condition != null) {
+          return condition;
+        }
+        this._warnings.push(
+          new ValidationError(`Unknown tag: ${node.value}`, node.loc),
+        );
+        return this.contentMatch(`#${node.value}`, toBoolean);
       case "unary":
         return `NOT (${this.expression(node.expression, true)})`;
       case "prefix":
@@ -205,10 +170,6 @@ export class Compiler {
 
   prefix(node: PrefixNode, toBoolean: boolean): string {
     switch (node.prefix) {
-      case "has":
-        return this.has(node, toBoolean);
-      case "is":
-        return this.is(node, toBoolean);
       case "after":
         const sinceParam = this.registerParam(node.value);
         return `${this._config.contentTable}.DATE > ${sinceParam}`;
@@ -216,33 +177,22 @@ export class Compiler {
         const untilParam = this.registerParam(node.value);
         return `${this._config.contentTable}.DATE < ${untilParam}`;
       default:
-        this._warnings.push(
-          new ValidationError(`Unknown prefix: ${node.prefix}`, node.loc),
-        );
-        return this.contentMatch(`${node.prefix}:${node.value}`, toBoolean);
+        return this.keyValue(node, toBoolean);
     }
   }
 
-  has(node: PrefixNode, toBoolean: boolean): string {
-    const condition = this._config.hasConditions[node.value];
-    if (condition != null) {
-      return condition;
-    }
-
-    this._warnings.push(
-      new ValidationError(`Unknown "has" value: ${node.value}`, node.loc),
-    );
-    return this.contentMatch(`has:${node.value}`, toBoolean);
-  }
-  is(node: PrefixNode, toBoolean: boolean): string {
-    const condition = this._config.isConditions[node.value];
+  keyValue(node: PrefixNode, toBoolean: boolean): string {
+    const condition = this._config.keyValueCondition(node.prefix, node.value);
     if (condition != null) {
       return condition;
     }
     this._warnings.push(
-      new ValidationError(`Unknown "is" value: ${node.value}`, node.loc),
+      new ValidationError(
+        `Unknown key-value pair: ${node.prefix}:${node.value}`,
+        node.loc,
+      ),
     );
-    return this.contentMatch(`is:${node.value}`, toBoolean);
+    return this.contentMatch(`${node.prefix}:${node.value}`, toBoolean);
   }
 
   // Ideally we could always use a regular MATCH FTS search here. However, MATCH

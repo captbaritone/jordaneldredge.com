@@ -4,7 +4,8 @@ import { compile } from "../services/search/Compiler";
 import Content, { ContentDBRow } from "./Content";
 import { PageType } from "./Indexable";
 import { Tag } from "./Tag";
-import { Result, ValidationError } from "../services/search/Diagnostics";
+import { ValidationError } from "../services/search/Diagnostics";
+import { SCHEMA } from "../services/search/CompilerConfig";
 
 /** @gqlEnum */
 type SortOption = "best" | "latest";
@@ -44,6 +45,7 @@ export default class ContentConnection {
     params: Record<string, unknown>;
   } {
     const compiledResult = compile(
+      SCHEMA,
       query,
       sort,
       first === undefined ? 20 : first,

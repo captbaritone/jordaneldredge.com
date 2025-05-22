@@ -14,8 +14,12 @@ const config: SchemaConfig = {
   ftsTextColumns: ["text"],
   contentTable: "content",
   hardCodedConditions: [],
-  isConditions: {},
-  hasConditions: {},
+  keyValueCondition(key: string, value: string): string | null {
+    return null;
+  },
+  tagCondition(param: string): string | null {
+    return null;
+  },
   defaultBestSort: "",
 };
 

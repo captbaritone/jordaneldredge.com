@@ -9,13 +9,14 @@ import path from "path";
 import { Database } from "better-sqlite3";
 import betterSqlite from "better-sqlite3";
 import { createSearchIndexWithTriggers } from "../CreateFtsTable";
+import { SCHEMA } from "../CompilerConfig";
 
 function compile(
   queryString: string,
   sort: SortOption = "best",
   limit?: number,
 ) {
-  const query = _compile(queryString, sort, limit ?? null);
+  const query = _compile(SCHEMA, queryString, sort, limit ?? null);
   const stmt = db.prepare(query.value.query);
   const bound = stmt.bind(query.value.params);
   bound.all();
@@ -75,8 +76,12 @@ describe("Cats and Dogs", () => {
     ftsTable: "content_fts",
     ftsTextColumns: ["text"],
     hardCodedConditions: [],
-    hasConditions: {},
-    isConditions: {},
+    tagCondition(tag: string) {
+      return null;
+    },
+    keyValueCondition(key: string, value: string) {
+      return null;
+    },
     defaultBestSort: "text",
   };
   // In memory database for testing
@@ -85,7 +90,7 @@ describe("Cats and Dogs", () => {
     CREATE TABLE content (id INTEGER PRIMARY KEY, [text] TEXT NOT NULL);
   `);
 
-  createSearchIndexWithTriggers(db, "content_fts", "content", ["text"]);
+  createSearchIndexWithTriggers(db, config);
 
   db.exec(sql`
     INSERT INTO
@@ -99,7 +104,7 @@ describe("Cats and Dogs", () => {
   `);
 
   function search(query: string) {
-    const compiled = _compile(query, "best", null, config);
+    const compiled = _compile(config, query, "best", null);
     const stmt = db.prepare(compiled.value.query);
     const bound = stmt.bind(compiled.value.params);
     console.log(compiled.value.query, compiled.value.params);
@@ -137,9 +142,14 @@ describe("Novel Schema", () => {
     ftsTable: "content_fts",
     ftsTextColumns: ["text"],
     hardCodedConditions: [],
-    hasConditions: {},
-    isConditions: {
-      A: "content.text = 'A'",
+    tagCondition(tag: string) {
+      return null;
+    },
+    keyValueCondition(key: string, value: string) {
+      if (key === "is" && value === "A") {
+        return "content.text = 'A'";
+      }
+      return null;
     },
     defaultBestSort: "text",
   };
@@ -151,7 +161,7 @@ describe("Novel Schema", () => {
     CREATE TABLE content (id INTEGER PRIMARY KEY, [text] TEXT NOT NULL);
   `);
 
-  createSearchIndexWithTriggers(db, "content_fts", "content", ["text"]);
+  createSearchIndexWithTriggers(db, config);
 
   db.exec(sql`
     INSERT INTO
@@ -165,7 +175,7 @@ describe("Novel Schema", () => {
   `);
 
   function search(query: string) {
-    const compiled = _compile(query, "best", null, config);
+    const compiled = _compile(config, query, "best", null);
     const stmt = db.prepare(compiled.value.query);
     const bound = stmt.bind(compiled.value.params);
     return bound.all().map((row: any) => row.text);
