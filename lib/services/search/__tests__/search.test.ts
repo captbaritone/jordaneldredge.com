@@ -8,6 +8,7 @@ import fs from "fs";
 import path from "path";
 import { Database } from "better-sqlite3";
 import betterSqlite from "better-sqlite3";
+import { createSearchIndexWithTriggers } from "../CreateFtsTable";
 
 function compile(
   queryString: string,
@@ -67,59 +68,6 @@ ${JSON.stringify(compile(input).value.params, null, 2)}
     });
   }
 });
-
-function createSearchIndexWithTriggers(
-  db: Database,
-  ftsTable: string,
-  contentTable: string,
-  rows: string[],
-) {
-  const newRows = rows.map((row) => `new.${row}`).join(", ");
-  const oldRows = rows.map((row) => `old.${row}`).join(", ");
-  db.exec(sql`
-    CREATE VIRTUAL TABLE ${ftsTable} USING FTS5 (
-      text,
-      ${contentTable} = [${contentTable}],
-      tokenize = porter
-    );
-
-    -- After insert trigger to populate the FTS table
-    CREATE TRIGGER fts_ai AFTER INSERT ON ${contentTable} BEGIN
-    INSERT INTO
-      ${ftsTable} (rowid, text)
-    VALUES
-      (new.rowid, ${newRows});
-
-    END;
-
-    -- After delete trigger to remove from the FTS table
-    CREATE TRIGGER fts_ad AFTER DELETE ON ${contentTable} BEGIN
-    INSERT INTO
-      ${ftsTable} (${ftsTable}, rowid, text)
-    VALUES
-      (
-        'delete',
-        old.rowid,
-        ${oldRows}
-      );
-
-    END;
-
-    -- After update trigger to update the FTS table
-    CREATE TRIGGER fts_au AFTER
-    UPDATE ON ${contentTable} BEGIN
-    INSERT INTO
-      ${ftsTable} (${ftsTable}, rowid, text)
-    VALUES
-      (
-        'update',
-        new.rowid,
-        ${newRows}
-      );
-
-    END;
-  `);
-}
 
 describe("Cats and Dogs", () => {
   const config: SchemaConfig = {

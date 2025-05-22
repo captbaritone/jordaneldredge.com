@@ -22,7 +22,7 @@ export type SchemaConfig = {
 };
 
 const SCHEMA: SchemaConfig = {
-  ftsTable: "content_fts",
+  ftsTable: "content_fts_2",
   ftsTextColumns: ["title", "content", "tags", "summary"],
   contentTable: "content",
   hardCodedConditions: [
