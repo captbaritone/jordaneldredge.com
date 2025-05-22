@@ -85,6 +85,18 @@
   @apply text-lg my-3 font-semibold;
 }
 
+.markdown .anchor-link {
+  @apply text-gray-400;
+  opacity: 0;
+  @apply transition-opacity;
+}
+
+.markdown *:focus .anchor-link,
+.markdown *:hover .anchor-link {
+  @apply text-gray-300;
+  opacity: 1;
+}
+
 @screen sm {
   .markdown h1,
   .markdown h2 {
