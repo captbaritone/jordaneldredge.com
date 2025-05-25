@@ -66,6 +66,19 @@ export function createSearchIndexWithTriggers(
       )
     VALUES
       (
+        'delete',
+        new.rowid,
+        ${newRows}
+      );
+
+    INSERT INTO
+      ${ftsTable} (
+        ${ftsTable},
+        rowid,
+        ${rawRows}
+      )
+    VALUES
+      (
         'update',
         new.rowid,
         ${newRows}

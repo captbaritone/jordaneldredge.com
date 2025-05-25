@@ -10,7 +10,7 @@
     "lint-md": "remark --quiet .",
     "lint": "remark --quiet . && next lint",
     "backup": "tsx scripts/backup.ts",
-    "migrate": "tsx migrations/007-fts-tokenizer.ts",
+    "migrate": "tsx migrations/008-fix-fts-tokenizer.ts",
     "reindex": "tsx scripts/reindex.ts",
     "audio": "tsx scripts/audio.ts",
     "images": "tsx scripts/generate_images.ts",
