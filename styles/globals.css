@@ -74,9 +74,11 @@
 }
 
 /* Headers */
-.markdown h1,
-.markdown h2 {
+.markdown h1 {
   @apply text-xl my-6 font-semibold;
+}
+.markdown h2 {
+  @apply text-xl mt-6 mb-2 font-semibold;
 }
 .markdown h3,
 .markdown h4,
