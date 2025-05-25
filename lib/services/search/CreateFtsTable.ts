@@ -11,11 +11,11 @@ export function createSearchIndexWithTriggers(
   const contentTable = config.contentTable;
   const newRows = rows.map((row) => `new.${row}`).join(", ");
   const oldRows = rows.map((row) => `old.${row}`).join(", ");
-  const rawRows = rows.map((row) => `${row}`).join(", ");
-  db.exec(sql`
+  const rawRows = rows.map((row) => `[${row}]`).join(", ");
+  const queries = sql`
     CREATE VIRTUAL TABLE ${ftsTable} USING FTS5 (
       ${rawRows},
-      ${contentTable} = [${contentTable}],
+      content = [${contentTable}],
       tokenize = porter
     );
 
@@ -72,5 +72,7 @@ export function createSearchIndexWithTriggers(
       );
 
     END;
-  `);
+  `;
+
+  db.exec(queries);
 }

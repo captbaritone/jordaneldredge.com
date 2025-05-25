@@ -6,14 +6,48 @@ export type SortOption = "best" | "latest";
 
 /**
  * Defines the schema of the SQLite database used for full-text search.
+ * Also defines the semantics of your query DSL, such as the behavior of
+ * key:value pairs and hash tags.
  */
 export type SchemaConfig = {
+  /**
+   * The name of your FTS5 table
+   */
   ftsTable: string;
-  ftsTextColumns: string[];
+  /**
+   * The name of your main content table
+   */
   contentTable: string;
-  hardCodedConditions: string[];
-  keyValueCondition(key: string, value: string): string | null;
-  tagCondition(tagNameParam: string): string | null;
+  /**
+   * The text columns in your FTS5 table.
+   * These must correspond to columns in your `contentTable`.
+   */
+  ftsTextColumns: string[];
+  /**
+   * The name of the column in your content table that should be fetched.
+   */
+  selectColumns?: string[];
+  /**
+   * Additional WHERE conditions to apply to all queries.
+   * These can be used to enforce things like "only show published posts" or
+   * "only show posts that are not drafts".
+   */
+  hardCodedConditions?: string[];
+  /**
+   * For key-value pairs like `is:blog` or `has:image`, this function should
+   * return the SQL condition to apply. If the key-value pair is not recognized,
+   * return null.
+   */
+  keyValueCondition?(key: string, value: string): string | null;
+  /**
+   * For hash tags like `#tag`, this function should return the SQL condition to
+   * apply. If the tag is not recognized, return null.
+   */
+  tagCondition?(tagNameParam: string): string | null;
+  /**
+   * The default sort order for the results. This is used when the query cannot use
+   * the MATCH rank for sorting.
+   */
   defaultBestSort: string;
 };
 
@@ -31,9 +65,6 @@ export function compile(
   const compiler = new Compiler(config, sort, limit);
   compiler.compile(parseResult.value);
   const sql = compiler.serialize();
-  // console.log("AST", parseResult.value);
-  // console.log("SQL", sql);
-  // console.log("params", compiler.params);
   return {
     value: { query: sql, params: compiler.params },
     warnings: [
@@ -61,8 +92,10 @@ export class Compiler {
   }
   compile(node: ParseNode) {
     // Currently we always ignore draft and archive posts.
-    for (const condition of this._config.hardCodedConditions) {
-      this._whereClauses.push(condition);
+    if (this._config.hardCodedConditions != null) {
+      for (const condition of this._config.hardCodedConditions) {
+        this._whereClauses.push(condition);
+      }
     }
     this._whereClauses.push(this.expression(node, false));
   }
@@ -133,9 +166,11 @@ export class Compiler {
         // We need to match the tag at the start or end of the string, or
         // between spaces.
         const param = this.registerParam(node.value);
-        const condition = this._config.tagCondition(param);
-        if (condition != null) {
-          return condition;
+        if (this._config.tagCondition != null) {
+          const condition = this._config.tagCondition(param);
+          if (condition != null) {
+            return condition;
+          }
         }
         this._warnings.push(
           new ValidationError(`Unknown tag: ${node.value}`, node.loc),
@@ -182,9 +217,11 @@ export class Compiler {
   }
 
   keyValue(node: PrefixNode, toBoolean: boolean): string {
-    const condition = this._config.keyValueCondition(node.prefix, node.value);
-    if (condition != null) {
-      return condition;
+    if (this._config.keyValueCondition != null) {
+      const condition = this._config.keyValueCondition(node.prefix, node.value);
+      if (condition != null) {
+        return condition;
+      }
     }
     this._warnings.push(
       new ValidationError(
@@ -277,7 +314,11 @@ export class Compiler {
   }
 
   serialize(): string {
-    return `SELECT ${this._config.contentTable}.* FROM ${this._config.ftsTable}
+    const columns = this._config.selectColumns
+      ? this._config.selectColumns.join(", ")
+      : `${this._config.contentTable}.*`;
+
+    return `SELECT ${columns} FROM ${this._config.ftsTable}
 LEFT JOIN ${this._config.contentTable} ON ${this._config.contentTable}.rowid = ${this._config.ftsTable}.rowid
 ${this.where()}
 ${this.sort()}
