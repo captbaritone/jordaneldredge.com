@@ -36,4 +36,9 @@ public/feed
 search-index.db
 search-index.db-shm
 search-index.db-wal
+
+content.db
+content.db-shm
+content.db-wal
+
 .vercel
