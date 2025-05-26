@@ -292,12 +292,12 @@ export class Compiler {
     switch (this._sort) {
       case "best":
         if (this._hasMatch) {
-          return `ORDER BY RANK DESC, ${bestSort}`;
+          return `ORDER BY RANK ASC, ${bestSort}`;
         }
         return `ORDER BY ${bestSort}`;
       case "latest":
         if (this._hasMatch) {
-          return `ORDER BY ${this._config.contentTable}.DATE DESC, RANK DESC, ${bestSort}`;
+          return `ORDER BY ${this._config.contentTable}.DATE DESC, RANK ASC, ${bestSort}`;
         }
         return `ORDER BY ${this._config.contentTable}.DATE DESC, ${bestSort}`;
       default:
