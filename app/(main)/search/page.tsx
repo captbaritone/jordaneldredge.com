@@ -9,7 +9,7 @@ export async function generateMetadata(props) {
 export default async function SearchComponent(props) {
   const searchParams = await props.searchParams;
   const query = searchParams.q || "";
-  const sort = searchParams.sort || "latest";
+  const sort = searchParams.sort || "best";
   return (
     <PostsStructured
       q={query}
