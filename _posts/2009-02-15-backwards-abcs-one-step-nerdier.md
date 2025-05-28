@@ -2,7 +2,7 @@
 title: "Backwards ABCs One Step Nerdier"
 youtube_slug: EA-f_rx95WY
 summary: "I recorded myself singing the ABCs backwards while playing the ukulele."
-tags: [music, youtube]
+tags: [music, youtube, ukulele, video]
 ---
 
 In my [previous post](/blog/the-abcs-backwards/) I sang the ABCs backwards with solffeg hand signs. Now, out of curiosity and my eternal pursuit of the way of the nerd, I added a different challenge into the mix:
