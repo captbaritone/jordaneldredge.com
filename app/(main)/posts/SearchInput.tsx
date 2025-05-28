@@ -13,7 +13,7 @@ export default function SearchInput({ query, className, autoFocus }) {
 
     startTransition(() => {
       setOptimisticQuery(query);
-      router.replace(`?${newParams}`);
+      router.replace(`?${newParams}`, { scroll: false });
     });
   }
 

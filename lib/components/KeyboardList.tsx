@@ -18,17 +18,6 @@ export default function KeyboardList({ children: items, onSelect }: Props) {
   const listRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
-    if (listRef.current) {
-      const selectedItem = listRef.current.querySelector(
-        `[data-key="${items[selectedIndex].key}"]`,
-      );
-      if (selectedItem) {
-        selectedItem.scrollIntoView({ block: "nearest" });
-      }
-    }
-  }, [selectedIndex, items]);
-
-  useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "ArrowDown") {
         setSelectedIndex((prev) => Math.min(prev + 1, items.length - 1));
