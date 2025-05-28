@@ -23,7 +23,7 @@ function getFilenameFromUrl(url) {
 }
 
 // Returns time in the format of "mm:ss" with padded zeros
-function formatSeconds(sec) {
+function formatSeconds(sec: number) {
   return new Date(sec * 1000).toISOString().substr(14, 5);
 }
 
