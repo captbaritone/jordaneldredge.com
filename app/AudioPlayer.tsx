@@ -1,5 +1,5 @@
 "use client";
-import React, { useCallback, useState } from "react";
+import React, { CSSProperties, useCallback, useState } from "react";
 import {
   FaPlay,
   FaPause,
@@ -99,7 +99,7 @@ function VolumeIcon() {
     e.target.addEventListener("mouseleave", handleMouseLeave);
   }
 
-  const style = showVolume
+  const style: CSSProperties = showVolume
     ? {
         position: "absolute",
         bottom: -20,

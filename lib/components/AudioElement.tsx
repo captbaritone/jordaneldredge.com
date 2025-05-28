@@ -16,9 +16,6 @@ export default function AudioPlayer({ src }) {
   return (
     <div
       className={`${bgColor} rounded-xl px-2 py-3 flex items-center my-4 -mx-4 text-sm`}
-      onClick={() => {
-        isPlaying ? audioContext.pause() : audioContext.play(src);
-      }}
     >
       {isPlaying ? (
         <button
