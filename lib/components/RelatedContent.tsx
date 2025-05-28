@@ -1,5 +1,5 @@
 import React from "react";
-import Link from "next/link.js";
+import Link from "next/link";
 import * as Data from "../data";
 
 type Props = {
@@ -24,7 +24,7 @@ export default async function RelatedContent({ item }: Props) {
             <React.Fragment key={tag.url().path()}>
               {" "}
               <Link
-                href={tag.url().path()}
+                href={{ pathname: tag.url().path() }}
                 className="underline"
               >{`${tag.name()}`}</Link>
             </React.Fragment>
@@ -35,7 +35,7 @@ export default async function RelatedContent({ item }: Props) {
         <ul>
           {relatedItems.map((post) => (
             <li key={post.slug()}>
-              <Link href={post.url().path()}>{post.title()}</Link>
+              <Link href={{ pathname: post.url().path() }}>{post.title()}</Link>
             </li>
           ))}
         </ul>

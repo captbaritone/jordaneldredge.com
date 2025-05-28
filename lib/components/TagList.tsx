@@ -1,4 +1,4 @@
-import Link from "next/link.js";
+import Link from "next/link";
 import { TagSet } from "../data/TagSet";
 
 type Props = {
@@ -15,7 +15,7 @@ export default function TagList({ tagSet }: Props) {
           <>
             {" "}
             <Link
-              href={tag.url().path()}
+              href={{ pathname: tag.url().path() }}
               className="underline"
             >{`${tag.name()}`}</Link>
           </>
