@@ -39,6 +39,7 @@ export function PostsStructured({
   ),
 }: Props) {
   const result = ContentConnection.searchResult(q ?? "", sort);
+  const warnings = result.warnings.map((w) => w.message);
 
   return (
     <>
@@ -53,6 +54,7 @@ export function PostsStructured({
                   query={q ?? ""}
                   className="w-full"
                   autoFocus={q != null}
+                  warnings={warnings}
                 />
               </label>
             </div>
