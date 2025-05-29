@@ -20,7 +20,7 @@ source $NVM_DIR/nvm.sh;
 nvm use 20
 pnpm build
 echo "Copying to server"
-scp -r build/* jordan:~/projects/jordaneldredge.com/build
+rsync -az --progress -e ssh build/ jordan:~/projects/jordaneldredge.com/build/
 
 echo "Build complete and copied to server"
 echo "On server:\n\n"
