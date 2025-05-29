@@ -12,16 +12,18 @@ export default function ContentListItem({ item }: ContentProps) {
   const summary = item.summary == null ? undefined : item.summary();
   const summaryImage = item.summaryImage();
   return (
-    <ListItem
-      summaryImage={summaryImage}
-      title={item.title()}
-      id={item.id()}
-      url={item.url().path()}
-      summary={summary}
-      date={item.dateObj()}
-    >
-      {summary ? <p>{summary}</p> : null}
-    </ListItem>
+    <ViewTransition name={`content-list-item-${item.id()}`}>
+      <ListItem
+        summaryImage={summaryImage}
+        title={item.title()}
+        id={item.id()}
+        url={item.url().path()}
+        summary={summary}
+        date={item.dateObj()}
+      >
+        {summary ? <p>{summary}</p> : null}
+      </ListItem>
+    </ViewTransition>
   );
 }
 
