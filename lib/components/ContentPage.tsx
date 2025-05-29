@@ -6,6 +6,7 @@ import DateString from "./DateString";
 import PlayButton from "./PlayButton";
 import { userIsAdmin } from "../session";
 import Link from "next/link";
+import { unstable_ViewTransition as ViewTransition } from "react";
 
 type ContentPageProps = {
   item: Data.Content;
@@ -21,7 +22,9 @@ export default async function ContentPage({ item, issueId }: ContentPageProps) {
     <div>
       <article>
         <div className="markdown">
-          <h1>{item.title()}</h1>
+          <ViewTransition name={`content-title-${item.id()}`}>
+            <h1>{item.title()}</h1>
+          </ViewTransition>
           <div
             className="flex flex-row text-sm  text-gray-400"
             style={{
@@ -29,9 +32,11 @@ export default async function ContentPage({ item, issueId }: ContentPageProps) {
               marginBottom: "1rem",
             }}
           >
-            <div className="italic">
-              <DateString date={item.dateObj()} />
-            </div>
+            <ViewTransition name={`content-date-${item.id()}`}>
+              <div className="italic">
+                <DateString date={item.dateObj()} />
+              </div>
+            </ViewTransition>
             {audio && (
               <>
                 <div className="pl-2 pr-2">{"|"}</div>

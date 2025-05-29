@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import DateString from "./DateString";
 import { Content } from "../data";
+import { unstable_ViewTransition as ViewTransition } from "react";
 
 type ContentProps = {
   item: Content;
@@ -14,6 +15,7 @@ export default function ContentListItem({ item }: ContentProps) {
     <ListItem
       summaryImage={summaryImage}
       title={item.title()}
+      id={item.id()}
       url={item.url().path()}
       summary={summary}
       date={item.dateObj()}
@@ -24,6 +26,7 @@ export default function ContentListItem({ item }: ContentProps) {
 }
 
 type Props = React.PropsWithChildren<{
+  id: string;
   summaryImage: string | undefined;
   title: string;
   summary?: string;
@@ -32,6 +35,7 @@ type Props = React.PropsWithChildren<{
 }>;
 
 export function ListItem({
+  id,
   children,
   summaryImage,
   title,
@@ -43,22 +47,26 @@ export function ListItem({
     <>
       <div className="py-4 flex justify-between gap-4">
         <div>
-          <h2 className="font-large font-semibold">
-            <Link
-              href={url}
-              style={{
-                wordBreak: "break-word",
-                /* Adds a hyphen where the word breaks, if supported (No Blink) */
-                hyphens: "auto",
-              }}
-            >
-              {title}
-            </Link>
-          </h2>
+          <ViewTransition name={`content-title-${id}`}>
+            <h2 className="font-large font-semibold">
+              <Link
+                href={url}
+                style={{
+                  wordBreak: "break-word",
+                  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+                  hyphens: "auto",
+                }}
+              >
+                {title}
+              </Link>
+            </h2>
+          </ViewTransition>
           {date && (
-            <span className="italic text-sm my-1 text-gray-400 flex">
-              <DateString date={date} />
-            </span>
+            <ViewTransition name={`content-date-${id}`}>
+              <span className="italic text-sm my-1 text-gray-400 flex">
+                <DateString date={date} />
+              </span>
+            </ViewTransition>
           )}
           {children}
         </div>
