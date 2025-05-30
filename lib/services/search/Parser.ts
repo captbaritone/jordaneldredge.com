@@ -140,6 +140,7 @@ class Parser {
         right,
         loc: this.locRange(expr.loc, right.loc),
       };
+      token = this.peek();
     }
     return expr;
   }
@@ -171,10 +172,10 @@ class Parser {
           right,
           loc: this.locRange(expr.loc, right.loc),
         };
-        token = this.peek();
       } else {
         break;
       }
+      token = this.peek();
     }
     return expr;
   }
@@ -201,6 +202,7 @@ class Parser {
         right,
         loc: this.locRange(expr.loc, right.loc),
       };
+      token = this.peek();
     }
     return expr;
   }

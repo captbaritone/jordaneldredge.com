@@ -107,7 +107,6 @@ describe("Cats and Dogs", () => {
     const compiled = _compile(config, query, "best", null);
     const stmt = db.prepare(compiled.value.query);
     const bound = stmt.bind(compiled.value.params);
-    console.log(compiled.value.query, compiled.value.params);
     return bound.all().map((row: any) => row.text);
   }
 
@@ -240,6 +239,13 @@ describe("Novel Schema", () => {
       [
         "B",
         "A B",
+      ]
+    `);
+  });
+  test("AND AND", () => {
+    expect(search("A AND B AND C")).toMatchInlineSnapshot(`
+      [
+        "A B C",
       ]
     `);
   });
