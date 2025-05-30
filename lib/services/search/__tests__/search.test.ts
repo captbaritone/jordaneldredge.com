@@ -116,10 +116,10 @@ describe("Cats and Dogs", () => {
   test(query, () => {
     expect(search(query)).toMatchInlineSnapshot(`
       [
-        "cats like to eat hotdogs",
-        "cats are cute",
-        "dogs are cute",
         "cats and dogs",
+        "dogs are cute",
+        "cats are cute",
+        "cats like to eat hotdogs",
       ]
     `);
   });
@@ -128,9 +128,9 @@ describe("Cats and Dogs", () => {
   test(query2, () => {
     expect(search(query2)).toMatchInlineSnapshot(`
       [
-        "cats like to eat hotdogs",
-        "cats are cute",
         "cats and dogs",
+        "cats are cute",
+        "cats like to eat hotdogs",
       ]
     `);
   });
@@ -183,11 +183,11 @@ describe("Novel Schema", () => {
 
   test("C", () => {
     expect(search("C")).toMatchInlineSnapshot(`
-    [
-      "A B C",
-      "C",
-    ]
-  `);
+      [
+        "C",
+        "A B C",
+      ]
+    `);
   });
 
   test("C B", () => {
@@ -200,35 +200,35 @@ describe("Novel Schema", () => {
 
   test("Misc", () => {
     expect(search("B")).toMatchInlineSnapshot(`
-    [
-      "A B C",
-      "A B",
-      "B",
-    ]
-  `);
+      [
+        "B",
+        "A B",
+        "A B C",
+      ]
+    `);
 
     expect(search("B -C")).toMatchInlineSnapshot(`
-    [
-      "A B",
-      "B",
-    ]
-  `);
+      [
+        "B",
+        "A B",
+      ]
+    `);
 
     expect(search("B NOT C")).toMatchInlineSnapshot(`
-    [
-      "A B",
-      "B",
-    ]
-  `);
+      [
+        "B",
+        "A B",
+      ]
+    `);
 
     expect(search("B OR C")).toMatchInlineSnapshot(`
-    [
-      "A B",
-      "B",
-      "A B C",
-      "C",
-    ]
-  `);
+      [
+        "C",
+        "A B C",
+        "B",
+        "A B",
+      ]
+    `);
 
     expect(search("B AND C")).toMatchInlineSnapshot(`
     [
@@ -237,26 +237,26 @@ describe("Novel Schema", () => {
   `);
 
     expect(search("B NOT C")).toMatchInlineSnapshot(`
-    [
-      "A B",
-      "B",
-    ]
-  `);
+      [
+        "B",
+        "A B",
+      ]
+    `);
   });
   test("Parens", () => {
     expect(search("(B)")).toMatchInlineSnapshot(`
       [
-        "A B C",
-        "A B",
         "B",
+        "A B",
+        "A B C",
       ]
     `);
   });
   test("Multiple parens", () => {
     expect(search("(A) (B)")).toMatchInlineSnapshot(`
       [
-        "A B C",
         "A B",
+        "A B C",
       ]
     `);
   });
@@ -283,8 +283,8 @@ describe("Novel Schema", () => {
   test("A NOT is:A", () => {
     expect(search("A NOT is:A")).toMatchInlineSnapshot(`
       [
-        "A B C",
         "A B",
+        "A B C",
       ]
     `);
   });
