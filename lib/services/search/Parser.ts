@@ -124,8 +124,7 @@ class Parser {
 
   private or(head: NonEofToken): ParseNode {
     let expr = this.and(head);
-    let token = this.peek();
-    while (token.kind === "OR") {
+    for (let token = this.peek(); token.kind === "OR"; token = this.peek()) {
       token = this.consume(); // OR
       if (token.kind === "eof") {
         this._warnings.push(
@@ -140,15 +139,13 @@ class Parser {
         right,
         loc: this.locRange(expr.loc, right.loc),
       };
-      token = this.peek();
     }
     return expr;
   }
 
   private and(head: NonEofToken): ParseNode {
     let expr = this.not(head);
-    let token = this.peek();
-    while (token.kind !== "eof") {
+    for (let token = this.peek(); token.kind !== "eof"; token = this.peek()) {
       if (token.kind === "AND") {
         token = this.consume(); // AND
         if (token.kind === "eof") {
@@ -175,7 +172,6 @@ class Parser {
       } else {
         break;
       }
-      token = this.peek();
     }
     return expr;
   }
@@ -186,8 +182,7 @@ class Parser {
 
   private not(head: NonEofToken): ParseNode {
     let expr = this.primary(head);
-    let token = this.peek();
-    while (token.kind === "NOT") {
+    for (let token = this.peek(); token.kind === "NOT"; token = this.peek()) {
       token = this.consume(); // NOT
       if (token.kind === "eof") {
         this._warnings.push(
@@ -202,7 +197,6 @@ class Parser {
         right,
         loc: this.locRange(expr.loc, right.loc),
       };
-      token = this.peek();
     }
     return expr;
   }
