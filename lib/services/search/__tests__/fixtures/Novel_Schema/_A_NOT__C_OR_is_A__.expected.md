@@ -59,7 +59,7 @@ ORDER BY RANK ASC, text
       "prefix": "is",
       "value": "A",
       "loc": {
-        "start": 16,
+        "start": 13,
         "end": 17
       }
     },

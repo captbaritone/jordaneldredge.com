@@ -91,6 +91,14 @@ export type ParseNode =
 
 type NonEofToken = Exclude<Token, { kind: "eof" }>;
 
+/**
+ * Parses an array of tokens infallibly. If an invalid token is found, we
+ * interpret it as a string instead of syntax and emit a warning. We expect users
+ * may not even be aware that the search input supports search operators, so if
+ * they type invalid syntax, we will simply interpret it as a string search. The
+ * warnings may optional be surfaced to the user to provide feedback to help
+ * them construct valid DSL queries.
+ */
 export function parse(tokens: Token[]): Result<ParseNode> {
   const parser = new Parser(tokens);
   const ast = parser.parse();
@@ -98,7 +106,6 @@ export function parse(tokens: Token[]): Result<ParseNode> {
 }
 
 class Parser {
-  private current: Token;
   private nextIndex: number = 0;
   _warnings: ValidationError[] = [];
 
@@ -107,7 +114,6 @@ class Parser {
     if (next == null) {
       throw new Error("Expected at least an EOF token");
     }
-    this.current = next;
   }
 
   parse(): ParseNode {
@@ -176,6 +182,10 @@ class Parser {
     return expr;
   }
 
+  /**
+   * These are tokens which are valid starters of "not" expressions. If this is
+   * true, we can expect to be able to parse a "not" expression.
+   */
   private peekIsNotExpressionToken(): boolean {
     return this.peekIsPrimaryExpressionToken();
   }
@@ -201,6 +211,11 @@ class Parser {
     return expr;
   }
 
+  /**
+   * These are tokens which are valid starters of primary (fundamental)
+   * expressions. If this is true, we can expect to be able to parse
+   * a primary expression.
+   */
   private peekIsPrimaryExpressionToken(): boolean {
     const token = this.peek();
     switch (token.kind) {
@@ -280,24 +295,29 @@ class Parser {
         this.consume();
         const loc = this.locRange(tagToken.loc, maybeText.loc);
         return { type: "tag", value: maybeText.value, loc };
-      case "string":
+      case "string": {
         this.consume();
+
+        const isEof = this.peek().kind === "eof";
         return {
           type: "text",
           value: token.value,
           loc: token.loc,
-          isEof: false,
+          isEof,
         };
-      case "text":
+      }
+      case "text": {
         this.consume();
         const isEof = this.peek().kind === "eof";
         return { type: "text", value: token.value, loc: token.loc, isEof };
+      }
       case "prefix":
         this.consume();
-        return this.parsePrefix(token.value);
+        return this.parsePrefix(token.loc, token.value);
       case "AND":
       case "OR":
       case "NOT": {
+        // We are not expecting these operators here, but we'll fallback.
         this.consume();
         this._warnings.push(
           new ValidationError(`Unexpected \`${token.kind}\` token.`, token.loc),
@@ -314,9 +334,9 @@ class Parser {
     return { start: start.start, end: end.end };
   }
 
-  private parsePrefix(prefix: string): ParseNode {
+  private parsePrefix(start: Loc, prefix: string): ParseNode {
     const maybeText = this.peek();
-    const start = maybeText.loc.start;
+    const loc = this.locRange(start, maybeText.loc);
     if (maybeText.kind !== "text") {
       this._warnings.push(
         new ValidationError(
@@ -328,27 +348,30 @@ class Parser {
       return {
         type: "text",
         value: `${prefix}:`,
-        loc: { start, end: start },
+        loc,
         isEof,
       };
     }
     this.consume();
-    const end = maybeText.loc.end;
     return {
       type: "prefix",
       prefix,
       value: maybeText.value,
-      loc: { start, end },
+      loc,
     };
   }
 
   private peek(): Token {
-    return this.current;
+    return this.tokens[this.nextIndex];
   }
 
   private consume(): Token {
-    // TODO: Handle EOF
-    this.current = this.tokens[++this.nextIndex];
-    return this.current;
+    this.nextIndex++;
+    if (this.nextIndex >= this.tokens.length) {
+      throw new Error(
+        "Attempted to consume past the end of tokens. This represents a bug where we are not correctly checking for EOF tokens. Report this as a bug.",
+      );
+    }
+    return this.tokens[this.nextIndex];
   }
 }

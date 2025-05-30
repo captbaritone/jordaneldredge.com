@@ -1,21 +1,31 @@
 import { Loc, Result, ValidationError } from "./Diagnostics";
 
 export type TextToken = { kind: "text"; value: string; loc: Loc };
-export type UnaryToken = { kind: "-"; value: string; loc: Loc };
+export type UnaryToken = { kind: "-"; loc: Loc };
+export type PrefixToken = { kind: "prefix"; value: string; loc: Loc };
+export type StringToken = { kind: "string"; value: string; loc: Loc };
+export type TagToken = { kind: "#"; loc: Loc };
+export type OpenParenToken = { kind: "("; loc: Loc };
+export type CloseParenToken = { kind: ")"; loc: Loc };
+export type ColonToken = { kind: ":"; loc: Loc };
+export type AndToken = { kind: "AND"; loc: Loc };
+export type OrToken = { kind: "OR"; loc: Loc };
+export type NotToken = { kind: "NOT"; loc: Loc };
+export type EofToken = { kind: "eof"; loc: Loc };
 
 export type Token =
   | TextToken
-  | { kind: "prefix"; value: string; loc: Loc }
-  | { kind: "string"; value: string; loc: Loc }
-  | { kind: "#"; loc: Loc }
-  | { kind: "("; loc: Loc }
-  | { kind: ")"; loc: Loc }
-  | { kind: ":"; loc: Loc }
+  | PrefixToken
+  | StringToken
+  | TagToken
+  | OpenParenToken
+  | CloseParenToken
+  | ColonToken
   | UnaryToken
-  | { kind: "AND"; loc: Loc }
-  | { kind: "OR"; loc: Loc }
-  | { kind: "NOT"; loc: Loc }
-  | { kind: "eof"; loc: Loc };
+  | AndToken
+  | OrToken
+  | NotToken
+  | EofToken;
 
 export function lex(input: string): Result<Token[]> {
   const lexer = new Lexer(input);
@@ -65,14 +75,8 @@ export class Lexer {
             this.pos++;
           }
 
-          if (text === "AND") {
-            tokens.push({ kind: "AND", loc: { start, end: this.pos } });
-            break;
-          } else if (text === "OR") {
-            tokens.push({ kind: "OR", loc: { start, end: this.pos } });
-            break;
-          } else if (text === "NOT") {
-            tokens.push({ kind: "NOT", loc: { start, end: this.pos } });
+          if (text === "AND" || text === "OR" || text === "NOT") {
+            tokens.push({ kind: text, loc: { start, end: this.pos } });
             break;
           }
 

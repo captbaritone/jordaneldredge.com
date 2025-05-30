@@ -34,7 +34,7 @@ ORDER BY text
   "prefix": "is",
   "value": "A",
   "loc": {
-    "start": 3,
+    "start": 0,
     "end": 4
   }
 }
