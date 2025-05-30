@@ -1,0 +1,69 @@
+# Input: `a AND`
+
+# Warnings
+
+- Unexpected end of input after AND at 5:5
+
+# Results
+```json
+[]
+```
+
+# Query
+
+```sql
+SELECT content.* FROM content_fts
+LEFT JOIN content ON content.rowid = content_fts.rowid
+WHERE content_fts MATCH ('{text}: ' || (:param0 || ' *'))
+ORDER BY RANK ASC, text
+```
+
+# Params
+
+```json
+{
+  "param0": "\"AND\""
+}
+```
+
+# AST
+
+```json
+{
+  "type": "text",
+  "value": "AND",
+  "loc": {
+    "start": 5,
+    "end": 5
+  },
+  "isEof": true
+}
+```
+
+# Tokens
+```json
+[
+  {
+    "kind": "text",
+    "value": "a",
+    "loc": {
+      "start": 0,
+      "end": 1
+    }
+  },
+  {
+    "kind": "AND",
+    "loc": {
+      "start": 2,
+      "end": 5
+    }
+  },
+  {
+    "kind": "eof",
+    "loc": {
+      "start": 5,
+      "end": 5
+    }
+  }
+]
+```
