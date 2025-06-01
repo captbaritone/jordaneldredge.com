@@ -158,6 +158,16 @@ for (const { name, config, getDb, queries } of databases) {
         const bound = stmt.bind(compiled.value.params);
         const results = bound.all().map((row: any) => row.text);
 
+        function warningUnderline(warning: any): string {
+          const length = warning.loc.end - warning.loc.start;
+          const tildeLength = Math.max(length - 1, 0);
+          const indent = "".padStart(warning.loc.start - 1, " ");
+          return (
+            `${indent}^`.padStart(warning.loc.start - 1, " ") +
+            `~`.repeat(tildeLength)
+          );
+        }
+
         const formatted = `
 # Input: \`${query}\`
 
@@ -165,7 +175,9 @@ for (const { name, config, getDb, queries } of databases) {
 
 ${
   compiled.warnings
-    .map((w) => `- ${w.message} at ${w.loc.start}:${w.loc.end}`)
+    .map((w) => {
+      return `${query}\n${warningUnderline(w)}\n- ${w.message} at ${w.loc.start}:${w.loc.end}`;
+    })
     .join("\n") || "None"
 }
 

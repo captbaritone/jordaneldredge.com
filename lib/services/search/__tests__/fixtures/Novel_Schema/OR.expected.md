@@ -2,6 +2,8 @@
 
 # Warnings
 
+OR
+^~
 - Unexpected `OR` token. at 0:2
 
 # Results

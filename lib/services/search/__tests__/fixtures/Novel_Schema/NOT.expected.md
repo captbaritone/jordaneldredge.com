@@ -2,6 +2,8 @@
 
 # Warnings
 
+NOT
+^~~
 - Unexpected `NOT` token. at 0:3
 
 # Results

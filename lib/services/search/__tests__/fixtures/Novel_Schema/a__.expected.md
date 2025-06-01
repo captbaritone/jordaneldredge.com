@@ -2,7 +2,9 @@
 
 # Warnings
 
-- Unexpected end of input after ( at 2:3
+a (
+  ^
+- Unexpected end of input after ( at 3:3
 
 # Results
 ```json

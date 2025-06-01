@@ -2,7 +2,9 @@
 
 # Warnings
 
-- Unexpected end of input after AND at 5:5
+a AND
+ ^~~
+- Unexpected end of input after AND at 2:5
 
 # Results
 ```json
@@ -33,7 +35,7 @@ ORDER BY RANK ASC, text
   "type": "text",
   "value": "AND",
   "loc": {
-    "start": 5,
+    "start": 2,
     "end": 5
   },
   "isEof": true

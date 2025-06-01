@@ -2,6 +2,8 @@
 
 # Warnings
 
+AND
+^~~
 - Unexpected `AND` token. at 0:3
 
 # Results

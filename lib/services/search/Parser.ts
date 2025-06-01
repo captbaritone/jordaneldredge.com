@@ -153,12 +153,21 @@ class Parser {
     let expr = this.not(head);
     for (let token = this.peek(); token.kind !== "eof"; token = this.peek()) {
       if (token.kind === "AND") {
+        const andToken = token;
         token = this.consume(); // AND
         if (token.kind === "eof") {
           this._warnings.push(
-            new ValidationError("Unexpected end of input after AND", token.loc),
+            new ValidationError(
+              "Unexpected end of input after AND",
+              andToken.loc,
+            ),
           );
-          return { type: "text", value: "AND", loc: token.loc, isEof: true };
+          return {
+            type: "text",
+            value: "AND",
+            loc: andToken.loc,
+            isEof: true,
+          };
         }
         const right = this.not(token);
         expr = {
@@ -258,7 +267,7 @@ class Parser {
         }
         if (head.kind === "eof") {
           this._warnings.push(
-            new ValidationError("Unexpected end of input after (", token.loc),
+            new ValidationError("Unexpected end of input after (", head.loc),
           );
           return { type: "text", value: "(", loc: token.loc, isEof: true };
         }
