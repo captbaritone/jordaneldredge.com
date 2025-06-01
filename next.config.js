@@ -65,10 +65,6 @@ module.exports = {
         destination: "/api/feed/:path*",
       },
       {
-        source: "/podcast",
-        destination: "/api/podcast",
-      },
-      {
         source: "/blog/:slug(.+\\.md)",
         destination: "/blog/:slug/md",
       },

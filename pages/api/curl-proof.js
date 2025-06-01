@@ -6,8 +6,8 @@ export default function handler(req, res) {
 function getMessage(req) {
   const ua = req.headers["user-agent"];
   if (ua != null && ua.includes("curl")) {
-    return "I am an EVIL script!!!!\n";
+    return `echo "I am an EVIL script!!!!"\n`;
   } else {
-    return "I am a peaceful script\n";
+    return `echo "I am a peaceful script"\n`;
   }
 }
