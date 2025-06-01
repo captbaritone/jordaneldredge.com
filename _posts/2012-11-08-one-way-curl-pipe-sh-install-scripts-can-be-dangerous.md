@@ -23,7 +23,7 @@ Today I realized at least once case that could validate those initial warning
 bells. Take a look at this proof of concept:
 
 ```bash
-curl -s https://jordaneldredge.com/projects/curl-proof/install/|sh
+curl -s https://jordaneldredge.com/projects/curl-proof/install/ | sh
 ```
 
 I'll wait while you paste the script URL into your browser and make sure it's
