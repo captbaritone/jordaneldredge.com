@@ -17,7 +17,7 @@ export default async function Posts(props) {
   const searchParams = await props.searchParams;
   const sort: SortOption = searchParams.sort || "best";
   const q = (searchParams.q ?? "").toLowerCase();
-  return <PostsStructured q={q} sort={sort} />;
+  return <PostsStructured q={q} sort={sort} first={null} />;
 }
 
 type Props = {
@@ -25,6 +25,9 @@ type Props = {
   sort: SortOption;
   title?: string;
   description?: ReactNode;
+  hideSearch?: boolean;
+  hideSort?: boolean;
+  first: number | null;
 };
 
 export function PostsStructured({
@@ -37,8 +40,11 @@ export function PostsStructured({
       <Link href="/posts/?q=is:note&sort=latest">Notes</Link>.
     </>
   ),
+  hideSearch,
+  hideSort,
+  first,
 }: Props) {
-  const result = ContentConnection.searchResult(q ?? "", sort);
+  const result = ContentConnection.searchResult(q ?? "", sort, first);
   const warnings = result.warnings.map((w) => w.message);
 
   return (
@@ -48,29 +54,37 @@ export function PostsStructured({
         <div className="flex flex-wrap justify-end pb-2">
           <p className="w-full sm:w-auto grow">{description}</p>
           <div className="flex gap-2 items-stretch w-full sm:w-auto pb-2 sm:pb-0">
-            <div className="w-auto flex-grow">
-              <label>
-                <SearchInput
-                  query={q ?? ""}
-                  className="w-full"
-                  autoFocus={q != null}
-                  warnings={warnings}
-                />
-              </label>
-            </div>
-            <div className="w-auto">
-              <label>
-                <SortSelect currentParam={sort} />
-              </label>
-            </div>
+            {hideSearch || (
+              <div className="w-auto flex-grow">
+                <label>
+                  <SearchInput
+                    query={q ?? ""}
+                    className="w-full"
+                    autoFocus={q != null}
+                    warnings={warnings}
+                  />
+                </label>
+              </div>
+            )}
+            {hideSort || (
+              <div className="w-auto">
+                <label>
+                  <SortSelect currentParam={sort} />
+                </label>
+              </div>
+            )}
           </div>
         </div>
         <hr />
       </div>
       {result.value.length === 0 ? (
         <ResultAlternative>No results found</ResultAlternative>
+      ) : hideSearch ? (
+        result.value.map((post) => {
+          return <ListItem key={post.slug()} item={post} />;
+        })
       ) : (
-        <KeyboardList key={q}>
+        <KeyboardList>
           {result.value.map((post) => {
             const url = post.url().path();
             return {

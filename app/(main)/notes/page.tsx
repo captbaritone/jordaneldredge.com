@@ -1,14 +1,5 @@
 import Link from "next/link";
-import ListItem from "../../../lib/components/ListItem";
-import { ContentConnection } from "../../../lib/data";
-import { ALL } from "../../config";
 import { PostsStructured } from "../posts/page";
-
-// Pages are static
-export const dynamic = "force-static";
-// But might change, so we'll revalidate every 10 minutes
-// https://beta.nextjs.org/docs/data-fetching/caching#segment-level-caching
-export const revalidate = 10;
 
 export const metadata = {
   title: "Notes",
@@ -17,24 +8,23 @@ export const metadata = {
   },
 };
 
-export default function Notes() {
-  if (ALL) {
-    return <PostsStructured q={"is:note"} sort="latest" />;
-  }
-  const allNotes = ContentConnection.notes();
+export default async function Notes(props) {
+  const searchParams = await props.searchParams;
+  const sort = searchParams.sort || "latest";
   return (
-    <>
-      <div className="markdown">
-        <h1>Notes</h1>
-        <p>
+    <PostsStructured
+      title="Blog"
+      description={
+        <>
           Quick thoughts, observations, and links. For more formal writing see{" "}
-          <Link href="/blog">Blog</Link>.{" "}
-        </p>
-        <hr />
-      </div>
-      {allNotes.map((post) => {
-        return <ListItem key={post.slug()} item={post} />;
-      })}
-    </>
+          <Link href="/blog">Blog</Link>.
+        </>
+      }
+      q={"is:note"}
+      sort={sort}
+      hideSearch={true}
+      hideSort={true}
+      first={null}
+    />
   );
 }

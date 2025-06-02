@@ -16,6 +16,7 @@ export default async function SearchComponent(props) {
       sort={sort}
       title="Search"
       description="Search all blog posts and notes."
+      first={20}
     />
   );
 }

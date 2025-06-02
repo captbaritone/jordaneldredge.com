@@ -37,19 +37,14 @@ export default class ContentConnection {
   static searchResult(
     query: string,
     sort: SortOption,
-    first?: Int | null,
+    first: Int | null,
   ): {
     value: Array<Content>;
     warnings: ValidationError[];
     sql: string;
     params: Record<string, unknown>;
   } {
-    const compiledResult = compile(
-      SCHEMA,
-      query,
-      sort,
-      first === undefined ? 20 : first,
-    );
+    const compiledResult = compile(SCHEMA, query, sort, first);
     const prepared = db.prepare<any, ContentDBRow>(compiledResult.value.query);
     const value = prepared
       .all(compiledResult.value.params)
