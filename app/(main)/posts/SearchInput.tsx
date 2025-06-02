@@ -67,7 +67,6 @@ export default function SearchInput({
           }}
           value={optimisticQuery}
           autoFocus={autoFocus}
-          type="search"
           name="q"
           placeholder="Search..."
         />
