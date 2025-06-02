@@ -2,7 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import DateString from "./DateString";
 import { Content } from "../data";
-import { unstable_ViewTransition as ViewTransition } from "react";
+import {
+  ContentDateViewTransition,
+  ContentTileViewTransition,
+  ContentViewTransition,
+} from "./ViewTransitions";
 
 type ContentProps = {
   item: Content;
@@ -12,7 +16,7 @@ export default function ContentListItem({ item }: ContentProps) {
   const summary = item.summary == null ? undefined : item.summary();
   const summaryImage = item.summaryImage();
   return (
-    <ViewTransition name={`content-list-item-${item.id()}`}>
+    <ContentViewTransition id={item.id()}>
       <ListItem
         summaryImage={summaryImage}
         title={item.title()}
@@ -23,12 +27,12 @@ export default function ContentListItem({ item }: ContentProps) {
       >
         {summary ? <p>{summary}</p> : null}
       </ListItem>
-    </ViewTransition>
+    </ContentViewTransition>
   );
 }
 
 type Props = React.PropsWithChildren<{
-  id: string;
+  id?: string;
   summaryImage: string | undefined;
   title: string;
   summary?: string;
@@ -49,7 +53,7 @@ export function ListItem({
     <>
       <div className="py-4 flex justify-between gap-4">
         <div>
-          <ViewTransition name={`content-title-${id}`}>
+          <ContentTileViewTransition id={id}>
             <h2 className="font-large font-semibold">
               <Link
                 href={url}
@@ -62,13 +66,13 @@ export function ListItem({
                 {title}
               </Link>
             </h2>
-          </ViewTransition>
+          </ContentTileViewTransition>
           {date && (
-            <ViewTransition name={`content-date-${id}`}>
+            <ContentDateViewTransition id={id}>
               <span className="italic text-sm my-1 text-gray-400 flex">
                 <DateString date={date} />
               </span>
-            </ViewTransition>
+            </ContentDateViewTransition>
           )}
           {children}
         </div>
