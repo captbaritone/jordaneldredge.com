@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useOptimistic, useRef, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useEffect, startTransition, useRef } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 
 type Props = {
   query: string;
@@ -19,17 +19,30 @@ export default function SearchInput({
   autoFocus,
   warnings,
 }: Props) {
-  let router = useRouter();
-  let [optimisticQuery, setOptimisticQuery] = useOptimistic(query);
-  console.log("Rendering SearchInput with query:", { optimisticQuery, query });
-  let [pending, startTransition] = useTransition();
+  const router = useRouter();
+  const searchParams = useSearchParams();
 
   function updateQuery(query: string) {
-    console.log("updateQuery", query);
-    let newParams = new URLSearchParams([["q", query]]);
+    const newParams = new URLSearchParams(
+      // Ensure we preserve the sort parameter if it exists
+      Array.from(searchParams!.entries()),
+    );
+    newParams.set("q", query);
 
     startTransition(() => {
-      setOptimisticQuery(query);
+      // Originally I had the input as a controlled component, which I would
+      // update here via a `useOptimistic` value. However, I was experiencing
+      // dropped characters when typing quickly, so I switched to an
+      // uncontrolled component.
+
+      // I suspect that the transition context is not correctly propagated
+      // through the Next.js router, which meant that the input value was
+      // reverting slightly _before_ the new state came in.
+
+      // If/when that issues is resolved, we can switch back to a
+      // controlled component with `useOptimistic`. This is preferable since it
+      // would allow us to show the user an accurate loading state while the
+      // search is being performed.
       router.replace(`?${newParams}`, { scroll: false });
     });
   }
@@ -65,7 +78,7 @@ export default function SearchInput({
             // https://stackoverflow.com/a/6394497
             fontSize: "16px",
           }}
-          value={optimisticQuery}
+          defaultValue={query}
           autoFocus={autoFocus}
           name="q"
           placeholder="Search..."
