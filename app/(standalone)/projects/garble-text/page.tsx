@@ -50,7 +50,7 @@ export default function GarblePage() {
       )}
       <div className="mt-6 text-sm text-gray-600">
         <a
-          href="https://gist.github.com/4093058"
+          href="https://github.com/captbaritone/jordaneldredge.com/blob/4015a4fb52ec3d2bbef6c542180ee5e800d87a86/app/(standalone)/projects/garble-text/page.tsx"
           target="_blank"
           rel="noopener noreferrer"
           className="underline"
