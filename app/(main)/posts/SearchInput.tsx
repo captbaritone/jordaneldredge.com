@@ -21,9 +21,11 @@ export default function SearchInput({
 }: Props) {
   let router = useRouter();
   let [optimisticQuery, setOptimisticQuery] = useOptimistic(query);
+  console.log("Rendering SearchInput with query:", { optimisticQuery, query });
   let [pending, startTransition] = useTransition();
 
   function updateQuery(query: string) {
+    console.log("updateQuery", query);
     let newParams = new URLSearchParams([["q", query]]);
 
     startTransition(() => {
@@ -47,6 +49,9 @@ export default function SearchInput({
       <div className="relative inline-block">
         <input
           ref={ref}
+          onKeyDown={(e) => {
+            console.log("Key down in SearchInput", e.key);
+          }}
           onChange={(e) => updateQuery(e.target.value)}
           className={className}
           style={{
