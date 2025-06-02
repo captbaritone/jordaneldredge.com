@@ -13,7 +13,7 @@ export default async function Notes(props) {
   const sort = searchParams.sort || "latest";
   return (
     <PostsStructured
-      title="Blog"
+      title="Notes"
       description={
         <>
           Quick thoughts, observations, and links. For more formal writing see{" "}
