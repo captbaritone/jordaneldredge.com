@@ -4,6 +4,7 @@ import DateString from "./DateString";
 import { Content } from "../data";
 import {
   ContentDateViewTransition,
+  ContentSummaryImageViewTransition,
   ContentTileViewTransition,
   ContentViewTransition,
 } from "./ViewTransitions";
@@ -79,16 +80,18 @@ export function ListItem({
         {summaryImage ? (
           <Link href={url}>
             <span className="h-28 md:h-32 aspect-square sm:aspect-video relative block">
-              <Image
-                alt=""
-                fill
-                style={{
-                  boxShadow: "2px 2px 5px rgba(0, 0, 0, 0.4)",
-                }}
-                sizes="(max-width: 768px) 171px, 228px"
-                src={summaryImage}
-                className="object-cover shadow-sm"
-              />
+              <ContentSummaryImageViewTransition id={summaryImage}>
+                <Image
+                  alt=""
+                  fill
+                  style={{
+                    boxShadow: "2px 2px 5px rgba(0, 0, 0, 0.4)",
+                  }}
+                  sizes="(max-width: 768px) 171px, 228px"
+                  src={summaryImage}
+                  className="object-cover shadow-sm"
+                />
+              </ContentSummaryImageViewTransition>
             </span>
           </Link>
         ) : null}
