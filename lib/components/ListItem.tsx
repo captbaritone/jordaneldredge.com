@@ -69,7 +69,7 @@ export function ListItem({
           </ContentTileViewTransition>
           {date && (
             <ContentDateViewTransition id={id}>
-              <span className="italic text-sm my-1 text-gray-400 flex">
+              <span className="italic text-sm my-1 text-gray-400">
                 <DateString date={date} />
               </span>
             </ContentDateViewTransition>
