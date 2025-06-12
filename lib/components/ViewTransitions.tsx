@@ -4,7 +4,6 @@ export const ContentViewTransition = make("content-list-item");
 export const ContentTileViewTransition = make("content-title");
 export const ContentDateViewTransition = make("content-date");
 export const ImageViewTransition = make("image");
-export const YoutubeTransition = make("youtube-video");
 
 type Props = {
   id?: string;

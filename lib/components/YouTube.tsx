@@ -1,9 +1,12 @@
-import { YoutubeTransition } from "./ViewTransitions";
+import { keyForYoutubeThumbnail } from "../data/providers/providerUtils";
+import { keyUrl } from "../s3";
+import { ImageViewTransition } from "./ViewTransitions";
 
 export default function YouTube({ token, vertical = false }) {
+  const summaryImage = keyUrl(keyForYoutubeThumbnail(token));
   return (
     <div className={`video-container ${vertical ? "vertical" : "horizontal"}`}>
-      <YoutubeTransition id={token}>
+      <ImageViewTransition id={summaryImage}>
         <iframe
           src={`https://www.youtube.com/embed/${token}`}
           title="YouTube video player"
@@ -12,7 +15,7 @@ export default function YouTube({ token, vertical = false }) {
           allowFullScreen
           className="youtube-video"
         ></iframe>
-      </YoutubeTransition>
+      </ImageViewTransition>
     </div>
   );
 }

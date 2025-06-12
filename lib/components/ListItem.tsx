@@ -7,7 +7,6 @@ import {
   ImageViewTransition,
   ContentTileViewTransition,
   ContentViewTransition,
-  YoutubeTransition,
 } from "./ViewTransitions";
 
 type ContentProps = {
@@ -80,7 +79,7 @@ export function ListItem({
         {summaryImage ? (
           <Link href={url}>
             <span className="h-28 md:h-32 aspect-square sm:aspect-video relative block">
-              <SummaryImageTransition summaryImage={summaryImage}>
+              <ImageViewTransition id={summaryImage}>
                 <Image
                   priority={true}
                   alt=""
@@ -92,7 +91,7 @@ export function ListItem({
                   src={summaryImage}
                   className="object-cover shadow-sm"
                 />
-              </SummaryImageTransition>
+              </ImageViewTransition>
             </span>
           </Link>
         ) : null}
@@ -100,33 +99,4 @@ export function ListItem({
       <hr />
     </>
   );
-}
-
-// Summary image might
-function SummaryImageTransition({
-  summaryImage,
-  children,
-}: {
-  summaryImage: string;
-  children: React.ReactNode;
-}) {
-  // Bit of a hack. Ideally we'd propagate the fact that this is a YouTube video
-  // video summary all the way through from indexing, but this will do for now.
-  const youtubeToken = extractYoutubeToken(summaryImage);
-  if (youtubeToken) {
-    return <YoutubeTransition id={youtubeToken}>{children}</YoutubeTransition>;
-  }
-  return (
-    <ImageViewTransition id={summaryImage}>{children}</ImageViewTransition>
-  );
-}
-
-// Given a URL like below extract the YouTube video token.
-// https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/youtube/PETo9TT-qP8.jpg
-function extractYoutubeToken(url: string): string | null {
-  const match = url.match(/youtube\/([^/]+)\.jpg/);
-  if (match && match[1]) {
-    return match[1];
-  }
-  return null;
 }
