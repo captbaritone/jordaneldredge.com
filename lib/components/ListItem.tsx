@@ -47,7 +47,6 @@ export function ListItem({
   summaryImage,
   title,
   url,
-  summary,
   date,
 }: Props) {
   return (
@@ -82,6 +81,7 @@ export function ListItem({
             <span className="h-28 md:h-32 aspect-square sm:aspect-video relative block">
               <ContentSummaryImageViewTransition id={summaryImage}>
                 <Image
+                  priority={true}
                   alt=""
                   fill
                   style={{
