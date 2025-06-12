@@ -2,7 +2,7 @@
 title: "Mainlining Nostalgia: Making the Winamp Skin Museum"
 summary: "Thoughts on what I think made the Winamp Skin Museum successful."
 github_comments_issue_id: 14
-summary_image: /images/winamp-skin-museum-small.png
+summary_image: /images/winamp-skin-museum.png
 tags: ["project", "javascript", "winamp"]
 ---
 

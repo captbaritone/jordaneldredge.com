@@ -51,7 +51,7 @@ export default function Projects() {
       <ListItem
         title="Winamp Skin Museum"
         url="https://skins.webamp.org"
-        summaryImage="/images/winamp-skin-museum-small.png"
+        summaryImage="/images/winamp-skin-museum.png"
       >
         <Wrapper summary="Infinite scroll through &gt;90k Winamp skins with instant search and in-browser interactive preview.">
           <Link href="https://www.theverge.com/tldr/21430347/winamp-skin-museum-nostalgia-90s-00s-internet-art-history-ui">
