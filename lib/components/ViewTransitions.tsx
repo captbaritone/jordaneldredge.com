@@ -12,11 +12,14 @@ type Props = {
 
 function make(prefix: string): (props: Props) => React.ReactNode {
   const component = function Component({ id, children }) {
-    if (id == null) {
+    const escapedId = useMemo(
+      () => (id == null ? null : encodeToAsciiLetters(id)),
+      [id],
+    );
+    if (escapedId == null) {
       return <>{children}</>;
     }
 
-    const escapedId = useMemo(() => encodeToAsciiLetters(id), [id]);
     return (
       <ViewTransition name={`${prefix}-${escapedId}`}>
         {children}
