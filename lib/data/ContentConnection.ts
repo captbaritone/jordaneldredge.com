@@ -1,10 +1,9 @@
 import { Int } from "grats";
-import { db, sql } from "../db";
-import { compile } from "../services/search/Compiler";
+import { db } from "../db";
+import { compile, ValidationError } from "search-query-dsl";
 import Content, { ContentDBRow } from "./Content";
 import { PageType } from "./Indexable";
 import { Tag } from "./Tag";
-import { ValidationError } from "../services/search/Diagnostics";
 import { SCHEMA } from "../services/search/CompilerConfig";
 
 /** @gqlEnum */

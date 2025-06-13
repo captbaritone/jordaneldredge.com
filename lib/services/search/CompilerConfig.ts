@@ -1,4 +1,4 @@
-import { SchemaConfig } from "./Compiler";
+import { SchemaConfig } from "search-query-dsl";
 
 /**
  * SchemaConfig for jordaneldredge.com

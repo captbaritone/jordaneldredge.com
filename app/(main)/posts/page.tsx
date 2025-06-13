@@ -2,7 +2,7 @@ import ListItem from "../../../lib/components/ListItem";
 import { ContentConnection } from "../../../lib/data";
 import SortSelect from "./SortSelect";
 import SearchInput from "./SearchInput";
-import { SortOption } from "../../../lib/services/search/Compiler";
+import { SortOption } from "search-query-dsl";
 import Link from "next/link";
 import KeyboardList from "../../../lib/components/KeyboardList";
 import { ReactNode } from "react";

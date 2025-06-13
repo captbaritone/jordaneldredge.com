@@ -1,13 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { lex } from "../../../../lib/services/search/Lexer";
-import {
-  Compiler,
-  SchemaConfig,
-  SortOption,
-} from "../../../../lib/services/search/Compiler";
-import { parse } from "../../../../lib/services/search/Parser";
+import { lex } from "search-query-dsl";
+import { Compiler, SchemaConfig, SortOption } from "search-query-dsl";
+import { parse } from "search-query-dsl";
 
 const config: SchemaConfig = {
   ftsTable: "contentFts",

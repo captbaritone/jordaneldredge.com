@@ -1,6 +1,6 @@
 import "dotenv/config";
 import { db, sql } from "../lib/db";
-import { createSearchIndexWithTriggers } from "../lib/services/search/CreateFtsTable";
+import { createSearchIndexWithTriggers } from "../packages/search-query-dsl/CreateFtsTable";
 import { SCHEMA } from "../lib/services/search/CompilerConfig";
 
 up();

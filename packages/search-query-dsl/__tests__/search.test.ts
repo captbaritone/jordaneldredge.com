@@ -1,9 +1,6 @@
-import "dotenv/config";
-
 import { describe, expect, test } from "vitest";
 import { compile as _compile, Compiler } from "../Compiler";
 import type { SchemaConfig } from "../Compiler";
-import { sql } from "../../../db";
 import fs from "fs";
 import path from "path";
 import { Database } from "better-sqlite3";
@@ -227,4 +224,11 @@ ${JSON.stringify(tokenResult.value, null, 2)}
       });
     }
   });
+}
+
+export function sql(strings: TemplateStringsArray, ...values: any[]): string {
+  return strings.reduce((result, str, i) => {
+    const value = i < values.length ? values[i] : "";
+    return result + str + value;
+  }, "");
 }
