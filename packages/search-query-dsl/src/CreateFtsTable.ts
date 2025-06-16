@@ -1,6 +1,6 @@
 import { Database } from "better-sqlite3";
-import { sql } from "../../lib/sql";
 import { SchemaConfig } from "./Compiler";
+import { sql } from "./sql";
 
 export function createSearchIndexWithTriggers(
   db: Database,

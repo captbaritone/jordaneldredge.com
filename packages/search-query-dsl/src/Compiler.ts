@@ -18,6 +18,11 @@ export type SchemaConfig = {
    * The name of your main content table
    */
   contentTable: string;
+
+  contentTablePrimaryKey?: string;
+
+  ftsTablePrimaryKey?: string;
+
   /**
    * The text columns in your FTS5 table.
    * These must correspond to columns in your `contentTable`.
@@ -318,8 +323,12 @@ export class Compiler {
       ? this._config.selectColumns.join(", ")
       : `${this._config.contentTable}.*`;
 
+    const contentTablePrimaryKey =
+      this._config.contentTablePrimaryKey ?? "rowid";
+    const ftsTablePrimaryKey = this._config.ftsTablePrimaryKey ?? "rowid";
+
     return `SELECT ${columns} FROM ${this._config.ftsTable}
-LEFT JOIN ${this._config.contentTable} ON ${this._config.contentTable}.rowid = ${this._config.ftsTable}.rowid
+LEFT JOIN ${this._config.contentTable} ON ${this._config.contentTable}.${contentTablePrimaryKey} = ${this._config.ftsTable}.${ftsTablePrimaryKey}
 ${this.where()}
 ${this.sort()}
 ${this.limit()}`.trim();

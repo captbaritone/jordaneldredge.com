@@ -8,6 +8,7 @@ import betterSqlite from "better-sqlite3";
 import { createSearchIndexWithTriggers } from "../CreateFtsTable";
 import { lex } from "../Lexer";
 import { parse } from "../Parser";
+import { sql } from "../sql";
 
 const shouldUpdate =
   process.env.UPDATE === "1" || process.argv.includes("--update");
@@ -19,6 +20,180 @@ const databases: {
   getDb(config: SchemaConfig): Database;
   queries: string[];
 }[] = [
+  {
+    name: "Winamp Skin Museum alike",
+    config: {
+      ftsTable: "skin_search",
+      contentTable: "skins",
+      ftsTextColumns: ["skin_md5", "file_names", "readme_text"],
+      defaultBestSort: "skin_md5", // TODO
+      contentTablePrimaryKey: "md5",
+      ftsTablePrimaryKey: "skin_md5",
+    },
+    getDb(config) {
+      const db: Database = betterSqlite(":memory:", {});
+
+      db.exec(sql`
+        CREATE TABLE IF NOT EXISTS "files" (
+          "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+          "file_path" TEXT NOT NULL,
+          "source_attribution" TEXT,
+          "skin_md5" TEXT NOT NULL
+        );
+
+        CREATE TABLE archive_files (
+          id INTEGER PRIMARY KEY,
+          skin_md5 TEXT NOT NULL,
+          file_name TEXT NOT_NULL,
+          file_md5 TEXT NOT NULL,
+          \`file_date\` DATETIME,
+          uncompressed_size INTEGER,
+          text_content TEXT,
+          is_directory INTEGER,
+          FOREIGN KEY (skin_md5) REFERENCES skins (md5),
+          UNIQUE (skin_md5, file_name)
+        );
+
+        CREATE TABLE IF NOT EXISTS "skin_uploads" (
+          "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+          "skin_md5" TEXT NOT NULL,
+          status TEXT NOT NULL,
+          filename TEXT
+        );
+
+        CREATE TABLE IF NOT EXISTS "skins" (
+          "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+          "md5" TEXT NOT NULL UNIQUE,
+          "skin_type" INTEGER NOT NULL,
+          "emails" BLOB,
+          "readme_text" BLOB,
+          content_hash TEXT
+        );
+
+        CREATE TABLE IF NOT EXISTS "skin_reviews" (
+          "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+          "skin_md5" TEXT NOT NULL,
+          review TEXT NOT NULL,
+          \`reviewer\` text
+        );
+
+        CREATE TABLE IF NOT EXISTS "tweets" (
+          "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+          "likes" INTEGER,
+          "skin_md5" TEXT NOT NULL,
+          tweet_id text,
+          retweets INTEGER
+        );
+
+        CREATE TABLE IF NOT EXISTS "file_info" (
+          "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+          "file_md5" TEXT NOT NULL UNIQUE,
+          text_content TEXT,
+          size_in_bytes INTEGER
+        );
+
+        CREATE TABLE museum_sort_order (skin_md5 TEXT REFERENCES skins (md5));
+
+        CREATE VIRTUAL TABLE skin_search USING fts5 (skin_md5, readme_text, file_names);
+
+        -- Trigger for inserting into the skins table
+        CREATE TRIGGER after_skin_insert AFTER INSERT ON skins BEGIN
+        INSERT INTO
+          skin_search (skin_md5, readme_text)
+        VALUES
+          (NEW.md5, NEW.readme_text);
+
+        END;
+
+        -- Trigger for updating skins readme_text
+        CREATE TRIGGER after_skin_update AFTER
+        UPDATE OF readme_text ON skins BEGIN
+        UPDATE skin_search
+        SET
+          readme_text = NEW.readme_text
+        WHERE
+          skin_md5 = NEW.md5;
+
+        END;
+
+        -- Trigger for inserting into the files table
+        CREATE TRIGGER after_file_insert AFTER INSERT ON files BEGIN
+        UPDATE skin_search
+        SET
+          file_names = (
+            SELECT
+              GROUP_CONCAT(file_path, ' ')
+            FROM
+              files
+            WHERE
+              skin_md5 = NEW.skin_md5
+          )
+        WHERE
+          skin_md5 = NEW.skin_md5;
+
+        END;
+
+        -- Trigger for updating file_path in files
+        CREATE TRIGGER after_file_update AFTER
+        UPDATE OF file_path ON files BEGIN
+        UPDATE skin_search
+        SET
+          file_names = (
+            SELECT
+              GROUP_CONCAT(file_path, ' ')
+            FROM
+              files
+            WHERE
+              skin_md5 = NEW.skin_md5
+          )
+        WHERE
+          skin_md5 = NEW.skin_md5;
+
+        END;
+
+        -- Trigger for deleting files
+        CREATE TRIGGER after_file_delete AFTER DELETE ON files BEGIN
+        UPDATE skin_search
+        SET
+          file_names = (
+            SELECT
+              GROUP_CONCAT(file_path, ' ')
+            FROM
+              files
+            WHERE
+              skin_md5 = OLD.skin_md5
+          )
+        WHERE
+          skin_md5 = OLD.skin_md5;
+
+        END;
+
+        /* skin_search(skin_md5,readme_text,file_names) */;
+      `);
+      db.exec(sql`
+        INSERT INTO
+          skins (md5, skin_type, emails, readme_text, content_hash)
+        VALUES
+          (
+            '1234567890abcdef1234567890abcdef',
+            1,
+            'luigihann@example.com',
+            'This is a readme for skin 1 by luigihann.',
+            'hash1'
+          ),
+          (
+            'abcdef1234567890abcdef1234567890',
+            2,
+            'foo@bar.com',
+            'This is a readme for skin 2.',
+            'hash2'
+          );
+      `);
+
+      return db;
+    },
+    queries: ["luigihann"],
+  },
   {
     name: "Cats and Dogs",
     config: {
@@ -224,11 +399,4 @@ ${JSON.stringify(tokenResult.value, null, 2)}
       });
     }
   });
-}
-
-export function sql(strings: TemplateStringsArray, ...values: any[]): string {
-  return strings.reduce((result, str, i) => {
-    const value = i < values.length ? values[i] : "";
-    return result + str + value;
-  }, "");
 }
