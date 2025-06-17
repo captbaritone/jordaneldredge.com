@@ -193,6 +193,7 @@ export default class Content {
 
     const query = sql`
       SELECT
+        id,
         page_type,
         slug,
         title,

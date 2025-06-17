@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import * as Data from "../data";
+import { ContentTileViewTransition } from "./ViewTransitions";
 
 type Props = {
   item: Data.Content;
@@ -35,7 +36,11 @@ export default async function RelatedContent({ item }: Props) {
         <ul>
           {relatedItems.map((post) => (
             <li key={post.slug()}>
-              <Link href={{ pathname: post.url().path() }}>{post.title()}</Link>
+              <ContentTileViewTransition id={post.id()}>
+                <Link href={{ pathname: post.url().path() }}>
+                  {post.title()}
+                </Link>
+              </ContentTileViewTransition>
             </li>
           ))}
         </ul>
