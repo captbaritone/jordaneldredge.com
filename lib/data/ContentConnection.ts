@@ -28,7 +28,7 @@ export default class ContentConnection {
   static search(
     query: string,
     sort: SortOption,
-    first?: Int | null,
+    first: Int | null,
   ): Array<Content> {
     return ContentConnection.searchResult(query, sort, first).value;
   }
