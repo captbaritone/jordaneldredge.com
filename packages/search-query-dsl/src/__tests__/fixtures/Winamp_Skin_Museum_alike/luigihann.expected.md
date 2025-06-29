@@ -5,26 +5,19 @@
 None
 
 # Results
-
 ```json
-[]
+[
+  null
+]
 ```
 
 # Query
 
 ```sql
-SELECT
-  skins.*
-FROM
-  skin_search
-  LEFT JOIN skins ON skins.rowid = skin_search.rowid
-WHERE
-  skin_search MATCH (
-    '{skin_md5 file_names readme_text}: ' || (:param0 || ' *')
-  )
-ORDER BY
-  RANK ASC,
-  skin_md5
+SELECT skins.* FROM skin_search
+LEFT JOIN skins ON skins.md5 = skin_search.skin_md5
+WHERE skin_search MATCH ('{skin_md5 file_names readme_text}: ' || (:param0 || ' *'))
+ORDER BY RANK ASC, skin_md5
 ```
 
 # Params
@@ -50,7 +43,6 @@ ORDER BY
 ```
 
 # Tokens
-
 ```json
 [
   {

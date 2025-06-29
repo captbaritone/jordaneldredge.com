@@ -56,6 +56,47 @@ export type SchemaConfig = {
   defaultBestSort: string;
 };
 
+/**
+ * Builds up an SQL query from the parse tree.
+ *
+ * The tricky part is that we would like to use the MATCH FTS query for text
+ * searches, since that is the most efficient way to search and also allows us
+ * to rank results by relevance. However, MATCH expressions have a somewhat
+ * under-documented limitation:
+ *
+ * > Generally speaking, FTS4 (and FTS3 and FTS5) requires no more than one
+ * > MATCH operator in the WHERE clause for each FTS4 table in the FROM
+ * > clause, and that one MATCH operator must be a conjunct.
+ * >
+ * > Sometimes you can bend this rule some and the query planner will still
+ * > be able to figure out what to do, but it is easy to bend it too far
+ * > and run into the error you encountered.
+ *
+ * - Dr. Hipp, SQLite Forum https://www.mail-archive.com/sqlite-users@mailinglists.sqlite.org/msg104423.html
+ *
+ * So, we can only use MATCH in a WHERE clause if that term is "conjunctive",
+ * which means it is ANDed with the remaining query terms. This interpretation
+ * is confirmed by Dr. Hipp later in the thread.
+ *
+ * Luckily we have a clever option to reexpress any MATCH expression as a
+ * subquery expression that returns a boolean value. So, our job is to determine
+ * which expressions can be expressed as MATCH expressions (preferable), and
+ * which must deopt to the subquery expression.
+ *
+ * It is a sub-expression of an non-conjunctive expression where at least one
+ * term is not expressible as a MATCH term.
+ *
+ * To achieve this we employ a two-pass approach:
+ *
+ * Each expression can be forced by its parent to deopt. If it hasn't been
+ * forced by the parent, we deeply traverse the larger expression to determine
+ * if all of its sub-expressions can be expressed as MATCH expressions. If so,
+ * we emit a single MATCH expression.
+ *
+ * If not, we attempt to emit as a MATCH expression if possible. If the
+ * expression is itself non-conjunctive, we emit the sub-expression forcing them
+ * to deopt to a boolean expression.
+ */
 export function compile(
   config: SchemaConfig,
   searchQuery: string,
@@ -96,7 +137,8 @@ export class Compiler {
     this._limit = limit;
   }
   compile(node: ParseNode) {
-    // Currently we always ignore draft and archive posts.
+    // The integration may need to include some hard-coded conditions
+    // which are always applied to the query and cannot be negated.
     if (this._config.hardCodedConditions != null) {
       for (const condition of this._config.hardCodedConditions) {
         this._whereClauses.push(condition);
@@ -105,8 +147,8 @@ export class Compiler {
     this._whereClauses.push(this.expression(node, false));
   }
 
-  // Detects if a
-  isMachNode(node: ParseNode): node is MatchNode {
+  // Detects if an expression can be expressed as a MATCH FTS query.
+  isMatchNode(node: ParseNode): node is MatchNode {
     switch (node.type) {
       case "text":
         return true;
@@ -121,7 +163,7 @@ export class Compiler {
       case "or":
       case "and":
       case "not":
-        return this.isMachNode(node.left) && this.isMachNode(node.right);
+        return this.isMatchNode(node.left) && this.isMatchNode(node.right);
       default:
         // @ts-expect-error
         throw new Error(`Unknown node type: ${node.type}`);
@@ -159,11 +201,16 @@ export class Compiler {
   }
 
   expression(node: ParseNode, toBoolean: boolean): string {
-    if (!toBoolean && this.isMachNode(node)) {
+    if (!toBoolean && this.isMatchNode(node)) {
+      // This entire expression can be entirely expressed as a MATCH expression.
       return this.matchExpression(node);
     }
+
+    // This expression cannot be expressed entirely as a MATCH expression, but
     switch (node.type) {
       case "true":
+        // This only occurs as a result of error recovery in the parser when we
+        // hit the end of the input in the middle of a larger expression.
         return "TRUE";
       case "tag":
         // `content.tags` is a space-separated list of tags. A simple `%tag%`
@@ -186,17 +233,24 @@ export class Compiler {
       case "prefix":
         return this.prefix(node, toBoolean);
       case "or":
-        const left = this.expression(node.left, toBoolean);
-        const right = this.expression(node.right, toBoolean);
+        if (this.isMatchNode(node)) {
+          return this.matchExpression(node);
+        }
+        const left = this.expression(node.left, true);
+        const right = this.expression(node.right, true);
         return `(${left} OR ${right})`;
       case "and":
         const leftAnd = this.expression(node.left, toBoolean);
         const rightAnd = this.expression(node.right, toBoolean);
         return `(${leftAnd} AND ${rightAnd})`;
       case "not":
-        if (this.isMachNode(node)) {
+        if (this.isMatchNode(node)) {
           return this.matchExpression(node);
         }
+        // We emit as AND + NOT which means technically this is conjunctive.
+        // That means the left hand side can still be a MATCH expression if
+        // allowed by the parent expression. The right hand side must
+        // always be a boolean expression.
         const leftNot = this.expression(node.left, toBoolean);
         const rightNot = this.expression(node.right, true);
         return `(${leftNot} AND NOT ${rightNot})`;

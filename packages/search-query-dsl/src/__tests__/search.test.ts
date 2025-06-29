@@ -294,6 +294,7 @@ const databases: {
       "-",
       "a AND",
       "a (",
+      "a OR -b",
     ],
   },
 ];
