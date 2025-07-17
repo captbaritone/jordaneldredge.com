@@ -73,7 +73,7 @@ Note how the `@strawberry` decorators just tell the library _which_ classes/prop
 
 The main difference between implementation-first and non-implementation-first approaches is **duplication**, and duplication’s ever-present companion: (de)**synchronization**. When a solution is _not_ implementation-first, you end up with duplication. You must declare the existence of your type/field/argument, and then you must, _additionally_, implement it! With that duplication comes repetition, but also the risk of mismatches!
 
-While some typed languages can employ clever to types to catch these mismatches, the nuisance of keeping them in sync is still present.
+While some typed languages can employ clever techniques to catch these mismatches, the nuisance of keeping them in sync is still present.
 
 Finally, implementation-first libraries just _feel_ different. There’s a sense of lightness and simplicity that comes from the fact that you are _just writing code_. No need to remember your libraries special syntax for describing how to type a non-nullable string argument. Just add an argument, and type it! The existence of the SDL schema starts to fade away into an implementation detail and you’re left with a simple sense of type safety. “I return a string here, and it comes out on my client as a string”.
 
