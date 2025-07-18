@@ -39,7 +39,7 @@
     "js-yaml": "^4.1.0",
     "mdast-util-to-markdown": "^2.1.0",
     "mdast-util-to-string": "^4.0.0",
-    "next": "15.3.3",
+    "next": "15.4.1",
     "notion-to-md": "^3.1.4",
     "openai": "^4.73.1",
     "postcss": "^8.4.35",
@@ -56,6 +56,7 @@
     "remark-lint-code-block-style": "^2.0.1",
     "remark-parse": "^11.0.0",
     "remark-preset-lint-recommended": "^6.1.2",
+    "search-query-dsl": "workspace:*",
     "sharp": "^0.29.3",
     "shiki": "^0.11.1",
     "tailwindcss": "^3.4.1",
@@ -64,8 +65,7 @@
     "unist-util-map": "^4.0.0",
     "unist-util-visit": "^5.0.0",
     "unist-util-visit-parents": "^6.0.1",
-    "vscode-oniguruma": "1.6.2",
-    "search-query-dsl": "workspace:*"
+    "vscode-oniguruma": "1.6.2"
   },
   "remarkConfig": {
     "plugins": [
