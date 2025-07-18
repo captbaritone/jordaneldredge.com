@@ -34,7 +34,7 @@ export default function KeyboardList({ children: items, onSelect }: Props) {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [items, selectedIndex, onSelect]);
+  }, [items, selectedIndex, onSelect, router]);
 
   const selectedStyle = "bg-gray-100 -mx-2 px-2 rounded-md";
 
