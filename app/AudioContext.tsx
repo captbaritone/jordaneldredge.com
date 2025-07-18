@@ -1,5 +1,5 @@
 "use client";
-import { useContext, useEffect, useState } from "react";
+import { startTransition, useContext, useEffect, useState } from "react";
 import React from "react";
 import { AudioState } from "./AudioState";
 
@@ -48,7 +48,9 @@ export function usePlaying() {
   const [playing, setPlaying] = useState(false);
   useEffect(() => {
     function handlePlay() {
-      setPlaying(true);
+      startTransition(() => {
+        setPlaying(true);
+      });
     }
     function handlePause() {
       setPlaying(false);
@@ -69,7 +71,9 @@ export function useCurrentTrack() {
   const [currentTrack, setCurrentTrack] = useState<string | null>(null);
   useEffect(() => {
     function handlePlay() {
-      setCurrentTrack(audioContext.url());
+      startTransition(() => {
+        setCurrentTrack(audioContext.url());
+      });
     }
     audioContext.addEventListener("urlchange", handlePlay);
     return () => {
@@ -95,7 +99,9 @@ export function useDuration() {
     }
     function handler() {
       const d = audioSrc.duration;
-      setDuration(Number.isNaN(d) ? 0 : d);
+      startTransition(() => {
+        setDuration(Number.isNaN(d) ? 0 : d);
+      });
     }
     audioSrc.addEventListener("durationchange", handler);
     return () => {

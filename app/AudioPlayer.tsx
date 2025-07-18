@@ -1,5 +1,7 @@
 "use client";
 import React, { CSSProperties, useCallback, useState } from "react";
+import { unstable_ViewTransition as ViewTransition } from "react";
+
 import {
   FaPlay,
   FaPause,
@@ -37,50 +39,52 @@ export default function AudioPlayer() {
     return null;
   }
   return (
-    <div
-      style={{
-        position: "fixed",
-        width: "100%",
-        bottom: 0,
-        borderTop: "1px solid lightgrey",
-        background: "white",
-      }}
-    >
-      <div className="max-w-2xl mx-auto p-3 text-sm">
-        <div className="flex align items-center">
-          <div className="flex flex-row align items-center w-full">
-            <button
-              className="pr-3"
-              onClick={() => {
-                if (playing) {
-                  audioState.pause();
-                } else {
-                  audioState.resume();
-                }
-              }}
-            >
-              {playing ? <FaPause title="Pause" /> : <FaPlay title="Play" />}
-            </button>
-            <div className="whitespace-nowrap font-mono">
-              {formatSeconds(currentTime)}
+    <ViewTransition enter="slide-up" exit="slide-down">
+      <div
+        style={{
+          position: "fixed",
+          width: "100%",
+          bottom: 0,
+          borderTop: "1px solid lightgrey",
+          background: "white",
+        }}
+      >
+        <div className="max-w-2xl mx-auto p-3 text-sm">
+          <div className="flex align items-center">
+            <div className="flex flex-row align items-center w-full">
+              <button
+                className="pr-3"
+                onClick={() => {
+                  if (playing) {
+                    audioState.pause();
+                  } else {
+                    audioState.resume();
+                  }
+                }}
+              >
+                {playing ? <FaPause title="Pause" /> : <FaPlay title="Play" />}
+              </button>
+              <div className="whitespace-nowrap font-mono">
+                {formatSeconds(currentTime)}
+              </div>
+              <Progress />
+              <div className="whitespace-nowrap font-mono">
+                {formatSeconds(duration)}
+              </div>
+              {/* <VolumeIcon /> */}
             </div>
-            <Progress />
-            <div className="whitespace-nowrap font-mono">
-              {formatSeconds(duration)}
+            <div className="whitespace-nowrap pl-5">
+              {currentTrack && getFilenameFromUrl(currentTrack)}
             </div>
-            {/* <VolumeIcon /> */}
+            {
+              <button className="pl-3" onClick={() => audioState.stop()}>
+                <FaTimes />
+              </button>
+            }
           </div>
-          <div className="whitespace-nowrap pl-5">
-            {currentTrack && getFilenameFromUrl(currentTrack)}
-          </div>
-          {
-            <button className="pl-3" onClick={() => audioState.stop()}>
-              <FaTimes />
-            </button>
-          }
         </div>
       </div>
-    </div>
+    </ViewTransition>
   );
 }
 
