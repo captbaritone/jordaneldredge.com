@@ -5,6 +5,7 @@ import {
   useCurrentTrack,
   usePlaying,
 } from "../../app/AudioContext";
+import { startTransition } from "react";
 
 type Props = {
   audioUrl: string;
@@ -24,11 +25,13 @@ export default function PlayButton({ audioUrl, title }: Props) {
       title={title}
       className="flex items-center text-gray-400"
       onClick={() => {
-        if (isPlaying) {
-          audioContext.pause();
-        } else {
-          audioContext.play(audioUrl);
-        }
+        startTransition(() => {
+          if (isPlaying) {
+            audioContext.pause();
+          } else {
+            audioContext.play(audioUrl);
+          }
+        });
       }}
     >
       <span className="text-s pr-1">
