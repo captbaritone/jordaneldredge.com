@@ -1,0 +1,13 @@
+diff --git a/build/notion-to-md.js b/build/notion-to-md.js
+index f038f0959cc76c575372e9815596a04f974893d8..7b1b2996f700d2d239bb9dede313c091dd772fc1 100644
+--- a/build/notion-to-md.js
++++ b/build/notion-to-md.js
+@@ -447,7 +447,7 @@ class NotionToMarkdown {
+                 break;
+             case "numbered_list_item":
+                 {
+-                    parsedData = md.bullet(parsedData, block.numbered_list_item.number);
++                    parsedData = md.bullet(parsedData, block.numbered_list_item.number ?? 1);
+                 }
+                 break;
+             case "to_do":
