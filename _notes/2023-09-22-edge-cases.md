@@ -16,9 +16,9 @@ For most problems worth solving, every solution comes with tradeoffs. The most h
 
 I think a career progression in software often looks like:
 
-- Cannot identify edge cases
-- Can identify edge cases _as_ they crop up
-- Can predict edge cases that _will_ crop up
-- Can predict cases, and intuitively know if they will be solve-able when they do
-- Can predict unsolvable edge cases that will crop up
-- Can identify mitigations/tradeoffs for unsolvable edge cases that will make them acceptable
+1. Cannot identify edge cases
+2. Can identify edge cases _as_ they crop up
+3. Can predict edge cases that _will_ crop up
+4. Can predict cases, and intuitively know if they will be solve-able when they do
+5. Can predict unsolvable edge cases that will crop up
+6. Can identify mitigations/tradeoffs for unsolvable edge cases that will make them acceptable

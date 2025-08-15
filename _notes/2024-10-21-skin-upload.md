@@ -21,10 +21,10 @@ The goal of the museum’s upload flow was to capitalize on the museum’s visib
 
 To achieve this goal, we must do a few things:
 
-- Make the process of uploading large collections easy (users are only so generous with their effort)
-- Make the process of uploading large collections fast (users are only so generous with their time)
-- Ensure we can scalably handle these large volumep uploads, even while the site is under heavy load
-- Achieve all of the above with a side-project budget
+1. Make the process of uploading large collections easy (users are only so generous with their effort)
+2. Make the process of uploading large collections fast (users are only so generous with their time)
+3. Ensure we can scalably handle these large volumep uploads, even while the site is under heavy load
+4. Achieve all of the above with a side-project budget
 
 This is an interesting set of challenges because it forces us to deal with a difficult combination of challenges: Massive collections, processed easily and quickly, all with minimal resources.
 
@@ -42,8 +42,8 @@ To take advantage of this, we have the user’s browser locally analyze the file
 
 The code does the following:
 
-- Checks the file extension and file structure to ensure it’s a skin
-- Computes the [md5 hash](https://en.wikipedia.org/wiki/MD5) of the Winamp skin
+1. Checks the file extension and file structure to ensure it’s a skin
+2. Computes the [md5 hash](https://en.wikipedia.org/wiki/MD5) of the Winamp skin
 
 The md5 hash is a short string that uniquely identifies the contents of a file. We send the server a list all the skins that the user has on their machine in the form of an array of md5 hashes. This allows the server to reply with a list of the subset of skins which we actually need them to upload.
 

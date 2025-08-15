@@ -17,10 +17,10 @@ You can read the full write up here: <https://github.com/facebook/relay/issues/4
 
 The architecture allows a sophisticated GraphQL client (Relay?) to coordinate:
 
-- Fetching of server data
-- Reading of and (subtraction to) client data sources
-- Reactive (re)computation of data derived from the above
-- Efficient updates of UI components derived from 1,2,3
+1. Fetching of server data
+2. Reading of and (subtraction to) client data sources
+3. Reactive (re)computation of data derived from the above
+4. Efficient updates of UI components derived from 1,2,3
 
 It does this while presenting a unified, and tool-supported interface to product code, GraphQL, providing a structured way to define your data layer, and also offering a path to moving heavy client star off the main thread.
 

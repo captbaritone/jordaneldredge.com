@@ -85,10 +85,10 @@ I could see a number of other optimization opportunities here, like falling back
 
 In addition to improving caching, there are a few other improvements I’d like to make:
 
-- Some scheme for realtime updates to my search index (using SQLite’s FTS feature)
-- Better resiliency in case Notion goes down. Fallback to Markdown files?
-- Write my own Notion → Markdown AST conversation. Right now I actually serialize the Notion format to a Markdown string and reparse that, which is pretty wasteful
-- Some scheme to manually break the cache so I can see new posts right after I post them
+1. Some scheme for realtime updates to my search index (using SQLite’s FTS feature)
+2. Better resiliency in case Notion goes down. Fallback to Markdown files?
+3. Write my own Notion → Markdown AST conversation. Right now I actually serialize the Notion format to a Markdown string and reparse that, which is pretty wasteful
+4. Some scheme to manually break the cache so I can see new posts right after I post them
 
 ## The code
 

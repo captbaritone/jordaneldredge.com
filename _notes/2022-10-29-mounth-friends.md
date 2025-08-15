@@ -15,3 +15,5 @@ I learned about this years ago, and probably think about it once a week. It’s 
 This excerpt is from a song on his [Mouth Silence](http://www.neilcic.com/mouthsilence/) mashup album.
 
 ::youtube{token=nEmyonfpsgI}
+
+See also my post [Mouth Dreams mashup album by Neil Cicierega](https://jordaneldredge.com/notes/mouth-dreams/).
