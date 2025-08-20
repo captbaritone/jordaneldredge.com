@@ -5,7 +5,7 @@ import { SchemaConfig } from "search-query-dsl";
  */
 export const SCHEMA: SchemaConfig = {
   ftsTable: "content_fts_2",
-  ftsTextColumns: ["title", "content", "tags", "summary"],
+  ftsTextColumns: ["title", "content", "tags", "summary", "slug"],
   contentTable: "content",
   hardCodedConditions: [
     `(json_extract(metadata, '$.archive') IS NULL OR NOT json_extract(metadata, '$.archive'))`,
