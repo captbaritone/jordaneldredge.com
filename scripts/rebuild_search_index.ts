@@ -14,4 +14,5 @@ db.exec(sql`
 
   DROP TABLE IF EXISTS content_fts_2;
 `);
-const SQL = createSearchIndexWithTriggers(db, SCHEMA);
+const SQL = createSearchIndexWithTriggers(SCHEMA);
+db.exec(SQL);

@@ -1,11 +1,7 @@
-import { Database } from "better-sqlite3";
 import { SchemaConfig } from "./Compiler";
 import { sql } from "./sql";
 
-export function createSearchIndexWithTriggers(
-  db: Database,
-  config: SchemaConfig,
-) {
+export function createSearchIndexWithTriggers(config: SchemaConfig): string {
   const rows = config.ftsTextColumns;
   const ftsTable = config.ftsTable;
   const contentTable = config.contentTable;
@@ -87,5 +83,5 @@ export function createSearchIndexWithTriggers(
     END;
   `;
 
-  db.exec(queries);
+  return queries;
 }

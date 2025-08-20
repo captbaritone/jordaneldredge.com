@@ -216,7 +216,7 @@ const databases: {
         CREATE TABLE content (id INTEGER PRIMARY KEY, [text] TEXT NOT NULL);
       `);
 
-      createSearchIndexWithTriggers(db, config);
+      db.exec(createSearchIndexWithTriggers(config));
 
       db.exec(sql`
         INSERT INTO
@@ -258,7 +258,7 @@ const databases: {
         CREATE TABLE content (id INTEGER PRIMARY KEY, [text] TEXT NOT NULL);
       `);
 
-      createSearchIndexWithTriggers(db, config);
+      db.exec(createSearchIndexWithTriggers(config));
 
       db.exec(sql`
         INSERT INTO
