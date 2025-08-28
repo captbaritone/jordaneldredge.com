@@ -12,5 +12,7 @@ git rebase origin/master
 echo "Updating node_modules"
 nvm use 20
 pnpm i
+echo "Running migrations"
+pnpm run migrate
 echo "Reloading pm2"
 pm2 reload ecosystem.config.js
