@@ -3,6 +3,7 @@ import { userCanManageRoles } from "../../../../lib/session";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import UserRoleForm from "./UserRoleForm";
+import DeleteUserButton from "./DeleteUserButton";
 import {
   getAllRoles,
   ROLE_DESCRIPTIONS,
@@ -85,36 +86,45 @@ export default async function ManageUsers() {
             <th className="p-2 text-left">Display Name</th>
             <th className="p-2 text-left">Role</th>
             <th className="p-2 text-left">Created</th>
-            <th className="p-2 text-left">Last Login</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users.map((user) => (
-            <tr
-              key={user.id}
-              className="border-t border-gray-300 hover:bg-gray-50"
-            >
-              <td className="p-2 font-medium">{user.username}</td>
-              <td className="p-2">{user.display_name || "-"}</td>
-              <td className="p-2">
-                <UserRoleForm
-                  userId={user.id}
-                  currentRole={user.role}
-                  roles={roles}
-                />
-              </td>
-              <td className="p-2 text-gray-600">
-                {new Date(user.created_at).toLocaleDateString()}
-              </td>
-              <td className="p-2 text-gray-600">
-                {user.last_login
-                  ? new Date(user.last_login).toLocaleDateString()
-                  : "Never"}
-              </td>
+              <th className="p-2 text-left">Last Login</th>
+              <th className="p-2 text-left">Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {users.map((user) => (
+              <tr
+                key={user.id}
+                className="border-t border-gray-300 hover:bg-gray-50"
+              >
+                <td className="p-2 font-medium">{user.username}</td>
+                <td className="p-2">{user.display_name || "-"}</td>
+                <td className="p-2">
+                  <UserRoleForm
+                    userId={user.id}
+                    currentRole={user.role}
+                    roles={roles}
+                  />
+                </td>
+                <td className="p-2 text-gray-600">
+                  {new Date(user.created_at).toLocaleDateString()}
+                </td>
+                <td className="p-2 text-gray-600">
+                  {user.last_login
+                    ? new Date(user.last_login).toLocaleDateString()
+                    : "Never"}
+                </td>
+                <td className="p-2">
+                  {/* Don't allow deleting admin users */}
+                  {user.role === 'admin' ? (
+                    <span className="text-gray-400 text-sm">Administrator</span>
+                  ) : (
+                    <DeleteUserButton userId={user.id} username={user.username} />
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
 
       <h2 className="mt-8">Role Definitions</h2>
       <table className="w-full border-collapse my-4">

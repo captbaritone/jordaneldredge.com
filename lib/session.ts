@@ -40,9 +40,6 @@ async function getUserRole(): Promise<UserRole> {
   // Not logged in
   if (!session.userId) return 'anonymous';
   
-  // Legacy support: if user is admin by ID
-  if (session.userId === Number(process.env.ADMIN_ID)) return 'admin';
-  
   // Look up user role from database
   const result = db.prepare("SELECT role FROM users WHERE id = ?").get(session.userId) as { role: UserRole } | undefined;
   return result?.role || 'untrusted';
