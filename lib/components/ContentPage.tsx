@@ -4,7 +4,7 @@ import RelatedContent from "./RelatedContent";
 import GitHubComments from "./GitHubComments";
 import DateString from "./DateString";
 import PlayButton from "./PlayButton";
-import { userIsAdmin } from "../session";
+import { userCanViewContentDebug } from "../session";
 import Link from "next/link";
 import {
   ContentDateViewTransition,
@@ -17,7 +17,7 @@ type ContentPageProps = {
 };
 
 export default async function ContentPage({ item, issueId }: ContentPageProps) {
-  const isAdmin = await userIsAdmin();
+  const canViewDebug = await userCanViewContentDebug();
   const content = item.content();
   const audio = item.ttsAudio();
   const ast = await content.ast();
@@ -49,7 +49,7 @@ export default async function ContentPage({ item, issueId }: ContentPageProps) {
                 />
               </>
             )}
-            {isAdmin && (
+            {canViewDebug && (
               <>
                 <div className="pl-2 pr-2">{"|"}</div>
                 <Link href={{ pathname: item.debugUrl().path() }}>Debug</Link>

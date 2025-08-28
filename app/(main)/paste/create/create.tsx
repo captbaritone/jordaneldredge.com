@@ -1,13 +1,13 @@
 "use server";
 import { db } from "../../../../lib/db";
-import { getSession, userIsAdmin } from "../../../../lib/session";
+import { getSession, userCanCreatePaste } from "../../../../lib/session";
 import { redirect } from "next/navigation";
 
 export async function create(formData) {
   "use server";
-  const isAdmin = await userIsAdmin();
-  if (!isAdmin) {
-    throw new Error("You must be the admin to create a paste");
+  const canCreatePaste = await userCanCreatePaste();
+  if (!canCreatePaste) {
+    throw new Error("You don't have permission to create a paste");
   }
 
   const filename = formData.get("filename");

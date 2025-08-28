@@ -1,13 +1,13 @@
 "use server";
 import { db } from "../../../../../lib/db";
-import { getSession, userIsAdmin } from "../../../../../lib/session";
+import { getSession, userCanEditAnyPaste } from "../../../../../lib/session";
 import { redirect } from "next/navigation";
 
 export async function update(pasteId: number, formData) {
   "use server";
-  const isAdmin = await userIsAdmin();
-  if (!isAdmin) {
-    throw new Error("You must be the admin to create a paste");
+  const canEditPaste = await userCanEditAnyPaste();
+  if (!canEditPaste) {
+    throw new Error("You must have permission to edit pastes");
   }
 
   const filename = formData.get("filename");

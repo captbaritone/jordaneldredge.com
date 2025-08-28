@@ -3,7 +3,7 @@ import { parse, syntaxHighlighting } from "../../../../lib/data/markdownUtils";
 import { db, sql } from "../../../../lib/db";
 import Markdown from "../../../../lib/components/Markdown";
 import Link from "next/link";
-import { getSession, userIsAdmin } from "../../../../lib/session";
+import { getSession, userCanViewAnyPaste } from "../../../../lib/session";
 
 export function metadata() {
   return {
@@ -19,8 +19,8 @@ export default async function Paste(props) {
     notFound();
   }
 
-  const isAdmin = await userIsAdmin();
-  if (!isAdmin) {
+  const canViewAnyPaste = await userCanViewAnyPaste();
+  if (!canViewAnyPaste) {
     notFound();
   }
 

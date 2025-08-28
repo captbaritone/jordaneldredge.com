@@ -1,10 +1,10 @@
 import { notFound } from "next/navigation";
-import { userIsAdmin } from "../../../../lib/session";
+import { userCanCreatePaste } from "../../../../lib/session";
 import { create } from "./create";
 
 export default async function CreatePaste() {
-  const isAdmin = await userIsAdmin();
-  if (!isAdmin) {
+  const canCreatePaste = await userCanCreatePaste();
+  if (!canCreatePaste) {
     notFound();
   }
   return (

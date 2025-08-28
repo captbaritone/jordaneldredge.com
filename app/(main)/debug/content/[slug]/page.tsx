@@ -1,7 +1,7 @@
 import React from "react";
 import { Content } from "../../../../../lib/data";
 import { SiteUrl } from "../../../../../lib/data/SiteUrl";
-import { userIsAdmin } from "../../../../../lib/session";
+import { userCanViewContentDebug } from "../../../../../lib/session";
 import { TagSet } from "../../../../../lib/data/TagSet";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -10,8 +10,8 @@ import { Bytes } from "../../../../../lib/components/Bytes";
 
 export default async function DebugContent(props) {
   const params = await props.params;
-  const isAdmin = await userIsAdmin();
-  if (!isAdmin) {
+  const canViewContentDebug = await userCanViewContentDebug();
+  if (!canViewContentDebug) {
     notFound();
   }
   const item = Content.getBySlug(params.slug);

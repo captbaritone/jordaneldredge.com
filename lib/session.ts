@@ -1,5 +1,7 @@
 import { getIronSession, SessionOptions } from "iron-session";
 import { cookies } from "next/headers";
+import { UserRole } from "./roles";
+import { db } from "./db";
 
 export interface SessionData {
   userId?: number;
@@ -31,7 +33,86 @@ export async function getSession() {
   );
 }
 
-export async function userIsAdmin() {
+// Helper function to get user's role
+async function getUserRole(): Promise<UserRole> {
   const session = await getSession();
-  return session.userId === Number(process.env.ADMIN_ID);
+  
+  // Not logged in
+  if (!session.userId) return 'anonymous';
+  
+  // Legacy support: if user is admin by ID
+  if (session.userId === Number(process.env.ADMIN_ID)) return 'admin';
+  
+  // Look up user role from database
+  const result = db.prepare("SELECT role FROM users WHERE id = ?").get(session.userId) as { role: UserRole } | undefined;
+  return result?.role || 'untrusted';
+}
+
+// Specific permission checkers with simple role checks
+export async function userCanCreatePaste(): Promise<boolean> {
+  const role = await getUserRole();
+  return ['admin', 'trusted'].includes(role);
+}
+
+export async function userCanEditPaste(): Promise<boolean> {
+  const role = await getUserRole();
+  return role === 'admin' || role === 'trusted';
+}
+
+export async function userCanDeletePaste(): Promise<boolean> {
+  const role = await getUserRole();
+  return role === 'admin';
+}
+
+export async function userCanDebugContent(): Promise<boolean> {
+  const role = await getUserRole();
+  return role === 'admin';
+}
+
+export async function userCanReindexContent(): Promise<boolean> {
+  const role = await getUserRole();
+  return role === 'admin';
+}
+
+// Admin-only access functions
+export async function userCanManageRoles(): Promise<boolean> {
+  const role = await getUserRole();
+  return role === 'admin';
+}
+
+export async function userCanViewContentDebug(): Promise<boolean> {
+  const role = await getUserRole();
+  return role === 'admin';
+}
+
+export async function userCanViewAdminUI(): Promise<boolean> {
+  const role = await getUserRole();
+  return role === 'admin';
+}
+
+export async function userCanViewAnyPaste(): Promise<boolean> {
+  const role = await getUserRole();
+  return role === 'admin';
+}
+
+export async function userCanEditAnyPaste(): Promise<boolean> {
+  const role = await getUserRole();
+  return role === 'admin';
+}
+
+export async function userCanViewOwnPastes(): Promise<boolean> {
+  const role = await getUserRole();
+  return ['admin', 'trusted', 'untrusted'].includes(role);
+}
+
+export async function userCanPostComments(): Promise<boolean> {
+  const role = await getUserRole();
+  return ['admin', 'trusted'].includes(role);
+}
+
+// Legacy function for backward compatibility
+export async function userIsAdmin(): Promise<boolean> {
+  console.warn('userIsAdmin is deprecated. Use a more specific permission function instead.');
+  const role = await getUserRole();
+  return role === 'admin';
 }

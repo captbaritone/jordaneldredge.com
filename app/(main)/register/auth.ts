@@ -117,6 +117,9 @@ export async function verifyAuth(
     return { kind: "error", error: "Verification failed" };
   }
 
+  // Update user's last login time
+  db.prepare("UPDATE users SET last_login = datetime('now') WHERE id = ?").run(passkey.user_id);
+
   session.username = user.username;
   session.userId = passkey.user_id;
 

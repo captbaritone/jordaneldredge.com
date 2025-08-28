@@ -11,7 +11,7 @@
     "lint": "remark --quiet . && next lint",
     "backup": "tsx scripts/backup.ts",
     "rebuild-search-index": "tsx scripts/search_index.ts",
-    "migrate": "tsx migrations/008-fix-fts-tokenizer.ts",
+    "migrate": "tsx db-migrations/migrate.ts",
     "reindex": "tsx scripts/reindex.ts",
     "audio": "tsx scripts/audio.ts",
     "images": "tsx scripts/generate_images.ts",
