@@ -19,14 +19,15 @@ export default async function Paste(props) {
     notFound();
   }
 
-  const canViewAnyPaste = await userCanViewAnyPaste();
-  if (!canViewAnyPaste) {
-    notFound();
-  }
-
   const session = await getSession();
 
   const ownsPaste = Number(paste.author_id) === session.userId;
+
+  if (!ownsPaste) {
+    if (!(await userCanViewAnyPaste())) {
+      notFound();
+    }
+  }
 
   return (
     <div className="markdown">
