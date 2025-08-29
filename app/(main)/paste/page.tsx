@@ -30,6 +30,7 @@ export default async function Pastes() {
             <th>Created</th>
             <th>Size</th>
             <th>Edit</th>
+            <th>Raw</th>
           </tr>
         </thead>
         <tbody>
@@ -49,6 +50,9 @@ export default async function Pastes() {
               </td>
               <td>
                 <a href={`/paste/edit/${paste.id}`}>Edit</a>
+              </td>
+              <td>
+                <a href={`/paste/${paste.id}/${paste.file_name}`}>Raw</a>
               </td>
             </tr>
           ))}
