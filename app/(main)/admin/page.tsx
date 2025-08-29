@@ -13,6 +13,11 @@ export default async function AdminDashboard() {
   const contentCountResult = prepare<[], { count: number }>(sql`SELECT COUNT(*) as count FROM content`)
     .get();
   const contentCount = contentCountResult?.count || 0;
+  
+  // Get paste count
+  const pasteCountResult = prepare<[], { count: number }>(sql`SELECT COUNT(*) as count FROM pastes`)
+    .get();
+  const pasteCount = pasteCountResult?.count || 0;
 
   return (
     <div>
@@ -33,6 +38,17 @@ export default async function AdminDashboard() {
         <div className="bg-white p-4 rounded-lg shadow">
           <p className="text-lg font-bold">{contentCount}</p>
           <p className="text-sm text-gray-600">Content Items</p>
+        </div>
+
+        <div className="bg-white p-4 rounded-lg shadow">
+          <p className="text-lg font-bold">{pasteCount}</p>
+          <p className="text-sm text-gray-600">Pastes</p>
+          <Link
+            href="/admin/pastes"
+            className="text-sm text-blue-600 hover:underline mt-2 inline-block"
+          >
+            View All Pastes →
+          </Link>
         </div>
 
         {/* Add more dashboard widgets as needed */}
