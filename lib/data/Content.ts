@@ -234,10 +234,7 @@ export default class Content {
     pageType: string,
     slug: string,
   ): Content | null {
-    const row = prepare<
-      { pageType: string; slug: string },
-      ContentDBRow
-    >(sql`
+    const row = prepare<{ pageType: string; slug: string }, ContentDBRow>(sql`
       SELECT
         *
       FROM
@@ -249,7 +246,7 @@ export default class Content {
           OR json_extract(metadata, '$.notion_id') = :slug
         );
     `).get({ pageType, slug });
-    
+
     if (row == null) {
       return null;
     }
@@ -284,7 +281,7 @@ export default class Content {
       WHERE
         id = :id
     `).get({ id });
-    
+
     if (row == null) {
       return null;
     }

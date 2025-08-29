@@ -163,25 +163,25 @@ export async function reindex({
           WHERE
             content_id = :contentId
         `).run({ contentId });
-        
+
         prepare<{ contentId: number }, void>(sql`
           DELETE FROM content_audio
           WHERE
             content_id = :contentId
         `).run({ contentId });
-        
+
         prepare<{ contentId: number }, void>(sql`
           DELETE FROM content_links
           WHERE
             content_id = :contentId
         `).run({ contentId });
-        
+
         prepare<{ contentId: number }, void>(sql`
           DELETE FROM content_youtube
           WHERE
             content_id = :contentId
         `).run({ contentId });
-        
+
         prepare<{ contentId: number }, void>(sql`
           DELETE FROM content_tweets
           WHERE
@@ -299,15 +299,13 @@ function retryBusy(fn: () => void, retries = 10, delayMs = 100): void {
   }
 }
 
-const ALL_SEARCH_ENTRIES = prepare<[], { page_type: string; slug: string }>(
-  sql`
-    SELECT
-      slug,
-      page_type
-    FROM
-      content;
-  `,
-);
+const ALL_SEARCH_ENTRIES = prepare<[], { page_type: string; slug: string }>(sql`
+  SELECT
+    slug,
+    page_type
+  FROM
+    content;
+`);
 
 const DELETE_ENTRY = prepare<{ slug: string; pageType: string }, void>(sql`
   DELETE FROM content

@@ -10,13 +10,21 @@ export const metadata: Metadata = {
 export default async function AdminDashboard() {
   // Get some basic statistics
   const userCount = User.count();
-  const contentCountResult = prepare<[], { count: number }>(sql`SELECT COUNT(*) as count FROM content`)
-    .get();
+  const contentCountResult = prepare<[], { count: number }>(sql`
+    SELECT
+      COUNT(*) AS COUNT
+    FROM
+      content
+  `).get();
   const contentCount = contentCountResult?.count || 0;
-  
+
   // Get paste count
-  const pasteCountResult = prepare<[], { count: number }>(sql`SELECT COUNT(*) as count FROM pastes`)
-    .get();
+  const pasteCountResult = prepare<[], { count: number }>(sql`
+    SELECT
+      COUNT(*) AS COUNT
+    FROM
+      pastes
+  `).get();
   const pasteCount = pasteCountResult?.count || 0;
 
   return (

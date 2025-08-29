@@ -42,7 +42,7 @@ export default async function AdminPastes() {
             <tr key={paste.id} className="border-t">
               <td className="px-4 py-2">{paste.id}</td>
               <td className="px-4 py-2">
-                <Link 
+                <Link
                   href={`/paste/${paste.id}/`}
                   className="text-blue-600 hover:underline"
                 >
@@ -51,7 +51,7 @@ export default async function AdminPastes() {
               </td>
               <td className="px-4 py-2">
                 {paste.username ? (
-                  <Link 
+                  <Link
                     href={`/admin/users?search=${paste.username}`}
                     className="text-blue-600 hover:underline"
                   >
@@ -69,14 +69,14 @@ export default async function AdminPastes() {
                 <Bytes bytes={paste.size} />
               </td>
               <td className="px-4 py-2">
-                <Link 
+                <Link
                   href={`/paste/${paste.id}/`}
                   className="text-blue-600 hover:underline mr-2"
                 >
                   View
                 </Link>
-                <Link 
-                  href={`/paste/${paste.id}/${paste.file_name || ''}`}
+                <Link
+                  href={`/paste/${paste.id}/${paste.file_name}`}
                   className="text-blue-600 hover:underline mr-2"
                 >
                   Raw
@@ -93,10 +93,10 @@ export default async function AdminPastes() {
 // Query to get all pastes with user information
 const GET_ALL_PASTES = prepare<
   [],
-  { 
-    id: number; 
-    file_name: string; 
-    size: number; 
+  {
+    id: number;
+    file_name: string;
+    size: number;
     created_at: number;
     author_id: number;
     username: string;
@@ -105,14 +105,13 @@ const GET_ALL_PASTES = prepare<
   SELECT
     p.id,
     p.file_name,
-    octet_length(p.content) AS size,
+    octet_length (p.content) AS size,
     p.created_at,
     p.author_id,
     u.username
   FROM
     pastes p
-  LEFT JOIN
-    users u ON p.author_id = u.id
+    LEFT JOIN users u ON p.author_id = u.id
   ORDER BY
     p.created_at DESC
 `);
