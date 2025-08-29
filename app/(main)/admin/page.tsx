@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { db } from "../../../lib/db";
+import { User } from "../../../lib/data/User";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -8,9 +9,7 @@ export const metadata: Metadata = {
 
 export default async function AdminDashboard() {
   // Get some basic statistics
-  const userCount = db.prepare("SELECT COUNT(*) as count FROM users").get() as {
-    count: number;
-  };
+  const userCount = User.count();
   const contentCount = db
     .prepare("SELECT COUNT(*) as count FROM content")
     .get() as { count: number };
@@ -21,7 +20,7 @@ export default async function AdminDashboard() {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-4">
         <div className="bg-white p-4 rounded-lg shadow">
-          <p className="text-lg font-bold">{userCount.count}</p>
+          <p className="text-lg font-bold">{userCount}</p>
           <p className="text-sm text-gray-600">Registered Users</p>
           <Link
             href="/admin/users"

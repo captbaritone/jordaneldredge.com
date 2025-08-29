@@ -1,9 +1,8 @@
 "use server";
 
-import { db } from "../../../../lib/db";
 import { userCanManageRoles } from "../../../../lib/session";
 import { revalidatePath } from "next/cache";
-import { isValidRole } from "../../../../lib/roles";
+import { User } from "../../../../lib/data/User";
 
 export async function updateUserRole(
   userId: number,
@@ -15,13 +14,8 @@ export async function updateUserRole(
     throw new Error("You do not have permission to update user roles");
   }
 
-  // Verify the role is valid
-  if (!isValidRole(newRole)) {
-    throw new Error(`Role '${newRole}' is not valid`);
-  }
-
-  // Update the user's role
-  db.prepare("UPDATE users SET role = ? WHERE id = ?").run(newRole, userId);
+  // Update the user's role using the User model
+  User.updateRole(userId, newRole);
 
   // Revalidate the users page
   revalidatePath("/admin/users");
@@ -33,7 +27,7 @@ export async function updateUserRole(
 }
 
 export async function deleteUser(
-  userId: number
+  userId: number,
 ): Promise<{ success: boolean; message: string }> {
   // Check if the current user has permission to manage roles/users
   const canManageRoles = await userCanManageRoles();
@@ -42,37 +36,15 @@ export async function deleteUser(
   }
 
   try {
-    // First, check if the user exists
-    const user = db.prepare("SELECT id, username, role FROM users WHERE id = ?").get(userId) as { id: number; username: string; role: string } | undefined;
-    
+    // Find the user to get their username for the success message
+    const user = User.findById(userId);
+
     if (!user) {
       throw new Error("User not found");
     }
 
-    // Prevent deleting any admin users
-    if (user.role === 'admin') {
-      throw new Error("Cannot delete administrator accounts");
-    }
-
-    // Start a transaction
-    db.exec("BEGIN TRANSACTION");
-
-    // Delete user's credentials
-    db.prepare("DELETE FROM webauthn_credentials WHERE user_id = ?").run(userId);
-    
-    // Delete user's pastes if the table exists
-    try {
-      db.prepare("DELETE FROM pastes WHERE author_id = ?").run(userId);
-    } catch (error) {
-      // Ignore if table doesn't exist
-      console.log("Note: pastes table might not exist, continuing deletion");
-    }
-    
-    // Delete the user
-    db.prepare("DELETE FROM users WHERE id = ?").run(userId);
-    
-    // Commit the transaction
-    db.exec("COMMIT");
+    // Delete the user using the User model
+    User.delete(userId);
 
     // Revalidate the users page
     revalidatePath("/admin/users");
@@ -82,8 +54,8 @@ export async function deleteUser(
       message: `User ${user.username} deleted successfully`,
     };
   } catch (error) {
-    // Rollback the transaction on error
-    db.exec("ROLLBACK");
-    throw error;
+    const message =
+      error instanceof Error ? error.message : "Failed to delete user";
+    throw new Error(message);
   }
 }

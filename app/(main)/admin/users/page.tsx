@@ -1,4 +1,3 @@
-import { db } from "../../../../lib/db";
 import { userCanManageRoles } from "../../../../lib/session";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
@@ -9,21 +8,11 @@ import {
   ROLE_DESCRIPTIONS,
   UserRole,
 } from "../../../../lib/roles";
-import { checkLastLoginColumn } from "./check-schema";
+import { User } from "../../../../lib/data/User";
 
 export const metadata: Metadata = {
   title: "Manage Users",
 };
-
-interface User {
-  id: number;
-  username: string;
-  display_name: string | null;
-  email: string; // This is actually just the username
-  role: UserRole;
-  created_at: string;
-  last_login: string | null;
-}
 
 interface Role {
   name: string;
@@ -36,37 +25,8 @@ export default async function ManageUsers() {
     notFound();
   }
 
-  // Check if the last_login column exists
-  const hasLastLoginColumn = await checkLastLoginColumn();
-
-  // Adjust the SQL query based on whether the last_login column exists
-  const userQuery = hasLastLoginColumn
-    ? `
-      SELECT 
-        u.id, 
-        u.username, 
-        u.display_name, 
-        u.username as email,
-        u.role, 
-        u.created_at,
-        u.last_login
-      FROM users u
-      ORDER BY u.created_at DESC
-    `
-    : `
-      SELECT 
-        u.id, 
-        u.username, 
-        u.display_name, 
-        u.role, 
-        u.created_at,
-        NULL as last_login
-      FROM users u
-      ORDER BY u.created_at DESC
-    `;
-
   // Get all users with their detailed information
-  const users = db.prepare(userQuery).all() as User[];
+  const users = User.findAll();
 
   // Get all available roles with descriptions
   const roles = getAllRoles().map((role) => ({

@@ -11,6 +11,7 @@ import {
 } from "@simplewebauthn/server";
 import { getSession } from "../../../lib/session";
 import { db } from "../../../lib/db";
+import { User } from "../../../lib/data/User";
 
 /**
  * Human-readable title for your website
@@ -85,12 +86,8 @@ export async function verifyAuth(
     return { kind: "error", error: "Unknown Passkey." };
   }
 
-  const user = db
-    .prepare<
-      number,
-      { user_id: number; username: string }
-    >("SELECT * FROM users WHERE id = ?")
-    .get(passkey.user_id);
+  // Get user from User model
+  const user = User.findById(passkey.user_id);
 
   if (user == null) {
     throw new Error("No user found for this passkey");
@@ -117,8 +114,8 @@ export async function verifyAuth(
     return { kind: "error", error: "Verification failed" };
   }
 
-  // Update user's last login time
-  db.prepare("UPDATE users SET last_login = datetime('now') WHERE id = ?").run(passkey.user_id);
+  // Update user's last login time using User model
+  User.updateLastLogin(passkey.user_id);
 
   session.username = user.username;
   session.userId = passkey.user_id;
@@ -177,10 +174,9 @@ export async function verifyRegistration(
   session.challenge = undefined;
   await session.save();
 
-  const user = db
-    .prepare("SELECT * FROM users WHERE username = ?")
-    .get(username);
-  if (user != null) {
+  // Check if user already exists using User model
+  const existingUser = User.findByUsername(username);
+  if (existingUser != null) {
     return {
       kind: "error",
       error: `A user with the name "${username}" already exists. Please try a different username.`,
@@ -207,22 +203,20 @@ export async function verifyRegistration(
   const { credential, credentialDeviceType, credentialBackedUp } =
     registrationInfo;
 
-  db.prepare(`INSERT INTO users (username, display_name) VALUES (?, ?)`).run(
+  // Create user using User model
+  const newUser = User.create({
     username,
-    username, // For now the display name is the same as the username
-  );
-
-  const userRow = db
-    .prepare<string, { id: number }>("SELECT * FROM users WHERE username = ?")
-    .get(username);
-  if (userRow == null) {
-    throw new Error("User not found");
+    display_name: username // For now the display name is the same as the username
+  });
+  
+  if (!newUser) {
+    throw new Error("Failed to create user");
   }
 
   db.prepare(
     `INSERT INTO webauthn_credentials (user_id, credential_id, public_key, sign_count, transports) VALUES (?, ?, ?, ?, ?)`,
   ).run(
-    userRow.id,
+    newUser.id,
     credential.id,
     Buffer.from(credential.publicKey).toString("base64"),
     credential.counter,
