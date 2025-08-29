@@ -1,4 +1,4 @@
-import { db, prepare } from "../db";
+import { db, prepare, sql } from "../db";
 import { UserRole, isValidRole } from "../roles";
 
 /**
@@ -25,7 +25,7 @@ export class User {
    * Get a user by ID
    */
   static findById(id: number): User | null {
-    const stmt = prepare<[number], User>(`
+    const stmt = prepare<[number], User>(sql`
       SELECT 
         id, 
         username, 
@@ -44,7 +44,7 @@ export class User {
    * Find a user by username
    */
   static findByUsername(username: string): User | null {
-    const stmt = prepare<[string], User>(`
+    const stmt = prepare<[string], User>(sql`
       SELECT 
         id, 
         username, 
@@ -63,7 +63,7 @@ export class User {
    * Get all users
    */
   static findAll(): User[] {
-    const stmt = prepare<[], User>(`
+    const stmt = prepare<[], User>(sql`
       SELECT 
         id, 
         username, 
@@ -89,7 +89,7 @@ export class User {
     const displayName = data.display_name || data.username;
     const role = data.role || 'untrusted';
     
-    const stmt = prepare<[string, string, string], void>(`
+    const stmt = prepare<[string, string, string], void>(sql`
       INSERT INTO users (username, display_name, role) 
       VALUES (?, ?, ?)
     `);
@@ -110,7 +110,7 @@ export class User {
       throw new Error(`Role '${newRole}' is not valid`);
     }
     
-    const stmt = prepare<[string, number], void>("UPDATE users SET role = ? WHERE id = ?");
+    const stmt = prepare<[string, number], void>(sql`UPDATE users SET role = ? WHERE id = ?`);
     stmt.run(newRole, userId);
     return true;
   }
@@ -119,7 +119,7 @@ export class User {
    * Update a user's last login time to now
    */
   static updateLastLogin(userId: number): boolean {
-    const stmt = prepare<[number], void>("UPDATE users SET last_login = datetime('now') WHERE id = ?");
+    const stmt = prepare<[number], void>(sql`UPDATE users SET last_login = datetime('now') WHERE id = ?`);
     stmt.run(userId);
     return true;
   }
@@ -144,12 +144,12 @@ export class User {
       db.exec("BEGIN TRANSACTION");
       
       // Delete user's credentials
-      const deleteCredentials = prepare<[number], void>("DELETE FROM webauthn_credentials WHERE user_id = ?");
+      const deleteCredentials = prepare<[number], void>(sql`DELETE FROM webauthn_credentials WHERE user_id = ?`);
       deleteCredentials.run(userId);
       
       // Delete user's pastes if the table exists
       try {
-        const deletePastes = prepare<[number], void>("DELETE FROM pastes WHERE author_id = ?");
+        const deletePastes = prepare<[number], void>(sql`DELETE FROM pastes WHERE author_id = ?`);
         deletePastes.run(userId);
       } catch (error) {
         // Ignore if table doesn't exist
@@ -157,7 +157,7 @@ export class User {
       }
       
       // Delete the user
-      const deleteUser = prepare<[number], void>("DELETE FROM users WHERE id = ?");
+      const deleteUser = prepare<[number], void>(sql`DELETE FROM users WHERE id = ?`);
       deleteUser.run(userId);
       
       // Commit the transaction
@@ -175,7 +175,7 @@ export class User {
    * Get the total number of users
    */
   static count(): number {
-    const stmt = prepare<[], { count: number }>(`SELECT COUNT(*) as count FROM users`);
+    const stmt = prepare<[], { count: number }>(sql`SELECT COUNT(*) as count FROM users`);
     const result = stmt.get();
     return result ? result.count : 0;
   }

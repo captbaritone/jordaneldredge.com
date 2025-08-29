@@ -1,7 +1,7 @@
 import { SiteUrl } from "./SiteUrl";
 import { TagSet } from "./TagSet";
 import { Markdown } from "./Markdown";
-import { db, sql } from "../db";
+import { db, sql, prepare } from "../db";
 import yaml from "js-yaml";
 import { PageType } from "./Indexable";
 import TTSAudio from "./TTSAudio";
@@ -234,7 +234,22 @@ export default class Content {
     pageType: string,
     slug: string,
   ): Content | null {
-    const row = CONTENT_BY_TYPE_AND_SLUG.get({ pageType, slug });
+    const row = prepare<
+      { pageType: string; slug: string },
+      ContentDBRow
+    >(sql`
+      SELECT
+        *
+      FROM
+        content
+      WHERE
+        page_type = :pageType
+        AND (
+          slug = :slug
+          OR json_extract(metadata, '$.notion_id') = :slug
+        );
+    `).get({ pageType, slug });
+    
     if (row == null) {
       return null;
     }
@@ -245,7 +260,15 @@ export default class Content {
    * Find a piece of content by its slug.
    * @gqlQueryField getContentBySlug */
   static getBySlug(slug: string): Content | null {
-    const row = CONTENT_BY_SLUG.get({ slug });
+    const row = prepare<{ slug: string }, ContentDBRow>(sql`
+      SELECT
+        *
+      FROM
+        content
+      WHERE
+        slug = :slug
+        OR json_extract(metadata, '$.notion_id') = :slug;
+    `).get({ slug });
     if (row == null) {
       return null;
     }
@@ -253,45 +276,18 @@ export default class Content {
   }
 
   static getById(id: number): Content | null {
-    const row = CONTENT_BY_ID.get({ id });
+    const row = prepare<{ id: number }, ContentDBRow>(sql`
+      SELECT
+        *
+      FROM
+        content
+      WHERE
+        id = :id
+    `).get({ id });
+    
     if (row == null) {
       return null;
     }
     return new Content(row);
   }
 }
-
-const CONTENT_BY_TYPE_AND_SLUG = db.prepare<
-  { pageType: string; slug: string },
-  ContentDBRow
->(sql`
-  SELECT
-    *
-  FROM
-    content
-  WHERE
-    page_type = :pageType
-    AND (
-      slug = :slug
-      OR json_extract(metadata, '$.notion_id') = :slug
-    );
-`);
-
-const CONTENT_BY_SLUG = db.prepare<{ slug: string }, ContentDBRow>(sql`
-  SELECT
-    *
-  FROM
-    content
-  WHERE
-    slug = :slug
-    OR json_extract(metadata, '$.notion_id') = :slug;
-`);
-
-const CONTENT_BY_ID = db.prepare<{ id: number }, ContentDBRow>(sql`
-  SELECT
-    *
-  FROM
-    content
-  WHERE
-    id = :id
-`);

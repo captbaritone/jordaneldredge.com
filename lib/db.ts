@@ -1,6 +1,7 @@
 import { Database, Statement } from "better-sqlite3";
 import betterSqlite from "better-sqlite3";
 import "dotenv/config";
+import { Sql } from "./sql";
 export { sql } from "./sql";
 
 const filename = process.env.SEARCH_INDEX_LOCATION;
@@ -23,9 +24,14 @@ const preparedStatementCache = new Map<string, Statement>();
  * @param sql The SQL query to prepare
  * @returns The prepared statement with proper typing
  */
-export function prepare<BindParameters extends unknown[] | {} = unknown[], Result = unknown>(
-  sql: string
-): BindParameters extends unknown[] ? Statement<BindParameters, Result> : Statement<[BindParameters], Result> {
+export function prepare<
+  BindParameters extends unknown[] | {} = unknown[],
+  Result = unknown,
+>(
+  sql: Sql,
+): BindParameters extends unknown[]
+  ? Statement<BindParameters, Result>
+  : Statement<[BindParameters], Result> {
   if (!preparedStatementCache.has(sql)) {
     preparedStatementCache.set(sql, db.prepare(sql));
   }

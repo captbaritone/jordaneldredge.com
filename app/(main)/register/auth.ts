@@ -10,7 +10,7 @@ import {
   verifyRegistrationResponse,
 } from "@simplewebauthn/server";
 import { getSession } from "../../../lib/session";
-import { db } from "../../../lib/db";
+import { prepare, sql } from "../../../lib/db";
 import { User } from "../../../lib/data/User";
 
 /**
@@ -70,18 +70,25 @@ export async function verifyAuth(
   session.challenge = undefined;
   await session.save();
 
-  const passkey = db
-    .prepare<
-      string,
-      {
-        credential_id: string;
-        user_id: number;
-        public_key: string;
-        sign_count: number;
-        transports: string;
-      }
-    >(`SELECT * FROM webauthn_credentials WHERE credential_id = ?`)
-    .get(response.id);
+  const getPasskeyStmt = prepare<
+    [string],
+    {
+      credential_id: string;
+      user_id: number;
+      public_key: string;
+      sign_count: number;
+      transports: string;
+    }
+  >(sql`
+    SELECT
+      *
+    FROM
+      webauthn_credentials
+    WHERE
+      credential_id = ?
+  `);
+
+  const passkey = getPasskeyStmt.get(response.id);
   if (passkey == null) {
     return { kind: "error", error: "Unknown Passkey." };
   }
@@ -206,16 +213,30 @@ export async function verifyRegistration(
   // Create user using User model
   const newUser = User.create({
     username,
-    display_name: username // For now the display name is the same as the username
+    display_name: username, // For now the display name is the same as the username
   });
-  
+
   if (!newUser) {
     throw new Error("Failed to create user");
   }
 
-  db.prepare(
-    `INSERT INTO webauthn_credentials (user_id, credential_id, public_key, sign_count, transports) VALUES (?, ?, ?, ?, ?)`,
-  ).run(
+  const insertCredentialStmt = prepare<
+    [number, string, string, number, string | undefined],
+    void
+  >(sql`
+    INSERT INTO
+      webauthn_credentials (
+        user_id,
+        credential_id,
+        public_key,
+        sign_count,
+        transports
+      )
+    VALUES
+      (?, ?, ?, ?, ?)
+  `);
+
+  insertCredentialStmt.run(
     newUser.id,
     credential.id,
     Buffer.from(credential.publicKey).toString("base64"),

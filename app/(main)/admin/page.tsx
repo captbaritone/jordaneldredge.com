@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { db } from "../../../lib/db";
+import { db, prepare, sql } from "../../../lib/db";
 import { User } from "../../../lib/data/User";
 import { Metadata } from "next";
 
@@ -10,9 +10,9 @@ export const metadata: Metadata = {
 export default async function AdminDashboard() {
   // Get some basic statistics
   const userCount = User.count();
-  const contentCount = db
-    .prepare("SELECT COUNT(*) as count FROM content")
-    .get() as { count: number };
+  const contentCountResult = prepare<[], { count: number }>(sql`SELECT COUNT(*) as count FROM content`)
+    .get();
+  const contentCount = contentCountResult?.count || 0;
 
   return (
     <div>
@@ -31,7 +31,7 @@ export default async function AdminDashboard() {
         </div>
 
         <div className="bg-white p-4 rounded-lg shadow">
-          <p className="text-lg font-bold">{contentCount.count}</p>
+          <p className="text-lg font-bold">{contentCount}</p>
           <p className="text-sm text-gray-600">Content Items</p>
         </div>
 

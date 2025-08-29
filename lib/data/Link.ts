@@ -1,4 +1,4 @@
-import { db, sql } from "../db";
+import { db, sql, prepare } from "../db";
 
 /**
  * A link which has been embedded in a piece of content.
@@ -16,14 +16,12 @@ export class Link {
 
   /** @gqlQueryField */
   static links(): Array<Link> {
-    const links = ALL_LINKS.all();
+    const links = prepare<[], { link_url: string }>(sql`
+      SELECT
+        link_url
+      FROM
+        content_links
+    `).all();
     return links.map((row) => new Link(row.link_url));
   }
 }
-
-const ALL_LINKS = db.prepare<[], { link_url: string }>(sql`
-  SELECT
-    link_url
-  FROM
-    content_links
-`);

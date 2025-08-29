@@ -1,4 +1,4 @@
-import { db, sql } from "../db";
+import { db, sql, prepare } from "../db";
 
 /**
  * A Youtube video which has been embedded in a piece of content.
@@ -28,14 +28,12 @@ export class YoutubeVideo {
 
   /** @gqlQueryField */
   static youtubeVideos(): Array<YoutubeVideo> {
-    const youtubeVideos = ALL_YOUTUBE.all();
+    const youtubeVideos = prepare<[], { youtube_token: string }>(sql`
+      SELECT
+        youtube_token
+      FROM
+        content_youtube
+    `).all();
     return youtubeVideos.map((row) => new YoutubeVideo(row.youtube_token));
   }
 }
-
-const ALL_YOUTUBE = db.prepare<[], { youtube_token: string }>(sql`
-  SELECT
-    youtube_token
-  FROM
-    content_youtube
-`);

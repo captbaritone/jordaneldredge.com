@@ -1,4 +1,4 @@
-import { db, sql } from "../db";
+import { db, sql, prepare } from "../db";
 
 /**
  * An audio file which has been embedded in a piece of content.
@@ -16,13 +16,12 @@ export class AudioFile {
 
   /** @gqlQueryField */
   static audioFiles(): Array<AudioFile> {
-    const audios = ALL_AUDIO.all();
+    const audios = prepare<[], { audio_url: string }>(sql`
+      SELECT
+        audio_url
+      FROM
+        content_audio
+    `).all();
     return audios.map((row) => new AudioFile(row.audio_url));
   }
 }
-const ALL_AUDIO = db.prepare<[], { audio_url: string }>(sql`
-  SELECT
-    audio_url
-  FROM
-    content_audio
-`);

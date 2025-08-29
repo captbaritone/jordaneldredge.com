@@ -1,4 +1,4 @@
-import { db, sql } from "../db";
+import { db, sql, prepare } from "../db";
 
 /**
  * A Tweet which has been embedded in a piece of content.
@@ -16,13 +16,12 @@ export class Tweet {
 
   /** @gqlQueryField */
   static tweets(): Array<Tweet> {
-    const tweets = ALL_TWEETS.all();
+    const tweets = prepare<[], { tweet_status: string }>(sql`
+      SELECT
+        tweet_status
+      FROM
+        content_tweets
+    `).all();
     return tweets.map((row) => new Tweet(row.tweet_status));
   }
 }
-const ALL_TWEETS = db.prepare<[], { tweet_status: string }>(sql`
-  SELECT
-    tweet_status
-  FROM
-    content_tweets
-`);

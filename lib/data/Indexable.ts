@@ -1,6 +1,6 @@
 "use server";
 import { updateRank } from "./Ranking";
-import { db, sql } from "../db";
+import { db, sql, prepare } from "../db";
 
 import { NoteProvider } from "./providers/Note";
 import { PostProvider } from "./providers/Post";
@@ -84,7 +84,59 @@ export async function reindex({
       const extracted = extract(markdown.cloneAst());
 
       const indexTransaction = db.transaction(() => {
-        UPSERT_INDEX.run({
+        prepare<{
+          pageType: string;
+          title: string;
+          summary: string;
+          tags: string;
+          content: string;
+          slug: string;
+          date: string;
+          summaryImagePath: string | undefined;
+          feedId: string;
+          lastUpdated: number;
+          metadata: string;
+        }>(sql`
+          INSERT INTO
+            content (
+              page_type,
+              title,
+              summary,
+              tags,
+              content,
+              slug,
+              DATE,
+              summary_image_path,
+              feed_id,
+              last_updated,
+              metadata
+            )
+          VALUES
+            (
+              :pageType,
+              :title,
+              :summary,
+              :tags,
+              :content,
+              :slug,
+              :date,
+              :summaryImagePath,
+              :feedId,
+              :lastUpdated,
+              :metadata
+            )
+          ON CONFLICT (page_type, slug) DO UPDATE
+          SET
+            title = :title,
+            summary = :summary,
+            tags = :tags,
+            content = :content,
+            DATE = :date,
+            summary_image_path = :summaryImagePath,
+            feed_id = :feedId,
+            last_updated = :lastUpdated,
+            metadata = :metadata
+        `).run({
           pageType: indexable.pageType,
           title: indexable.title,
           summary: indexable.summary || "",
@@ -106,11 +158,35 @@ export async function reindex({
           throw new Error(`Failed to get content ID for ${indexable.slug}`);
         }
 
-        DELETE_IMAGES_FOR_CONTENT.run({ contentId });
-        DELETE_AUDIO_FOR_CONTENT.run({ contentId });
-        DELETE_LINKS_FOR_CONTENT.run({ contentId });
-        DELETE_YOUTUBE_FOR_CONTENT.run({ contentId });
-        DELETE_TWEETS_FOR_CONTENT.run({ contentId });
+        prepare<{ contentId: number }, void>(sql`
+          DELETE FROM content_images
+          WHERE
+            content_id = :contentId
+        `).run({ contentId });
+        
+        prepare<{ contentId: number }, void>(sql`
+          DELETE FROM content_audio
+          WHERE
+            content_id = :contentId
+        `).run({ contentId });
+        
+        prepare<{ contentId: number }, void>(sql`
+          DELETE FROM content_links
+          WHERE
+            content_id = :contentId
+        `).run({ contentId });
+        
+        prepare<{ contentId: number }, void>(sql`
+          DELETE FROM content_youtube
+          WHERE
+            content_id = :contentId
+        `).run({ contentId });
+        
+        prepare<{ contentId: number }, void>(sql`
+          DELETE FROM content_tweets
+          WHERE
+            content_id = :contentId
+        `).run({ contentId });
 
         for (const image of extracted.images) {
           ADD_CONTENT_IMAGE.run({
@@ -223,7 +299,7 @@ function retryBusy(fn: () => void, retries = 10, delayMs = 100): void {
   }
 }
 
-const ALL_SEARCH_ENTRIES = db.prepare<[], { page_type: string; slug: string }>(
+const ALL_SEARCH_ENTRIES = prepare<[], { page_type: string; slug: string }>(
   sql`
     SELECT
       slug,
@@ -233,14 +309,14 @@ const ALL_SEARCH_ENTRIES = db.prepare<[], { page_type: string; slug: string }>(
   `,
 );
 
-const DELETE_ENTRY = db.prepare<{ slug: string; pageType: string }, void>(sql`
+const DELETE_ENTRY = prepare<{ slug: string; pageType: string }, void>(sql`
   DELETE FROM content
   WHERE
     slug = :slug
     AND page_type = :pageType;
 `);
 
-const GET_LAST_UPDATED_PAGE_AND_SLUG = db.prepare<
+const GET_LAST_UPDATED_PAGE_AND_SLUG = prepare<
   { pageType: string; slug: string },
   { last_updated: number }
 >(sql`
@@ -253,7 +329,7 @@ const GET_LAST_UPDATED_PAGE_AND_SLUG = db.prepare<
     AND slug = :slug
 `);
 
-const GET_CONTENT_ID = db.prepare<
+const GET_CONTENT_ID = prepare<
   { pageType: string; slug: string },
   { id: number }
 >(sql`
@@ -266,7 +342,7 @@ const GET_CONTENT_ID = db.prepare<
     AND slug = :slug
 `);
 
-const ADD_CONTENT_IMAGE = db.prepare<{
+const ADD_CONTENT_IMAGE = prepare<{
   contentId: number;
   imageUrl: string;
 }>(sql`
@@ -276,7 +352,7 @@ const ADD_CONTENT_IMAGE = db.prepare<{
     (:contentId, :imageUrl)
 `);
 
-const HAS_IMAGE_METADATA = db.prepare<{
+const HAS_IMAGE_METADATA = prepare<{
   imageUrl: string;
 }>(sql`
   SELECT
@@ -287,7 +363,7 @@ const HAS_IMAGE_METADATA = db.prepare<{
     image_url = :imageUrl
 `);
 
-const ADD_IMAGE_METADATA = db.prepare<{
+const ADD_IMAGE_METADATA = prepare<{
   imageUrl: string;
   width: number;
   height: number;
@@ -298,7 +374,7 @@ const ADD_IMAGE_METADATA = db.prepare<{
     (:imageUrl, :width, :height)
 `);
 
-const ADD_CONTENT_LINK = db.prepare<{
+const ADD_CONTENT_LINK = prepare<{
   contentId: number;
   linkUrl: string;
 }>(sql`
@@ -307,7 +383,7 @@ const ADD_CONTENT_LINK = db.prepare<{
   VALUES
     (:contentId, :linkUrl)
 `);
-const ADD_CONTENT_YOUTUBE = db.prepare<{
+const ADD_CONTENT_YOUTUBE = prepare<{
   contentId: number;
   youtubeToken: string;
 }>(sql`
@@ -316,7 +392,7 @@ const ADD_CONTENT_YOUTUBE = db.prepare<{
   VALUES
     (:contentId, :youtubeToken)
 `);
-const ADD_CONTENT_AUDIO = db.prepare<{
+const ADD_CONTENT_AUDIO = prepare<{
   contentId: number;
   audioUrl: string;
 }>(sql`
@@ -325,7 +401,7 @@ const ADD_CONTENT_AUDIO = db.prepare<{
   VALUES
     (:contentId, :audioUrl)
 `);
-const ADD_CONTENT_TWEET = db.prepare<{
+const ADD_CONTENT_TWEET = prepare<{
   contentId: number;
   tweetStatus: string;
 }>(sql`
@@ -335,87 +411,10 @@ const ADD_CONTENT_TWEET = db.prepare<{
     (:contentId, :tweetStatus)
 `);
 
-const DELETE_IMAGES_FOR_CONTENT = db.prepare<{ contentId: number }, void>(sql`
-  DELETE FROM content_images
-  WHERE
-    content_id = :contentId
-`);
-
-const DELETE_LINKS_FOR_CONTENT = db.prepare<{ contentId: number }, void>(sql`
-  DELETE FROM content_links
-  WHERE
-    content_id = :contentId
-`);
-
-const DELETE_YOUTUBE_FOR_CONTENT = db.prepare<{ contentId: number }, void>(sql`
-  DELETE FROM content_youtube
-  WHERE
-    content_id = :contentId
-`);
-const DELETE_AUDIO_FOR_CONTENT = db.prepare<{ contentId: number }, void>(sql`
-  DELETE FROM content_audio
-  WHERE
-    content_id = :contentId
-`);
-const DELETE_TWEETS_FOR_CONTENT = db.prepare<{ contentId: number }, void>(sql`
-  DELETE FROM content_tweets
-  WHERE
-    content_id = :contentId
-`);
-
-const UPSERT_INDEX = db.prepare<{
-  pageType: string;
-  title: string;
-  summary: string;
-  tags: string;
-  content: string;
-  slug: string;
-  date: string;
-  summaryImagePath: string | undefined;
-  feedId: string;
-  lastUpdated: number;
-  metadata: string;
-}>(sql`
-  INSERT INTO
-    content (
-      page_type,
-      title,
-      summary,
-      tags,
-      content,
-      slug,
-      DATE,
-      summary_image_path,
-      feed_id,
-      last_updated,
-      metadata
-    )
-  VALUES
-    (
-      :pageType,
-      :title,
-      :summary,
-      :tags,
-      :content,
-      :slug,
-      :date,
-      :summaryImagePath,
-      :feedId,
-      :lastUpdated,
-      :metadata
-    )
-  ON CONFLICT (page_type, slug) DO UPDATE
-  SET
-    title = :title,
-    summary = :summary,
-    tags = :tags,
-    content = :content,
-    DATE = :date,
-    summary_image_path = :summaryImagePath,
-    feed_id = :feedId,
-    last_updated = :lastUpdated,
-    metadata = :metadata
-`);
+// Maximum number of retries on SQLITE_BUSY error
+const MAX_BUSY_RETRIES = 5;
+// Delay between retries in ms
+const RETRY_DELAY_MS = 100;
 
 type LeafDirectiveNode =
   | { name: "audio"; attributes: { src: string } }
