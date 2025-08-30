@@ -3,6 +3,7 @@ import fs from "node:fs";
 import path from "path";
 import OpenAI from "openai";
 import { ContentConnection } from "../lib/data";
+import { VC } from "../lib/VC";
 
 const openai = new OpenAI();
 const tempDir = path.resolve("./temp");
@@ -10,7 +11,8 @@ const tempDir = path.resolve("./temp");
 main();
 
 async function main() {
-  const allContent = ContentConnection.all({ sort: "latest", filters: [] });
+  const vc = VC.forScripts();
+  const allContent = ContentConnection.all(vc, { sort: "latest", filters: [] });
 
   let i = 5;
 
@@ -38,6 +40,7 @@ async function main() {
       size: "1792x1024",
     });
 
+    // @ts-ignore
     const data = await fetch(response.data[0].url);
     if (!data.ok) {
       throw new Error(`Failed to fetch image: ${response.data[0].url}`);

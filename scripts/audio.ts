@@ -8,6 +8,7 @@ import { Node } from "unist";
 import { CONTINUE, visit } from "unist-util-visit";
 import { toString } from "mdast-util-to-string";
 import TTSAudio from "../lib/data/TTSAudio";
+import { VC } from "../lib/VC";
 
 // Open AI only allows TTS queries with a maximum of 4096 characters.
 const MAX_CHAR_LENGTH = 4096;
@@ -16,7 +17,10 @@ const openai = new OpenAI();
 const tempDir = path.resolve("./temp");
 
 async function main() {
-  const allContent = ContentConnection.all({ sort: "latest", filters: [] });
+  // Create a VC with admin role for script usage
+  const vc = VC.forScripts();
+  
+  const allContent = ContentConnection.all(vc, { sort: "latest", filters: [] });
   for (const content of allContent) {
     const ttsAudio = content.ttsAudio();
     if (ttsAudio != null && ttsAudio.lastUpdated() > content.lastModified()) {
@@ -31,7 +35,7 @@ async function main() {
     ) {
       continue;
     }
-    const writer = new ScriptWriter();
+    const writer = new ScriptWriter(vc);
     await writer.transcribe(content);
   }
 }
@@ -55,6 +59,12 @@ type ContentSection =
     };
 
 class ScriptWriter {
+  private _vc: VC;
+  
+  constructor(vc: VC) {
+    this._vc = vc;
+  }
+  
   async transcribe(content: Content) {
     console.log(`Transcribing ${content.title()}`);
     const node = content.content().cloneAst();
@@ -72,7 +82,7 @@ class ScriptWriter {
     const outputFile = path.resolve(path.join(tempDir, `${content.id()}.mp3`));
     this.mergeAudioFiles(files, outputFile);
 
-    await TTSAudio.upload(content.id(), outputFile);
+    await TTSAudio.upload(this._vc, content.id(), outputFile);
     fs.rmSync(outputFile);
     for (const file of files) {
       if (file.startsWith(tempDir)) {

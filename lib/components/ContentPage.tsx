@@ -4,20 +4,24 @@ import RelatedContent from "./RelatedContent";
 import GitHubComments from "./GitHubComments";
 import DateString from "./DateString";
 import PlayButton from "./PlayButton";
-import { userCanViewContentDebug } from "../session";
 import Link from "next/link";
 import {
   ContentDateViewTransition,
   ContentTileViewTransition,
 } from "./ViewTransitions";
+import { VC } from "../VC";
 
 type ContentPageProps = {
   item: Data.Content;
   issueId?: string;
+  vc: VC;
 };
 
-export default async function ContentPage({ item, issueId }: ContentPageProps) {
-  const canViewDebug = await userCanViewContentDebug();
+export default async function ContentPage({
+  item,
+  issueId,
+  vc,
+}: ContentPageProps) {
   const content = item.content();
   const audio = item.ttsAudio();
   const ast = await content.ast();
@@ -49,7 +53,7 @@ export default async function ContentPage({ item, issueId }: ContentPageProps) {
                 />
               </>
             )}
-            {canViewDebug && (
+            {vc.canViewContentDebug() && (
               <>
                 <div className="pl-2 pr-2">{"|"}</div>
                 <Link href={{ pathname: item.debugUrl().path() }}>Debug</Link>

@@ -1,24 +1,24 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { userCanViewAdminUI } from "../../../../lib/session";
 import Content from "../../../../lib/data/Content";
 import ContentConnection from "../../../../lib/data/ContentConnection";
 import DateString from "../../../../lib/components/DateString";
+import { VC } from "../../../../lib/VC";
 
 export const metadata: Metadata = {
   title: "Content Management",
 };
 
 export default async function AdminContent() {
-  // Check permissions
-  const canViewAdminUI = await userCanViewAdminUI();
-  if (!canViewAdminUI) {
+  // Create a VC instance and check permissions
+  const vc = await VC.create();
+  if (!vc.canViewAdminUI()) {
     notFound();
   }
 
-  // Simply get all content using ContentConnection with an empty query
-  const content = ContentConnection.search("", "latest", null);
+  // Get all content using ContentConnection with an empty query
+  const content = ContentConnection.search(vc, "", "latest", null);
 
   return (
     <div>

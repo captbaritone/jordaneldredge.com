@@ -5,6 +5,7 @@ import Content, { ContentDBRow } from "./Content";
 import { PageType } from "./Indexable";
 import { Tag } from "./Tag";
 import { SCHEMA } from "../services/search/CompilerConfig";
+import { VC } from "../VC";
 
 /** @gqlEnum */
 type SortOption = "best" | "latest";
@@ -17,8 +18,8 @@ export type ContentQuery = {
 };
 
 export default class ContentConnection {
-  static all(query: ContentQuery): Content[] {
-    return ContentConnection.search("", query.sort, null);
+  static all(vc: VC, query: ContentQuery): Content[] {
+    return ContentConnection.search(vc, "", query.sort, null);
   }
 
   /**
@@ -26,14 +27,16 @@ export default class ContentConnection {
    * @gqlQueryField
    */
   static search(
+    vc: VC,
     query: string,
     sort: SortOption,
     first: Int | null,
   ): Array<Content> {
-    return ContentConnection.searchResult(query, sort, first).value;
+    return ContentConnection.searchResult(vc, query, sort, first).value;
   }
 
   static searchResult(
+    vc: VC,
     query: string,
     sort: SortOption,
     first: Int | null,
@@ -47,7 +50,8 @@ export default class ContentConnection {
     const prepared = db.prepare<any, ContentDBRow>(compiledResult.value.query);
     const value = prepared
       .all(compiledResult.value.params)
-      .map((row) => new Content(row));
+      .map((row) => Content.getByRow(vc, row))
+      .filter((content) => content != null);
     return {
       value,
       sql: compiledResult.value.query,
@@ -60,23 +64,23 @@ export default class ContentConnection {
    * Formal write-ups of projects and ideas.
    * @gqlQueryField
    */
-  static blogPosts(): Array<Content> {
-    return this.getAllByPageType("post");
+  static blogPosts(vc: VC): Array<Content> {
+    return this.getAllByPageType(vc, "post");
   }
 
   /**
    * Quick thoughts, observations, and links.
    * @gqlQueryField
    */
-  static notes(): Array<Content> {
-    return this.getAllByPageType("note");
+  static notes(vc: VC): Array<Content> {
+    return this.getAllByPageType(vc, "note");
   }
 
-  static withTag(tag: Tag): Array<Content> {
-    return ContentConnection.search(`#${tag.name()}`, "best", null);
+  static withTag(vc: VC, tag: Tag): Array<Content> {
+    return ContentConnection.search(vc, `#${tag.name()}`, "best", null);
   }
 
-  private static getAllByPageType(pageType: PageType): Content[] {
+  private static getAllByPageType(vc: VC, pageType: PageType): Content[] {
     let is: string;
     switch (pageType) {
       case "post":
@@ -88,6 +92,6 @@ export default class ContentConnection {
       default:
         throw new Error(`Unknown page type: ${pageType}`);
     }
-    return ContentConnection.search(`is:${is}`, "latest", null);
+    return ContentConnection.search(vc, `is:${is}`, "latest", null);
   }
 }

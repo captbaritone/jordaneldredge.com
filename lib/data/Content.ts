@@ -5,6 +5,7 @@ import { db, sql, prepare } from "../db";
 import yaml from "js-yaml";
 import { PageType } from "./Indexable";
 import TTSAudio from "./TTSAudio";
+import { VC } from "../VC";
 
 export type Metadata = {
   title?: string;
@@ -41,10 +42,24 @@ export type ContentDBRow = {
 export default class Content {
   _item: ContentDBRow;
   _metadata: Metadata;
-  constructor(item: ContentDBRow) {
+  private _vc: VC;
+
+  /** @deprecated Prefer `Content.getByRow` */
+  constructor(item: ContentDBRow, vc: VC) {
     this._item = item;
     this._metadata = JSON.parse(item.metadata);
+    this._vc = vc;
   }
+
+  static getByRow(vc: VC, row: ContentDBRow): Content | null {
+    const content = new Content(row, vc);
+    // Check if the content is draft or archived
+    if (content.isDraft() && vc.canViewDraftContent()) {
+      return null;
+    }
+    return content;
+  }
+
   pageType(): PageType {
     return this._item.page_type;
   }
@@ -92,6 +107,15 @@ export default class Content {
     const draft = this._metadata.draft || false;
     return !archive && !draft;
   }
+
+  isDraft(): boolean {
+    return !!this._metadata.draft;
+  }
+
+  isArchived(): boolean {
+    return !!this._metadata.archive;
+  }
+
   feedId(): string {
     return this._item.feed_id;
   }
@@ -131,7 +155,7 @@ export default class Content {
    * The audio version of this content, if it exists.
    * @gqlField */
   ttsAudio(): TTSAudio | null {
-    return TTSAudio.fromContentId(this.id());
+    return TTSAudio.fromContentId(this._vc, this.id());
   }
 
   serializedFilename(forceNotionId: boolean = false): string {
@@ -219,18 +243,22 @@ export default class Content {
     const rows = db
       .prepare<{ first: number; feedId: string }, ContentDBRow>(query)
       .all({ first, feedId: this.feedId() });
-    return rows.map((item) => new Content(item));
+
+    return rows
+      .map((item) => Content.getByRow(this._vc, item))
+      .filter((content) => content != null);
   }
 
-  static getNoteBySlug(slug: string): Content | null {
-    return Content.getByTypeAndSlug("note", slug);
+  static getNoteBySlug(vc: VC, slug: string): Content | null {
+    return Content.getByTypeAndSlug(vc, "note", slug);
   }
 
-  static getPostBySlug(slug: string): Content | null {
-    return Content.getByTypeAndSlug("post", slug);
+  static getPostBySlug(vc: VC, slug: string): Content | null {
+    return Content.getByTypeAndSlug(vc, "post", slug);
   }
 
   private static getByTypeAndSlug(
+    vc: VC,
     pageType: string,
     slug: string,
   ): Content | null {
@@ -250,13 +278,13 @@ export default class Content {
     if (row == null) {
       return null;
     }
-    return new Content(row);
+    return Content.getByRow(vc, row);
   }
 
   /**
    * Find a piece of content by its slug.
    * @gqlQueryField getContentBySlug */
-  static getBySlug(slug: string): Content | null {
+  static getBySlug(vc: VC, slug: string): Content | null {
     const row = prepare<{ slug: string }, ContentDBRow>(sql`
       SELECT
         *
@@ -266,13 +294,14 @@ export default class Content {
         slug = :slug
         OR json_extract(metadata, '$.notion_id') = :slug;
     `).get({ slug });
+
     if (row == null) {
       return null;
     }
-    return new Content(row);
+    return Content.getByRow(vc, row);
   }
 
-  static getById(id: number): Content | null {
+  static getById(vc: VC, id: number): Content | null {
     const row = prepare<{ id: number }, ContentDBRow>(sql`
       SELECT
         *
@@ -285,6 +314,6 @@ export default class Content {
     if (row == null) {
       return null;
     }
-    return new Content(row);
+    return Content.getByRow(vc, row);
   }
 }

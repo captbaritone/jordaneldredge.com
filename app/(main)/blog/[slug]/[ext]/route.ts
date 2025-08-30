@@ -1,22 +1,24 @@
 import { NextRequest } from "next/server";
 import { Content } from "../../../../../lib/data";
+import { VC } from "../../../../../lib/VC";
 
 // NOTE: This route depends upon a rewrite in the project config to allow it to match:
 // /blog/<slug>.md
-export async function GET(_: NextRequest, props) {
+export async function GET(request: NextRequest, props) {
   const params = await props.params;
   const { slug: fullSlug, ext } = params;
   const slug = fullSlug.slice(0, fullSlug.length - ext.length - 1);
+  const vc = await VC.create();
   switch (ext) {
     case "md": {
-      const post = Content.getPostBySlug(slug);
+      const post = Content.getPostBySlug(vc, slug);
       if (post == null) {
         return new Response("Not found", { status: 404 });
       }
       return new Response(post.contentWithHeader());
     }
     case "mp3": {
-      const post = Content.getPostBySlug(slug);
+      const post = Content.getPostBySlug(vc, slug);
       if (post == null) {
         return new Response("Not found", { status: 404 });
       }

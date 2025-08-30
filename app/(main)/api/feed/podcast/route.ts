@@ -1,15 +1,16 @@
 import { Feed, Item } from "feed";
 import * as Data from "../../../../../lib/data";
+import { VC } from "../../../../../lib/VC";
 
 export const revalidate = 10;
 export const dynamic = "force-static";
 
 export async function GET() {
-  const allContent = Data.ContentConnection.all({
+  const vc = VC.forScripts();
+  const allContent = Data.ContentConnection.all(vc, {
     sort: "latest",
     filters: ["showInLists"],
   });
-
   const feed = await buildRssFeedLazy(allContent);
 
   return new Response(feed.rss2(), {

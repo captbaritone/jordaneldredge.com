@@ -1,10 +1,15 @@
 import { Content } from "../../../../lib/data";
 import ContentPage from "../../../../lib/components/ContentPage";
 import { notFound } from "next/navigation";
+import { VC } from "../../../../lib/VC";
+import { Metadata } from "next";
 
-export async function generateMetadata(props) {
+export async function generateMetadata(props): Promise<Metadata> {
   const params = await props.params;
-  const post = Content.getPostBySlug(params.slug);
+  // Create viewer context
+  const vc = await VC.create();
+  
+  const post = Content.getPostBySlug(vc, params.slug);
   if (post == null) {
     return {};
   }
@@ -35,10 +40,13 @@ export async function generateMetadata(props) {
 
 export default async function Post(props) {
   const params = await props.params;
-  const post = Content.getPostBySlug(params.slug);
+  // Create viewer context
+  const vc = await VC.create();
+  
+  const post = Content.getPostBySlug(vc, params.slug);
   if (post == null) {
     notFound();
   }
   const issueId = post.githubCommentsIssueId();
-  return <ContentPage item={post} issueId={issueId} />;
+  return <ContentPage item={post} issueId={issueId} vc={vc} />;
 }

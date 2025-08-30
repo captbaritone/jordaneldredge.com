@@ -6,6 +6,7 @@ import { SortOption } from "search-query-dsl";
 import Link from "next/link";
 import KeyboardList from "../../../lib/components/KeyboardList";
 import { ReactNode } from "react";
+import { VC } from "../../../lib/VC";
 
 export async function generateMetadata(props) {
   const searchParams = await props.searchParams;
@@ -17,10 +18,12 @@ export default async function Posts(props) {
   const searchParams = await props.searchParams;
   const sort: SortOption = searchParams.sort || "best";
   const q = (searchParams.q ?? "").toLowerCase();
-  return <PostsStructured q={q} sort={sort} first={null} />;
+  const vc = await VC.create();
+  return <PostsStructured vc={vc} q={q} sort={sort} first={null} />;
 }
 
 type Props = {
+  vc: VC;
   q?: string;
   sort: SortOption;
   title?: string;
@@ -31,6 +34,7 @@ type Props = {
 };
 
 export function PostsStructured({
+  vc,
   q,
   sort,
   title = "Posts",
@@ -44,7 +48,7 @@ export function PostsStructured({
   hideSort,
   first,
 }: Props) {
-  const result = ContentConnection.searchResult(q ?? "", sort, first);
+  const result = ContentConnection.searchResult(vc, q ?? "", sort, first);
   const warnings = result.warnings.map((w) => w.message);
 
   return (

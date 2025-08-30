@@ -1,6 +1,7 @@
 import { Content } from "../../../../lib/data";
 import { Metadata } from "next";
 import ContentPage from "../../../../lib/components/ContentPage";
+import { VC } from "../../../../lib/VC";
 
 // https://beta.nextjs.org/docs/data-fetching/caching#segment-level-caching
 // export const revalidate = 10;
@@ -8,8 +9,11 @@ import ContentPage from "../../../../lib/components/ContentPage";
 
 export async function generateMetadata(props): Promise<Metadata> {
   const params = await props.params;
+  // Create viewer context
+  const vc = await VC.create();
+  
   // TODO: Figure out how to read search params in head.js
-  const note = Content.getNoteBySlug(params.slug);
+  const note = Content.getNoteBySlug(vc, params.slug);
   if (note == null) {
     throw new Error("Not found");
   }
@@ -33,9 +37,12 @@ export async function generateMetadata(props): Promise<Metadata> {
 
 export default async function Note(props) {
   const params = await props.params;
-  const note = Content.getNoteBySlug(params.slug);
+  // Create viewer context
+  const vc = await VC.create();
+  
+  const note = Content.getNoteBySlug(vc, params.slug);
   if (note == null) {
-    throw new Error("Not found");
+    return {};
   }
-  return <ContentPage item={note} />;
+  return <ContentPage item={note} vc={vc} />;
 }

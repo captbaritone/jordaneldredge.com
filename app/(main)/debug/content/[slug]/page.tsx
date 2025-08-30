@@ -1,20 +1,24 @@
 import React from "react";
 import { Content } from "../../../../../lib/data";
 import { SiteUrl } from "../../../../../lib/data/SiteUrl";
-import { userCanViewContentDebug } from "../../../../../lib/session";
 import { TagSet } from "../../../../../lib/data/TagSet";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import ReindexButton from "./ReindexButton";
 import { Bytes } from "../../../../../lib/components/Bytes";
+import { VC } from "../../../../../lib/VC";
 
 export default async function DebugContent(props) {
   const params = await props.params;
-  const canViewContentDebug = await userCanViewContentDebug();
-  if (!canViewContentDebug) {
+  // Create viewer context
+  const vc = await VC.create();
+  
+  // Check if user can view content debug
+  if (!vc.canViewContentDebug()) {
     notFound();
   }
-  const item = Content.getBySlug(params.slug);
+  
+  const item = Content.getBySlug(vc, params.slug);
   if (item == null) {
     notFound();
   }

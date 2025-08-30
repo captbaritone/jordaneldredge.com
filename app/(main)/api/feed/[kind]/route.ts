@@ -2,6 +2,7 @@ import { Feed, Item } from "feed";
 import * as Data from "../../../../../lib/data";
 import { NextRequest } from "next/server";
 import { Enclosure } from "feed/lib/typings";
+import { VC } from "../../../../../lib/VC";
 
 export const revalidate = 10;
 export const dynamic = "force-static";
@@ -10,7 +11,8 @@ const NOTES_EPOCH = new Date("2024-07-22");
 
 export async function GET(request: NextRequest, props) {
   const params = await props.params;
-  const posts = Data.ContentConnection.all({
+  const vc = VC.forScripts();
+  const posts = Data.ContentConnection.all(vc, {
     sort: "latest",
     filters: ["showInLists"],
   });

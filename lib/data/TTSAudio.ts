@@ -4,24 +4,27 @@ import { keyUrl, upload } from "../s3";
 import fs from "node:fs";
 import Content from "./Content";
 import { SiteUrl } from "./SiteUrl";
+import { VC } from "../VC";
 
 /**
  * Auto generated audio for a content item.
  * @gqlType */
 export default class TTSAudio {
   constructor(
+    private _vc: VC,
     private _contentId: string,
     private _r2Key: string,
     private _lastUpdated: number,
     private _byteLength: number,
   ) {}
 
-  static fromContentId(contentId: string): TTSAudio | null {
+  static fromContentId(vc: VC, contentId: string): TTSAudio | null {
     const audioRow = GET_TTS.get({ contentId: parseInt(contentId, 10) });
     if (audioRow == null) {
       return null;
     }
     return new TTSAudio(
+      vc,
       audioRow.content_id,
       audioRow.r2_key,
       audioRow.last_updated,
@@ -31,7 +34,7 @@ export default class TTSAudio {
 
   /** @gqlField */
   content(): Content {
-    const content = Content.getById(parseInt(this._contentId, 10));
+    const content = Content.getById(this._vc, parseInt(this._contentId, 10));
     if (content == null) {
       throw new Error(`Content not found for TTSAudio ${this._contentId}`);
     }
@@ -58,7 +61,11 @@ export default class TTSAudio {
     return this._lastUpdated;
   }
 
-  static async upload(contentId: string, mp3Path: string): Promise<TTSAudio> {
+  static async upload(
+    vc: VC,
+    contentId: string,
+    mp3Path: string,
+  ): Promise<TTSAudio> {
     const byteLength = fs.statSync(mp3Path).size;
     const key = `tts/${contentId}.mp3`;
     await upload(key, mp3Path, "audio/mpeg");
@@ -73,7 +80,7 @@ export default class TTSAudio {
       });
     });
     update();
-    return new TTSAudio(contentId, key, lastUpdated, byteLength);
+    return new TTSAudio(vc, contentId, key, lastUpdated, byteLength);
   }
 }
 

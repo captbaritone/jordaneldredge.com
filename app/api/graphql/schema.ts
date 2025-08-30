@@ -7,6 +7,7 @@ import queryGetContentBySlugResolver from "./../../../lib/data/Content";
 import queryNotesResolver from "./../../../lib/data/ContentConnection";
 import querySearchResolver from "./../../../lib/data/ContentConnection";
 import { AudioFile as queryAudioFilesResolver } from "./../../../lib/data/AudioFile";
+import { getVc as getVc } from "./route";
 import { Tag as queryGetTagByNameResolver } from "./../../../lib/data/Tag";
 import { Image as queryImagesResolver } from "./../../../lib/data/Image";
 import { Link as queryLinksResolver } from "./../../../lib/data/Link";
@@ -293,8 +294,8 @@ export function getSchema(): GraphQLSchema {
                     description: "Formal write-ups of projects and ideas.",
                     name: "blogPosts",
                     type: new GraphQLList(new GraphQLNonNull(ContentType)),
-                    resolve() {
-                        return queryBlogPostsResolver.blogPosts();
+                    resolve(_source, _args, context) {
+                        return queryBlogPostsResolver.blogPosts(getVc(context));
                     }
                 },
                 getContentBySlug: {
@@ -306,8 +307,8 @@ export function getSchema(): GraphQLSchema {
                             type: new GraphQLNonNull(GraphQLString)
                         }
                     },
-                    resolve(_source, args) {
-                        return queryGetContentBySlugResolver.getBySlug(args.slug);
+                    resolve(_source, args, context) {
+                        return queryGetContentBySlugResolver.getBySlug(getVc(context), args.slug);
                     }
                 },
                 getTagByName: {
@@ -341,8 +342,8 @@ export function getSchema(): GraphQLSchema {
                     description: "Quick thoughts, observations, and links.",
                     name: "notes",
                     type: new GraphQLList(new GraphQLNonNull(ContentType)),
-                    resolve() {
-                        return queryNotesResolver.notes();
+                    resolve(_source, _args, context) {
+                        return queryNotesResolver.notes(getVc(context));
                     }
                 },
                 search: {
@@ -360,8 +361,8 @@ export function getSchema(): GraphQLSchema {
                             type: new GraphQLNonNull(SortOptionType)
                         }
                     },
-                    resolve(_source, args) {
-                        return querySearchResolver.search(args.query, args.sort, args.first);
+                    resolve(_source, args, context) {
+                        return querySearchResolver.search(getVc(context), args.query, args.sort, args.first);
                     }
                 },
                 tweets: {
