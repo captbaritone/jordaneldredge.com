@@ -1,6 +1,8 @@
 import { Content } from "../../../../lib/data";
 import { Metadata } from "next";
-import ContentPage from "../../../../lib/components/ContentPage";
+import ContentPage, {
+  contentMetadata,
+} from "../../../../lib/components/ContentPage";
 import { VC } from "../../../../lib/VC";
 
 // https://beta.nextjs.org/docs/data-fetching/caching#segment-level-caching
@@ -11,35 +13,20 @@ export async function generateMetadata(props): Promise<Metadata> {
   const params = await props.params;
   // Create viewer context
   const vc = await VC.create();
-  
+
   // TODO: Figure out how to read search params in head.js
   const note = Content.getNoteBySlug(vc, params.slug);
   if (note == null) {
     throw new Error("Not found");
   }
-  const summaryImage = note.summaryImage();
-  return {
-    title: note.title(),
-    description: note.summary() || note.title(),
-    twitter: {
-      title: note.title(),
-      images: summaryImage ? [{ url: summaryImage }] : [],
-      description: note.summary() || note.title(),
-    },
-    openGraph: {
-      url: note.url().fullyQualified(),
-      title: note.title(),
-      images: summaryImage ? [{ url: summaryImage }] : [],
-      type: "article",
-    },
-  };
+  return contentMetadata(note);
 }
 
 export default async function Note(props) {
   const params = await props.params;
   // Create viewer context
   const vc = await VC.create();
-  
+
   const note = Content.getNoteBySlug(vc, params.slug);
   if (note == null) {
     return {};

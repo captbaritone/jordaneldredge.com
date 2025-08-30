@@ -10,12 +10,35 @@ import {
   ContentTileViewTransition,
 } from "./ViewTransitions";
 import { VC } from "../VC";
+import { Metadata } from "next";
 
 type ContentPageProps = {
   item: Data.Content;
   issueId?: string;
   vc: VC;
 };
+
+export function contentMetadata(content: Data.Content): Metadata {
+  const summaryImage = content.summaryImage();
+  return {
+    title: content.title(),
+    description: content.summary() || content.title(),
+    twitter: {
+      title: content.title(),
+      images: summaryImage ? [{ url: summaryImage }] : [],
+      description: content.summary() || content.title(),
+    },
+    openGraph: {
+      url: content.url().fullyQualified(),
+      title: content.title(),
+      images: summaryImage ? [{ url: summaryImage }] : [],
+      type: "article",
+    },
+    alternates: {
+      canonical: content.canonicalUrl() || null,
+    },
+  };
+}
 
 export default async function ContentPage({
   item,
