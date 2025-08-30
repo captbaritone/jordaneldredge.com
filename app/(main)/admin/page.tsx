@@ -8,58 +8,78 @@ export const metadata: Metadata = {
 };
 
 export default async function AdminDashboard() {
-  // Get some basic statistics
+  // Get user count
   const userCount = User.count();
-  const contentCountResult = prepare<[], { count: number }>(sql`
-    SELECT
-      COUNT(*) AS COUNT
-    FROM
-      content
+  
+  // Get content count using prepare with type parameters
+  const contentResult = prepare<[], { count: number }>(sql`
+    SELECT COUNT(*) as count FROM content
   `).get();
-  const contentCount = contentCountResult?.count || 0;
+  const contentCount = contentResult?.count || 0;
 
-  // Get paste count
-  const pasteCountResult = prepare<[], { count: number }>(sql`
-    SELECT
-      COUNT(*) AS COUNT
-    FROM
-      pastes
+  // Get paste count using prepare with type parameters
+  const pasteResult = prepare<[], { count: number }>(sql`
+    SELECT COUNT(*) as count FROM pastes
   `).get();
-  const pasteCount = pasteCountResult?.count || 0;
+  const pasteCount = pasteResult?.count || 0;
 
   return (
     <div>
-      <h2>Site Statistics</h2>
+      <h2 className="mb-3">Dashboard</h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-4">
-        <div className="bg-white p-4 rounded-lg shadow">
-          <p className="text-lg font-bold">{userCount}</p>
-          <p className="text-sm text-gray-600">Registered Users</p>
-          <Link
-            href="/admin/users"
-            className="text-sm text-blue-600 hover:underline mt-2 inline-block"
-          >
-            Manage Users →
-          </Link>
-        </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-5">
+        <Card
+          title="Content Items"
+          count={contentCount}
+          label="entries"
+          link="/admin/content"
+        />
+        <Card
+          title="User Accounts"
+          count={userCount}
+          label="users"
+          link="/admin/users"
+        />
+        <Card
+          title="Code Pastes"
+          count={pasteCount}
+          label="pastes"
+          link="/admin/pastes"
+        />
+      </div>
+    </div>
+  );
+}
 
-        <div className="bg-white p-4 rounded-lg shadow">
-          <p className="text-lg font-bold">{contentCount}</p>
-          <p className="text-sm text-gray-600">Content Items</p>
-        </div>
-
-        <div className="bg-white p-4 rounded-lg shadow">
-          <p className="text-lg font-bold">{pasteCount}</p>
-          <p className="text-sm text-gray-600">Pastes</p>
-          <Link
-            href="/admin/pastes"
-            className="text-sm text-blue-600 hover:underline mt-2 inline-block"
-          >
-            View All Pastes →
-          </Link>
-        </div>
-
-        {/* Add more dashboard widgets as needed */}
+// Card component for consistent UI
+function Card({
+  title,
+  count = 0,
+  label,
+  link,
+}: {
+  title: string;
+  count?: number;
+  label: string;
+  link: string;
+}) {
+  return (
+    <div className="bg-white p-3 rounded-lg shadow">
+      <div className="flex justify-between items-baseline mb-1">
+        <h4 className="font-medium">{title}</h4>
+        <span className="text-lg font-bold">
+          {typeof count === 'number' ? count.toLocaleString() : "0"}
+        </span>
+      </div>
+      <div className="flex justify-between items-center">
+        <span className="text-xs text-gray-500">Total {label}</span>
+        <Link
+          href={link}
+          className="text-xs text-blue-600 hover:text-blue-800 inline-flex items-center group"
+        >
+          Manage
+          <span className="ml-1 group-hover:ml-1.5 transition-all">→</span>
+        </Link>
       </div>
     </div>
   );

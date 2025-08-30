@@ -211,11 +211,12 @@ export class User {
   static count(): number {
     const stmt = prepare<[], { count: number }>(sql`
       SELECT
-        COUNT(*) AS COUNT
+        COUNT(*) as count
       FROM
         users
     `);
     const result = stmt.get();
+    console.log("User count result:", result);
     return result ? result.count : 0;
   }
 }
