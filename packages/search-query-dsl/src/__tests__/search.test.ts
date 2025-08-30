@@ -198,6 +198,7 @@ const databases: {
     name: "Cats and Dogs",
     config: {
       contentTable: "content",
+      contentTablePrimaryKey: "id",
       ftsTable: "content_fts",
       ftsTextColumns: ["text"],
       hardCodedConditions: [],
@@ -236,6 +237,7 @@ const databases: {
     name: "Novel Schema",
     config: {
       contentTable: "content",
+      contentTablePrimaryKey: "id",
       ftsTable: "content_fts",
       ftsTextColumns: ["text"],
       hardCodedConditions: [],

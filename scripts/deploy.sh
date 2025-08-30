@@ -9,7 +9,11 @@ if ! git diff-index --quiet HEAD --; then
 fi
 echo "Pushing to origin"
 git push origin
-echo "Building"
+echo building search-query-dsl
+cd packages/search-query-dsl
+pnpm build
+cd ../..
+echo "Building jordaneldredge.com"
 
 echo "Cleaning up old build"
 rm -rf build

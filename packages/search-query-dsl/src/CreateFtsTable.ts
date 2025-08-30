@@ -1,10 +1,12 @@
 import { SchemaConfig } from "./Compiler";
 import { sql } from "./sql";
 
+// This script draws inspiration from the example in https://www.sqlite.org/fts5.html#external_content_tables
 export function createSearchIndexWithTriggers(config: SchemaConfig): string {
   const rows = config.ftsTextColumns;
   const ftsTable = config.ftsTable;
   const contentTable = config.contentTable;
+  const primaryKey = config.contentTablePrimaryKey;
   const newRows = rows.map((row) => `new.${row}`).join(", ");
   const oldRows = rows.map((row) => `old.${row}`).join(", ");
   const rawRows = rows.map((row) => `[${row}]`).join(", ");
@@ -30,7 +32,7 @@ export function createSearchIndexWithTriggers(config: SchemaConfig): string {
     INSERT INTO
       ${ftsTable} (rowid, ${rawRows})
     VALUES
-      (new.rowid, ${newRows});
+      (new.{primaryKey}, ${newRows});
 
     END;
 
@@ -45,7 +47,7 @@ export function createSearchIndexWithTriggers(config: SchemaConfig): string {
     VALUES
       (
         'delete',
-        old.rowid,
+        old.${primaryKey},
         ${oldRows}
       );
 
@@ -63,20 +65,15 @@ export function createSearchIndexWithTriggers(config: SchemaConfig): string {
     VALUES
       (
         'delete',
-        new.rowid,
-        ${newRows}
+        old.${primaryKey},
+        ${oldRows}
       );
 
     INSERT INTO
-      ${ftsTable} (
-        ${ftsTable},
-        rowid,
-        ${rawRows}
-      )
+      ${ftsTable} (rowid, ${rawRows})
     VALUES
       (
-        'update',
-        new.rowid,
+        new.${primaryKey},
         ${newRows}
       );
 

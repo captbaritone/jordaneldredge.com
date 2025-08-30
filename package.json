@@ -10,7 +10,7 @@
     "lint-md": "remark --quiet .",
     "lint": "remark --quiet . && next lint",
     "backup": "tsx scripts/backup.ts",
-    "rebuild-search-index": "tsx scripts/search_index.ts",
+    "rebuild-search-index": "tsx scripts/rebuild_search_index.ts",
     "migrate": "tsx db-migrations/migrate.ts",
     "reindex": "tsx scripts/reindex.ts",
     "audio": "tsx scripts/audio.ts",

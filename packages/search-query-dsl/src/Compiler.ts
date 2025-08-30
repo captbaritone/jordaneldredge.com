@@ -19,7 +19,7 @@ export type SchemaConfig = {
    */
   contentTable: string;
 
-  contentTablePrimaryKey?: string;
+  contentTablePrimaryKey: string;
 
   ftsTablePrimaryKey?: string;
 
