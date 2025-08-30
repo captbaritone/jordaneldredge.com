@@ -32,7 +32,10 @@ export function createSearchIndexWithTriggers(config: SchemaConfig): string {
     INSERT INTO
       ${ftsTable} (rowid, ${rawRows})
     VALUES
-      (new.{primaryKey}, ${newRows});
+      (
+        new.${primaryKey},
+        ${newRows}
+      );
 
     END;
 
