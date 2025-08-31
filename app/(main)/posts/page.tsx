@@ -104,5 +104,5 @@ export function PostsStructured({
 }
 
 function ResultAlternative({ children }) {
-  return <h2 className="text-center pb-4 pt-4 text-gray-400">{children}</h2>;
+  return <h2 className="text-center py-4 text-gray-400">{children}</h2>;
 }
