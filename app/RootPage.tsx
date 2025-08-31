@@ -1,8 +1,6 @@
-import { getPageBySlug } from "../lib/data";
 import Markdown from "../lib/components/Markdown";
 
-export default async function Page({ slug }) {
-  const page = getPageBySlug(slug);
+export default async function Page({ page }) {
   const ast = await page.content().ast();
   return (
     <article>

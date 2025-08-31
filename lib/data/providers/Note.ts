@@ -78,6 +78,9 @@ export class NoteProvider implements IndexableProvider {
       summaryImage: await this._summaryImage(markdown),
       date: expectPublishedDate(page),
       lastModified: new Date(page.last_edited_time).getTime(),
+      // We now use a different URL structure, but we want to keep
+      // these stable so we don't cause old links to be treated as new by feed
+      // readers.
       feedId: new SiteUrl(`/notes/${page.id}`).fullyQualified(),
       content,
       metadata,

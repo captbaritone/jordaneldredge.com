@@ -67,6 +67,9 @@ export class PostProvider implements IndexableProvider {
       slug: slug,
       date: date,
       summaryImage,
+      // We now use a different URL structure, but we want to keep
+      // these stable so we don't cause old links to be treated as new by feed
+      // readers.
       feedId: new SiteUrl(`/blog/${slug}`).fullyQualified(),
       lastModified: stub.lastModified,
       metadata,

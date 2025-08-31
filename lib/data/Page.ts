@@ -49,11 +49,16 @@ export function getAllPages(): Page[] {
       if (slug == null) {
         throw new Error("No slug!");
       }
-      return getPageBySlug(slug);
+      return getPageBySlug(slug)!;
     });
 }
 
-export function getPageBySlug(slug: string): Page {
+const PAGES = ["about", "contact", "projects"];
+
+export function getPageBySlug(slug: string): Page | null {
+  if (!PAGES.includes(slug)) {
+    return null;
+  }
   const fullPath = join(pagesDirectory, `${slug}.md`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents, {

@@ -24,6 +24,38 @@ module.exports = {
         destination: "https://webamp.org",
         permanent: true,
       },
+      // We used to store blog posts and notes under /blog/ and /notes/
+      // We now redirect those old URLs to the new location at the root
+      {
+        source: "/blog/:slug/",
+        destination: "/:slug/",
+        permanent: true,
+      },
+      {
+        source: "/notes/:slug/",
+        destination: "/:slug/",
+        permanent: true,
+      },
+      {
+        source: "/blog/:slug(.+\\.md)",
+        destination: "/:slug",
+        permanent: true,
+      },
+      {
+        source: "/blog/:slug(.+\\.mp3)",
+        destination: "/:slug",
+        permanent: true,
+      },
+      {
+        source: "/notes/:slug(.+\\.md)",
+        destination: "/:slug",
+        permanent: true,
+      },
+      {
+        source: "/notes/:slug(.+\\.mp3)",
+        destination: "/:slug",
+        permanent: true,
+      },
     ];
   },
   images: {
@@ -69,21 +101,14 @@ module.exports = {
         source: "/feed/:path*",
         destination: "/api/feed/:path*",
       },
+
       {
-        source: "/blog/:slug(.+\\.md)",
-        destination: "/blog/:slug/md",
+        source: "/:slug(.+\\.md)",
+        destination: "/:slug/md",
       },
       {
-        source: "/blog/:slug(.+\\.mp3)",
-        destination: "/blog/:slug/mp3",
-      },
-      {
-        source: "/notes/:slug(.+\\.md)",
-        destination: "/notes/:slug/md",
-      },
-      {
-        source: "/notes/:slug(.+\\.mp3)",
-        destination: "/notes/:slug/mp3",
+        source: "/:slug(.+\\.mp3)",
+        destination: "/:slug/mp3",
       },
     ];
   },
