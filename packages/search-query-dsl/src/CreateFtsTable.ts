@@ -14,6 +14,7 @@ export function createSearchIndexWithTriggers(config: SchemaConfig): string {
     CREATE VIRTUAL TABLE ${ftsTable} USING FTS5 (
       ${rawRows},
       content = [${contentTable}],
+      content_rowid = [${primaryKey}],
       tokenize = porter
     );
 
