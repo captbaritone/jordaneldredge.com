@@ -91,7 +91,7 @@
     "encoding": "^0.1.13",
     "eslint": "^9.26.0",
     "eslint-config-next": "16.0.0",
-    "grats": "^0.0.32",
+    "grats": "0.0.0-main-e655d1ae",
     "jest": "^27.5.1",
     "jsdom": "^26.1.0",
     "lodash": "^4.17.21",
