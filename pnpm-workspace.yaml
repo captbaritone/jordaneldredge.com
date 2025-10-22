@@ -1,8 +1,7 @@
-# https://pnpm.io/pnpm-workspace_yaml
 packages:
-  - "packages/*"
-
-# Define a catalog of version ranges.
+  - packages/*
 catalog:
-  "@types/better-sqlite3": "^7.6.12"
-  "better-sqlite3": "^11.5.0"
+  '@types/better-sqlite3': ^7.6.12
+  better-sqlite3: ^11.5.0
+onlyBuiltDependencies:
+  - better-sqlite3

@@ -19,10 +19,10 @@ overrides:
 
 patchedDependencies:
   notion-to-md:
-    hash: 7vmadmfkqsjgjvhebfjwlavuwq
+    hash: 14ff8dd699071b31d318b396c83865d75a1911019d47ce2d8f5bfe243acb5080
     path: patches/notion-to-md.patch
   shiki@0.11.1:
-    hash: e5hbhqfmgu5adaln44hwllihiq
+    hash: 98e33dcdc95e6771ab98c6702726ad4cac1c1e4f092758454069fc6003076e42
     path: patches/shiki@0.11.1.patch
 
 importers:
@@ -97,7 +97,7 @@ importers:
         version: 15.4.1(@babel/core@7.21.5)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       notion-to-md:
         specifier: ^3.1.4
-        version: 3.1.4(patch_hash=7vmadmfkqsjgjvhebfjwlavuwq)(encoding@0.1.13)
+        version: 3.1.4(patch_hash=14ff8dd699071b31d318b396c83865d75a1911019d47ce2d8f5bfe243acb5080)(encoding@0.1.13)
       openai:
         specifier: ^4.73.1
         version: 4.73.1(encoding@0.1.13)(zod@3.24.4)
@@ -151,7 +151,7 @@ importers:
         version: 0.29.3
       shiki:
         specifier: ^0.11.1
-        version: 0.11.1(patch_hash=e5hbhqfmgu5adaln44hwllihiq)
+        version: 0.11.1(patch_hash=98e33dcdc95e6771ab98c6702726ad4cac1c1e4f092758454069fc6003076e42)
       tailwindcss:
         specifier: ^3.4.1
         version: 3.4.1(ts-node@10.9.1(@types/node@22.15.16)(typescript@5.5.3))
@@ -12108,7 +12108,7 @@ snapshots:
 
   normalize-range@0.1.2: {}
 
-  notion-to-md@3.1.4(patch_hash=7vmadmfkqsjgjvhebfjwlavuwq)(encoding@0.1.13):
+  notion-to-md@3.1.4(patch_hash=14ff8dd699071b31d318b396c83865d75a1911019d47ce2d8f5bfe243acb5080)(encoding@0.1.13):
     dependencies:
       markdown-table: 2.0.0
       node-fetch: 2.7.0(encoding@0.1.13)
@@ -13165,7 +13165,7 @@ snapshots:
 
   shebang-regex@3.0.0: {}
 
-  shiki@0.11.1(patch_hash=e5hbhqfmgu5adaln44hwllihiq):
+  shiki@0.11.1(patch_hash=98e33dcdc95e6771ab98c6702726ad4cac1c1e4f092758454069fc6003076e42):
     dependencies:
       jsonc-parser: 3.2.0
       vscode-oniguruma: 1.6.2
