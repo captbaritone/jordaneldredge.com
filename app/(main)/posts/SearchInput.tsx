@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, startTransition, useRef } from "react";
+import { useEffect, useRef, useState, useTransition } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 type Props = {
@@ -19,8 +19,21 @@ export default function SearchInput({
   autoFocus,
   warnings,
 }: Props) {
+  const [isPending, startTransition] = useTransition();
+  const [shouldShowSpinner, setShouldShowSpinner] = useState(false);
   const router = useRouter();
   const searchParams = useSearchParams();
+
+  useEffect(() => {
+    if (isPending) {
+      setShouldShowSpinner(true);
+    } else if (shouldShowSpinner) {
+      const timer = setTimeout(() => {
+        setShouldShowSpinner(false);
+      }, 200);
+      return () => clearTimeout(timer);
+    }
+  }, [isPending, shouldShowSpinner]);
 
   function updateQuery(query: string) {
     const newParams = new URLSearchParams(
@@ -66,23 +79,24 @@ export default function SearchInput({
             console.log("Key down in SearchInput", e.key);
           }}
           onChange={(e) => updateQuery(e.target.value)}
-          className={className}
-          style={{
-            display: "inline",
-            border: "1px solid lightgrey",
-            paddingLeft: "0.5rem",
-            paddingRight: "0.5rem",
-            marginRight: "0.5rem",
-            borderRadius: "0.5rem",
-            height: "2rem",
-            // https://stackoverflow.com/a/6394497
-            fontSize: "16px",
-          }}
+          className={`inline border border-gray-300 pl-2 pr-8 mr-2 rounded-lg h-8 text-base ${className ?? ""}`}
           defaultValue={query}
           autoFocus={autoFocus}
           name="q"
           placeholder="Search..."
         />
+        {shouldShowSpinner && (
+          <div
+            className="absolute right-2 top-1/2 -translate-y-1/2 mr-2 opacity-0"
+            style={{
+              animation: isPending
+                ? "fadeIn 200ms ease-in 300ms forwards"
+                : "fadeOut 200ms ease-out forwards",
+            }}
+          >
+            <div className="animate-spin rounded-full border-2 border-gray-300 border-t-gray-600 w-4 h-4" />
+          </div>
+        )}
         {warnings.length > 0 && (
           <div className="absolute bottom-full mb-2 left-0 bg-yellow-100 border border-yellow-500 text-yellow-900 text-sm px-2 py-1 rounded shadow-md whitespace-nowrap z-10">
             {warnings.map((warning, index) => (
