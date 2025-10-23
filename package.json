@@ -8,7 +8,7 @@
     "start": "next start",
     "export": "next export",
     "lint-md": "remark --quiet .",
-    "lint": "remark --quiet . && next lint",
+    "lint": "remark --quiet . && eslint .",
     "backup": "tsx scripts/backup.ts",
     "rebuild-search-index": "tsx scripts/rebuild_search_index.ts",
     "migrate": "tsx db-migrations/migrate.ts",
@@ -21,7 +21,7 @@
   "dependencies": {
     "@aws-sdk/client-s3": "^3.705.0",
     "@aws-sdk/lib-storage": "^3.705.0",
-    "@next/third-parties": "15.4.0-canary.51",
+    "@next/third-parties": "16.0.0",
     "@notionhq/client": "^2.2.1",
     "@simplewebauthn/browser": "^13.0.0",
     "@simplewebauthn/server": "^13.0.0",
@@ -40,12 +40,12 @@
     "js-yaml": "^4.1.0",
     "mdast-util-to-markdown": "^2.1.0",
     "mdast-util-to-string": "^4.0.0",
-    "next": "15.4.1",
+    "next": "16.0.0",
     "notion-to-md": "^3.1.4",
     "openai": "^4.73.1",
     "postcss": "^8.4.35",
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
     "react-icons": "^4.12.0",
     "react-tweet": "^3.2.0",
     "remark-cli": "^10.0.1",
@@ -84,13 +84,13 @@
     "@testing-library/dom": "^10.4.0",
     "@testing-library/react": "^16.3.0",
     "@types/better-sqlite3": "catalog:",
-    "@types/react": "19.1.3",
-    "@types/react-dom": "19.1.3",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2",
     "@types/unist": "^3.0.2",
     "@vitejs/plugin-react": "^4.4.1",
     "encoding": "^0.1.13",
     "eslint": "^9.26.0",
-    "eslint-config-next": "15.3.2",
+    "eslint-config-next": "16.0.0",
     "grats": "^0.0.32",
     "jest": "^27.5.1",
     "jsdom": "^26.1.0",
@@ -111,8 +111,12 @@
       "notion-to-md": "patches/notion-to-md.patch"
     },
     "overrides": {
-      "@types/react": "19.1.3",
-      "@types/react-dom": "19.1.3"
-    }
+      "@types/react": "19.2.2",
+      "@types/react-dom": "19.2.2"
+    },
+    "onlyBuiltDependencies": [
+      "better-sqlite3",
+      "sharp"
+    ]
   }
 }

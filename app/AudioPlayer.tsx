@@ -1,6 +1,6 @@
 "use client";
 import React, { CSSProperties, useCallback, useState } from "react";
-import { unstable_ViewTransition as ViewTransition } from "react";
+import { ViewTransition } from "react";
 
 import {
   FaPlay,

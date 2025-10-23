@@ -1,4 +1,4 @@
-import { useMemo, unstable_ViewTransition as ViewTransition } from "react";
+import { useMemo, ViewTransition } from "react";
 
 export const ContentViewTransition = make("content-list-item");
 export const ContentTileViewTransition = make("content-title");
