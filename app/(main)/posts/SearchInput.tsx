@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, useTransition } from "react";
+import { useEffect, useRef, useTransition } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 type Props = {
@@ -20,20 +20,8 @@ export default function SearchInput({
   warnings,
 }: Props) {
   const [isPending, startTransition] = useTransition();
-  const [shouldShowSpinner, setShouldShowSpinner] = useState(false);
   const router = useRouter();
   const searchParams = useSearchParams();
-
-  useEffect(() => {
-    if (isPending) {
-      setShouldShowSpinner(true);
-    } else if (shouldShowSpinner) {
-      const timer = setTimeout(() => {
-        setShouldShowSpinner(false);
-      }, 200);
-      return () => clearTimeout(timer);
-    }
-  }, [isPending, shouldShowSpinner]);
 
   function updateQuery(query: string) {
     const newParams = new URLSearchParams(
@@ -85,18 +73,16 @@ export default function SearchInput({
           name="q"
           placeholder="Search..."
         />
-        {shouldShowSpinner && (
-          <div
-            className="absolute right-2 top-1/2 -translate-y-1/2 mr-2 opacity-0"
-            style={{
-              animation: isPending
-                ? "fadeIn 200ms ease-in 300ms forwards"
-                : "fadeOut 200ms ease-out forwards",
-            }}
-          >
-            <div className="animate-spin rounded-full border-2 border-gray-300 border-t-gray-600 w-4 h-4" />
-          </div>
-        )}
+        <div
+          className={`absolute right-2 top-1/2 -translate-y-1/2 mr-2 transition-opacity duration-200 ${
+            isPending ? "opacity-100 delay-300" : "opacity-0"
+          }`}
+          style={{
+            pointerEvents: isPending ? "auto" : "none",
+          }}
+        >
+          <div className="animate-spin rounded-full border-2 border-gray-300 border-t-gray-600 w-4 h-4" />
+        </div>
         {warnings.length > 0 && (
           <div className="absolute bottom-full mb-2 left-0 bg-yellow-100 border border-yellow-500 text-yellow-900 text-sm px-2 py-1 rounded shadow-md whitespace-nowrap z-10">
             {warnings.map((warning, index) => (
