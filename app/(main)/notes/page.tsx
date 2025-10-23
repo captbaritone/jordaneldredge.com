@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { PostsStructured } from "../posts/page";
+import { VC } from "../../../lib/VC";
 
 export const metadata = {
   title: "Notes",
@@ -11,8 +12,10 @@ export const metadata = {
 export default async function Notes(props) {
   const searchParams = await props.searchParams;
   const sort = searchParams.sort || "latest";
+  const vc = await VC.create();
   return (
     <PostsStructured
+      vc={vc}
       title="Notes"
       description={
         <>

@@ -1,3 +1,4 @@
+import { VC } from "../../../lib/VC";
 import { PostsStructured } from "../posts/page";
 
 export async function generateMetadata(props) {
@@ -10,8 +11,10 @@ export default async function SearchComponent(props) {
   const searchParams = await props.searchParams;
   const query = searchParams.q || "";
   const sort = searchParams.sort || "best";
+  const vc = await VC.create()
   return (
     <PostsStructured
+      vc={vc}
       q={query}
       sort={sort}
       title="Search"
