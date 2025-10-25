@@ -1,5 +1,4 @@
-import fs from "fs";
-import { join } from "path";
+import fileContents from "../../performances.json" assert { type: "json" };
 
 export type SingerResume = ResumeEntry[];
 
@@ -15,7 +14,5 @@ export type ResumeEntry = {
 };
 
 export function getSingerResume(): SingerResume {
-  const resumePath = join(process.cwd(), "./performances.json");
-  const fileContents = fs.readFileSync(resumePath, "utf8");
-  return JSON.parse(fileContents);
+  return fileContents as SingerResume;
 }

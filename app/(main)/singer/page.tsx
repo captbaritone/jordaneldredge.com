@@ -13,7 +13,7 @@ export default function Page() {
 
   return (
     <>
-      <h1>Singer Resume</h1>
+      <h1 className="pb-4">Singer Resume</h1>
       <table className="table-auto text-sm">
         <thead>
           <tr className="border-b-2 border-grey-darkest border-solid">
@@ -39,7 +39,7 @@ export default function Page() {
           })}
         </tbody>
       </table>
-      <div className="text-sm italic text-right">*Sung in translation</div>
+      <div className="text-sm italic text-right pb-4">*Sung in translation</div>
     </>
   );
 }

@@ -1,5 +1,15 @@
 [
   {
+    "id": "60",
+    "character": "Bass soloist",
+    "title": "Mozart Requiem",
+    "company": "The San Francisco City Chorus",
+    "start_date": "2024-05-11",
+    "end_date": "2024-05-11",
+    "ticket_url": "https://www.sfcitychorus.org/calendar/2023/12/19/spring-concert-call-time-tba-fn2xp",
+    "sung_in_translation": false
+  },
+  {
     "id": "59",
     "character": "Angelotti",
     "title": "Tosca",
