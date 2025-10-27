@@ -11,11 +11,7 @@ export default async function SearchComponent(props) {
   const searchParams = await props.searchParams;
   const query = searchParams.q || "";
   const sort = searchParams.sort || "best";
-<<<<<<< HEAD
-  const vc = await VC.create()
-=======
   const vc = await VC.create();
->>>>>>> 7979cae (Fix formatting of no results)
   return (
     <PostsStructured
       vc={vc}
