@@ -29,6 +29,9 @@ jobs:
       - name: Grats Build/Check
         run: ./scripts/grats_check.sh
 
+      - name: Build workspace packages
+        run: pnpm run -r build
+
       - name: Run database migrations
         run: pnpm run migrate
 
