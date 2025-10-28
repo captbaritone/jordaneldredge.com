@@ -29,9 +29,8 @@ jobs:
       - name: Grats Build/Check
         run: ./scripts/grats_check.sh
 
-      - name: Migrations
-        run: |
-          npx tsx migrations/001-006-catch-up.ts
+      - name: Run database migrations
+        run: pnpm run migrate
 
       - name: Tests
         run: pnpm run test
