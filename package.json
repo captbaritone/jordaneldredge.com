@@ -107,8 +107,7 @@
   },
   "pnpm": {
     "patchedDependencies": {
-      "shiki@0.11.1": "patches/shiki@0.11.1.patch",
-      "notion-to-md": "patches/notion-to-md.patch"
+      "shiki@0.11.1": "patches/shiki@0.11.1.patch"
     },
     "overrides": {
       "@types/react": "19.2.2",
