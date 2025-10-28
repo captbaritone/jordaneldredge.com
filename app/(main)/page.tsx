@@ -1,19 +1,22 @@
 import Link from "next/link";
 import Image from "next/image";
+import type { Metadata } from "next";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "About / Jordan Eldredge",
   description: "About Jordan Eldredge",
   openGraph: {
     siteName: "Jordan Eldredge",
     locale: "en_US",
     title: "About / Jordan Eldredge",
+    url: "https://jordaneldredge.com/",
   },
   twitter: {
     creator: "@captbaritone",
     title: "About / Jordan Eldredge",
   },
   alternates: {
+    canonical: "https://jordaneldredge.com/",
     types: {
       "application/rss+xml": "/feed/rss.xml",
     },

@@ -1,11 +1,18 @@
+import { Metadata } from "next";
 import { ListItem } from "../../../lib/components/ListItem";
 import Link from "next/link"; // Assuming you're using Next.js
 
 import type { JSX } from "react";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: `Projects`,
   description: `A list of software side projects by Jordan Eldredge.`,
+  openGraph: {
+    url: "https://jordaneldredge.com/projects/",
+  },
+  alternates: {
+    canonical: "https://jordaneldredge.com/projects/",
+  },
 };
 
 export default function Projects() {

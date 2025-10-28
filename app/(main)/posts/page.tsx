@@ -7,11 +7,20 @@ import Link from "next/link";
 import KeyboardList from "../../../lib/components/KeyboardList";
 import { ReactNode } from "react";
 import { VC } from "../../../lib/VC";
+import { Metadata } from "next";
 
-export async function generateMetadata(props) {
+export async function generateMetadata(props): Promise<Metadata> {
   const searchParams = await props.searchParams;
   const title = searchParams.q ? `Posts: "${searchParams.q}"` : "Posts";
-  return { title, twitter: { title } };
+  const url = searchParams.q
+    ? `https://jordaneldredge.com/posts/?q=${encodeURIComponent(searchParams.q)}`
+    : "https://jordaneldredge.com/posts/";
+  return {
+    title,
+    twitter: { title },
+    openGraph: { url },
+    alternates: { canonical: url },
+  };
 }
 
 export default async function Posts(props) {

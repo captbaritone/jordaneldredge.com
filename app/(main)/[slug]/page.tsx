@@ -29,6 +29,10 @@ export async function generateMetadata(props): Promise<Metadata> {
       },
       openGraph: {
         type: "article",
+        url: `https://jordaneldredge.com/${slug}/`,
+      },
+      alternates: {
+        canonical: `https://jordaneldredge.com/${slug}/`,
       },
     };
   }

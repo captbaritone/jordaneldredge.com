@@ -1,10 +1,17 @@
 import Link from "next/link";
 import { PostsStructured } from "../posts/page";
 import { VC } from "../../../lib/VC";
+import { Metadata } from "next";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Blog",
   twitter: { title: "Blog" },
+  openGraph: {
+    url: "https://jordaneldredge.com/blog/",
+  },
+  alternates: {
+    canonical: "https://jordaneldredge.com/blog/",
+  },
 };
 
 export default async function Home(props) {

@@ -20,6 +20,7 @@ type ContentPageProps = {
 
 export function contentMetadata(content: Data.Content): Metadata {
   const summaryImage = content.summaryImage();
+  const canonicalUrl = content.canonicalUrl() || content.url().fullyQualified();
   return {
     title: content.title(),
     description: content.summary() || content.title(),
@@ -35,7 +36,7 @@ export function contentMetadata(content: Data.Content): Metadata {
       type: "article",
     },
     alternates: {
-      canonical: content.canonicalUrl() || null,
+      canonical: canonicalUrl,
     },
   };
 }

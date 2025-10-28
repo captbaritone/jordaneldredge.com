@@ -1,11 +1,21 @@
 import { notFound } from "next/navigation";
 import ListItem from "../../../../lib/components/ListItem";
 import { Tag } from "../../../../lib/data/Tag";
+import { Metadata } from "next";
 
-export async function generateMetadata(props) {
+export async function generateMetadata(props): Promise<Metadata> {
   const params = await props.params;
   const title = `Blog posts tagged "${params.tag}"`;
-  return { title, twitter: { title } };
+  return {
+    title,
+    twitter: { title },
+    openGraph: {
+      url: `https://jordaneldredge.com/tag/${params.tag}/`,
+    },
+    alternates: {
+      canonical: `https://jordaneldredge.com/tag/${params.tag}/`,
+    },
+  };
 }
 
 export const revalidate = 10;

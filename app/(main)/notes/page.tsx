@@ -1,11 +1,18 @@
 import Link from "next/link";
 import { PostsStructured } from "../posts/page";
 import { VC } from "../../../lib/VC";
+import { Metadata } from "next";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Notes",
   twitter: {
     title: "Notes",
+  },
+  openGraph: {
+    url: "https://jordaneldredge.com/notes/",
+  },
+  alternates: {
+    canonical: "https://jordaneldredge.com/notes/",
   },
 };
 
