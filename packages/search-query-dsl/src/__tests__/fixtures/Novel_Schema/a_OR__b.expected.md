@@ -18,7 +18,7 @@ None
 
 ```sql
 SELECT content.* FROM content_fts
-LEFT JOIN content ON content.rowid = content_fts.rowid
+LEFT JOIN content ON content.id = content_fts.rowid
 WHERE (content.rowid IN (SELECT content_fts.rowid FROM content_fts WHERE content_fts MATCH ('{text}: ' || :param0)) OR NOT (content.rowid IN (SELECT content_fts.rowid FROM content_fts WHERE content_fts MATCH ('{text}: ' || :param1))))
 ORDER BY text
 ```

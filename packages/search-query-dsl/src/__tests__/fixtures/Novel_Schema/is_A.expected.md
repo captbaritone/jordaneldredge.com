@@ -15,7 +15,7 @@ None
 
 ```sql
 SELECT content.* FROM content_fts
-LEFT JOIN content ON content.rowid = content_fts.rowid
+LEFT JOIN content ON content.id = content_fts.rowid
 WHERE content.text = 'A'
 ORDER BY text
 ```
