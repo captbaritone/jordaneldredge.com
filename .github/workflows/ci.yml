@@ -21,7 +21,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: 9.3
+          version: 10.13.1
 
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
