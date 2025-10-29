@@ -8,7 +8,7 @@ import yaml from "js-yaml";
 
 const validateMetadata = lintRule(
   "remark-lint:validate-metadata",
-  async (tree, file, options) => {
+  async (tree, file, _options) => {
     const filePath = file.history[0];
     if (filePath.startsWith("_posts")) {
       const slug = path.parse(filePath).name;

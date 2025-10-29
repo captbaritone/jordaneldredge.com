@@ -16,7 +16,7 @@ const validUrl = /^(\/.+)|(https?:\/\/.+)|(mailto:.+)|(data:.+)$/;
 
 const validateUrls = lintRule(
   "remark-lint:validate-urls",
-  async (tree, file, options) => {
+  async (tree, file, _options) => {
     const promises = [];
     visit(tree, ["image", "link"], (node) => {
       let { url } = node;

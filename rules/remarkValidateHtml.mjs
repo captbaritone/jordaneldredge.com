@@ -5,7 +5,7 @@ import { unified } from "unified";
 
 const validateHtml = lintRule(
   "remark-lint:html",
-  async (tree, file, options) => {
+  async (tree, file, _options) => {
     const blocks = [];
     visit(tree, ["html"], (node) => {
       blocks.push(node);
@@ -30,8 +30,7 @@ const validateHtml = lintRule(
             // case "a":
             // case "pre":
             if (
-              (Object.keys(htmlNode.properties).length =
-                0 && hasSingleTextChild(htmlNode))
+              Object.keys(htmlNode.properties).length === 0 && hasSingleTextChild(htmlNode)
             ) {
               file.message(`Invalid HTML`, node);
             }
