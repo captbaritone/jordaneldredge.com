@@ -35,6 +35,9 @@ jobs:
       - name: Run database migrations
         run: pnpm run migrate
 
+      - name: Lint
+        run: pnpm run lint
+
       - name: Tests
         run: pnpm run test
 

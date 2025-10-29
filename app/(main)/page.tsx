@@ -45,7 +45,7 @@ export default async function Page() {
         </p>
         <h2>Programming</h2>
         <p>
-          I've been writing software as a hobby since I was in high school.
+          I&apos;ve been writing software as a hobby since I was in high school.
           After college, it{" "}
           <Link href="/notes/opera-to-tech/">evolved naturally</Link> into a
           career. Since about 2009 I have been a full-time engineer. I currently
@@ -57,7 +57,7 @@ export default async function Page() {
         <p>
           I graduated from San Francisco State University with a Bachelors in
           Music and enjoyed a busy semi-professional singing schedule for many
-          years. I've since chosen to focus more on software, but information
+          years. I&apos;ve since chosen to focus more on software, but information
           about my singing can still be found on my{" "}
           <Link href="/singer">singer page</Link> or posts tagged with{" "}
           <Link href="/tag/music/">#music</Link>.
