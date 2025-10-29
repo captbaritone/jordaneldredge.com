@@ -8,7 +8,10 @@ import { ALL } from "../config";
 
 export const metadata = {
   metadataBase: new URL("https://jordaneldredge.com"),
-  title: "Jordan Eldredge",
+  title: {
+    template: "%s / Jordan Eldredge",
+    default: "Jordan Eldredge",
+  },
 };
 
 export default async function Layout({ children }) {

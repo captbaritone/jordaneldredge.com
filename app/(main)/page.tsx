@@ -3,17 +3,17 @@ import Image from "next/image";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About / Jordan Eldredge",
+  title: "About",
   description: "About Jordan Eldredge",
   openGraph: {
     siteName: "Jordan Eldredge",
     locale: "en_US",
-    title: "About / Jordan Eldredge",
+    title: "About",
     url: "https://jordaneldredge.com/",
   },
   twitter: {
     creator: "@captbaritone",
-    title: "About / Jordan Eldredge",
+    title: "About",
   },
   alternates: {
     canonical: "https://jordaneldredge.com/",
