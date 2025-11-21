@@ -5,13 +5,6 @@ import Markdown from "../../../../lib/components/Markdown";
 import Link from "next/link";
 import { getSession, userCanViewAnyPaste } from "../../../../lib/session";
 
-export function metadata() {
-  return {
-    title: `Paste`,
-    description: "Paste",
-  };
-}
-
 export default async function Paste(props) {
   const params = await props.params;
   const paste = GET_PASTE.get({ slug: params.slug });
