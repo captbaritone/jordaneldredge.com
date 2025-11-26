@@ -49,8 +49,44 @@ export default async function ContentPage({
   const content = item.content();
   const audio = item.ttsAudio();
   const ast = await content.ast();
+
+  // Generate structured data for SEO
+  const summaryImage = item.summaryImage();
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": item.pageType() === "note" ? "BlogPosting" : "Article",
+    headline: item.title(),
+    datePublished: item.dateObj().toISOString(),
+    dateModified: item.dateObj().toISOString(),
+    author: {
+      "@type": "Person",
+      name: "Jordan Eldredge",
+      url: "https://jordaneldredge.com",
+    },
+    publisher: {
+      "@type": "Person",
+      name: "Jordan Eldredge",
+      url: "https://jordaneldredge.com",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://jordaneldredge.com/images/avatar.jpg",
+      },
+    },
+    description: item.summary() || item.title(),
+    url: item.url().fullyQualified(),
+    ...(summaryImage && {
+      image: summaryImage.startsWith("http")
+        ? summaryImage
+        : `https://jordaneldredge.com${summaryImage}`,
+    }),
+  };
+
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       <article>
         <div className="markdown">
           <ContentTileViewTransition id={item.id()}>

@@ -38,7 +38,7 @@ export function generateMetadata(): Metadata {
 
 export default async function Layout({ children }) {
   return (
-    <html>
+    <html lang="en">
       <body>
         <AudioContextProvider>
           {children}
