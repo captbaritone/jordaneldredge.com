@@ -6,8 +6,10 @@ import { Metadata } from "next";
 export async function generateMetadata(props): Promise<Metadata> {
   const params = await props.params;
   const title = `Blog posts tagged "${params.tag}"`;
+  const description = `Browse all posts and notes tagged with "${params.tag}" by Jordan Eldredge.`;
   return {
     title,
+    description,
     twitter: { title },
     openGraph: {
       url: `https://jordaneldredge.com/tag/${params.tag}/`,
