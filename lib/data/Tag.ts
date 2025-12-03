@@ -2,6 +2,7 @@ import { Linkable } from "./interfaces";
 import { SiteUrl } from "./SiteUrl";
 import * as Data from "../data";
 import { Content } from "../data";
+import { VC } from "../VC";
 
 /**
  * A tag that can be associated with items.
@@ -23,8 +24,8 @@ export class Tag implements Linkable {
    * The list of items that have this tag.
    * @gqlField
    */
-  items(): Content[] {
-    return Data.ContentConnection.withTag(this);
+  items(vc: VC): Content[] {
+    return Data.ContentConnection.withTag(vc, this);
   }
 
   /**

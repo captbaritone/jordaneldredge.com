@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import ListItem from "../../../../lib/components/ListItem";
 import { Tag } from "../../../../lib/data/Tag";
 import { Metadata } from "next";
+import { VC } from "../../../../lib/VC";
 
 export async function generateMetadata(props): Promise<Metadata> {
   const params = await props.params;
@@ -22,9 +23,10 @@ export const revalidate = 10;
 export const dynamic = "force-static";
 
 export default async function TagPage(props) {
+  const vc = await VC.create();
   const params = await props.params;
   const tag = new Tag(params.tag);
-  const items = tag.items();
+  const items = tag.items(vc);
 
   if (items.length === 0) {
     notFound();
