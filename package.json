@@ -122,7 +122,7 @@
     },
     "onlyBuiltDependencies": [
       "better-sqlite3",
-      "sharp"
+      "esbuild"
     ]
   }
 }
