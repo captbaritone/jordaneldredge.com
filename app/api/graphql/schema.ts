@@ -167,7 +167,10 @@ export function getSchema(): GraphQLSchema {
                 items: {
                     description: "The list of items that have this tag.",
                     name: "items",
-                    type: new GraphQLList(new GraphQLNonNull(ContentType))
+                    type: new GraphQLList(new GraphQLNonNull(ContentType)),
+                    resolve(source, _args, context) {
+                        return source.items(getVc(context));
+                    }
                 },
                 name: {
                     name: "name",
