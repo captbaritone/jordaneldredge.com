@@ -1,10 +1,10 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import Content from "../../../../lib/data/Content";
 import ContentConnection from "../../../../lib/data/ContentConnection";
 import DateString from "../../../../lib/components/DateString";
 import { VC } from "../../../../lib/VC";
+import ReindexButton from "./ReindexButton";
 
 export const metadata: Metadata = {
   title: "Content Management",
@@ -22,7 +22,10 @@ export default async function AdminContent() {
 
   return (
     <div>
-      <h2 className="mb-4">Content Management</h2>
+      <div className="flex justify-between items-center mb-4">
+        <h2>Content Management</h2>
+        <ReindexButton />
+      </div>
 
       {/* Content table */}
       <div className="overflow-x-auto">

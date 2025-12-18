@@ -81,9 +81,7 @@ export default async function Layout({ children }) {
         {session.userId && (
           <>
             <br />
-            <Link href="/paste/">Pastes</Link>
-            {" • "}
-            <Link href="/api/reindex">Reindex</Link>
+            <Link href="/admin/">Admin Dashboard</Link>
           </>
         )}
       </footer>
