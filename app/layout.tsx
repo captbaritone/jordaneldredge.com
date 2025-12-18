@@ -26,6 +26,7 @@ export function generateMetadata(): Metadata {
     title,
     description:
       "The personal website of Jordan Eldredge, a software engineer and musician.",
+    viewport: "width=device-width, initial-scale=1",
     openGraph: { siteName: "Jordan Eldredge", title, images },
     twitter: {
       creator: "@captbaritone",
