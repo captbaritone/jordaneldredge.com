@@ -4,7 +4,7 @@ import { compile, ValidationError } from "search-query-dsl";
 import Content, { ContentDBRow } from "./Content";
 import { PageType } from "./Indexable";
 import { Tag } from "./Tag";
-import { SCHEMA } from "../services/search/CompilerConfig";
+import { getSchema } from "../services/search/CompilerConfig";
 import { VC } from "../VC";
 
 /** @gqlEnum */
@@ -46,8 +46,8 @@ export default class ContentConnection {
     sql: string;
     params: Record<string, unknown>;
   } {
-    // Use admin schema if user can view draft content, otherwise use regular schema
-    const compiledResult = compile(SCHEMA, query, sort, first);
+    const schema = getSchema(vc.canViewDraftContent());
+    const compiledResult = compile(schema, query, sort, first);
     const prepared = db.prepare<any, ContentDBRow>(compiledResult.value.query);
     const value = prepared
       .all(compiledResult.value.params)
