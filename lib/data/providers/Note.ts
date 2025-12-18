@@ -37,7 +37,7 @@ export class NoteProvider implements IndexableProvider {
     return rows
       .filter((page) => {
         const status = expectStatus(page);
-        return status === "Published" || status == "Archived";
+        return status === "Published" || status == "Archived" || status === "Draft";
       })
       .map((page) => {
         const slug = expectSlug(page);
@@ -56,9 +56,13 @@ export class NoteProvider implements IndexableProvider {
       throw new Error(`Could not find page with id ${stub.id}`);
     }
     const metadata: Metadata = { notion_id: page.id };
+    const status = expectStatus(page);
 
-    if (expectStatus(page) === "Archived") {
+    if (status === "Archived") {
       metadata.archive = true;
+    }
+    if (status === "Draft") {
+      metadata.draft = true;
     }
     const pageBlocks = await retrieveBlocks(page.id);
     const ast = await blocksToMarkdownAst(pageBlocks.results);

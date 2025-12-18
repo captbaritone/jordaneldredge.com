@@ -68,6 +68,11 @@ export default async function ContentPage({
                 <DateString date={item.dateObj()} />
               </div>
             </ContentDateViewTransition>
+            {item.isDraft() && (
+              <span className="ml-2 px-1.5 py-0.5 rounded-full bg-yellow-100 text-yellow-800 text-xs">
+                Draft
+              </span>
+            )}
             {audio && (
               <>
                 <div className="pl-2 pr-2">{"|"}</div>

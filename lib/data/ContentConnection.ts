@@ -46,6 +46,7 @@ export default class ContentConnection {
     sql: string;
     params: Record<string, unknown>;
   } {
+    // Use admin schema if user can view draft content, otherwise use regular schema
     const compiledResult = compile(SCHEMA, query, sort, first);
     const prepared = db.prepare<any, ContentDBRow>(compiledResult.value.query);
     const value = prepared

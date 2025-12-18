@@ -25,6 +25,7 @@ export default function ContentListItem({ item }: ContentProps) {
         url={item.url().path()}
         summary={summary}
         date={item.dateObj()}
+        isDraft={item.isDraft()}
       >
         {summary ? <p>{summary}</p> : null}
       </ListItem>
@@ -39,6 +40,7 @@ type Props = React.PropsWithChildren<{
   summary?: string;
   url: string;
   date?: Date;
+  isDraft: boolean;
 }>;
 
 export function ListItem({
@@ -48,6 +50,7 @@ export function ListItem({
   title,
   url,
   date,
+  isDraft,
 }: Props) {
   return (
     <>
@@ -71,6 +74,11 @@ export function ListItem({
             <ContentDateViewTransition id={id}>
               <span className="italic text-sm my-1 text-gray-400">
                 <DateString date={date} />
+                {isDraft && (
+                  <span className="ml-2 px-1.5 py-0.5 rounded-full bg-yellow-100 text-yellow-800 text-xs not-italic">
+                    Draft
+                  </span>
+                )}
               </span>
             </ContentDateViewTransition>
           )}

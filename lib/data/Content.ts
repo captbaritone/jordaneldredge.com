@@ -54,7 +54,7 @@ export default class Content {
   static getByRow(vc: VC, row: ContentDBRow): Content | null {
     const content = new Content(row, vc);
     // Check if the content is draft or archived
-    if (content.isDraft() && vc.canViewDraftContent()) {
+    if (content.isDraft() && !vc.canViewDraftContent()) {
       return null;
     }
     return content;

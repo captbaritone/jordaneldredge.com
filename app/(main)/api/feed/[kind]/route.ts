@@ -18,6 +18,10 @@ export async function GET(request: NextRequest, props) {
   });
 
   const publicPosts = posts.filter((content) => {
+    // Never include drafts in RSS feeds
+    if (content.isDraft()) {
+      return false;
+    }
     // For legacy reasons we omit notes from before they were included in RSS.
     if (content.pageType() === "note") {
       const date = content.dateObj();

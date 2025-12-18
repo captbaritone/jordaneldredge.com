@@ -11,7 +11,9 @@ export async function GET() {
     sort: "latest",
     filters: ["showInLists"],
   });
-  const feed = await buildRssFeedLazy(allContent);
+  // Never include drafts in RSS feeds
+  const publicContent = allContent.filter((content) => !content.isDraft());
+  const feed = await buildRssFeedLazy(publicContent);
 
   return new Response(feed.rss2(), {
     headers: { "Content-Type": "application/xml; charset=utf-8" },
