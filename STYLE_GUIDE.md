@@ -2,10 +2,74 @@
 
 This style guide captures the consistent voice and formatting conventions for all blog posts and notes on jordaneldredge.com.
 
+## Content Types: Posts vs. Notes
+
+This site features two types of content with different purposes and editorial approaches:
+
+### Posts (`_posts/`)
+**Purpose**: Comprehensive, polished pieces that explore topics in depth.
+
+**Characteristics:**
+- **Length**: Typically 1,000+ words, often much longer
+- **Structure**: Multiple sections with headers (H2, H3), clear beginning/middle/end
+- **Depth**: Deep dives into projects, technical topics, or experiences
+- **Polish**: Carefully edited, complete narratives
+- **Examples**: Include code examples, detailed explanations, step-by-step guides
+- **Attribution**: Often include acknowledgments section at the end
+- **Time investment**: Readers should expect to spend 5-15 minutes reading
+
+**When to write a post:**
+- Documenting a project or technical achievement
+- Tutorial or how-to guide
+- Comprehensive technical explanation
+- Extended narrative or case study
+- Detailed retrospective or post-mortem
+
+**Examples from the blog:**
+- "Grats: A More Pleasant Way to Build TypeScript GraphQL Servers"
+- "Mainlining Nostalgia: Making the Winamp Skin Museum"
+- "Implementation-First GraphQL"
+
+### Notes (`_notes/`)
+**Purpose**: Quick observations, insights, or interesting shares that don't require deep exploration.
+
+**Characteristics:**
+- **Length**: Typically 100-500 words, can be as short as a single paragraph or quote
+- **Structure**: More free-form, often no headers or just one section
+- **Depth**: Single insight, observation, or idea
+- **Polish**: Conversational and casual, though still well-written
+- **Examples**: May include minimal or no code examples
+- **Attribution**: May be shares of others' content (talks, articles, tools)
+- **Time investment**: Readers should expect to spend 1-3 minutes reading
+- **Tagging**: Always include `note` tag in frontmatter
+
+**When to write a note:**
+- Quick observation about programming or software engineering
+- Sharing someone else's interesting content with brief commentary
+- Short reflection on a concept or pattern
+- Brief "Today I learned" moments
+- Pithy quote or aphorism
+- Personal reflection that doesn't require extensive explanation
+
+**Examples from the blog:**
+- "Eldredge's law of online discourse" (single quote)
+- "Lint or Keep Quiet" (focused argument with bullet points)
+- "Software at Scale" (brief observation about Meta's approach)
+- "Becoming a local subject matter expert" (short reflection)
+
+### Shared Voice
+**Important**: While posts and notes differ in scope and structure, they share the same authentic voice:
+- First person perspective
+- Conversational tone with contractions
+- Technical but accessible
+- Honest and direct
+
+The difference is **scope and depth**, not voice or authenticity.
+
 ## Voice and Tone
 
 ### Personal and Conversational
-- **Use first person**: Write with "I" throughout your posts. This is your blog; own it.
+- **Use first person**: Write with "I" throughout. This is your blog; own it.
 - **Use contractions**: Write naturally with "I've", "it's", "don't", "you're", etc.
 - **Be direct**: Address readers as "you" when appropriate.
 - **Stay authentic**: Your writing should feel like a conversation with a fellow developer.
@@ -13,7 +77,7 @@ This style guide captures the consistent voice and formatting conventions for al
 ### Technical but Accessible
 - Write for an audience of developers who may not be experts in your specific topic.
 - Explain technical concepts clearly without being condescending.
-- Use code examples liberally to illustrate points.
+- Use code examples liberally to illustrate points in posts; sparingly in notes.
 
 ## Title Conventions
 
