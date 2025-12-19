@@ -1,5 +1,5 @@
 ---
-title: Making the case for building something useless
+title: "Making the case for building something useless"
 summary: "Why I'm perfectly happy to have built something that nobody really uses."
 tags: ["opinion"]
 ---
@@ -14,7 +14,7 @@ This is a really good question, and one I've spent a lot of time thinking about.
 
 ## It's fun
 
-In the same way that gardening or model trains are perfectly valid hobbies, it's good to remember that even thought software has the potential to provide value to people, you are under no obligation to optimize for that in your free time. Providing value is important and hopefully your work provides you the tools to maximize for that, but when I get home, I appreciate being free from that requirement. I enjoy being able to follow the path that looks most interesting, or seems the most fertile for learning, without having to weigh the trade-off of what that means for my "customers".
+In the same way that gardening or model trains are perfectly valid hobbies, it's good to remember that even though software has the potential to provide value to people, you are under no obligation to optimize for that in your free time. Providing value is important and hopefully your work provides you the tools to maximize for that, but when I get home, I appreciate being free from that requirement. I enjoy being able to follow the path that looks most interesting, or seems the most fertile for learning, without having to weigh the trade-off of what that means for my "customers".
 
 ## It has provided me value personally
 
@@ -24,7 +24,7 @@ Many of the problems which this project forced me to solve were not problems I e
 
 ## Exposure has a value all its own
 
-The exposure this project has received has enabled me to connect with people that I never could have otherwise. Nullsoft's founders, former Winamp developers, notable Winamp skinners, people at the forefront of the Web Audio API and many others. Theses are all people from whom I have learned a great deal, and I wouldn't have had the opportunity to connect with otherwise.
+The exposure this project has received has enabled me to connect with people that I never could have otherwise. Nullsoft's founders, former Winamp developers, notable Winamp skinners, people at the forefront of the Web Audio API and many others. These are all people from whom I have learned a great deal, and I wouldn't have had the opportunity to connect with otherwise.
 
 Webamp's exposure was also directly responsible for my current job. A recruiter noticed it on GitHub and in my interview loop, multiple people had heard of it. This gave me an opportunity to talk about something that I was passionate about, and had put a lot of thought into.
 

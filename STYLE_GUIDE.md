@@ -198,7 +198,6 @@ _This is italic text_
 ```
 
 **Common uses:**
-- Book, movie, or product names
 - Introducing new terms
 - Attribution at the end of posts: `_Thanks to Person Name for feedback._`
 - Foreign words or phrases
