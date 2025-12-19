@@ -5,13 +5,13 @@ youtube_slug: hZzjrgZb-mw
 tags: ["talk", "wasm", "typescript", "javascript", "staticAnalysis"]
 ---
 
-After recieving postive feedback an my post [Speeding Up Webamp's Music Visualizer with WebAssembly](/blog/speeding-up-winamps-music-visualizer-with-webassembly), I was encouraged by [Colin Eberhardt](https://blog.scottlogic.com/ceberhardt/), author of [WebAssembly Weekly](https://wasmweekly.news/), to give a talk on the topic. I submitted a proposal to [TSConf](https://tsconf.io/) and, to my surprise, it was accepted!
+After receiving positive feedback on my post [Speeding Up Webamp's Music Visualizer with WebAssembly](/blog/speeding-up-winamps-music-visualizer-with-webassembly), I was encouraged by [Colin Eberhardt](https://blog.scottlogic.com/ceberhardt/), author of [WebAssembly Weekly](https://wasmweekly.news/), to give a talk on the topic. I submitted a proposal to [TSConf](https://tsconf.io/) and, to my surprise, it was accepted!
 
 The talk covers:
 
-- The many varied projoects that have spun out of my work on [Webamp](https://webamp.org)
+- The many varied projects that have spun out of my work on [Webamp](https://webamp.org)
 - Our choice to use WebAssembly, and run the compiler in the browser
-- A glimps at how the compiler is implemented
+- A glimpse at how the compiler is implemented
 - Some of the challenges we faced in trying to make WebAssembly fast
 
 You can watch the video of the talk here:

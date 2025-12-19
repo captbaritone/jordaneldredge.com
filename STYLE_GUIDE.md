@@ -317,11 +317,18 @@ Attribution is required for block quotes unless the quote is your own (e.g., epi
 _― Author Name_
 ```
 
-**With link** - Link the author's name to their canonical online identity (personal homepage, GitHub, Twitter, etc.):
+**With link** - Link the author's name to their canonical online identity (personal homepage, GitHub, Twitter, etc.) **only if the person has not been previously mentioned by name in the post**:
 ```markdown
 > I thought that talk about dynamically creating WebAssembly from a little mini DSL was actually super interesting.
 
 _― [Anders Hejlsberg](https://en.wikipedia.org/wiki/Anders_Hejlsberg)_
+```
+
+**Without link** - If the person has already been mentioned and linked earlier in the post, use just their name:
+```markdown
+> I thought that talk about dynamically creating WebAssembly from a little mini DSL was actually super interesting.
+
+_― Anders Hejlsberg_
 ```
 
 **In prose** - For quotes that are integrated into discussion, attribution can be in the following paragraph:
