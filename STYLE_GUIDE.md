@@ -37,6 +37,86 @@ This style guide captures the consistent voice and formatting conventions for al
 - **Use quotes** for quoting code or literal strings: `?? "" is a Code Smell`
 - **Use question marks** when the title is genuinely a question
 
+## Summary Conventions
+
+The summary appears in the post's frontmatter and is used for social sharing, RSS feeds, and post listings. A well-crafted summary gives readers a clear sense of what the post is about and why they might want to read it.
+
+### Length
+- **Keep it to 1-2 sentences** (occasionally 3 for complex topics)
+- Aim for 100-200 characters when possible for optimal social sharing
+- Be concise but complete
+
+### Tone and Style
+- **Be direct and informative**: Tell readers what they'll get from the post
+- **Use complete sentences** that end with periods
+- **Use sentence case**, same as titles
+- **First person is fine**: "I think", "I wrote", "I built" maintains your authentic voice
+- **Avoid hype**: No "amazing", "incredible", "must-read" language
+- **Be specific**: Reference actual technologies, outcomes, or insights rather than vague descriptions
+
+### Content Patterns
+
+#### Declarative (What the post is)
+State what the post covers directly:
+- ✅ "Bringing Implementation-First GraphQL to TypeScript via a novel static analysis approach."
+- ✅ "Defining a meaningful distinction within code-first GraphQL server libraries."
+
+#### Descriptive (What you did or learned)
+Share your experience or findings:
+- ✅ "After more than four years, I'm finally happy with how Webamp implements balance."
+- ✅ "How my Twitter bot @winampskins works under the hood, how it has evolved over time, and what I've learned from the project."
+
+#### Intriguing (Hook with a surprise or contradiction)
+Create curiosity with an unexpected angle:
+- ✅ "How to remove code and still increase your library weight."
+- ✅ "Defaulting to empty string is a lie we tell our type checker."
+
+#### Observational (Personal insight)
+Share a personal perspective or realization:
+- ✅ "For some reason SQLite databases feel more 'real' to me."
+- ✅ "Thoughts on what I think made the Winamp Skin Museum successful."
+
+### What to Avoid
+- ❌ Clickbait: "You won't believe what happened next!"
+- ❌ Questions (save those for titles if needed): "Did you know about this GraphQL pattern?"
+- ❌ Vague descriptions: "Some thoughts on programming"
+- ❌ Marketing speak: "The ultimate guide to...", "Everything you need to know about..."
+- ❌ Incomplete sentences or fragments
+
+### Examples
+
+**Good summaries from actual posts:**
+```yaml
+summary: "Thinking about the React component tree as modeling a state machine can help clarify the implications of asynchronous updates and React's concurrent features."
+
+summary: "Python Context Managers are a great way to model resources with setup and teardown. Here's how to implement that pattern in JavaScript."
+
+summary: "How implementing an ESLint rule led to changes in how people write JavaScript."
+
+summary: "Why I'm perfectly happy to have built something that nobody really uses."
+```
+
+**Summaries to improve:**
+```yaml
+# Too vague
+summary: "Some thoughts on GraphQL"
+
+# Better
+summary: "Defining a meaningful distinction within code-first GraphQL server libraries."
+
+# Too clickbaity
+summary: "This one weird trick will change how you write TypeScript!"
+
+# Better
+summary: "Using TypeScript's type system to catch bugs at compile time rather than runtime."
+
+# Incomplete sentence
+summary: "Building a Twitter bot and what I learned"
+
+# Better
+summary: "How my Twitter bot works under the hood, how it has evolved over time, and what I've learned from the project."
+```
+
 ## Markdown Formatting
 
 ### Links
@@ -318,6 +398,8 @@ Always provide descriptive alt text for accessibility.
 Before publishing, verify:
 - [ ] Title uses sentence case (except proper nouns and acronyms)
 - [ ] No period at end of title
+- [ ] Summary is 1-2 sentences with complete sentences ending in periods
+- [ ] Summary is direct and informative (no hype or clickbait)
 - [ ] Code blocks have language specified
 - [ ] Links use inline markdown format
 - [ ] Italics use single underscores
