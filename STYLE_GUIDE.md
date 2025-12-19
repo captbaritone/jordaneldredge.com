@@ -242,9 +242,8 @@ def hello():
 
 **Common language identifiers:**
 - `javascript` (preferred over `js`)
-- `typescript` (preferred over `ts`)
+- `tsx` (preferred over `typescript` for all TypeScript code)
 - `jsx`
-- `tsx`
 - `python`
 - `graphql`
 - `bash` or `shell`

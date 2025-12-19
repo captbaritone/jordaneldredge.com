@@ -9,3 +9,4 @@ Tracks which posts and notes have received an editorial review pass for style gu
 ## Completed ✅
 
 - [x] `_posts/2023-04-17-implementation-first.md` (2024-12-18)
+- [x] `_posts/2024-03-05-grats.md` (2024-12-18)
