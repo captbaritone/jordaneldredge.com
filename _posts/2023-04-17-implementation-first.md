@@ -5,7 +5,7 @@ tags: ["graphql", "implementationFirst", "talk"]
 # github_comments_issue_id: 18
 ---
 
-When considering different libraries for implementing a GraphQL server, the options are traditionally divided into two categories: “schema-first” and “code-first”. While this binary is helpful, I believe it’s worth further clarifying that a subset of code-first libraries are also “Implementation-first”. In this post I’ll review what schema-first and code-first mean in the ecosystem, and then describe what I mean by implementation-first and the advantages inherent in that approach.
+When considering different libraries for implementing a GraphQL server, the options are traditionally divided into two categories: “schema-first” and “code-first”. While this binary is helpful, I believe it's worth further clarifying that a subset of code-first libraries are also "implementation-first". In this post I’ll review what schema-first and code-first mean in the ecosystem, and then describe what I mean by implementation-first and the advantages inherent in that approach.
 
 ## Schema-first
 
@@ -22,7 +22,7 @@ And an implementation like this:
 ```tsx
 class Query {
   hello(args) {
-    return `hello, ${name || "World"}`;
+    return `hello, ${args.name || "World"}`;
   }
 }
 ```
@@ -64,7 +64,7 @@ class Query:
 
     @strawberry.field
     def hello(self, name: Optional[str]) -> str:
-        return f"Hello {name || 'World'}!"
+        return f"Hello {name or 'World'}!"
 ```
 
 Note how the `@strawberry` decorators just tell the library _which_ classes/properties/methods to expose in the graph, but the GraphQL names and types of those things can be inferred from the implementation itself.
@@ -83,7 +83,7 @@ Server code, with its databases, models, ORMs, etc. is already prone to repetiti
 
 While I personally believe that implementation-first is the platonic ideal of a GraphQL server implementation, it may not always be a viable choice.
 
-For example, untyped languages have no way to specify what GraphQL type a given resolver is expected to return. Further, some _typed_ languages, like TypeScript, are expressive enough, but the types are not inspectable at runtime. This means that the only way build an implementation-first approach is by relying on a build step, and build steps can add friction to a development process.
+For example, untyped languages have no way to specify what GraphQL type a given resolver is expected to return. Further, some _typed_ languages, like TypeScript, are expressive enough, but the types are not inspectable at runtime. This means that the only way to build an implementation-first approach is by relying on a build step, and build steps can add friction to a development process.
 
 ## Conclusion
 
