@@ -13,7 +13,7 @@ as little code as possible while still keeping the code very readable.
 
 Obviously this is highly subjective, but I think I found a balance where there
 is hardly any extraneous code, but anyone with a small amount of JavaScript
-experience could read thought the code and understand everything.
+experience could read through the code and understand everything.
 
 __Play the game [here](https://rawgit.com/captbaritone/snake.js/master/index.html)__
 
@@ -44,7 +44,7 @@ __Play the game [here](https://rawgit.com/captbaritone/snake.js/master/index.htm
   function tick() {
     var newHead = {x: snake[0].x, y: snake[0].y};
 
-    // Only change directon if the new direction is a different axis
+    // Only change direction if the new direction is a different axis
     if (Math.abs(direction) !== Math.abs(newDirection)) {
       direction = newDirection;
     }

@@ -4,7 +4,7 @@ summary: Discovering, reproducing, and working around a bug that crashes Safari 
 tags: ["javascript", "webAudio"]
 ---
 
-Back in the fall of 2016, I was working on adding the equalizer window to [Winamp2-js](/projects/winamp2-js/). Unfortuneatly, wireing up the [`BiquadFilterNode`](https://developer.mozilla.org/en-US/docs/Web/API/BiquadFilterNode)s nessesary to get the correct behavior triggered a bug in Safari, both desktop and mobile, causing Safari to crash hard.
+Back in the fall of 2016, I was working on adding the equalizer window to [Winamp2-js](/projects/winamp2-js/). Unfortunately, wiring up the [`BiquadFilterNode`](https://developer.mozilla.org/en-US/docs/Web/API/BiquadFilterNode)s necessary to get the correct behavior triggered a bug in Safari, both desktop and mobile, causing Safari to crash hard.
 
 ![Screenshot of Safari crashing](/images/crash-safari.png)
 
@@ -17,7 +17,7 @@ Thread 11 Crashed:: com.apple.audio.IOThread.client
 2   com.apple.WebCore             	0x00007fff9fa84b77 WebCore::BiquadProcessor::process(WebCore::AudioBus const*, WebCore::AudioBus*, unsigned long) + 215
 ```
 
-To be clear, I have no idea what exactly that means, but it looks intresting. I reported the bug in their bug tracker and figured I'd wait until I heard back to invest more energy in the feature. As months passed, and it became obvious that this bug was not a priority for the Safari team, I occasionally would revist the bug, trying to either narrow down what was causing it, or find some way to work around it.
+To be clear, I have no idea what exactly that means, but it looks interesting. I reported the bug in their bug tracker and figured I'd wait until I heard back to invest more energy in the feature. As months passed, and it became obvious that this bug was not a priority for the Safari team, I occasionally would revisit the bug, trying to either narrow down what was causing it, or find some way to work around it.
 
 Finally, in April of this year, 2017, I figured out that it was related to the order in which the audio nodes were being connected, and was able to come up with [a workaround for Winamp2-js](https://github.com/captbaritone/winamp2-js/commit/d70dd0cc3780cf4824d70043eba33f22e35ba889).
 

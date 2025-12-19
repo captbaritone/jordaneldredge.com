@@ -1,6 +1,6 @@
 ---
-title: I did an interview for the Changelog Podcast
-summary: "I talked about Winamp2-js on the Changelog Podcast."
+title: "I did an interview for the Changelog podcast"
+summary: "I talked about Winamp2-js on the Changelog podcast."
 tags: ["winamp", "opinion", "podcast"]
 ---
 

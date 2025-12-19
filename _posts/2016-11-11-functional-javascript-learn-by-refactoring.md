@@ -335,7 +335,7 @@ functions like `kebabCase`!
 Imagine doing this in an imperative style! We would have ended up with five
 more eleven line functions instead of five one line functions!
 
-I hope this post as piqued your interest in functional programing in
+I hope this post has piqued your interest in functional programming in
 JavaScript! If you want to learn more, check out these links:
 
 - [Hey Underscore, You're Doing It Wrong!](https://www.youtube.com/watch?v=m3svKOdZijA)

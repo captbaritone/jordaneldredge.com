@@ -17,7 +17,7 @@ blog post contains the guidance I wish someone had given me four years ago.
 
 ## Pick a project
 
-The key to making valuable contributions in context. As a beginner in open
+The key to making valuable contributions is context. As a beginner in open
 source, you are going to be relatively slow at gaining context. To that end,
 focus your energy on one project and try to select one that sets you up for
 success. Here are some criteria to consider:
@@ -40,12 +40,12 @@ What are their goals and norms?). Here are some ways you could go about that:
 
 - Does the project have any documentation about how to contribute? Read it!
 - Follow ("watch") the project on GitHub. Read _all_ the incoming issues and
-  pull request. I recommend getting a mobile app like [iOctocat] so that you
+  pull request. I recommend getting a mobile app like [iOctocat](https://ioctocat.com/) so that you
   can follow the discussion in near real time.
-- Do they have a [Gitter] or [IRC] channel? If so, idle in that channel and
-  listen to the conversations. I've found the [Gitter iOS app] very useful.
+- Do they have a [Gitter](https://gitter.im/) or [IRC](https://en.wikipedia.org/wiki/Internet_Relay_Chat) channel? If so, idle in that channel and
+  listen to the conversations. I've found the [Gitter iOS app](https://search.itunes.apple.com/WebObjects/MZContentLink.woa/wa/link?mt=8&path=apps%2fgitter) very useful.
 - If they have a mailing list, subscribe to it.
-- Follow the main contributors on [Twitter].
+- Follow the main contributors on [Twitter](https://twitter.com).
 
 ### Technical context
 
@@ -124,7 +124,7 @@ All this work, and you're finally ready to actually write your code! Take this
 opportunity to slow down and write your most elegant code. The distributed
 (across time and geography) nature of open source software development, means
 that projects must lean more heavily on the code for communication. As Steve
-McConnell says in his book _[Code Complete]_:
+McConnell says in his book _[Code Complete](http://cc2e.com/)_:
 
 > Write programs for people first, computers second
 
@@ -205,10 +205,3 @@ that you could do. If not, you are now deeply familiar with one part of the
 code base. Keep your eyes open for related issues, and pretty soon _you'll_ be
 the expert jumping in to fix things before the other newbies have a chance to
 dig in and figure out what's causing the bug.
-
-[ioctocat]: https://ioctocat.com/
-[gitter]: https://gitter.im/
-[irc]: https://en.wikipedia.org/wiki/Internet_Relay_Chat
-[gitter ios app]: https://search.itunes.apple.com/WebObjects/MZContentLink.woa/wa/link?mt=8&path=apps%2fgitter
-[twitter]: https://twitter.com
-[code complete]: http://cc2e.com/

@@ -4,9 +4,9 @@ summary: "Ten common mistakes people make when using Underscore, and a linting t
 tags: ["opinion", "javascript", "eslint"]
 ---
 
-_Update 2023-09-17: I've come to regret this blog post a bit. Since ES6 the built in mechanism for these patters are good enough and generally preferable to Underscore or Lodash._
+_Update 2023-09-17: I've come to regret this blog post a bit. Since ES6 the built in mechanism for these patterns are good enough and generally preferable to Underscore or Lodash._
 
-_I think I was overly interested in policing easy-to-spot surface details during code review when I wrote this post and the corresponding lint rule. I highly recommend [Beyond Pep8](/notes/surface-nits/) which addresses this common disfunction._
+_I think I was overly interested in policing easy-to-spot surface details during code review when I wrote this post and the corresponding lint rule. I highly recommend [Beyond Pep8](/notes/surface-nits/) which addresses this common dysfunction._
 
 _That said, I learned a lot from writing these lint rules, so it wasn't a total loss._
 
@@ -83,11 +83,11 @@ each item, pass a "matcher" object:
 ```javascript
 // BAD
 _.filter(books, function (book) {
-  return book.type === "hardcover" && book.avaliable === true;
+  return book.type === "hardcover" && book.available === true;
 });
 
 // BETTER!
-_.filter(books, { type: "hardcover", avaliable: true });
+_.filter(books, { type: "hardcover", available: true });
 ```
 
 Rule: [matches-shorthand](https://github.com/captbaritone/eslint-plugin-underscore/blob/master/docs/rules/matches-shorthand.md)
@@ -177,7 +177,7 @@ _.each(numbers, function (n) {
 });
 
 // BETTER!
-var dubled = _.map(numbers, function (n) {
+var doubled = _.map(numbers, function (n) {
   return n * 2;
 });
 ```

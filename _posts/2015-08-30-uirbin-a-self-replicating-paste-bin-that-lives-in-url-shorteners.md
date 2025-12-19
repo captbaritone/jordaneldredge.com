@@ -41,7 +41,7 @@ URLs and data URIs.
 ## See where this is going?
 
 If your data is small enough, you can encode it as a data URI and "shorten"
-the URI. For example, I've shorted the example URI from above as:
+the URI. For example, I've shortened the example URI from above as:
 
 [http://tinyurl.com/nl92nr8](http://tinyurl.com/nl92nr8)
 
@@ -79,7 +79,7 @@ It's actually quite simple. Our tools just grabs a copy of itself from
 then redirects the user to `http://tinyurl.com/create.php?url=<URL>` where
 `<URL>` is the URL string it just created.
 
-And... viola, you have a self-replicating paste bin that lives in url
+And... voilà, you have a self-replicating paste bin that lives in url
 shorteners.
 
 You can find the code on [GitHub](https://github.com/captbaritone/uribin), or
