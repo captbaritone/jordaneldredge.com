@@ -15,7 +15,6 @@ This site features two types of content with different purposes and editorial ap
 - **Depth**: Deep dives into projects, technical topics, or experiences
 - **Polish**: Carefully edited, complete narratives
 - **Examples**: Include code examples, detailed explanations, step-by-step guides
-- **Attribution**: Often include acknowledgments section at the end
 - **Time investment**: Readers should expect to spend 5-15 minutes reading
 
 **When to write a post:**
@@ -41,7 +40,6 @@ This site features two types of content with different purposes and editorial ap
 - **Examples**: May include minimal or no code examples
 - **Attribution**: May be shares of others' content (talks, articles, tools)
 - **Time investment**: Readers should expect to spend 1-3 minutes reading
-- **Tagging**: Always include `note` tag in frontmatter
 
 **When to write a note:**
 - Quick observation about programming or software engineering
@@ -296,13 +294,28 @@ Use **numbers with periods**:
 3. Third step
 ```
 
-### Block Quotes
+### Quotes
 
-Use `>` for block quotes:
+**Block quotes** - Use for longer quotations (2+ sentences) or when you want to give the quote visual emphasis:
 ```markdown
-> This is a quoted passage.
+> This is a quoted passage from someone else.
 > It can span multiple lines.
 ```
+
+**Inline quotes** - Use for short quotations or phrases within your sentence:
+```markdown
+As Knuth said, "premature optimization is the root of all evil."
+```
+
+**Attribution**:
+- For block quotes, attribute on the line following the quote:
+  ```markdown
+  > Quote text here.
+
+  _― Author Name_
+  ```
+- For inline quotes, attribute inline with the sentence or in a footnote
+- Use em dash (—) or the em dash with hyphens (―) before author name in attribution
 
 ## Post Structure
 
@@ -329,28 +342,57 @@ Always follow preamble with `---` to separate it from the main content.
 Start posts directly with the topic. No need for "Hello readers" or similar pleasantries.
 
 ### Attribution and Thanks (Optional)
-When thanking contributors or providing attribution, place at the end after `---`:
+When thanking contributors or providing attribution, place at the end after `---`.
+
+**Always link to the person's canonical online identity:**
+- Prefer personal homepage/website if they have one
+- Otherwise, link to GitHub profile, social media (Twitter/Threads), or professional profile
+- Use the platform where they're most active and identifiable
 
 ```markdown
 ---
 
-_Thanks to Person Name for feedback on early drafts._
+_Thanks to [Person Name](https://their-website.com) for feedback on early drafts._
+```
+
+**Multiple contributors:**
+```markdown
+---
+
+_Thanks to [Person One](https://example.com), [Person Two](https://github.com/person), and [Person Three](https://twitter.com/person) for their contributions._
 ```
 
 ### Updates (Optional)
-For significant updates to published posts, add them at relevant locations with the update clearly marked:
+For significant updates to published posts, add them with the update clearly marked.
+
+**Placement guidance:**
+
+**At the top** (in preamble, after any existing metadata) - Use when:
+- The update is critical context for understanding the post (e.g., "This project has been deprecated")
+- The information has fundamentally changed (e.g., major breaking changes)
+- Readers need to know this immediately before reading the rest
 
 ```markdown
-_Update, Nov 23, 2022: [Brief description of what changed]_
+_Update, Nov 23, 2022: This API has been deprecated. See [new version](link) instead._
+
+---
 ```
 
-Or at the end:
+**At the end** (after `---`) - Use when:
+- Adding follow-up information or related content
+- Sharing how ideas evolved or were received
+- Linking to related work that came later
+- The update supplements but doesn't contradict the original
 
 ```markdown
 ---
 
-_Update Oct. 2024_: [Description of update and new content]
+_Update Oct. 2024_: Erik Wrede's 2024 GraphQL conf talk expands upon the ideas in this post: [link]
 ```
+
+**Inline** - Use when:
+- Correcting a specific factual error in context
+- Adding a small clarification to a specific section
 
 ## Custom Components
 
