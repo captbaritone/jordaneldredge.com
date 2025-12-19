@@ -307,15 +307,36 @@ Use **numbers with periods**:
 As Knuth said, "premature optimization is the root of all evil."
 ```
 
-**Attribution**:
-- For block quotes, attribute on the line following the quote:
-  ```markdown
-  > Quote text here.
+**Block Quote Attribution**:
 
-  _― Author Name_
-  ```
-- For inline quotes, attribute inline with the sentence or in a footnote
-- Use em dash (—) or the em dash with hyphens (―) before author name in attribution
+Attribution is required for block quotes unless the quote is your own (e.g., epigrams you've written).
+
+**Standard format** - Place attribution on the line immediately following the quote, using italics with em dash:
+```markdown
+> Quote text here.
+
+_― Author Name_
+```
+
+**With link** - Link the author's name to their canonical online identity (personal homepage, GitHub, Twitter, etc.):
+```markdown
+> I thought that talk about dynamically creating WebAssembly from a little mini DSL was actually super interesting.
+
+_― [Anders Hejlsberg](https://en.wikipedia.org/wiki/Anders_Hejlsberg)_
+```
+
+**In prose** - For quotes that are integrated into discussion, attribution can be in the following paragraph:
+```markdown
+> If I had more time, I would have written a shorter letter
+
+Which has been attributed to many people in [different variations](http://quoteinvestigator.com/...).
+```
+
+**Formatting notes**:
+- Use em dash with hyphens (―) before the author name: `_― Author Name_`
+- The entire attribution line should be italicized
+- Leave a blank line between the quote and the attribution
+- For inline quotes, attribute within the sentence: `As Knuth said, "premature optimization is the root of all evil."`
 
 ## Post Structure
 
