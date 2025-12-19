@@ -1,0 +1,335 @@
+# Writing Style Guide for jordaneldredge.com
+
+This style guide captures the consistent voice and formatting conventions for all blog posts and notes on jordaneldredge.com.
+
+## Voice and Tone
+
+### Personal and Conversational
+- **Use first person**: Write with "I" throughout your posts. This is your blog; own it.
+- **Use contractions**: Write naturally with "I've", "it's", "don't", "you're", etc.
+- **Be direct**: Address readers as "you" when appropriate.
+- **Stay authentic**: Your writing should feel like a conversation with a fellow developer.
+
+### Technical but Accessible
+- Write for an audience of developers who may not be experts in your specific topic.
+- Explain technical concepts clearly without being condescending.
+- Use code examples liberally to illustrate points.
+
+## Title Conventions
+
+### Title Casing
+**Use sentence case** for all post titles, with the following exceptions:
+- Proper nouns (e.g., "Winamp", "TypeScript", "GraphQL")
+- Acronyms (e.g., "API", "UI", "UX")
+- Code elements when part of the title (e.g., `??`, `{transitions}`)
+
+**Examples:**
+- ✅ "Gzip hates your DRY code"
+- ✅ "Building the @WinampSkins Twitter Bot"
+- ✅ "?? "" is a Code Smell"
+- ✅ "{transitions} = f(state)"
+- ❌ "Gzip Hates Your DRY Code"
+- ❌ "Building The @WinampSkins Twitter Bot"
+
+### Title Punctuation
+- **No period at the end** of titles
+- **Use colons** to separate main title from subtitle: "Grats: A More Pleasant Way to Build TypeScript GraphQL Servers"
+- **Use quotes** for quoting code or literal strings: `?? "" is a Code Smell`
+- **Use question marks** when the title is genuinely a question
+
+## Markdown Formatting
+
+### Links
+**Use inline markdown links** for all references:
+```markdown
+[link text](https://example.com)
+```
+
+**Avoid** reference-style links unless you're using the same URL multiple times in the same post.
+
+### Emphasis
+
+#### Italics
+Use **single underscores** for italic text:
+```markdown
+_This is italic text_
+```
+
+**Common uses:**
+- Book, movie, or product names
+- Introducing new terms
+- Attribution at the end of posts: `_Thanks to Person Name for feedback._`
+- Foreign words or phrases
+- Metadata/preamble text: `_Discussed on [Hacker News](...)_`
+
+#### Bold
+Use **double asterisks** for bold text:
+```markdown
+**This is bold text**
+```
+
+**Common uses:**
+- Emphasizing key points within sentences
+- Important concepts or warnings
+- Section of text you want to stand out
+
+#### Code
+Use **backticks** for inline code:
+```markdown
+`someFunction()` or `variableName`
+```
+
+### Code Blocks
+
+Always specify the language for syntax highlighting:
+
+````markdown
+```javascript
+const foo = "bar";
+```
+
+```typescript
+type User = { name: string };
+```
+
+```python
+def hello():
+    return "world"
+```
+````
+
+**Common language identifiers:**
+- `javascript` (preferred over `js`)
+- `typescript` (preferred over `ts`)
+- `jsx`
+- `tsx`
+- `python`
+- `graphql`
+- `bash` or `shell`
+
+### Headers
+
+Use `##` (H2) for main section headers within posts. The post title is H1 and should not be repeated in the body.
+
+**Use sentence case** for headers, same as titles:
+```markdown
+## This is a section header
+## Making it fast and cheap
+## What's the difference?
+```
+
+**Avoid:**
+- Using `#` (H1) in post body
+- Title case for headers: ~~## This Is A Section Header~~
+
+### Horizontal Rules
+
+Use **three hyphens** for horizontal rules:
+```markdown
+---
+```
+
+**Common uses:**
+- Separating preamble/metadata from main content
+- Before attribution/acknowledgments at the end of posts
+- Between major conceptual sections (use sparingly)
+
+### Lists
+
+#### Unordered Lists
+Use **hyphens** for bullet points:
+```markdown
+- First item
+- Second item
+- Third item
+```
+
+#### Ordered Lists
+Use **numbers with periods**:
+```markdown
+1. First step
+2. Second step
+3. Third step
+```
+
+### Block Quotes
+
+Use `>` for block quotes:
+```markdown
+> This is a quoted passage.
+> It can span multiple lines.
+```
+
+## Post Structure
+
+### Preamble (Optional)
+Posts may optionally include italicized metadata at the beginning:
+
+```markdown
+_Discussed on [Hacker News](https://news.ycombinator.com/...)._
+
+---
+```
+
+Or:
+
+```markdown
+_TL;DR: Brief summary of the entire post._
+
+---
+```
+
+Always follow preamble with `---` to separate it from the main content.
+
+### Opening
+Start posts directly with the topic. No need for "Hello readers" or similar pleasantries.
+
+### Attribution and Thanks (Optional)
+When thanking contributors or providing attribution, place at the end after `---`:
+
+```markdown
+---
+
+_Thanks to Person Name for feedback on early drafts._
+```
+
+### Updates (Optional)
+For significant updates to published posts, add them at relevant locations with the update clearly marked:
+
+```markdown
+_Update, Nov 23, 2022: [Brief description of what changed]_
+```
+
+Or at the end:
+
+```markdown
+---
+
+_Update Oct. 2024_: [Description of update and new content]
+```
+
+## Custom Components
+
+### YouTube Embeds
+```markdown
+::youtube{token=videoId}
+```
+
+### Audio Players
+```markdown
+::audio{src=/path/to/audio.mp3}
+```
+
+### Tweets (Legacy)
+```markdown
+::tweet{status=tweetId}
+```
+
+## Content Conventions
+
+### Em Dashes
+Use em dashes (—) for parenthetical thoughts or breaks in thought. In markdown, these should be actual em dash characters, not double hyphens:
+```markdown
+This is a sentence — and here's a related thought — that continues.
+```
+
+### Numbers
+- Spell out numbers one through nine
+- Use numerals for 10 and above
+- Use numerals for technical values, measurements, and statistics
+- Use commas for thousands: "65,000 skins" not "65000 skins"
+
+### Abbreviations
+- Spell out abbreviations on first use, followed by the abbreviation in parentheses: "Content Delivery Network (CDN)"
+- Use the abbreviation for subsequent references
+- Exception: Well-known abbreviations (API, UI, URL, etc.) don't need to be spelled out
+
+### Code and Technical Terms
+- Use `backticks` for all code elements, function names, variable names, file names, and command-line tools
+- Capitalize product names correctly: "TypeScript", "JavaScript", "GraphQL", "React", "Python"
+- Use proper casing for file extensions: `.js`, `.ts`, `.md`
+
+### URLs and Paths
+- Display URLs as links with descriptive text: [Grats website](https://grats.capt.dev/)
+- Use backticks for file paths in text: `src/components/Header.tsx`
+- Use backticks for command-line commands: `npm install`
+
+## Grammar and Punctuation
+
+### Oxford Comma
+**Always use** the Oxford comma in lists:
+- ✅ "apples, oranges, and bananas"
+- ❌ "apples, oranges and bananas"
+
+### Contractions
+Use contractions naturally to maintain a conversational tone:
+- "it's" not "it is"
+- "don't" not "do not"
+- "you're" not "you are"
+
+### Possessives
+For singular possessives of words ending in 's', add apostrophe-s:
+- "Anders's idea"
+- "TypeScript's compiler"
+
+### Quotation Marks
+- Use "double quotes" for actual quotations
+- Use backticks for code elements, not quotes
+- Place periods and commas inside quotation marks (American style)
+
+## Frontmatter Conventions
+
+### Required Fields
+```yaml
+title: "Post title in sentence case"
+summary: "Brief description of the post"
+tags: ["tag1", "tag2", "tag3"]
+```
+
+### Optional Fields
+```yaml
+summary_image: /path/to/image.png
+github_comments_issue_id: 123
+canonical_url: https://other-site.com/post
+youtube_slug: videoId
+notion_id: uuid-here
+```
+
+### Tag Style
+- Use lowercase for tags: `javascript`, not `JavaScript`
+- Use camelCase for multi-word tags: `staticAnalysis`, not `static-analysis` or `static_analysis`
+- Common tags: `javascript`, `typescript`, `react`, `graphql`, `opinion`, `project`, `talk`, `note`, `winamp`, `eslint`, `staticAnalysis`, `implementationFirst`
+
+## Images
+
+### Image References
+```markdown
+![Alt text describing the image](/path/to/image.png)
+```
+
+### Image Captions
+Place caption text immediately after the image on a new line, or use a standard paragraph.
+
+### Alt Text
+Always provide descriptive alt text for accessibility.
+
+## Consistency Checklist
+
+Before publishing, verify:
+- [ ] Title uses sentence case (except proper nouns and acronyms)
+- [ ] No period at end of title
+- [ ] Code blocks have language specified
+- [ ] Links use inline markdown format
+- [ ] Italics use single underscores
+- [ ] Bold uses double asterisks
+- [ ] Headers use sentence case
+- [ ] Horizontal rules use three hyphens `---`
+- [ ] Oxford commas in all lists
+- [ ] Contractions used naturally
+- [ ] Product names capitalized correctly
+- [ ] Em dashes are actual em dash characters (—)
+- [ ] Tags in frontmatter use lowercase/camelCase
+
+---
+
+_This style guide is a living document. Update it as new patterns emerge or conventions evolve._
