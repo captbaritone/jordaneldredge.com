@@ -25,7 +25,7 @@ export default async function DebugContent(props) {
 
   const audio = item.ttsAudio();
 
-  const { content, metadata, ...rest } = item._item;
+  const { content: _content, metadata: _metadata, ...rest } = item._item;
 
   return (
     <div className="markdown pb-4">

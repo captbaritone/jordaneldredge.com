@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import { compile as _compile, Compiler } from "../Compiler";
+import { compile as _unused, Compiler } from "../Compiler";
 import type { SchemaConfig } from "../Compiler";
 import fs from "fs";
 import path from "path";
@@ -16,13 +16,13 @@ const fixturesDir = path.resolve(__dirname, "./fixtures");
 
 const databases: {
   name: string;
-  config: SchemaConfig;
-  getDb(config: SchemaConfig): Database;
+  _config: SchemaConfig;
+  getDb(_config: SchemaConfig): Database;
   queries: string[];
 }[] = [
   {
     name: "Winamp Skin Museum alike",
-    config: {
+    _config: {
       ftsTable: "skin_search",
       contentTable: "skins",
       ftsTextColumns: ["skin_md5", "file_names", "readme_text"],
@@ -30,7 +30,7 @@ const databases: {
       contentTablePrimaryKey: "md5",
       ftsTablePrimaryKey: "skin_md5",
     },
-    getDb(config) {
+    getDb(_config) {
       const db: Database = betterSqlite(":memory:", {});
 
       db.exec(sql`
@@ -196,13 +196,13 @@ const databases: {
   },
   {
     name: "Cats and Dogs",
-    config: {
+    _config: {
       contentTable: "content",
       contentTablePrimaryKey: "id",
       ftsTable: "content_fts",
       ftsTextColumns: ["text"],
       hardCodedConditions: [],
-      tagCondition(tag: string) {
+      _tagCondition(_tag: string) {
         return null;
       },
       keyValueCondition(key: string, value: string) {
@@ -210,14 +210,14 @@ const databases: {
       },
       defaultBestSort: "text",
     },
-    getDb(config) {
+    getDb(_config) {
       // In memory database for testing
       const db: Database = betterSqlite(":memory:", {});
       db.exec(sql`
         CREATE TABLE content (id INTEGER PRIMARY KEY, [text] TEXT NOT NULL);
       `);
 
-      db.exec(createSearchIndexWithTriggers(config));
+      db.exec(createSearchIndexWithTriggers(_config));
 
       db.exec(sql`
         INSERT INTO
@@ -235,13 +235,13 @@ const databases: {
   },
   {
     name: "Novel Schema",
-    config: {
+    _config: {
       contentTable: "content",
       contentTablePrimaryKey: "id",
       ftsTable: "content_fts",
       ftsTextColumns: ["text"],
       hardCodedConditions: [],
-      tagCondition(tag: string) {
+      _tagCondition(_tag: string) {
         return null;
       },
       keyValueCondition(key: string, value: string) {
@@ -252,7 +252,7 @@ const databases: {
       },
       defaultBestSort: "text",
     },
-    getDb(config) {
+    getDb(_config) {
       // In memory database for testing
       const db: Database = betterSqlite(":memory:", {});
 
@@ -260,7 +260,7 @@ const databases: {
         CREATE TABLE content (id INTEGER PRIMARY KEY, [text] TEXT NOT NULL);
       `);
 
-      db.exec(createSearchIndexWithTriggers(config));
+      db.exec(createSearchIndexWithTriggers(_config));
 
       db.exec(sql`
         INSERT INTO
@@ -301,9 +301,9 @@ const databases: {
   },
 ];
 
-for (const { name, config, getDb, queries } of databases) {
+for (const { name, _config, getDb, queries } of databases) {
   describe(`${name} Example Database`, () => {
-    const db = getDb(config);
+    const db = getDb(_config);
     for (const query of queries) {
       test(query, () => {
         function normalizeSegment(segment: string): string {
@@ -317,7 +317,7 @@ for (const { name, config, getDb, queries } of databases) {
 
         const tokenResult = lex(query);
         const parseResult = parse(tokenResult.value);
-        const compiler = new Compiler(config, "best", null);
+        const compiler = new Compiler(_config, "best", null);
         compiler.compile(parseResult.value);
         const sql = compiler.serialize();
         const compiled = {
@@ -328,7 +328,7 @@ for (const { name, config, getDb, queries } of databases) {
             ...compiler._warnings,
           ],
         };
-        // const compiled = _compile(config, query, "best", null);
+        // const compiled = _unused(_config, query, "best", null);
         const stmt = db.prepare(compiled.value.query);
         const bound = stmt.bind(compiled.value.params);
         const results = bound.all().map((row: any) => row.text);

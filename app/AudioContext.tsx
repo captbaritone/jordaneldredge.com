@@ -6,7 +6,7 @@ import { AudioState } from "./AudioState";
 const AudioContext = React.createContext<AudioState | null>(null);
 
 export default function AudioContextProvider({ children }) {
-  const [state, _] = useState(() => new AudioState());
+  const [state, _setState] = useState(() => new AudioState());
 
   return (
     <AudioContext.Provider value={state}>{children}</AudioContext.Provider>

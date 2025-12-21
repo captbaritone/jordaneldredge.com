@@ -10,10 +10,10 @@ const config: SchemaConfig = {
   ftsTextColumns: ["text"],
   contentTable: "content",
   hardCodedConditions: [],
-  keyValueCondition(key: string, value: string): string | null {
+  keyValueCondition(_key: string, _value: string): string | null {
     return null;
   },
-  tagCondition(param: string): string | null {
+  tagCondition(_param: string): string | null {
     return null;
   },
   defaultBestSort: "",

@@ -4,7 +4,7 @@ export const metadata = {
   title: "Create an Account",
 };
 
-export default function Login({ searchParams }) {
+export default function Login({ searchParams: _searchParams }) {
   return (
     <div>
       <Register />

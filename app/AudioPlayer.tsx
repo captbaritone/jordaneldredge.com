@@ -1,13 +1,10 @@
 "use client";
-import React, { CSSProperties, useCallback, useState } from "react";
+import React, { useCallback } from "react";
 import { ViewTransition } from "react";
 
 import {
   FaPlay,
   FaPause,
-  FaVolumeUp,
-  FaVolumeMute,
-  FaVolumeDown,
   FaTimes,
 } from "react-icons/fa";
 import {
@@ -17,7 +14,6 @@ import {
   useDuration,
   useCurrentTrack,
   useAudioContext,
-  useVolume,
 } from "./AudioContext";
 
 function getFilenameFromUrl(url) {
@@ -71,7 +67,6 @@ export default function AudioPlayer() {
               <div className="whitespace-nowrap font-mono">
                 {formatSeconds(duration)}
               </div>
-              {/* <VolumeIcon /> */}
             </div>
             <div className="whitespace-nowrap pl-5">
               {currentTrack && getFilenameFromUrl(currentTrack)}
@@ -88,64 +83,6 @@ export default function AudioPlayer() {
   );
 }
 
-function VolumeIcon() {
-  const audioState = useAudioContext();
-  const volume = useVolume();
-  const muted = volume === 0;
-  const [showVolume, setShowVolume] = useState(false);
-  function handleMouseEnter(e) {
-    setShowVolume(true);
-    function handleMouseLeave(e) {
-      setShowVolume(false);
-      e.target.removeEventListener("mouseleave", handleMouseLeave);
-    }
-
-    e.target.addEventListener("mouseleave", handleMouseLeave);
-  }
-
-  const style: CSSProperties = showVolume
-    ? {
-        position: "absolute",
-        bottom: -20,
-        height: 300,
-        width: 50,
-        backgroundColor: "red",
-      }
-    : { display: "flex" };
-
-  return (
-    <div
-      style={{ position: "relative", width: 20 }}
-      onMouseEnter={handleMouseEnter}
-    >
-      <div style={style}>
-        <button className="pl-3">
-          {muted ? (
-            <FaVolumeMute />
-          ) : volume < 0.5 ? (
-            <FaVolumeDown />
-          ) : (
-            <FaVolumeUp />
-          )}
-        </button>
-      </div>
-      {/*
-        <input
-          type="range"
-          max={100}
-          min={0}
-          value={volume * 100}
-          onChange={(e) => {
-            audioState.setVolume(e.target.value / 100);
-          }}
-          style={{
-            display: showVolume ? "hidden" : "inline",
-          }}
-        />
-        */}
-    </div>
-  );
-}
 
 function Progress() {
   const percentComplete = usePercentComplete();

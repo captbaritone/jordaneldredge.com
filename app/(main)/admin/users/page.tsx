@@ -10,11 +10,6 @@ export const metadata: Metadata = {
   title: "Manage Users",
 };
 
-interface Role {
-  name: string;
-  description: string;
-}
-
 export default async function ManageUsers() {
   const canManageRoles = await userCanManageRoles();
   if (!canManageRoles) {

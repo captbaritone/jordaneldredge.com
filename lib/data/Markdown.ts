@@ -36,7 +36,7 @@ export class Markdown {
    */
   markdownString(): string {
     const ast = this.cloneAst();
-    visit(ast, (node, index, parent) => {
+    visit(ast, (node, _, _parent) => {
       if (node.type === "image") {
         // @ts-ignore
         node.url = node.imageProps?.cachedPath ?? node.url;

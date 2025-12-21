@@ -410,9 +410,9 @@ const ADD_CONTENT_TWEET = prepare<{
 `);
 
 // Maximum number of retries on SQLITE_BUSY error
-const MAX_BUSY_RETRIES = 5;
+// const MAX_BUSY_RETRIES = 5;
 // Delay between retries in ms
-const RETRY_DELAY_MS = 100;
+// const RETRY_DELAY_MS = 100;
 
 type LeafDirectiveNode =
   | { name: "audio"; attributes: { src: string } }

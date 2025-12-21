@@ -1,4 +1,4 @@
-import { db, sql, prepare } from "../db";
+import { sql, prepare } from "../db";
 
 /**
  * An audio file which has been embedded in a piece of content.

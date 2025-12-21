@@ -181,7 +181,7 @@ export class User {
             author_id = ?
         `);
         deletePastes.run(userId);
-      } catch (error) {
+      } catch (_error) {
         // Ignore if table doesn't exist
         console.log("Note: pastes table might not exist, continuing deletion");
       }
@@ -198,7 +198,7 @@ export class User {
       db.exec("COMMIT");
 
       return true;
-    } catch (error) {
+    } catch (_error) {
       // Rollback the transaction on error
       db.exec("ROLLBACK");
       throw error;

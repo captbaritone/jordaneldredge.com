@@ -207,7 +207,7 @@ export async function verifyRegistration(
   if (!verificationResponse.verified) {
     return { kind: "error", error: "Verification failed" };
   }
-  const { credential, credentialDeviceType, credentialBackedUp } =
+  const { credential, credentialDeviceType: _credentialDeviceType, credentialBackedUp: _credentialBackedUp } =
     registrationInfo;
 
   // Create user using User model

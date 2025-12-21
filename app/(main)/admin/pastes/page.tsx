@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { db, prepare, sql } from "../../../../lib/db";
+import { prepare, sql } from "../../../../lib/db";
 import { userCanViewAnyPaste } from "../../../../lib/session";
 import { notFound } from "next/navigation";
 import { Bytes } from "../../../../lib/components/Bytes";

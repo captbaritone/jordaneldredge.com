@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { db, prepare, sql } from "../../../lib/db";
+import { prepare, sql } from "../../../lib/db";
 import { User } from "../../../lib/data/User";
 import { Metadata } from "next";
 

@@ -93,7 +93,7 @@ export class NoteProvider implements IndexableProvider {
 
   async _summaryImage(markdown: Markdown): Promise<string | undefined> {
     let summaryImage: string | undefined = undefined;
-    visit(await markdown.ast(), (node, index, parent) => {
+    visit(await markdown.ast(), (node, _index, _parent) => {
       if (summaryImage != null) {
         return false;
       }
@@ -111,7 +111,7 @@ export class NoteProvider implements IndexableProvider {
 type Status = "Published" | "Archived" | "Draft";
 
 function applyDirectives(ast: Node) {
-  visit(ast, "paragraph", (_node, index, parent) => {
+  visit(ast, "paragraph", (_node, _index, _parent) => {
     const node: any = _node;
     if (node.children.length === 1 && node.children[0].type === "link") {
       const linkNode = node.children[0];
@@ -185,7 +185,7 @@ function expectTags(page: PageObjectResponse): string[] {
 
 async function rewriteImageUrls(tree): Promise<void> {
   const promises: Promise<unknown>[] = [];
-  visit(tree, (node, index, parent) => {
+  visit(tree, (node, _index, _parent) => {
     if (node.type === "leafDirective" && node.name === "youtube") {
       promises.push(ensureYoutubeImage(node.attributes.token));
       return;

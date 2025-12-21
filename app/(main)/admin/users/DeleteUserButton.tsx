@@ -20,7 +20,7 @@ export default function DeleteUserButton({
   const closeConfirm = () => setIsConfirmOpen(false);
 
   // Form action that will be called when the form is submitted
-  async function formAction(formData: FormData) {
+  async function formAction(_formData: FormData) {
     setError(null);
 
     startTransition(async () => {

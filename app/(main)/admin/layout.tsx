@@ -1,6 +1,5 @@
 import { userCanViewAdminUI } from "../../../lib/session";
 import { notFound } from "next/navigation";
-import Link from "next/link";
 import { Metadata } from "next";
 import AdminNav from "./AdminNav";
 
