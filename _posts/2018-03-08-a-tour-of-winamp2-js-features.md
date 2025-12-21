@@ -9,11 +9,11 @@ tags: ["project", "winamp", "javascript"]
 
 ![Winamp2-js showing all three windows](/images/winamp/three-windows-screenshot.png)
 
-Sitting on my bed one evening in October of 2014 I had an idea: I could use [CSS sprites] to render original Winamp skin files in the browser. I got so exicted about the idea that I worked on it late into the night. For the next three years I continued, off and on, to hack on this silly, yet entrancing project.
+Sitting on my bed one evening in October of 2014 I had an idea: I could use [CSS sprites] to render original Winamp skin files in the browser. I got so excited about the idea that I worked on it late into the night. For the next three years I continued, off and on, to hack on this silly, yet entrancing project.
 
 As of last month, all three main windows are complete ([Give it a try!](/projects/winamp2-js/)) and it finally feels like an actual media player.
 
-To celebrate this milestone, I thought I'd share a few of the more interesteing features that Winamp2-js has successfully reimplemented and a few technical details behinnd how they were implemented.
+To celebrate this milestone, I thought I'd share a few of the more interesting features that Winamp2-js has successfully reimplemented and a few technical details behind how they were implemented.
 
 ## Load any classic Winamp skin
 
@@ -29,9 +29,9 @@ Adding the playlist window involved refactoring my entire approach to playing au
 
 ## Visualize your music
 
-The [Web Audio API] exposes an [AnalyserNode] which gives us access to [Fast Fourier Transform]s of our audio stream in real time. Combining this with the [Canvas API] we can relitively easily draw real time visual representations of the audio you are hearing. So far I've have implemented both the waveform/oscilloscope visualizer and the bar graph visualizer.
+The [Web Audio API] exposes an [AnalyserNode] which gives us access to [Fast Fourier Transform]s of our audio stream in real time. Combining this with the [Canvas API] we can relatively easily draw real time visual representations of the audio you are hearing. So far I've have implemented both the waveform/oscilloscope visualizer and the bar graph visualizer.
 
-Eventually I would love to support some of the more advanced visualization plugins that Winamp had, such as [AVS] presets or [MilkDrop]. Lucklily with WebGL this should be possible to do in the browser. In fact, [butterchurnviz.com](https://butterchurnviz.com/) is a highly impressive MilkDrop clone, and the [author](https://twitter.com/jnberg16) has [expressed interest](https://twitter.com/jnberg16/status/970078322393628672) in making it avalaible in Winamp-js.
+Eventually I would love to support some of the more advanced visualization plugins that Winamp had, such as [AVS] presets or [MilkDrop]. Luckily with WebGL this should be possible to do in the browser. In fact, [butterchurnviz.com](https://butterchurnviz.com/) is a highly impressive MilkDrop clone, and the [author](https://twitter.com/jnberg16) has [expressed interest](https://twitter.com/jnberg16/status/970078322393628672) in making it available in Winamp-js.
 
 Additionally there are two different efforts to bring AVS presets to the browser. Both are being discussed in [https://gitter.im/visbot/AVS](https://gitter.im/visbot/AVS).
 
@@ -51,7 +51,7 @@ As luck would have it, the Canvas API lets you draw lines with a `strokeStyle` o
 
 ## Import/export Winamp's own binary EQ settings files
 
-Winamp defined a propritary `.eqf` binary file format for exporting your EQ presets. Having never delt with binary formats before this was a steep learning curve for me. Luckly the format is very simple, just a name and eleven values. I wrote a little parser/generator as an NPM package [winamp-eqf](https://github.com/captbaritone/winamp-eqf) in case anyone else ever wants to deal with these files. Now you can save your presets locally and load any presets that you happen to have kept around for the last twenty years.
+Winamp defined a proprietary `.eqf` binary file format for exporting your EQ presets. Having never dealt with binary formats before this was a steep learning curve for me. Luckly the format is very simple, just a name and eleven values. I wrote a little parser/generator as an NPM package [winamp-eqf](https://github.com/captbaritone/winamp-eqf) in case anyone else ever wants to deal with these files. Now you can save your presets locally and load any presets that you happen to have kept around for the last twenty years.
 
 ::youtube{token=6nyACdAxoTc}
 
@@ -73,19 +73,19 @@ Easy.
 
 ## Shade mode
 
-Each window can exist in two different modes. Regular and "shade" in which the main functionlity is compressed into the size of the title bar. Nothing special here technically, we just had to implement twice as many windows. \:P
+Each window can exist in two different modes. Regular and "shade" in which the main functionality is compressed into the size of the title bar. Nothing special here technically, we just had to implement twice as many windows. \:P
 
 ![Winamp2-js showing all three windows in "shade" mode](/images/winamp/shade-mode.png)
 
 ## ID3 tags
 
-A few months after starting my job at Facebook, I was talking to a collegue about Winamp2-js. I mentioned that I eventually wanted to support ID3 tags. I had looked around for JavaScript libraries that could do this a few years ago, but I hadn't had time to evaluate them since. Amazingly he said: "Oh, I wrote one of those libraries!". A few days later I integrated [jsmediatags] into Winamp2-js. Now we can read the metadata from MP3s, FLACs and more. Small world! Thanks [@aadsm]!
+A few months after starting my job at Facebook, I was talking to a colleague about Winamp2-js. I mentioned that I eventually wanted to support ID3 tags. I had looked around for JavaScript libraries that could do this a few years ago, but I hadn't had time to evaluate them since. Amazingly he said: "Oh, I wrote one of those libraries!". A few days later I integrated [jsmediatags] into Winamp2-js. Now we can read the metadata from MP3s, FLACs and more. Small world! Thanks [@aadsm]!
 
 ::youtube{token=WPnRKrcndzE}
 
 ## Window transparency
 
-One of those config files that make up a Winamp skin is `region.txt` which provides a series of coordinates which map out areas of the skin that should be transparent. Originally I assumed this would not be possible to support in the browser, but afer reading [SaraSoueidan's](https://twitter.com/SaraSoueidan) excellent article [CSS SVG Clipping](https://www.sarasoueidan.com/blog/css-svg-clipping/), I realized it is! All I had to do was:
+One of those config files that make up a Winamp skin is `region.txt` which provides a series of coordinates which map out areas of the skin that should be transparent. Originally I assumed this would not be possible to support in the browser, but after reading [SaraSoueidan's](https://twitter.com/SaraSoueidan) excellent article [CSS SVG Clipping](https://www.sarasoueidan.com/blog/css-svg-clipping/), I realized it is! All I had to do was:
 
 1.  Parse the `region.txt` file out of the skin
 2.  Use that data to dynamically generate an SVG somewhere in the DOM
@@ -97,7 +97,7 @@ Easy!
 
 ## Window snapping
 
-Winamp is split into three main windows, but usually you don't want them just spread randomly arround your desktop; you want them arranged in some neat and tidy configuration. To help you achieve this, Winamp windows "snap" or "dock" if you get them close to one another. I reimplemented this detail as well. Truth be told though, this code is very ugly and probably 10x more complicated than it needs to be. Hopefully one day I'll come back and clean this up.
+Winamp is split into three main windows, but usually you don't want them just spread randomly around your desktop; you want them arranged in some neat and tidy configuration. To help you achieve this, Winamp windows "snap" or "dock" if you get them close to one another. I reimplemented this detail as well. Truth be told though, this code is very ugly and probably 10x more complicated than it needs to be. Hopefully one day I'll come back and clean this up.
 
 ::youtube{token=S54UH1CmzLA}
 
@@ -109,15 +109,15 @@ Hotkeys for all the major pieces of functionality are supported. With the [Redux
 
 ## Drag tracks to reorder them
 
-This feature was a nice remider as to why you never want to have to reimplement things like multi-select from scratch. When the user clicks on a selected track, we add a `mousemove` event listener. On every event, we decide how far we've moved in the `Y` axis, and move the selected tracks based upon this data. It's made more complicated by the fact that the selected tracks may not be entirely sequential, so we need to have a special algorithm to merge them.
+This feature was a nice reminder as to why you never want to have to reimplement things like multi-select from scratch. When the user clicks on a selected track, we add a `mousemove` event listener. On every event, we decide how far we've moved in the `Y` axis, and move the selected tracks based upon this data. It's made more complicated by the fact that the selected tracks may not be entirely sequential, so we need to have a special algorithm to merge them.
 
 ::youtube{token=-VJOLXpFPRc}
 
 ## Double mode
 
-Even at older resolutions Winamp looked pretty small, and monitor resolution has only increased in the interveneing years. To address this, Winamp had "double" mode which doubles the size of the two non-resizeable windows. With the CSS `transform: scale(2);`, the resizing was super simple. The only trick was getting the browser to use a graphical resizing algorithm that is friendly to pixel art. We want each individual pixel to be rendered as four individual pixels in the resized version, we don't want them blurred, like you would for a photo. Again, the CSS spec has our back. `image-rendering: pixelated;` does exactly this.
+Even at older resolutions Winamp looked pretty small, and monitor resolution has only increased in the intervening years. To address this, Winamp had "double" mode which doubles the size of the two non-resizable windows. With the CSS `transform: scale(2);`, the resizing was super simple. The only trick was getting the browser to use a graphical resizing algorithm that is friendly to pixel art. We want each individual pixel to be rendered as four individual pixels in the resized version, we don't want them blurred, like you would for a photo. Again, the CSS spec has our back. `image-rendering: pixelated;` does exactly this.
 
-Interestingly, modern "retina" displays are already doing pixel dobuling, so specifying the `image-rendering` property makes things look cripser even when not in double mode.
+Interestingly, modern "retina" displays are already doing pixel doubling, so specifying the `image-rendering` property makes things look crisper even when not in double mode.
 
 You can enable double mode with they hotkey `ctrl+d` or by clicking the "D" in the "clutter bar" to the left of the visualizer in the main window.
 
@@ -127,7 +127,7 @@ One feature that I haven't yet implemented is Winamp's strategy for rearranging 
 
 ## What's next?
 
-Getting all of this to work entirely in the browser has been a great challenge, and I've learned a lot. While in many ways the project feels "done", I doubt I will stop working on it in the forseeable future.
+Getting all of this to work entirely in the browser has been a great challenge, and I've learned a lot. While in many ways the project feels "done", I doubt I will stop working on it in the foreseeable future.
 
 I still have a list of UI details which are not quite right:
 
@@ -151,11 +151,11 @@ If any of these things sound interesting to you, please reach out to me on [Twit
 
 ## Thanks
 
-While this project has been primarly me working alone on my couch, there are a few people who have made it measureably better through their indirect contributions:
+While this project has been primarily me working alone on my couch, there are a few people who have made it measurably better through their indirect contributions:
 
 Thanks to [Darren Owen](https://twitter.com/the_doctoro) for being an invaluable source of insider information.
 
-Thanks to [LuigiHann](https://twitter.com/LuigiHann) for catching many small places where I hand't perfectly recreated Winamp's handling of skins.
+Thanks to [LuigiHann](https://twitter.com/LuigiHann) for catching many small places where I hadn't perfectly recreated Winamp's handling of skins.
 
 Thanks to [Jake Rodkin](https://twitter.com/ja2ke) for the original [retweet](https://twitter.com/captbaritone/status/530030571141873664) which I believe kicked this whole thing off more than three years ago.
 

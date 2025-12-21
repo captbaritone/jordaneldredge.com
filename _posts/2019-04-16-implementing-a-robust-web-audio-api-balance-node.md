@@ -31,7 +31,7 @@ pre.innerHTML = myScript.innerHTML;
 // Feed the HTMLMediaElement into it
 var source = audioCtx.createMediaElementSource(myAudio);
 
-// Create a stereo blance
+// Create a stereo balance
 var balanceNode = new StereoBalanceNode(audioCtx);
 
 // Event handler function to increase balance to the right and left
@@ -69,6 +69,6 @@ Stuck in a world where mono audio files were still playing only in one speaker, 
 
 My final breakthrough was [this comment](https://github.com/WebAudio/web-audio-api/issues/975#issue-177242377) on GitHub which clued me into both the existence of [`channelInterpretation`](https://developer.mozilla.org/en-US/docs/Web/API/AudioNode/channelInterpretation) property and how we could reasonably apply it to a channel splitter. In short: use a dummy gain node with a `channelInterpretation` of `"speakers"` to handle converting mono sources into two equal stereo channels. Then use our original “Two Gain Nodes” approach of `ChannelSplitterNode`, two `GainNode`s and a `ChannelMergerNode`.
 
-With this final missing piece I was able to write a module which has an API which is basically compatible with StereoPannerNode but implements balance and not panning. Sadly the `.connect()` API makes implanting custom audio nodes very awkward — you have to return a native audio node which your methods monkey patched into it — but hopefully nobody has to look inside the module and it will “Just Work”.
+With this final missing piece I was able to write a module which has an API which is basically compatible with StereoPannerNode but implements balance and not panning. Sadly the `.connect()` API makes implementing custom audio nodes very awkward — you have to return a native audio node which your methods monkey patched into it — but hopefully nobody has to look inside the module and it will "Just Work".
 
 This code is available [in the Webamp code base](https://github.com/captbaritone/webamp/blob/7913048e41c332f3357e0de8149501d45973d71d/js/media/StereoBalanceNode.js) which is MIT licensed. Feel free to copy it into your own project, or bundle it up as an NPM module. It would be particularly cool if somebody wanted to implement the rest of the [AudioParam methods](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam#Methods) on `StereoBalanceNode.balance` API so that it could be a drop in replacement for StereoPannerNode.
