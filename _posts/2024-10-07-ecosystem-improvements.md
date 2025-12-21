@@ -15,7 +15,7 @@ Four years ago, while doing a code review at work, I was surprised that [Flow](h
 
 The two events are connected because that moment in code review four years ago led me to write [the `no-constant-binary-expressions` rule](https://eslint.org/blog/2022/07/interesting-bugs-caught-by-no-constant-binary-expression/) which catches a wide variety of bugs. Examples include:
 
-```js
+```javascript
 // Expecting empty objects to be falsy
 const foo = { ...config } || {};
 
@@ -69,7 +69,7 @@ It’s taken four years for the ripple of Brad’s initial observation on that i
 
 This effort spanned multiple years and multiple organizations.
 
-As a motivated individual within Meta, a for-profit company, I was able to spark a conversation which spawned an idea. I was then able to leverage ESLint to validate that idea internally. Once validated, the ESLint project, a not-for-profit organization, brought the idea to a large audience via it's broad adoption, recommended rule set, and blog. With the idea documented and validated at scale, engineers at Microsoft, another for-profit company, were able to bring the validations to an even larger audience via their open source project TypeScript.
+As a motivated individual within Meta, a for-profit company, I was able to spark a conversation which spawned an idea. I was then able to leverage ESLint to validate that idea internally. Once validated, the ESLint project, a not-for-profit organization, brought the idea to a large audience via its broad adoption, recommended rule set, and blog. With the idea documented and validated at scale, engineers at Microsoft, another for-profit company, were able to bring the validations to an even larger audience via their open source project TypeScript.
 
 Each organization played a different, but key, role according to its strengths and position. I believe a common thread throughout this process, which enabled this scale of collaboration, was the active socialization of ideas. From asking questions during code review, to asking questions of local experts, to sharing ideas in public blog posts and tweets, each expanding circle of socialization improved the idea and ultimately helped bring it to the broad audience it has reached today.
 

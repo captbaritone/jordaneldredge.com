@@ -1,11 +1,11 @@
 ---
-title: "Generating a 12 Hour Youtube Video With Python"
+title: "Generating a 12 hour YouTube video with Python"
 summary: "Making a video that smoothly scrolls through 70k Winamp skins over the course of 12 hours."
 summary_image: /images/scrolling-through-70k-winamp-skins-youtube-thumbnail.png
 tags: ["winamp", "projects", "python", "youtube"]
 ---
 
-After I launched the [Winamp Skin Museum](https://skins.webamp.org/), someone made an [11 hour Youtube video](https://www.youtube.com/watch?v=tZ4tTh7lBq4) that consisted of scrolling through all 65k skins. Honestly I loved the idea, but it it looked like they had done it by automating a browser to scroll by 100 pixels or so every second or so. This meant the result was not smooth and occasionally suffered from slow network responses causing some images appear late.
+After I launched the [Winamp Skin Museum](https://skins.webamp.org/), someone made an [11 hour YouTube video](https://www.youtube.com/watch?v=tZ4tTh7lBq4) that consisted of scrolling through all 65k skins. Honestly I loved the idea, but it looked like they had done it by automating a browser to scroll by 100 pixels or so every second or so. This meant the result was not smooth and occasionally suffered from slow network responses causing some images appear late.
 
 It made me think, "how could you do a really polished version of this?" and I began to imagine a programmatically-generated video constructed directly from the collection of screenshots.
 
@@ -13,7 +13,7 @@ It made me think, "how could you do a really polished version of this?" and I be
 
 Lucky for me [Pontus Alexander](https://www.youtube.com/c/MethMethMethod) suggested we take a look at it together.
 
-After an hour of enjoyable remote pair programming, we had hammered out the broad strokes. Over the next few days I sorted out the remaining details and after a a day or so of rendering and several days(!) of waiting for YouTube to process the video, [12 Hours: Scrolling Through 70,000 Winamp Skins](https://www.youtube.com/watch?v=65tAgs1CW58) was born.
+After an hour of enjoyable remote pair programming, we had hammered out the broad strokes. Over the next few days I sorted out the remaining details and after a day or so of rendering and several days(!) of waiting for YouTube to process the video, [12 Hours: Scrolling Through 70,000 Winamp Skins](https://www.youtube.com/watch?v=65tAgs1CW58) was born.
 
 ::youtube{token=65tAgs1CW58}
 

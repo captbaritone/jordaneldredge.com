@@ -10,7 +10,7 @@ tags:
 [Webamp.org](http://webamp.org)'s visualizer, [Butterchurn](https://github.com/jberg/butterchurn), now uses WebAssembly (Wasm) to achieve better performance and improved security. Whereas most projects use Wasm by compiling pre-existing native code to Wasm, Butterchurn uses an in-browser compiler to compile untrusted user-supplied code to fast and secure Wasm at runtime. This blog post details why we undertook this project, the challenges we faced, the solutions we found, and the performance and security wins they unlocked.
 
 ![Webamp's music visualizer, Butterchurn](/images/butterchurn-wasm/butterchurn.png)
-_Webamp's with its music visualizer Butterchurn, now powered by Wasm_
+_Webamp with its music visualizer Butterchurn, now powered by Wasm_
 
 ## Why Wasm?
 

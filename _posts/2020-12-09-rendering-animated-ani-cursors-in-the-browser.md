@@ -37,7 +37,7 @@ However, up until recently, Webamp didn't support `.ani` files for two reasons:
 
 _Source: [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Basic_User_Interface/Using_URL_values_for_the_cursor_property)_
 
-## Browser don't support `.ani`
+## Browsers don't support `.ani`
 
 To get around this, we use JavaScript to parse the `.ani` file and extract the frames and metadata indicating the order and timing in which to render the frames. `.ani` files use the [RIFF](http://fileformats.archiveteam.org/wiki/RIFF) container format, and someone on NPM has already written a small library [`riff-file`](https://github.com/rochars/riff-file) that can parse RIFF in the browser. `riff-file` breaks the file into sections for us:
 

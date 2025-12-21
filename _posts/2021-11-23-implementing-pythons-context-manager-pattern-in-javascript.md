@@ -4,11 +4,11 @@ summary: "Python Context Managers are a great way to model resources with setup 
 tags: ["javascript", "python", "opinion"]
 ---
 
-Have you ever interacted with, or designed, an API which gives the user some object which requires setup and or teardown?
+Have you ever interacted with, or designed, an API that gives the user some object which requires setup and or teardown?
 
 These APIs often put significant burden on the caller to ensure the resource gets cleaned up correctly even in the event of errors. An example of correct usage might look something like this:
 
-```jsx
+```javascript
 const greeter = GreeterManager.getGreeter({ for: "Jordan" });
 
 let greeting;
@@ -96,9 +96,9 @@ class Traversal {
   _path = [];
 
   _withPath(name, cb) {
-    this._path.node.push(name);
+    this._path.push(name);
     cb();
-    this._path.node.pop();
+    this._path.pop();
   }
 
   traverse(node) {
@@ -132,7 +132,7 @@ withXAndY(xArgs, yArgs, (x, y) => {
 });
 ```
 
-Early returns are not possible. With a simple `try`/`finally` block, you can perform an early return from the parent function. However with this pattern, you can only early return from the callback. On multiple occasions I've opted to foregoe this pattern because it interfered with my ability to use early returns.
+Early returns are not possible. With a simple `try`/`finally` block, you can perform an early return from the parent function. However with this pattern, you can only early return from the callback. On multiple occasions I've opted to forego this pattern because it interfered with my ability to use early returns.
 
 ## Conclusion
 

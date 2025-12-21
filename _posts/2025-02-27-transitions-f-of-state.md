@@ -60,4 +60,4 @@ For this reason, many of React’s concurrent features include built-in support 
 
 ---
 
-_Thanks to Evan Yeung for the conversations which lead to this observation and to Joe Savona, Jordan Brown, Jack Pope and Rick Hanlon for reading early drafts of this post._
+_Thanks to Evan Yeung for the conversations which led to this observation and to Joe Savona, Jordan Brown, Jack Pope, and Rick Hanlon for reading early drafts of this post._

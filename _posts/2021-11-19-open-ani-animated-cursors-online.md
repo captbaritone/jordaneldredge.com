@@ -21,7 +21,7 @@ Below is a description of the two existing sites, and finally — by way of cont
 
 [https://fileproinfo.com/tools/viewer/ani](https://fileproinfo.com/tools/viewer/ani)
 
-This site greets you with a full page takeover ad, plus a GDPR cookies notification. When you close the ad it spawns an extra tab taking you to some SEO spam site. After closing that, I'm able to upload my `.ani` file via a file picker, drag and drop is not supported. I can then scroll down past some more ads to the "View ANI file now" button which takes me to a page which is cluttered with ads and informs me that there is "No preview available".
+This site greets you with a full page takeover ad, plus a GDPR cookies notification. When you close the ad it spawns an extra tab taking you to some SEO spam site. After closing that, I'm able to upload my `.ani` file via a file picker, drag and drop isn't supported. I can then scroll down past some more ads to the "View ANI file now" button which takes me to a page that's cluttered with ads and informs me that there's "No preview available".
 
 ![filext.com showing just one frame of an animated .ani file](/images/fileext-com-ani.png)
 

@@ -26,7 +26,7 @@ a + b ?? c;
 
 // Author assumed they were ||ing the two ternaries.
 // They were not
-conditionA ? a : null || conditonB ? b : null;
+conditionA ? a : null || conditionB ? b : null;
 ```
 
 Especially in complex nested expressions these are easy mistakes to make. I started thinking about how I could address this issue more fundamentally. How could we make it easier to understand operator precedence?
@@ -35,7 +35,7 @@ I realized that when I have a question about operator precedence, I add parenthe
 
 ## What if Implicit Parentheses Were Always Visible?
 
-This line of thinking lead me to the idea of a VS Code editor plugin which adds the implicit parentheses as decorations. If watch this demo carefully, you can see that the plugin inserts small subscript parentheses around expressions clarifying precedence in cases where its non-obvious.
+This line of thinking led me to the idea of a VS Code editor plugin which adds the implicit parentheses as decorations. If you watch this demo carefully, you can see that the plugin inserts small subscript parentheses around expressions clarifying precedence in cases where it's non-obvious.
 
 The plugin does not modify the actual file, but simply inserts them as decorations visible only in the editor.
 
@@ -48,7 +48,7 @@ Taking the examples above, they would be rendered like so:
 
 ₍!foo₎ == null
 
-conditionA ? a : ₍₍null || conditonB₎ ? b : null₎
+conditionA ? a : ₍₍null || conditionB₎ ? b : null₎
 ```
 
 My hope is that this minimally invasive plugin can be useful to help avoid bugs caused by precedence confusion.

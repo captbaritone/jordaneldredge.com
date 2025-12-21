@@ -1,6 +1,6 @@
 ---
 title: "Using Machine Learning to Generate Winamp Skins"
-summary: "I used thousands of screenshots of Winamp skins and StyleGAN2 to train an ML model generate more Winamp skins."
+summary: "I used thousands of screenshots of Winamp skins and StyleGAN2 to train an ML model to generate more Winamp skins."
 summary_image: /images/six-machine-learning-generated-winamp-skins.png
 tags: ["winamp", "ai", "machineLearning", "project"]
 ---
