@@ -6,7 +6,7 @@ tags: ["opinion", "eslint"]
 
 _TLDR: If you strictly enforce linting rules, code reviews will be easier,
 whole classes of bugs will disappear, and your developers will be inspired
-to persue a greater degree of overall code quality._
+to pursue a greater degree of overall code quality._
 
 ---
 

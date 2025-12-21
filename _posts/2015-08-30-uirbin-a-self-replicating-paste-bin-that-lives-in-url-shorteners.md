@@ -1,5 +1,5 @@
 ---
-title: "UriBin: A self-replicating paste bin that lives in url shorteners"
+title: "UriBin: A self-replicating paste bin that lives in URL shorteners"
 summary: "I wrote a mad-scientist project that creates self-replicating paste bins that live in URL shorteners."
 archive: true
 tags: ["project", "javascript"]
@@ -10,8 +10,7 @@ Back in February, I created a strange thing which I called
 ended up inspiring [HashBin](http://hashb.in) which
 achieves a similar goal, but in a less insane way.
 
-Today I was looking through old projects, and decided UriBin deserves
-a nice breakdown. It's crazy, and interesting, and not trivial to grok.
+Today I was looking through old projects, and decided UriBin deserves a nice breakdown. It's crazy, and interesting, and not trivial to grok.
 
 I called UriBin "A self-replicating paste bin that lives in URL shorteners",
 but what on earth does that mean? I'll try to break it down.
@@ -35,8 +34,7 @@ Link shortening services like [Bit.ly](http://bit.ly) or
 [TinyUrl](http://tinyurl.com) are essentially public lookup tables that map
 short URLs to longer URLs. You load the shortened URL and the service sends
 your browser the longer URL and says "go here instead". This is known as
-a "redirect". Some of URL shorteners, like TinyUrl, don't distinguish between
-URLs and data URIs.
+a "redirect". Some URL shorteners, like TinyUrl, don't distinguish between URLs and data URIs.
 
 ## See where this is going?
 
@@ -46,22 +44,17 @@ the URI. For example, I've shortened the example URI from above as:
 [http://tinyurl.com/nl92nr8](http://tinyurl.com/nl92nr8)
 
 If you click that link it will "redirect" you to the data URI and you will see
-my "Hello World" website in your browser. Note that rather than sending your
-browser a new URL, TinyUrl returned the actual _data_ of my website.
-Essentially I've tricked TinyURL into hosting my web page.
+my "Hello World" website in your browser. Note that rather than sending your browser a new URL, TinyUrl returned the actual _data_ of my website. Essentially I've tricked TinyURL into hosting my web page.
 
 So we can stash arbitrary content in TinyUrl?
 
-## Let's build tool to do just that!
+## Let's build a tool to do just that!
 
-To make that easy, we could write a little JavaScript tool that takes some
-given text, wraps it in HTML to make it pretty and encodes the whole thing as
-a data URI. Then it submits that URI it to TinyURL.
+To make that easy, we could write a little JavaScript tool that takes some given text, wraps it in HTML to make it pretty, and encodes the whole thing as a data URI. Then it submits that URI to TinyURL.
 
 > But that's not crazy enough!
 
-Okay, it turns out we can make our tool so tiny, that we can encode _it_ as
-a data URI and host it in a URL shortener itself.
+Okay, it turns out we can make our tool so tiny that we can encode _it_ as a data URI and host it in a URL shortener itself.
 
 > But even _that's_ not crazy enough!
 
