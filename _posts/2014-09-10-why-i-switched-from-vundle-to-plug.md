@@ -13,7 +13,7 @@ I switched from Vundle to Plug:
 
 Gmarik, the creator of Vundle is [no longer able to maintain the
 project](https://github.com/gmarik/Vundle.vim/issues/608). Somebody may pick up
-the reigns, but the project has been stalled for some time now.
+the reins, but the project has been stalled for some time now.
 
 ## Simpler bootstrapping for initial install.
 

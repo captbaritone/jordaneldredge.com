@@ -51,7 +51,7 @@ had both taken notice. I did a quick assessment of my server and it was
 handling the load fine. However, for some reason I was seeing a bug where the
 progress bar wasn't moving while the audio played. A quick investigation
 pointed to the way rawgit.com was serving the headers for the audio file. They
-were set in such a way that the javascript I had wasn't able to asses the
+were set in such a way that the javascript I had wasn't able to assess the
 length of the track.
 
 Even though this was my largest asset file by an order of magnitude, I figured
@@ -59,8 +59,8 @@ it was worth whatever cost I might accrue to have the project looking its best
 during this time of peak exposure, so I pointed that URL back to my server.
 With the site now functioning properly, I mounted my bike and headed to work.
 
-Once there, I realized I had been overly optimistic about my VPN's abilities.
-The page was retuning very slowly, and my attempts to SSH into the machine were
+Once there, I realized I had been overly optimistic about my VPS's abilities.
+The page was returning very slowly, and my attempts to SSH into the machine were
 failing. The server was out of memory. With no other options, I logged into my
 DigitalOcean control panel, and reset the machine.
 
@@ -69,7 +69,7 @@ to rawgit. Buggy is better than down. I then [put the word out on
 Twitter](https://twitter.com/captbaritone/status/530420655951335424) for help
 hosting the demo mp3. Within one minute
 [@Michcioperz](https://twitter.com/Michcioperz/status/530420989147217920) came
-through suggesting [meadiacru.sh](http://mediacru.sh). Another free CDN, but
+through suggesting [mediacru.sh](http://mediacru.sh). Another free CDN, but
 this one handled the header in the way I needed. In just a few minutes I had
 moved the file over and Winamp2-js was back online, downloading quickly,
 and at no expense to me.

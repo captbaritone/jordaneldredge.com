@@ -24,7 +24,7 @@ minutes to 15 seconds**:
 ## 1. Seed the database once before any of the tests are run
 
 This actually proved harder than I thought. My current solution, which is
-a total hack, is to create a custom boostrap file which shells out to run the
+a total hack, is to create a custom bootstrap file which shells out to run the
 artisan seed command before beginning any testing:
 
 ```php
@@ -36,7 +36,7 @@ passthru("php artisan --env='testing' migrate --seed");
 require __DIR__ . '/autoload.php';
 ```
 
-Then I change my `phpunit.xml` to use that boostrap file instead:
+Then I change my `phpunit.xml` to use that bootstrap file instead:
 
 ```xml
 <phpunit
@@ -66,7 +66,7 @@ public function tearDown()
 
 ## Further considerations
 
-1. Since the database seeding is done in the boostrap file, any time I want to run
+1. Since the database seeding is done in the bootstrap file, any time I want to run
    a test, I have to wait for the database to seed, even if it's just a tiny unit
    test which does not touch the database.
 

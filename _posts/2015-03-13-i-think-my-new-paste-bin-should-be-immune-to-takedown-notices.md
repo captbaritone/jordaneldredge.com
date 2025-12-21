@@ -48,7 +48,7 @@ I did receive one, what action could I take? I suppose I could stop hosting the
 app, but that hardly seems reasonable.
 
 Say a website offered you a `.doc` file as well as a link to download Microsoft
-Word so that you could view that file. If that file was found to contain,
+Word so that you could view that file. If that file was found to contain
 illegal or copyrighted material, we wouldn't say that Microsoft should stop
 hosting Microsoft Word would we?
 

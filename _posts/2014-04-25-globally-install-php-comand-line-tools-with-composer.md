@@ -1,12 +1,12 @@
 ---
 title: "Globally install PHP command-line tools with Composer"
-summary: "How to install CLI tools wiht Composer."
+summary: "How to install CLI tools with Composer."
 tags: ["php"]
 ---
 
 We are spoiled with all the great PHP command-line tools available these days.
 [PHPUnit] and [Codeception] for testing and [Phinx] for migrations, just to
-name a few. With [Composer] its easy to add to your project, but then you end
+name a few. With [Composer] it's easy to add to your project, but then you end
 up having to issue commands like `php /path/to/my/project/vendor/bin/phpunit`
 when you would prefer to issue `phpunit`. Also, it's annoying to have to
 manually add PHPUnit to every project you work on. Here is a better solution:

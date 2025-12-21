@@ -12,7 +12,7 @@ It assumes the following:
 - You want to keep your journal as a Markdown file.
 - You have a Dropbox account.
 - You want to be able to write in your journal from any browser.
-- You want the option to encrypt your journal file before leaves your browser.
+- You want the option to encrypt your journal file before it leaves your browser.
 - You are willing to trust my open-source JavaScript.
 
 You can try it at <https://markdown.today>.

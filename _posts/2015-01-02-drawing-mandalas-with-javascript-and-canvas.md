@@ -11,7 +11,7 @@ Papa](/blog/drawing-mandalas-with-php-for-my-papa)
 from back in 2008.
 Having just played with the HTML5 canvas tag as part of my
 [Winamp2-js project](/projects/winamp2-js/),
-I immediatly thought: "This would be easy to do using Javascript and
+I immediately thought: "This would be easy to do using Javascript and
 Canvas".
 
 So I took a stab at it. You can play with it below. The slider allows you to

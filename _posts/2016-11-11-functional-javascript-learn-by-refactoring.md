@@ -98,10 +98,10 @@ Notice how the functions that we've extracted have more generic variable names.
 Since these functions are decoupled from the data on which they operate, they
 are more reusable and easier to reason about.
 
-Now, even though we have most our our logic defined before we have our data,
+Now, even though we have most our logic defined before we have our data,
 our `titleCase` function is still imperatively operating on our data one step
 at a time. Let's try nesting our functions and see how that removes some of the
-"statefullness" we associate with imperative programing. This will make the
+"statefulness" we associate with imperative programming. This will make the
 code a little hard to read for now. Don't worry, we'll come back and clean it
 up later.
 

@@ -23,7 +23,7 @@ URIs, and inject those CSS rules into the DOM._
 
 ## Getting access to the file
 
-Our fist challenge is getting access to the skin file you want to load.
+Our first challenge is getting access to the skin file you want to load.
 Browsers, as you would expect don't have access to files on your hard drive.
 However, they do have read access to any file that has been loaded into an
 `<input type='file'>` input. We take advantage of this by taking the file you
@@ -77,7 +77,7 @@ create a string in this format: `data:<MIME-type>;base64,<data>`. That (very
 long) string can now be used as a URL that represents your file. Handily,
 JavaScript has
 a [`btoa()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowBase64.btoa)
-function which takes a string and base-64 encodes it. So our all we need a bit
+function which takes a string and base-64 encodes it. So all we need a bit
 of code that looks something like:
 
 ```javascript
@@ -166,7 +166,7 @@ So, here's what I did:
 
 1. Outside of the DOM, I create both a `<canvas>` and a `<img>` element.
 2. I set the `<img>`'s src to the sprite sheet's data uri.
-3. I use `context.drawImage()` to draw a cropped protion of the sprite sheet to
+3. I use `context.drawImage()` to draw a cropped portion of the sprite sheet to
    the canvas element.
 4. I use `canvas.toDataURL()` to export the canvas (which now contains just one
    sprite) as a new data URI.
