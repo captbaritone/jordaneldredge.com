@@ -1,6 +1,6 @@
 ---
 title: "Intro to Vim Talk"
-tags: ["talk", "vim"]
+tags: ["talk", "vim", "myTalk"]
 summary: "I gave a talk at the San Francisco Vim Enthusiasts user group."
 ---
 

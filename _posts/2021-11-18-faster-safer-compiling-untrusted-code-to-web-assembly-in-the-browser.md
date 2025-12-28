@@ -2,7 +2,7 @@
 title: "I gave a talk about compiling to WebAssembly in the browser"
 summary: 'Video of my TSConf 2021 talk entitled "Faster, Safer: Compiling Untrusted Code to WebAssembly in the Browser".'
 youtube_slug: hZzjrgZb-mw
-tags: ["talk", "wasm", "typescript", "javascript", "staticAnalysis"]
+tags: ["talk", "wasm", "typescript", "javascript", "staticAnalysis", "myTalk"]
 ---
 
 After receiving positive feedback on my post [Speeding Up Webamp's Music Visualizer with WebAssembly](/blog/speeding-up-winamps-music-visualizer-with-webassembly), I was encouraged by [Colin Eberhardt](https://blog.scottlogic.com/ceberhardt/), author of [WebAssembly Weekly](https://wasmweekly.news/), to give a talk on the topic. I submitted a proposal to [TSConf](https://tsconf.io/) and, to my surprise, it was accepted!
