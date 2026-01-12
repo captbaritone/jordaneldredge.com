@@ -5,6 +5,8 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Blog",
+  description:
+    "Formal write-ups of projects and ideas by Jordan Eldredge, a software engineer and musician.",
   twitter: { title: "Blog" },
   openGraph: {
     url: "https://jordaneldredge.com/blog/",
