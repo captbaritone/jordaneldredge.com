@@ -2,7 +2,6 @@
 title: Universal Paperclips
 tags:
   - share
-  - note
 summary: An amazing minimalist video game where the medium is the message
 notion_id: 48f55877-6f6d-4e9f-8af3-96d8c01cc1f9
 summary_image: >-

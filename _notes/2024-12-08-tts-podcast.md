@@ -3,7 +3,6 @@ title: You can now “read” this blog as a podcast
 tags:
   - thisSite
   - podcast
-  - note
 summary: >-
   I wired this blog up to Open AI’s text-to-speech API so you can listen to
   individual posts or subscribe to the blog as a podcast.

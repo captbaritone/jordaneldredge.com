@@ -5,7 +5,6 @@ title: >-
 tags:
   - staticAnalysis
   - share
-  - note
 summary: An online compiler course which I found quite helpful
 notion_id: 76374850-d80b-4019-8d55-421e327e5e86
 ---

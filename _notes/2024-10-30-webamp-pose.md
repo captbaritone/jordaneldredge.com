@@ -3,7 +3,6 @@ title: Webamp can pose for the camera
 tags:
   - winamp
   - javascript
-  - note
 summary: Webamp.org has a feature that lets it pose as if it were in action
 notion_id: 12f376e2-3751-8053-bdb1-e1a5776bb325
 summary_image: >-

@@ -3,7 +3,6 @@ title: Why there was never a Winamp 4
 tags:
   - anecdote
   - winamp
-  - note
 summary: Did you ever wonder why they skipped straight from Winamp 3 to Winamp 5?
 notion_id: 88787a3e-c6e0-4923-aa05-1bb003b521f5
 ---

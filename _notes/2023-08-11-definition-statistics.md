@@ -3,7 +3,6 @@ title: Some statistics are just a function of term definitions
 tags:
   - observation
   - share
-  - note
 summary: A class of statistics to look out for when evaluating statistical claims
 notion_id: 1fed12f4-1d9e-462f-ac62-8311581e8ccf
 ---

@@ -3,7 +3,6 @@ title: 'My favorite API: Vim Mode'
 tags:
   - opinion
   - observation
-  - note
 summary: An observation that Vim mode is a type of API
 notion_id: 670d795a-5196-4bdd-b81c-951bd6fbc292
 ---

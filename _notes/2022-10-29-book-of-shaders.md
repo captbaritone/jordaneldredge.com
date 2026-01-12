@@ -2,7 +2,6 @@
 title: The Book of Shaders
 tags:
   - share
-  - note
 summary: A wonderful, and free, book for learning about GPU shaders
 notion_id: a11d992e-13ef-41d7-a214-c15b310e1329
 ---

@@ -49,6 +49,14 @@ export class VC {
   }
 
   /**
+   * Create a Viewer Context for backup scripts that excludes draft content.
+   * Use this when running backup scripts to exclude drafts.
+   */
+  static forBackup(): VC {
+    return new VC("anonymous");
+  }
+
+  /**
    * Get the user's role.
    */
   getRole(): UserRole {

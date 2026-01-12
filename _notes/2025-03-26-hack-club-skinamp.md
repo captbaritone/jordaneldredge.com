@@ -3,7 +3,6 @@ title: Teenagers making Winamp skins in 2025
 tags:
   - share
   - winamp
-  - note
 summary: >-
   Hack Club is running a program where teens who make a Winamp skin, and upload
   it to the Winamp Skin Museum, will be rewarded with a prize

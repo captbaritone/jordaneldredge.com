@@ -2,7 +2,6 @@
 title: A GraphQL Maturity Model
 tags:
   - graphql
-  - note
 summary: >-
   I believe the benefits of GraphQL are fundamentally under-realized. Most
   organizations fail to capture much of the value it can provide.

@@ -4,7 +4,6 @@ tags:
   - observation
   - anecdote
   - graphql
-  - note
 summary: >-
   An internal Meta decorator name which taught me something important about API
   naming

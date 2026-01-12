@@ -4,7 +4,6 @@ tags:
   - react
   - observation
   - javascript
-  - note
 summary: >-
   Clarifying how React will sometimes apply state updates out of order when
   using concurrent features, and a best practice which can help you avoid it.
@@ -29,7 +28,7 @@ Starting in step three, React is in a bit of a bind. What value should it show t
 
 These constraints mean **React cannot always apply the state updates in strict chronological order.**
 
-React’s solution to this conundrum (as of React 19) to apply the state update twice. First, it applies the state update to the currently rendered value (**2**) and shows that (**4**) to the user synchronously. Then it follows up by applying the update to the pending transition value (**3**) and restarts the transition render with that updated value (**6**).
+React’s solution to this conundrum (as of React 19) is to apply the state update twice. First, it applies the state update to the currently rendered value (**2**) and shows that (**4**) to the user synchronously. Then it follows up by applying the update to the pending transition value (**3**) and restarts the transition render with that updated value (**6**).
 
 ### The series of events from above will play out like so:
 

@@ -3,7 +3,6 @@ title: Turning the database inside-out with Apache Samza
 tags:
   - share
   - javascript
-  - note
 summary: ' This post on scaling data systems taught me to understand Redux'
 notion_id: a37c0cf1-c04e-4b86-bb84-bd561a378c69
 ---

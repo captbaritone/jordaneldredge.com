@@ -3,7 +3,6 @@ title: The Ultimate Game Boy Talk
 tags:
   - share
   - talk
-  - note
 summary: >-
   An amazing deep dive into how the Game Boy’s hardware works and the way that
   forced games to be written

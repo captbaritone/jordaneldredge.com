@@ -3,7 +3,6 @@ title: Avoid name-spacing GraphQL mutation fields
 tags:
   - graphql
   - opinion
-  - note
 summary: Explaining why nesting your mutations inside GraphQL types is problematic
 notion_id: de644566-6178-4e99-a55d-a7061b444957
 ---

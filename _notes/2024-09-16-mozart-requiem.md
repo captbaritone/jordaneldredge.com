@@ -2,7 +2,6 @@
 title: A video of my wife and I singing Mozart’s Requiem
 tags:
   - music
-  - note
 summary: >-
   A video from earlier this year of my wife Chelsea Hollow and myself singing
   the soprano and bass solos in Mozart’s Requiem

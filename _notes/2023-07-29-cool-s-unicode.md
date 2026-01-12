@@ -3,7 +3,6 @@ title: “Cool S” as a Unicode standard
 tags:
   - share
   - anecdote
-  - note
 summary: There was once a proposal to codify the ”cool s” as a unicode character
 notion_id: 327cd976-d564-4124-9a0a-893335e6ac5b
 summary_image: >-

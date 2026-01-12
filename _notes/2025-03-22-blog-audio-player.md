@@ -6,7 +6,6 @@ tags:
   - markdown
   - javascript
   - music
-  - note
 summary: Details on the audio player I’ve added to this blog
 notion_id: 156376e2-3751-8052-b0a0-f601693fa56c
 summary_image: >-

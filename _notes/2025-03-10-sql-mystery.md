@@ -3,7 +3,6 @@ title: An SQL murder mystery
 tags:
   - sqlite
   - share
-  - note
 summary: A fun murder mystery in the format of an SQLite database
 notion_id: 1b2376e2-3751-80ca-9a37-d8e60d123654
 summary_image: >-

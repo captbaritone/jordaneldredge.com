@@ -2,7 +2,6 @@
 title: Beyond PEP 8 by Raymond Hettinger
 tags:
   - share
-  - note
 summary: >-
   An amazing talk articulating how code style can make you miss the forest for
   the tree

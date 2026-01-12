@@ -4,7 +4,6 @@ tags:
   - share
   - javascript
   - sqlite
-  - note
 summary: SQLite is getting an official Wasm build
 notion_id: 4e5b319c-6b72-423a-af3c-80433ac00d8e
 ---

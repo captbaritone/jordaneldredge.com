@@ -5,7 +5,6 @@ tags:
   - share
   - react
   - javascript
-  - note
 summary: Sharing a blog post I wrote about what makes Relay so special
 notion_id: a123fd6f-4e03-4ac4-907f-84757f7e857a
 ---

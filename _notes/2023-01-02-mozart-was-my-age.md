@@ -2,7 +2,6 @@
 title: Tom Lehrer on Mozart
 tags:
   - quote
-  - note
 summary: Tom Lehrer quote on comparing your successes to those of others
 notion_id: ec9088e7-6e9e-403d-8034-6508f35751b2
 summary_image: https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/youtube/QL6KgbrGSKQ.jpg

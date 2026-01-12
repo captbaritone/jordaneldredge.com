@@ -3,9 +3,8 @@ title: List Out of Lambda
 tags:
   - share
   - javascript
-  - note
 summary: >-
-  Sharing a brilliant post in which Steve Losh shows, in JavaScript how you can
+  Sharing a brilliant post in which Steve Losh shows, in JavaScript, how you can
   build up the constructs of arithmetic and eventually arrays using only lambda
   functions
 notion_id: 1c3376e2-3751-800c-bb79-d11399cd6f3b

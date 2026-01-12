@@ -3,7 +3,6 @@ title: Bob Nystrom explains the Pratt Parser algorithm
 tags:
   - share
   - staticAnalysis
-  - note
 summary: >-
   Sharing Bob Nystrom’s excellent blog post explaining the Pratt Parser
   algorithm which offers a very clean way to model operator precedence

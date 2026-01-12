@@ -2,7 +2,6 @@
 title: Will Mastodon eventually end up centralizing like email?
 tags:
   - observation
-  - note
 summary: Thoughts on the future of Mastodon
 notion_id: de8a7406-2401-4956-860d-d8fc62fa7ec0
 ---

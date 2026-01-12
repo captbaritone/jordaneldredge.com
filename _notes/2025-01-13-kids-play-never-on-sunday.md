@@ -4,7 +4,6 @@ tags:
   - ukulele
   - music
   - video
-  - note
 summary: >-
   Sharing and reflecting on four videos from Youtube of kids from Malaysia
   playing a simple ukulele arrangement I made in 2011

@@ -6,7 +6,6 @@ tags:
   - javascript
   - winamp
   - video
-  - note
 summary: >-
   Sharing a 2018 lightning talk given by Tracey Jaquith about adding Webamp to
   the Internet Archive

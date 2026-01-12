@@ -2,7 +2,6 @@
 title: Chord notation is a domain-specific language
 tags:
   - observation
-  - note
 summary: Reflecting on parallels between chord notation and software language design
 notion_id: 114616f9-da8d-422a-9a72-a12f9e7ae5bd
 ---

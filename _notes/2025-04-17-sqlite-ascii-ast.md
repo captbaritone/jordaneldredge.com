@@ -5,7 +5,6 @@ tags:
   - staticAnalysis
   - share
   - video
-  - note
 summary: >-
   For debugging purposes you can compile SQLite with special flags to make it
   print out its ASTs in a special ASCII format

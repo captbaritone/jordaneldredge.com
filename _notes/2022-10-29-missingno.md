@@ -4,7 +4,6 @@ tags:
   - share
   - talk
   - video
-  - note
 summary: >-
   A deep dive into how Gameboy games were written and analyzing the disassembled
   Pokémon game code to understand the mechanics of the famous glitch that could

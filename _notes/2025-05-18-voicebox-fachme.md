@@ -2,7 +2,6 @@
 title: '[2012] FachMe mentioned on Voicebox'
 tags:
   - music
-  - note
 summary: >-
   Recalling the time in 2012 when my opera related software project was
   discussed on a local public radio program

@@ -2,7 +2,6 @@
 title: Sentimental Versioning
 tags:
   - share
-  - note
 summary: Sharing a great post about software projects with unique versioning schemes
 notion_id: 879cb532-5299-47cf-8af0-03e44210fc08
 ---

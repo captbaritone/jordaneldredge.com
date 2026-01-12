@@ -2,7 +2,6 @@
 title: Diagnostics are the UX of a compiler
 tags:
   - share
-  - note
 summary: >-
   Sharing an insightful observation about the role diagnostics play in compiler
   design

@@ -2,7 +2,8 @@
 title: Grats’ very nice testing strategy
 tags:
   - staticAnalysis
-  - note
+  - grats
+  - javascript
 summary: >-
   Sharing a document I wrote about a testing strategy which I’ve found quite
   effective for Grats

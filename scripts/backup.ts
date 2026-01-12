@@ -2,14 +2,16 @@ import "dotenv/config";
 import path from "node:path";
 import fs from "node:fs";
 import { ContentConnection } from "../lib/data";
+import { VC } from "../lib/VC";
 
 main();
 
 async function main() {
   const force = process.argv.includes("--force");
-  console.log("Looking for notes to backup");
-  // We don't want regular users to be able to trigger a backup
-  const notes = ContentConnection.notes();
+  console.log("Looking for notes to backup (excluding drafts)");
+  // Create a VC that cannot view drafts to exclude them from backup
+  const vc = VC.forBackup();
+  const notes = ContentConnection.notes(vc);
   console.log(`Found ${notes.length} notes to backup`);
   for (const note of notes) {
     const fileName = note.serializedFilename();

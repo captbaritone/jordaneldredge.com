@@ -5,7 +5,7 @@ tags:
   - opinion
   - observation
   - react
-  - note
+  - blog
 summary: A rule of thumb for thinking about scaling client application state
 notion_id: 145376e2-3751-8072-87d4-d4d75cf407cb
 ---

@@ -2,7 +2,6 @@
 title: “Alexa, add half & half”
 tags:
   - anecdote
-  - note
 summary: The funniest Alexa interaction I’ve ever had
 notion_id: 7b77915e-9af7-4700-9b19-027e6455ec98
 ---

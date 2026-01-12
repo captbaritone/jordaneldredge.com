@@ -3,7 +3,6 @@ title: 'Cracking the Cryptic: Variant Sudoku Youtube Channel'
 tags:
   - share
   - video
-  - note
 summary: >-
   A channel that make the logic and brilliance of advanced hand crafted puzzles
   accessible and appreciable by us mortals

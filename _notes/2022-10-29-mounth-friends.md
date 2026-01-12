@@ -3,7 +3,6 @@ title: This 11 second mashup has ruined the Friend’s Theme Song for me
 tags:
   - music
   - share
-  - note
 summary: Brilliant, hilarious mashup of two entirely different musical moments
 notion_id: 50dcb89c-0077-4802-a81f-5779ef1a191f
 summary_image: https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/youtube/nEmyonfpsgI.jpg

@@ -4,7 +4,6 @@ tags:
   - music
   - video
   - piano
-  - note
 summary: Playing Disney songs at the piano on a rainy Friday
 notion_id: 197376e2-3751-804c-8b6f-d424bcbf2119
 summary_image: https://pub-d4cecb3d578a4c0a8939680792e49682.r2.dev/youtube/yd8jYK_zpbU.jpg

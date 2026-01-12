@@ -2,7 +2,6 @@
 title: Tom Waits on small print
 tags:
   - quote
-  - note
 summary: A great Tom Waits quip on the nature of “small print”
 notion_id: d888e1ec-de4a-4b7e-bf8a-9710ac8cc10a
 summary_image: >-

@@ -3,7 +3,6 @@ title: Official LEGO white noise album
 tags:
   - share
   - music
-  - note
 summary: Did you know LEGO has an album on Spotify?
 notion_id: 01de195d-f699-4286-975a-0d6f7a5ca210
 summary_image: >-

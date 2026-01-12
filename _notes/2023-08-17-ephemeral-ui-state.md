@@ -4,7 +4,6 @@ tags:
   - opinion
   - javascript
   - react
-  - note
 summary: >-
   Ephemeral UI make us nervous because we’ve learned that there’s a high
   likelihood lose our state by accident

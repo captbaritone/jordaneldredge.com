@@ -2,7 +2,6 @@
 title: Winamp Skin Mosaics
 tags:
   - winamp
-  - note
 summary: Generating photo mosaics from Winamp Skins
 notion_id: b3060da3-d716-4228-985d-a961a861e1a1
 summary_image: >-

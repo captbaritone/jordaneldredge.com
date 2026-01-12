@@ -3,7 +3,6 @@ title: I archived all the Tweets referenced by my blog
 tags:
   - javascript
   - thisSite
-  - note
 summary: Preserving Tweets
 notion_id: d8726b54-59d7-4ee0-a9cf-d442c4257cdb
 ---

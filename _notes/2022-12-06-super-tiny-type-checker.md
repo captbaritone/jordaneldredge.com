@@ -3,7 +3,6 @@ title: Super Tiny Type Checker
 tags:
   - share
   - staticAnalysis
-  - note
 summary: A minimal JS implementation of a type checker great for hands on learners
 notion_id: a8b7f967-65d4-438d-911c-9c813201ee25
 ---

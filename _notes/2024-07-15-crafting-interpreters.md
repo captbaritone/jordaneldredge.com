@@ -2,7 +2,6 @@
 title: 'Book: Crafting Interpreters'
 tags:
   - share
-  - note
 summary: >-
   A glowing review of the book I most recommend to people interested in learning
   about compilers

@@ -2,7 +2,6 @@
 title: On grinding
 tags:
   - observation
-  - note
 summary: Thoughts on the tradeoff of not grinding
 notion_id: d1fefc66-7bbe-4961-9121-b0377693635d
 ---

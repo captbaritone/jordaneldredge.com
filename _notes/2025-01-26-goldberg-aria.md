@@ -4,7 +4,6 @@ tags:
   - music
   - video
   - piano
-  - note
 summary: >-
   A quick recording I made of myself fumbling through one of my favorite pieces
   to play at the piano

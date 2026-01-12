@@ -3,7 +3,6 @@ title: My old websites
 tags:
   - anecdote
   - thisSite
-  - note
 summary: Sharing a hilarious collection of screenshots of websites I built as a kid
 notion_id: 1c2376e2-3751-80b1-89d7-db6f65e12a63
 summary_image: >-

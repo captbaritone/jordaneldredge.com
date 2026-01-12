@@ -6,7 +6,6 @@ tags:
   - javascript
   - staticAnalysis
   - react
-  - note
 summary: A bug I hit with Skiki and Next 13
 notion_id: 6549b4bc-f1a0-4fed-98c1-630074c4a023
 ---

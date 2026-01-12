@@ -3,7 +3,6 @@ title: Growing a Language, by Guy Steele
 tags:
   - share
   - staticAnalysis
-  - note
 summary: >-
   A tech talk which is as structurally and linguistically virtuosic as it is
   insightful
