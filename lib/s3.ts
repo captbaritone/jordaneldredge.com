@@ -35,7 +35,8 @@ export async function list(): Promise<{ key: string; byteSize: number }[]> {
 }
 
 export function keyUrl(key: string): string {
-  return `${process.env.CLOUDFLARE_R2_PUBLIC_URL}/${key}`;
+  const encodedKey = key.split('/').map(segment => encodeURIComponent(segment)).join('/');
+  return `${process.env.CLOUDFLARE_R2_PUBLIC_URL}/${encodedKey}`;
 }
 
 export async function uploadFromUrl(key: string, url: string): Promise<void> {
