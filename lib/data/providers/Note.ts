@@ -206,6 +206,36 @@ async function rewriteImageUrls(tree): Promise<void> {
         );
       }
     }
+    // Handle video links
+    if (node.type === "link") {
+      const url = new URL(node.url);
+      // Only migrate Notion-hosted videos (amazonaws.com)
+      if (url.hostname.endsWith("amazonaws.com")) {
+        const videoExtensions = [
+          ".mp4",
+          ".mov",
+          ".webm",
+          ".avi",
+          ".mkv",
+          ".m4v",
+          ".ogv",
+        ];
+        const hasVideoExtension = videoExtensions.some((ext) =>
+          url.pathname.toLowerCase().endsWith(ext),
+        );
+
+        if (hasVideoExtension) {
+          const pathname = url.pathname;
+          const r2_key = path.join("notion-mirror", pathname);
+
+          promises.push(
+            maybeUploadImage(r2_key, node.url).then(() => {
+              node.url = keyUrl(r2_key);
+            }),
+          );
+        }
+      }
+    }
   });
   await Promise.all(promises);
 }
