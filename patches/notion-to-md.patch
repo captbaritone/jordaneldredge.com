@@ -1,0 +1,34 @@
+diff --git a/build/notion-to-md.js b/build/notion-to-md.js
+index f038f0959cc76c575372e9815596a04f974893d8..7b1b2996f700d2d239bb9dede313c091dd772fc1 100644
+--- a/build/notion-to-md.js
++++ b/build/notion-to-md.js
+@@ -447,7 +447,7 @@ class NotionToMarkdown {
+                 break;
+             case "numbered_list_item":
+                 {
+-                    parsedData = md.bullet(parsedData, block.numbered_list_item.number);
++                    parsedData = md.bullet(parsedData, block.numbered_list_item.number ?? 1);
+                 }
+                 break;
+             case "to_do":
+diff --git a/build/utils/md.js b/build/utils/md.js
+index d179d1a7096503c67176184d4fef9e6343726b6f..26a202b880a3af2844b526bc18d88f0df2da59b1 100644
+--- a/build/utils/md.js
++++ b/build/utils/md.js
+@@ -37,9 +37,14 @@ exports.link = link;
+ const codeBlock = (text, language) => {
+     if (language === "plain text")
+         language = "text";
+-    return `\`\`\`${language}
++    // Find the maximum number of consecutive backticks in the text
++    // and use one more backtick than that for the fence
++    const backtickMatches = text.match(/`+/g) || [];
++    const maxBackticks = backtickMatches.reduce((max, match) => Math.max(max, match.length), 2);
++    const fence = '`'.repeat(Math.max(3, maxBackticks + 1));
++    return `${fence}${language}
+ ${text}
+-\`\`\``;
++${fence}`;
+ };
+ exports.codeBlock = codeBlock;
+ const equation = (text) => {
