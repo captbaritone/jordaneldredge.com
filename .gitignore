@@ -44,6 +44,4 @@ content.db
 content.db-shm
 content.db-wal
 
-# Claude Code
-.claude/
 
