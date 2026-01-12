@@ -58,6 +58,8 @@ const validateMetadata = lintRule(
           case "youtube_slug":
           case "alias":
           case "archive":
+          case "notion_id":
+          case "tags":
             break;
           default:
             file.message(`Unexpected metadata key: "${key}"`, node);
