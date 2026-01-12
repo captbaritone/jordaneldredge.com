@@ -37,7 +37,9 @@ export class NoteProvider implements IndexableProvider {
     return rows
       .filter((page) => {
         const status = expectStatus(page);
-        return status === "Published" || status == "Archived" || status === "Draft";
+        return (
+          status === "Published" || status == "Archived" || status === "Draft"
+        );
       })
       .map((page) => {
         const slug = expectSlug(page);
@@ -111,7 +113,7 @@ export class NoteProvider implements IndexableProvider {
 type Status = "Published" | "Archived" | "Draft";
 
 function applyDirectives(ast: Node) {
-  visit(ast, "paragraph", (_node, _index, _parent) => {
+  visit(ast, "paragraph", (_node, index, parent) => {
     const node: any = _node;
     if (node.children.length === 1 && node.children[0].type === "link") {
       const linkNode = node.children[0];
