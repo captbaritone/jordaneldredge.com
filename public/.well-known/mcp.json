@@ -1,0 +1,18 @@
+{
+  "mcpServers": {
+    "jordaneldredge.com": {
+      "url": "https://jordaneldredge.com/api/mcp/",
+      "description": "Search and retrieve blog posts and notes from Jordan Eldredge's personal website. Jordan is a software engineer at Meta working on the Relay team, creator of Webamp (browser-based Winamp clone), and an opera singer.",
+      "tools": [
+        {
+          "name": "search_content",
+          "description": "Search blog posts and notes by title, content, or tags"
+        },
+        {
+          "name": "get_content_by_slug",
+          "description": "Retrieve the full content of a blog post or note by its slug"
+        }
+      ]
+    }
+  }
+}
