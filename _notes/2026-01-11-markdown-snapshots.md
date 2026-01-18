@@ -1,5 +1,5 @@
 ---
-title: Markdown is a great for encodeing test snapshots
+title: Markdown is great for encoding test snapshots
 tags:
   - observation
   - javascript
