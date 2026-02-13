@@ -5,6 +5,8 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Notes",
+  description:
+    "Quick thoughts, observations, and links by Jordan Eldredge. For more formal writing see the blog.",
   twitter: {
     title: "Notes",
   },
