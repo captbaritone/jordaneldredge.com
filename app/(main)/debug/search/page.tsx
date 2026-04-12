@@ -4,9 +4,20 @@ import { useEffect, useState } from "react";
 import { lex } from "search-query-dsl";
 import { Compiler, SchemaConfig, SortOption } from "search-query-dsl";
 import { parse } from "search-query-dsl";
-import { getSchema } from "../../../../lib/services/search/CompilerConfig";
 
-const config = getSchema(false);
+const config: SchemaConfig = {
+  ftsTable: "contentFts",
+  ftsTextColumns: ["text"],
+  contentTable: "content",
+  hardCodedConditions: [],
+  keyValueCondition(_key: string, _value: string): string | null {
+    return null;
+  },
+  tagCondition(_param: string): string | null {
+    return null;
+  },
+  defaultBestSort: "",
+};
 
 function debugCompiler(
   config: SchemaConfig,

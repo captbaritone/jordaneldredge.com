@@ -101,11 +101,6 @@ module.exports = {
         source: "/feed/:path*",
         destination: "/api/feed/:path*",
       },
-      // MCP discovery file (handle trailing slash)
-      {
-        source: "/.well-known/mcp.json",
-        destination: "/.well-known/mcp.json/",
-      },
 
       {
         source: "/:slug(.+\\.md)",
