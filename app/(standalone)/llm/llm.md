@@ -14,6 +14,14 @@ Authenticated requests use `Authorization: Bearer <token>`. Tokens are obtained 
 
 Use introspection queries to discover the full schema.
 
+## Pastes
+
+Pastes are served at `https://jordaneldredge.com/paste/<id>/<filename>`. The file extension determines behavior:
+
+- `.html` — Served as `text/html`. Can be used to deploy single-file web apps.
+- `.md` — Rendered as markdown on a standalone page with no site headers or branding.
+- Other extensions — Served as `text/plain`.
+
 ## CLI Tool (`je`)
 
 Standalone binary for interacting with the site (macOS only).
