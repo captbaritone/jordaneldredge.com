@@ -103,11 +103,11 @@ module.exports = {
       },
 
       {
-        source: "/:slug(.+\\.md)",
+        source: "/:slug((?!paste/).+\\.md)",
         destination: "/:slug/md",
       },
       {
-        source: "/:slug(.+\\.mp3)",
+        source: "/:slug((?!paste/).+\\.mp3)",
         destination: "/:slug/mp3",
       },
     ];

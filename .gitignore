@@ -44,4 +44,5 @@ content.db
 content.db-shm
 content.db-wal
 
-
+# compiled CLI binary
+packages/je-cli/je

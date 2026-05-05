@@ -1,6 +1,7 @@
 import { UserRole } from "./roles";
 import { getSession } from "./session";
 import { User } from "./data/User";
+import { prepare, sql } from "./db";
 
 /**
  * Viewer Context (VC) class
@@ -12,20 +13,38 @@ import { User } from "./data/User";
  */
 export class VC {
   private role: UserRole;
+  private _userId: number | null;
 
   /**
    * Create a new Viewer Context.
    * This constructor is private to enforce using the static create method.
    */
-  private constructor(role: UserRole) {
+  private constructor(role: UserRole, userId: number | null = null) {
     this.role = role;
+    this._userId = userId;
   }
 
   /**
    * Create a new Viewer Context from the current session.
    * This is an async factory method that should be called once at the top of a request.
    */
-  static async create(): Promise<VC> {
+  static async create(request?: Request): Promise<VC> {
+    // Check for Bearer token auth first
+    if (request) {
+      const authHeader = request.headers.get("Authorization");
+      if (authHeader?.startsWith("Bearer ")) {
+        const token = authHeader.slice(7);
+        const row = GET_USER_BY_TOKEN.get(token);
+        if (row) {
+          const user = User.findById(row.user_id);
+          if (user) {
+            return new VC(user.role, user.id);
+          }
+        }
+        return new VC("anonymous");
+      }
+    }
+
     const session = await getSession();
 
     // Not logged in
@@ -37,7 +56,7 @@ export class VC {
     const user = User.findById(session.userId);
     const role = user?.role || "untrusted";
 
-    return new VC(role);
+    return new VC(role, session.userId);
   }
 
   /**
@@ -61,6 +80,13 @@ export class VC {
    */
   getRole(): UserRole {
     return this.role;
+  }
+
+  /**
+   * Get the user's ID, or null if not logged in.
+   */
+  getUserId(): number | null {
+    return this._userId;
   }
 
   /**
@@ -106,9 +132,32 @@ export class VC {
   }
 
   /**
+   * Check if the user can create pastes.
+   */
+  canCreatePaste(): boolean {
+    return ["admin", "trusted"].includes(this.role);
+  }
+
+  /**
+   * Check if the user can delete pastes.
+   */
+  canDeletePaste(): boolean {
+    return this.role === "admin";
+  }
+
+  /**
    * Check if the user can post comments.
    */
   canPostComments(): boolean {
     return ["admin", "trusted"].includes(this.role);
   }
 }
+
+const GET_USER_BY_TOKEN = prepare<[string], { user_id: number }>(sql`
+  SELECT
+    user_id
+  FROM
+    api_tokens
+  WHERE
+    token = ?
+`);

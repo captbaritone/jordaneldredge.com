@@ -13,6 +13,7 @@ import { getVc } from "./route";
 import { Tag as queryGetTagByNameResolver } from "./../../../lib/data/Tag";
 import { Image as queryImagesResolver } from "./../../../lib/data/Image";
 import { Link as queryLinksResolver } from "./../../../lib/data/Link";
+import { Paste as queryMyPastesResolver, Paste as queryPasteResolver, Paste as mutationCreatePasteResolver, Paste as mutationDeletePasteResolver, Paste as mutationUpdatePasteResolver } from "./../../../lib/data/Paste";
 import { Tweet as queryTweetsResolver } from "./../../../lib/data/Tweet";
 import { YoutubeVideo as queryYoutubeVideosResolver } from "./../../../lib/data/YoutubeVideo";
 export function getSchema(): GraphQLSchema {
@@ -272,6 +273,42 @@ export function getSchema(): GraphQLSchema {
             };
         }
     });
+    const PasteType: GraphQLObjectType = new GraphQLObjectType({
+        name: "Paste",
+        description: "A paste \u2014 a snippet of text content hosted on the site.",
+        fields() {
+            return {
+                content: {
+                    name: "content",
+                    type: GraphQLString
+                },
+                createdAt: {
+                    name: "createdAt",
+                    type: GraphQLString
+                },
+                fileName: {
+                    name: "fileName",
+                    type: GraphQLString
+                },
+                id: {
+                    name: "id",
+                    type: GraphQLInt
+                },
+                rawUrl: {
+                    name: "rawUrl",
+                    type: GraphQLString
+                },
+                size: {
+                    name: "size",
+                    type: GraphQLInt
+                },
+                url: {
+                    name: "url",
+                    type: GraphQLString
+                }
+            };
+        }
+    });
     const SortOptionType: GraphQLEnumType = new GraphQLEnumType({
         name: "SortOption",
         values: {
@@ -342,12 +379,33 @@ export function getSchema(): GraphQLSchema {
                         return queryLinksResolver.links();
                     }
                 },
+                myPastes: {
+                    description: "List the current user's pastes.",
+                    name: "myPastes",
+                    type: new GraphQLList(new GraphQLNonNull(PasteType)),
+                    resolve(_source, _args, context) {
+                        return queryMyPastesResolver.myPastes(getVc(context));
+                    }
+                },
                 notes: {
                     description: "Quick thoughts, observations, and links.",
                     name: "notes",
                     type: new GraphQLList(new GraphQLNonNull(ContentType)),
                     resolve(_source, _args, context) {
                         return queryNotesResolver.notes(getVc(context));
+                    }
+                },
+                paste: {
+                    description: "Get a single paste by ID (must be owned by the current user, or user is admin).",
+                    name: "paste",
+                    type: PasteType,
+                    args: {
+                        id: {
+                            type: new GraphQLNonNull(GraphQLInt)
+                        }
+                    },
+                    resolve(_source, args, context) {
+                        return queryPasteResolver.paste(getVc(context), args.id);
                     }
                 },
                 search: {
@@ -386,8 +444,64 @@ export function getSchema(): GraphQLSchema {
             };
         }
     });
+    const MutationType: GraphQLObjectType = new GraphQLObjectType({
+        name: "Mutation",
+        fields() {
+            return {
+                createPaste: {
+                    description: "Create a new paste.",
+                    name: "createPaste",
+                    type: PasteType,
+                    args: {
+                        content: {
+                            type: new GraphQLNonNull(GraphQLString)
+                        },
+                        fileName: {
+                            type: new GraphQLNonNull(GraphQLString)
+                        }
+                    },
+                    resolve(_source, args, context) {
+                        return mutationCreatePasteResolver.createPaste(getVc(context), args.fileName, args.content);
+                    }
+                },
+                deletePaste: {
+                    description: "Delete a paste.",
+                    name: "deletePaste",
+                    type: GraphQLBoolean,
+                    args: {
+                        id: {
+                            type: new GraphQLNonNull(GraphQLInt)
+                        }
+                    },
+                    resolve(_source, args, context) {
+                        return mutationDeletePasteResolver.deletePaste(getVc(context), args.id);
+                    }
+                },
+                updatePaste: {
+                    description: "Update an existing paste.",
+                    name: "updatePaste",
+                    type: PasteType,
+                    args: {
+                        content: {
+                            type: GraphQLString
+                        },
+                        fileName: {
+                            type: GraphQLString
+                        },
+                        id: {
+                            type: new GraphQLNonNull(GraphQLInt)
+                        }
+                    },
+                    resolve(_source, args, context) {
+                        return mutationUpdatePasteResolver.updatePaste(getVc(context), args.id, args.fileName, args.content);
+                    }
+                }
+            };
+        }
+    });
     return new GraphQLSchema({
         query: QueryType,
-        types: [SortOptionType, AudioFileType, ContentType, ImageType, LinkType, MarkdownType, QueryType, SiteUrlType, TTSAudioType, TagType, TagSetType, TweetType, YoutubeVideoType]
+        mutation: MutationType,
+        types: [SortOptionType, AudioFileType, ContentType, ImageType, LinkType, MarkdownType, MutationType, PasteType, QueryType, SiteUrlType, TTSAudioType, TagType, TagSetType, TweetType, YoutubeVideoType]
     });
 }

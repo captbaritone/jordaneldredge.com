@@ -4,6 +4,7 @@ import { VC } from "../../../lib/VC";
 
 interface NextContext {
   params: Promise<Record<string, string>>;
+  request: Request;
 }
 
 /** @gqlContext */
@@ -22,8 +23,8 @@ const { handleRequest } = createYoga<NextContext>({
     return {
       // Pass through any params from the Next.js route
       params: ctx.params,
-      // Create viewer context
-      vc: await VC.create(),
+      // Create viewer context, passing the request for Bearer token auth
+      vc: await VC.create(ctx.request),
     };
   },
 

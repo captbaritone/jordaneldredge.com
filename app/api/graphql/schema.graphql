@@ -51,6 +51,26 @@ type Markdown {
   youtubeVideos: [YoutubeVideo!]
 }
 
+type Mutation {
+  """Create a new paste."""
+  createPaste(content: String!, fileName: String!): Paste
+  """Delete a paste."""
+  deletePaste(id: Int!): Boolean
+  """Update an existing paste."""
+  updatePaste(content: String, fileName: String, id: Int!): Paste
+}
+
+"""A paste — a snippet of text content hosted on the site."""
+type Paste {
+  content: String
+  createdAt: String
+  fileName: String
+  id: Int
+  rawUrl: String
+  size: Int
+  url: String
+}
+
 type Query {
   audioFiles: [AudioFile!]
   """Formal write-ups of projects and ideas."""
@@ -61,8 +81,14 @@ type Query {
   getTagByName(name: String!): Tag
   images: [Image!]
   links: [Link!]
+  """List the current user's pastes."""
+  myPastes: [Paste!]
   """Quick thoughts, observations, and links."""
   notes: [Content!]
+  """
+  Get a single paste by ID (must be owned by the current user, or user is admin).
+  """
+  paste(id: Int!): Paste
   """Search for content by title, content, or tags."""
   search(first: Int, query: String!, sort: SortOption!): [Content!]
   tweets: [Tweet!]
