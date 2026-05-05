@@ -15,7 +15,8 @@ export const loginCommand = new Command("login")
       process.exit(EXIT_API);
     }
 
-    const { code, auth_url } = await res.json();
+    const { code } = await res.json();
+    const auth_url = `${base}/auth/cli/${code}`;
 
     info(`\nOpen this URL in your browser to authorize:\n`);
     info(`  ${auth_url}\n`);
