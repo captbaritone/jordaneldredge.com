@@ -286,6 +286,11 @@ export function getSchema(): GraphQLSchema {
                     name: "createdAt",
                     type: GraphQLString
                 },
+                editUrl: {
+                    description: "URL to view the paste (requires login, shows edit controls).",
+                    name: "editUrl",
+                    type: GraphQLString
+                },
                 fileName: {
                     name: "fileName",
                     type: GraphQLString
@@ -294,15 +299,12 @@ export function getSchema(): GraphQLSchema {
                     name: "id",
                     type: GraphQLInt
                 },
-                rawUrl: {
-                    name: "rawUrl",
-                    type: GraphQLString
-                },
                 size: {
                     name: "size",
                     type: GraphQLInt
                 },
                 url: {
+                    description: "Public URL to the paste content. Serves HTML, rendered markdown, or plain text depending on file extension.",
                     name: "url",
                     type: GraphQLString
                 }

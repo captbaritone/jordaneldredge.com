@@ -64,10 +64,14 @@ type Mutation {
 type Paste {
   content: String
   createdAt: String
+  """URL to view the paste (requires login, shows edit controls)."""
+  editUrl: String
   fileName: String
   id: Int
-  rawUrl: String
   size: Int
+  """
+  Public URL to the paste content. Serves HTML, rendered markdown, or plain text depending on file extension.
+  """
   url: String
 }
 

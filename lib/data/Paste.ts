@@ -26,13 +26,19 @@ export class Paste {
     this.createdAt = row.created_at;
   }
 
-  /** @gqlField */
-  url(): string {
+  /**
+   * URL to view the paste (requires login, shows edit controls).
+   * @gqlField
+   */
+  editUrl(): string {
     return `/paste/${this.id}/`;
   }
 
-  /** @gqlField */
-  rawUrl(): string {
+  /**
+   * Public URL to the paste content. Serves HTML, rendered markdown, or plain text depending on file extension.
+   * @gqlField
+   */
+  url(): string {
     return `/paste/${this.id}/${this.fileName}`;
   }
 

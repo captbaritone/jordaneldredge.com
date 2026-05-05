@@ -14,9 +14,9 @@ if [ "$OS" != "Darwin" ]; then
 fi
 
 if [ "$ARCH" = "arm64" ]; then
-  URL="https://capt.dev/file/4gds1D4_iqbSxD1jKt4yX/je-darwin-arm64"
+  URL="https://capt.dev/file/V0rCChBAU5aYBB4jP-nnV/je-darwin-arm64"
 elif [ "$ARCH" = "x86_64" ]; then
-  URL="https://capt.dev/file/ujYqXFsGqRCEORJrIlIiz/je-darwin-x64"
+  URL="https://capt.dev/file/4s3wIbusVZVRTfBDHS3W8/je-darwin-x64"
 else
   echo "Error: Unsupported architecture: $ARCH"
   exit 1

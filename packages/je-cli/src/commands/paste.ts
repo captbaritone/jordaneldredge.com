@@ -11,6 +11,7 @@ pasteCommand
   .command("list")
   .description("List your pastes")
   .action(async () => {
+    const base = getBaseUrl();
     const data = await gql<{
       myPastes: Array<{
         id: number;
@@ -18,7 +19,6 @@ pasteCommand
         size: number;
         createdAt: string;
         url: string;
-        rawUrl: string;
       }>;
     }>(`
       query {
@@ -28,12 +28,14 @@ pasteCommand
           size
           createdAt
           url
-          rawUrl
         }
       }
     `);
 
-    const pastes = data.myPastes;
+    const pastes = data.myPastes.map((p) => ({
+      ...p,
+      url: `${base}${p.url}`,
+    }));
 
     outputData(pastes, () => {
       if (pastes.length === 0) {
@@ -87,7 +89,6 @@ pasteCommand
         id: number;
         fileName: string;
         url: string;
-        rawUrl: string;
       };
     }>(
       `
@@ -96,7 +97,6 @@ pasteCommand
           id
           fileName
           url
-          rawUrl
         }
       }
     `,
@@ -109,12 +109,11 @@ pasteCommand
       id: p.id,
       fileName: p.fileName,
       url: `${base}${p.url}`,
-      rawUrl: `${base}${p.rawUrl}`,
       status: "ok",
     };
 
     outputData(result, () => {
-      info(`Created paste #${p.id}: ${result.rawUrl}`);
+      info(`Created paste #${p.id}: ${result.url}`);
     });
   });
 
