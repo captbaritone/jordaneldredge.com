@@ -4,6 +4,8 @@ import { Command } from "commander";
 import { setQuiet } from "./output";
 import { loginCommand } from "./commands/login";
 import { pasteCommand } from "./commands/paste";
+import { contentCommand } from "./commands/content";
+import { updateCommand } from "./commands/update";
 import { schemaCommand } from "./commands/schema";
 
 const program = new Command()
@@ -17,6 +19,8 @@ const program = new Command()
 
 program.addCommand(loginCommand);
 program.addCommand(pasteCommand);
+program.addCommand(contentCommand);
+program.addCommand(updateCommand);
 program.addCommand(schemaCommand);
 
 program.parse();

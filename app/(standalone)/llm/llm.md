@@ -22,6 +22,6 @@ Standalone binary for interacting with the site (macOS only).
 
 Use `je --help` and `je <command> --help` for details. `je schema` dumps full command structure as JSON.
 
-**Commands:** `je login`, `je paste list|create|get|edit|delete`.
+**Commands:** `je login`, `je paste list|create|get|edit|delete`, `je content search|get`, `je update`.
 
 **Agent-friendly:** Auto JSON when piped, stderr for messages, structured responses, `je schema` for introspection, distinct exit codes (0=ok, 1=usage, 3=auth, 4=not found, 5=API error), `--quiet` flag.

@@ -12,18 +12,17 @@ export async function gql<T>(
   variables: Record<string, unknown> = {},
 ): Promise<T> {
   const token = getToken();
-  if (!token) {
-    info("Not logged in. Run: je login");
-    process.exit(EXIT_AUTH);
+  const base = getBaseUrl();
+  const headers: Record<string, string> = {
+    "Content-Type": "application/json",
+  };
+  if (token) {
+    headers.Authorization = `Bearer ${token}`;
   }
 
-  const base = getBaseUrl();
   const res = await fetch(`${base}/api/graphql`, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
+    headers,
     body: JSON.stringify({ query, variables }),
   });
 
