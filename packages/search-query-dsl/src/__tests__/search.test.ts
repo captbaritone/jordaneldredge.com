@@ -202,7 +202,7 @@ const databases: {
       ftsTable: "content_fts",
       ftsTextColumns: ["text"],
       hardCodedConditions: [],
-      _tagCondition(_tag: string) {
+      tagCondition(_tag: string) {
         return null;
       },
       keyValueCondition(key: string, value: string) {
@@ -241,7 +241,7 @@ const databases: {
       ftsTable: "content_fts",
       ftsTextColumns: ["text"],
       hardCodedConditions: [],
-      _tagCondition(_tag: string) {
+      tagCondition(_tag: string) {
         return null;
       },
       keyValueCondition(key: string, value: string) {
