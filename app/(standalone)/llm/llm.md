@@ -16,7 +16,11 @@ Use introspection queries to discover the full schema.
 
 ## CLI Tool (`je`)
 
-Standalone binary for interacting with the site. Use `je --help` and `je <command> --help` for details. `je schema` dumps full command structure as JSON.
+Standalone binary for interacting with the site (macOS only).
+
+**Install:** `curl -fsSL https://jordaneldredge.com/je/install/ | bash`
+
+Use `je --help` and `je <command> --help` for details. `je schema` dumps full command structure as JSON.
 
 **Commands:** `je login`, `je paste list|create|get|edit|delete`.
 
