@@ -77,7 +77,7 @@ to run `php codecept.phar build`)
 Then, as with any module, you just need to tell Codeception to use it for your
 tests. For example, you could add it to your `acceptance.suite.yml`.
 
-```
+```yaml
 class_name: WebGuy
 modules:
     enabled:

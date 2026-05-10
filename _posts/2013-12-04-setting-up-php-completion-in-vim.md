@@ -27,20 +27,14 @@ autocomplete up to the "longest" string that all the completions have in common
 and `menuone` makes the menu spawn even if there is only one result.
 
 Next, triggering completion with `Ctrl+x,Ctrl+o` is rather cumbersome, so
-I also installed [SuperTab][1] via [Vundle][2] which triggers all the
-completion commands (including [Ultisnips][3]) via tab, while still letting it
+I also installed [SuperTab](https://github.com/ervandew/supertab) via [Vundle](https://github.com/gmarik/vundle) which triggers all the
+completion commands (including [Ultisnips](https://github.com/SirVer/ultisnips)) via tab, while still letting it
 be used for indenting.
 
 Finally, I was able to have the completion menu include the function's
-signatures (argument and return types) by installing the [phpcomplete.vim][4]
+signatures (argument and return types) by installing the [phpcomplete.vim](https://github.com/shawncplus/phpcomplete.vim)
 plugin.
 
 The result:
 
-![screenshot of php completion in vim][screenshot]
-
-[1]: https://github.com/ervandew/supertab
-[2]: https://github.com/gmarik/vundle
-[3]: https://github.com/SirVer/ultisnips
-[4]: https://github.com/shawncplus/phpcomplete.vim
-[screenshot]: /content/images/php-vim-completion-screenshot.png
+![screenshot of php completion in vim](/content/images/php-vim-completion-screenshot.png)

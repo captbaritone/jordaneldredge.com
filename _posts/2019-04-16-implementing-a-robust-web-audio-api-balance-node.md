@@ -51,17 +51,17 @@ balanceNode.connect(audioCtx.destination);
 
 If you are interested in all the broken solutions that I built before finding this one, read on:
 
-# Two Gain Nodes
+## Two Gain Nodes
 
 Our initial approach, built by [Joseph Portelli](http://lostsource.com/) ([pull request](https://github.com/captbaritone/webamp/pull/8)), used a [ChannelSplitterNode](https://developer.mozilla.org/en-US/docs/Web/API/ChannelSplitterNode) to divide the source node into two sources (left and right), attach a [GainNode](https://developer.mozilla.org/en-US/docs/Web/API/GainNode) to each of those and then merge them back together with a [ChannelMergerNode](https://developer.mozilla.org/en-US/docs/Web/API/ChannelMergerNode) node.
 
 While this generally worked, it suffered from a flaw with mono audio files. The channel splitter node does not know anything about the number of channels in the source node so splitting a mono audio source results in a left source that contains all the mono signal, and a right source that is silent, rather than playing the same mono signal in both left and right channels.
 
-# Bad Hacks
+## Bad Hacks
 
 My initial attempt at solving this revolved around trying to deduce, in user land, how many channels the source had, and then using that information to decide if we should split the source node or not. From what I’ve been able to glean, there is no way to actually tell how many channels a source node has. So, I resorted to a hack: play the audio for some bit of time and if you never observe any signal I the right channel, assume you have a mono file and rebuild the balance nodes without using the ChannelSplitterNode. This was a stupid idea, since it could never be robust. I wish I had never worked on it.
 
-# StereoPannerNode
+## StereoPannerNode
 
 Stuck in a world where mono audio files were still playing only in one speaker, I eventually asked in the [Web Audio Slack channel](https://web-audio-slackin.herokuapp.com/) where a user pointed out the existence of the [StereoPannerNode](https://developer.mozilla.org/en-US/docs/Web/API/StereoPannerNode). At first glance this was the solution to all my problems and I quickly shipped a new version of Webamp that made use of it. However, I later realized that _panning_ is not quite the same as _balance_. When you pan, you _move_ the signal from side to side, so when panned fully left, all the signal from the right channel will play in the left speaker. With balance, you are simply reducing the gain on the channel opposite the direction in which you’ve adjusted the balance. So, if your balance control is fully left, you would simply expect the right channel to be fully muted and the left channel to be playing at normal amplitude.
 
