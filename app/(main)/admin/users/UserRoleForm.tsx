@@ -1,6 +1,7 @@
 "use client";
 
 import { useTransition } from "react";
+import { useRouter } from "next/navigation";
 import { updateUserRole } from "./actions";
 import { UserRole } from "../../../../lib/roles";
 
@@ -21,6 +22,7 @@ export default function UserRoleForm({
   roles,
 }: UserRoleFormProps) {
   const [isPending, startTransition] = useTransition();
+  const router = useRouter();
 
   // Form action that will be called when the form is submitted
   async function formAction(formData: FormData) {
@@ -33,6 +35,7 @@ export default function UserRoleForm({
     startTransition(async () => {
       try {
         await updateUserRole(userId, newRole);
+        router.refresh();
       } catch (error) {
         console.error("Failed to update role:", error);
       }
