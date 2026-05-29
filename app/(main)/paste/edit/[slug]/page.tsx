@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { getSession, userCanEditAnyPaste } from "../../../../../lib/session";
+import { userCanEditAnyPaste } from "../../../../../lib/session";
 import { update } from "./update";
 import { db, sql } from "../../../../../lib/db";
 
@@ -9,12 +9,7 @@ export default async function EditPaste(props) {
   if (!canEditAnyPaste) {
     notFound();
   }
-  const session = await getSession();
-  const userId = session.userId;
-  if (userId == null) {
-    notFound();
-  }
-  const paste = GET_PASTE.get({ slug: params.slug, authorId: userId });
+  const paste = GET_PASTE.get({ slug: params.slug });
   if (paste == null) {
     notFound();
   }
@@ -52,7 +47,7 @@ export default async function EditPaste(props) {
 }
 
 const GET_PASTE = db.prepare<
-  { slug: string; authorId: number },
+  { slug: string },
   { content: string; file_name?: string; id: number }
 >(sql`
   SELECT
@@ -63,5 +58,4 @@ const GET_PASTE = db.prepare<
     pastes
   WHERE
     id = :slug
-    AND author_id = :authorId
 `);

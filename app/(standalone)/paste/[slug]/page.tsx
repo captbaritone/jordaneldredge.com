@@ -3,7 +3,11 @@ import { parse, syntaxHighlighting } from "../../../../lib/data/markdownUtils";
 import { db, sql } from "../../../../lib/db";
 import Markdown from "../../../../lib/components/Markdown";
 import Link from "next/link";
-import { getSession, userCanViewAnyPaste } from "../../../../lib/session";
+import {
+  getSession,
+  userCanEditAnyPaste,
+  userCanViewAnyPaste,
+} from "../../../../lib/session";
 
 export default async function Paste(props) {
   const params = await props.params;
@@ -22,13 +26,15 @@ export default async function Paste(props) {
     }
   }
 
+  const canEdit = ownsPaste || (await userCanEditAnyPaste());
+
   return (
     <div className="markdown">
       <div className="flex justify-end pt-2 pr-4 gap-1">
         <Link href={{ pathname: `/paste/${paste.id}/${paste.file_name}` }}>
           Raw
         </Link>
-        {ownsPaste && (
+        {canEdit && (
           <>
             {" | "}
             <Link href={{ pathname: `/paste/edit/${paste.id}` }}>Edit</Link>
