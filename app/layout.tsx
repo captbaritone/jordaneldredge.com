@@ -2,11 +2,51 @@ import "../styles/globals.css";
 import "../styles/shiki-twoslash.css";
 
 import { GoogleAnalytics } from "@next/third-parties/google";
+import {
+  Alegreya,
+  Alegreya_SC,
+  Alegreya_Sans,
+  Inconsolata,
+} from "next/font/google";
 
 // import Script from "next/script";
 import AudioPlayer from "./AudioPlayer";
 import AudioContextProvider from "./AudioContext";
-import { Metadata } from "next";
+import { Metadata, Viewport } from "next";
+
+const alegreya = Alegreya({
+  subsets: ["latin"],
+  display: "swap",
+  style: ["normal", "italic"],
+  variable: "--font-alegreya",
+});
+
+const alegreyaSc = Alegreya_SC({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["500", "700"],
+  variable: "--font-alegreya-sc",
+});
+
+const alegreyaSans = Alegreya_Sans({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "700"],
+  variable: "--font-alegreya-sans",
+});
+
+const inconsolata = Inconsolata({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inconsolata",
+});
+
+const fontVariables = [
+  alegreya.variable,
+  alegreyaSc.variable,
+  alegreyaSans.variable,
+  inconsolata.variable,
+].join(" ");
 
 export function generateMetadata(): Metadata {
   const title = {
@@ -26,7 +66,6 @@ export function generateMetadata(): Metadata {
     title,
     description:
       "The personal website of Jordan Eldredge, a software engineer and musician.",
-    viewport: "width=device-width, initial-scale=1",
     openGraph: { siteName: "Jordan Eldredge", title, images },
     twitter: {
       creator: "@captbaritone",
@@ -37,9 +76,14 @@ export function generateMetadata(): Metadata {
   };
 }
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
 export default async function Layout({ children }) {
   return (
-    <html>
+    <html className={fontVariables}>
       <body>
         <AudioContextProvider>
           {children}

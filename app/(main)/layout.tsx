@@ -5,8 +5,9 @@ import LogoutButton from "../LogoutButton";
 import LoginButton from "../LoginButton";
 import SearchIcon from "./SearchIcon";
 import { ALL } from "../config";
+import type { Metadata } from "next";
 
-export const metadata = {
+export const metadata: Metadata = {
   metadataBase: new URL("https://jordaneldredge.com"),
   title: {
     template: "%s / Jordan Eldredge",
@@ -17,54 +18,44 @@ export const metadata = {
 export default async function Layout({ children }) {
   const session = await getSession();
   return (
-    <div className="max-w-2xl mx-auto p-5">
-      <div className="flex justify-between flex-col sm:flex-row pb-2">
-        <h1 className="font-medium text-base">
+    <div className="site-shell">
+      <header className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2 pb-2">
+        <h1 className="font-display-sc text-sc uppercase font-bold tracking-tight">
           <Link href="/">Jordan Eldredge</Link>
         </h1>
         <nav>
-          <ul className="flex justify-end">
-            <li className="pr-5">
+          <ul className="flex flex-wrap items-center gap-x-5 gap-y-1 sm:justify-end font-serif text-nav uppercase font-medium">
+            <li>
               <NavLink href="/">About</NavLink>
             </li>
             {ALL ? (
-              <li className="pr-5">
+              <li>
                 <NavLink href="/posts/">Posts</NavLink>
               </li>
             ) : (
               <>
-                <li className="pr-5">
+                <li>
                   <NavLink href="/blog/">Blog</NavLink>
                 </li>
-                <li className="pr-5">
+                <li>
                   <NavLink href="/notes/">Notes</NavLink>
                 </li>
               </>
             )}
-            {/*
-            <li className="pr-5">
-              <NavLink href="/talks/">Talks</NavLink>
-            </li>
-*/}
-            <li className="pr-5">
+            <li>
               <NavLink href="/projects/">Projects</NavLink>
             </li>
-            {/*
-            <li className="pr-5">
-              <NavLink href="/singer/">Singer</NavLink>
-            </li>
-            */}
-            <li className="pr-4">
+            <li>
               <NavLink href="/contact/">Contact</NavLink>
             </li>
-            <li className="text-sm flex items-center pr-1">
+            <li className="flex items-center">
               <SearchIcon />
             </li>
           </ul>
         </nav>
-      </div>
+      </header>
       <main>{children}</main>
-      <footer className="py-8 pb-12 text-center block border-t-2 border-gray-200 border-solid">
+      <footer className="mt-12 pt-2 border-t border-ink text-footer text-center">
         <Link rel="me" href="https://bsky.app/profile/capt.dev">
           Bluesky
         </Link>

@@ -2,16 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  @apply break-normal break-words;
+html {
+  font-size: 15px;
 }
 
-@layer base {
-  h1 {
-    @apply text-2xl;
+@media (max-width: 860px) {
+  html {
+    font-size: 14px;
   }
-  h2 {
-    @apply text-xl;
+}
+
+body {
+  font-family: theme("fontFamily.serif");
+  font-weight: 440;
+  color: theme("colors.ink");
+  background-color: theme("colors.paper");
+}
+
+::selection {
+  background: theme("colors.selection");
+  color: #08111c;
+}
+
+/* Site shell — centered readable column. */
+.site-shell {
+  width: 100%;
+  max-width: 720px;
+  margin: 4rem auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (max-width: 860px) {
+  .site-shell {
+    margin: 2.2rem auto;
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
   }
 }
 
@@ -25,14 +51,14 @@
 }
 
 .video-container.horizontal {
-  aspect-ratio: 16 / 9; /* Horizontal layout for regular videos */
+  aspect-ratio: 16 / 9;
   width: 100%;
   padding-bottom: 60%;
 }
 
 .video-container.vertical {
-  aspect-ratio: 9 / 16; /* Vertical layout for Shorts */
-  max-height: 640px; /* Optionally limit max height */
+  aspect-ratio: 9 / 16;
+  max-height: 640px;
   padding-bottom: 100%;
 }
 
@@ -57,178 +83,206 @@
 }
 
 /* purgecss start ignore */
-/* Markdown Styles */
-/* Global */
 .markdown {
-  @apply leading-relaxed text-sm;
+  font-family: theme("fontFamily.serif");
 }
 
-.markdown {
-  @apply text-base;
+.markdown p,
+.markdown dd {
+  font-size: 1.4rem;
+  line-height: 2rem;
+  hyphens: auto;
+  margin-top: 0;
+  margin-bottom: 1.2rem;
 }
 
-@screen lg {
-  .markdown {
-    @apply text-lg;
-  }
+.markdown ul li,
+.markdown ol li {
+  font-size: 1.4rem;
+  line-height: 2rem;
+  hyphens: auto;
+  margin-top: 0;
+  margin-bottom: 0.2rem;
 }
 
-/* Headers */
 .markdown h1 {
-  @apply text-xl my-6 font-semibold;
+  border-top: 1px solid theme("colors.ink");
+  padding-top: 1.6rem;
+  font-weight: 420;
+  font-size: 3rem;
+  line-height: 1;
+  margin-top: 0;
+  margin-bottom: 2.2rem;
 }
+
 .markdown h2 {
-  @apply text-xl mt-6 mb-2 font-semibold;
+  font-family: theme("fontFamily.display-sc");
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: -0.02rem;
+  text-transform: lowercase;
+  line-height: 1;
+  margin-top: 2.4rem;
+  margin-bottom: 0.64rem;
 }
+
 .markdown h3,
 .markdown h4,
 .markdown h5,
 .markdown h6 {
-  @apply text-lg my-3 font-semibold;
+  font-family: theme("fontFamily.display-sc");
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: -0.02rem;
+  text-transform: lowercase;
+  line-height: 1;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
 }
 
 .markdown .anchor-link {
-  @apply text-gray-400;
+  color: theme("colors.ink");
   opacity: 0;
-  @apply transition-opacity;
+  padding: 0 0.4rem;
+  font-size: 1.4rem;
+  transition: opacity 0.2s;
 }
 
 .markdown *:focus .anchor-link,
 .markdown *:hover .anchor-link {
-  @apply text-gray-300;
-  opacity: 1;
-}
-
-@screen sm {
-  .markdown h1,
-  .markdown h2 {
-    @apply text-2xl;
-  }
-  .markdown h3,
-  .markdown h4,
-  .markdown h5,
-  .markdown h6 {
-    @apply text-xl;
-  }
+  opacity: 0.5;
 }
 
 /* Links */
 .markdown a {
-  @apply text-blue-500;
+  color: theme("colors.link");
+  text-decoration: none;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: text-decoration-color 200ms;
 }
+
 .markdown a:hover {
-  @apply underline;
+  text-decoration: underline;
 }
-/* Paragraph */
-.markdown p {
-  @apply mb-4;
-}
+
 /* Lists */
 .markdown ul,
 .markdown ol {
-  @apply mb-4 ml-8;
+  margin-bottom: 1.2rem;
+  margin-left: 2rem;
 }
+
 .markdown li > p,
 .markdown li > ul,
 .markdown li > ol {
-  @apply mb-0;
+  margin-bottom: 0;
 }
+
 .markdown ol {
-  @apply list-decimal;
+  list-style: decimal;
 }
+
 .markdown ul {
-  @apply list-disc;
+  list-style: disc;
 }
+
 /* Blockquotes */
 .markdown blockquote {
-  @apply pl-4 mb-4 border-l-8 border-gray-200;
+  border-left: 3px solid theme("colors.rule");
+  padding-left: 1rem;
+  margin-bottom: 1.2rem;
+  font-style: italic;
 }
+
 .markdown blockquote > p {
-  @apply mb-0;
+  margin-bottom: 0;
 }
 
 .markdown hr {
   display: none;
-  @apply py-2 text-center block border-t-2 border-gray-200 border-solid;
 }
-/* Tables */
-.markdown td,
-.markdown th {
-  @apply px-2 py-1 border border-gray-400;
-}
-.markdown tr:nth-child(odd) {
-  @apply bg-gray-100;
-}
+
+/* Tables — Alegreya Sans, tight horizontal rules, top/bottom only */
 .markdown table {
-  @apply mb-6;
+  font-family: theme("fontFamily.sans");
+  font-size: 1.2rem;
+  border: 0;
+  border-collapse: collapse;
+  border-block: 2px solid theme("colors.ink");
+  margin: 1.6rem auto;
 }
 
+.markdown table tbody tr:first-child td {
+  border-top: 1px solid theme("colors.ink");
+  padding-top: 0.6rem;
+}
+
+.markdown th,
+.markdown td {
+  padding: 0.5rem 1rem;
+  border: 0;
+}
+
+/* Code — Shiki blocks keep their theme; only the wrapper changes */
 .markdown pre.shiki {
-  @apply text-xs;
-  @apply mb-4;
-
-  /* Give it some space to breathe */
-  padding: 12px;
-
-  /* All code samples get a grey border, twoslash ones get a different color */
-
-  /* Important to allow the code to move horizontally; */
+  margin: 1.4rem 0;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid theme("colors.rule");
+  border-left: 3px solid theme("colors.rule");
+  border-radius: 0;
+  font-size: 1.05rem;
   overflow-x: auto;
   position: relative;
 }
 
+/* Inline code — brick red, slightly larger to match x-height */
 .markdown code.inline {
-  @apply bg-gray-100;
-  @apply px-1;
-  @apply rounded;
-  padding: 0.1em 0.2em;
-  border: 1px solid #eaeaea;
-  font-size: 0.8em;
-}
-.markdown pre.shiki {
-  @apply -mx-4 px-4 my-6;
-  @apply rounded-xl;
-}
-
-@screen sm {
-  .markdown pre.shiki {
-    @apply text-sm;
-  }
-}
-
-@screen lg {
-  .markdown pre.shiki {
-    @apply text-base;
-  }
+  font-family: theme("fontFamily.mono");
+  font-weight: 530;
+  color: theme("colors.code");
+  font-size: 1.33rem;
+  letter-spacing: -0.01rem;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  border-radius: 0;
+  overflow-wrap: anywhere;
 }
 
 .markdown audio {
   margin-bottom: 1rem;
 }
 
-/* Wrap any inline highlights `that are really long`, but don't modify
-     the setting for codeblocks (inside ```), which are rendered in as:
-     <pre><code>...
-  */
+/* Headings inside content list items — serif, larger weight, no small caps.
+   Scoped under .markdown so it outranks the generic .markdown h2 rule. */
+.markdown .list-item-title {
+  font-family: theme("fontFamily.serif");
+  font-size: 1.7rem;
+  font-weight: 500;
+  line-height: 1.1;
+  margin-top: 0;
+  margin-bottom: 0.2rem;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+/* Wrap long inline highlights, but not code blocks */
 .markdown :not(pre) > code.language-text {
   white-space: pre-line;
 }
+
 /* purgecss end ignore */
 
-/* Slide animations for Suspense the fallback down */
+/* Slide animations for Suspense fallbacks */
 ::view-transition-old(.slide-down) {
-  animation:
-    /* 150ms ease-out both fade-out, */ 400ms ease-out both
-    slide-down;
+  animation: 400ms ease-out both slide-down;
 }
 
 ::view-transition-new(.slide-up) {
-  animation:
-    /* 210ms ease-in 150ms both fade-in, */ 400ms ease-in both
-    slide-up;
+  animation: 400ms ease-in both slide-up;
 }
 
-/* Keyframes to support our animations above. */
 @keyframes slide-up {
   from {
     transform: translateY(100%);

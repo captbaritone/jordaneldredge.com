@@ -4,6 +4,7 @@ import RelatedContent from "./RelatedContent";
 import GitHubComments from "./GitHubComments";
 import DateString from "./DateString";
 import PlayButton from "./PlayButton";
+import DraftBadge from "./DraftBadge";
 import Link from "next/link";
 import {
   ContentDateViewTransition,
@@ -56,26 +57,16 @@ export default async function ContentPage({
           <ContentTileViewTransition id={item.id()}>
             <h1>{item.title()}</h1>
           </ContentTileViewTransition>
-          <div
-            className="flex flex-row text-sm  text-gray-400"
-            style={{
-              marginTop: "-1.4rem",
-              marginBottom: "1rem",
-            }}
-          >
+          <div className="flex flex-row items-center text-side text-ink/60 -mt-4 mb-4">
             <ContentDateViewTransition id={item.id()}>
-              <div className="italic">
+              <span className="italic">
                 <DateString date={item.dateObj()} />
-              </div>
-            </ContentDateViewTransition>
-            {item.isDraft() && (
-              <span className="ml-2 px-1.5 py-0.5 rounded-full bg-yellow-100 text-yellow-800 text-xs">
-                Draft
               </span>
-            )}
+            </ContentDateViewTransition>
+            {item.isDraft() && <DraftBadge />}
             {audio && (
               <>
-                <div className="pl-2 pr-2">{"|"}</div>
+                <span className="px-2">{"|"}</span>
                 <PlayButton
                   audioUrl={audio.vanityUrl().path()}
                   title="Play an AI generated audio reading of this content."
@@ -84,7 +75,7 @@ export default async function ContentPage({
             )}
             {vc.canViewContentDebug() && (
               <>
-                <div className="pl-2 pr-2">{"|"}</div>
+                <span className="px-2">{"|"}</span>
                 <Link href={{ pathname: item.debugUrl().path() }}>Debug</Link>
               </>
             )}

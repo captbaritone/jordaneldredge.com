@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import DateString from "./DateString";
+import DraftBadge from "./DraftBadge";
 import { Content } from "../data";
 import {
   ContentDateViewTransition,
@@ -54,31 +55,18 @@ export function ListItem({
 }: Props) {
   return (
     <>
-      <div className="py-4 flex justify-between gap-4">
+      <div className="py-4 flex justify-between gap-4 markdown">
         <div>
           <ContentTileViewTransition id={id}>
-            <h2 className="font-large font-semibold">
-              <Link
-                href={url}
-                style={{
-                  wordBreak: "break-word",
-                  /* Adds a hyphen where the word breaks, if supported (No Blink) */
-                  hyphens: "auto",
-                }}
-              >
-                {title}
-              </Link>
+            <h2 className="list-item-title break-words hyphens-auto">
+              <Link href={url}>{title}</Link>
             </h2>
           </ContentTileViewTransition>
           {date && (
             <ContentDateViewTransition id={id}>
-              <span className="italic text-sm my-1 text-gray-400">
+              <span className="italic text-side text-ink/60">
                 <DateString date={date} />
-                {isDraft && (
-                  <span className="ml-2 px-1.5 py-0.5 rounded-full bg-yellow-100 text-yellow-800 text-xs not-italic">
-                    Draft
-                  </span>
-                )}
+                {isDraft && <DraftBadge />}
               </span>
             </ContentDateViewTransition>
           )}
@@ -104,7 +92,7 @@ export function ListItem({
           </Link>
         ) : null}
       </div>
-      <hr />
+      <hr className="border-0 border-t border-rule" />
     </>
   );
 }
