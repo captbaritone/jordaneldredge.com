@@ -112,19 +112,5 @@
     "typescript": "5.5.3",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^3.1.2"
-  },
-  "pnpm": {
-    "patchedDependencies": {
-      "shiki@0.11.1": "patches/shiki@0.11.1.patch",
-      "notion-to-md": "patches/notion-to-md.patch"
-    },
-    "overrides": {
-      "@types/react": "19.2.2",
-      "@types/react-dom": "19.2.2"
-    },
-    "onlyBuiltDependencies": [
-      "better-sqlite3",
-      "esbuild"
-    ]
   }
 }
