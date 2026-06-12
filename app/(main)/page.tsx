@@ -35,6 +35,7 @@ export default async function Page() {
             alt="Jordan Eldredge with his daughter"
             width={400}
             height={400}
+            preload
           />
         </div>
         <p>
