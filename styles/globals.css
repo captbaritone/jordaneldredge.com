@@ -106,7 +106,6 @@ body {
 }
 
 .markdown h1 {
-  border-top: 1px solid theme("colors.ink");
   padding-top: 1.6rem;
   font-weight: 420;
   font-size: 3rem;

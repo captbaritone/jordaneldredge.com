@@ -19,7 +19,7 @@ export default async function Layout({ children }) {
   const session = await getSession();
   return (
     <div className="site-shell">
-      <header className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2 pb-2">
+      <header className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2 pb-2 border-b border-ink">
         <h1 className="font-display-sc text-sc uppercase font-bold tracking-tight">
           <Link href="/">Jordan Eldredge</Link>
         </h1>
