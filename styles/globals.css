@@ -266,6 +266,18 @@ body {
   letter-spacing: normal;
 }
 
+.markdown .list-item-title a {
+  color: theme("colors.ink");
+}
+
+/* Suppress the trailing separator on the final list item so it doesn't
+   double up with the footer rule above. Covers both bare-fragment lists
+   (posts page) and KeyboardList's <ul><li> wrapping. */
+main > hr:last-child,
+main > ul > li:last-child > hr:last-child {
+  display: none;
+}
+
 /* Wrap long inline highlights, but not code blocks */
 .markdown :not(pre) > code.language-text {
   white-space: pre-line;

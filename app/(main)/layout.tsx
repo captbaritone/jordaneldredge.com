@@ -19,12 +19,12 @@ export default async function Layout({ children }) {
   const session = await getSession();
   return (
     <div className="site-shell">
-      <header className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2 pb-2 border-b border-ink">
+      <header className="flex flex-col items-center sm:flex-row sm:items-baseline sm:justify-between gap-3 sm:gap-1 pb-2">
         <h1 className="font-display-sc text-sc uppercase font-bold tracking-tight">
           <Link href="/">Jordan Eldredge</Link>
         </h1>
         <nav>
-          <ul className="flex flex-wrap items-center gap-x-5 gap-y-1 sm:justify-end font-serif text-nav uppercase font-medium">
+          <ul className="flex flex-wrap justify-center sm:justify-end items-center gap-x-4 gap-y-1 font-serif text-nav uppercase font-medium">
             <li>
               <NavLink href="/">About</NavLink>
             </li>
@@ -55,7 +55,7 @@ export default async function Layout({ children }) {
         </nav>
       </header>
       <main>{children}</main>
-      <footer className="mt-12 pt-2 border-t border-ink text-footer text-center">
+      <footer className="mt-12 pt-2 border-t border-rule text-footer text-center">
         <Link rel="me" href="https://bsky.app/profile/capt.dev">
           Bluesky
         </Link>

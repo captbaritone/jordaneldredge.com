@@ -13,8 +13,16 @@ export default function NavLink({ href, children }) {
   }
 
   return (
-    <span className={active ? "underline" : ""}>
-      <Link href={href}>{children}</Link>
-    </span>
+    <Link href={href}>
+      {active ? (
+        <>
+          <span className="font-mono text-rule mx-0.5">/</span>
+          {children}
+          <span className="font-mono text-rule mx-0.5">/</span>
+        </>
+      ) : (
+        children
+      )}
+    </Link>
   );
 }
