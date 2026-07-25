@@ -21,10 +21,7 @@ module.exports = {
         serif: ["var(--font-alegreya)", ...defaultTheme.fontFamily.serif],
         sans: ["var(--font-alegreya-sans)", ...defaultTheme.fontFamily.sans],
         mono: ["var(--font-inconsolata)", ...defaultTheme.fontFamily.mono],
-        "display-sc": [
-          "var(--font-alegreya-sc)",
-          ...defaultTheme.fontFamily.serif,
-        ],
+        chrome: ["var(--font-plex-sans)", ...defaultTheme.fontFamily.sans],
       },
       fontSize: {
         body: ["1.4rem", "2rem"],

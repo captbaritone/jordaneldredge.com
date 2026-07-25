@@ -13,16 +13,11 @@ export default function NavLink({ href, children }) {
   }
 
   return (
-    <Link href={href}>
-      {active ? (
-        <>
-          <span className="font-mono text-rule mx-0.5">/</span>
-          {children}
-          <span className="font-mono text-rule mx-0.5">/</span>
-        </>
-      ) : (
-        children
-      )}
+    <Link
+      href={href}
+      className={active ? "underline decoration-rule underline-offset-2" : ""}
+    >
+      {children}
     </Link>
   );
 }

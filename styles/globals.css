@@ -107,20 +107,19 @@ body {
 
 .markdown h1 {
   padding-top: 1.6rem;
-  font-weight: 420;
-  font-size: 3rem;
-  line-height: 1;
+  font-family: theme("fontFamily.chrome");
+  font-weight: 700;
+  font-size: 2.4rem;
+  line-height: 1.15;
   margin-top: 0;
   margin-bottom: 2.2rem;
 }
 
 .markdown h2 {
-  font-family: theme("fontFamily.display-sc");
-  font-size: 1.6rem;
+  font-family: theme("fontFamily.chrome");
+  font-size: 1.5rem;
   font-weight: 700;
-  letter-spacing: -0.02rem;
-  text-transform: lowercase;
-  line-height: 1;
+  line-height: 1.2;
   margin-top: 2.4rem;
   margin-bottom: 0.64rem;
 }
@@ -129,12 +128,10 @@ body {
 .markdown h4,
 .markdown h5,
 .markdown h6 {
-  font-family: theme("fontFamily.display-sc");
-  font-size: 1.3rem;
+  font-family: theme("fontFamily.chrome");
+  font-size: 1.25rem;
   font-weight: 700;
-  letter-spacing: -0.02rem;
-  text-transform: lowercase;
-  line-height: 1;
+  line-height: 1.2;
   margin-top: 2rem;
   margin-bottom: 0.5rem;
 }
@@ -256,10 +253,10 @@ body {
 /* Headings inside content list items — serif, larger weight, no small caps.
    Scoped under .markdown so it outranks the generic .markdown h2 rule. */
 .markdown .list-item-title {
-  font-family: theme("fontFamily.serif");
-  font-size: 1.7rem;
-  font-weight: 500;
-  line-height: 1.1;
+  font-family: theme("fontFamily.chrome");
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.15;
   margin-top: 0;
   margin-bottom: 0.2rem;
   text-transform: none;

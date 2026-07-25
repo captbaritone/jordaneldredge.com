@@ -64,7 +64,7 @@ export function PostsStructured({
     <>
       <div className="markdown">
         <h1>{title}</h1>
-        <div className="flex flex-wrap justify-end pb-2 py-2 border-b border-ink">
+        <div className="flex flex-wrap justify-end pb-2 py-2 border-b border-rule">
           <p className="w-full sm:w-auto grow">{description}</p>
           <div className="flex gap-2 items-stretch w-full sm:w-auto pb-2 sm:pb-0">
             {hideSearch || (

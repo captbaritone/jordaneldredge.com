@@ -4,8 +4,8 @@ import "../styles/shiki-twoslash.css";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import {
   Alegreya,
-  Alegreya_SC,
   Alegreya_Sans,
+  IBM_Plex_Sans,
   Inconsolata,
 } from "next/font/google";
 
@@ -21,11 +21,11 @@ const alegreya = Alegreya({
   variable: "--font-alegreya",
 });
 
-const alegreyaSc = Alegreya_SC({
+const plexSans = IBM_Plex_Sans({
   subsets: ["latin"],
   display: "swap",
-  weight: ["500", "700"],
-  variable: "--font-alegreya-sc",
+  weight: ["500", "600", "700"],
+  variable: "--font-plex-sans",
 });
 
 const alegreyaSans = Alegreya_Sans({
@@ -43,8 +43,8 @@ const inconsolata = Inconsolata({
 
 const fontVariables = [
   alegreya.variable,
-  alegreyaSc.variable,
   alegreyaSans.variable,
+  plexSans.variable,
   inconsolata.variable,
 ].join(" ");
 
