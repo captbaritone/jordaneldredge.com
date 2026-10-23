@@ -79,8 +79,8 @@ export function ListItem({
             <span className="h-28 md:h-32 aspect-square sm:aspect-video relative block">
               <ImageViewTransition id={summaryImage}>
                 {/* Not `priority`: lists can hold every post, and eager
-                    thumbnails (with a preload each) all download at once,
-                    including in the middle of a search animation. */}
+                    thumbnails (with a preload each) would all download up
+                    front instead of as they scroll into view. */}
                 <Image
                   alt=""
                   fill

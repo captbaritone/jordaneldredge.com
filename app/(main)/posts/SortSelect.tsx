@@ -1,7 +1,6 @@
 // app/Dropdown.js
 "use client"; // This makes it a Client Component
 import { useRouter } from "next/navigation";
-import { markSearchTransition } from "../../../lib/components/searchTransition";
 
 export default function SortSelect({ currentParam }) {
   const router = useRouter();
@@ -13,8 +12,7 @@ export default function SortSelect({ currentParam }) {
     const params = new URLSearchParams(window.location.search);
     params.set("sort", value);
 
-    // Push the updated URL, animating the results into their new order
-    markSearchTransition();
+    // Push the updated URL
     router.push(`?${params.toString()}`);
   };
 
