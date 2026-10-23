@@ -1,6 +1,7 @@
 "use client";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, ViewTransition } from "react";
 import { useRouter } from "next/navigation";
+import { SEARCH_TRANSITION } from "./searchTransition";
 /** A generic list component that supports keyboard navigation and selection */
 
 type Props = {
@@ -57,13 +58,22 @@ export default function KeyboardList({ children: items, onSelect }: Props) {
   return (
     <ul ref={listRef}>
       {items.map((item, index) => (
-        <li
+        // Only search updates animate the list: results that stay slide to
+        // their new position, new ones rise in, and removed ones fade out.
+        <ViewTransition
           key={item.key}
-          data-key={item.key}
-          className={index === selectedIndex ? selectedStyle : ""}
+          default="none"
+          update={{ [SEARCH_TRANSITION]: "search-move", default: "none" }}
+          enter={{ [SEARCH_TRANSITION]: "search-enter", default: "none" }}
+          exit={{ [SEARCH_TRANSITION]: "search-exit", default: "none" }}
         >
-          {item.component}
-        </li>
+          <li
+            data-key={item.key}
+            className={index === selectedIndex ? selectedStyle : ""}
+          >
+            {item.component}
+          </li>
+        </ViewTransition>
       ))}
     </ul>
   );

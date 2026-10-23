@@ -1,7 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useTransition } from "react";
+import { addTransitionType, useEffect, useRef, useTransition } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import { SEARCH_TRANSITION } from "../../../lib/components/searchTransition";
+
+// Wait for a brief pause in typing before searching, so the results animate
+// once per query rather than restarting on every keystroke.
+const SEARCH_DEBOUNCE_MS = 150;
 
 type Props = {
   query: string;
@@ -22,6 +27,17 @@ export default function SearchInput({
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
   const searchParams = useSearchParams();
+  const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => () => clearTimeout(debounceRef.current ?? undefined), []);
+
+  function scheduleQuery(query: string) {
+    clearTimeout(debounceRef.current ?? undefined);
+    debounceRef.current = setTimeout(
+      () => updateQuery(query),
+      SEARCH_DEBOUNCE_MS,
+    );
+  }
 
   function updateQuery(query: string) {
     const newParams = new URLSearchParams(
@@ -31,6 +47,7 @@ export default function SearchInput({
     newParams.set("q", query);
 
     startTransition(() => {
+      addTransitionType(SEARCH_TRANSITION);
       // Originally I had the input as a controlled component, which I would
       // update here via a `useOptimistic` value. However, I was experiencing
       // dropped characters when typing quickly, so I switched to an
@@ -66,7 +83,7 @@ export default function SearchInput({
           onKeyDown={(e) => {
             console.log("Key down in SearchInput", e.key);
           }}
-          onChange={(e) => updateQuery(e.target.value)}
+          onChange={(e) => scheduleQuery(e.target.value)}
           className={`inline border border-gray-300 pl-2 pr-8 mr-2 rounded-lg h-8 text-base ${className ?? ""}`}
           defaultValue={query}
           autoFocus={autoFocus}
