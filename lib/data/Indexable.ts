@@ -262,7 +262,13 @@ export async function reindex({
     const stubID = getStubId(entry.page_type, entry.slug);
     if (!stubIDs.has(stubID)) {
       console.log("SCRUB", stubID);
-      DELETE_ENTRY.run({ slug: entry.slug, pageType: entry.page_type });
+      const args = { slug: entry.slug, pageType: entry.page_type };
+      // `tts` references `content` without ON DELETE CASCADE, so its row must
+      // go first or the delete fails the foreign key check.
+      db.transaction(() => {
+        DELETE_ENTRY_TTS.run(args);
+        DELETE_ENTRY.run(args);
+      })();
     }
   }
 
@@ -305,6 +311,20 @@ const ALL_SEARCH_ENTRIES = prepare<[], { page_type: string; slug: string }>(sql`
     page_type
   FROM
     content;
+`);
+
+const DELETE_ENTRY_TTS = prepare<{ slug: string; pageType: string }, void>(sql`
+  DELETE FROM tts
+  WHERE
+    content_id IN (
+      SELECT
+        id
+      FROM
+        content
+      WHERE
+        slug = :slug
+        AND page_type = :pageType
+    );
 `);
 
 const DELETE_ENTRY = prepare<{ slug: string; pageType: string }, void>(sql`
