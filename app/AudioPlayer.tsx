@@ -2,11 +2,7 @@
 import React, { useCallback } from "react";
 import { ViewTransition } from "react";
 
-import {
-  FaPlay,
-  FaPause,
-  FaTimes,
-} from "react-icons/fa";
+import { FaPlay, FaPause, FaTimes } from "react-icons/fa";
 import {
   usePlaying,
   usePercentComplete,
@@ -35,7 +31,7 @@ export default function AudioPlayer() {
     return null;
   }
   return (
-    <ViewTransition enter="slide-up" exit="slide-down">
+    <ViewTransition enter="slide-up" exit="slide-down" default="none">
       <div
         style={{
           position: "fixed",
@@ -82,7 +78,6 @@ export default function AudioPlayer() {
     </ViewTransition>
   );
 }
-
 
 function Progress() {
   const percentComplete = usePercentComplete();

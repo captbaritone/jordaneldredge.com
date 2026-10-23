@@ -1,16 +1,21 @@
 import { useMemo, ViewTransition } from "react";
 
-export const ContentViewTransition = make("content-list-item");
-export const ContentTileViewTransition = make("content-title");
-export const ContentDateViewTransition = make("content-date");
-export const ImageViewTransition = make("image");
+export const ContentTileViewTransition = make("content-title", "vt-text");
+export const ContentDateViewTransition = make("content-date", "vt-text");
+export const ImageViewTransition = make("image", "vt-image");
 
 type Props = {
   id?: string;
   children: React.ReactNode;
 };
 
-function make(prefix: string): (props: Props) => React.ReactNode {
+// Each boundary only participates in shared-element morphs (`share`). Without
+// `default="none"` every named boundary on the page also cross-fades on every
+// navigation, whether or not it has a partner on the other page.
+function make(
+  prefix: string,
+  shareClass: string,
+): (props: Props) => React.ReactNode {
   const component = function Component({ id, children }) {
     const escapedId = useMemo(
       () => (id == null ? null : encodeToAsciiLetters(id)),
@@ -21,7 +26,11 @@ function make(prefix: string): (props: Props) => React.ReactNode {
     }
 
     return (
-      <ViewTransition name={`${prefix}-${escapedId}`}>
+      <ViewTransition
+        name={`${prefix}-${escapedId}`}
+        share={shareClass}
+        default="none"
+      >
         {children}
       </ViewTransition>
     );

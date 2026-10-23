@@ -282,6 +282,55 @@ main > ul > li:last-child > hr:last-child {
 
 /* purgecss end ignore */
 
+/* View transitions: only named shared elements (titles, images) animate.
+   The rest of the page swaps instantly instead of cross-fading, which is what
+   produced the double-exposed text during navigations. */
+::view-transition-old(root) {
+  display: none;
+}
+::view-transition-new(root) {
+  animation: none;
+}
+::view-transition {
+  pointer-events: none;
+}
+
+/* Thumbnail and hero rarely share an aspect ratio. Fill the morphing box and
+   crop, instead of the default (width 100%, height auto) which stacks two
+   differently shaped snapshots on top of each other. */
+::view-transition-old(.vt-image),
+::view-transition-new(.vt-image) {
+  height: 100%;
+  object-fit: cover;
+  overflow: clip;
+}
+
+/* Titles change size and wrapping between list and page. Don't stretch the
+   text snapshots; pin them to the top-left and let them cross-fade while the
+   box moves. */
+::view-transition-old(.vt-text),
+::view-transition-new(.vt-text) {
+  width: auto;
+  height: 100%;
+  object-fit: none;
+  object-position: left top;
+}
+
+::view-transition-group(.vt-image),
+::view-transition-group(.vt-text) {
+  animation-duration: 300ms;
+  animation-timing-function: cubic-bezier(0.2, 0, 0, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+  }
+}
+
 /* Slide animations for Suspense fallbacks */
 ::view-transition-old(.slide-down) {
   animation: 400ms ease-out both slide-down;
