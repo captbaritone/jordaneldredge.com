@@ -8,6 +8,7 @@ import {
   ImageViewTransition,
   ContentTileViewTransition,
 } from "./ViewTransitions";
+import { THUMBNAIL_SIZES } from "./thumbnail";
 
 type ContentProps = {
   item: Content;
@@ -84,7 +85,7 @@ export function ListItem({
                   style={{
                     boxShadow: "2px 2px 5px rgba(0, 0, 0, 0.4)",
                   }}
-                  sizes="(max-width: 768px) 171px, 228px"
+                  sizes={THUMBNAIL_SIZES}
                   src={summaryImage}
                   className="object-cover shadow-sm"
                 />

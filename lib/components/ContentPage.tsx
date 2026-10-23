@@ -12,6 +12,8 @@ import {
 } from "./ViewTransitions";
 import { VC } from "../VC";
 import { Metadata } from "next";
+import { Node } from "unist";
+import { EXIT, visit } from "unist-util-visit";
 
 type ContentPageProps = {
   item: Data.Content;
@@ -50,6 +52,7 @@ export default async function ContentPage({
   const content = item.content();
   const audio = item.ttsAudio();
   const ast = await content.ast();
+  markSummaryImage(ast, item.summaryImage());
   return (
     <div>
       <article>
@@ -86,5 +89,23 @@ export default async function ContentPage({
       {issueId && <GitHubComments issue={issueId} />}
       <RelatedContent item={item} />
     </div>
+  );
+}
+
+// The list thumbnail morphs into the article image with the same URL. Mark it
+// so Markdown can render it with the thumbnail behind it while it loads.
+function markSummaryImage(ast: Node, summaryImage: string | undefined) {
+  if (summaryImage == null) {
+    return;
+  }
+  visit(
+    ast,
+    "image",
+    (node: Node & { url?: string; isSummaryImage?: boolean }) => {
+      if (node.url === summaryImage) {
+        node.isSummaryImage = true;
+        return EXIT;
+      }
+    },
   );
 }
