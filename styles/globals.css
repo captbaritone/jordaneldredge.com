@@ -351,7 +351,7 @@ main > ul > li:last-child > hr:last-child {
   animation: none;
 }
 ::view-transition-new(.search-enter) {
-  animation: 200ms cubic-bezier(0, 0, 0.2, 1) 220ms both search-enter;
+  animation: 200ms cubic-bezier(0, 0, 0.2, 1) 150ms both search-enter;
 }
 @keyframes search-enter {
   from {

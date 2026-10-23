@@ -78,8 +78,10 @@ export function ListItem({
           <Link href={url} prefetch={true}>
             <span className="h-28 md:h-32 aspect-square sm:aspect-video relative block">
               <ImageViewTransition id={summaryImage}>
+                {/* Not `priority`: lists can hold every post, and eager
+                    thumbnails (with a preload each) all download at once,
+                    including in the middle of a search animation. */}
                 <Image
-                  priority={true}
                   alt=""
                   fill
                   style={{

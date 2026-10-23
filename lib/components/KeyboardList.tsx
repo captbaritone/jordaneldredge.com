@@ -1,8 +1,18 @@
 "use client";
 import { useRef, useState, useEffect, ViewTransition } from "react";
 import { useRouter } from "next/navigation";
-import { SEARCH_TRANSITION } from "./searchTransition";
+import {
+  clearSearchTransition,
+  SEARCH_RESULT_ATTRIBUTE,
+  useSearchTransition,
+} from "./searchTransition";
 /** A generic list component that supports keyboard navigation and selection */
+
+// How many of the new results to animate, from the top. Together with the
+// results that were on screen when the search started, that covers everything
+// visible. Animating every result (up to all ~300 posts) makes the browser
+// capture each one, and the animation stutters.
+const ANIMATED_NEW_RESULTS = 12;
 
 type Props = {
   children: {
@@ -17,6 +27,13 @@ export default function KeyboardList({ children: items, onSelect }: Props) {
   const router = useRouter();
   const [selectedIndex, setSelectedIndex] = useState(0);
   const listRef = useRef<HTMLUListElement>(null);
+  const search = useSearchTransition();
+
+  // New results have committed, and with them the view transition that
+  // animates them, so later updates (like navigating away) stay still.
+  useEffect(() => {
+    clearSearchTransition();
+  }, [items]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -57,24 +74,29 @@ export default function KeyboardList({ children: items, onSelect }: Props) {
 
   return (
     <ul ref={listRef}>
-      {items.map((item, index) => (
+      {items.map((item, index) => {
         // Only search updates animate the list: results that stay slide to
         // their new position, new ones rise in, and removed ones fade out.
-        <ViewTransition
-          key={item.key}
-          default="none"
-          update={{ [SEARCH_TRANSITION]: "search-move", default: "none" }}
-          enter={{ [SEARCH_TRANSITION]: "search-enter", default: "none" }}
-          exit={{ [SEARCH_TRANSITION]: "search-exit", default: "none" }}
-        >
-          <li
-            data-key={item.key}
-            className={index === selectedIndex ? selectedStyle : ""}
+        const animate =
+          search.pending &&
+          (index < ANIMATED_NEW_RESULTS || search.visibleKeys.has(item.key));
+        return (
+          <ViewTransition
+            key={item.key}
+            default="none"
+            update={animate ? "search-move" : "none"}
+            enter={animate ? "search-enter" : "none"}
+            exit={search.visibleKeys.has(item.key) ? "search-exit" : "none"}
           >
-            {item.component}
-          </li>
-        </ViewTransition>
-      ))}
+            <li
+              {...{ [SEARCH_RESULT_ATTRIBUTE]: item.key }}
+              className={index === selectedIndex ? selectedStyle : ""}
+            >
+              {item.component}
+            </li>
+          </ViewTransition>
+        );
+      })}
     </ul>
   );
 }

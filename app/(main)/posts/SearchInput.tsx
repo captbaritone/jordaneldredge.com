@@ -1,8 +1,8 @@
 "use client";
 
-import { addTransitionType, useEffect, useRef, useTransition } from "react";
+import { useEffect, useRef, useTransition } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { SEARCH_TRANSITION } from "../../../lib/components/searchTransition";
+import { markSearchTransition } from "../../../lib/components/searchTransition";
 
 // Wait for a brief pause in typing before searching, so the results animate
 // once per query rather than restarting on every keystroke.
@@ -46,8 +46,8 @@ export default function SearchInput({
     );
     newParams.set("q", query);
 
+    markSearchTransition();
     startTransition(() => {
-      addTransitionType(SEARCH_TRANSITION);
       // Originally I had the input as a controlled component, which I would
       // update here via a `useOptimistic` value. However, I was experiencing
       // dropped characters when typing quickly, so I switched to an
