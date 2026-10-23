@@ -295,21 +295,30 @@ main > ul > li:last-child > hr:last-child {
   pointer-events: none;
 }
 
-/* Thumbnail and hero rarely share an aspect ratio. Fill the morphing box and
-   crop, instead of the default (width 100%, height auto) which stacks two
-   differently shaped snapshots on top of each other. */
-::view-transition-old(.vt-image),
+/* The new side always has an image to show (the article renders the cached
+   thumbnail under the full-size one), so show only it rather than
+   cross-fading two crops of the same picture into a double exposure.
+   Thumbnail and hero rarely share an aspect ratio, so fill the morphing box
+   and crop instead of the default (width 100%, height auto). */
+::view-transition-old(.vt-image) {
+  display: none;
+}
 ::view-transition-new(.vt-image) {
+  animation: none;
   height: 100%;
   object-fit: cover;
   overflow: clip;
 }
 
-/* Titles change size and wrapping between list and page. Don't stretch the
-   text snapshots; pin them to the top-left and let them cross-fade while the
-   box moves. */
-::view-transition-old(.vt-text),
+/* Titles change size and wrapping between list and page, and text snapshots
+   can't reflow, so cross-fading them shows two copies at once. Show only the
+   new text, unstretched and pinned to the top-left, and let it slide from the
+   old position. */
+::view-transition-old(.vt-text) {
+  display: none;
+}
 ::view-transition-new(.vt-text) {
+  animation: none;
   width: auto;
   height: 100%;
   object-fit: none;
