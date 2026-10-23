@@ -6,6 +6,12 @@ if ! git diff-index --quiet HEAD --; then
   exit 1
 fi
 
+# The server deploys origin/master, whatever branch this is run from.
+if [ "$(git rev-parse --abbrev-ref HEAD)" != "master" ]; then
+  echo "Not on master. The server deploys origin/master; merge first."
+  exit 1
+fi
+
 echo "Pushing to origin"
 git push origin
 
@@ -14,16 +20,19 @@ ssh jordan 'bash -s' <<'REMOTE'
 set -e
 cd ~/projects/jordaneldredge.com
 
-# Source nvm
-. ~/.nvm/nvm.sh
-nvm use 20
-
 echo "Pulling latest code"
 git fetch origin
 git rebase origin/master
 
+# Source nvm and use the Node version in .nvmrc. The pnpm version comes from
+# package.json's packageManager, which pnpm switches to on its own.
+. ~/.nvm/nvm.sh
+nvm use
+
 echo "Installing dependencies"
-pnpm i
+# Frozen, so a pnpm that disagrees with the lockfile fails here instead of
+# rewriting it and leaving the next deploy's rebase blocked.
+pnpm install --frozen-lockfile
 
 echo "Running migrations"
 pnpm run migrate
