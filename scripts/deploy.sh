@@ -31,8 +31,10 @@ nvm use
 
 echo "Installing dependencies"
 # Frozen, so a pnpm that disagrees with the lockfile fails here instead of
-# rewriting it and leaving the next deploy's rebase blocked.
-pnpm install --frozen-lockfile
+# rewriting it and leaving the next deploy's rebase blocked. When a pnpm
+# upgrade needs node_modules rebuilt it asks first, and there is nobody here
+# to answer.
+pnpm install --frozen-lockfile --config.confirmModulesPurge=false
 
 echo "Running migrations"
 pnpm run migrate
