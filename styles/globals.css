@@ -13,8 +13,7 @@ html {
 }
 
 body {
-  font-family: theme("fontFamily.serif");
-  font-weight: 440;
+  font-family: theme("fontFamily.sans");
   color: theme("colors.ink");
   background-color: theme("colors.paper");
 }
@@ -84,30 +83,28 @@ body {
 
 /* purgecss start ignore */
 .markdown {
-  font-family: theme("fontFamily.serif");
+  font-family: theme("fontFamily.sans");
 }
 
 .markdown p,
 .markdown dd {
-  font-size: 1.4rem;
-  line-height: 2rem;
-  hyphens: auto;
+  font-size: 1.25rem;
+  line-height: 1.65;
   margin-top: 0;
   margin-bottom: 1.2rem;
 }
 
 .markdown ul li,
 .markdown ol li {
-  font-size: 1.4rem;
-  line-height: 2rem;
-  hyphens: auto;
+  font-size: 1.25rem;
+  line-height: 1.65;
   margin-top: 0;
   margin-bottom: 0.2rem;
 }
 
 .markdown h1 {
   padding-top: 1.6rem;
-  font-family: theme("fontFamily.chrome");
+  font-family: theme("fontFamily.sans");
   font-weight: 700;
   font-size: 2.4rem;
   line-height: 1.15;
@@ -116,7 +113,7 @@ body {
 }
 
 .markdown h2 {
-  font-family: theme("fontFamily.chrome");
+  font-family: theme("fontFamily.sans");
   font-size: 1.5rem;
   font-weight: 700;
   line-height: 1.2;
@@ -128,7 +125,7 @@ body {
 .markdown h4,
 .markdown h5,
 .markdown h6 {
-  font-family: theme("fontFamily.chrome");
+  font-family: theme("fontFamily.sans");
   font-size: 1.25rem;
   font-weight: 700;
   line-height: 1.2;
@@ -141,6 +138,7 @@ body {
   opacity: 0;
   padding: 0 0.4rem;
   font-size: 1.4rem;
+  text-decoration: none;
   transition: opacity 0.2s;
 }
 
@@ -149,16 +147,31 @@ body {
   opacity: 0.5;
 }
 
-/* Links */
+/* Links — color alone is too close to the ink to mark a link, so they get a
+   light underline that takes the link color on hover. */
 .markdown a {
   color: theme("colors.link");
-  text-decoration: none;
+  text-decoration: underline;
+  text-decoration-color: theme("colors.rule");
   text-underline-offset: 3px;
   text-decoration-thickness: 1px;
   transition: text-decoration-color 200ms;
 }
 
 .markdown a:hover {
+  text-decoration-color: currentColor;
+}
+
+/* Related content under a post reads as navigation, not prose. */
+.markdown.related-content li {
+  font-size: 1.15rem;
+}
+
+.markdown.related-content a {
+  text-decoration: none;
+}
+
+.markdown.related-content a:hover {
   text-decoration: underline;
 }
 
@@ -188,7 +201,7 @@ body {
   border-left: 3px solid theme("colors.rule");
   padding-left: 1rem;
   margin-bottom: 1.2rem;
-  font-style: italic;
+  color: rgb(17 17 17 / 0.75);
 }
 
 .markdown blockquote > p {
@@ -199,10 +212,9 @@ body {
   display: none;
 }
 
-/* Tables — Alegreya Sans, tight horizontal rules, top/bottom only */
+/* Tables — a little smaller than body text, tight horizontal rules, top/bottom only */
 .markdown table {
-  font-family: theme("fontFamily.sans");
-  font-size: 1.2rem;
+  font-size: 1.05rem;
   border: 0;
   border-collapse: collapse;
   border-block: 2px solid theme("colors.ink");
@@ -246,25 +258,33 @@ body {
   overflow-wrap: anywhere;
 }
 
+/* Short snippets stay on one line; long ones can still break anywhere. */
+.markdown code.inline.short {
+  white-space: nowrap;
+}
+
 .markdown audio {
   margin-bottom: 1rem;
 }
 
-/* Headings inside content list items — serif, larger weight, no small caps.
+/* Headings inside content list items — larger weight.
    Scoped under .markdown so it outranks the generic .markdown h2 rule. */
 .markdown .list-item-title {
-  font-family: theme("fontFamily.chrome");
+  font-family: theme("fontFamily.sans");
   font-size: 1.5rem;
   font-weight: 600;
   line-height: 1.15;
   margin-top: 0;
   margin-bottom: 0.2rem;
-  text-transform: none;
-  letter-spacing: normal;
 }
 
 .markdown .list-item-title a {
   color: theme("colors.ink");
+  text-decoration: none;
+}
+
+.markdown .list-item-title a:hover {
+  text-decoration: underline;
 }
 
 /* Suppress the trailing separator on the final list item so it doesn't

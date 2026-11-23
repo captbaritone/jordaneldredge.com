@@ -58,7 +58,7 @@ export function ListItem({
       <div className="py-4 flex justify-between gap-4 markdown">
         <div className="min-w-0 flex-1">
           <ContentTileViewTransition id={id}>
-            <h2 className="list-item-title break-words hyphens-auto">
+            <h2 className="list-item-title break-words">
               <Link href={url} prefetch={true}>
                 {title}
               </Link>

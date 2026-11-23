@@ -20,11 +20,11 @@ export default async function Layout({ children }) {
   return (
     <div className="site-shell">
       <header className="flex flex-col items-center sm:flex-row sm:items-baseline sm:justify-between gap-3 sm:gap-1 pb-2">
-        <h1 className="font-chrome text-sc font-bold">
+        <h1 className="font-sans text-title font-bold">
           <Link href="/">Jordan Eldredge</Link>
         </h1>
         <nav>
-          <ul className="flex flex-wrap justify-center sm:justify-end items-center gap-x-4 gap-y-1 font-chrome text-nav font-medium">
+          <ul className="flex flex-wrap justify-center sm:justify-end items-center gap-x-4 gap-y-1 font-sans text-nav font-medium">
             <li>
               <NavLink href="/">About</NavLink>
             </li>

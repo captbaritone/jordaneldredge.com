@@ -2,37 +2,21 @@ import "../styles/globals.css";
 import "../styles/shiki-twoslash.css";
 
 import { GoogleAnalytics } from "@next/third-parties/google";
-import {
-  Alegreya,
-  Alegreya_Sans,
-  IBM_Plex_Sans,
-  Inconsolata,
-} from "next/font/google";
+import { Inter, Inconsolata } from "next/font/google";
 
 // import Script from "next/script";
 import AudioPlayer from "./AudioPlayer";
 import AudioContextProvider from "./AudioContext";
 import { Metadata, Viewport } from "next";
 
-const alegreya = Alegreya({
+// No weight list, so we get the variable font: every weight in one file. The
+// optical size axis tightens large headings and opens up small text.
+const inter = Inter({
   subsets: ["latin"],
   display: "swap",
   style: ["normal", "italic"],
-  variable: "--font-alegreya",
-});
-
-const plexSans = IBM_Plex_Sans({
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["500", "600", "700"],
-  variable: "--font-plex-sans",
-});
-
-const alegreyaSans = Alegreya_Sans({
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["400", "700"],
-  variable: "--font-alegreya-sans",
+  axes: ["opsz"],
+  variable: "--font-inter",
 });
 
 const inconsolata = Inconsolata({
@@ -42,9 +26,7 @@ const inconsolata = Inconsolata({
 });
 
 const fontVariables = [
-  alegreya.variable,
-  alegreyaSans.variable,
-  plexSans.variable,
+  inter.variable,
   inconsolata.variable,
 ].join(" ");
 

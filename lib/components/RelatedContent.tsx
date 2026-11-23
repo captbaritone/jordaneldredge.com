@@ -19,7 +19,7 @@ export default async function RelatedContent({ item }: Props) {
   return (
     <>
       <TagList tagSet={item.tagSet()} />
-      <div className="markdown">
+      <div className="markdown related-content">
         <ul>
           {relatedItems.map((post) => (
             <li key={post.slug()}>
