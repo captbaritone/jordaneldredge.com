@@ -192,6 +192,10 @@ const SERIALIZE_MARKDOWN_OPTIONS: Options = {
       // https://talk.commonmark.org/t/generic-directives-plugins-syntax/444
       const attributes = Object.entries(node.attributes)
         .map(([name, value]) => {
+          // Unquoted values can't contain these, which URLs sometimes do.
+          if (/[\s"'<=>`}]/.test(String(value))) {
+            return `${name}="${String(value).replace(/"/g, "&quot;")}"`;
+          }
           return `${name}=${value}`;
         })
         .join(" ");

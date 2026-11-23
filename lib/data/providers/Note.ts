@@ -21,7 +21,9 @@ import {
   keyForYoutubeThumbnail,
   maybeUploadImage,
 } from "./providerUtils";
+import { ensureVideoInfo } from "./videoInfo";
 import { keyUrl } from "../../s3";
+import { isVideoUrl } from "../../videoUrl";
 
 // Regex matching Youtube URLs and extracting the token
 const YOUTUBE_REGEX =
@@ -72,6 +74,7 @@ export class NoteProvider implements IndexableProvider {
     const markdown = new Markdown(ast, null);
 
     await rewriteImageUrls(ast);
+    await applyVideoDirectives(ast);
     const content = markdown.markdownString();
 
     const slug = expectSlug(page);
@@ -104,6 +107,9 @@ export class NoteProvider implements IndexableProvider {
       }
       if (node.type === "leafDirective" && node.name === "youtube") {
         summaryImage = keyUrl(keyForYoutubeThumbnail(node.attributes.token));
+      }
+      if (node.type === "leafDirective" && node.name === "video") {
+        summaryImage = node.attributes.thumbnail ?? node.attributes.poster;
       }
     });
     return summaryImage;
@@ -178,6 +184,53 @@ function expectSummary(page: PageObjectResponse): string {
   return properties.Summary.rich_text[0]?.text.content;
 }
 
+/**
+ * Replace each paragraph that is just a link to a video file with a `video`
+ * directive carrying its dimensions and a poster frame. Runs after
+ * `rewriteImageUrls`, so Notion uploads are read from their R2 mirror.
+ *
+ * If the video can't be read, the link is left alone and renders as a plain
+ * video player, so one bad video doesn't fail the reindex.
+ */
+async function applyVideoDirectives(ast: Node): Promise<void> {
+  const replacements: Array<{ parent: any; node: any; src: string }> = [];
+  visit(ast, "paragraph", (_node, _index, parent) => {
+    const node: any = _node;
+    if (
+      node.children.length === 1 &&
+      node.children[0].type === "link" &&
+      isVideoUrl(node.children[0].url)
+    ) {
+      replacements.push({ parent, node, src: node.children[0].url });
+    }
+  });
+  await Promise.all(
+    replacements.map(async ({ parent, node, src }) => {
+      let info;
+      try {
+        info = await ensureVideoInfo(src);
+      } catch (e) {
+        console.warn(`Could not read video ${src}`, e);
+        return;
+      }
+      const index = parent.children.indexOf(node);
+      parent.children.splice(index, 1, {
+        type: "leafDirective",
+        name: "video",
+        attributes: {
+          src,
+          poster: info.posterUrl,
+          ...(info.thumbnailUrl == null
+            ? {}
+            : { thumbnail: info.thumbnailUrl }),
+          width: String(info.width),
+          height: String(info.height),
+        },
+      });
+    }),
+  );
+}
+
 function expectTags(page: PageObjectResponse): string[] {
   const properties: any = page.properties;
   return properties.Tags.multi_select.map((select) => {
@@ -211,20 +264,7 @@ async function rewriteImageUrls(tree): Promise<void> {
       const url = new URL(node.url);
       // Only migrate Notion-hosted videos (amazonaws.com)
       if (url.hostname.endsWith("amazonaws.com")) {
-        const videoExtensions = [
-          ".mp4",
-          ".mov",
-          ".webm",
-          ".avi",
-          ".mkv",
-          ".m4v",
-          ".ogv",
-        ];
-        const hasVideoExtension = videoExtensions.some((ext) =>
-          url.pathname.toLowerCase().endsWith(ext),
-        );
-
-        if (hasVideoExtension) {
+        if (isVideoUrl(url.pathname)) {
           const pathname = url.pathname;
           const r2_key = path.join("notion-mirror", pathname);
 
