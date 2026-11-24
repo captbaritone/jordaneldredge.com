@@ -12,34 +12,36 @@ export default function Page() {
   );
 
   return (
-    <>
-      <h1 className="pb-4">Singer Resume</h1>
-      <table className="table-auto text-sm">
+    <div className="markdown">
+      <h1>Singer Resume</h1>
+      <table className="resume">
         <thead>
-          <tr className="border-b-2 border-grey-darkest border-solid">
-            <th className="text-left">Character</th>
-            <th className="text-left">Title</th>
-            <th className="text-left">Company</th>
-            <th className="text-left">Date</th>
+          <tr>
+            <th className="role">Role</th>
+            <th className="title">Title</th>
+            <th className="company">Company</th>
+            <th className="year">Year</th>
           </tr>
         </thead>
         <tbody>
           {resume.map((show) => {
             return (
-              <tr key={show.id} className="border-b border-grey border-solid">
-                <td>{show.character}</td>
-                <td className="italic">
-                  {show.title}
+              <tr key={show.id}>
+                <td className="role">{show.character}</td>
+                <td className="title">
+                  <i>{show.title}</i>
                   {show.sung_in_translation ? "*" : ""}
                 </td>
-                <td>{show.company}</td>
-                <td>{new Date(show.start_date).getFullYear()}</td>
+                <td className="company">{show.company}</td>
+                <td className="year">
+                  {new Date(show.start_date).getFullYear()}
+                </td>
               </tr>
             );
           })}
         </tbody>
       </table>
-      <div className="text-sm italic text-right pb-4">*Sung in translation</div>
-    </>
+      <p className="resume-note">* Sung in translation</p>
+    </div>
   );
 }

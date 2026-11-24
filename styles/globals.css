@@ -232,6 +232,98 @@ body {
   border: 0;
 }
 
+/* The singer resume is a long list, so it fills the column and rules each
+   row to keep the eye on the line. */
+.markdown table.resume {
+  width: 100%;
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.markdown table.resume th {
+  text-align: left;
+  font-weight: 600;
+}
+
+.markdown table.resume th,
+.markdown table.resume td {
+  padding: 0.45rem 1rem 0.45rem 0;
+  vertical-align: top;
+}
+
+.markdown table.resume tbody td {
+  border-top: 1px solid theme("colors.rule");
+}
+
+.markdown table.resume tbody tr:first-child td {
+  border-top: 1px solid theme("colors.ink");
+}
+
+.markdown table.resume th.role {
+  width: 26%;
+}
+
+.markdown table.resume th.title {
+  width: 34%;
+}
+
+.markdown table.resume .year {
+  width: 1%;
+  padding-right: 0;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Four columns don't fit on a phone, so each row becomes a card: role and
+   year on top, then the title and company. */
+@media (max-width: 600px) {
+  .markdown table.resume thead {
+    display: none;
+  }
+
+  .markdown table.resume tr {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    column-gap: 1rem;
+    padding: 0.6rem 0;
+    border-top: 1px solid theme("colors.rule");
+  }
+
+  .markdown table.resume tbody tr:first-child {
+    border-top: 0;
+  }
+
+  .markdown table.resume tbody td,
+  .markdown table.resume tbody tr:first-child td {
+    padding: 0;
+    border: 0;
+  }
+
+  .markdown table.resume .role {
+    font-weight: 600;
+  }
+
+  .markdown table.resume .title,
+  .markdown table.resume .company {
+    grid-column: 1 / -1;
+  }
+
+  .markdown table.resume .year {
+    grid-row: 1;
+    grid-column: 2;
+  }
+
+  .markdown table.resume .company {
+    color: rgb(17 17 17 / 0.75);
+  }
+}
+
+.markdown .resume-note {
+  font-size: 1rem;
+  margin-top: 0.6rem;
+  color: rgb(17 17 17 / 0.75);
+}
+
 /* Code — Shiki blocks keep their theme; only the wrapper changes */
 .markdown pre.shiki {
   margin: 1.4rem 0;
